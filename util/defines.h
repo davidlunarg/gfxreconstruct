@@ -26,4 +26,6 @@
 
 #define BRIMSTONE_FOURCC BRIMSTONE_MAKE_FOURCC('G', 'R', 'E', 'C')
 
+#define BRIMSTONE_ALIGN_VALUE(value, alignment) ((value + alignment-1) & ~(alignment-1))
+
 #endif // BRIMSTONE_UTIL_DEFINES_H

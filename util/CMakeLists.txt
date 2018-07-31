@@ -10,12 +10,14 @@ target_sources(brimstone_util
                    output_stream.h
                    passthrough_memory_allocator.h
                    platform.h
+                   vma_memory_allocator.h
                    logging.h
                    metadata.h
                    file_output_stream.cpp
                    memory_output_stream.cpp
                    metadata.cpp
                    passthrough_memory_allocator.cpp
+                   vma_memory_allocator.cpp
               )
 
 if (WIN32)
