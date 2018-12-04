@@ -661,12 +661,35 @@ void PageGuardManager::ProcessMemoryEntries(ModifiedMemoryFunc handle_modified)
     }
 }
 
+static thread_local bool first = true;
+static int sleep_count = 0;
+const int kSleepLimit = 3;
+const int kSleepSeconds = 5;
+
 bool PageGuardManager::HandleGuardPageViolation(void* address, bool is_write, bool clear_guard)
 {
     void*       start_address = nullptr;
     MemoryInfo* memory_info   = nullptr;
 
     std::lock_guard<std::mutex> lock(tracked_memory_lock_);
+
+    if (first && (sleep_count < kSleepLimit))
+    {
+        GFXRECON_LOG_INFO("Thread %" PRIx64 " is sleeping for %d seconds in write access signal handler", util::platform::GetCurrentThreadId(), kSleepSeconds);
+        sleep(kSleepSeconds);
+
+        first = false;
+        ++sleep_count;
+
+        struct sigaction sa;
+        sa.sa_flags = SA_SIGINFO;
+        sigemptyset(&sa.sa_mask);
+        sa.sa_sigaction = PageGuardExceptionHandler;
+        if (sigaction(SIGSEGV, &sa, &s_old_sigaction) == -1)
+        {
+            GFXRECON_LOG_ERROR("PageGuardManager failed to register exception handler (errno = %d)", errno);
+        }
+    }
 
     bool found = FindMemory(address, &start_address, &memory_info);
     if (found)
