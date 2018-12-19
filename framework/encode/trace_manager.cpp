@@ -79,13 +79,13 @@ void TraceManager::Create()
         // Default initialize logging to report issues while loading settings.
         util::Log::Init(kDefaultLogLevel);
 
-        CaptureSettings settings;
+        CaptureSettings settings = {};
         CaptureSettings::LoadSettings(&settings);
 
         // Reinitialize logging with values retrieved from settings.
         const util::Log::Settings& log_settings = settings.GetLogSettings();
         util::Log::Release();
-        util::Log::Init(log_settings.min_severity, log_settings.file_name.c_str());
+        util::Log::Init(log_settings);
 
         std::string filename = settings.GetCaptureFile();
 

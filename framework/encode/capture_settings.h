@@ -62,14 +62,16 @@ class CaptureSettings
     typedef std::unordered_map<std::string, std::string> OptionsMap;
 
   private:
+    static void
+    LoadSingleOptionEnvVar(OptionsMap* options, const std::string& environment_variable, const std::string& option_key);
+
     static void LoadOptionsEnvVar(OptionsMap* options);
 
     static void LoadOptionsFile(OptionsMap* options);
 
-    static void ProcessOptions(const OptionsMap& options, CaptureSettings* settings);
+    static void ProcessOptions(OptionsMap& options, CaptureSettings* settings);
 
-    static std::string
-    FindOption(const OptionsMap& options, const std::string& key, const std::string& default_value = "");
+    static std::string FindOption(OptionsMap& options, const std::string& key, const std::string& default_value = "");
 
     static bool ParseBoolString(const std::string& value_string, bool default_value);
 
@@ -83,10 +85,10 @@ class CaptureSettings
 
   private:
     std::string            capture_file_;
-    bool                   timestamped_filename_;
-    MemoryTrackingMode     memory_tracking_mode_;
     format::EnabledOptions capture_file_options_;
+    bool                   timestamped_filename_;
     util::Log::Settings    log_settings_;
+    MemoryTrackingMode     memory_tracking_mode_;
 };
 
 GFXRECON_END_NAMESPACE(encode)
