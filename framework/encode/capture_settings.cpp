@@ -35,6 +35,8 @@ GFXRECON_BEGIN_NAMESPACE(encode)
 #define CAPTURE_FILE_NAME_UPPER             "CAPTURE_FILE"
 #define CAPTURE_FILE_USE_TIMESTAMP_LOWER    "capture_file_timestamp"
 #define CAPTURE_FILE_USE_TIMESTAMP_UPPER    "CAPTURE_FILE_TIMESTAMP"
+#define CAPTURE_FILE_FORCE_FLUSH_LOWER      "capture_file_force_flush"
+#define CAPTURE_FILE_FORCE_FLUSH_UPPER      "CAPTURE_FILE_FORCE_FLUSH"
 #define LOG_ALLOW_INDENTS_LOWER             "log_allow_indents"
 #define LOG_ALLOW_INDENTS_UPPER             "LOG_ALLOW_INDENTS"
 #define LOG_BREAK_ON_ERROR_LOWER            "log_break_on_error"
@@ -67,6 +69,7 @@ const char kDefaultCaptureFileName[] = "/sdcard/gfxrecon_capture" GFXRECON_FILE_
 // Android Properties
 #define GFXRECON_ENV_VAR_PREFIX "debug.gfxrecon."
 const char kCaptureCompressionTypeEnvVar[]   = GFXRECON_ENV_VAR_PREFIX CAPTURE_COMPRESSION_TYPE_LOWER;
+const char kCaptureFileForceFlushEnvVar[]    = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_FORCE_FLUSH_LOWER;
 const char kCaptureFileNameEnvVar[]          = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_NAME_LOWER;
 const char kCaptureFileUseTimestampEnvVar[]  = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_USE_TIMESTAMP_LOWER;
 const char kLogAllowIndentsEnvVar[]          = GFXRECON_ENV_VAR_PREFIX LOG_ALLOW_INDENTS_LOWER;
@@ -87,6 +90,7 @@ const char kDefaultCaptureFileName[] = "gfxrecon_capture" GFXRECON_FILE_EXTENSIO
 // Desktop environment settings
 #define GFXRECON_ENV_VAR_PREFIX "GFXRECON_"
 const char kCaptureCompressionTypeEnvVar[]           = GFXRECON_ENV_VAR_PREFIX CAPTURE_COMPRESSION_TYPE_UPPER;
+const char kCaptureFileForceFlushEnvVar[]            = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_FORCE_FLUSH_UPPER;
 const char kCaptureFileNameEnvVar[]                  = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_NAME_UPPER;
 const char kCaptureFileUseTimestampEnvVar[]          = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_USE_TIMESTAMP_UPPER;
 const char kLogAllowIndentsEnvVar[]                  = GFXRECON_ENV_VAR_PREFIX LOG_ALLOW_INDENTS_UPPER;
@@ -108,6 +112,7 @@ const char kMemoryTrackingModeEnvVar[]               = GFXRECON_ENV_VAR_PREFIX M
 const char kSettingsFilter[] = "lunarg_gfxrecon.";
 const std::string kOptionKeyCaptureCompressionType   = std::string(kSettingsFilter) + std::string(CAPTURE_COMPRESSION_TYPE_LOWER);
 const std::string kOptionKeyCaptureFile              = std::string(kSettingsFilter) + std::string(CAPTURE_FILE_NAME_LOWER);
+const std::string kOptionKeyCaptureFileForceFlush    = std::string(kSettingsFilter) + std::string(CAPTURE_FILE_FORCE_FLUSH_LOWER);
 const std::string kOptionKeyCaptureFileUseTimestamp  = std::string(kSettingsFilter) + std::string(CAPTURE_FILE_USE_TIMESTAMP_LOWER);
 const std::string kOptionKeyLogAllowIndents          = std::string(kSettingsFilter) + std::string(LOG_ALLOW_INDENTS_LOWER);
 const std::string kOptionKeyLogBreakOnError          = std::string(kSettingsFilter) + std::string(LOG_BREAK_ON_ERROR_LOWER);
@@ -129,9 +134,13 @@ const format::CompressionType kDefaultCompressionType = format::CompressionType:
 const format::CompressionType kDefaultCompressionType = format::CompressionType::kNone;
 #endif
 
-CaptureSettings::CaptureSettings() :
-    capture_file_(kDefaultCaptureFileName), timestamped_filename_(true), memory_tracking_mode_(kPageGuard)
-{}
+CaptureSettings::CaptureSettings()
+{
+    trace_settings_                      = {};
+    trace_settings_.capture_file         = kDefaultCaptureFileName;
+    trace_settings_.time_stamp_file      = true;
+    trace_settings_.memory_tracking_mode = kPageGuard;
+}
 
 CaptureSettings::~CaptureSettings() {}
 
@@ -180,6 +189,7 @@ void CaptureSettings::LoadOptionsEnvVar(OptionsMap* options)
     LoadSingleOptionEnvVar(options, kCaptureFileNameEnvVar, kOptionKeyCaptureFile);
     LoadSingleOptionEnvVar(options, kCaptureFileUseTimestampEnvVar, kOptionKeyCaptureFileUseTimestamp);
     LoadSingleOptionEnvVar(options, kCaptureCompressionTypeEnvVar, kOptionKeyCaptureCompressionType);
+    LoadSingleOptionEnvVar(options, kCaptureFileForceFlushEnvVar, kOptionKeyCaptureFileForceFlush);
     // Logging environment variables
     LoadSingleOptionEnvVar(options, kLogAllowIndentsEnvVar, kOptionKeyLogAllowIndents);
     LoadSingleOptionEnvVar(options, kLogBreakOnErrorEnvVar, kOptionKeyLogBreakOnError);
@@ -224,11 +234,16 @@ void CaptureSettings::ProcessOptions(OptionsMap& options, CaptureSettings* setti
     assert(settings != nullptr);
 
     // Capture file options
-    settings->capture_file_options_.compression_type =
+    settings->trace_settings_.capture_file_options.compression_type =
         ParseCompressionTypeString(FindOption(options, kOptionKeyCaptureCompressionType), kDefaultCompressionType);
-    settings->capture_file_ = FindOption(options, kOptionKeyCaptureFile, settings->capture_file_);
-    settings->timestamped_filename_ =
-        ParseBoolString(FindOption(options, kOptionKeyCaptureFileUseTimestamp), settings->timestamped_filename_);
+    settings->trace_settings_.capture_file =
+        FindOption(options, kOptionKeyCaptureFile, settings->trace_settings_.capture_file);
+    settings->trace_settings_.time_stamp_file = ParseBoolString(FindOption(options, kOptionKeyCaptureFileUseTimestamp),
+                                                                settings->trace_settings_.time_stamp_file);
+    settings->trace_settings_.force_flush =
+        ParseBoolString(FindOption(options, kOptionKeyCaptureFileForceFlush), settings->trace_settings_.force_flush);
+    settings->trace_settings_.memory_tracking_mode = ParseMemoryTrackingModeString(
+        FindOption(options, kOptionKeyMemoryTrackingMode), settings->trace_settings_.memory_tracking_mode);
     // Log options
     settings->log_settings_.use_indent =
         ParseBoolString(FindOption(options, kOptionKeyLogAllowIndents), settings->log_settings_.use_indent);
@@ -251,9 +266,6 @@ void CaptureSettings::ProcessOptions(OptionsMap& options, CaptureSettings* setti
         FindOption(options, kOptionKeyLogOutputToOsDebugString), settings->log_settings_.output_to_os_debug_string);
     settings->log_settings_.min_severity =
         ParseLogLevelString(FindOption(options, kOptionKeyLogLevel), settings->log_settings_.min_severity);
-    // Memory tracking options
-    settings->memory_tracking_mode_ = ParseMemoryTrackingModeString(FindOption(options, kOptionKeyMemoryTrackingMode),
-                                                                    settings->memory_tracking_mode_);
 }
 
 std::string CaptureSettings::FindOption(OptionsMap& options, const std::string& key, const std::string& default_value)

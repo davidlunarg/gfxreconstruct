@@ -40,19 +40,21 @@ class CaptureSettings
         // mode shadows uncached memory.
         kPageGuard = 2
     };
+    struct TraceSettings
+    {
+        std::string            capture_file;
+        format::EnabledOptions capture_file_options;
+        bool                   time_stamp_file;
+        MemoryTrackingMode     memory_tracking_mode;
+        bool                   force_flush;
+    };
 
   public:
     CaptureSettings();
 
     ~CaptureSettings();
 
-    const std::string& GetCaptureFile() const { return capture_file_; }
-
-    bool GetTimestampedFilename() const { return timestamped_filename_; }
-
-    MemoryTrackingMode GetMemoryTrackingMode() const { return memory_tracking_mode_; }
-
-    const format::EnabledOptions& GetCaptureFileOptions() const { return capture_file_options_; }
+    TraceSettings GetTraceSettings() const { return trace_settings_; }
 
     const util::Log::Settings& GetLogSettings() const { return log_settings_; }
 
@@ -84,11 +86,8 @@ class CaptureSettings
     static util::Log::Severity ParseLogLevelString(const std::string& value_string, util::Log::Severity default_value);
 
   private:
-    std::string            capture_file_;
-    format::EnabledOptions capture_file_options_;
-    bool                   timestamped_filename_;
-    util::Log::Settings    log_settings_;
-    MemoryTrackingMode     memory_tracking_mode_;
+    TraceSettings       trace_settings_;
+    util::Log::Settings log_settings_;
 };
 
 GFXRECON_END_NAMESPACE(encode)
