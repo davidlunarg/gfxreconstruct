@@ -16,6 +16,9 @@
 ** limitations under the License.
 */
 
+// #define PAGE_GUARD_ENABLE_WRITE_WATCH // Brainpain
+#define PAGE_GUARD_ENABLE_DEBUG_OUTPUT // Brainpain
+
 #include "util/page_guard_manager.h"
 
 #include "util/logging.h"
@@ -23,6 +26,11 @@
 
 #include <cassert>
 #include <cinttypes>
+#include <iostream>
+#include <sstream>
+#include <unordered_map>
+
+static std::mutex g_mem_protect_mutex;
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(util)
@@ -36,9 +44,100 @@ GFXRECON_BEGIN_NAMESPACE(util)
 static uint32_t kGuardReadWriteProtect = PAGE_READWRITE | PAGE_GUARD;
 static uint32_t kGuardReadOnlyProtect  = PAGE_READONLY;
 static uint32_t kGuardNoProtect        = PAGE_READWRITE;
+#else
+#include <errno.h>
+#include <signal.h>
+#include <sys/mman.h>
+#include <unistd.h>
 
+static uint32_t kGuardReadWriteProtect = PROT_NONE;
+static uint32_t kGuardReadOnlyProtect  = PROT_READ;
+static uint32_t kGuardNoProtect        = PROT_READ | PROT_WRITE;
+
+static struct sigaction s_old_sigaction;
+#endif
+
+#ifdef PAGE_GUARD_ENABLE_DEBUG_OUTPUT
+static std::mutex                             g_mutex;
+static std::unordered_map<uint32_t, uint32_t> g_thread_to_column;
+static uint32_t                               g_cur_column = 0;
+
+static void WritePageGuardLogMessage(const std::string& message)
+{
+    std::lock_guard<std::mutex> l(g_mutex);
+    uint32_t                    thread_id  = static_cast<uint32_t>(platform::GetCurrentThreadId());
+    uint32_t                    cur_column = 0;
+    if (g_thread_to_column.find(thread_id) == g_thread_to_column.end())
+    {
+        cur_column                    = g_cur_column++;
+        g_thread_to_column[thread_id] = cur_column;
+    }
+    else
+    {
+        cur_column = g_thread_to_column[thread_id];
+    }
+    std::string column_spacing = "";
+    for (uint32_t column = 0; column < cur_column; ++column)
+    {
+        column_spacing += "\t\t\t\t\t\t\t\t\t\t\t\t";
+    }
+    GFXRECON_LOG_INFO("%s%s", column_spacing.c_str(), message.c_str());
+}
+
+static void WritePageGuardLogHandleMessage(const std::string& message, uint64_t handle)
+{
+    WritePageGuardLogMessage(message);
+    std::string       return_message = "\t";
+    std::stringstream pointer_stream;
+    pointer_stream << "0x" << std::hex << handle;
+    return_message += pointer_stream.str();
+    WritePageGuardLogMessage(return_message);
+}
+
+static void WritePageGuardLogSizeTMessage(const std::string& message, size_t size)
+{
+    WritePageGuardLogMessage(message);
+    std::string return_message = "\t";
+    return_message += std::to_string(size);
+    WritePageGuardLogMessage(return_message);
+}
+
+static void WritePageGuardLogMemoryMessage(const std::string& message, void* addr)
+{
+    WritePageGuardLogMessage(message);
+    std::string       return_message = "\t";
+    std::stringstream pointer_stream;
+    pointer_stream << std::hex << addr;
+    return_message += pointer_stream.str();
+    WritePageGuardLogMessage(return_message);
+}
+
+static void WritePageGuardLogMemoryRangeMessage(const std::string& message, void* start, size_t size)
+{
+    WritePageGuardLogMessage(message);
+    std::string       return_message = "\t";
+    std::stringstream pointer_stream;
+    pointer_stream << std::hex << start;
+    return_message += pointer_stream.str();
+    WritePageGuardLogMessage(return_message);
+    return_message = "\t- ";
+    pointer_stream.str("");
+    pointer_stream << std::hex << reinterpret_cast<void*>(reinterpret_cast<uint8_t*>(start) + (size - 1));
+    return_message += pointer_stream.str();
+    WritePageGuardLogMessage(return_message);
+}
+#else
+#define WritePageGuardLogMessage(x)
+#define WritePageGuardLogHandleMessage(x, y)
+#define WritePageGuardLogSizeTMessage(x, y)
+#define WritePageGuardLogMemoryMessage(x, y)
+#define WritePageGuardLogMemoryRangeMessage(x, y, z)
+#endif // DEBUG_MEMORY_PAGE_TRACKING
+
+#if defined(WIN32)
 static LONG WINAPI PageGuardExceptionHandler(PEXCEPTION_POINTERS exception_pointers)
 {
+    WritePageGuardLogMessage("Enter PageGuardExceptionHandler");
     LONG result_code = EXCEPTION_CONTINUE_SEARCH;
 
     if ((exception_pointers != nullptr) && (exception_pointers->ExceptionRecord != nullptr))
@@ -50,6 +149,7 @@ static LONG WINAPI PageGuardExceptionHandler(PEXCEPTION_POINTERS exception_point
 
             if (record->ExceptionCode == STATUS_GUARD_PAGE_VIOLATION)
             {
+                WritePageGuardLogMemoryMessage("\tException addr ", record->ExceptionAddress);
                 // ExceptionInformation[0] indicates a read operation if 0 and write if 1.
                 // ExceptionInformation[1] is the address of the inaccessible data.
                 bool  is_write = (record->ExceptionInformation[0] == 0) ? false : true;
@@ -57,6 +157,10 @@ static LONG WINAPI PageGuardExceptionHandler(PEXCEPTION_POINTERS exception_point
                 if (manager->HandleGuardPageViolation(address, is_write, false))
                 {
                     result_code = EXCEPTION_CONTINUE_EXECUTION;
+                }
+                else
+                {
+                    result_code = EXCEPTION_EXECUTE_HANDLER;
                 }
             }
 #if !defined(PAGE_GUARD_ENABLE_WRITE_WATCH)
@@ -75,19 +179,10 @@ static LONG WINAPI PageGuardExceptionHandler(PEXCEPTION_POINTERS exception_point
         }
     }
 
+    WritePageGuardLogSizeTMessage("Leave PageGuardExceptionHandler (ResCode)", result_code);
     return result_code;
 }
 #else
-#include <errno.h>
-#include <signal.h>
-#include <sys/mman.h>
-#include <unistd.h>
-
-static uint32_t kGuardReadWriteProtect = PROT_NONE;
-static uint32_t kGuardReadOnlyProtect  = PROT_READ;
-static uint32_t kGuardNoProtect        = PROT_READ | PROT_WRITE;
-
-static struct sigaction s_old_sigaction;
 
 static void PageGuardExceptionHandler(int id, siginfo_t* info, void* data)
 {
@@ -120,6 +215,7 @@ PageGuardManager::PageGuardManager() :
     enable_separate_read_tracking_(kDefaultEnableSeparateReadTracking),
     enable_read_write_same_page_(kDefaultEnableReadWriteSamePage)
 {
+    WritePageGuardLogMessage("CONSTRUCTOR_1");
 }
 
 PageGuardManager::PageGuardManager(bool enable_shadow_cached_memory,
@@ -135,10 +231,12 @@ PageGuardManager::PageGuardManager(bool enable_shadow_cached_memory,
     enable_separate_read_tracking_(enable_separate_read_tracking),
     enable_read_write_same_page_(expect_read_write_same_page)
 {
+    WritePageGuardLogMessage("CONSTRUCTOR_2");
 }
 
 PageGuardManager::~PageGuardManager()
 {
+    WritePageGuardLogMessage("Enter DESTRUCTOR");
     if (exception_handler_ != nullptr)
     {
         ClearExceptionHandler(exception_handler_);
@@ -158,6 +256,7 @@ PageGuardManager::~PageGuardManager()
             SetMemoryProtection(memory_info.aligned_address, guard_range, kGuardNoProtect);
         }
     }
+    WritePageGuardLogMessage("Leave DESTRUCTOR");
 }
 
 void PageGuardManager::Create(bool enable_shadow_cached_memory,
@@ -167,6 +266,7 @@ void PageGuardManager::Create(bool enable_shadow_cached_memory,
                               bool enable_separate_read_tracking,
                               bool expect_read_write_same_page)
 {
+    WritePageGuardLogMessage("Enter Create");
     if (instance_ == nullptr)
     {
         instance_ = new PageGuardManager(enable_shadow_cached_memory,
@@ -180,30 +280,39 @@ void PageGuardManager::Create(bool enable_shadow_cached_memory,
     {
         GFXRECON_LOG_WARNING("PageGuardManager creation was attempted more than once");
     }
+    WritePageGuardLogMessage("Leave Create");
 }
 
 void PageGuardManager::Destroy()
 {
+    WritePageGuardLogMessage("Enter Destroy");
     if (instance_ != nullptr)
     {
         delete instance_;
         instance_ = nullptr;
     }
+    WritePageGuardLogMessage("Leave Destroy");
 }
 
 size_t PageGuardManager::GetSystemPageSize() const
 {
+    WritePageGuardLogMessage("Enter GetSystemPageSize");
+    size_t return_value = 0;
 #if defined(WIN32)
     SYSTEM_INFO sSysInfo;
     GetSystemInfo(&sSysInfo);
-    return sSysInfo.dwPageSize;
+    return_value = sSysInfo.dwPageSize;
 #else
-    return getpagesize();
+    return_value = getpagesize();
 #endif
+
+    WritePageGuardLogSizeTMessage("Leave GetSystemPageSize (Size)", return_value);
+    return return_value;
 }
 
 size_t PageGuardManager::GetAdjustedSize(size_t size) const
 {
+    WritePageGuardLogMessage("Enter GetAdjustedSize");
     size_t extra = size % system_page_size_;
     if (extra != 0)
     {
@@ -211,12 +320,14 @@ size_t PageGuardManager::GetAdjustedSize(size_t size) const
         size = size - extra + system_page_size_;
     }
 
+    WritePageGuardLogSizeTMessage("Leave GetAdjustedSize (Size)", size);
     return size;
 }
 
 void* PageGuardManager::AllocateShadowMemory(size_t size)
 {
     assert(size > 0);
+    WritePageGuardLogSizeTMessage("Enter AllocateShadowMemory (Size)", size);
 
     void* memory = nullptr;
 
@@ -236,6 +347,11 @@ void* PageGuardManager::AllocateShadowMemory(size_t size)
     if (memory == nullptr)
     {
         GFXRECON_LOG_ERROR("PageGuardManager failed to allocate shadow memory with size = %" PRIuPTR, size);
+        WritePageGuardLogMessage("Leave AllocateShadowMemory with NULL!!");
+    }
+    else
+    {
+        WritePageGuardLogMemoryRangeMessage("Leave AllocateShadowMemory (Memory)", memory, size);
     }
 
     return memory;
@@ -243,10 +359,13 @@ void* PageGuardManager::AllocateShadowMemory(size_t size)
 
 void PageGuardManager::FreeShadowMemory(void* memory, size_t size)
 {
+    WritePageGuardLogMemoryRangeMessage("Enter FreeShadowMemory (Memory)", memory, size);
+
     assert(memory != nullptr);
 
     if (memory != nullptr)
     {
+        SetMemoryProtection(memory, size, kGuardNoProtect);
 #if defined(WIN32)
         GFXRECON_UNREFERENCED_PARAMETER(size);
         VirtualFree(memory, 0, MEM_RELEASE);
@@ -254,10 +373,12 @@ void PageGuardManager::FreeShadowMemory(void* memory, size_t size)
         munmap(memory, size);
 #endif
     }
+    WritePageGuardLogMessage("Leave FreeShadowMemory");
 }
 
 void PageGuardManager::AddExceptionHandler()
 {
+    WritePageGuardLogMessage("Enter AddExceptionHandler");
     if (exception_handler_ == nullptr)
     {
         assert(exception_handler_count_ == 0);
@@ -293,10 +414,12 @@ void PageGuardManager::AddExceptionHandler()
     {
         ++exception_handler_count_;
     }
+    WritePageGuardLogMessage("Leave AddExceptionHandler");
 }
 
 void PageGuardManager::RemoveExceptionHandler()
 {
+    WritePageGuardLogMessage("Enter RemoveExceptionHandler");
     if (exception_handler_ != nullptr)
     {
         assert(exception_handler_count_ > 0);
@@ -309,10 +432,12 @@ void PageGuardManager::RemoveExceptionHandler()
             exception_handler_ = nullptr;
         }
     }
+    WritePageGuardLogMessage("Leave RemoveExceptionHandler");
 }
 
 void PageGuardManager::ClearExceptionHandler(void* exception_handler)
 {
+    WritePageGuardLogMessage("Enter ClearExceptionHandler");
 #if defined(WIN32)
     if (RemoveVectoredExceptionHandler(exception_handler) == 0)
     {
@@ -334,15 +459,21 @@ void PageGuardManager::ClearExceptionHandler(void* exception_handler)
         }
     }
 #endif
+    WritePageGuardLogMessage("Leave ClearExceptionHandler");
 }
 
 size_t PageGuardManager::GetMemorySegmentSize(const MemoryInfo* memory_info, size_t page_index) const
 {
+    WritePageGuardLogMessage("Enter GetMemorySegmentSize");
     assert(memory_info != nullptr);
     assert(page_index < memory_info->total_pages);
 
     // If this is the last segment of the tracked memory, we want to know if it is a full page or a partial page.
-    return ((page_index + 1) < memory_info->total_pages) ? system_page_size_ : memory_info->last_segment_size;
+    size_t return_value =
+        ((page_index + 1) < memory_info->total_pages) ? system_page_size_ : memory_info->last_segment_size;
+
+    WritePageGuardLogSizeTMessage("Leave GetMemorySegmentSize (Size)", return_value);
+    return return_value;
 }
 
 void PageGuardManager::MemoryCopy(void* destination, const void* source, size_t size)
@@ -354,6 +485,8 @@ void PageGuardManager::MemoryCopy(void* destination, const void* source, size_t 
 bool PageGuardManager::FindMemory(void* address, void** watched_memory, MemoryInfo** watched_memory_info)
 {
     assert((address != nullptr) && (watched_memory != nullptr) && (watched_memory_info != nullptr));
+
+    WritePageGuardLogMemoryMessage("Enter FindMemory ", address);
 
     bool found = false;
     for (auto entry = memory_info_.begin(); entry != memory_info_.end(); ++entry)
@@ -371,17 +504,39 @@ bool PageGuardManager::FindMemory(void* address, void** watched_memory, MemoryIn
             break;
         }
     }
+#if defined(WIN32)
+    if (!found)
+    {
+        MEMORY_BASIC_INFORMATION memory_info = {};
+        if (0 != VirtualQuery(address, &memory_info, sizeof(MEMORY_BASIC_INFORMATION)))
+        {
+            WritePageGuardLogMemoryMessage("FindMemory (Base)", memory_info.BaseAddress);
+            WritePageGuardLogMemoryMessage("FindMemory (AllocBase)", memory_info.AllocationBase);
+            WritePageGuardLogSizeTMessage("FindMemory (AllocProtect)", memory_info.AllocationProtect);
+            WritePageGuardLogSizeTMessage("FindMemory (Protect)", memory_info.Protect);
+            WritePageGuardLogSizeTMessage("FindMemory (Size)", memory_info.RegionSize);
+        }
+        else
+        {
+            WritePageGuardLogMemoryMessage("FindMemory AND VirtualQuery failed", memory_info.BaseAddress);
+        }
+    }
+#endif
 
+    WritePageGuardLogSizeTMessage("Leave FindMemory (Found)", found);
     return found;
 }
 
 bool PageGuardManager::SetMemoryProtection(void* protect_address, size_t protect_size, uint32_t protect_mask)
 {
-    bool success = true;
+    std::lock_guard<std::mutex> l(g_mem_protect_mutex);
+    bool                        success = true;
+
+    WritePageGuardLogMemoryRangeMessage("Enter SetMemoryProtection", protect_address, protect_size);
 
 #if defined(WIN32)
     DWORD old_setting = 0;
-    if (VirtualProtect(protect_address, protect_size, protect_mask, &old_setting) == FALSE)
+    if (VirtualProtect(protect_address, (protect_size - 1), protect_mask, &old_setting) == FALSE)
     {
         success = false;
 
@@ -392,6 +547,8 @@ bool PageGuardManager::SetMemoryProtection(void* protect_address, size_t protect
             protect_size,
             GetLastError());
     }
+    WritePageGuardLogSizeTMessage("  VirtualProtect Old", old_setting);
+    WritePageGuardLogSizeTMessage("  VirtualProtect New", protect_mask);
 #else
     if (mprotect(protect_address, protect_size, protect_mask) == -1)
     {
@@ -406,12 +563,15 @@ bool PageGuardManager::SetMemoryProtection(void* protect_address, size_t protect
     }
 #endif
 
+    WritePageGuardLogSizeTMessage("Leave SetMemoryProtection (Success)", success);
     return success;
 }
 
 void PageGuardManager::ProcessEntry(uint64_t memory_id, MemoryInfo* memory_info, ModifiedMemoryFunc handle_modified)
 {
     assert(memory_info != nullptr);
+
+    WritePageGuardLogHandleMessage("Enter ProcessEntry", memory_id);
 
     bool   active_range = false;
     size_t start_index  = 0;
@@ -464,6 +624,8 @@ void PageGuardManager::ProcessEntry(uint64_t memory_id, MemoryInfo* memory_info,
     {
         ProcessActiveRange(memory_id, memory_info, start_index, memory_info->total_pages, handle_modified);
     }
+
+    WritePageGuardLogMessage("Leave ProcessEntry");
 }
 
 void PageGuardManager::ProcessActiveRange(uint64_t           memory_id,
@@ -474,6 +636,8 @@ void PageGuardManager::ProcessActiveRange(uint64_t           memory_id,
 {
     assert(memory_info != nullptr);
     assert(end_index > start_index);
+
+    WritePageGuardLogHandleMessage("Enter ProcessActiveRange", memory_id);
 
     size_t page_count    = end_index - start_index;
     size_t page_offset   = start_index * system_page_size_;
@@ -575,11 +739,16 @@ void PageGuardManager::ProcessActiveRange(uint64_t           memory_id,
         }
     }
 #endif
+
+    WritePageGuardLogMessage("Leave ProcessActiveRange");
 }
 
 void* PageGuardManager::AddMemory(uint64_t memory_id, void* mapped_memory, size_t size, bool is_cached, bool shadow)
 {
     bool success = true;
+
+    WritePageGuardLogHandleMessage("Enter AddMemory", memory_id);
+    WritePageGuardLogMemoryRangeMessage("  Memory", mapped_memory, size);
 
     void*  aligned_address   = nullptr;
     void*  shadow_memory     = nullptr;
@@ -682,12 +851,16 @@ void* PageGuardManager::AddMemory(uint64_t memory_id, void* mapped_memory, size_
         }
     }
 
-    return (shadow_memory != nullptr) ? shadow_memory : mapped_memory;
+    void* return_value = (shadow_memory != nullptr) ? shadow_memory : mapped_memory;
+    WritePageGuardLogMessage("Leave AddMemory");
+    return return_value;
 }
 
 void PageGuardManager::RemoveMemory(uint64_t memory_id)
 {
     std::lock_guard<std::mutex> lock(tracked_memory_lock_);
+
+    WritePageGuardLogHandleMessage("Enter RemoveMemory", memory_id);
 
     auto entry = memory_info_.find(memory_id);
     if (entry != memory_info_.end())
@@ -710,11 +883,15 @@ void PageGuardManager::RemoveMemory(uint64_t memory_id)
 
         memory_info_.erase(entry);
     }
+
+    WritePageGuardLogMessage("Leave RemoveMemory");
 }
 
 bool PageGuardManager::ProcessMemoryEntry(uint64_t memory_id, ModifiedMemoryFunc handle_modified)
 {
     std::lock_guard<std::mutex> lock(tracked_memory_lock_);
+
+    WritePageGuardLogMessage("Enter ProcessMemoryEntry");
 
     bool found = false;
     auto entry = memory_info_.find(memory_id);
@@ -725,12 +902,15 @@ bool PageGuardManager::ProcessMemoryEntry(uint64_t memory_id, ModifiedMemoryFunc
         ProcessEntry(entry->first, &entry->second, handle_modified);
     }
 
+    WritePageGuardLogSizeTMessage("Leave ProcessMemoryEntry (found)", found);
     return found;
 }
 
 void PageGuardManager::ProcessMemoryEntries(ModifiedMemoryFunc handle_modified)
 {
     std::lock_guard<std::mutex> lock(tracked_memory_lock_);
+
+    WritePageGuardLogMessage("Enter ProcessMemoryEntries");
 
     for (auto entry = memory_info_.begin(); entry != memory_info_.end(); ++entry)
     {
@@ -739,12 +919,16 @@ void PageGuardManager::ProcessMemoryEntries(ModifiedMemoryFunc handle_modified)
             ProcessEntry(entry->first, &entry->second, handle_modified);
         }
     }
+
+    WritePageGuardLogMessage("Leave ProcessMemoryEntries");
 }
 
 bool PageGuardManager::HandleGuardPageViolation(void* address, bool is_write, bool clear_guard)
 {
     void*       start_address = nullptr;
     MemoryInfo* memory_info   = nullptr;
+
+    WritePageGuardLogMessage("Enter HandleGuardPageViolation");
 
     std::lock_guard<std::mutex> lock(tracked_memory_lock_);
 
@@ -832,6 +1016,7 @@ bool PageGuardManager::HandleGuardPageViolation(void* address, bool is_write, bo
         }
     }
 
+    WritePageGuardLogSizeTMessage("Leave HandleGuardPageViolation (found)", found);
     return found;
 }
 

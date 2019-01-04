@@ -634,7 +634,9 @@ void TraceManager::PreProcess_vkUnmapMemory(VkDevice device, VkDeviceMemory memo
                     WriteFillMemoryCmd(format::FromHandleId<VkDeviceMemory>(memory_id), offset, size, start_address);
                 });
 
+#if 0 // Brainpain - Disable Page Guard release on unmap
             manager->RemoveMemory(format::ToHandleId(memory));
+#endif
         }
     }
     else if (memory_tracking_mode_ == CaptureSettings::MemoryTrackingMode::kUnassisted)
@@ -647,8 +649,9 @@ void TraceManager::PreProcess_vkUnmapMemory(VkDevice device, VkDeviceMemory memo
             WriteFillMemoryCmd(memory, 0, info->mapped_size, info->mapped_memory);
         }
     }
-
+#if 0 // Disable unmapping of our entry on unmap
     memory_tracker_.UnmapEntry(memory);
+#endif
 }
 
 void TraceManager::PreProcess_vkFreeMemory(VkDevice                     device,
