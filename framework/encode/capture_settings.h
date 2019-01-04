@@ -1,6 +1,6 @@
 /*
-** Copyright (c) 2018 Valve Corporation
-** Copyright (c) 2018 LunarG, Inc.
+** Copyright (c) 2018-2019 Valve Corporation
+** Copyright (c) 2018-2019 LunarG, Inc.
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -29,6 +29,9 @@ GFXRECON_BEGIN_NAMESPACE(encode)
 
 class CaptureSettings
 {
+  private:
+    const static char kDefaultCaptureFileName[];
+
   public:
     enum MemoryTrackingMode
     {
@@ -40,12 +43,13 @@ class CaptureSettings
         // mode shadows uncached memory.
         kPageGuard = 2
     };
+
     struct TraceSettings
     {
-        std::string            capture_file;
+        std::string            capture_file{ kDefaultCaptureFileName };
         format::EnabledOptions capture_file_options;
-        bool                   time_stamp_file;
-        MemoryTrackingMode     memory_tracking_mode;
+        bool                   time_stamp_file{ true };
+        MemoryTrackingMode     memory_tracking_mode{ kPageGuard };
         bool                   force_flush;
     };
 
@@ -54,7 +58,7 @@ class CaptureSettings
 
     ~CaptureSettings();
 
-    TraceSettings GetTraceSettings() const { return trace_settings_; }
+    const TraceSettings& GetTraceSettings() const { return trace_settings_; }
 
     const util::Log::Settings& GetLogSettings() const { return log_settings_; }
 
@@ -71,9 +75,9 @@ class CaptureSettings
 
     static void LoadOptionsFile(OptionsMap* options);
 
-    static void ProcessOptions(OptionsMap& options, CaptureSettings* settings);
+    static void ProcessOptions(OptionsMap* options, CaptureSettings* settings);
 
-    static std::string FindOption(OptionsMap& options, const std::string& key, const std::string& default_value = "");
+    static std::string FindOption(OptionsMap* options, const std::string& key, const std::string& default_value = "");
 
     static bool ParseBoolString(const std::string& value_string, bool default_value);
 

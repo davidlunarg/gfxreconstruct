@@ -1,6 +1,6 @@
 /*
-** Copyright (c) 2018 Valve Corporation
-** Copyright (c) 2018 LunarG, Inc.
+** Copyright (c) 2018-2019 Valve Corporation
+** Copyright (c) 2018-2019 LunarG, Inc.
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -74,7 +74,7 @@ class Log
     static inline std::string SeverityToString(Severity severity);
     static void               Init(const util::Log::Settings& settings);
     static void               Init(Severity    min_severity              = kErrorSeverity,
-                                   const char* log_file_name             = NULL,
+                                   const char* log_file_name             = nullptr,
                                    bool        leave_file_open           = true,
                                    bool        create_new_file_on_open   = true,
                                    bool        flush_after_write         = false,

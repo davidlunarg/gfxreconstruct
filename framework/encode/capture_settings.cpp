@@ -1,6 +1,6 @@
 /*
-** Copyright (c) 2018 Valve Corporation
-** Copyright (c) 2018 LunarG, Inc.
+** Copyright (c) 2018-2019 Valve Corporation
+** Copyright (c) 2018-2019 LunarG, Inc.
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -64,7 +64,7 @@ GFXRECON_BEGIN_NAMESPACE(encode)
 // clang-format on
 
 #if defined(__ANDROID__)
-const char kDefaultCaptureFileName[] = "/sdcard/gfxrecon_capture" GFXRECON_FILE_EXTENSION;
+const char CaptureSettings::kDefaultCaptureFileName[] = "/sdcard/gfxrecon_capture" GFXRECON_FILE_EXTENSION;
 
 // Android Properties
 #define GFXRECON_ENV_VAR_PREFIX "debug.gfxrecon."
@@ -85,7 +85,7 @@ const char kLogOutputToConsoleEnvVar[]       = GFXRECON_ENV_VAR_PREFIX LOG_OUTPU
 const char kLogOutputToOsDebugStringEnvVar[] = GFXRECON_ENV_VAR_PREFIX LOG_OUTPUT_TO_OS_DEBUG_STRING_LOWER;
 const char kMemoryTrackingModeEnvVar[]       = GFXRECON_ENV_VAR_PREFIX MEMORY_TRACKING_MODE_LOWER;
 #else
-const char kDefaultCaptureFileName[] = "gfxrecon_capture" GFXRECON_FILE_EXTENSION;
+const char CaptureSettings::kDefaultCaptureFileName[] = "gfxrecon_capture" GFXRECON_FILE_EXTENSION;
 
 // Desktop environment settings
 #define GFXRECON_ENV_VAR_PREFIX "GFXRECON_"
@@ -136,10 +136,8 @@ const format::CompressionType kDefaultCompressionType = format::CompressionType:
 
 CaptureSettings::CaptureSettings()
 {
-    trace_settings_                      = {};
-    trace_settings_.capture_file         = kDefaultCaptureFileName;
-    trace_settings_.time_stamp_file      = true;
-    trace_settings_.memory_tracking_mode = kPageGuard;
+    trace_settings_ = {};
+    printf("Trace Setting File = %s\n", trace_settings_.capture_file.c_str());
 }
 
 CaptureSettings::~CaptureSettings() {}
@@ -152,7 +150,7 @@ void CaptureSettings::LoadSettings(CaptureSettings* settings)
 
         LoadOptionsFile(&capture_settings);
         LoadOptionsEnvVar(&capture_settings);
-        ProcessOptions(capture_settings, settings);
+        ProcessOptions(&capture_settings, settings);
 
         // Valid options are removed as they are read from the OptionsMap.  Therefore, if anything
         // is remaining in it after we're done, it's an invalid setting.
@@ -229,7 +227,7 @@ void CaptureSettings::LoadOptionsFile(OptionsMap* options)
     }
 }
 
-void CaptureSettings::ProcessOptions(OptionsMap& options, CaptureSettings* settings)
+void CaptureSettings::ProcessOptions(OptionsMap* options, CaptureSettings* settings)
 {
     assert(settings != nullptr);
 
@@ -268,19 +266,21 @@ void CaptureSettings::ProcessOptions(OptionsMap& options, CaptureSettings* setti
         ParseLogLevelString(FindOption(options, kOptionKeyLogLevel), settings->log_settings_.min_severity);
 }
 
-std::string CaptureSettings::FindOption(OptionsMap& options, const std::string& key, const std::string& default_value)
+std::string CaptureSettings::FindOption(OptionsMap* options, const std::string& key, const std::string& default_value)
 {
+    assert(options != nullptr);
+
     std::string result = default_value;
 
-    auto entry = options.find(key);
-    if (entry != options.end())
+    auto entry = options->find(key);
+    if (entry != options->end())
     {
         result = entry->second;
         GFXRECON_LOG_DEBUG("Settings Loader: Found option \"%s\" with value \"%s\"", key.c_str(), result.c_str());
 
         // Erase the option as it comes in so that we should have no valid options remaining in the
         // map when we're done.
-        options.erase(key);
+        options->erase(key);
     }
 
     return result;
