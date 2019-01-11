@@ -285,9 +285,14 @@ void Log::LogMessage(
         else
 #endif // __ANDROID__
         {
-            output_message += "\n";
             platform::FilePuts(output_message.c_str(), log_file_ptr);
-            if (settings_.flush_after_write && settings_.leave_file_open)
+
+            // Write the newline since we want to separate each log-line but don't
+            // want the messages themselves to have to add it.
+            output_message = "\n";
+            platform::FileWrite(output_message.c_str(), 2, 1, log_file_ptr);
+
+            if (settings_.flush_after_write || settings_.leave_file_open)
             {
                 platform::FileFlush(log_file_ptr);
             }
