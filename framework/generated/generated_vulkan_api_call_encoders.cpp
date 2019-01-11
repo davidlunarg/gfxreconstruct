@@ -29,6 +29,7 @@
 #include "format/api_call_id.h"
 #include "layer/trace_layer.h"
 #include "util/defines.h"
+#include "util/logging.h"
 
 #include "vulkan/vulkan.h"
 
@@ -39,6 +40,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateInstance(
     const VkAllocationCallbacks*                pAllocator,
     VkInstance*                                 pInstance)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateInstance>::Dispatch(encode::TraceManager::Get(), pCreateInfo, pAllocator, pInstance);
 
     VkResult result = dispatch_CreateInstance(pCreateInfo, pAllocator, pInstance);
@@ -62,6 +64,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyInstance(
     VkInstance                                  instance,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyInstance>::Dispatch(encode::TraceManager::Get(), instance, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyInstance);
@@ -82,6 +85,7 @@ VKAPI_ATTR VkResult VKAPI_CALL EnumeratePhysicalDevices(
     uint32_t*                                   pPhysicalDeviceCount,
     VkPhysicalDevice*                           pPhysicalDevices)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkEnumeratePhysicalDevices>::Dispatch(encode::TraceManager::Get(), instance, pPhysicalDeviceCount, pPhysicalDevices);
 
     VkResult result = get_instance_table(instance)->EnumeratePhysicalDevices(instance, pPhysicalDeviceCount, pPhysicalDevices);
@@ -105,6 +109,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceFeatures(
     VkPhysicalDevice                            physicalDevice,
     VkPhysicalDeviceFeatures*                   pFeatures)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceFeatures>::Dispatch(encode::TraceManager::Get(), physicalDevice, pFeatures);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceFeatures(physicalDevice, pFeatures);
@@ -125,6 +130,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceFormatProperties(
     VkFormat                                    format,
     VkFormatProperties*                         pFormatProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceFormatProperties>::Dispatch(encode::TraceManager::Get(), physicalDevice, format, pFormatProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceFormatProperties(physicalDevice, format, pFormatProperties);
@@ -150,6 +156,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceImageFormatProperties(
     VkImageCreateFlags                          flags,
     VkImageFormatProperties*                    pImageFormatProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceImageFormatProperties>::Dispatch(encode::TraceManager::Get(), physicalDevice, format, type, tiling, usage, flags, pImageFormatProperties);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceImageFormatProperties(physicalDevice, format, type, tiling, usage, flags, pImageFormatProperties);
@@ -177,6 +184,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceProperties(
     VkPhysicalDevice                            physicalDevice,
     VkPhysicalDeviceProperties*                 pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceProperties>::Dispatch(encode::TraceManager::Get(), physicalDevice, pProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceProperties(physicalDevice, pProperties);
@@ -197,6 +205,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceQueueFamilyProperties(
     uint32_t*                                   pQueueFamilyPropertyCount,
     VkQueueFamilyProperties*                    pQueueFamilyProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceQueueFamilyProperties>::Dispatch(encode::TraceManager::Get(), physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceQueueFamilyProperties(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
@@ -217,6 +226,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceMemoryProperties(
     VkPhysicalDevice                            physicalDevice,
     VkPhysicalDeviceMemoryProperties*           pMemoryProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceMemoryProperties>::Dispatch(encode::TraceManager::Get(), physicalDevice, pMemoryProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceMemoryProperties(physicalDevice, pMemoryProperties);
@@ -238,6 +248,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateDevice(
     const VkAllocationCallbacks*                pAllocator,
     VkDevice*                                   pDevice)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateDevice>::Dispatch(encode::TraceManager::Get(), physicalDevice, pCreateInfo, pAllocator, pDevice);
 
     VkResult result = dispatch_CreateDevice(physicalDevice, pCreateInfo, pAllocator, pDevice);
@@ -262,6 +273,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyDevice(
     VkDevice                                    device,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyDevice>::Dispatch(encode::TraceManager::Get(), device, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyDevice);
@@ -283,6 +295,7 @@ VKAPI_ATTR void VKAPI_CALL GetDeviceQueue(
     uint32_t                                    queueIndex,
     VkQueue*                                    pQueue)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDeviceQueue>::Dispatch(encode::TraceManager::Get(), device, queueFamilyIndex, queueIndex, pQueue);
 
     get_device_table(device)->GetDeviceQueue(device, queueFamilyIndex, queueIndex, pQueue);
@@ -306,6 +319,7 @@ VKAPI_ATTR VkResult VKAPI_CALL QueueSubmit(
     const VkSubmitInfo*                         pSubmits,
     VkFence                                     fence)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkQueueSubmit>::Dispatch(encode::TraceManager::Get(), queue, submitCount, pSubmits, fence);
 
     VkResult result = get_device_table(queue)->QueueSubmit(queue, submitCount, pSubmits, fence);
@@ -329,6 +343,7 @@ VKAPI_ATTR VkResult VKAPI_CALL QueueSubmit(
 VKAPI_ATTR VkResult VKAPI_CALL QueueWaitIdle(
     VkQueue                                     queue)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkQueueWaitIdle>::Dispatch(encode::TraceManager::Get(), queue);
 
     VkResult result = get_device_table(queue)->QueueWaitIdle(queue);
@@ -349,6 +364,7 @@ VKAPI_ATTR VkResult VKAPI_CALL QueueWaitIdle(
 VKAPI_ATTR VkResult VKAPI_CALL DeviceWaitIdle(
     VkDevice                                    device)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDeviceWaitIdle>::Dispatch(encode::TraceManager::Get(), device);
 
     VkResult result = get_device_table(device)->DeviceWaitIdle(device);
@@ -372,6 +388,7 @@ VKAPI_ATTR VkResult VKAPI_CALL AllocateMemory(
     const VkAllocationCallbacks*                pAllocator,
     VkDeviceMemory*                             pMemory)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkAllocateMemory>::Dispatch(encode::TraceManager::Get(), device, pAllocateInfo, pAllocator, pMemory);
 
     VkResult result = get_device_table(device)->AllocateMemory(device, pAllocateInfo, pAllocator, pMemory);
@@ -397,6 +414,7 @@ VKAPI_ATTR void VKAPI_CALL FreeMemory(
     VkDeviceMemory                              memory,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkFreeMemory>::Dispatch(encode::TraceManager::Get(), device, memory, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkFreeMemory);
@@ -421,6 +439,7 @@ VKAPI_ATTR VkResult VKAPI_CALL MapMemory(
     VkMemoryMapFlags                            flags,
     void**                                      ppData)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkMapMemory>::Dispatch(encode::TraceManager::Get(), device, memory, offset, size, flags, ppData);
 
     VkResult result = get_device_table(device)->MapMemory(device, memory, offset, size, flags, ppData);
@@ -447,6 +466,7 @@ VKAPI_ATTR void VKAPI_CALL UnmapMemory(
     VkDevice                                    device,
     VkDeviceMemory                              memory)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkUnmapMemory>::Dispatch(encode::TraceManager::Get(), device, memory);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkUnmapMemory);
@@ -467,6 +487,7 @@ VKAPI_ATTR VkResult VKAPI_CALL FlushMappedMemoryRanges(
     uint32_t                                    memoryRangeCount,
     const VkMappedMemoryRange*                  pMemoryRanges)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkFlushMappedMemoryRanges>::Dispatch(encode::TraceManager::Get(), device, memoryRangeCount, pMemoryRanges);
 
     VkResult result = get_device_table(device)->FlushMappedMemoryRanges(device, memoryRangeCount, pMemoryRanges);
@@ -491,6 +512,7 @@ VKAPI_ATTR VkResult VKAPI_CALL InvalidateMappedMemoryRanges(
     uint32_t                                    memoryRangeCount,
     const VkMappedMemoryRange*                  pMemoryRanges)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkInvalidateMappedMemoryRanges>::Dispatch(encode::TraceManager::Get(), device, memoryRangeCount, pMemoryRanges);
 
     VkResult result = get_device_table(device)->InvalidateMappedMemoryRanges(device, memoryRangeCount, pMemoryRanges);
@@ -515,6 +537,7 @@ VKAPI_ATTR void VKAPI_CALL GetDeviceMemoryCommitment(
     VkDeviceMemory                              memory,
     VkDeviceSize*                               pCommittedMemoryInBytes)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDeviceMemoryCommitment>::Dispatch(encode::TraceManager::Get(), device, memory, pCommittedMemoryInBytes);
 
     get_device_table(device)->GetDeviceMemoryCommitment(device, memory, pCommittedMemoryInBytes);
@@ -537,6 +560,7 @@ VKAPI_ATTR VkResult VKAPI_CALL BindBufferMemory(
     VkDeviceMemory                              memory,
     VkDeviceSize                                memoryOffset)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkBindBufferMemory>::Dispatch(encode::TraceManager::Get(), device, buffer, memory, memoryOffset);
 
     VkResult result = get_device_table(device)->BindBufferMemory(device, buffer, memory, memoryOffset);
@@ -563,6 +587,7 @@ VKAPI_ATTR VkResult VKAPI_CALL BindImageMemory(
     VkDeviceMemory                              memory,
     VkDeviceSize                                memoryOffset)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkBindImageMemory>::Dispatch(encode::TraceManager::Get(), device, image, memory, memoryOffset);
 
     VkResult result = get_device_table(device)->BindImageMemory(device, image, memory, memoryOffset);
@@ -588,6 +613,7 @@ VKAPI_ATTR void VKAPI_CALL GetBufferMemoryRequirements(
     VkBuffer                                    buffer,
     VkMemoryRequirements*                       pMemoryRequirements)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetBufferMemoryRequirements>::Dispatch(encode::TraceManager::Get(), device, buffer, pMemoryRequirements);
 
     get_device_table(device)->GetBufferMemoryRequirements(device, buffer, pMemoryRequirements);
@@ -609,6 +635,7 @@ VKAPI_ATTR void VKAPI_CALL GetImageMemoryRequirements(
     VkImage                                     image,
     VkMemoryRequirements*                       pMemoryRequirements)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetImageMemoryRequirements>::Dispatch(encode::TraceManager::Get(), device, image, pMemoryRequirements);
 
     get_device_table(device)->GetImageMemoryRequirements(device, image, pMemoryRequirements);
@@ -631,6 +658,7 @@ VKAPI_ATTR void VKAPI_CALL GetImageSparseMemoryRequirements(
     uint32_t*                                   pSparseMemoryRequirementCount,
     VkSparseImageMemoryRequirements*            pSparseMemoryRequirements)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetImageSparseMemoryRequirements>::Dispatch(encode::TraceManager::Get(), device, image, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
 
     get_device_table(device)->GetImageSparseMemoryRequirements(device, image, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
@@ -658,6 +686,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceSparseImageFormatProperties(
     uint32_t*                                   pPropertyCount,
     VkSparseImageFormatProperties*              pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceSparseImageFormatProperties>::Dispatch(encode::TraceManager::Get(), physicalDevice, format, type, samples, usage, tiling, pPropertyCount, pProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceSparseImageFormatProperties(physicalDevice, format, type, samples, usage, tiling, pPropertyCount, pProperties);
@@ -685,6 +714,7 @@ VKAPI_ATTR VkResult VKAPI_CALL QueueBindSparse(
     const VkBindSparseInfo*                     pBindInfo,
     VkFence                                     fence)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkQueueBindSparse>::Dispatch(encode::TraceManager::Get(), queue, bindInfoCount, pBindInfo, fence);
 
     VkResult result = get_device_table(queue)->QueueBindSparse(queue, bindInfoCount, pBindInfo, fence);
@@ -711,6 +741,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateFence(
     const VkAllocationCallbacks*                pAllocator,
     VkFence*                                    pFence)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateFence>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pFence);
 
     VkResult result = get_device_table(device)->CreateFence(device, pCreateInfo, pAllocator, pFence);
@@ -736,6 +767,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyFence(
     VkFence                                     fence,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyFence>::Dispatch(encode::TraceManager::Get(), device, fence, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyFence);
@@ -757,6 +789,7 @@ VKAPI_ATTR VkResult VKAPI_CALL ResetFences(
     uint32_t                                    fenceCount,
     const VkFence*                              pFences)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkResetFences>::Dispatch(encode::TraceManager::Get(), device, fenceCount, pFences);
 
     VkResult result = get_device_table(device)->ResetFences(device, fenceCount, pFences);
@@ -780,6 +813,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetFenceStatus(
     VkDevice                                    device,
     VkFence                                     fence)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetFenceStatus>::Dispatch(encode::TraceManager::Get(), device, fence);
 
     VkResult result = get_device_table(device)->GetFenceStatus(device, fence);
@@ -805,6 +839,7 @@ VKAPI_ATTR VkResult VKAPI_CALL WaitForFences(
     VkBool32                                    waitAll,
     uint64_t                                    timeout)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkWaitForFences>::Dispatch(encode::TraceManager::Get(), device, fenceCount, pFences, waitAll, timeout);
 
     VkResult result = get_device_table(device)->WaitForFences(device, fenceCount, pFences, waitAll, timeout);
@@ -832,6 +867,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateSemaphore(
     const VkAllocationCallbacks*                pAllocator,
     VkSemaphore*                                pSemaphore)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateSemaphore>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pSemaphore);
 
     VkResult result = get_device_table(device)->CreateSemaphore(device, pCreateInfo, pAllocator, pSemaphore);
@@ -857,6 +893,7 @@ VKAPI_ATTR void VKAPI_CALL DestroySemaphore(
     VkSemaphore                                 semaphore,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroySemaphore>::Dispatch(encode::TraceManager::Get(), device, semaphore, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroySemaphore);
@@ -879,6 +916,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateEvent(
     const VkAllocationCallbacks*                pAllocator,
     VkEvent*                                    pEvent)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateEvent>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pEvent);
 
     VkResult result = get_device_table(device)->CreateEvent(device, pCreateInfo, pAllocator, pEvent);
@@ -904,6 +942,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyEvent(
     VkEvent                                     event,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyEvent>::Dispatch(encode::TraceManager::Get(), device, event, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyEvent);
@@ -924,6 +963,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetEventStatus(
     VkDevice                                    device,
     VkEvent                                     event)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetEventStatus>::Dispatch(encode::TraceManager::Get(), device, event);
 
     VkResult result = get_device_table(device)->GetEventStatus(device, event);
@@ -946,6 +986,7 @@ VKAPI_ATTR VkResult VKAPI_CALL SetEvent(
     VkDevice                                    device,
     VkEvent                                     event)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkSetEvent>::Dispatch(encode::TraceManager::Get(), device, event);
 
     VkResult result = get_device_table(device)->SetEvent(device, event);
@@ -968,6 +1009,7 @@ VKAPI_ATTR VkResult VKAPI_CALL ResetEvent(
     VkDevice                                    device,
     VkEvent                                     event)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkResetEvent>::Dispatch(encode::TraceManager::Get(), device, event);
 
     VkResult result = get_device_table(device)->ResetEvent(device, event);
@@ -992,6 +1034,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateQueryPool(
     const VkAllocationCallbacks*                pAllocator,
     VkQueryPool*                                pQueryPool)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateQueryPool>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pQueryPool);
 
     VkResult result = get_device_table(device)->CreateQueryPool(device, pCreateInfo, pAllocator, pQueryPool);
@@ -1017,6 +1060,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyQueryPool(
     VkQueryPool                                 queryPool,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyQueryPool>::Dispatch(encode::TraceManager::Get(), device, queryPool, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyQueryPool);
@@ -1043,6 +1087,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetQueryPoolResults(
     VkDeviceSize                                stride,
     VkQueryResultFlags                          flags)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetQueryPoolResults>::Dispatch(encode::TraceManager::Get(), device, queryPool, firstQuery, queryCount, dataSize, pData, stride, flags);
 
     VkResult result = get_device_table(device)->GetQueryPoolResults(device, queryPool, firstQuery, queryCount, dataSize, pData, stride, flags);
@@ -1073,6 +1118,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateBuffer(
     const VkAllocationCallbacks*                pAllocator,
     VkBuffer*                                   pBuffer)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateBuffer>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pBuffer);
 
     VkResult result = get_device_table(device)->CreateBuffer(device, pCreateInfo, pAllocator, pBuffer);
@@ -1098,6 +1144,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyBuffer(
     VkBuffer                                    buffer,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyBuffer>::Dispatch(encode::TraceManager::Get(), device, buffer, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyBuffer);
@@ -1120,6 +1167,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateBufferView(
     const VkAllocationCallbacks*                pAllocator,
     VkBufferView*                               pView)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateBufferView>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pView);
 
     VkResult result = get_device_table(device)->CreateBufferView(device, pCreateInfo, pAllocator, pView);
@@ -1145,6 +1193,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyBufferView(
     VkBufferView                                bufferView,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyBufferView>::Dispatch(encode::TraceManager::Get(), device, bufferView, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyBufferView);
@@ -1167,6 +1216,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateImage(
     const VkAllocationCallbacks*                pAllocator,
     VkImage*                                    pImage)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateImage>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pImage);
 
     VkResult result = get_device_table(device)->CreateImage(device, pCreateInfo, pAllocator, pImage);
@@ -1192,6 +1242,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyImage(
     VkImage                                     image,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyImage>::Dispatch(encode::TraceManager::Get(), device, image, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyImage);
@@ -1214,6 +1265,7 @@ VKAPI_ATTR void VKAPI_CALL GetImageSubresourceLayout(
     const VkImageSubresource*                   pSubresource,
     VkSubresourceLayout*                        pLayout)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetImageSubresourceLayout>::Dispatch(encode::TraceManager::Get(), device, image, pSubresource, pLayout);
 
     get_device_table(device)->GetImageSubresourceLayout(device, image, pSubresource, pLayout);
@@ -1237,6 +1289,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateImageView(
     const VkAllocationCallbacks*                pAllocator,
     VkImageView*                                pView)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateImageView>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pView);
 
     VkResult result = get_device_table(device)->CreateImageView(device, pCreateInfo, pAllocator, pView);
@@ -1262,6 +1315,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyImageView(
     VkImageView                                 imageView,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyImageView>::Dispatch(encode::TraceManager::Get(), device, imageView, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyImageView);
@@ -1284,6 +1338,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateShaderModule(
     const VkAllocationCallbacks*                pAllocator,
     VkShaderModule*                             pShaderModule)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateShaderModule>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pShaderModule);
 
     VkResult result = get_device_table(device)->CreateShaderModule(device, pCreateInfo, pAllocator, pShaderModule);
@@ -1309,6 +1364,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyShaderModule(
     VkShaderModule                              shaderModule,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyShaderModule>::Dispatch(encode::TraceManager::Get(), device, shaderModule, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyShaderModule);
@@ -1331,6 +1387,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreatePipelineCache(
     const VkAllocationCallbacks*                pAllocator,
     VkPipelineCache*                            pPipelineCache)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreatePipelineCache>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pPipelineCache);
 
     VkResult result = get_device_table(device)->CreatePipelineCache(device, pCreateInfo, pAllocator, pPipelineCache);
@@ -1356,6 +1413,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyPipelineCache(
     VkPipelineCache                             pipelineCache,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyPipelineCache>::Dispatch(encode::TraceManager::Get(), device, pipelineCache, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyPipelineCache);
@@ -1378,6 +1436,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPipelineCacheData(
     size_t*                                     pDataSize,
     void*                                       pData)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPipelineCacheData>::Dispatch(encode::TraceManager::Get(), device, pipelineCache, pDataSize, pData);
 
     VkResult result = get_device_table(device)->GetPipelineCacheData(device, pipelineCache, pDataSize, pData);
@@ -1404,6 +1463,7 @@ VKAPI_ATTR VkResult VKAPI_CALL MergePipelineCaches(
     uint32_t                                    srcCacheCount,
     const VkPipelineCache*                      pSrcCaches)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkMergePipelineCaches>::Dispatch(encode::TraceManager::Get(), device, dstCache, srcCacheCount, pSrcCaches);
 
     VkResult result = get_device_table(device)->MergePipelineCaches(device, dstCache, srcCacheCount, pSrcCaches);
@@ -1432,6 +1492,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateGraphicsPipelines(
     const VkAllocationCallbacks*                pAllocator,
     VkPipeline*                                 pPipelines)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateGraphicsPipelines>::Dispatch(encode::TraceManager::Get(), device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
 
     VkResult result = get_device_table(device)->CreateGraphicsPipelines(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
@@ -1462,6 +1523,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateComputePipelines(
     const VkAllocationCallbacks*                pAllocator,
     VkPipeline*                                 pPipelines)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateComputePipelines>::Dispatch(encode::TraceManager::Get(), device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
 
     VkResult result = get_device_table(device)->CreateComputePipelines(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
@@ -1489,6 +1551,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyPipeline(
     VkPipeline                                  pipeline,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyPipeline>::Dispatch(encode::TraceManager::Get(), device, pipeline, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyPipeline);
@@ -1511,6 +1574,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreatePipelineLayout(
     const VkAllocationCallbacks*                pAllocator,
     VkPipelineLayout*                           pPipelineLayout)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreatePipelineLayout>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pPipelineLayout);
 
     VkResult result = get_device_table(device)->CreatePipelineLayout(device, pCreateInfo, pAllocator, pPipelineLayout);
@@ -1536,6 +1600,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyPipelineLayout(
     VkPipelineLayout                            pipelineLayout,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyPipelineLayout>::Dispatch(encode::TraceManager::Get(), device, pipelineLayout, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyPipelineLayout);
@@ -1558,6 +1623,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateSampler(
     const VkAllocationCallbacks*                pAllocator,
     VkSampler*                                  pSampler)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateSampler>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pSampler);
 
     VkResult result = get_device_table(device)->CreateSampler(device, pCreateInfo, pAllocator, pSampler);
@@ -1583,6 +1649,7 @@ VKAPI_ATTR void VKAPI_CALL DestroySampler(
     VkSampler                                   sampler,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroySampler>::Dispatch(encode::TraceManager::Get(), device, sampler, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroySampler);
@@ -1605,6 +1672,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateDescriptorSetLayout(
     const VkAllocationCallbacks*                pAllocator,
     VkDescriptorSetLayout*                      pSetLayout)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateDescriptorSetLayout>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pSetLayout);
 
     VkResult result = get_device_table(device)->CreateDescriptorSetLayout(device, pCreateInfo, pAllocator, pSetLayout);
@@ -1630,6 +1698,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyDescriptorSetLayout(
     VkDescriptorSetLayout                       descriptorSetLayout,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyDescriptorSetLayout>::Dispatch(encode::TraceManager::Get(), device, descriptorSetLayout, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyDescriptorSetLayout);
@@ -1652,6 +1721,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateDescriptorPool(
     const VkAllocationCallbacks*                pAllocator,
     VkDescriptorPool*                           pDescriptorPool)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateDescriptorPool>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pDescriptorPool);
 
     VkResult result = get_device_table(device)->CreateDescriptorPool(device, pCreateInfo, pAllocator, pDescriptorPool);
@@ -1677,6 +1747,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyDescriptorPool(
     VkDescriptorPool                            descriptorPool,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyDescriptorPool>::Dispatch(encode::TraceManager::Get(), device, descriptorPool, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyDescriptorPool);
@@ -1698,6 +1769,7 @@ VKAPI_ATTR VkResult VKAPI_CALL ResetDescriptorPool(
     VkDescriptorPool                            descriptorPool,
     VkDescriptorPoolResetFlags                  flags)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkResetDescriptorPool>::Dispatch(encode::TraceManager::Get(), device, descriptorPool, flags);
 
     VkResult result = get_device_table(device)->ResetDescriptorPool(device, descriptorPool, flags);
@@ -1722,6 +1794,7 @@ VKAPI_ATTR VkResult VKAPI_CALL AllocateDescriptorSets(
     const VkDescriptorSetAllocateInfo*          pAllocateInfo,
     VkDescriptorSet*                            pDescriptorSets)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkAllocateDescriptorSets>::Dispatch(encode::TraceManager::Get(), device, pAllocateInfo, pDescriptorSets);
 
     VkResult result = get_device_table(device)->AllocateDescriptorSets(device, pAllocateInfo, pDescriptorSets);
@@ -1747,6 +1820,7 @@ VKAPI_ATTR VkResult VKAPI_CALL FreeDescriptorSets(
     uint32_t                                    descriptorSetCount,
     const VkDescriptorSet*                      pDescriptorSets)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkFreeDescriptorSets>::Dispatch(encode::TraceManager::Get(), device, descriptorPool, descriptorSetCount, pDescriptorSets);
 
     VkResult result = get_device_table(device)->FreeDescriptorSets(device, descriptorPool, descriptorSetCount, pDescriptorSets);
@@ -1774,6 +1848,7 @@ VKAPI_ATTR void VKAPI_CALL UpdateDescriptorSets(
     uint32_t                                    descriptorCopyCount,
     const VkCopyDescriptorSet*                  pDescriptorCopies)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkUpdateDescriptorSets>::Dispatch(encode::TraceManager::Get(), device, descriptorWriteCount, pDescriptorWrites, descriptorCopyCount, pDescriptorCopies);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkUpdateDescriptorSets);
@@ -1798,6 +1873,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateFramebuffer(
     const VkAllocationCallbacks*                pAllocator,
     VkFramebuffer*                              pFramebuffer)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateFramebuffer>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pFramebuffer);
 
     VkResult result = get_device_table(device)->CreateFramebuffer(device, pCreateInfo, pAllocator, pFramebuffer);
@@ -1823,6 +1899,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyFramebuffer(
     VkFramebuffer                               framebuffer,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyFramebuffer>::Dispatch(encode::TraceManager::Get(), device, framebuffer, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyFramebuffer);
@@ -1845,6 +1922,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateRenderPass(
     const VkAllocationCallbacks*                pAllocator,
     VkRenderPass*                               pRenderPass)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateRenderPass>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pRenderPass);
 
     VkResult result = get_device_table(device)->CreateRenderPass(device, pCreateInfo, pAllocator, pRenderPass);
@@ -1870,6 +1948,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyRenderPass(
     VkRenderPass                                renderPass,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyRenderPass>::Dispatch(encode::TraceManager::Get(), device, renderPass, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyRenderPass);
@@ -1891,6 +1970,7 @@ VKAPI_ATTR void VKAPI_CALL GetRenderAreaGranularity(
     VkRenderPass                                renderPass,
     VkExtent2D*                                 pGranularity)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetRenderAreaGranularity>::Dispatch(encode::TraceManager::Get(), device, renderPass, pGranularity);
 
     get_device_table(device)->GetRenderAreaGranularity(device, renderPass, pGranularity);
@@ -1913,6 +1993,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateCommandPool(
     const VkAllocationCallbacks*                pAllocator,
     VkCommandPool*                              pCommandPool)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateCommandPool>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pCommandPool);
 
     VkResult result = get_device_table(device)->CreateCommandPool(device, pCreateInfo, pAllocator, pCommandPool);
@@ -1938,6 +2019,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyCommandPool(
     VkCommandPool                               commandPool,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyCommandPool>::Dispatch(encode::TraceManager::Get(), device, commandPool, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyCommandPool);
@@ -1959,6 +2041,7 @@ VKAPI_ATTR VkResult VKAPI_CALL ResetCommandPool(
     VkCommandPool                               commandPool,
     VkCommandPoolResetFlags                     flags)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkResetCommandPool>::Dispatch(encode::TraceManager::Get(), device, commandPool, flags);
 
     VkResult result = get_device_table(device)->ResetCommandPool(device, commandPool, flags);
@@ -1983,6 +2066,7 @@ VKAPI_ATTR VkResult VKAPI_CALL AllocateCommandBuffers(
     const VkCommandBufferAllocateInfo*          pAllocateInfo,
     VkCommandBuffer*                            pCommandBuffers)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkAllocateCommandBuffers>::Dispatch(encode::TraceManager::Get(), device, pAllocateInfo, pCommandBuffers);
 
     VkResult result = get_device_table(device)->AllocateCommandBuffers(device, pAllocateInfo, pCommandBuffers);
@@ -2008,6 +2092,7 @@ VKAPI_ATTR void VKAPI_CALL FreeCommandBuffers(
     uint32_t                                    commandBufferCount,
     const VkCommandBuffer*                      pCommandBuffers)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkFreeCommandBuffers>::Dispatch(encode::TraceManager::Get(), device, commandPool, commandBufferCount, pCommandBuffers);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkFreeCommandBuffers);
@@ -2029,6 +2114,7 @@ VKAPI_ATTR VkResult VKAPI_CALL BeginCommandBuffer(
     VkCommandBuffer                             commandBuffer,
     const VkCommandBufferBeginInfo*             pBeginInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkBeginCommandBuffer>::Dispatch(encode::TraceManager::Get(), commandBuffer, pBeginInfo);
 
     VkResult result = get_device_table(commandBuffer)->BeginCommandBuffer(commandBuffer, pBeginInfo);
@@ -2050,6 +2136,7 @@ VKAPI_ATTR VkResult VKAPI_CALL BeginCommandBuffer(
 VKAPI_ATTR VkResult VKAPI_CALL EndCommandBuffer(
     VkCommandBuffer                             commandBuffer)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkEndCommandBuffer>::Dispatch(encode::TraceManager::Get(), commandBuffer);
 
     VkResult result = get_device_table(commandBuffer)->EndCommandBuffer(commandBuffer);
@@ -2071,6 +2158,7 @@ VKAPI_ATTR VkResult VKAPI_CALL ResetCommandBuffer(
     VkCommandBuffer                             commandBuffer,
     VkCommandBufferResetFlags                   flags)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkResetCommandBuffer>::Dispatch(encode::TraceManager::Get(), commandBuffer, flags);
 
     VkResult result = get_device_table(commandBuffer)->ResetCommandBuffer(commandBuffer, flags);
@@ -2094,6 +2182,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBindPipeline(
     VkPipelineBindPoint                         pipelineBindPoint,
     VkPipeline                                  pipeline)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdBindPipeline>::Dispatch(encode::TraceManager::Get(), commandBuffer, pipelineBindPoint, pipeline);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdBindPipeline);
@@ -2116,6 +2205,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetViewport(
     uint32_t                                    viewportCount,
     const VkViewport*                           pViewports)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetViewport>::Dispatch(encode::TraceManager::Get(), commandBuffer, firstViewport, viewportCount, pViewports);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetViewport);
@@ -2139,6 +2229,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetScissor(
     uint32_t                                    scissorCount,
     const VkRect2D*                             pScissors)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetScissor>::Dispatch(encode::TraceManager::Get(), commandBuffer, firstScissor, scissorCount, pScissors);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetScissor);
@@ -2160,6 +2251,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetLineWidth(
     VkCommandBuffer                             commandBuffer,
     float                                       lineWidth)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetLineWidth>::Dispatch(encode::TraceManager::Get(), commandBuffer, lineWidth);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetLineWidth);
@@ -2181,6 +2273,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetDepthBias(
     float                                       depthBiasClamp,
     float                                       depthBiasSlopeFactor)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetDepthBias>::Dispatch(encode::TraceManager::Get(), commandBuffer, depthBiasConstantFactor, depthBiasClamp, depthBiasSlopeFactor);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetDepthBias);
@@ -2202,6 +2295,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetBlendConstants(
     VkCommandBuffer                             commandBuffer,
     const float                                 blendConstants[4])
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetBlendConstants>::Dispatch(encode::TraceManager::Get(), commandBuffer, blendConstants);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetBlendConstants);
@@ -2222,6 +2316,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetDepthBounds(
     float                                       minDepthBounds,
     float                                       maxDepthBounds)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetDepthBounds>::Dispatch(encode::TraceManager::Get(), commandBuffer, minDepthBounds, maxDepthBounds);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetDepthBounds);
@@ -2243,6 +2338,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetStencilCompareMask(
     VkStencilFaceFlags                          faceMask,
     uint32_t                                    compareMask)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetStencilCompareMask>::Dispatch(encode::TraceManager::Get(), commandBuffer, faceMask, compareMask);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetStencilCompareMask);
@@ -2264,6 +2360,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetStencilWriteMask(
     VkStencilFaceFlags                          faceMask,
     uint32_t                                    writeMask)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetStencilWriteMask>::Dispatch(encode::TraceManager::Get(), commandBuffer, faceMask, writeMask);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetStencilWriteMask);
@@ -2285,6 +2382,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetStencilReference(
     VkStencilFaceFlags                          faceMask,
     uint32_t                                    reference)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetStencilReference>::Dispatch(encode::TraceManager::Get(), commandBuffer, faceMask, reference);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetStencilReference);
@@ -2311,6 +2409,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBindDescriptorSets(
     uint32_t                                    dynamicOffsetCount,
     const uint32_t*                             pDynamicOffsets)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdBindDescriptorSets>::Dispatch(encode::TraceManager::Get(), commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, pDescriptorSets, dynamicOffsetCount, pDynamicOffsets);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdBindDescriptorSets);
@@ -2338,6 +2437,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBindIndexBuffer(
     VkDeviceSize                                offset,
     VkIndexType                                 indexType)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdBindIndexBuffer>::Dispatch(encode::TraceManager::Get(), commandBuffer, buffer, offset, indexType);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdBindIndexBuffer);
@@ -2362,6 +2462,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBindVertexBuffers(
     const VkBuffer*                             pBuffers,
     const VkDeviceSize*                         pOffsets)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdBindVertexBuffers>::Dispatch(encode::TraceManager::Get(), commandBuffer, firstBinding, bindingCount, pBuffers, pOffsets);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdBindVertexBuffers);
@@ -2387,6 +2488,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDraw(
     uint32_t                                    firstVertex,
     uint32_t                                    firstInstance)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDraw>::Dispatch(encode::TraceManager::Get(), commandBuffer, vertexCount, instanceCount, firstVertex, firstInstance);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDraw);
@@ -2413,6 +2515,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDrawIndexed(
     int32_t                                     vertexOffset,
     uint32_t                                    firstInstance)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDrawIndexed>::Dispatch(encode::TraceManager::Get(), commandBuffer, indexCount, instanceCount, firstIndex, vertexOffset, firstInstance);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDrawIndexed);
@@ -2439,6 +2542,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDrawIndirect(
     uint32_t                                    drawCount,
     uint32_t                                    stride)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDrawIndirect>::Dispatch(encode::TraceManager::Get(), commandBuffer, buffer, offset, drawCount, stride);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDrawIndirect);
@@ -2464,6 +2568,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDrawIndexedIndirect(
     uint32_t                                    drawCount,
     uint32_t                                    stride)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDrawIndexedIndirect>::Dispatch(encode::TraceManager::Get(), commandBuffer, buffer, offset, drawCount, stride);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDrawIndexedIndirect);
@@ -2488,6 +2593,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDispatch(
     uint32_t                                    groupCountY,
     uint32_t                                    groupCountZ)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDispatch>::Dispatch(encode::TraceManager::Get(), commandBuffer, groupCountX, groupCountY, groupCountZ);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDispatch);
@@ -2510,6 +2616,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDispatchIndirect(
     VkBuffer                                    buffer,
     VkDeviceSize                                offset)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDispatchIndirect>::Dispatch(encode::TraceManager::Get(), commandBuffer, buffer, offset);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDispatchIndirect);
@@ -2533,6 +2640,7 @@ VKAPI_ATTR void VKAPI_CALL CmdCopyBuffer(
     uint32_t                                    regionCount,
     const VkBufferCopy*                         pRegions)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdCopyBuffer>::Dispatch(encode::TraceManager::Get(), commandBuffer, srcBuffer, dstBuffer, regionCount, pRegions);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdCopyBuffer);
@@ -2560,6 +2668,7 @@ VKAPI_ATTR void VKAPI_CALL CmdCopyImage(
     uint32_t                                    regionCount,
     const VkImageCopy*                          pRegions)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdCopyImage>::Dispatch(encode::TraceManager::Get(), commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdCopyImage);
@@ -2590,6 +2699,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBlitImage(
     const VkImageBlit*                          pRegions,
     VkFilter                                    filter)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdBlitImage>::Dispatch(encode::TraceManager::Get(), commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions, filter);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdBlitImage);
@@ -2619,6 +2729,7 @@ VKAPI_ATTR void VKAPI_CALL CmdCopyBufferToImage(
     uint32_t                                    regionCount,
     const VkBufferImageCopy*                    pRegions)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdCopyBufferToImage>::Dispatch(encode::TraceManager::Get(), commandBuffer, srcBuffer, dstImage, dstImageLayout, regionCount, pRegions);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdCopyBufferToImage);
@@ -2646,6 +2757,7 @@ VKAPI_ATTR void VKAPI_CALL CmdCopyImageToBuffer(
     uint32_t                                    regionCount,
     const VkBufferImageCopy*                    pRegions)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdCopyImageToBuffer>::Dispatch(encode::TraceManager::Get(), commandBuffer, srcImage, srcImageLayout, dstBuffer, regionCount, pRegions);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdCopyImageToBuffer);
@@ -2672,6 +2784,7 @@ VKAPI_ATTR void VKAPI_CALL CmdUpdateBuffer(
     VkDeviceSize                                dataSize,
     const void*                                 pData)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdUpdateBuffer>::Dispatch(encode::TraceManager::Get(), commandBuffer, dstBuffer, dstOffset, dataSize, pData);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdUpdateBuffer);
@@ -2697,6 +2810,7 @@ VKAPI_ATTR void VKAPI_CALL CmdFillBuffer(
     VkDeviceSize                                size,
     uint32_t                                    data)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdFillBuffer>::Dispatch(encode::TraceManager::Get(), commandBuffer, dstBuffer, dstOffset, size, data);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdFillBuffer);
@@ -2723,6 +2837,7 @@ VKAPI_ATTR void VKAPI_CALL CmdClearColorImage(
     uint32_t                                    rangeCount,
     const VkImageSubresourceRange*              pRanges)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdClearColorImage>::Dispatch(encode::TraceManager::Get(), commandBuffer, image, imageLayout, pColor, rangeCount, pRanges);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdClearColorImage);
@@ -2750,6 +2865,7 @@ VKAPI_ATTR void VKAPI_CALL CmdClearDepthStencilImage(
     uint32_t                                    rangeCount,
     const VkImageSubresourceRange*              pRanges)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdClearDepthStencilImage>::Dispatch(encode::TraceManager::Get(), commandBuffer, image, imageLayout, pDepthStencil, rangeCount, pRanges);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdClearDepthStencilImage);
@@ -2776,6 +2892,7 @@ VKAPI_ATTR void VKAPI_CALL CmdClearAttachments(
     uint32_t                                    rectCount,
     const VkClearRect*                          pRects)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdClearAttachments>::Dispatch(encode::TraceManager::Get(), commandBuffer, attachmentCount, pAttachments, rectCount, pRects);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdClearAttachments);
@@ -2803,6 +2920,7 @@ VKAPI_ATTR void VKAPI_CALL CmdResolveImage(
     uint32_t                                    regionCount,
     const VkImageResolve*                       pRegions)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdResolveImage>::Dispatch(encode::TraceManager::Get(), commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdResolveImage);
@@ -2828,6 +2946,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetEvent(
     VkEvent                                     event,
     VkPipelineStageFlags                        stageMask)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetEvent>::Dispatch(encode::TraceManager::Get(), commandBuffer, event, stageMask);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetEvent);
@@ -2849,6 +2968,7 @@ VKAPI_ATTR void VKAPI_CALL CmdResetEvent(
     VkEvent                                     event,
     VkPipelineStageFlags                        stageMask)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdResetEvent>::Dispatch(encode::TraceManager::Get(), commandBuffer, event, stageMask);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdResetEvent);
@@ -2878,6 +2998,7 @@ VKAPI_ATTR void VKAPI_CALL CmdWaitEvents(
     uint32_t                                    imageMemoryBarrierCount,
     const VkImageMemoryBarrier*                 pImageMemoryBarriers)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdWaitEvents>::Dispatch(encode::TraceManager::Get(), commandBuffer, eventCount, pEvents, srcStageMask, dstStageMask, memoryBarrierCount, pMemoryBarriers, bufferMemoryBarrierCount, pBufferMemoryBarriers, imageMemoryBarrierCount, pImageMemoryBarriers);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdWaitEvents);
@@ -2914,6 +3035,7 @@ VKAPI_ATTR void VKAPI_CALL CmdPipelineBarrier(
     uint32_t                                    imageMemoryBarrierCount,
     const VkImageMemoryBarrier*                 pImageMemoryBarriers)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdPipelineBarrier>::Dispatch(encode::TraceManager::Get(), commandBuffer, srcStageMask, dstStageMask, dependencyFlags, memoryBarrierCount, pMemoryBarriers, bufferMemoryBarrierCount, pBufferMemoryBarriers, imageMemoryBarrierCount, pImageMemoryBarriers);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdPipelineBarrier);
@@ -2943,6 +3065,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBeginQuery(
     uint32_t                                    query,
     VkQueryControlFlags                         flags)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdBeginQuery>::Dispatch(encode::TraceManager::Get(), commandBuffer, queryPool, query, flags);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdBeginQuery);
@@ -2965,6 +3088,7 @@ VKAPI_ATTR void VKAPI_CALL CmdEndQuery(
     VkQueryPool                                 queryPool,
     uint32_t                                    query)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdEndQuery>::Dispatch(encode::TraceManager::Get(), commandBuffer, queryPool, query);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdEndQuery);
@@ -2987,6 +3111,7 @@ VKAPI_ATTR void VKAPI_CALL CmdResetQueryPool(
     uint32_t                                    firstQuery,
     uint32_t                                    queryCount)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdResetQueryPool>::Dispatch(encode::TraceManager::Get(), commandBuffer, queryPool, firstQuery, queryCount);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdResetQueryPool);
@@ -3010,6 +3135,7 @@ VKAPI_ATTR void VKAPI_CALL CmdWriteTimestamp(
     VkQueryPool                                 queryPool,
     uint32_t                                    query)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdWriteTimestamp>::Dispatch(encode::TraceManager::Get(), commandBuffer, pipelineStage, queryPool, query);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdWriteTimestamp);
@@ -3037,6 +3163,7 @@ VKAPI_ATTR void VKAPI_CALL CmdCopyQueryPoolResults(
     VkDeviceSize                                stride,
     VkQueryResultFlags                          flags)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdCopyQueryPoolResults>::Dispatch(encode::TraceManager::Get(), commandBuffer, queryPool, firstQuery, queryCount, dstBuffer, dstOffset, stride, flags);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdCopyQueryPoolResults);
@@ -3066,6 +3193,7 @@ VKAPI_ATTR void VKAPI_CALL CmdPushConstants(
     uint32_t                                    size,
     const void*                                 pValues)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdPushConstants>::Dispatch(encode::TraceManager::Get(), commandBuffer, layout, stageFlags, offset, size, pValues);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdPushConstants);
@@ -3090,6 +3218,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBeginRenderPass(
     const VkRenderPassBeginInfo*                pRenderPassBegin,
     VkSubpassContents                           contents)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdBeginRenderPass>::Dispatch(encode::TraceManager::Get(), commandBuffer, pRenderPassBegin, contents);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdBeginRenderPass);
@@ -3110,6 +3239,7 @@ VKAPI_ATTR void VKAPI_CALL CmdNextSubpass(
     VkCommandBuffer                             commandBuffer,
     VkSubpassContents                           contents)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdNextSubpass>::Dispatch(encode::TraceManager::Get(), commandBuffer, contents);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdNextSubpass);
@@ -3128,6 +3258,7 @@ VKAPI_ATTR void VKAPI_CALL CmdNextSubpass(
 VKAPI_ATTR void VKAPI_CALL CmdEndRenderPass(
     VkCommandBuffer                             commandBuffer)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdEndRenderPass>::Dispatch(encode::TraceManager::Get(), commandBuffer);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdEndRenderPass);
@@ -3147,6 +3278,7 @@ VKAPI_ATTR void VKAPI_CALL CmdExecuteCommands(
     uint32_t                                    commandBufferCount,
     const VkCommandBuffer*                      pCommandBuffers)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdExecuteCommands>::Dispatch(encode::TraceManager::Get(), commandBuffer, commandBufferCount, pCommandBuffers);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdExecuteCommands);
@@ -3168,6 +3300,7 @@ VKAPI_ATTR VkResult VKAPI_CALL BindBufferMemory2(
     uint32_t                                    bindInfoCount,
     const VkBindBufferMemoryInfo*               pBindInfos)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkBindBufferMemory2>::Dispatch(encode::TraceManager::Get(), device, bindInfoCount, pBindInfos);
 
     VkResult result = get_device_table(device)->BindBufferMemory2(device, bindInfoCount, pBindInfos);
@@ -3192,6 +3325,7 @@ VKAPI_ATTR VkResult VKAPI_CALL BindImageMemory2(
     uint32_t                                    bindInfoCount,
     const VkBindImageMemoryInfo*                pBindInfos)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkBindImageMemory2>::Dispatch(encode::TraceManager::Get(), device, bindInfoCount, pBindInfos);
 
     VkResult result = get_device_table(device)->BindImageMemory2(device, bindInfoCount, pBindInfos);
@@ -3218,6 +3352,7 @@ VKAPI_ATTR void VKAPI_CALL GetDeviceGroupPeerMemoryFeatures(
     uint32_t                                    remoteDeviceIndex,
     VkPeerMemoryFeatureFlags*                   pPeerMemoryFeatures)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDeviceGroupPeerMemoryFeatures>::Dispatch(encode::TraceManager::Get(), device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures);
 
     get_device_table(device)->GetDeviceGroupPeerMemoryFeatures(device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures);
@@ -3240,6 +3375,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetDeviceMask(
     VkCommandBuffer                             commandBuffer,
     uint32_t                                    deviceMask)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetDeviceMask>::Dispatch(encode::TraceManager::Get(), commandBuffer, deviceMask);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetDeviceMask);
@@ -3264,6 +3400,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDispatchBase(
     uint32_t                                    groupCountY,
     uint32_t                                    groupCountZ)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDispatchBase>::Dispatch(encode::TraceManager::Get(), commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDispatchBase);
@@ -3289,6 +3426,7 @@ VKAPI_ATTR VkResult VKAPI_CALL EnumeratePhysicalDeviceGroups(
     uint32_t*                                   pPhysicalDeviceGroupCount,
     VkPhysicalDeviceGroupProperties*            pPhysicalDeviceGroupProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkEnumeratePhysicalDeviceGroups>::Dispatch(encode::TraceManager::Get(), instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties);
 
     VkResult result = get_instance_table(instance)->EnumeratePhysicalDeviceGroups(instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties);
@@ -3313,6 +3451,7 @@ VKAPI_ATTR void VKAPI_CALL GetImageMemoryRequirements2(
     const VkImageMemoryRequirementsInfo2*       pInfo,
     VkMemoryRequirements2*                      pMemoryRequirements)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetImageMemoryRequirements2>::Dispatch(encode::TraceManager::Get(), device, pInfo, pMemoryRequirements);
 
     get_device_table(device)->GetImageMemoryRequirements2(device, pInfo, pMemoryRequirements);
@@ -3334,6 +3473,7 @@ VKAPI_ATTR void VKAPI_CALL GetBufferMemoryRequirements2(
     const VkBufferMemoryRequirementsInfo2*      pInfo,
     VkMemoryRequirements2*                      pMemoryRequirements)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetBufferMemoryRequirements2>::Dispatch(encode::TraceManager::Get(), device, pInfo, pMemoryRequirements);
 
     get_device_table(device)->GetBufferMemoryRequirements2(device, pInfo, pMemoryRequirements);
@@ -3356,6 +3496,7 @@ VKAPI_ATTR void VKAPI_CALL GetImageSparseMemoryRequirements2(
     uint32_t*                                   pSparseMemoryRequirementCount,
     VkSparseImageMemoryRequirements2*           pSparseMemoryRequirements)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetImageSparseMemoryRequirements2>::Dispatch(encode::TraceManager::Get(), device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
 
     get_device_table(device)->GetImageSparseMemoryRequirements2(device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
@@ -3377,6 +3518,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceFeatures2(
     VkPhysicalDevice                            physicalDevice,
     VkPhysicalDeviceFeatures2*                  pFeatures)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceFeatures2>::Dispatch(encode::TraceManager::Get(), physicalDevice, pFeatures);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceFeatures2(physicalDevice, pFeatures);
@@ -3396,6 +3538,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceProperties2(
     VkPhysicalDevice                            physicalDevice,
     VkPhysicalDeviceProperties2*                pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceProperties2>::Dispatch(encode::TraceManager::Get(), physicalDevice, pProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceProperties2(physicalDevice, pProperties);
@@ -3416,6 +3559,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceFormatProperties2(
     VkFormat                                    format,
     VkFormatProperties2*                        pFormatProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceFormatProperties2>::Dispatch(encode::TraceManager::Get(), physicalDevice, format, pFormatProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceFormatProperties2(physicalDevice, format, pFormatProperties);
@@ -3437,6 +3581,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceImageFormatProperties2(
     const VkPhysicalDeviceImageFormatInfo2*     pImageFormatInfo,
     VkImageFormatProperties2*                   pImageFormatProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceImageFormatProperties2>::Dispatch(encode::TraceManager::Get(), physicalDevice, pImageFormatInfo, pImageFormatProperties);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceImageFormatProperties2(physicalDevice, pImageFormatInfo, pImageFormatProperties);
@@ -3461,6 +3606,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceQueueFamilyProperties2(
     uint32_t*                                   pQueueFamilyPropertyCount,
     VkQueueFamilyProperties2*                   pQueueFamilyProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceQueueFamilyProperties2>::Dispatch(encode::TraceManager::Get(), physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceQueueFamilyProperties2(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
@@ -3481,6 +3627,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceMemoryProperties2(
     VkPhysicalDevice                            physicalDevice,
     VkPhysicalDeviceMemoryProperties2*          pMemoryProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceMemoryProperties2>::Dispatch(encode::TraceManager::Get(), physicalDevice, pMemoryProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceMemoryProperties2(physicalDevice, pMemoryProperties);
@@ -3502,6 +3649,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceSparseImageFormatProperties2(
     uint32_t*                                   pPropertyCount,
     VkSparseImageFormatProperties2*             pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceSparseImageFormatProperties2>::Dispatch(encode::TraceManager::Get(), physicalDevice, pFormatInfo, pPropertyCount, pProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceSparseImageFormatProperties2(physicalDevice, pFormatInfo, pPropertyCount, pProperties);
@@ -3524,6 +3672,7 @@ VKAPI_ATTR void VKAPI_CALL TrimCommandPool(
     VkCommandPool                               commandPool,
     VkCommandPoolTrimFlags                      flags)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkTrimCommandPool>::Dispatch(encode::TraceManager::Get(), device, commandPool, flags);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkTrimCommandPool);
@@ -3545,6 +3694,7 @@ VKAPI_ATTR void VKAPI_CALL GetDeviceQueue2(
     const VkDeviceQueueInfo2*                   pQueueInfo,
     VkQueue*                                    pQueue)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDeviceQueue2>::Dispatch(encode::TraceManager::Get(), device, pQueueInfo, pQueue);
 
     get_device_table(device)->GetDeviceQueue2(device, pQueueInfo, pQueue);
@@ -3567,6 +3717,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateSamplerYcbcrConversion(
     const VkAllocationCallbacks*                pAllocator,
     VkSamplerYcbcrConversion*                   pYcbcrConversion)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateSamplerYcbcrConversion>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pYcbcrConversion);
 
     VkResult result = get_device_table(device)->CreateSamplerYcbcrConversion(device, pCreateInfo, pAllocator, pYcbcrConversion);
@@ -3592,6 +3743,7 @@ VKAPI_ATTR void VKAPI_CALL DestroySamplerYcbcrConversion(
     VkSamplerYcbcrConversion                    ycbcrConversion,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroySamplerYcbcrConversion>::Dispatch(encode::TraceManager::Get(), device, ycbcrConversion, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroySamplerYcbcrConversion);
@@ -3614,6 +3766,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateDescriptorUpdateTemplate(
     const VkAllocationCallbacks*                pAllocator,
     VkDescriptorUpdateTemplate*                 pDescriptorUpdateTemplate)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateDescriptorUpdateTemplate>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate);
 
     VkResult result = get_device_table(device)->CreateDescriptorUpdateTemplate(device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate);
@@ -3639,6 +3792,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyDescriptorUpdateTemplate(
     VkDescriptorUpdateTemplate                  descriptorUpdateTemplate,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyDescriptorUpdateTemplate>::Dispatch(encode::TraceManager::Get(), device, descriptorUpdateTemplate, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyDescriptorUpdateTemplate);
@@ -3660,6 +3814,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceExternalBufferProperties(
     const VkPhysicalDeviceExternalBufferInfo*   pExternalBufferInfo,
     VkExternalBufferProperties*                 pExternalBufferProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceExternalBufferProperties>::Dispatch(encode::TraceManager::Get(), physicalDevice, pExternalBufferInfo, pExternalBufferProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceExternalBufferProperties(physicalDevice, pExternalBufferInfo, pExternalBufferProperties);
@@ -3681,6 +3836,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceExternalFenceProperties(
     const VkPhysicalDeviceExternalFenceInfo*    pExternalFenceInfo,
     VkExternalFenceProperties*                  pExternalFenceProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceExternalFenceProperties>::Dispatch(encode::TraceManager::Get(), physicalDevice, pExternalFenceInfo, pExternalFenceProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceExternalFenceProperties(physicalDevice, pExternalFenceInfo, pExternalFenceProperties);
@@ -3702,6 +3858,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceExternalSemaphoreProperties(
     const VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo,
     VkExternalSemaphoreProperties*              pExternalSemaphoreProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceExternalSemaphoreProperties>::Dispatch(encode::TraceManager::Get(), physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceExternalSemaphoreProperties(physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties);
@@ -3723,6 +3880,7 @@ VKAPI_ATTR void VKAPI_CALL GetDescriptorSetLayoutSupport(
     const VkDescriptorSetLayoutCreateInfo*      pCreateInfo,
     VkDescriptorSetLayoutSupport*               pSupport)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDescriptorSetLayoutSupport>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pSupport);
 
     get_device_table(device)->GetDescriptorSetLayoutSupport(device, pCreateInfo, pSupport);
@@ -3744,6 +3902,7 @@ VKAPI_ATTR void VKAPI_CALL DestroySurfaceKHR(
     VkSurfaceKHR                                surface,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroySurfaceKHR>::Dispatch(encode::TraceManager::Get(), instance, surface, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroySurfaceKHR);
@@ -3766,6 +3925,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceSurfaceSupportKHR(
     VkSurfaceKHR                                surface,
     VkBool32*                                   pSupported)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceSurfaceSupportKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, queueFamilyIndex, surface, pSupported);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceSurfaceSupportKHR(physicalDevice, queueFamilyIndex, surface, pSupported);
@@ -3791,6 +3951,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceSurfaceCapabilitiesKHR(
     VkSurfaceKHR                                surface,
     VkSurfaceCapabilitiesKHR*                   pSurfaceCapabilities)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceSurfaceCapabilitiesKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, surface, pSurfaceCapabilities);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, pSurfaceCapabilities);
@@ -3816,6 +3977,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceSurfaceFormatsKHR(
     uint32_t*                                   pSurfaceFormatCount,
     VkSurfaceFormatKHR*                         pSurfaceFormats)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceSurfaceFormatsKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, surface, pSurfaceFormatCount, pSurfaceFormats);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, pSurfaceFormatCount, pSurfaceFormats);
@@ -3842,6 +4004,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceSurfacePresentModesKHR(
     uint32_t*                                   pPresentModeCount,
     VkPresentModeKHR*                           pPresentModes)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceSurfacePresentModesKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, surface, pPresentModeCount, pPresentModes);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceSurfacePresentModesKHR(physicalDevice, surface, pPresentModeCount, pPresentModes);
@@ -3868,6 +4031,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateSwapchainKHR(
     const VkAllocationCallbacks*                pAllocator,
     VkSwapchainKHR*                             pSwapchain)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateSwapchainKHR>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pSwapchain);
 
     VkResult result = get_device_table(device)->CreateSwapchainKHR(device, pCreateInfo, pAllocator, pSwapchain);
@@ -3893,6 +4057,7 @@ VKAPI_ATTR void VKAPI_CALL DestroySwapchainKHR(
     VkSwapchainKHR                              swapchain,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroySwapchainKHR>::Dispatch(encode::TraceManager::Get(), device, swapchain, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroySwapchainKHR);
@@ -3915,6 +4080,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetSwapchainImagesKHR(
     uint32_t*                                   pSwapchainImageCount,
     VkImage*                                    pSwapchainImages)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetSwapchainImagesKHR>::Dispatch(encode::TraceManager::Get(), device, swapchain, pSwapchainImageCount, pSwapchainImages);
 
     VkResult result = get_device_table(device)->GetSwapchainImagesKHR(device, swapchain, pSwapchainImageCount, pSwapchainImages);
@@ -3943,6 +4109,7 @@ VKAPI_ATTR VkResult VKAPI_CALL AcquireNextImageKHR(
     VkFence                                     fence,
     uint32_t*                                   pImageIndex)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkAcquireNextImageKHR>::Dispatch(encode::TraceManager::Get(), device, swapchain, timeout, semaphore, fence, pImageIndex);
 
     VkResult result = get_device_table(device)->AcquireNextImageKHR(device, swapchain, timeout, semaphore, fence, pImageIndex);
@@ -3969,6 +4136,7 @@ VKAPI_ATTR VkResult VKAPI_CALL QueuePresentKHR(
     VkQueue                                     queue,
     const VkPresentInfoKHR*                     pPresentInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkQueuePresentKHR>::Dispatch(encode::TraceManager::Get(), queue, pPresentInfo);
 
     VkResult result = get_device_table(queue)->QueuePresentKHR(queue, pPresentInfo);
@@ -3991,6 +4159,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetDeviceGroupPresentCapabilitiesKHR(
     VkDevice                                    device,
     VkDeviceGroupPresentCapabilitiesKHR*        pDeviceGroupPresentCapabilities)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDeviceGroupPresentCapabilitiesKHR>::Dispatch(encode::TraceManager::Get(), device, pDeviceGroupPresentCapabilities);
 
     VkResult result = get_device_table(device)->GetDeviceGroupPresentCapabilitiesKHR(device, pDeviceGroupPresentCapabilities);
@@ -4014,6 +4183,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetDeviceGroupSurfacePresentModesKHR(
     VkSurfaceKHR                                surface,
     VkDeviceGroupPresentModeFlagsKHR*           pModes)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDeviceGroupSurfacePresentModesKHR>::Dispatch(encode::TraceManager::Get(), device, surface, pModes);
 
     VkResult result = get_device_table(device)->GetDeviceGroupSurfacePresentModesKHR(device, surface, pModes);
@@ -4039,6 +4209,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDevicePresentRectanglesKHR(
     uint32_t*                                   pRectCount,
     VkRect2D*                                   pRects)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDevicePresentRectanglesKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, surface, pRectCount, pRects);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDevicePresentRectanglesKHR(physicalDevice, surface, pRectCount, pRects);
@@ -4064,6 +4235,7 @@ VKAPI_ATTR VkResult VKAPI_CALL AcquireNextImage2KHR(
     const VkAcquireNextImageInfoKHR*            pAcquireInfo,
     uint32_t*                                   pImageIndex)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkAcquireNextImage2KHR>::Dispatch(encode::TraceManager::Get(), device, pAcquireInfo, pImageIndex);
 
     VkResult result = get_device_table(device)->AcquireNextImage2KHR(device, pAcquireInfo, pImageIndex);
@@ -4088,6 +4260,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceDisplayPropertiesKHR(
     uint32_t*                                   pPropertyCount,
     VkDisplayPropertiesKHR*                     pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceDisplayPropertiesKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pPropertyCount, pProperties);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceDisplayPropertiesKHR(physicalDevice, pPropertyCount, pProperties);
@@ -4112,6 +4285,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceDisplayPlanePropertiesKHR(
     uint32_t*                                   pPropertyCount,
     VkDisplayPlanePropertiesKHR*                pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceDisplayPlanePropertiesKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pPropertyCount, pProperties);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceDisplayPlanePropertiesKHR(physicalDevice, pPropertyCount, pProperties);
@@ -4137,6 +4311,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetDisplayPlaneSupportedDisplaysKHR(
     uint32_t*                                   pDisplayCount,
     VkDisplayKHR*                               pDisplays)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDisplayPlaneSupportedDisplaysKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, planeIndex, pDisplayCount, pDisplays);
 
     VkResult result = get_instance_table(physicalDevice)->GetDisplayPlaneSupportedDisplaysKHR(physicalDevice, planeIndex, pDisplayCount, pDisplays);
@@ -4163,6 +4338,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetDisplayModePropertiesKHR(
     uint32_t*                                   pPropertyCount,
     VkDisplayModePropertiesKHR*                 pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDisplayModePropertiesKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, display, pPropertyCount, pProperties);
 
     VkResult result = get_instance_table(physicalDevice)->GetDisplayModePropertiesKHR(physicalDevice, display, pPropertyCount, pProperties);
@@ -4190,6 +4366,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateDisplayModeKHR(
     const VkAllocationCallbacks*                pAllocator,
     VkDisplayModeKHR*                           pMode)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateDisplayModeKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, display, pCreateInfo, pAllocator, pMode);
 
     VkResult result = get_instance_table(physicalDevice)->CreateDisplayModeKHR(physicalDevice, display, pCreateInfo, pAllocator, pMode);
@@ -4217,6 +4394,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetDisplayPlaneCapabilitiesKHR(
     uint32_t                                    planeIndex,
     VkDisplayPlaneCapabilitiesKHR*              pCapabilities)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDisplayPlaneCapabilitiesKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, mode, planeIndex, pCapabilities);
 
     VkResult result = get_instance_table(physicalDevice)->GetDisplayPlaneCapabilitiesKHR(physicalDevice, mode, planeIndex, pCapabilities);
@@ -4243,6 +4421,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateDisplayPlaneSurfaceKHR(
     const VkAllocationCallbacks*                pAllocator,
     VkSurfaceKHR*                               pSurface)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateDisplayPlaneSurfaceKHR>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pSurface);
 
     VkResult result = get_instance_table(instance)->CreateDisplayPlaneSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
@@ -4270,6 +4449,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateSharedSwapchainsKHR(
     const VkAllocationCallbacks*                pAllocator,
     VkSwapchainKHR*                             pSwapchains)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateSharedSwapchainsKHR>::Dispatch(encode::TraceManager::Get(), device, swapchainCount, pCreateInfos, pAllocator, pSwapchains);
 
     VkResult result = get_device_table(device)->CreateSharedSwapchainsKHR(device, swapchainCount, pCreateInfos, pAllocator, pSwapchains);
@@ -4297,6 +4477,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateXlibSurfaceKHR(
     const VkAllocationCallbacks*                pAllocator,
     VkSurfaceKHR*                               pSurface)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateXlibSurfaceKHR>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pSurface);
 
     VkResult result = get_instance_table(instance)->CreateXlibSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
@@ -4323,6 +4504,7 @@ VKAPI_ATTR VkBool32 VKAPI_CALL GetPhysicalDeviceXlibPresentationSupportKHR(
     Display*                                    dpy,
     VisualID                                    visualID)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceXlibPresentationSupportKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, queueFamilyIndex, dpy, visualID);
 
     VkBool32 result = get_instance_table(physicalDevice)->GetPhysicalDeviceXlibPresentationSupportKHR(physicalDevice, queueFamilyIndex, dpy, visualID);
@@ -4349,6 +4531,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateXcbSurfaceKHR(
     const VkAllocationCallbacks*                pAllocator,
     VkSurfaceKHR*                               pSurface)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateXcbSurfaceKHR>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pSurface);
 
     VkResult result = get_instance_table(instance)->CreateXcbSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
@@ -4375,6 +4558,7 @@ VKAPI_ATTR VkBool32 VKAPI_CALL GetPhysicalDeviceXcbPresentationSupportKHR(
     xcb_connection_t*                           connection,
     xcb_visualid_t                              visual_id)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceXcbPresentationSupportKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, queueFamilyIndex, connection, visual_id);
 
     VkBool32 result = get_instance_table(physicalDevice)->GetPhysicalDeviceXcbPresentationSupportKHR(physicalDevice, queueFamilyIndex, connection, visual_id);
@@ -4401,6 +4585,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateWaylandSurfaceKHR(
     const VkAllocationCallbacks*                pAllocator,
     VkSurfaceKHR*                               pSurface)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateWaylandSurfaceKHR>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pSurface);
 
     VkResult result = get_instance_table(instance)->CreateWaylandSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
@@ -4426,6 +4611,7 @@ VKAPI_ATTR VkBool32 VKAPI_CALL GetPhysicalDeviceWaylandPresentationSupportKHR(
     uint32_t                                    queueFamilyIndex,
     struct wl_display*                          display)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceWaylandPresentationSupportKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, queueFamilyIndex, display);
 
     VkBool32 result = get_instance_table(physicalDevice)->GetPhysicalDeviceWaylandPresentationSupportKHR(physicalDevice, queueFamilyIndex, display);
@@ -4451,6 +4637,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateMirSurfaceKHR(
     const VkAllocationCallbacks*                pAllocator,
     VkSurfaceKHR*                               pSurface)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateMirSurfaceKHR>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pSurface);
 
     VkResult result = get_instance_table(instance)->CreateMirSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
@@ -4476,6 +4663,7 @@ VKAPI_ATTR VkBool32 VKAPI_CALL GetPhysicalDeviceMirPresentationSupportKHR(
     uint32_t                                    queueFamilyIndex,
     MirConnection*                              connection)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceMirPresentationSupportKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, queueFamilyIndex, connection);
 
     VkBool32 result = get_instance_table(physicalDevice)->GetPhysicalDeviceMirPresentationSupportKHR(physicalDevice, queueFamilyIndex, connection);
@@ -4501,6 +4689,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateAndroidSurfaceKHR(
     const VkAllocationCallbacks*                pAllocator,
     VkSurfaceKHR*                               pSurface)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateAndroidSurfaceKHR>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pSurface);
 
     VkResult result = get_instance_table(instance)->CreateAndroidSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
@@ -4527,6 +4716,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateWin32SurfaceKHR(
     const VkAllocationCallbacks*                pAllocator,
     VkSurfaceKHR*                               pSurface)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateWin32SurfaceKHR>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pSurface);
 
     VkResult result = get_instance_table(instance)->CreateWin32SurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
@@ -4551,6 +4741,7 @@ VKAPI_ATTR VkBool32 VKAPI_CALL GetPhysicalDeviceWin32PresentationSupportKHR(
     VkPhysicalDevice                            physicalDevice,
     uint32_t                                    queueFamilyIndex)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceWin32PresentationSupportKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, queueFamilyIndex);
 
     VkBool32 result = get_instance_table(physicalDevice)->GetPhysicalDeviceWin32PresentationSupportKHR(physicalDevice, queueFamilyIndex);
@@ -4573,6 +4764,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceFeatures2KHR(
     VkPhysicalDevice                            physicalDevice,
     VkPhysicalDeviceFeatures2*                  pFeatures)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceFeatures2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pFeatures);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceFeatures2KHR(physicalDevice, pFeatures);
@@ -4592,6 +4784,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceProperties2KHR(
     VkPhysicalDevice                            physicalDevice,
     VkPhysicalDeviceProperties2*                pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceProperties2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceProperties2KHR(physicalDevice, pProperties);
@@ -4612,6 +4805,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceFormatProperties2KHR(
     VkFormat                                    format,
     VkFormatProperties2*                        pFormatProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceFormatProperties2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, format, pFormatProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceFormatProperties2KHR(physicalDevice, format, pFormatProperties);
@@ -4633,6 +4827,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceImageFormatProperties2KHR(
     const VkPhysicalDeviceImageFormatInfo2*     pImageFormatInfo,
     VkImageFormatProperties2*                   pImageFormatProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceImageFormatProperties2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pImageFormatInfo, pImageFormatProperties);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceImageFormatProperties2KHR(physicalDevice, pImageFormatInfo, pImageFormatProperties);
@@ -4657,6 +4852,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceQueueFamilyProperties2KHR(
     uint32_t*                                   pQueueFamilyPropertyCount,
     VkQueueFamilyProperties2*                   pQueueFamilyProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceQueueFamilyProperties2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceQueueFamilyProperties2KHR(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
@@ -4677,6 +4873,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceMemoryProperties2KHR(
     VkPhysicalDevice                            physicalDevice,
     VkPhysicalDeviceMemoryProperties2*          pMemoryProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceMemoryProperties2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pMemoryProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceMemoryProperties2KHR(physicalDevice, pMemoryProperties);
@@ -4698,6 +4895,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceSparseImageFormatProperties2KHR(
     uint32_t*                                   pPropertyCount,
     VkSparseImageFormatProperties2*             pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceSparseImageFormatProperties2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pFormatInfo, pPropertyCount, pProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceSparseImageFormatProperties2KHR(physicalDevice, pFormatInfo, pPropertyCount, pProperties);
@@ -4722,6 +4920,7 @@ VKAPI_ATTR void VKAPI_CALL GetDeviceGroupPeerMemoryFeaturesKHR(
     uint32_t                                    remoteDeviceIndex,
     VkPeerMemoryFeatureFlags*                   pPeerMemoryFeatures)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDeviceGroupPeerMemoryFeaturesKHR>::Dispatch(encode::TraceManager::Get(), device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures);
 
     get_device_table(device)->GetDeviceGroupPeerMemoryFeaturesKHR(device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures);
@@ -4744,6 +4943,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetDeviceMaskKHR(
     VkCommandBuffer                             commandBuffer,
     uint32_t                                    deviceMask)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetDeviceMaskKHR>::Dispatch(encode::TraceManager::Get(), commandBuffer, deviceMask);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetDeviceMaskKHR);
@@ -4768,6 +4968,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDispatchBaseKHR(
     uint32_t                                    groupCountY,
     uint32_t                                    groupCountZ)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDispatchBaseKHR>::Dispatch(encode::TraceManager::Get(), commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDispatchBaseKHR);
@@ -4793,6 +4994,7 @@ VKAPI_ATTR void VKAPI_CALL TrimCommandPoolKHR(
     VkCommandPool                               commandPool,
     VkCommandPoolTrimFlags                      flags)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkTrimCommandPoolKHR>::Dispatch(encode::TraceManager::Get(), device, commandPool, flags);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkTrimCommandPoolKHR);
@@ -4814,6 +5016,7 @@ VKAPI_ATTR VkResult VKAPI_CALL EnumeratePhysicalDeviceGroupsKHR(
     uint32_t*                                   pPhysicalDeviceGroupCount,
     VkPhysicalDeviceGroupProperties*            pPhysicalDeviceGroupProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkEnumeratePhysicalDeviceGroupsKHR>::Dispatch(encode::TraceManager::Get(), instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties);
 
     VkResult result = get_instance_table(instance)->EnumeratePhysicalDeviceGroupsKHR(instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties);
@@ -4838,6 +5041,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceExternalBufferPropertiesKHR(
     const VkPhysicalDeviceExternalBufferInfo*   pExternalBufferInfo,
     VkExternalBufferProperties*                 pExternalBufferProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceExternalBufferPropertiesKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pExternalBufferInfo, pExternalBufferProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceExternalBufferPropertiesKHR(physicalDevice, pExternalBufferInfo, pExternalBufferProperties);
@@ -4859,6 +5063,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetMemoryWin32HandleKHR(
     const VkMemoryGetWin32HandleInfoKHR*        pGetWin32HandleInfo,
     HANDLE*                                     pHandle)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetMemoryWin32HandleKHR>::Dispatch(encode::TraceManager::Get(), device, pGetWin32HandleInfo, pHandle);
 
     VkResult result = get_device_table(device)->GetMemoryWin32HandleKHR(device, pGetWin32HandleInfo, pHandle);
@@ -4884,6 +5089,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetMemoryWin32HandlePropertiesKHR(
     HANDLE                                      handle,
     VkMemoryWin32HandlePropertiesKHR*           pMemoryWin32HandleProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetMemoryWin32HandlePropertiesKHR>::Dispatch(encode::TraceManager::Get(), device, handleType, handle, pMemoryWin32HandleProperties);
 
     VkResult result = get_device_table(device)->GetMemoryWin32HandlePropertiesKHR(device, handleType, handle, pMemoryWin32HandleProperties);
@@ -4909,6 +5115,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetMemoryFdKHR(
     const VkMemoryGetFdInfoKHR*                 pGetFdInfo,
     int*                                        pFd)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetMemoryFdKHR>::Dispatch(encode::TraceManager::Get(), device, pGetFdInfo, pFd);
 
     VkResult result = get_device_table(device)->GetMemoryFdKHR(device, pGetFdInfo, pFd);
@@ -4934,6 +5141,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetMemoryFdPropertiesKHR(
     int                                         fd,
     VkMemoryFdPropertiesKHR*                    pMemoryFdProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetMemoryFdPropertiesKHR>::Dispatch(encode::TraceManager::Get(), device, handleType, fd, pMemoryFdProperties);
 
     VkResult result = get_device_table(device)->GetMemoryFdPropertiesKHR(device, handleType, fd, pMemoryFdProperties);
@@ -4959,6 +5167,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceExternalSemaphorePropertiesKHR(
     const VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo,
     VkExternalSemaphoreProperties*              pExternalSemaphoreProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceExternalSemaphorePropertiesKHR(physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties);
@@ -4979,6 +5188,7 @@ VKAPI_ATTR VkResult VKAPI_CALL ImportSemaphoreWin32HandleKHR(
     VkDevice                                    device,
     const VkImportSemaphoreWin32HandleInfoKHR*  pImportSemaphoreWin32HandleInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkImportSemaphoreWin32HandleKHR>::Dispatch(encode::TraceManager::Get(), device, pImportSemaphoreWin32HandleInfo);
 
     VkResult result = get_device_table(device)->ImportSemaphoreWin32HandleKHR(device, pImportSemaphoreWin32HandleInfo);
@@ -5002,6 +5212,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetSemaphoreWin32HandleKHR(
     const VkSemaphoreGetWin32HandleInfoKHR*     pGetWin32HandleInfo,
     HANDLE*                                     pHandle)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetSemaphoreWin32HandleKHR>::Dispatch(encode::TraceManager::Get(), device, pGetWin32HandleInfo, pHandle);
 
     VkResult result = get_device_table(device)->GetSemaphoreWin32HandleKHR(device, pGetWin32HandleInfo, pHandle);
@@ -5025,6 +5236,7 @@ VKAPI_ATTR VkResult VKAPI_CALL ImportSemaphoreFdKHR(
     VkDevice                                    device,
     const VkImportSemaphoreFdInfoKHR*           pImportSemaphoreFdInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkImportSemaphoreFdKHR>::Dispatch(encode::TraceManager::Get(), device, pImportSemaphoreFdInfo);
 
     VkResult result = get_device_table(device)->ImportSemaphoreFdKHR(device, pImportSemaphoreFdInfo);
@@ -5048,6 +5260,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetSemaphoreFdKHR(
     const VkSemaphoreGetFdInfoKHR*              pGetFdInfo,
     int*                                        pFd)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetSemaphoreFdKHR>::Dispatch(encode::TraceManager::Get(), device, pGetFdInfo, pFd);
 
     VkResult result = get_device_table(device)->GetSemaphoreFdKHR(device, pGetFdInfo, pFd);
@@ -5075,6 +5288,7 @@ VKAPI_ATTR void VKAPI_CALL CmdPushDescriptorSetKHR(
     uint32_t                                    descriptorWriteCount,
     const VkWriteDescriptorSet*                 pDescriptorWrites)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdPushDescriptorSetKHR>::Dispatch(encode::TraceManager::Get(), commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, pDescriptorWrites);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdPushDescriptorSetKHR);
@@ -5100,6 +5314,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateDescriptorUpdateTemplateKHR(
     const VkAllocationCallbacks*                pAllocator,
     VkDescriptorUpdateTemplate*                 pDescriptorUpdateTemplate)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateDescriptorUpdateTemplateKHR>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate);
 
     VkResult result = get_device_table(device)->CreateDescriptorUpdateTemplateKHR(device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate);
@@ -5125,6 +5340,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyDescriptorUpdateTemplateKHR(
     VkDescriptorUpdateTemplate                  descriptorUpdateTemplate,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyDescriptorUpdateTemplateKHR>::Dispatch(encode::TraceManager::Get(), device, descriptorUpdateTemplate, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyDescriptorUpdateTemplateKHR);
@@ -5147,6 +5363,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateRenderPass2KHR(
     const VkAllocationCallbacks*                pAllocator,
     VkRenderPass*                               pRenderPass)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateRenderPass2KHR>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pRenderPass);
 
     VkResult result = get_device_table(device)->CreateRenderPass2KHR(device, pCreateInfo, pAllocator, pRenderPass);
@@ -5172,6 +5389,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBeginRenderPass2KHR(
     const VkRenderPassBeginInfo*                pRenderPassBegin,
     const VkSubpassBeginInfoKHR*                pSubpassBeginInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdBeginRenderPass2KHR>::Dispatch(encode::TraceManager::Get(), commandBuffer, pRenderPassBegin, pSubpassBeginInfo);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdBeginRenderPass2KHR);
@@ -5193,6 +5411,7 @@ VKAPI_ATTR void VKAPI_CALL CmdNextSubpass2KHR(
     const VkSubpassBeginInfoKHR*                pSubpassBeginInfo,
     const VkSubpassEndInfoKHR*                  pSubpassEndInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdNextSubpass2KHR>::Dispatch(encode::TraceManager::Get(), commandBuffer, pSubpassBeginInfo, pSubpassEndInfo);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdNextSubpass2KHR);
@@ -5213,6 +5432,7 @@ VKAPI_ATTR void VKAPI_CALL CmdEndRenderPass2KHR(
     VkCommandBuffer                             commandBuffer,
     const VkSubpassEndInfoKHR*                  pSubpassEndInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdEndRenderPass2KHR>::Dispatch(encode::TraceManager::Get(), commandBuffer, pSubpassEndInfo);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdEndRenderPass2KHR);
@@ -5232,6 +5452,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetSwapchainStatusKHR(
     VkDevice                                    device,
     VkSwapchainKHR                              swapchain)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetSwapchainStatusKHR>::Dispatch(encode::TraceManager::Get(), device, swapchain);
 
     VkResult result = get_device_table(device)->GetSwapchainStatusKHR(device, swapchain);
@@ -5255,6 +5476,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceExternalFencePropertiesKHR(
     const VkPhysicalDeviceExternalFenceInfo*    pExternalFenceInfo,
     VkExternalFenceProperties*                  pExternalFenceProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceExternalFencePropertiesKHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pExternalFenceInfo, pExternalFenceProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceExternalFencePropertiesKHR(physicalDevice, pExternalFenceInfo, pExternalFenceProperties);
@@ -5275,6 +5497,7 @@ VKAPI_ATTR VkResult VKAPI_CALL ImportFenceWin32HandleKHR(
     VkDevice                                    device,
     const VkImportFenceWin32HandleInfoKHR*      pImportFenceWin32HandleInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkImportFenceWin32HandleKHR>::Dispatch(encode::TraceManager::Get(), device, pImportFenceWin32HandleInfo);
 
     VkResult result = get_device_table(device)->ImportFenceWin32HandleKHR(device, pImportFenceWin32HandleInfo);
@@ -5298,6 +5521,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetFenceWin32HandleKHR(
     const VkFenceGetWin32HandleInfoKHR*         pGetWin32HandleInfo,
     HANDLE*                                     pHandle)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetFenceWin32HandleKHR>::Dispatch(encode::TraceManager::Get(), device, pGetWin32HandleInfo, pHandle);
 
     VkResult result = get_device_table(device)->GetFenceWin32HandleKHR(device, pGetWin32HandleInfo, pHandle);
@@ -5321,6 +5545,7 @@ VKAPI_ATTR VkResult VKAPI_CALL ImportFenceFdKHR(
     VkDevice                                    device,
     const VkImportFenceFdInfoKHR*               pImportFenceFdInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkImportFenceFdKHR>::Dispatch(encode::TraceManager::Get(), device, pImportFenceFdInfo);
 
     VkResult result = get_device_table(device)->ImportFenceFdKHR(device, pImportFenceFdInfo);
@@ -5344,6 +5569,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetFenceFdKHR(
     const VkFenceGetFdInfoKHR*                  pGetFdInfo,
     int*                                        pFd)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetFenceFdKHR>::Dispatch(encode::TraceManager::Get(), device, pGetFdInfo, pFd);
 
     VkResult result = get_device_table(device)->GetFenceFdKHR(device, pGetFdInfo, pFd);
@@ -5368,6 +5594,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceSurfaceCapabilities2KHR(
     const VkPhysicalDeviceSurfaceInfo2KHR*      pSurfaceInfo,
     VkSurfaceCapabilities2KHR*                  pSurfaceCapabilities)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceSurfaceCapabilities2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pSurfaceInfo, pSurfaceCapabilities);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceSurfaceCapabilities2KHR(physicalDevice, pSurfaceInfo, pSurfaceCapabilities);
@@ -5393,6 +5620,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceSurfaceFormats2KHR(
     uint32_t*                                   pSurfaceFormatCount,
     VkSurfaceFormat2KHR*                        pSurfaceFormats)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceSurfaceFormats2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pSurfaceInfo, pSurfaceFormatCount, pSurfaceFormats);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceSurfaceFormats2KHR(physicalDevice, pSurfaceInfo, pSurfaceFormatCount, pSurfaceFormats);
@@ -5418,6 +5646,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceDisplayProperties2KHR(
     uint32_t*                                   pPropertyCount,
     VkDisplayProperties2KHR*                    pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceDisplayProperties2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pPropertyCount, pProperties);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceDisplayProperties2KHR(physicalDevice, pPropertyCount, pProperties);
@@ -5442,6 +5671,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceDisplayPlaneProperties2KHR(
     uint32_t*                                   pPropertyCount,
     VkDisplayPlaneProperties2KHR*               pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceDisplayPlaneProperties2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pPropertyCount, pProperties);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceDisplayPlaneProperties2KHR(physicalDevice, pPropertyCount, pProperties);
@@ -5467,6 +5697,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetDisplayModeProperties2KHR(
     uint32_t*                                   pPropertyCount,
     VkDisplayModeProperties2KHR*                pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDisplayModeProperties2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, display, pPropertyCount, pProperties);
 
     VkResult result = get_instance_table(physicalDevice)->GetDisplayModeProperties2KHR(physicalDevice, display, pPropertyCount, pProperties);
@@ -5492,6 +5723,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetDisplayPlaneCapabilities2KHR(
     const VkDisplayPlaneInfo2KHR*               pDisplayPlaneInfo,
     VkDisplayPlaneCapabilities2KHR*             pCapabilities)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDisplayPlaneCapabilities2KHR>::Dispatch(encode::TraceManager::Get(), physicalDevice, pDisplayPlaneInfo, pCapabilities);
 
     VkResult result = get_instance_table(physicalDevice)->GetDisplayPlaneCapabilities2KHR(physicalDevice, pDisplayPlaneInfo, pCapabilities);
@@ -5516,6 +5748,7 @@ VKAPI_ATTR void VKAPI_CALL GetImageMemoryRequirements2KHR(
     const VkImageMemoryRequirementsInfo2*       pInfo,
     VkMemoryRequirements2*                      pMemoryRequirements)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetImageMemoryRequirements2KHR>::Dispatch(encode::TraceManager::Get(), device, pInfo, pMemoryRequirements);
 
     get_device_table(device)->GetImageMemoryRequirements2KHR(device, pInfo, pMemoryRequirements);
@@ -5537,6 +5770,7 @@ VKAPI_ATTR void VKAPI_CALL GetBufferMemoryRequirements2KHR(
     const VkBufferMemoryRequirementsInfo2*      pInfo,
     VkMemoryRequirements2*                      pMemoryRequirements)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetBufferMemoryRequirements2KHR>::Dispatch(encode::TraceManager::Get(), device, pInfo, pMemoryRequirements);
 
     get_device_table(device)->GetBufferMemoryRequirements2KHR(device, pInfo, pMemoryRequirements);
@@ -5559,6 +5793,7 @@ VKAPI_ATTR void VKAPI_CALL GetImageSparseMemoryRequirements2KHR(
     uint32_t*                                   pSparseMemoryRequirementCount,
     VkSparseImageMemoryRequirements2*           pSparseMemoryRequirements)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetImageSparseMemoryRequirements2KHR>::Dispatch(encode::TraceManager::Get(), device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
 
     get_device_table(device)->GetImageSparseMemoryRequirements2KHR(device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
@@ -5582,6 +5817,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateSamplerYcbcrConversionKHR(
     const VkAllocationCallbacks*                pAllocator,
     VkSamplerYcbcrConversion*                   pYcbcrConversion)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateSamplerYcbcrConversionKHR>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pYcbcrConversion);
 
     VkResult result = get_device_table(device)->CreateSamplerYcbcrConversionKHR(device, pCreateInfo, pAllocator, pYcbcrConversion);
@@ -5607,6 +5843,7 @@ VKAPI_ATTR void VKAPI_CALL DestroySamplerYcbcrConversionKHR(
     VkSamplerYcbcrConversion                    ycbcrConversion,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroySamplerYcbcrConversionKHR>::Dispatch(encode::TraceManager::Get(), device, ycbcrConversion, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroySamplerYcbcrConversionKHR);
@@ -5628,6 +5865,7 @@ VKAPI_ATTR VkResult VKAPI_CALL BindBufferMemory2KHR(
     uint32_t                                    bindInfoCount,
     const VkBindBufferMemoryInfo*               pBindInfos)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkBindBufferMemory2KHR>::Dispatch(encode::TraceManager::Get(), device, bindInfoCount, pBindInfos);
 
     VkResult result = get_device_table(device)->BindBufferMemory2KHR(device, bindInfoCount, pBindInfos);
@@ -5652,6 +5890,7 @@ VKAPI_ATTR VkResult VKAPI_CALL BindImageMemory2KHR(
     uint32_t                                    bindInfoCount,
     const VkBindImageMemoryInfo*                pBindInfos)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkBindImageMemory2KHR>::Dispatch(encode::TraceManager::Get(), device, bindInfoCount, pBindInfos);
 
     VkResult result = get_device_table(device)->BindImageMemory2KHR(device, bindInfoCount, pBindInfos);
@@ -5676,6 +5915,7 @@ VKAPI_ATTR void VKAPI_CALL GetDescriptorSetLayoutSupportKHR(
     const VkDescriptorSetLayoutCreateInfo*      pCreateInfo,
     VkDescriptorSetLayoutSupport*               pSupport)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetDescriptorSetLayoutSupportKHR>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pSupport);
 
     get_device_table(device)->GetDescriptorSetLayoutSupportKHR(device, pCreateInfo, pSupport);
@@ -5701,6 +5941,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDrawIndirectCountKHR(
     uint32_t                                    maxDrawCount,
     uint32_t                                    stride)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDrawIndirectCountKHR>::Dispatch(encode::TraceManager::Get(), commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDrawIndirectCountKHR);
@@ -5730,6 +5971,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDrawIndexedIndirectCountKHR(
     uint32_t                                    maxDrawCount,
     uint32_t                                    stride)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDrawIndexedIndirectCountKHR>::Dispatch(encode::TraceManager::Get(), commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDrawIndexedIndirectCountKHR);
@@ -5756,6 +5998,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateDebugReportCallbackEXT(
     const VkAllocationCallbacks*                pAllocator,
     VkDebugReportCallbackEXT*                   pCallback)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateDebugReportCallbackEXT>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pCallback);
 
     VkResult result = get_instance_table(instance)->CreateDebugReportCallbackEXT(instance, pCreateInfo, pAllocator, pCallback);
@@ -5781,6 +6024,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyDebugReportCallbackEXT(
     VkDebugReportCallbackEXT                    callback,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyDebugReportCallbackEXT>::Dispatch(encode::TraceManager::Get(), instance, callback, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyDebugReportCallbackEXT);
@@ -5807,6 +6051,7 @@ VKAPI_ATTR void VKAPI_CALL DebugReportMessageEXT(
     const char*                                 pLayerPrefix,
     const char*                                 pMessage)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDebugReportMessageEXT>::Dispatch(encode::TraceManager::Get(), instance, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDebugReportMessageEXT);
@@ -5832,6 +6077,7 @@ VKAPI_ATTR VkResult VKAPI_CALL DebugMarkerSetObjectTagEXT(
     VkDevice                                    device,
     const VkDebugMarkerObjectTagInfoEXT*        pTagInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDebugMarkerSetObjectTagEXT>::Dispatch(encode::TraceManager::Get(), device, pTagInfo);
 
     VkResult result = get_device_table(device)->DebugMarkerSetObjectTagEXT(device, pTagInfo);
@@ -5854,6 +6100,7 @@ VKAPI_ATTR VkResult VKAPI_CALL DebugMarkerSetObjectNameEXT(
     VkDevice                                    device,
     const VkDebugMarkerObjectNameInfoEXT*       pNameInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDebugMarkerSetObjectNameEXT>::Dispatch(encode::TraceManager::Get(), device, pNameInfo);
 
     VkResult result = get_device_table(device)->DebugMarkerSetObjectNameEXT(device, pNameInfo);
@@ -5876,6 +6123,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDebugMarkerBeginEXT(
     VkCommandBuffer                             commandBuffer,
     const VkDebugMarkerMarkerInfoEXT*           pMarkerInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDebugMarkerBeginEXT>::Dispatch(encode::TraceManager::Get(), commandBuffer, pMarkerInfo);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDebugMarkerBeginEXT);
@@ -5894,6 +6142,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDebugMarkerBeginEXT(
 VKAPI_ATTR void VKAPI_CALL CmdDebugMarkerEndEXT(
     VkCommandBuffer                             commandBuffer)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDebugMarkerEndEXT>::Dispatch(encode::TraceManager::Get(), commandBuffer);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDebugMarkerEndEXT);
@@ -5912,6 +6161,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDebugMarkerInsertEXT(
     VkCommandBuffer                             commandBuffer,
     const VkDebugMarkerMarkerInfoEXT*           pMarkerInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDebugMarkerInsertEXT>::Dispatch(encode::TraceManager::Get(), commandBuffer, pMarkerInfo);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDebugMarkerInsertEXT);
@@ -5936,6 +6186,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDrawIndirectCountAMD(
     uint32_t                                    maxDrawCount,
     uint32_t                                    stride)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDrawIndirectCountAMD>::Dispatch(encode::TraceManager::Get(), commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDrawIndirectCountAMD);
@@ -5965,6 +6216,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDrawIndexedIndirectCountAMD(
     uint32_t                                    maxDrawCount,
     uint32_t                                    stride)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDrawIndexedIndirectCountAMD>::Dispatch(encode::TraceManager::Get(), commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDrawIndexedIndirectCountAMD);
@@ -5993,6 +6245,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetShaderInfoAMD(
     size_t*                                     pInfoSize,
     void*                                       pInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetShaderInfoAMD>::Dispatch(encode::TraceManager::Get(), device, pipeline, shaderStage, infoType, pInfoSize, pInfo);
 
     VkResult result = get_device_table(device)->GetShaderInfoAMD(device, pipeline, shaderStage, infoType, pInfoSize, pInfo);
@@ -6025,6 +6278,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceExternalImageFormatPropertiesNV(
     VkExternalMemoryHandleTypeFlagsNV           externalHandleType,
     VkExternalImageFormatPropertiesNV*          pExternalImageFormatProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceExternalImageFormatPropertiesNV>::Dispatch(encode::TraceManager::Get(), physicalDevice, format, type, tiling, usage, flags, externalHandleType, pExternalImageFormatProperties);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceExternalImageFormatPropertiesNV(physicalDevice, format, type, tiling, usage, flags, externalHandleType, pExternalImageFormatProperties);
@@ -6055,6 +6309,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetMemoryWin32HandleNV(
     VkExternalMemoryHandleTypeFlagsNV           handleType,
     HANDLE*                                     pHandle)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetMemoryWin32HandleNV>::Dispatch(encode::TraceManager::Get(), device, memory, handleType, pHandle);
 
     VkResult result = get_device_table(device)->GetMemoryWin32HandleNV(device, memory, handleType, pHandle);
@@ -6081,6 +6336,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateViSurfaceNN(
     const VkAllocationCallbacks*                pAllocator,
     VkSurfaceKHR*                               pSurface)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateViSurfaceNN>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pSurface);
 
     VkResult result = get_instance_table(instance)->CreateViSurfaceNN(instance, pCreateInfo, pAllocator, pSurface);
@@ -6105,6 +6361,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBeginConditionalRenderingEXT(
     VkCommandBuffer                             commandBuffer,
     const VkConditionalRenderingBeginInfoEXT*   pConditionalRenderingBegin)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdBeginConditionalRenderingEXT>::Dispatch(encode::TraceManager::Get(), commandBuffer, pConditionalRenderingBegin);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdBeginConditionalRenderingEXT);
@@ -6123,6 +6380,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBeginConditionalRenderingEXT(
 VKAPI_ATTR void VKAPI_CALL CmdEndConditionalRenderingEXT(
     VkCommandBuffer                             commandBuffer)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdEndConditionalRenderingEXT>::Dispatch(encode::TraceManager::Get(), commandBuffer);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdEndConditionalRenderingEXT);
@@ -6141,6 +6399,7 @@ VKAPI_ATTR void VKAPI_CALL CmdProcessCommandsNVX(
     VkCommandBuffer                             commandBuffer,
     const VkCmdProcessCommandsInfoNVX*          pProcessCommandsInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdProcessCommandsNVX>::Dispatch(encode::TraceManager::Get(), commandBuffer, pProcessCommandsInfo);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdProcessCommandsNVX);
@@ -6160,6 +6419,7 @@ VKAPI_ATTR void VKAPI_CALL CmdReserveSpaceForCommandsNVX(
     VkCommandBuffer                             commandBuffer,
     const VkCmdReserveSpaceForCommandsInfoNVX*  pReserveSpaceInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdReserveSpaceForCommandsNVX>::Dispatch(encode::TraceManager::Get(), commandBuffer, pReserveSpaceInfo);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdReserveSpaceForCommandsNVX);
@@ -6181,6 +6441,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateIndirectCommandsLayoutNVX(
     const VkAllocationCallbacks*                pAllocator,
     VkIndirectCommandsLayoutNVX*                pIndirectCommandsLayout)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateIndirectCommandsLayoutNVX>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pIndirectCommandsLayout);
 
     VkResult result = get_device_table(device)->CreateIndirectCommandsLayoutNVX(device, pCreateInfo, pAllocator, pIndirectCommandsLayout);
@@ -6206,6 +6467,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyIndirectCommandsLayoutNVX(
     VkIndirectCommandsLayoutNVX                 indirectCommandsLayout,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyIndirectCommandsLayoutNVX>::Dispatch(encode::TraceManager::Get(), device, indirectCommandsLayout, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyIndirectCommandsLayoutNVX);
@@ -6228,6 +6490,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateObjectTableNVX(
     const VkAllocationCallbacks*                pAllocator,
     VkObjectTableNVX*                           pObjectTable)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateObjectTableNVX>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pObjectTable);
 
     VkResult result = get_device_table(device)->CreateObjectTableNVX(device, pCreateInfo, pAllocator, pObjectTable);
@@ -6253,6 +6516,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyObjectTableNVX(
     VkObjectTableNVX                            objectTable,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyObjectTableNVX>::Dispatch(encode::TraceManager::Get(), device, objectTable, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyObjectTableNVX);
@@ -6276,6 +6540,7 @@ VKAPI_ATTR VkResult VKAPI_CALL UnregisterObjectsNVX(
     const VkObjectEntryTypeNVX*                 pObjectEntryTypes,
     const uint32_t*                             pObjectIndices)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkUnregisterObjectsNVX>::Dispatch(encode::TraceManager::Get(), device, objectTable, objectCount, pObjectEntryTypes, pObjectIndices);
 
     VkResult result = get_device_table(device)->UnregisterObjectsNVX(device, objectTable, objectCount, pObjectEntryTypes, pObjectIndices);
@@ -6302,6 +6567,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceGeneratedCommandsPropertiesNVX(
     VkDeviceGeneratedCommandsFeaturesNVX*       pFeatures,
     VkDeviceGeneratedCommandsLimitsNVX*         pLimits)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX>::Dispatch(encode::TraceManager::Get(), physicalDevice, pFeatures, pLimits);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceGeneratedCommandsPropertiesNVX(physicalDevice, pFeatures, pLimits);
@@ -6324,6 +6590,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetViewportWScalingNV(
     uint32_t                                    viewportCount,
     const VkViewportWScalingNV*                 pViewportWScalings)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetViewportWScalingNV>::Dispatch(encode::TraceManager::Get(), commandBuffer, firstViewport, viewportCount, pViewportWScalings);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetViewportWScalingNV);
@@ -6345,6 +6612,7 @@ VKAPI_ATTR VkResult VKAPI_CALL ReleaseDisplayEXT(
     VkPhysicalDevice                            physicalDevice,
     VkDisplayKHR                                display)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkReleaseDisplayEXT>::Dispatch(encode::TraceManager::Get(), physicalDevice, display);
 
     VkResult result = get_instance_table(physicalDevice)->ReleaseDisplayEXT(physicalDevice, display);
@@ -6368,6 +6636,7 @@ VKAPI_ATTR VkResult VKAPI_CALL AcquireXlibDisplayEXT(
     Display*                                    dpy,
     VkDisplayKHR                                display)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkAcquireXlibDisplayEXT>::Dispatch(encode::TraceManager::Get(), physicalDevice, dpy, display);
 
     VkResult result = get_instance_table(physicalDevice)->AcquireXlibDisplayEXT(physicalDevice, dpy, display);
@@ -6393,6 +6662,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetRandROutputDisplayEXT(
     RROutput                                    rrOutput,
     VkDisplayKHR*                               pDisplay)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetRandROutputDisplayEXT>::Dispatch(encode::TraceManager::Get(), physicalDevice, dpy, rrOutput, pDisplay);
 
     VkResult result = get_instance_table(physicalDevice)->GetRandROutputDisplayEXT(physicalDevice, dpy, rrOutput, pDisplay);
@@ -6418,6 +6688,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPhysicalDeviceSurfaceCapabilities2EXT(
     VkSurfaceKHR                                surface,
     VkSurfaceCapabilities2EXT*                  pSurfaceCapabilities)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceSurfaceCapabilities2EXT>::Dispatch(encode::TraceManager::Get(), physicalDevice, surface, pSurfaceCapabilities);
 
     VkResult result = get_instance_table(physicalDevice)->GetPhysicalDeviceSurfaceCapabilities2EXT(physicalDevice, surface, pSurfaceCapabilities);
@@ -6442,6 +6713,7 @@ VKAPI_ATTR VkResult VKAPI_CALL DisplayPowerControlEXT(
     VkDisplayKHR                                display,
     const VkDisplayPowerInfoEXT*                pDisplayPowerInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDisplayPowerControlEXT>::Dispatch(encode::TraceManager::Get(), device, display, pDisplayPowerInfo);
 
     VkResult result = get_device_table(device)->DisplayPowerControlEXT(device, display, pDisplayPowerInfo);
@@ -6467,6 +6739,7 @@ VKAPI_ATTR VkResult VKAPI_CALL RegisterDeviceEventEXT(
     const VkAllocationCallbacks*                pAllocator,
     VkFence*                                    pFence)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkRegisterDeviceEventEXT>::Dispatch(encode::TraceManager::Get(), device, pDeviceEventInfo, pAllocator, pFence);
 
     VkResult result = get_device_table(device)->RegisterDeviceEventEXT(device, pDeviceEventInfo, pAllocator, pFence);
@@ -6494,6 +6767,7 @@ VKAPI_ATTR VkResult VKAPI_CALL RegisterDisplayEventEXT(
     const VkAllocationCallbacks*                pAllocator,
     VkFence*                                    pFence)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkRegisterDisplayEventEXT>::Dispatch(encode::TraceManager::Get(), device, display, pDisplayEventInfo, pAllocator, pFence);
 
     VkResult result = get_device_table(device)->RegisterDisplayEventEXT(device, display, pDisplayEventInfo, pAllocator, pFence);
@@ -6521,6 +6795,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetSwapchainCounterEXT(
     VkSurfaceCounterFlagBitsEXT                 counter,
     uint64_t*                                   pCounterValue)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetSwapchainCounterEXT>::Dispatch(encode::TraceManager::Get(), device, swapchain, counter, pCounterValue);
 
     VkResult result = get_device_table(device)->GetSwapchainCounterEXT(device, swapchain, counter, pCounterValue);
@@ -6546,6 +6821,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetRefreshCycleDurationGOOGLE(
     VkSwapchainKHR                              swapchain,
     VkRefreshCycleDurationGOOGLE*               pDisplayTimingProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetRefreshCycleDurationGOOGLE>::Dispatch(encode::TraceManager::Get(), device, swapchain, pDisplayTimingProperties);
 
     VkResult result = get_device_table(device)->GetRefreshCycleDurationGOOGLE(device, swapchain, pDisplayTimingProperties);
@@ -6571,6 +6847,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetPastPresentationTimingGOOGLE(
     uint32_t*                                   pPresentationTimingCount,
     VkPastPresentationTimingGOOGLE*             pPresentationTimings)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPastPresentationTimingGOOGLE>::Dispatch(encode::TraceManager::Get(), device, swapchain, pPresentationTimingCount, pPresentationTimings);
 
     VkResult result = get_device_table(device)->GetPastPresentationTimingGOOGLE(device, swapchain, pPresentationTimingCount, pPresentationTimings);
@@ -6597,6 +6874,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetDiscardRectangleEXT(
     uint32_t                                    discardRectangleCount,
     const VkRect2D*                             pDiscardRectangles)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetDiscardRectangleEXT>::Dispatch(encode::TraceManager::Get(), commandBuffer, firstDiscardRectangle, discardRectangleCount, pDiscardRectangles);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetDiscardRectangleEXT);
@@ -6620,6 +6898,7 @@ VKAPI_ATTR void VKAPI_CALL SetHdrMetadataEXT(
     const VkSwapchainKHR*                       pSwapchains,
     const VkHdrMetadataEXT*                     pMetadata)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkSetHdrMetadataEXT>::Dispatch(encode::TraceManager::Get(), device, swapchainCount, pSwapchains, pMetadata);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkSetHdrMetadataEXT);
@@ -6643,6 +6922,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateIOSSurfaceMVK(
     const VkAllocationCallbacks*                pAllocator,
     VkSurfaceKHR*                               pSurface)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateIOSSurfaceMVK>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pSurface);
 
     VkResult result = get_instance_table(instance)->CreateIOSSurfaceMVK(instance, pCreateInfo, pAllocator, pSurface);
@@ -6669,6 +6949,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateMacOSSurfaceMVK(
     const VkAllocationCallbacks*                pAllocator,
     VkSurfaceKHR*                               pSurface)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateMacOSSurfaceMVK>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pSurface);
 
     VkResult result = get_instance_table(instance)->CreateMacOSSurfaceMVK(instance, pCreateInfo, pAllocator, pSurface);
@@ -6693,6 +6974,7 @@ VKAPI_ATTR VkResult VKAPI_CALL SetDebugUtilsObjectNameEXT(
     VkDevice                                    device,
     const VkDebugUtilsObjectNameInfoEXT*        pNameInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkSetDebugUtilsObjectNameEXT>::Dispatch(encode::TraceManager::Get(), device, pNameInfo);
 
     VkResult result = get_device_table(device)->SetDebugUtilsObjectNameEXT(device, pNameInfo);
@@ -6715,6 +6997,7 @@ VKAPI_ATTR VkResult VKAPI_CALL SetDebugUtilsObjectTagEXT(
     VkDevice                                    device,
     const VkDebugUtilsObjectTagInfoEXT*         pTagInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkSetDebugUtilsObjectTagEXT>::Dispatch(encode::TraceManager::Get(), device, pTagInfo);
 
     VkResult result = get_device_table(device)->SetDebugUtilsObjectTagEXT(device, pTagInfo);
@@ -6737,6 +7020,7 @@ VKAPI_ATTR void VKAPI_CALL QueueBeginDebugUtilsLabelEXT(
     VkQueue                                     queue,
     const VkDebugUtilsLabelEXT*                 pLabelInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkQueueBeginDebugUtilsLabelEXT>::Dispatch(encode::TraceManager::Get(), queue, pLabelInfo);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkQueueBeginDebugUtilsLabelEXT);
@@ -6755,6 +7039,7 @@ VKAPI_ATTR void VKAPI_CALL QueueBeginDebugUtilsLabelEXT(
 VKAPI_ATTR void VKAPI_CALL QueueEndDebugUtilsLabelEXT(
     VkQueue                                     queue)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkQueueEndDebugUtilsLabelEXT>::Dispatch(encode::TraceManager::Get(), queue);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkQueueEndDebugUtilsLabelEXT);
@@ -6773,6 +7058,7 @@ VKAPI_ATTR void VKAPI_CALL QueueInsertDebugUtilsLabelEXT(
     VkQueue                                     queue,
     const VkDebugUtilsLabelEXT*                 pLabelInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkQueueInsertDebugUtilsLabelEXT>::Dispatch(encode::TraceManager::Get(), queue, pLabelInfo);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkQueueInsertDebugUtilsLabelEXT);
@@ -6792,6 +7078,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBeginDebugUtilsLabelEXT(
     VkCommandBuffer                             commandBuffer,
     const VkDebugUtilsLabelEXT*                 pLabelInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdBeginDebugUtilsLabelEXT>::Dispatch(encode::TraceManager::Get(), commandBuffer, pLabelInfo);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdBeginDebugUtilsLabelEXT);
@@ -6810,6 +7097,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBeginDebugUtilsLabelEXT(
 VKAPI_ATTR void VKAPI_CALL CmdEndDebugUtilsLabelEXT(
     VkCommandBuffer                             commandBuffer)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdEndDebugUtilsLabelEXT>::Dispatch(encode::TraceManager::Get(), commandBuffer);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdEndDebugUtilsLabelEXT);
@@ -6828,6 +7116,7 @@ VKAPI_ATTR void VKAPI_CALL CmdInsertDebugUtilsLabelEXT(
     VkCommandBuffer                             commandBuffer,
     const VkDebugUtilsLabelEXT*                 pLabelInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdInsertDebugUtilsLabelEXT>::Dispatch(encode::TraceManager::Get(), commandBuffer, pLabelInfo);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdInsertDebugUtilsLabelEXT);
@@ -6849,6 +7138,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateDebugUtilsMessengerEXT(
     const VkAllocationCallbacks*                pAllocator,
     VkDebugUtilsMessengerEXT*                   pMessenger)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateDebugUtilsMessengerEXT>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pMessenger);
 
     VkResult result = get_instance_table(instance)->CreateDebugUtilsMessengerEXT(instance, pCreateInfo, pAllocator, pMessenger);
@@ -6874,6 +7164,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyDebugUtilsMessengerEXT(
     VkDebugUtilsMessengerEXT                    messenger,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyDebugUtilsMessengerEXT>::Dispatch(encode::TraceManager::Get(), instance, messenger, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyDebugUtilsMessengerEXT);
@@ -6896,6 +7187,7 @@ VKAPI_ATTR void VKAPI_CALL SubmitDebugUtilsMessageEXT(
     VkDebugUtilsMessageTypeFlagsEXT             messageTypes,
     const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkSubmitDebugUtilsMessageEXT>::Dispatch(encode::TraceManager::Get(), instance, messageSeverity, messageTypes, pCallbackData);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkSubmitDebugUtilsMessageEXT);
@@ -6918,6 +7210,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetAndroidHardwareBufferPropertiesANDROID(
     const struct AHardwareBuffer*               buffer,
     VkAndroidHardwareBufferPropertiesANDROID*   pProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetAndroidHardwareBufferPropertiesANDROID>::Dispatch(encode::TraceManager::Get(), device, buffer, pProperties);
 
     VkResult result = get_device_table(device)->GetAndroidHardwareBufferPropertiesANDROID(device, buffer, pProperties);
@@ -6942,6 +7235,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetMemoryAndroidHardwareBufferANDROID(
     const VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo,
     struct AHardwareBuffer**                    pBuffer)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetMemoryAndroidHardwareBufferANDROID>::Dispatch(encode::TraceManager::Get(), device, pInfo, pBuffer);
 
     VkResult result = get_device_table(device)->GetMemoryAndroidHardwareBufferANDROID(device, pInfo, pBuffer);
@@ -6965,6 +7259,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetSampleLocationsEXT(
     VkCommandBuffer                             commandBuffer,
     const VkSampleLocationsInfoEXT*             pSampleLocationsInfo)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetSampleLocationsEXT>::Dispatch(encode::TraceManager::Get(), commandBuffer, pSampleLocationsInfo);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetSampleLocationsEXT);
@@ -6985,6 +7280,7 @@ VKAPI_ATTR void VKAPI_CALL GetPhysicalDeviceMultisamplePropertiesEXT(
     VkSampleCountFlagBits                       samples,
     VkMultisamplePropertiesEXT*                 pMultisampleProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetPhysicalDeviceMultisamplePropertiesEXT>::Dispatch(encode::TraceManager::Get(), physicalDevice, samples, pMultisampleProperties);
 
     get_instance_table(physicalDevice)->GetPhysicalDeviceMultisamplePropertiesEXT(physicalDevice, samples, pMultisampleProperties);
@@ -7007,6 +7303,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateValidationCacheEXT(
     const VkAllocationCallbacks*                pAllocator,
     VkValidationCacheEXT*                       pValidationCache)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateValidationCacheEXT>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pValidationCache);
 
     VkResult result = get_device_table(device)->CreateValidationCacheEXT(device, pCreateInfo, pAllocator, pValidationCache);
@@ -7032,6 +7329,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyValidationCacheEXT(
     VkValidationCacheEXT                        validationCache,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyValidationCacheEXT>::Dispatch(encode::TraceManager::Get(), device, validationCache, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyValidationCacheEXT);
@@ -7054,6 +7352,7 @@ VKAPI_ATTR VkResult VKAPI_CALL MergeValidationCachesEXT(
     uint32_t                                    srcCacheCount,
     const VkValidationCacheEXT*                 pSrcCaches)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkMergeValidationCachesEXT>::Dispatch(encode::TraceManager::Get(), device, dstCache, srcCacheCount, pSrcCaches);
 
     VkResult result = get_device_table(device)->MergeValidationCachesEXT(device, dstCache, srcCacheCount, pSrcCaches);
@@ -7080,6 +7379,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetValidationCacheDataEXT(
     size_t*                                     pDataSize,
     void*                                       pData)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetValidationCacheDataEXT>::Dispatch(encode::TraceManager::Get(), device, validationCache, pDataSize, pData);
 
     VkResult result = get_device_table(device)->GetValidationCacheDataEXT(device, validationCache, pDataSize, pData);
@@ -7105,6 +7405,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBindShadingRateImageNV(
     VkImageView                                 imageView,
     VkImageLayout                               imageLayout)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdBindShadingRateImageNV>::Dispatch(encode::TraceManager::Get(), commandBuffer, imageView, imageLayout);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdBindShadingRateImageNV);
@@ -7127,6 +7428,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetViewportShadingRatePaletteNV(
     uint32_t                                    viewportCount,
     const VkShadingRatePaletteNV*               pShadingRatePalettes)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetViewportShadingRatePaletteNV>::Dispatch(encode::TraceManager::Get(), commandBuffer, firstViewport, viewportCount, pShadingRatePalettes);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetViewportShadingRatePaletteNV);
@@ -7150,6 +7452,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetCoarseSampleOrderNV(
     uint32_t                                    customSampleOrderCount,
     const VkCoarseSampleOrderCustomNV*          pCustomSampleOrders)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetCoarseSampleOrderNV>::Dispatch(encode::TraceManager::Get(), commandBuffer, sampleOrderType, customSampleOrderCount, pCustomSampleOrders);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetCoarseSampleOrderNV);
@@ -7173,6 +7476,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateAccelerationStructureNVX(
     const VkAllocationCallbacks*                pAllocator,
     VkAccelerationStructureNVX*                 pAccelerationStructure)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateAccelerationStructureNVX>::Dispatch(encode::TraceManager::Get(), device, pCreateInfo, pAllocator, pAccelerationStructure);
 
     VkResult result = get_device_table(device)->CreateAccelerationStructureNVX(device, pCreateInfo, pAllocator, pAccelerationStructure);
@@ -7198,6 +7502,7 @@ VKAPI_ATTR void VKAPI_CALL DestroyAccelerationStructureNVX(
     VkAccelerationStructureNVX                  accelerationStructure,
     const VkAllocationCallbacks*                pAllocator)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkDestroyAccelerationStructureNVX>::Dispatch(encode::TraceManager::Get(), device, accelerationStructure, pAllocator);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkDestroyAccelerationStructureNVX);
@@ -7219,6 +7524,7 @@ VKAPI_ATTR void VKAPI_CALL GetAccelerationStructureMemoryRequirementsNVX(
     const VkAccelerationStructureMemoryRequirementsInfoNVX* pInfo,
     VkMemoryRequirements2KHR*                   pMemoryRequirements)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetAccelerationStructureMemoryRequirementsNVX>::Dispatch(encode::TraceManager::Get(), device, pInfo, pMemoryRequirements);
 
     get_device_table(device)->GetAccelerationStructureMemoryRequirementsNVX(device, pInfo, pMemoryRequirements);
@@ -7240,6 +7546,7 @@ VKAPI_ATTR void VKAPI_CALL GetAccelerationStructureScratchMemoryRequirementsNVX(
     const VkAccelerationStructureMemoryRequirementsInfoNVX* pInfo,
     VkMemoryRequirements2KHR*                   pMemoryRequirements)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetAccelerationStructureScratchMemoryRequirementsNVX>::Dispatch(encode::TraceManager::Get(), device, pInfo, pMemoryRequirements);
 
     get_device_table(device)->GetAccelerationStructureScratchMemoryRequirementsNVX(device, pInfo, pMemoryRequirements);
@@ -7261,6 +7568,7 @@ VKAPI_ATTR VkResult VKAPI_CALL BindAccelerationStructureMemoryNVX(
     uint32_t                                    bindInfoCount,
     const VkBindAccelerationStructureMemoryInfoNVX* pBindInfos)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkBindAccelerationStructureMemoryNVX>::Dispatch(encode::TraceManager::Get(), device, bindInfoCount, pBindInfos);
 
     VkResult result = get_device_table(device)->BindAccelerationStructureMemoryNVX(device, bindInfoCount, pBindInfos);
@@ -7295,6 +7603,7 @@ VKAPI_ATTR void VKAPI_CALL CmdBuildAccelerationStructureNVX(
     VkBuffer                                    scratch,
     VkDeviceSize                                scratchOffset)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdBuildAccelerationStructureNVX>::Dispatch(encode::TraceManager::Get(), commandBuffer, type, instanceCount, instanceData, instanceOffset, geometryCount, pGeometries, flags, update, dst, src, scratch, scratchOffset);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdBuildAccelerationStructureNVX);
@@ -7327,6 +7636,7 @@ VKAPI_ATTR void VKAPI_CALL CmdCopyAccelerationStructureNVX(
     VkAccelerationStructureNVX                  src,
     VkCopyAccelerationStructureModeNVX          mode)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdCopyAccelerationStructureNVX>::Dispatch(encode::TraceManager::Get(), commandBuffer, dst, src, mode);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdCopyAccelerationStructureNVX);
@@ -7357,6 +7667,7 @@ VKAPI_ATTR void VKAPI_CALL CmdTraceRaysNVX(
     uint32_t                                    width,
     uint32_t                                    height)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdTraceRaysNVX>::Dispatch(encode::TraceManager::Get(), commandBuffer, raygenShaderBindingTableBuffer, raygenShaderBindingOffset, missShaderBindingTableBuffer, missShaderBindingOffset, missShaderBindingStride, hitShaderBindingTableBuffer, hitShaderBindingOffset, hitShaderBindingStride, width, height);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdTraceRaysNVX);
@@ -7389,6 +7700,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateRaytracingPipelinesNVX(
     const VkAllocationCallbacks*                pAllocator,
     VkPipeline*                                 pPipelines)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateRaytracingPipelinesNVX>::Dispatch(encode::TraceManager::Get(), device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
 
     VkResult result = get_device_table(device)->CreateRaytracingPipelinesNVX(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
@@ -7419,6 +7731,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetRaytracingShaderHandlesNVX(
     size_t                                      dataSize,
     void*                                       pData)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetRaytracingShaderHandlesNVX>::Dispatch(encode::TraceManager::Get(), device, pipeline, firstGroup, groupCount, dataSize, pData);
 
     VkResult result = get_device_table(device)->GetRaytracingShaderHandlesNVX(device, pipeline, firstGroup, groupCount, dataSize, pData);
@@ -7447,6 +7760,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetAccelerationStructureHandleNVX(
     size_t                                      dataSize,
     void*                                       pData)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetAccelerationStructureHandleNVX>::Dispatch(encode::TraceManager::Get(), device, accelerationStructure, dataSize, pData);
 
     VkResult result = get_device_table(device)->GetAccelerationStructureHandleNVX(device, accelerationStructure, dataSize, pData);
@@ -7474,6 +7788,7 @@ VKAPI_ATTR void VKAPI_CALL CmdWriteAccelerationStructurePropertiesNVX(
     VkQueryPool                                 queryPool,
     uint32_t                                    query)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdWriteAccelerationStructurePropertiesNVX>::Dispatch(encode::TraceManager::Get(), commandBuffer, accelerationStructure, queryType, queryPool, query);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdWriteAccelerationStructurePropertiesNVX);
@@ -7497,6 +7812,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CompileDeferredNVX(
     VkPipeline                                  pipeline,
     uint32_t                                    shader)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCompileDeferredNVX>::Dispatch(encode::TraceManager::Get(), device, pipeline, shader);
 
     VkResult result = get_device_table(device)->CompileDeferredNVX(device, pipeline, shader);
@@ -7522,6 +7838,7 @@ VKAPI_ATTR VkResult VKAPI_CALL GetMemoryHostPointerPropertiesEXT(
     const void*                                 pHostPointer,
     VkMemoryHostPointerPropertiesEXT*           pMemoryHostPointerProperties)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetMemoryHostPointerPropertiesEXT>::Dispatch(encode::TraceManager::Get(), device, handleType, pHostPointer, pMemoryHostPointerProperties);
 
     VkResult result = get_device_table(device)->GetMemoryHostPointerPropertiesEXT(device, handleType, pHostPointer, pMemoryHostPointerProperties);
@@ -7549,6 +7866,7 @@ VKAPI_ATTR void VKAPI_CALL CmdWriteBufferMarkerAMD(
     VkDeviceSize                                dstOffset,
     uint32_t                                    marker)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdWriteBufferMarkerAMD>::Dispatch(encode::TraceManager::Get(), commandBuffer, pipelineStage, dstBuffer, dstOffset, marker);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdWriteBufferMarkerAMD);
@@ -7572,6 +7890,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDrawMeshTasksNV(
     uint32_t                                    taskCount,
     uint32_t                                    firstTask)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDrawMeshTasksNV>::Dispatch(encode::TraceManager::Get(), commandBuffer, taskCount, firstTask);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDrawMeshTasksNV);
@@ -7595,6 +7914,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDrawMeshTasksIndirectNV(
     uint32_t                                    drawCount,
     uint32_t                                    stride)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDrawMeshTasksIndirectNV>::Dispatch(encode::TraceManager::Get(), commandBuffer, buffer, offset, drawCount, stride);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDrawMeshTasksIndirectNV);
@@ -7622,6 +7942,7 @@ VKAPI_ATTR void VKAPI_CALL CmdDrawMeshTasksIndirectCountNV(
     uint32_t                                    maxDrawCount,
     uint32_t                                    stride)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdDrawMeshTasksIndirectCountNV>::Dispatch(encode::TraceManager::Get(), commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdDrawMeshTasksIndirectCountNV);
@@ -7648,6 +7969,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetExclusiveScissorNV(
     uint32_t                                    exclusiveScissorCount,
     const VkRect2D*                             pExclusiveScissors)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetExclusiveScissorNV>::Dispatch(encode::TraceManager::Get(), commandBuffer, firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissors);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetExclusiveScissorNV);
@@ -7669,6 +7991,7 @@ VKAPI_ATTR void VKAPI_CALL CmdSetCheckpointNV(
     VkCommandBuffer                             commandBuffer,
     const void*                                 pCheckpointMarker)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCmdSetCheckpointNV>::Dispatch(encode::TraceManager::Get(), commandBuffer, pCheckpointMarker);
 
     auto encoder = encode::TraceManager::Get()->BeginApiCallTrace(format::ApiCallId::ApiCall_vkCmdSetCheckpointNV);
@@ -7689,6 +8012,7 @@ VKAPI_ATTR void VKAPI_CALL GetQueueCheckpointDataNV(
     uint32_t*                                   pCheckpointDataCount,
     VkCheckpointDataNV*                         pCheckpointData)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkGetQueueCheckpointDataNV>::Dispatch(encode::TraceManager::Get(), queue, pCheckpointDataCount, pCheckpointData);
 
     get_device_table(queue)->GetQueueCheckpointDataNV(queue, pCheckpointDataCount, pCheckpointData);
@@ -7711,6 +8035,7 @@ VKAPI_ATTR VkResult VKAPI_CALL CreateImagePipeSurfaceFUCHSIA(
     const VkAllocationCallbacks*                pAllocator,
     VkSurfaceKHR*                               pSurface)
 {
+    GFXRECON_LOG_COMMAND()
     encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_vkCreateImagePipeSurfaceFUCHSIA>::Dispatch(encode::TraceManager::Get(), instance, pCreateInfo, pAllocator, pSurface);
 
     VkResult result = get_instance_table(instance)->CreateImagePipeSurfaceFUCHSIA(instance, pCreateInfo, pAllocator, pSurface);

@@ -245,7 +245,7 @@ GFXRECON_END_NAMESPACE(gfxrecon)
 
 #ifdef GFXRECON_ENABLE_COMMAND_TRACE
 
-#define GFXRECON_LOG_COMMAND() gfxrecon::util::CommandTrace command_trace(__FILE__, __FUNCTION__)
+#define GFXRECON_LOG_COMMAND() gfxrecon::util::CommandTrace command_trace(__FILE__, __FUNCTION__);
 
 #else
 

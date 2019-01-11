@@ -57,6 +57,7 @@ class VulkanApiCallEncodersBodyGenerator(BaseGenerator):
         write('#include "format/api_call_id.h"', file=self.outFile)
         write('#include "layer/trace_layer.h"', file=self.outFile)
         write('#include "util/defines.h"', file=self.outFile)
+        write('#include "util/logging.h"', file=self.outFile)
         self.newline()
         write('#include "vulkan/vulkan.h"', file=self.outFile)
         self.newline()
@@ -145,7 +146,7 @@ class VulkanApiCallEncodersBodyGenerator(BaseGenerator):
         argList = self.makeArgList(values)
 
         body = ''
-
+        body += indent + 'GFXRECON_LOG_COMMAND()\n'
         body += indent + 'encode::CustomEncoderPreCall<format::ApiCallId::ApiCall_{}>::Dispatch(encode::TraceManager::Get(), {});\n'.format(name, argList)
 
         if not encodeAfter:
