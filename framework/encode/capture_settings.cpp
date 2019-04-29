@@ -29,38 +29,40 @@ GFXRECON_BEGIN_NAMESPACE(encode)
 
 // Available settings (upper and lower-case)
 // clang-format off
-#define CAPTURE_COMPRESSION_TYPE_LOWER      "capture_compression_type"
-#define CAPTURE_COMPRESSION_TYPE_UPPER      "CAPTURE_COMPRESSION_TYPE"
-#define CAPTURE_FILE_NAME_LOWER             "capture_file"
-#define CAPTURE_FILE_NAME_UPPER             "CAPTURE_FILE"
-#define CAPTURE_FILE_USE_TIMESTAMP_LOWER    "capture_file_timestamp"
-#define CAPTURE_FILE_USE_TIMESTAMP_UPPER    "CAPTURE_FILE_TIMESTAMP"
-#define CAPTURE_FILE_FORCE_FLUSH_LOWER      "capture_file_force_flush"
-#define CAPTURE_FILE_FORCE_FLUSH_UPPER      "CAPTURE_FILE_FORCE_FLUSH"
-#define LOG_ALLOW_INDENTS_LOWER             "log_allow_indents"
-#define LOG_ALLOW_INDENTS_UPPER             "LOG_ALLOW_INDENTS"
-#define LOG_BREAK_ON_ERROR_LOWER            "log_break_on_error"
-#define LOG_BREAK_ON_ERROR_UPPER            "LOG_BREAK_ON_ERROR"
-#define LOG_ERRORS_TO_STDERR_LOWER          "log_errors_to_stderr"
-#define LOG_ERRORS_TO_STDERR_UPPER          "LOG_ERRORS_TO_STDERR"
-#define LOG_DETAILED_LOWER                  "log_detailed"
-#define LOG_DETAILED_UPPER                  "LOG_DETAILED"
-#define LOG_FILE_NAME_LOWER                 "log_file"
-#define LOG_FILE_NAME_UPPER                 "LOG_FILE"
-#define LOG_FILE_CREATE_NEW_LOWER           "log_file_create_new"
-#define LOG_FILE_CREATE_NEW_UPPER           "LOG_FILE_CREATE_NEW"
-#define LOG_FILE_FLUSH_AFTER_WRITE_LOWER    "log_file_flush_after_write"
-#define LOG_FILE_FLUSH_AFTER_WRITE_UPPER    "LOG_FILE_FLUSH_AFTER_WRITE"
-#define LOG_FILE_KEEP_OPEN_LOWER            "log_file_keep_open"
-#define LOG_FILE_KEEP_OPEN_UPPER            "LOG_FILE_KEEP_OPEN"
-#define LOG_LEVEL_LOWER                     "log_level"
-#define LOG_LEVEL_UPPER                     "LOG_LEVEL"
-#define LOG_OUTPUT_TO_CONSOLE_LOWER         "log_output_to_console"
-#define LOG_OUTPUT_TO_CONSOLE_UPPER         "LOG_OUTPUT_TO_CONSOLE"
-#define LOG_OUTPUT_TO_OS_DEBUG_STRING_LOWER "log_output_to_os_debug_string"
-#define LOG_OUTPUT_TO_OS_DEBUG_STRING_UPPER "LOG_OUTPUT_TO_OS_DEBUG_STRING"
-#define MEMORY_TRACKING_MODE_LOWER          "memory_tracking_mode"
-#define MEMORY_TRACKING_MODE_UPPER          "MEMORY_TRACKING_MODE"
+#define CAPTURE_COMPRESSION_TYPE_LOWER          "capture_compression_type"
+#define CAPTURE_COMPRESSION_TYPE_UPPER          "CAPTURE_COMPRESSION_TYPE"
+#define CAPTURE_FILE_NAME_LOWER                 "capture_file"
+#define CAPTURE_FILE_NAME_UPPER                 "CAPTURE_FILE"
+#define CAPTURE_FILE_NAME_USE_TIMESTAMP_LOWER   "capture_file_name_timestamp"
+#define CAPTURE_FILE_NAME_USE_TIMESTAMP_UPPER   "CAPTURE_FILE_NAME_TIMESTAMP"
+#define CAPTURE_PACKET_USE_TIMESTAMPS_LOWER     "capture_packet_timestamps"
+#define CAPTURE_PACKET_USE_TIMESTAMPS_UPPER     "CAPTURE_PACKET_TIMESTAMPS"
+#define CAPTURE_FILE_FORCE_FLUSH_LOWER          "capture_file_force_flush"
+#define CAPTURE_FILE_FORCE_FLUSH_UPPER          "CAPTURE_FILE_FORCE_FLUSH"
+#define LOG_ALLOW_INDENTS_LOWER                 "log_allow_indents"
+#define LOG_ALLOW_INDENTS_UPPER                 "LOG_ALLOW_INDENTS"
+#define LOG_BREAK_ON_ERROR_LOWER                "log_break_on_error"
+#define LOG_BREAK_ON_ERROR_UPPER                "LOG_BREAK_ON_ERROR"
+#define LOG_ERRORS_TO_STDERR_LOWER              "log_errors_to_stderr"
+#define LOG_ERRORS_TO_STDERR_UPPER              "LOG_ERRORS_TO_STDERR"
+#define LOG_DETAILED_LOWER                      "log_detailed"
+#define LOG_DETAILED_UPPER                      "LOG_DETAILED"
+#define LOG_FILE_NAME_LOWER                     "log_file"
+#define LOG_FILE_NAME_UPPER                     "LOG_FILE"
+#define LOG_FILE_CREATE_NEW_LOWER               "log_file_create_new"
+#define LOG_FILE_CREATE_NEW_UPPER               "LOG_FILE_CREATE_NEW"
+#define LOG_FILE_FLUSH_AFTER_WRITE_LOWER        "log_file_flush_after_write"
+#define LOG_FILE_FLUSH_AFTER_WRITE_UPPER        "LOG_FILE_FLUSH_AFTER_WRITE"
+#define LOG_FILE_KEEP_OPEN_LOWER                "log_file_keep_open"
+#define LOG_FILE_KEEP_OPEN_UPPER                "LOG_FILE_KEEP_OPEN"
+#define LOG_LEVEL_LOWER                         "log_level"
+#define LOG_LEVEL_UPPER                         "LOG_LEVEL"
+#define LOG_OUTPUT_TO_CONSOLE_LOWER             "log_output_to_console"
+#define LOG_OUTPUT_TO_CONSOLE_UPPER             "LOG_OUTPUT_TO_CONSOLE"
+#define LOG_OUTPUT_TO_OS_DEBUG_STRING_LOWER     "log_output_to_os_debug_string"
+#define LOG_OUTPUT_TO_OS_DEBUG_STRING_UPPER     "LOG_OUTPUT_TO_OS_DEBUG_STRING"
+#define MEMORY_TRACKING_MODE_LOWER              "memory_tracking_mode"
+#define MEMORY_TRACKING_MODE_UPPER              "MEMORY_TRACKING_MODE"
 // clang-format on
 
 #if defined(__ANDROID__)
@@ -68,22 +70,23 @@ const char CaptureSettings::kDefaultCaptureFileName[] = "/sdcard/gfxrecon_captur
 
 // Android Properties
 #define GFXRECON_ENV_VAR_PREFIX "debug.gfxrecon."
-const char kCaptureCompressionTypeEnvVar[]   = GFXRECON_ENV_VAR_PREFIX CAPTURE_COMPRESSION_TYPE_LOWER;
-const char kCaptureFileForceFlushEnvVar[]    = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_FORCE_FLUSH_LOWER;
-const char kCaptureFileNameEnvVar[]          = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_NAME_LOWER;
-const char kCaptureFileUseTimestampEnvVar[]  = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_USE_TIMESTAMP_LOWER;
-const char kLogAllowIndentsEnvVar[]          = GFXRECON_ENV_VAR_PREFIX LOG_ALLOW_INDENTS_LOWER;
-const char kLogBreakOnErrorEnvVar[]          = GFXRECON_ENV_VAR_PREFIX LOG_BREAK_ON_ERROR_LOWER;
-const char kLogDetailedEnvVar[]              = GFXRECON_ENV_VAR_PREFIX LOG_DETAILED_LOWER;
-const char kLogErrorsToStderrEnvVar[]        = GFXRECON_ENV_VAR_PREFIX LOG_ERRORS_TO_STDERR_LOWER;
-const char kLogFileNameEnvVar[]              = GFXRECON_ENV_VAR_PREFIX LOG_FILE_NAME_LOWER;
-const char kLogFileCreateNewEnvVar[]         = GFXRECON_ENV_VAR_PREFIX LOG_FILE_CREATE_NEW_LOWER;
-const char kLogFileFlushAfterWriteEnvVar[]   = GFXRECON_ENV_VAR_PREFIX LOG_FILE_FLUSH_AFTER_WRITE_LOWER;
-const char kLogFileKeepFileOpenEnvVar[]      = GFXRECON_ENV_VAR_PREFIX LOG_FILE_KEEP_OPEN_LOWER;
-const char kLogLevelEnvVar[]                 = GFXRECON_ENV_VAR_PREFIX LOG_LEVEL_LOWER;
-const char kLogOutputToConsoleEnvVar[]       = GFXRECON_ENV_VAR_PREFIX LOG_OUTPUT_TO_CONSOLE_LOWER;
-const char kLogOutputToOsDebugStringEnvVar[] = GFXRECON_ENV_VAR_PREFIX LOG_OUTPUT_TO_OS_DEBUG_STRING_LOWER;
-const char kMemoryTrackingModeEnvVar[]       = GFXRECON_ENV_VAR_PREFIX MEMORY_TRACKING_MODE_LOWER;
+const char kCaptureCompressionTypeEnvVar[]      = GFXRECON_ENV_VAR_PREFIX CAPTURE_COMPRESSION_TYPE_LOWER;
+const char kCaptureFileForceFlushEnvVar[]       = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_FORCE_FLUSH_LOWER;
+const char kCaptureFileNameEnvVar[]             = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_NAME_LOWER;
+const char kCaptureFileNameUseTimestampEnvVar[] = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_NAME_USE_TIMESTAMP_LOWER;
+const char kCapturePacketUseTimestampsEnvVar[]  = GFXRECON_ENV_VAR_PREFIX CAPTURE_PACKET_USE_TIMESTAMPS_LOWER;
+const char kLogAllowIndentsEnvVar[]             = GFXRECON_ENV_VAR_PREFIX LOG_ALLOW_INDENTS_LOWER;
+const char kLogBreakOnErrorEnvVar[]             = GFXRECON_ENV_VAR_PREFIX LOG_BREAK_ON_ERROR_LOWER;
+const char kLogDetailedEnvVar[]                 = GFXRECON_ENV_VAR_PREFIX LOG_DETAILED_LOWER;
+const char kLogErrorsToStderrEnvVar[]           = GFXRECON_ENV_VAR_PREFIX LOG_ERRORS_TO_STDERR_LOWER;
+const char kLogFileNameEnvVar[]                 = GFXRECON_ENV_VAR_PREFIX LOG_FILE_NAME_LOWER;
+const char kLogFileCreateNewEnvVar[]            = GFXRECON_ENV_VAR_PREFIX LOG_FILE_CREATE_NEW_LOWER;
+const char kLogFileFlushAfterWriteEnvVar[]      = GFXRECON_ENV_VAR_PREFIX LOG_FILE_FLUSH_AFTER_WRITE_LOWER;
+const char kLogFileKeepFileOpenEnvVar[]         = GFXRECON_ENV_VAR_PREFIX LOG_FILE_KEEP_OPEN_LOWER;
+const char kLogLevelEnvVar[]                    = GFXRECON_ENV_VAR_PREFIX LOG_LEVEL_LOWER;
+const char kLogOutputToConsoleEnvVar[]          = GFXRECON_ENV_VAR_PREFIX LOG_OUTPUT_TO_CONSOLE_LOWER;
+const char kLogOutputToOsDebugStringEnvVar[]    = GFXRECON_ENV_VAR_PREFIX LOG_OUTPUT_TO_OS_DEBUG_STRING_LOWER;
+const char kMemoryTrackingModeEnvVar[]          = GFXRECON_ENV_VAR_PREFIX MEMORY_TRACKING_MODE_LOWER;
 #else
 const char CaptureSettings::kDefaultCaptureFileName[] = "gfxrecon_capture" GFXRECON_FILE_EXTENSION;
 
@@ -92,7 +95,8 @@ const char CaptureSettings::kDefaultCaptureFileName[] = "gfxrecon_capture" GFXRE
 const char kCaptureCompressionTypeEnvVar[]           = GFXRECON_ENV_VAR_PREFIX CAPTURE_COMPRESSION_TYPE_UPPER;
 const char kCaptureFileForceFlushEnvVar[]            = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_FORCE_FLUSH_UPPER;
 const char kCaptureFileNameEnvVar[]                  = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_NAME_UPPER;
-const char kCaptureFileUseTimestampEnvVar[]          = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_USE_TIMESTAMP_UPPER;
+const char kCaptureFileNameUseTimestampEnvVar[]      = GFXRECON_ENV_VAR_PREFIX CAPTURE_FILE_NAME_USE_TIMESTAMP_UPPER;
+const char kCapturePacketUseTimestampsEnvVar[]       = GFXRECON_ENV_VAR_PREFIX CAPTURE_PACKET_USE_TIMESTAMPS_UPPER;
 const char kLogAllowIndentsEnvVar[]                  = GFXRECON_ENV_VAR_PREFIX LOG_ALLOW_INDENTS_UPPER;
 const char kLogBreakOnErrorEnvVar[]                  = GFXRECON_ENV_VAR_PREFIX LOG_BREAK_ON_ERROR_UPPER;
 const char kLogDetailedEnvVar[]                      = GFXRECON_ENV_VAR_PREFIX LOG_DETAILED_UPPER;
@@ -110,22 +114,23 @@ const char kMemoryTrackingModeEnvVar[]               = GFXRECON_ENV_VAR_PREFIX M
 // Capture options for settings file.
 // clang-format off
 const char kSettingsFilter[] = "lunarg_gfxrecon.";
-const std::string kOptionKeyCaptureCompressionType   = std::string(kSettingsFilter) + std::string(CAPTURE_COMPRESSION_TYPE_LOWER);
-const std::string kOptionKeyCaptureFile              = std::string(kSettingsFilter) + std::string(CAPTURE_FILE_NAME_LOWER);
-const std::string kOptionKeyCaptureFileForceFlush    = std::string(kSettingsFilter) + std::string(CAPTURE_FILE_FORCE_FLUSH_LOWER);
-const std::string kOptionKeyCaptureFileUseTimestamp  = std::string(kSettingsFilter) + std::string(CAPTURE_FILE_USE_TIMESTAMP_LOWER);
-const std::string kOptionKeyLogAllowIndents          = std::string(kSettingsFilter) + std::string(LOG_ALLOW_INDENTS_LOWER);
-const std::string kOptionKeyLogBreakOnError          = std::string(kSettingsFilter) + std::string(LOG_BREAK_ON_ERROR_LOWER);
-const std::string kOptionKeyLogDetailed              = std::string(kSettingsFilter) + std::string(LOG_DETAILED_LOWER);
-const std::string kOptionKeyLogErrorsToStderr        = std::string(kSettingsFilter) + std::string(LOG_ERRORS_TO_STDERR_LOWER);
-const std::string kOptionKeyLogFile                  = std::string(kSettingsFilter) + std::string(LOG_FILE_NAME_LOWER);
-const std::string kOptionKeyLogFileCreateNew         = std::string(kSettingsFilter) + std::string(LOG_FILE_CREATE_NEW_LOWER);
-const std::string kOptionKeyLogFileFlushAfterWrite   = std::string(kSettingsFilter) + std::string(LOG_FILE_FLUSH_AFTER_WRITE_LOWER);
-const std::string kOptionKeyLogFileKeepOpen          = std::string(kSettingsFilter) + std::string(LOG_FILE_KEEP_OPEN_LOWER);
-const std::string kOptionKeyLogLevel                 = std::string(kSettingsFilter) + std::string(LOG_LEVEL_LOWER);
-const std::string kOptionKeyLogOutputToConsole       = std::string(kSettingsFilter) + std::string(LOG_OUTPUT_TO_CONSOLE_LOWER);
-const std::string kOptionKeyLogOutputToOsDebugString = std::string(kSettingsFilter) + std::string(LOG_OUTPUT_TO_OS_DEBUG_STRING_LOWER);
-const std::string kOptionKeyMemoryTrackingMode       = std::string(kSettingsFilter) + std::string(MEMORY_TRACKING_MODE_LOWER);
+const std::string kOptionKeyCaptureCompressionType      = std::string(kSettingsFilter) + std::string(CAPTURE_COMPRESSION_TYPE_LOWER);
+const std::string kOptionKeyCaptureFile                 = std::string(kSettingsFilter) + std::string(CAPTURE_FILE_NAME_LOWER);
+const std::string kOptionKeyCaptureFileForceFlush       = std::string(kSettingsFilter) + std::string(CAPTURE_FILE_FORCE_FLUSH_LOWER);
+const std::string kOptionKeyCaptureFileNameUseTimestamp = std::string(kSettingsFilter) + std::string(CAPTURE_FILE_NAME_USE_TIMESTAMP_LOWER);
+const std::string kOptionKeyCapturePacketTimestamps     = std::string(kSettingsFilter) + std::string(CAPTURE_PACKET_USE_TIMESTAMPS_LOWER);
+const std::string kOptionKeyLogAllowIndents             = std::string(kSettingsFilter) + std::string(LOG_ALLOW_INDENTS_LOWER);
+const std::string kOptionKeyLogBreakOnError             = std::string(kSettingsFilter) + std::string(LOG_BREAK_ON_ERROR_LOWER);
+const std::string kOptionKeyLogDetailed                 = std::string(kSettingsFilter) + std::string(LOG_DETAILED_LOWER);
+const std::string kOptionKeyLogErrorsToStderr           = std::string(kSettingsFilter) + std::string(LOG_ERRORS_TO_STDERR_LOWER);
+const std::string kOptionKeyLogFile                     = std::string(kSettingsFilter) + std::string(LOG_FILE_NAME_LOWER);
+const std::string kOptionKeyLogFileCreateNew            = std::string(kSettingsFilter) + std::string(LOG_FILE_CREATE_NEW_LOWER);
+const std::string kOptionKeyLogFileFlushAfterWrite      = std::string(kSettingsFilter) + std::string(LOG_FILE_FLUSH_AFTER_WRITE_LOWER);
+const std::string kOptionKeyLogFileKeepOpen             = std::string(kSettingsFilter) + std::string(LOG_FILE_KEEP_OPEN_LOWER);
+const std::string kOptionKeyLogLevel                    = std::string(kSettingsFilter) + std::string(LOG_LEVEL_LOWER);
+const std::string kOptionKeyLogOutputToConsole          = std::string(kSettingsFilter) + std::string(LOG_OUTPUT_TO_CONSOLE_LOWER);
+const std::string kOptionKeyLogOutputToOsDebugString    = std::string(kSettingsFilter) + std::string(LOG_OUTPUT_TO_OS_DEBUG_STRING_LOWER);
+const std::string kOptionKeyMemoryTrackingMode          = std::string(kSettingsFilter) + std::string(MEMORY_TRACKING_MODE_LOWER);
 // clang-format on
 
 #if defined(ENABLE_LZ4_COMPRESSION)
@@ -133,6 +138,8 @@ const format::CompressionType kDefaultCompressionType = format::CompressionType:
 #else
 const format::CompressionType kDefaultCompressionType = format::CompressionType::kNone;
 #endif
+
+const bool kDefaultCapturePacketTimestamps = false;
 
 CaptureSettings::CaptureSettings() {}
 
@@ -181,7 +188,8 @@ void CaptureSettings::LoadOptionsEnvVar(OptionsMap* options)
 
     // Capture file environment variables
     LoadSingleOptionEnvVar(options, kCaptureFileNameEnvVar, kOptionKeyCaptureFile);
-    LoadSingleOptionEnvVar(options, kCaptureFileUseTimestampEnvVar, kOptionKeyCaptureFileUseTimestamp);
+    LoadSingleOptionEnvVar(options, kCaptureFileNameUseTimestampEnvVar, kOptionKeyCaptureFileNameUseTimestamp);
+    LoadSingleOptionEnvVar(options, kCapturePacketUseTimestampsEnvVar, kOptionKeyCapturePacketTimestamps);
     LoadSingleOptionEnvVar(options, kCaptureCompressionTypeEnvVar, kOptionKeyCaptureCompressionType);
     LoadSingleOptionEnvVar(options, kCaptureFileForceFlushEnvVar, kOptionKeyCaptureFileForceFlush);
     // Logging environment variables
@@ -232,8 +240,10 @@ void CaptureSettings::ProcessOptions(OptionsMap* options, CaptureSettings* setti
         ParseCompressionTypeString(FindOption(options, kOptionKeyCaptureCompressionType), kDefaultCompressionType);
     settings->trace_settings_.capture_file =
         FindOption(options, kOptionKeyCaptureFile, settings->trace_settings_.capture_file);
-    settings->trace_settings_.time_stamp_file = ParseBoolString(FindOption(options, kOptionKeyCaptureFileUseTimestamp),
-                                                                settings->trace_settings_.time_stamp_file);
+    settings->trace_settings_.time_stamp_file_name = ParseBoolString(
+        FindOption(options, kOptionKeyCaptureFileNameUseTimestamp), settings->trace_settings_.time_stamp_file_name);
+    settings->trace_settings_.capture_file_options.packet_timestamps =
+        ParseBoolString(FindOption(options, kOptionKeyCapturePacketTimestamps), kDefaultCapturePacketTimestamps);
     settings->trace_settings_.force_flush =
         ParseBoolString(FindOption(options, kOptionKeyCaptureFileForceFlush), settings->trace_settings_.force_flush);
     settings->trace_settings_.memory_tracking_mode = ParseMemoryTrackingModeString(

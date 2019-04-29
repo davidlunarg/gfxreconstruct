@@ -101,7 +101,8 @@ Option | Property | Type | Description
 ------| ------------- |------|-------------
 Capture File Name | debug.gfxrecon.capture_file | STRING | Path to use when creating the capture file.  Default is: `/sdcard/gfxrecon_capture.gfxr`
 Capture File Compression Type | debug.gfxrecon.capture_compression_type | STRING | Compression format to use with the capture file.  Valid values are: `LZ4`, `ZLIB`, and `NONE`. Default is: `LZ4`
-Capture File Timestamp | debug.gfxrecon.capture_file_timestamp | BOOL | Add a timestamp to the capture file as described by [Timestamps](#timestamps).  Default is: `true`
+Capture Filename Timestamp | debug.gfxrecon.capture_filename_timestamp | BOOL | Add a timestamp to the capture file name as described by [Filename Timestamp](#filename-timestamp).  Default is: `true`
+Packet Timestamps | debug.gfxrecon.capture_packet_timestamps | BOOL | Include a timestamp in each packet.  Default is: `false`
 Log Level | debug.gfxrecon.log_level | STRING | Specify the highest level message to log.  Options are: `debug`, `info`, `warning`, `error`, and `fatal`.  The specified level and all levels listed after it will be enabled for logging.  For example, choosing the `warning` level will also enable the `error` and `fatal` levels. Default is: `info`
 Log Output To Console | debug.gfxrecon.log_output_to_console | BOOL | Log messages will be written to Logcat. Default is: `true`
 Log File | debug.gfxrecon.log_file | STRING | When set, log messages will be written to a file at the specified path. Default is: Empty string (file logging disabled).
@@ -122,9 +123,9 @@ If multiple instances are active concurrently, only one capture file will be
 created. If multiple instances are active consecutively (i.e. an instance is
 created and destroyed before the next instance is created), the creation of
 each instance will generate a new file. For applications that create multiple
-instances consecutively, it will be necessary to enable capture file timestamps
-to prevent each new instance from overwriting the file created by the previous
-instance.
+instances consecutively, it will be necessary to enable capture file name
+timestamps to prevent each new instance from overwriting the file created by
+the previous instance.
 
 If the layer fails to open the capture file, it will make the call to
 `vkCreateInstance` fail, returning `VK_ERROR_INITIALIZATION_FAILED`.
@@ -134,8 +135,8 @@ The capture file's save location can be specified by setting the
 `debug.gfxrecon.capture_file` system property, described above in
 the [Layer Options](#layer-options) section.
 
-### Timestamps
-When capture file timestamps are enabled, a timestamp with an
+### Filename Timestamp
+When capture filename timestamp is enabled, a timestamp with an
 [ISO 8601-based](https://en.wikipedia.org/wiki/ISO_8601)
 format will be added to the name of every file created by the layer. The
 timestamp is generated when the capture file is created by the layer's
