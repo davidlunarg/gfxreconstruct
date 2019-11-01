@@ -16,9 +16,6 @@
 # limitations under the License.
 
 # TODO:
-#    Change const indentSize to a configurable variable
-#    Change const noAddr to a configurable variable
-#    Change const printShaderCode to a configurable variable
 #    Break long statements into multiple lines - both in this file and in generated code
 #    Search for C casts that can be changed to C++ casts
 #    Visit all % occurences and make sure they are correct
@@ -27,9 +24,9 @@
 #    Consistent use of space before/after + in string concat expressions
 #    Reduce complexity of functions that gen code for args and structures
 #    Address size of print conversions for 32 and 64 bit
-#    Compare this output vs apidump to verify correctness
 #    Some enumToString_* funcs return only UNKNOWN, but they should return more? (i.e. enumToString_VkCommandBufferResetFlagBits)
-#      This could be because the vk header is and older version.
+#      This could be because the vk header is an older version.
+#    Run output file through clang-format, then modify this script to generate exactly that code
 
 import os,re,sys
 from base_generator import *
@@ -144,8 +141,9 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.newline()
 
         # Generate function to convert a pointer to a scaler value to a string
-        # TODO: Would like to remove all C casts in this func, but some values of type T
+        # We use C casts in this func because but some values of type T
         # for which this func is generated can't seem to be able to be converted to scalars
+        # using C++ casts.
         self.newline()
         self.wc('// Function to convert a pointer to a scalar value to a string')
         self.wc('template <typename T> void valueToString(std::string &rString, T value, bool isHandleAddr)')
@@ -182,9 +180,14 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         # Generate function to convert a C string to a quoted string
         self.wc('void stringToQuotedString(std::string &rString, const char *s)')
         self.wc('{')
-        self.wc('   rString += "\\\"";')
-        self.wc('   rString += s;')
-        self.wc('   rString += "\\\"";')
+        self.wc('   if (s)')
+        self.wc('   {')
+        self.wc('       rString += "\\\"";')
+        self.wc('       rString += s;')
+        self.wc('       rString += "\\\"";')
+        self.wc('    } else {')
+        self.wc('       rString += "NULL";')
+        self.wc('    }')
         self.wc('}')
         self.newline()
 
@@ -424,7 +427,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     else:
                         self.wc('    rString += "'+member.arrayLength+'";')
                     self.wc('    rString += "] = ";')
-                    self.wc('    addrToString(rString, reinterpret_cast<uint64_t>(baseAddr) + offsetof(' + structName + ', ' + member.name + ')); //@@IYY')
+                    self.wc('    addrToString(rString, reinterpret_cast<uint64_t>(baseAddr) + offsetof(' + structName + ', ' + member.name + ')); //IYY')
                 else:
                     self.wc('    rString += "' + member.fullType + ' = ";  //TEQ')
                 if member.fullType == 'const char*':
@@ -453,7 +456,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                                         '", reinterpret_cast<' + member.fullType + '>(pStructIn.' + member.name + '.GetPointer()), "' + member.name +
                                           '", ' + aLength + ', false);  //CCY')
                             else:
-                                if member.baseType in self.structDict:   # TODO: check self.structDict too many times here
+                                if member.baseType in self.structDict:
                                     self.wc('        addrToString(rString, pStructIn.'+member.name+'->GetAddress()); //WUS')
                                     self.wc('        arrayOfStructsToString<Decoded_' + member.baseType + '>(rString, indent+1, ' + str(member.pointerCount) + ', "' + member.baseType +
                                           '", pStructIn.' + member.name + '->GetMetaStructPointer(), "' + member.name +
@@ -464,9 +467,8 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                                           '", reinterpret_cast<' + member.fullType + '>(pStructIn.' + member.name + '.GetPointer()), "' + member.name +
                                           '", ' + aLength + ', ' + str(self.isHandle(member.baseType)).lower() + ');  //CCQ')
                         else:
-                            #TODO: How should we handle void* arrays? For now we print nothing.
+                            # void* array:  print the address of the array
                             self.wc('        addrToString(rString, pStructIn.'+member.name+'.GetAddress()); //AHW')
-                            self.wc('        rString += "  TODO!\\n";')
                     elif self.isStruct(member.baseType) and (member.baseType in self.structDict):
                         self.wc('        addrToString(rString, pStructIn.'+member.name+'->GetAddress()); //JHI')
                         if self.isUnion(member.baseType):
@@ -479,29 +481,23 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                         elif (member.name == "pUserData" or member.name == "handle" or member.name == "hwnd" or member.name == "surface" or member.name == "connection" or member.name == "hwnd" or
                               member.name == "hinstance" or member.name == "pHostPointer" or member.name == "pView" or member.name == "window" or member.name == "display" or member.name == "dpy" or
                               member.name == "pCheckpointMarker" or member.name == "buffer" or member.name == "hmonitor" or member.name == "pLayer"):
-                            self.wc('        addrToString(rString, pStructIn.'+member.name+'); //PWR')    # TODO:  Too many exceptions... Is this correct?
+                            self.wc('        addrToString(rString, pStructIn.'+member.name+'); //PWR')
                         else:
                             self.wc('        addrToString(rString, pStructIn.'+member.name+'->GetAddress()); //PWS')
                     self.wc('    }')
-                elif member.isArray:                                           # TODO: Compact the code below like above, so there is only one stmt with 'arrayToString' in it
-                    if (member.baseType in self.structDict):
-                        if 'Count' in member.arrayLength:  #TODO: Can the common parts of these write stmts be generated once?
-                            self.wc('    arrayOfStructsToString<Decoded_' + member.baseType + '>(rString, indent+1, ' + str(member.pointerCount) + ', "' + member.baseType +
-                                  '", pStructIn.' + member.name + '->GetMetaStructPointer(), "' + member.name +
-                                  '", pStruct->' + member.arrayLength + ', ' + str(self.isUnion(member.baseType)).lower() + ', reinterpret_cast<void*>(pStructIn.' + member.name + '->GetAddress())); //EPB')
-                        else:
-                            self.wc('    arrayOfStructsToString<Decoded_' + member.baseType + '>(rString, indent+1, ' + str(member.pointerCount) + ', "' + member.baseType +
-                                  '", pStructIn.' + member.name + '->GetMetaStructPointer(), "' + member.name +
-                                  '",' + member.arrayLength + ', ' + str(self.isUnion(member.baseType)).lower() + ', reinterpret_cast<void*>(pStructIn.' + member.name + '->GetAddress())); //ZUT')
+                elif member.isArray:
+                    if 'Count' in member.arrayLength:
+                        alength = 'pStruct->' + member.arrayLength
                     else:
-                        if 'Count' in member.arrayLength:    #TODO: Kludge to use Count
-                            self.wc('    arrayToString<' + member.baseType + '*>(rString, indent, ' + str(member.pointerCount) +', "' + member.fullType +
-                                    '", const_cast<' + member.baseType + '*>(pStruct->' + member.name + '), "' + member.name + '", pStruct->' + member.arrayLength + ', ' +
-                                    str(self.isHandle(member.baseType)).lower() + '); //JPA')
-                        else:
-                            self.wc('    arrayToString<' + member.baseType + '*>(rString, indent, ' + str(member.pointerCount) +', "' + member.fullType +
-                                    '", const_cast<' + member.baseType + '*>(pStruct->' + member.name + '), "' + member.name + '",' + member.arrayLength + ', ' +
-                                    str(self.isHandle(member.baseType)).lower() + '); //PTW')
+                        alength = member.arrayLength
+                    if (member.baseType in self.structDict):
+                        self.wc('    arrayOfStructsToString<Decoded_' + member.baseType + '>(rString, indent+1, ' + str(member.pointerCount) + ', "' + member.baseType +
+                              '", pStructIn.' + member.name + '->GetMetaStructPointer(), "' + member.name +
+                              '", ' + alength + ' , ' + str(self.isUnion(member.baseType)).lower() + ', reinterpret_cast<void*>(pStructIn.' + member.name + '->GetAddress())); //EPB')
+                    else:
+                        self.wc('    arrayToString<' + member.baseType + '*>(rString, indent, ' + str(member.pointerCount) +', "' + member.fullType +
+                                '", const_cast<' + member.baseType + '*>(pStruct->' + member.name + '), "' + member.name + '", ' + alength + ', ' +
+                                str(self.isHandle(member.baseType)).lower() + '); //JPA')
                 elif self.isStruct(member.baseType) and (member.baseType in self.structDict):
                     # Struct that is not a pointer
                     if self.isUnion(member.baseType):
@@ -523,7 +519,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     elif self.isFlags(member.baseType) and (member.baseType in self.flagsNames) and member.baseType.replace('Flags', 'FlagBits') in self.enumNames:
                         self.wc('    bitsToString_' + member.baseType + '(rString, pStruct->' + member.name + ');')
                     elif self.isFunctionPtr(member.baseType):
-                        self.wc('    rString += "TODO"; //QZS')   # TODO - Treat the same as void*??
+                        self.wc('    addrToString(rString, reinterpret_cast<uint64_t>(pStruct->'+member.name+')); //WRX')
                     elif member.baseType in ['float', 'double']:
                         self.wc('    doubleNumToString(rString, pStruct->'+member.name+');')
                     elif member.baseType in ['int', 'int32_t', 'int64_t', 'VkDeviceSize', 'VkBool32']:
@@ -664,12 +660,11 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
             bitType = value.baseType.replace('Flags', 'FlagBits')  #TODO: NEED SOMETHING LIKE THIS??
             if bitType in self.enumNames:
                 self.wc('    tmpString = "";')
-                self.wc('    bitsToString_' + value.baseType + '(tmpString, ' + value.name + ');')        # TODO: Make bitsToString a template function
+                self.wc('    bitsToString_' + value.baseType + '(tmpString, ' + value.name + ');')
                 self.wc('    fprintf(GetFile(), "%s%-32s' + value.fullType + ' = %s", indentString.c_str(), "' + value.name + ':", tmpString.c_str()); //XZA')
             else:
                 self.wc('    fprintf(GetFile(), "%s%-32s' + value.fullType + ' = %d", indentString.c_str(), "' + value.name +':", ' + value.name + '); //ZSQ')
         elif self.isFunctionPtr(value.baseType):
-            #TODO - This is encoded as a 64-bit integer containing the address of the function pointer. Verify this prints correctly.
             self.wc('    fprintf(GetFile(), "%s%-32s' + value.fullType + ' = 0x%" PRIx64 "\\n", indentString.c_str(), "' + value.name + ':", '  + value.name + '); //TRN')    # TODO: API doesn't have this case, but should be addr
         else:
             self.wc('    fprintf(GetFile(), "%s%-32s' + value.fullType + ' = ' + self.getFormatString(value.baseType) + '", indentString.c_str(), "' + value.name + ':", '  + value.name + '); //YQA')   # TODO: No need for addr on this
