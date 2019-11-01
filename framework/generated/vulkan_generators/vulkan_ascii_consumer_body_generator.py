@@ -21,12 +21,17 @@
 #    Add option to show shader code.
 #    Change const indentSize to a configurable variable
 #    Change const noAddr to a configurable variable
+#    Change const printShaderCode to a configurable variable
 #    Visit all % occurences and make sure they are correct
 #    Reorg struct print and arg print so it's easier to ready and follow
 #    Any 32/64 bit issues?
 #    Consistent use of space before/after + in string concat expressions
 #    Reduce complexity of functions that gen code for args and structures
 #    Address size of print conversions for 32 and 64 bit
+#    Compare this output vs apidump to verify correctness
+#    Printing of shader code is not correct. Printing addresses?
+#    Some enumToString_* funcs return only UNKNOWN, but they should return more? (i.e. enumToString_VkCommandBufferResetFlagBits)
+#      This could be because the vk header is and older version.
 
 import os,re,sys
 from base_generator import *
@@ -90,6 +95,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.newline()
         self.wc('const uint32_t indentSize = 4;')
         self.wc('const bool noAddr = false;')
+        self.wc('const bool printShaderCode = true;')
         self.newline()
         self.wc('GFXRECON_BEGIN_NAMESPACE(gfxrecon)')
         self.wc('GFXRECON_BEGIN_NAMESPACE(decode)')
@@ -110,10 +116,10 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.wc('    rString += decstring;')
         self.wc('}')
         self.newline()
-        self.wc('void floatNumToString(std::string &rString, float f)')
+        self.wc('void doubleNumToString(std::string &rString, double d)')
         self.wc('{')
         self.wc('    char floatstring[30];')
-        self.wc('    snprintf(floatstring, sizeof(floatstring), "%g", f);')
+        self.wc('    snprintf(floatstring, sizeof(floatstring), "%g", d);')
         self.wc('    rString += floatstring;')
         self.wc('}')
         self.newline()
@@ -143,25 +149,30 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         # TODO: Would like to remove all C casts in this func, but some values of type T
         # for which this func is generated can't seem to be able to be converted to scalars
         self.newline()
-        self.wc('// Function to convert a pointer to a scaler value to a string')
+        self.wc('// Function to convert a pointer to a scalar value to a string')
         self.wc('template <typename T> void valueToString(std::string &rString, T value, bool isHandleAddr)')
         self.wc('{')
         self.wc('    if (isHandleAddr) {')
         self.wc('        uint64_t v = *((uint64_t*)value);')
         self.wc('        addrToString(rString, v);')
-        self.wc('    } else if (std::is_same<T, float*>::value) {')
-        self.wc('        float v = *((float*)value);')
-        self.wc('        floatNumToString(rString, *((float*)value));')
-        self.wc('    } else if (std::is_same<T, int32_t*>::value) {')
+        self.wc('    } else if (std::is_same<T, float*>::value ||std::is_same<T, const float*>::value) {')
+        self.wc('        double v = *((float*)value);')
+        self.wc('        doubleNumToString(rString, v);')
+        self.wc('    } else if (std::is_same<T, double*>::value ||std::is_same<T, const double*>::value) {')
+        self.wc('        doubleNumToString(rString, *((double*)value));')
+        self.wc('    } else if (std::is_same<T, int32_t*>::value ||std::is_same<T, const int32_t*>::value) {')
         self.wc('        int32_t v = *((int32_t*)value);')
         self.wc('        signedDecNumToString(rString, v);')
-        self.wc('    } else if (std::is_same<T, int64_t*>::value) {')
+        self.wc('    } else if (std::is_same<T, uint32_t*>::value || std::is_same<T, const uint32_t*>::value) {')
+        self.wc('        uint32_t v = *((uint32_t*)value);')
+        self.wc('        unsignedDecNumToString(rString, v);')
+        self.wc('    } else if (std::is_same<T, int64_t*>::value ||std::is_same<T, const int64_t*>::value) {')
         self.wc('        int64_t v = *((int64_t*)value);')
         self.wc('        signedDecNumToString(rString, v);')
-        self.wc('    } else if (std::is_same<T, unsigned int*>::value) {')
+        self.wc('    } else if (std::is_same<T, unsigned int*>::value ||std::is_same<T, const unsigned int*>::value) {')
         self.wc('        unsigned int v = *((unsigned int *)value);')
         self.wc('        unsignedDecNumToString(rString, v);')
-        self.wc('    } else if (std::is_same<T, unsigned char*>::value) {')
+        self.wc('    } else if (std::is_same<T, unsigned char*>::value ||std::is_same<T, const unsigned char*>::value) {')
         self.wc('        unsigned char v = *((unsigned char *)value);')
         self.wc('        unsignedDecNumToString(rString, v);')
         self.wc('    } else {')        #  uint64_t
@@ -314,11 +325,10 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
 
         # Generate functions to convert enum values to strings
         for enumName in self.featureEnumListNoAliases:
-            self.wc('\nvoid enumToString_' + enumName + '(std::string &rString, ' + enumName +' enumValue)')
-            self.wc('{')
-            self.wc('    switch (enumValue) {')
             if enumName in self.featureEnumList:
-                # Create the set of enums for this type, eliminating duplicates
+                self.wc('\nvoid enumToString_' + enumName + '(std::string &rString, ' + enumName +' enumValue)')
+                self.wc('{')
+                # Use set e to eliminate duplicates and make sure we don't use aliases
                 e = set()
                 for enumValue in self.featureEnumList[enumName]:
                     enumString=str(enumValue.attrib.get('name'));
@@ -326,15 +336,19 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     supported = str(enumValue.attrib.get('supported'))
                     if isAlias == 'None' and supported != 'disabled':
                         e.add(enumString);
-                # Add a case for each enum
-                for enumValue in e:
-                    self.wc('        case ' + enumValue + ':')
-                    self.wc('            rString += std::string("' + enumValue + '");')
+                if len(e) > 1:
+                    self.wc('    switch (enumValue) {')
+                    # Add a case for each enum
+                    for enumValue in e:
+                        self.wc('        case ' + enumValue + ':')
+                        self.wc('            rString += std::string("' + enumValue + '");')
+                        self.wc('            return;')
+                    self.wc('        default:')
+                    self.wc('            rString += std::string("UNKNOWN");')
                     self.wc('            return;')
-            self.wc('        default:')
-            self.wc('            rString += std::string("UNKNOWN");')
-            self.wc('            return;')
-            self.wc('    };')
+                    self.wc('    };')
+                else:
+                    self.wc('   rString += std::string("UNKNOWN");')
             self.wc('};')
             self.newline()
 
@@ -433,7 +447,13 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                                 aLength = member.arrayLength
                             if member.name == 'pCode':
                                 aLength = aLength + ' / 4';    # codeSize in struct VkShaderModuleCreateInfo is not the number of elements, but in bytes
-                                self.wc('        addrToString(rString, pStructIn.'+member.name+'.GetAddress()); //WUR')
+                                self.wc('        addrToString(rString, pStructIn.'+member.name+'.GetAddress()); //WUX')
+                                if member.name == 'pCode':
+                                    aLength = aLength + ' / 4';    # codeSize in struct VkShaderModuleCreateInfo is not the number of elements, but size in bytes
+                                    self.wc('        if (printShaderCode)')
+                                    self.wc('            arrayToString<' + member.fullType + '>(rString, indent, ' + str(member.pointerCount) + ', "' + member.fullType +
+                                        '", reinterpret_cast<' + member.fullType + '>(pStructIn.' + member.name + '.GetPointer()), "' + member.name +
+                                          '", ' + aLength + ', false);  //CCY')
                             else:
                                 if member.baseType in self.structDict:   # TODO: check self.structDict too many times here
                                     self.wc('        addrToString(rString, pStructIn.'+member.name+'->GetAddress()); //WUS')
@@ -506,8 +526,8 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                         self.wc('    bitsToString_' + member.baseType + '(rString, pStruct->' + member.name + ');')
                     elif self.isFunctionPtr(member.baseType):
                         self.wc('    rString += "TODO"; //QZS')   # TODO - Treat the same as void*??
-                    elif member.baseType == 'float':
-                        self.wc('    floatNumToString(rString, (float)pStruct->'+member.name+');')
+                    elif member.baseType in ['float', 'double']:
+                        self.wc('    doubleNumToString(rString, pStruct->'+member.name+');')
                     elif member.baseType in ['int', 'int32_t', 'int64_t', 'VkDeviceSize', 'VkBool32']:
                         self.wc('    signedDecNumToString(rString, pStruct->'+member.name+');')
                     else:     # 'unsigned int', 'uint32_t', 'uint64_t', 'size_t', and all others
