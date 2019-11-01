@@ -16,12 +16,11 @@
 # limitations under the License.
 
 # TODO:
-#    Break long statements into multiple lines - both in this file and in generated code
-#    Search for C casts that can be changed to C++ casts
-#    Add option to show shader code.
 #    Change const indentSize to a configurable variable
 #    Change const noAddr to a configurable variable
 #    Change const printShaderCode to a configurable variable
+#    Break long statements into multiple lines - both in this file and in generated code
+#    Search for C casts that can be changed to C++ casts
 #    Visit all % occurences and make sure they are correct
 #    Reorg struct print and arg print so it's easier to ready and follow
 #    Any 32/64 bit issues?
@@ -29,7 +28,6 @@
 #    Reduce complexity of functions that gen code for args and structures
 #    Address size of print conversions for 32 and 64 bit
 #    Compare this output vs apidump to verify correctness
-#    Printing of shader code is not correct. Printing addresses?
 #    Some enumToString_* funcs return only UNKNOWN, but they should return more? (i.e. enumToString_VkCommandBufferResetFlagBits)
 #      This could be because the vk header is and older version.
 
@@ -93,9 +91,9 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.wc('#include "vulkan/vulkan.h"')
         self.wc('#include "format/platform_types.h"')
         self.newline()
-        self.wc('const uint32_t indentSize = 4;')
-        self.wc('const bool noAddr = false;')
-        self.wc('const bool printShaderCode = true;')
+        self.wc('extern int indentSize;')
+        self.wc('extern bool noAddr;')
+        self.wc('extern bool printShaderCode;')
         self.newline()
         self.wc('GFXRECON_BEGIN_NAMESPACE(gfxrecon)')
         self.wc('GFXRECON_BEGIN_NAMESPACE(decode)')
