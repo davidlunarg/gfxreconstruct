@@ -15,9 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# TODO:
-#    Build and test on 32 bit
-
 import os,re,sys
 from base_generator import *
 
@@ -215,7 +212,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.newline()
 
         # Generate prototype for structureToString function
-        self.wc('template <typename T> void structureToString(std::string *rString, const T &pStruct, int indent, void *baseAddr);')
+        self.wc('template <typename T> void structureToString(std::string *rString, const T &pStruct, int indent, uint64_t baseAddr);')
 
         # Generate function to process an array
         self.wc('template <typename T> void arrayToString(std::string *rString, int indent, const int pointerCount, const char *fullTypeName, T array, const char *arrayName, const size_t arrayLength, bool isHandleAddr)')
@@ -274,7 +271,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.newline()
 
         # Generate function to process an array of structures
-        self.wc('template <typename T> void arrayOfStructsToString(std::string *rString, int indent, const int pointerCount, const char *baseTypeName, T *array, const char *arrayName, const size_t arrayLength, bool isUnion, void* baseAddr)')
+        self.wc('template <typename T> void arrayOfStructsToString(std::string *rString, int indent, const int pointerCount, const char *baseTypeName, T *array, const char *arrayName, const size_t arrayLength, bool isUnion, uint64_t baseAddr)')
         self.wc('{')
         self.wc('    if (arrayLength == 0 || array == nullptr)')
         self.wc('    {')
@@ -293,7 +290,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.wc('        *rString += nameIdx;')
         self.wc('        *rString += baseTypeName;')
         self.wc('        *rString += " = ";')
-        self.wc('        addrToString(rString, reinterpret_cast<uint64_t>(baseAddr)+j*sizeof(T)); //UEW')
+        self.wc('        addrToString(rString, baseAddr + j*sizeof(T)); //UEW')
         self.wc('        if (isUnion)')
         self.wc('        {')
         self.wc('            *rString += " (Union)";')
@@ -301,11 +298,11 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.wc('        *rString += ":";')
         self.wc('        if (pointerCount > 1)')
         self.wc('        {')
-        self.wc('            fprintf(stderr, "ERROR: arrayOfStructsTOString cannot handle arrays of arrays\\n");')
+        self.wc('            fprintf(stderr, "ERROR: arrayOfStructsToString cannot handle arrays of arrays\\n");')
         self.wc('        }')
         self.wc('        else')
         self.wc('        {')
-        self.wc('            structureToString<T>(rString, array[j], indent+1, reinterpret_cast<void*>(reinterpret_cast<uint64_t>(baseAddr) + j*sizeof(T))); //YQS')
+        self.wc('            structureToString<T>(rString, array[j], indent+1, baseAddr + j*sizeof(T)); //YQS')
         self.wc('        }')
         self.wc('        if (j < arrayLength-1)')
         self.wc('        {')
@@ -441,14 +438,14 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         # Generate forward reference to functions to print structures
         for structName in self.featureStructMembers:
             if structName != 'VkBaseInStructure' and structName != 'VkBaseOutStructure':
-                self.wc('template <> void structureToString<Decoded_' + structName + '>(std::string *rString, const Decoded_' + structName + ' &pStructIn, int indent, void *baseAddr); //ARX')
+                self.wc('template <> void structureToString<Decoded_' + structName + '>(std::string *rString, const Decoded_' + structName + ' &pStructIn, int indent, uint64_t baseAddr); //ARX')
         self.newline()
 
         # Generate functions to print structures
         for structName in self.featureStructMembers:
             if structName == 'VkBaseInStructure' or structName == 'VkBaseOutStructure':
                 continue
-            self.wc('template <> void structureToString<Decoded_' + structName + '>(std::string *rString, const Decoded_' + structName + ' &pStructIn, int indent, void *baseAddr) //GAA')
+            self.wc('template <> void structureToString<Decoded_' + structName + '>(std::string *rString, const Decoded_' + structName + ' &pStructIn, int indent, uint64_t baseAddr) //GAA')
 
             self.wc('{')
             self.wc('    const ' + structName + ' *pStruct = (const ' + structName + ' *)pStructIn.decoded_value; //BTB')
@@ -472,7 +469,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     else:
                         self.wc('    *rString += "' + member.arrayLength + '";')
                     self.wc('    *rString += "] = ";')
-                    self.wc('    addrToString(rString, reinterpret_cast<uint64_t>(baseAddr) + offsetof(' + structName + ', ' + member.name + ')); //IYY')
+                    self.wc('    addrToString(rString, baseAddr + offsetof(' + structName + ', ' + member.name + ')); //IYY')
                 else:
                     self.wc('    *rString += "' + member.fullType + ' = ";  //TEQ')
 
@@ -509,7 +506,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                                     self.wc('        addrToString(rString, pStructIn.' + member.name + '->GetAddress()); //WUS')
                                     self.wc('        arrayOfStructsToString<Decoded_' + member.baseType + '>(rString, indent+1, ' + str(member.pointerCount) + ', "' + member.baseType +
                                           '", pStructIn.' + member.name + '->GetMetaStructPointer(), "' + member.name +
-                                          '", ' + aLength + ', ' + str(self.isUnion(member.baseType)).lower() + ', reinterpret_cast<void*>(pStructIn.' + member.name + '->GetAddress()));  //CCP')
+                                          '", ' + aLength + ', ' + str(self.isUnion(member.baseType)).lower() + ', pStructIn.' + member.name + '->GetAddress());  //CCP')
                                 else:
                                     self.wc('        addrToString(rString, pStructIn.' + member.name + '.GetAddress()); //PAZ')
                                     self.wc('        arrayToString<' + member.fullType + '>(rString, indent, ' + str(member.pointerCount) + ', "' + member.fullType +
@@ -523,7 +520,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                         if self.isUnion(member.baseType):
                             self.wc('        *rString += " (Union)";')
                         self.wc('        structureToString<Decoded_' + member.baseType + '>(rString, *pStructIn.' + member.name + '->GetMetaStructPointer(), indent+1,' +
-                                             ' reinterpret_cast<void*>(reinterpret_cast<uint64_t>(baseAddr) + offsetof(' + structName + ', ' + member.name + '))); //GLM')
+                                             ' baseAddr + offsetof(' + structName + ', ' + member.name + ')); //GLM')
                     else:
                         if (member.name == "name"):
                             self.wc('        addrToString(rString, pStructIn.' + member.name + '.GetAddress()); //PWQ')
@@ -542,7 +539,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     if (member.baseType in self.structDict):
                         self.wc('    arrayOfStructsToString<Decoded_' + member.baseType + '>(rString, indent+1, ' + str(member.pointerCount) + ', "' + member.baseType +
                               '", pStructIn.' + member.name + '->GetMetaStructPointer(), "' + member.name +
-                              '", ' + alength + ' , ' + str(self.isUnion(member.baseType)).lower() + ', reinterpret_cast<void*>(pStructIn.' + member.name + '->GetAddress())); //EPB')
+                              '", ' + alength + ' , ' + str(self.isUnion(member.baseType)).lower() + ', pStructIn.' + member.name + '->GetAddress()); //EPB')
                     else:
                         self.wc('    arrayToString<' + member.baseType + '*>(rString, indent, ' + str(member.pointerCount) + ', "' + member.fullType +
                                 '", const_cast<' + member.baseType + '*>(pStruct->' + member.name + '), "' + member.name + '", ' + alength + ', ' +
@@ -553,10 +550,10 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                         self.wc('    *rString += "(Union):"; //RGT')
                     if self.isUnion(structName):
                         self.wc('    structureToString<Decoded_' + member.baseType + '>(rString, (Decoded_' + member.baseType + '&)pStructIn, indent+1, ' +
-                                         ' reinterpret_cast<void*>(reinterpret_cast<uint64_t>(baseAddr) + offsetof(' + structName + ', ' + member.name + '))); //RLN')
+                                         ' baseAddr + offsetof(' + structName + ', ' + member.name + ')); //RLN')
                     else:
                         self.wc('    structureToString<Decoded_' + member.baseType + '>(rString, *pStructIn.' + member.name + ', indent+1, ' +
-                                         ' reinterpret_cast<void*>(reinterpret_cast<uint64_t>(baseAddr) + offsetof(' + structName + ', ' + member.name + '))); //AZJ')
+                                         ' baseAddr + offsetof(' + structName + ', ' + member.name + ')); //AZJ')
                 else:
                     if self.isHandle(member.baseType):
                         self.wc('    addrToString(rString, pStructIn.' + member.name + '); //PAQ  ')
@@ -660,6 +657,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     self.wc('    fprintf(GetFile(), "%s%-32s' + value.fullType + ' = %d", indentString.c_str(), "' + value.name + ':", ' + value.name + '); //ZSQ')
             else:
                 # Simple scalar
+                print("@@@YZA", value.name, value.baseType)
                 self.wc('    fprintf(GetFile(), "%s%-32s' + value.fullType + ' = ' + self.getFormatString(value.baseType) + '", indentString.c_str(), "' + value.name + ':", '  + value.name + '); //YZA')
 
         elif value.isPointer:
@@ -716,7 +714,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     alength = value.arrayLength
                 self.wc('        tmpString = "";')
                 self.wc('        arrayOfStructsToString<Decoded_' + value.baseType + '>(&tmpString, 2, ' + str(value.pointerCount) + ', "' + value.baseType + '",')
-                self.wc('            ' + value.name + '.GetMetaStructPointer(), "' + value.name + '", ' + alength + ', ' + str(self.isUnion(value.baseType)).lower() + ', reinterpret_cast<void*>(' + value.name + '.GetAddress())); //VSR')
+                self.wc('            ' + value.name + '.GetMetaStructPointer(), "' + value.name + '", ' + alength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + value.name + '.GetAddress()); //VSR')
                 self.wc('        fprintf(GetFile(), "%s", tmpString.c_str()); //WZA')
                 self.wc('    }')
             elif self.isStruct(value.baseType):
@@ -732,7 +730,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                 self.wc('        fprintf(GetFile(), "%s:", tmpString.c_str()); //WPP')
                 self.wc('        tmpString = "";')
                 self.wc('        structureToString<Decoded_' + value.baseType + '>(&tmpString, *' + value.name + '.GetMetaStructPointer(), 2, ' +
-                                     ' reinterpret_cast<void*>(' + value.name + '.GetAddress())); //GGG')
+                                     value.name + '.GetAddress()); //GGG')
                 self.wc('        fprintf(GetFile(), "%s", tmpString.c_str());   //DGP')
                 self.wc('    }')
             elif self.isHandle(value.baseType):
@@ -785,19 +783,31 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
 
 
     def getFormatString(self, type):
+        print("@@gfs:", type)
         if type in ['int', 'int32_t']:
+            print("   return %d")
             return '%d'
         elif type in ['uint32_t', 'VkBool32']:
+            print("   return %u")
             return '%u'
-        elif type == 'int64_t':
+        elif type in ['int64_t']:
+            print("   return %PRId64")
             return '%" PRId64 "'
-        elif type in ['uint64_t', 'VkDeviceSize', 'size_t']:
+        elif type in ['uint64_t', 'VkDeviceSize']:
+            print("   return %PRIu64")
             return '%" PRIu64 "'
-        elif type == 'VkDeviceAddress':
+        elif type in ['VkDeviceAddress']:
+            print("   return %PRIx64")
             return '0x%" PRIx64 "'
-        elif type == 'float':
+        elif type in ['float']:
+            print("   return %g")
             return '%g'
-        elif type == 'void':
+        elif type in ['void']:
+            print("   return %PRIx64")
             return '0x%" PRIx64 "'
+        elif type in ['size_t']:
+            print("   return %zu")
+            return '%zu'
         else:
+            print("   return %d")
             return '%d'
