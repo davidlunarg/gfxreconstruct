@@ -88,49 +88,49 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.newline()
 
         # Generate functions to convert numbers to strings
-        self.wc('void signedDecNumToString(std::string &rString, int64_t n)')
+        self.wc('void signedDecNumToString(std::string *rString, int64_t n)')
         self.wc('{')
         self.wc('    char decstring[30];')
         self.wc('    snprintf(decstring, sizeof(decstring), "%" PRId64, n);')
-        self.wc('    rString += decstring;')
+        self.wc('    *rString += decstring;')
         self.wc('}')
         self.newline()
-        self.wc('void unsignedDecNumToString(std::string &rString, uint64_t n)')
+        self.wc('void unsignedDecNumToString(std::string *rString, uint64_t n)')
         self.wc('{')
         self.wc('    char decstring[30];')
         self.wc('    snprintf(decstring, sizeof(decstring), "%" PRIu64, n);')
-        self.wc('    rString += decstring;')
+        self.wc('    *rString += decstring;')
         self.wc('}')
         self.newline()
-        self.wc('void doubleNumToString(std::string &rString, double d)')
+        self.wc('void doubleNumToString(std::string *rString, double d)')
         self.wc('{')
         self.wc('    char floatstring[30];')
         self.wc('    snprintf(floatstring, sizeof(floatstring), "%g", d);')
-        self.wc('    rString += floatstring;')
+        self.wc('    *rString += floatstring;')
         self.wc('}')
         self.newline()
 
         # Generate function to convert an address to a hex number or address
-        self.wc('void addrToString(std::string &rString, uint64_t v)')
+        self.wc('void addrToString(std::string *rString, uint64_t v)')
         self.wc('{')
         self.wc('    if (noAddr)')
         self.wc('    {')
-        self.wc('        rString += "address";')
+        self.wc('        *rString += "address";')
         self.wc('    }')
         self.wc('    else')
         self.wc('    {')
         self.wc('        char s[30];')
         self.wc('        snprintf(s, sizeof(s), "0x%" PRIx64, v);')
-        self.wc('        rString += s;')
+        self.wc('        *rString += s;')
         self.wc('    }')
         self.wc('}')
         self.newline()
 
         # Generate function to convert indent level to a string
         self.wc('// Utility for doing indentation')
-        self.wc('void indentSpaces(std::string &rString, int indent)')
+        self.wc('void indentSpaces(std::string *rString, int indent)')
         self.wc('{')
-        self.wc('    rString.insert(rString.end(), indent*indentSize, \' \');')
+        self.wc('    rString->insert(rString->end(), indent*indentSize, \' \');')
         self.wc('}')
         self.newline()
 
@@ -140,7 +140,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         # using C++ casts.
         self.newline()
         self.wc('// Function to convert a pointer to a scalar value to a string')
-        self.wc('template <typename T> void valueToString(std::string &rString, T value, bool isHandleAddr)')
+        self.wc('template <typename T> void valueToString(std::string *rString, T value, bool isHandleAddr)')
         self.wc('{')
         self.wc('    if (isHandleAddr)')
         self.wc('    {')
@@ -189,17 +189,17 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.wc('}')
 
         # Generate function to convert a C string to a quoted string
-        self.wc('void stringToQuotedString(std::string &rString, const char *s)')
+        self.wc('void stringToQuotedString(std::string *rString, const char *s)')
         self.wc('{')
         self.wc('   if (s)')
         self.wc('   {')
-        self.wc('       rString += "\\\"";')
-        self.wc('       rString += s;')
-        self.wc('       rString += "\\\"";')
+        self.wc('       *rString += "\\\"";')
+        self.wc('       *rString += s;')
+        self.wc('       *rString += "\\\"";')
         self.wc('    }')
         self.wc('    else')
         self.wc('    {')
-        self.wc('       rString += "NULL";')
+        self.wc('       *rString += "NULL";')
         self.wc('    }')
         self.wc('}')
         self.newline()
@@ -215,10 +215,10 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.newline()
 
         # Generate prototype for structureToString function
-        self.wc('template <typename T> void structureToString(std::string &rString, const T &pStruct, int indent, void *baseAddr);')
+        self.wc('template <typename T> void structureToString(std::string *rString, const T &pStruct, int indent, void *baseAddr);')
 
         # Generate function to process an array
-        self.wc('template <typename T> void arrayToString(std::string &rString, int indent, const int pointerCount, const char *fullTypeName, T array, const char *arrayName, const size_t arrayLength, bool isHandleAddr)')
+        self.wc('template <typename T> void arrayToString(std::string *rString, int indent, const int pointerCount, const char *fullTypeName, T array, const char *arrayName, const size_t arrayLength, bool isHandleAddr)')
         self.wc('{')
         self.wc('    if (arrayLength == 0 || array == nullptr)')
         self.wc('    {')
@@ -236,19 +236,19 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.wc('            // Remove last * in type name')
         self.wc('            fullTypeNameStr.pop_back();')
         self.wc('        }')
-        self.wc('        rString += "\\n";')
+        self.wc('        *rString += "\\n";')
         self.wc('        for (uint64_t j=0; j<arrayLength ; j++)')
         self.wc('        {')
         self.wc('            indentSpaces(rString, indent+1);')
         self.wc('            std::string nameIdx;')
         self.wc('            nameIdx += arrayName;')
         self.wc('            nameIdx += "[";')
-        self.wc('            unsignedDecNumToString(nameIdx, j);')
+        self.wc('            unsignedDecNumToString(&nameIdx, j);')
         self.wc('            nameIdx += "]: ";')
         self.wc('            padString(nameIdx, 32);');
-        self.wc('            rString += nameIdx;')
-        self.wc('            rString += fullTypeNameStr;')
-        self.wc('            rString += " = ";')
+        self.wc('            *rString += nameIdx;')
+        self.wc('            *rString += fullTypeNameStr;')
+        self.wc('            *rString += " = ";')
         self.wc('            if (pointerCount > 1)')
         self.wc('            {')
         self.wc('                if (pointerCount == 2 && strstr(fullTypeName, "char"))')
@@ -266,7 +266,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.wc('            }')
         self.wc('            if (j < arrayLength-1)')
         self.wc('            {')
-        self.wc('                rString += "\\n";')
+        self.wc('                *rString += "\\n";')
         self.wc('            }')
         self.wc('        }')
         self.wc('    }')
@@ -274,31 +274,31 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.newline()
 
         # Generate function to process an array of structures
-        self.wc('template <typename T> void arrayOfStructsToString(std::string &rString, int indent, const int pointerCount, const char *baseTypeName, T *array, const char *arrayName, const size_t arrayLength, bool isUnion, void* baseAddr)')
+        self.wc('template <typename T> void arrayOfStructsToString(std::string *rString, int indent, const int pointerCount, const char *baseTypeName, T *array, const char *arrayName, const size_t arrayLength, bool isUnion, void* baseAddr)')
         self.wc('{')
         self.wc('    if (arrayLength == 0 || array == nullptr)')
         self.wc('    {')
         self.wc('        return;')
         self.wc('    }')
-        self.wc('    rString += "\\n";')
+        self.wc('    *rString += "\\n";')
         self.wc('    for (uint64_t j=0; j<arrayLength ; j++)')
         self.wc('    {')
         self.wc('        indentSpaces(rString, indent);')
         self.wc('        std::string nameIdx;')
         self.wc('        nameIdx += arrayName;')
         self.wc('        nameIdx += "[";')
-        self.wc('        unsignedDecNumToString(nameIdx, j);')
+        self.wc('        unsignedDecNumToString(&nameIdx, j);')
         self.wc('        nameIdx += "]: ";')
         self.wc('        padString(nameIdx, 32);');
-        self.wc('        rString += nameIdx;')
-        self.wc('        rString += baseTypeName;')
-        self.wc('        rString += " = ";')
+        self.wc('        *rString += nameIdx;')
+        self.wc('        *rString += baseTypeName;')
+        self.wc('        *rString += " = ";')
         self.wc('        addrToString(rString, reinterpret_cast<uint64_t>(baseAddr)+j*sizeof(T)); //UEW')
         self.wc('        if (isUnion)')
         self.wc('        {')
-        self.wc('            rString += " (Union)";')
+        self.wc('            *rString += " (Union)";')
         self.wc('        }')
-        self.wc('        rString += ":";')
+        self.wc('        *rString += ":";')
         self.wc('        if (pointerCount > 1)')
         self.wc('        {')
         self.wc('            fprintf(stderr, "ERROR: arrayOfStructsTOString cannot handle arrays of arrays\\n");')
@@ -309,7 +309,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.wc('        }')
         self.wc('        if (j < arrayLength-1)')
         self.wc('        {')
-        self.wc('            rString += "\\n";  //AZC')
+        self.wc('            *rString += "\\n";  //AZC')
         self.wc('        }')
         self.wc('    }')
         self.wc('}')
@@ -363,7 +363,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         # Generate functions to convert enum values to strings
         for enumName in self.featureEnumListNoAliases:
             if enumName in self.featureEnumList:
-                self.wc('\nvoid enumToString_' + enumName + '(std::string &rString, ' + enumName + ' enumValue)')
+                self.wc('\nvoid enumToString_' + enumName + '(std::string *rString, ' + enumName + ' enumValue)')
                 self.wc('{')
                 # Use set e to eliminate duplicates and make sure we don't use aliases
                 e = set()
@@ -378,20 +378,20 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     # Add a case for each enum
                     for enumValue in e:
                         self.wc('        case ' + enumValue + ':')
-                        self.wc('            rString += std::string("' + enumValue + '");')
+                        self.wc('            *rString += std::string("' + enumValue + '");')
                         self.wc('            return;')
                     self.wc('        default:')
-                    self.wc('            rString += std::string("UNKNOWN");')
+                    self.wc('            *rString += std::string("UNKNOWN");')
                     self.wc('            return;')
                     self.wc('    };')
                 else:
-                    self.wc('    rString += std::string("UNKNOWN");')
+                    self.wc('    *rString += std::string("UNKNOWN");')
             self.wc('};')
             self.newline()
 
         # Generate functions to convert aliased enum types to string
         for enumName in self.featureEnumListAliases:
-            self.wc('\nvoid enumToString_' + enumName + '(std::string &rString, ' + enumName + ' enumValue)')
+            self.wc('\nvoid enumToString_' + enumName + '(std::string *rString, ' + enumName + ' enumValue)')
             self.wc('{')
             self.wc('    enumToString_' + self.featureEnumListAliases[enumName] + '(rString, enumValue);')
             self.wc('}')
@@ -402,13 +402,13 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
             modType = flagTypeName.replace('Flags', 'FlagBits')
             if modType in self.enumNames:
                 ename = 'enumToString_' + modType
-                self.wc('\nvoid bitsToString_' + flagTypeName + '(' + 'std::string &rString, ' + flagTypeName + ' flags)')
+                self.wc('\nvoid bitsToString_' + flagTypeName + '(' + 'std::string *rString, ' + flagTypeName + ' flags)')
                 self.wc('{')
                 self.wc('    unsigned long int m=1;')
                 self.wc('    unsignedDecNumToString(rString, flags);')
                 self.wc('    if (flags != 0) ')
                 self.wc('    {')
-                self.wc('        rString += " (";')
+                self.wc('        *rString += " (";')
                 self.wc('        while (flags)')
                 self.wc('        {')
                 self.wc('            if (m & (unsigned long int)flags)')
@@ -417,7 +417,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                 self.wc('                flags = (' + flagTypeName + ')((unsigned long int)flags & (~m));')
                 self.wc('                if ((unsigned long int)flags & (~m))')
                 self.wc('                {')
-                self.wc('                    rString += " | ";')
+                self.wc('                    *rString += " | ";')
                 self.wc('                }')
                 self.wc('            }')
                 self.wc('            else')
@@ -426,7 +426,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                 self.wc('            }')
                 self.wc('            m = (m<<1);')
                 self.wc('        }')
-                self.wc('        rString += ")";')
+                self.wc('        *rString += ")";')
                 self.wc('    }')
                 self.wc('    return;')
                 self.wc('}')
@@ -441,14 +441,14 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         # Generate forward reference to functions to print structures
         for structName in self.featureStructMembers:
             if structName != 'VkBaseInStructure' and structName != 'VkBaseOutStructure':
-                self.wc('template <> void structureToString<Decoded_' + structName + '>(std::string &rString, const Decoded_' + structName + ' &pStructIn, int indent, void *baseAddr); //ARX')
+                self.wc('template <> void structureToString<Decoded_' + structName + '>(std::string *rString, const Decoded_' + structName + ' &pStructIn, int indent, void *baseAddr); //ARX')
         self.newline()
 
         # Generate functions to print structures
         for structName in self.featureStructMembers:
             if structName == 'VkBaseInStructure' or structName == 'VkBaseOutStructure':
                 continue
-            self.wc('template <> void structureToString<Decoded_' + structName + '>(std::string &rString, const Decoded_' + structName + ' &pStructIn, int indent, void *baseAddr) //GAA')
+            self.wc('template <> void structureToString<Decoded_' + structName + '>(std::string *rString, const Decoded_' + structName + ' &pStructIn, int indent, void *baseAddr) //GAA')
 
             self.wc('{')
             self.wc('    const ' + structName + ' *pStruct = (const ' + structName + ' *)pStructIn.decoded_value; //BTB')
@@ -456,25 +456,25 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
             self.wc('    {')
             self.wc('        return;')
             self.wc('    }')
-            self.wc('    rString += "\\n";  //UUR');
+            self.wc('    *rString += "\\n";  //UUR');
             sMembersList = list(self.featureStructMembers[structName])
             for member in sMembersList:
                 self.newline()
                 self.wc('    // ' + member.fullType + ' ' + member.name + ' //SMB')
                 self.wc('    indentSpaces(rString, indent);')
-                self.wc('    rString += "' + (member.name + ': ').ljust(32) + '";')
+                self.wc('    *rString += "' + (member.name + ': ').ljust(32) + '";')
 
                 if not member.isPointer and member.isArray and member.baseType != 'char':
                     # Generate code to print length of array
-                    self.wc('    rString += "' + member.baseType + '[";')
+                    self.wc('    *rString += "' + member.baseType + '[";')
                     if 'Count' in member.arrayLength:
                         self.wc('    unsignedDecNumToString(rString, pStruct->' + member.arrayLength + ');')
                     else:
-                        self.wc('    rString += "' + member.arrayLength + '";')
-                    self.wc('    rString += "] = ";')
+                        self.wc('    *rString += "' + member.arrayLength + '";')
+                    self.wc('    *rString += "] = ";')
                     self.wc('    addrToString(rString, reinterpret_cast<uint64_t>(baseAddr) + offsetof(' + structName + ', ' + member.name + ')); //IYY')
                 else:
-                    self.wc('    rString += "' + member.fullType + ' = ";  //TEQ')
+                    self.wc('    *rString += "' + member.fullType + ' = ";  //TEQ')
 
                 if member.fullType == 'const char*':
                     # Treat pointer to char as a string
@@ -482,7 +482,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                 elif member.isPointer:
                     self.wc('    if (pStruct->' + member.name + ' == nullptr) //WWW')
                     self.wc('    {')
-                    self.wc('        rString += "NULL";')
+                    self.wc('        *rString += "NULL";')
                     self.wc('    }')
                     self.wc('    else')
                     self.wc('    {')
@@ -521,7 +521,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     elif self.isStruct(member.baseType) and (member.baseType in self.structDict):
                         self.wc('        addrToString(rString, pStructIn.' + member.name + '->GetAddress()); //JHI')
                         if self.isUnion(member.baseType):
-                            self.wc('        rString += " (Union)";')
+                            self.wc('        *rString += " (Union)";')
                         self.wc('        structureToString<Decoded_' + member.baseType + '>(rString, *pStructIn.' + member.name + '->GetMetaStructPointer(), indent+1,' +
                                              ' reinterpret_cast<void*>(reinterpret_cast<uint64_t>(baseAddr) + offsetof(' + structName + ', ' + member.name + '))); //GLM')
                     else:
@@ -550,7 +550,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                 elif self.isStruct(member.baseType) and (member.baseType in self.structDict):
                     # Struct that is not a pointer
                     if self.isUnion(member.baseType):
-                        self.wc('    rString += "(Union):"; //RGT')
+                        self.wc('    *rString += "(Union):"; //RGT')
                     if self.isUnion(structName):
                         self.wc('    structureToString<Decoded_' + member.baseType + '>(rString, (Decoded_' + member.baseType + '&)pStructIn, indent+1, ' +
                                          ' reinterpret_cast<void*>(reinterpret_cast<uint64_t>(baseAddr) + offsetof(' + structName + ', ' + member.name + '))); //RLN')
@@ -562,9 +562,9 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                         self.wc('    addrToString(rString, pStructIn.' + member.name + '); //PAQ  ')
                     elif self.isEnum(member.baseType):
                         self.wc('    enumToString_' + member.baseType + '(rString, pStruct->' + member.name + ');')
-                        self.wc('    rString += " (";')
+                        self.wc('    *rString += " (";')
                         self.wc('    unsignedDecNumToString(rString, pStruct->' + member.name + ');')
-                        self.wc('    rString += ")";')
+                        self.wc('    *rString += ")";')
                     elif self.isFlags(member.baseType) and (member.baseType in self.flagsNames) and member.baseType.replace('Flags', 'FlagBits') in self.enumNames:
                         self.wc('    bitsToString_' + member.baseType + '(rString, pStruct->' + member.name + ');')
                     elif self.isFunctionPtr(member.baseType):
@@ -576,7 +576,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     else:     # 'unsigned int', 'uint32_t', 'uint64_t', 'size_t', and all others
                         self.wc('    unsignedDecNumToString(rString, pStruct->' + member.name + ');')
                 if member != sMembersList[-1]:      # Add a newline between members, but not after the last member
-                    self.wc('    rString += "\\n"; //GDS')
+                    self.wc('    *rString += "\\n"; //GDS')
             self.wc('}')
             self.newline()
 
@@ -596,7 +596,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.wc('{')
         self.wc('    std::string indentString;')
         self.wc('    std::string tmpString;')
-        self.wc('    indentSpaces(indentString, 1);')  # Initial indent for func args is 1
+        self.wc('    indentSpaces(&indentString, 1);')  # Initial indent for func args is 1
         needcomma=0
         args = ''
         for value in values:
@@ -611,7 +611,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
             # The parameter name assigned to the return value by the code generator is 'returnValue'
             if self.isEnum(returnType):
                 self.wc('    tmpString = "";')
-                self.wc('    enumToString_VkResult(tmpString, returnValue);')
+                self.wc('    enumToString_VkResult(&tmpString, returnValue);')
                 self.wc('    fprintf(GetFile(), " returns ' + returnType + ' %s (%" PRId32 "):\\n", tmpString.c_str(), returnValue);')
             elif self.isFunctionPtr(value.baseType):
                 # This is encoded as a 64-bit integer containing the address of the function pointer
@@ -638,23 +638,23 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
 
             if value.isArray:
                 self.wc('    tmpString = "";')
-                self.wc('    arrayToString<' + value.fullType + '*>(tmpString, 2, ' + str(value.pointerCount) + ', "' + value.fullType + '", ' + value.name + '.GetPointer(), "' + value.name + '", ' + str(value.arrayLength) + ', ' + str(self.isHandle(value.baseType)).lower() + '); //SFP')
+                self.wc('    arrayToString<' + value.fullType + '*>(&tmpString, 2, ' + str(value.pointerCount) + ', "' + value.fullType + '", ' + value.name + '.GetPointer(), "' + value.name + '", ' + str(value.arrayLength) + ', ' + str(self.isHandle(value.baseType)).lower() + '); //SFP')
                 self.wc('    fprintf(GetFile(), "%s", tmpString.c_str());')
             elif self.isHandle(value.baseType):
                 # This is a 64-bit integer ID
                 self.wc('    fprintf(GetFile(), "%s%-32s' + value.fullType + ' = ", indentString.c_str(), "' + value.name + ':"); //TRP')
                 self.wc('    tmpString = "";')
-                self.wc('    addrToString(tmpString, ' + value.name + ');')
+                self.wc('    addrToString(&tmpString, ' + value.name + ');')
                 self.wc('    fprintf(GetFile(), "%s", tmpString.c_str()); //TRQ')
             elif self.isEnum(value.baseType):
                 self.wc('    tmpString = "";')
-                self.wc('    enumToString_' + value.baseType + '(tmpString,' + value.name + '); //EPW')
+                self.wc('    enumToString_' + value.baseType + '(&tmpString,' + value.name + '); //EPW')
                 self.wc('    fprintf(GetFile(), "%s%-32s' + value.baseType + ' = %s", indentString.c_str(), "' + value.name + ':", tmpString.c_str()); //KHW')
             elif self.isFlags(value.baseType):
                 bitType = value.baseType.replace('Flags', 'FlagBits')
                 if bitType in self.enumNames:
                     self.wc('    tmpString = "";')
-                    self.wc('    bitsToString_' + value.baseType + '(tmpString, ' + value.name + ');')
+                    self.wc('    bitsToString_' + value.baseType + '(&tmpString, ' + value.name + ');')
                     self.wc('    fprintf(GetFile(), "%s%-32s' + value.fullType + ' = %s", indentString.c_str(), "' + value.name + ':", tmpString.c_str()); //XZA')
                 else:
                     self.wc('    fprintf(GetFile(), "%s%-32s' + value.fullType + ' = %d", indentString.c_str(), "' + value.name + ':", ' + value.name + '); //ZSQ')
@@ -674,10 +674,10 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     self.wc('    {')
                     self.wc('        fprintf(GetFile(), "%s%-32s' + value.fullType + ' = ", indentString.c_str(), "' + value.name + ':");  //RYA')
                     self.wc('        tmpString = "";')
-                    self.wc('        addrToString(tmpString, ' + value.name + '.GetAddress()); //YYX')
+                    self.wc('        addrToString(&tmpString, ' + value.name + '.GetAddress()); //YYX')
                     self.wc('        if (printShaderCode)')
                     self.wc('        {')
-                    self.wc('            arrayToString<const uint32_t*>(tmpString, 2, ' + str(value.pointerCount) + ', "' + value.fullType +
+                    self.wc('            arrayToString<const uint32_t*>(&tmpString, 2, ' + str(value.pointerCount) + ', "' + value.fullType +
                                          '", reinterpret_cast<const uint32_t*>(' + value.name + '.GetPointer()), "' + value.name +
                                          '", static_cast<size_t>(*pInfoSize.GetPointer()) / 4, false);  //CRG')
                     self.wc('        }')
@@ -695,7 +695,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     self.wc('    {')
                     self.wc('        fprintf(GetFile(), "%s%-32s' + value.fullType + ' = ", indentString.c_str(), "' + value.name + ':");  //SSA')
                     self.wc('        tmpString = "";')
-                    self.wc('        addrToString(tmpString, *(reinterpret_cast<uint64_t*>(' + value.name + '.GetPointer()))); //CWS')
+                    self.wc('        addrToString(&tmpString, *(reinterpret_cast<uint64_t*>(' + value.name + '.GetPointer()))); //CWS')
                     self.wc('        fprintf(GetFile(), "%s", tmpString.c_str()); //YWW')
                     self.wc('    }')
             elif value.isArray and self.isStruct(value.baseType):
@@ -708,14 +708,14 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                 self.wc('    {')
                 self.wc('        fprintf(GetFile(), "%s%-32s' + value.fullType + ' = ", indentString.c_str(), "' + value.name + ':"); //GRR')
                 self.wc('        tmpString = "";')
-                self.wc('        addrToString(tmpString, ' + value.name + '.GetAddress());')
+                self.wc('        addrToString(&tmpString, ' + value.name + '.GetAddress());')
                 self.wc('        fprintf(GetFile(), "%s", tmpString.c_str());  //SSU')
                 if value.arrayLength.startswith('p'):
                     alength = '*' + value.arrayLength + '.GetPointer()'
                 else:
                     alength = value.arrayLength
                 self.wc('        tmpString = "";')
-                self.wc('        arrayOfStructsToString<Decoded_' + value.baseType + '>(tmpString, 2, ' + str(value.pointerCount) + ', "' + value.baseType + '",')
+                self.wc('        arrayOfStructsToString<Decoded_' + value.baseType + '>(&tmpString, 2, ' + str(value.pointerCount) + ', "' + value.baseType + '",')
                 self.wc('            ' + value.name + '.GetMetaStructPointer(), "' + value.name + '", ' + alength + ', ' + str(self.isUnion(value.baseType)).lower() + ', reinterpret_cast<void*>(' + value.name + '.GetAddress())); //VSR')
                 self.wc('        fprintf(GetFile(), "%s", tmpString.c_str()); //WZA')
                 self.wc('    }')
@@ -728,10 +728,10 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                 self.wc('    {')
                 self.wc('        fprintf(GetFile(), "%s%-32s' + value.fullType + ' = ", indentString.c_str(), "' + value.name + ':"); //WPO')
                 self.wc('        tmpString = "";')
-                self.wc('        addrToString(tmpString, ' + value.name + '.GetAddress());')
+                self.wc('        addrToString(&tmpString, ' + value.name + '.GetAddress());')
                 self.wc('        fprintf(GetFile(), "%s:", tmpString.c_str()); //WPP')
                 self.wc('        tmpString = "";')
-                self.wc('        structureToString<Decoded_' + value.baseType + '>(tmpString, *' + value.name + '.GetMetaStructPointer(), 2, ' +
+                self.wc('        structureToString<Decoded_' + value.baseType + '>(&tmpString, *' + value.name + '.GetMetaStructPointer(), 2, ' +
                                      ' reinterpret_cast<void*>(' + value.name + '.GetAddress())); //GGG')
                 self.wc('        fprintf(GetFile(), "%s", tmpString.c_str());   //DGP')
                 self.wc('    }')
@@ -745,7 +745,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     self.wc('    {')
                     self.wc('        fprintf(GetFile(), "%s%-32s' + value.fullType + ' = ", indentString.c_str(), "' + value.name + ':");  //SXB')
                     self.wc('        tmpString = "";')
-                    self.wc('        addrToString(tmpString, ' + value.name + '.GetAddress());')
+                    self.wc('        addrToString(&tmpString, ' + value.name + '.GetAddress());')
                     self.wc('        fprintf(GetFile(), "%s", tmpString.c_str());  //YEF')
                     if '->' in value.arrayLength:
                         aLength = value.arrayLength.replace('->', '.GetPointer()->')
@@ -754,7 +754,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     else:
                         aLength = str(value.arrayLength)
                     self.wc('        tmpString = "";')
-                    self.wc('        arrayToString<' + value.fullType + '>(tmpString, 1, ' + str(value.pointerCount) + ', "' + value.fullType +
+                    self.wc('        arrayToString<' + value.fullType + '>(&tmpString, 1, ' + str(value.pointerCount) + ', "' + value.fullType +
                             '", reinterpret_cast<' + value.fullType + '>(' + value.name + '.GetPointer()), "' + value.name + '", ' + aLength + ', ' +
                             str(self.isHandle(value.baseType)).lower() + '); //SFX')
                     self.wc('        fprintf(GetFile(), "%s", tmpString.c_str());  //AFL')
@@ -769,7 +769,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                     self.wc('    {')
                     self.wc('        fprintf(GetFile(), "%s%-32s' + value.fullType + ' = ", indentString.c_str(), "' + value.name + ':");  //TAZ')
                     self.wc('        tmpString = "";')
-                    self.wc('        addrToString(tmpString, *(static_cast<uint64_t*>(' + value.name + '.GetPointer())));')
+                    self.wc('        addrToString(&tmpString, *(static_cast<uint64_t*>(' + value.name + '.GetPointer())));')
                     self.wc('        fprintf(GetFile(), "%s", tmpString.c_str());  //RAJ')
                     self.wc('    }')
             else:
