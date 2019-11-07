@@ -399,32 +399,32 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
 
         # Generate functions to convert bit values to strings
         for flagTypeName in self.featureFlagsNames:
-            modType = flagTypeName.replace('Flags', 'FlagBits')
-            if modType in self.enumNames:
-                ename = 'enumToString_' + modType
-                self.wc('\nvoid bitsToString_' + flagTypeName + '(' + 'std::string *rString, ' + flagTypeName + ' flags)')
+            bitsType = flagTypeName.replace('Flags', 'FlagBits')
+            if bitsType in self.enumNames:
+                ename = 'enumToString_' + bitsType
+                self.wc('\nvoid flagsToString_' + flagTypeName + '(' + 'std::string *rString, ' + flagTypeName + ' flags)')
                 self.wc('{')
-                self.wc('    unsigned long int m=1;')
+                self.wc('    VkFlags m = 1;')
                 self.wc('    unsignedDecNumToString(rString, flags);')
                 self.wc('    if (flags != 0) ')
                 self.wc('    {')
                 self.wc('        *rString += " (";')
                 self.wc('        while (flags)')
                 self.wc('        {')
-                self.wc('            if (m & (unsigned long int)flags)')
+                self.wc('            if (m & flags)')
                 self.wc('            {')
-                self.wc('                ' + ename + '(rString, (' + modType + ')(m & (unsigned long int)flags));')
-                self.wc('                flags = (' + flagTypeName + ')((unsigned long int)flags & (~m));')
-                self.wc('                if ((unsigned long int)flags & (~m))')
+                self.wc('                ' + ename + '(rString, static_cast<'+bitsType+'>(m & flags));')
+                self.wc('                flags = flags & ~m;')
+                self.wc('                if (flags & ~m)')
                 self.wc('                {')
                 self.wc('                    *rString += " | ";')
                 self.wc('                }')
                 self.wc('            }')
                 self.wc('            else')
                 self.wc('            {')
-                self.wc('                flags = (' + flagTypeName + ')(flags & (~m));')
+                self.wc('                flags &= ~m;')
                 self.wc('            }')
-                self.wc('            m = (m<<1);')
+                self.wc('            m <<= 1;')
                 self.wc('        }')
                 self.wc('        *rString += ")";')
                 self.wc('    }')
@@ -566,7 +566,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                         self.wc('    unsignedDecNumToString(rString, pStruct->' + member.name + ');')
                         self.wc('    *rString += ")";')
                     elif self.isFlags(member.baseType) and (member.baseType in self.flagsNames) and member.baseType.replace('Flags', 'FlagBits') in self.enumNames:
-                        self.wc('    bitsToString_' + member.baseType + '(rString, pStruct->' + member.name + ');')
+                        self.wc('    flagsToString_' + member.baseType + '(rString, pStruct->' + member.name + ');')
                     elif self.isFunctionPtr(member.baseType):
                         self.wc('    addrToString(rString, reinterpret_cast<uint64_t>(pStruct->' + member.name + ')); //WRX')
                     elif member.baseType in ['float', 'double']:
@@ -654,7 +654,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                 bitType = value.baseType.replace('Flags', 'FlagBits')
                 if bitType in self.enumNames:
                     self.wc('    tmpString = "";')
-                    self.wc('    bitsToString_' + value.baseType + '(&tmpString, ' + value.name + ');')
+                    self.wc('    flagsToString_' + value.baseType + '(&tmpString, ' + value.name + ');')
                     self.wc('    fprintf(GetFile(), "%s%-32s' + value.fullType + ' = %s", indentString.c_str(), "' + value.name + ':", tmpString.c_str()); //XZA')
                 else:
                     self.wc('    fprintf(GetFile(), "%s%-32s' + value.fullType + ' = %d", indentString.c_str(), "' + value.name + ':", ' + value.name + '); //ZSQ')
