@@ -26,7 +26,19 @@
 
 #include "vulkan/vulkan_core.h"
 
+const char kAllOptions[] = "--version,--noaddr,--showshader";
+const char kAllArguments[] = "--outfile,--indent";
 const char kVersionOption[] = "--version";
+const char kNoAddrOption[] = "--noaddr";
+const char kShowShaderOption[] = "--showshader";
+const char kOutfileArgument[]  = "--outfile";
+const char kIndentArgument[]   = "--indent";
+
+const int kDefaultIndentSize = 4;
+
+int kIndentSize = kDefaultIndentSize;  // Number of spaces to use for each indentation.
+bool kNoAddr = false;                  // When true, do no print addresses but print "address" instead.
+bool kPrintShaderCode = false;         // When true, print shader code.
 
 static bool PrintVersion(const char* exe_name, const gfxrecon::util::ArgumentParser& arg_parser)
 {
@@ -60,11 +72,15 @@ void PrintUsage(const char* exe_name)
     }
     GFXRECON_WRITE_CONSOLE("\n%s - A tool to convert GFXReconstruct capture files to text.\n", app_name.c_str());
     GFXRECON_WRITE_CONSOLE("Usage:");
-    GFXRECON_WRITE_CONSOLE("  %s [--version] <file>\n", app_name.c_str());
+    GFXRECON_WRITE_CONSOLE("  %s [--outfile <file> ] [--indent <N> ] [--noaddr] [--showshader] [--version] <file>\n", app_name.c_str());
     GFXRECON_WRITE_CONSOLE("Required arguments:");
     GFXRECON_WRITE_CONSOLE("  <file>\t\tPath to the GFXReconstruct capture file to be converted");
     GFXRECON_WRITE_CONSOLE("        \t\tto text.");
     GFXRECON_WRITE_CONSOLE("\nOptional arguments:");
+    GFXRECON_WRITE_CONSOLE("  --outfile <file>\tSet the output file name");
+    GFXRECON_WRITE_CONSOLE("  --indent <N>\t\tSet the indent size for writing parameters and values");
+    GFXRECON_WRITE_CONSOLE("  --noaddr\t\tGenerate output without handles/address, use \"address\" instead");
+    GFXRECON_WRITE_CONSOLE("  --showshader\t\tOutput the contents of shader files loaded");
     GFXRECON_WRITE_CONSOLE("  --version\t\tPrint version information and exit");
 }
 
@@ -72,7 +88,9 @@ int main(int argc, const char** argv)
 {
     std::string                     input_filename;
     gfxrecon::decode::FileProcessor file_processor;
-    gfxrecon::util::ArgumentParser  arg_parser(argc, argv, kVersionOption, "");
+    gfxrecon::util::ArgumentParser  arg_parser(argc, argv, kAllOptions, kAllArguments);
+    std::string argValue;
+    std::string output_filename;
 
     gfxrecon::util::Log::Init();
 
@@ -80,7 +98,8 @@ int main(int argc, const char** argv)
     {
         exit(0);
     }
-    else if (arg_parser.IsInvalid() || (arg_parser.GetPositionalArgumentsCount() != 1))
+
+    if (arg_parser.IsInvalid())
     {
         PrintUsage(argv[0]);
         gfxrecon::util::Log::Release();
@@ -92,14 +111,29 @@ int main(int argc, const char** argv)
         input_filename                                       = positional_arguments[0];
     }
 
-    std::string output_filename = input_filename;
-    size_t      suffix_pos      = output_filename.find(GFXRECON_FILE_EXTENSION);
-    if (suffix_pos != std::string::npos)
+    kNoAddr = arg_parser.IsOptionSet(kNoAddrOption);
+
+    kPrintShaderCode = arg_parser.IsOptionSet(kShowShaderOption);
+
+    argValue = arg_parser.GetArgumentValue(kIndentArgument);
+    if (!argValue.empty())
     {
-        output_filename = output_filename.substr(0, suffix_pos);
+        kIndentSize = std::stoi(argValue);
+        if (kIndentSize < 0)
+            kIndentSize = kDefaultIndentSize;
     }
 
-    output_filename += ".txt";
+    output_filename = arg_parser.GetArgumentValue(kOutfileArgument);
+    if (output_filename.empty())
+    {
+        output_filename = input_filename;
+        size_t      suffix_pos      = output_filename.find(GFXRECON_FILE_EXTENSION);
+        if (suffix_pos != std::string::npos)
+        {
+            output_filename = output_filename.substr(0, suffix_pos);
+        }
+        output_filename += ".txt";
+    }
 
     if (file_processor.Initialize(input_filename))
     {

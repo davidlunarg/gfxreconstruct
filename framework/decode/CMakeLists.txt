@@ -41,6 +41,9 @@ target_sources(gfxrecon_decode
                    window.h
                    ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_ascii_consumer.h
                    ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_ascii_consumer.cpp
+                   ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_ascii_struct_util.h
+                   ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_ascii_enum_util.h
+                   ${CMAKE_SOURCE_DIR}/framework/util/ascii_utils.h
                    ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_consumer.h
                    ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_decoder.h
                    ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_decoder.cpp
