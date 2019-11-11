@@ -30,6 +30,12 @@ from vulkan_struct_decoders_forward_generator import VulkanStructDecodersForward
 from vulkan_struct_decoders_header_generator import VulkanStructDecodersHeaderGenerator,VulkanStructDecodersHeaderGeneratorOptions
 from decode_pnext_struct_generator import DecodePNextStructGenerator,DecodePNextStructGeneratorOptions
 
+# Enum to ascii utility file
+from vulkan_ascii_enum_generator import VulkanAsciiEnumGenerator,VulkanAsciiEnumGeneratorOptions
+
+# Structure to ascii utility file
+from vulkan_ascii_struct_generator import VulkanAsciiStructGenerator,VulkanAsciiStructGeneratorOptions
+
 # Consumers
 from vulkan_consumer_header_generator import VulkanConsumerHeaderGenerator,VulkanConsumerHeaderGeneratorOptions
 from vulkan_ascii_consumer_body_generator import VulkanAsciiConsumerBodyGenerator,VulkanAsciiConsumerBodyGeneratorOptions
@@ -204,6 +210,30 @@ def makeGenOpts(args):
         baseClassHeader   = 'vulkan_consumer_base.h',
         isOverride        = False,
         filename          = 'generated_vulkan_consumer.h',
+        directory         = directory,
+        blacklists        = blacklists,
+        platformTypes     = platformTypes,
+        prefixText        = prefixStrings + vkPrefixStrings,
+        protectFile       = True,
+        protectFeature    = False)
+    ]
+
+    genOpts['generated_vulkan_ascii_struct_util.h'] = [
+        VulkanAsciiStructGenerator,
+        VulkanAsciiStructGeneratorOptions(
+        filename          = 'generated_vulkan_ascii_struct_util.h',
+        directory         = directory,
+        blacklists        = blacklists,
+        platformTypes     = platformTypes,
+        prefixText        = prefixStrings + vkPrefixStrings,
+        protectFile       = True,
+        protectFeature    = False)
+    ]
+
+    genOpts['generated_vulkan_ascii_enum_util.h'] = [
+        VulkanAsciiEnumGenerator,
+        VulkanAsciiEnumGeneratorOptions(
+        filename          = 'generated_vulkan_ascii_enum_util.h',
         directory         = directory,
         blacklists        = blacklists,
         platformTypes     = platformTypes,
