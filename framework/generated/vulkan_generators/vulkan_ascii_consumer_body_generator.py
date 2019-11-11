@@ -1,7 +1,7 @@
 #!/usr/bin/python3 -i
 #
-# Copyright (c) 2018 Valve Corporation
-# Copyright (c) 2018 LunarG, Inc.
+# Copyright (c) 2019 Valve Corporation
+# Copyright (c) 2019 LunarG, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,9 +14,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+# TODO:
+#   Traverse and print pNext structures
+#   Display thread information
+#   Print pValues data in vkCmdPushConstants
+#   Print wchar_t* strings. It's currently stubbed out to print only the addr.
+#   Rename executable to gfxrecon2text, gfxrecon-totext, gfxrecon-to-text, gfxreconToText, or gfxrecontotext
 
 import os,re,sys
 from base_generator import *
+from vulkan_ascii_value_to_string_generator import *
 
 class VulkanAsciiConsumerBodyGeneratorOptions(BaseGeneratorOptions):
     """Options for generating a C++ class for Vulkan capture file to ASCII file generation"""
@@ -41,30 +49,43 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                  errFile = sys.stderr,
                  warnFile = sys.stderr,
                  diagFile = sys.stdout):
+        self.structDict = dict()               # Dictionary of all structures, accumulated across all features
+        self.unionList = set()                 # List of unions. This is a subset of structDict.
         BaseGenerator.__init__(self,
-                               processCmds=True, processStructs=False, featureBreak=True,
+                               processCmds=True, processStructs=True, featureBreak=True,
                                errFile=errFile, warnFile=warnFile, diagFile=diagFile)
+
+    # Method that simply calls write(), but caller can omit the file=self.outFile arg.
+    # The name is short ("wc") because we call it so many times.
+    def wc(self, s):
+        write(s, file=self.outFile)
+
+    def isUnion(self, name):
+        if name in self.unionList:
+            return True
+        return False
 
     # Method override
     def beginFile(self, genOpts):
         BaseGenerator.beginFile(self, genOpts)
-
-        write('#include "generated/generated_vulkan_ascii_consumer.h"', file=self.outFile)
+        self.wc('#include "generated/generated_vulkan_ascii_consumer.h"')
+        self.wc('#include "generated/generated_vulkan_ascii_enum_util.h"')
+        self.wc('#include "generated/generated_vulkan_ascii_struct_util.h"')
+        self.wc('#include "format/platform_types.h"')
+        self.wc('#include "util/defines.h"')
+        self.wc('#include "util/ascii_utils.h"')
+        self.wc('#include "vulkan/vulkan.h"')
+        self.wc('#include <functional>')
+        self.wc('#include <inttypes.h>')
+        self.wc('#include <string>')
         self.newline()
-        write('#include "util/defines.h"', file=self.outFile)
-        self.newline()
-        write('#include "vulkan/vulkan.h"', file=self.outFile)
-        self.newline()
-        write('GFXRECON_BEGIN_NAMESPACE(gfxrecon)', file=self.outFile)
-        write('GFXRECON_BEGIN_NAMESPACE(decode)', file=self.outFile)
+        self.wc('GFXRECON_BEGIN_NAMESPACE(gfxrecon)')
+        self.wc('GFXRECON_BEGIN_NAMESPACE(decode)')
 
     # Method override
     def endFile(self):
-        self.newline()
-        write('GFXRECON_END_NAMESPACE(decode)', file=self.outFile)
-        write('GFXRECON_END_NAMESPACE(gfxrecon)', file=self.outFile)
-
-        # Finish processing in superclass
+        self.wc('GFXRECON_END_NAMESPACE(decode)')
+        self.wc('GFXRECON_END_NAMESPACE(gfxrecon)')
         BaseGenerator.endFile(self)
 
     #
@@ -75,25 +96,89 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         return False
 
     #
+    # Override genType in BaseGenerator
+    def genType(self, typeinfo, name, alias):
+        BaseGenerator.genType(self, typeinfo, name, alias)
+        typeElem = typeinfo.elem
+        category = typeElem.get('category')
+        if category == 'union':
+            self.genStruct(typeinfo, name, alias)
+            self.unionList.add(name)
+        if ((category == 'struct' or category == 'union') and name !="VkBaseOutStructure" and name != "VkBaseInStructure"):
+            self.structDict[name] = self.makeValueInfo(typeinfo.elem.findall('.//member'))
+
+    #
     # Performs C++ code generation for the feature.
     def generateFeature(self):
-        first = True
+
+        # Generate functions to print cmds (api entry points)
         for cmd in self.getFilteredCmdNames():
             info = self.featureCmdParams[cmd]
             returnType = info[0]
             values = info[2]
-
-            cmddef = '' if first else '\n'
-            cmddef += self.makeConsumerFuncDecl(returnType, 'VulkanAsciiConsumer::Process_' + cmd, values) + '\n'
-            cmddef += '{\n'
-            cmddef += self.makeConsumerFuncBody(returnType, cmd, values)
-            cmddef += '}'
-
-            write(cmddef, file=self.outFile)
-            first = False
+            self.wc(self.makeConsumerFuncDecl(returnType, 'VulkanAsciiConsumer::Process_' + cmd, values))
+            self.makeConsumerFuncBody(returnType, cmd, values)
+            self.newline()
 
     #
     # Return VulkanAsciiConsumer class member function definition.
     def makeConsumerFuncBody(self, returnType, name, values):
-        body = '    fprintf(GetFile(), "%s\\n", "' + name + '");\n'
-        return body
+
+        # Begin function
+        self.wc('{')
+        self.wc('    std::string outString = "";')
+        self.wc('    std::string *out = &outString;')
+        self.wc('    uint32_t indent = 1;')
+        needcomma=0
+        args = ''
+        for value in values:
+            if needcomma:
+                args += ', '
+            args += value.name
+            needcomma = 1
+        self.wc('    fprintf(GetFile(), "' + name + '(' + args  + ')");')
+        if returnType == 'void':
+            self.wc('    fprintf(GetFile(), " returns void:\\n");')
+        else:
+            # The parameter name assigned to the return value by the code generator is 'returnValue'
+            if self.isEnum(returnType):
+                self.wc('    EnumToStringVkResult(&outString, returnValue);')
+                self.wc('    fprintf(GetFile(), " returns ' + returnType + ' %s (%" PRId32 "):\\n", outString.c_str(), returnValue);')
+            elif self.isFunctionPtr(value.baseType):
+                # This is encoded as a 64-bit integer containing the address of the function pointer
+                self.wc('    fprintf(GetFile(), " returns 0x%" PRIx64 ":\\n", static_cast<uint64_t>(returnValue));\n')
+            else:
+                self.wc('    fprintf(GetFile(), " returns {}:\\n", returnValue);'.format(self.getFormatString(returnType)))
+            self.wc('    outString = ""; //UYT')
+
+        for value in values:
+            self.newline()
+            self.wc('    // func arg: ' + value.fullType + ' ' + value.name)
+            ValueToString.valueToString(self, value, "")
+            self.wc('    outString += "\\n";   // HHS')
+
+        # Add an extra new line to the output at the end of a func
+        self.newline()
+        self.wc('    outString += "\\n";   // HDS')
+        self.wc('    fprintf(GetFile(), "%s", outString.c_str());')
+        self.wc('}')
+
+    def getFormatString(self, type):
+        if type in ['int', 'int32_t']:
+            return '%d'
+        elif type in ['uint32_t', 'VkBool32']:
+            return '%u'
+        elif type in ['int64_t']:
+            return '%" PRId64 "'
+        elif type in ['uint64_t', 'VkDeviceSize']:
+            return '%" PRIu64 "'
+        elif type in ['VkDeviceAddress']:
+            return '0x%" PRIx64 "'
+        elif type in ['float']:
+            return '%g'
+        elif type in ['void']:
+            return '0x%" PRIx64 "'
+        elif type in ['size_t']:
+            return '%zu'
+        else:
+            return '%d'
