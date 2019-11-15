@@ -28,9 +28,7 @@
 #   If there isn't an implementation for a generic template function, these are basically just regular overloaded functions and the template syntax can be removed:
 #       void StructureToString(std::string* rString, const Decoded_VkApplicationInfo &pStructIn, int indent, uint64_t baseAddr);
 #
-#   Move functions that convert Vulkan enums to strings to a separate file, so it can be used by other modules in gfxreconstruct
-#
-
+#   There is lots of common code between printing args and printing structure members. Combine it.
 
 
 import os,re,sys
@@ -60,10 +58,6 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                  warnFile = sys.stderr,
                  diagFile = sys.stdout):
         self.structDict = dict()               # Dictionary of all structures, accumulated across all features
-        self.featureEnumList = dict()          # Dictionary of enums in the current feature
-        self.featureEnumListNoAliases = set()  # List of enums that are not aliases
-        self.featureEnumListAliases = dict()   # Dictionary of enumns that are aliases
-        self.featureFlagsNames = set()         # List of bit flags
         self.unionList = set()                 # List of unions. This is a subset of structDict.
         BaseGenerator.__init__(self,
                                processCmds=True, processStructs=True, featureBreak=True,
@@ -83,7 +77,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
     def beginFile(self, genOpts):
         BaseGenerator.beginFile(self, genOpts)
         self.wc('#include "generated/generated_vulkan_ascii_consumer.h"')
-        self.wc('#include "decode/vulkan_enum_util.h"')
+        self.wc('#include "generated/generated_vulkan_ascii_enum_util.h"')
         self.wc('#include "format/platform_types.h"')
         self.wc('#include "util/defines.h"')
         self.wc('#include "vulkan/vulkan.h"')
@@ -437,13 +431,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
     #
     # Override genGroup in BaseGenerator
     def genGroup(self, groupinfo, groupName, alias):
-        BaseGenerator.genGroup(self, groupinfo, groupName, alias)
-        if alias:
-            self.featureEnumListAliases[groupName] = alias
-        else:
-            self.featureEnumListNoAliases.add(groupName)
-            self.enumNames.add(groupName)
-            self.featureEnumList[groupName] = groupinfo.elem.findall('enum')
+        BaseGenerator.genGroup(self, groupinfo, groupName, alias)    # TODO: Remove this method? It only calls the basegenerator gengroup...
 
     #
     # Override genType in BaseGenerator
@@ -457,8 +445,6 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         if ((category == 'struct' or category == 'union') and name !="VkBaseOutStructure" and name != "VkBaseInStructure"):
             if (not alias):
                 self.structDict[name] = self.makeValueInfo(typeinfo.elem.findall('.//member'))
-        elif (category == 'bitmask'):
-            self.featureFlagsNames.add(name)
 
     # Return an initializer for vinfo
     def setVinfo(self, member):
@@ -474,53 +460,6 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
     #
     # Performs C++ code generation for the feature.
     def generateFeature(self):
-
-        # Generate functions to convert enum values to strings
-        for enumName in self.featureEnumListNoAliases:
-            if enumName in self.featureEnumList:
-                self.wc('\nvoid EnumToString' + enumName + '(std::string* out, uint32_t enum_uint32)')
-                self.wc('{')
-                self.wc('    ' + enumName + ' e = static_cast<' + enumName + '>(enum_uint32);')
-                self.wc('    assert(out != nullptr);')
-                # Use set e to eliminate duplicates and make sure we don't use aliases
-                e = set()
-                for enumValue in self.featureEnumList[enumName]:
-                    enumString=str(enumValue.attrib.get('name'));
-                    isAlias = str(enumValue.attrib.get('alias'))
-                    supported = str(enumValue.attrib.get('supported'))
-                    if isAlias == 'None' and supported != 'disabled':
-                        e.add(enumString);
-                if len(e) > 0:
-                    self.wc('    switch (e)')
-                    self.wc('    {')
-                    # Add a case for each enum
-                    for enumValue in e:
-                        self.wc('        case ' + enumValue + ':')
-                        self.wc('            *out += std::string("' + enumValue + '");')
-                        self.wc('            return;')
-                    self.wc('        default:')
-                    self.wc('            *out += std::string("UNKNOWN");')
-                    self.wc('            return;')
-                    self.wc('    };')
-                else:
-                    self.wc('    *out += std::string("UNKNOWN");')
-            self.wc('};')
-            self.newline()
-
-        # Generate functions to convert aliased enum types to string
-        for enumName in self.featureEnumListAliases:
-            self.wc('\nvoid EnumToString' + enumName + '(std::string* out, ' + enumName + ' e)')
-            self.wc('{')
-            self.wc('    assert(out != nullptr);')
-            self.wc('    EnumToString' + self.featureEnumListAliases[enumName] + '(out, e);')
-            self.wc('}')
-            self.newline()
-
-        # Reset feature enums and flags
-        self.featureEnumList = dict()
-        self.featureEnumListNoAliases = set()
-        self.featureEnumListAliases = dict()
-        self.featureFlagsNames = set()
 
         # Generate forward references to functions to print structures
         for structName in self.featureStructMembers:

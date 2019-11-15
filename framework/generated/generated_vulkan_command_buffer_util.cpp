@@ -28,36 +28,34 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(encode)
 
-void TrackBeginCommandBufferHandles(CommandBufferWrapper* wrapper, const VkCommandBufferBeginInfo* pBeginInfo)
+void TrackCmdBlitImageHandles(CommandBufferWrapper* wrapper, VkImage srcImage, VkImage dstImage)
 {
     assert(wrapper != nullptr);
 
-    if (pBeginInfo != nullptr)
-    {
-        // TODO: Process handles from parameter "pInheritanceInfo" with type "const VkCommandBufferInheritanceInfo*"
-    }
+    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(srcImage));
+    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(dstImage));
 }
 
-void TrackCmdBindPipelineHandles(CommandBufferWrapper* wrapper, VkPipeline pipeline)
+void TrackCmdCopyQueryPoolResultsHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool, VkBuffer dstBuffer)
 {
     assert(wrapper != nullptr);
 
-    wrapper->command_handles[CommandHandleType::PipelineHandle].insert(GetWrappedId(pipeline));
+    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
+    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(dstBuffer));
 }
 
-void TrackCmdBindDescriptorSetsHandles(CommandBufferWrapper* wrapper, VkPipelineLayout layout, uint32_t descriptorSetCount, const VkDescriptorSet* pDescriptorSets)
+void TrackCmdResetQueryPoolHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool)
 {
     assert(wrapper != nullptr);
 
-    wrapper->command_handles[CommandHandleType::PipelineLayoutHandle].insert(GetWrappedId(layout));
+    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
+}
 
-    if (pDescriptorSets != nullptr)
-    {
-        for (uint32_t i = 0; i < descriptorSetCount; ++i)
-        {
-            wrapper->command_handles[CommandHandleType::DescriptorSetHandle].insert(GetWrappedId(pDescriptorSets[i]));
-        }
-    }
+void TrackCmdFillBufferHandles(CommandBufferWrapper* wrapper, VkBuffer dstBuffer)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(dstBuffer));
 }
 
 void TrackCmdBindIndexBufferHandles(CommandBufferWrapper* wrapper, VkBuffer buffer)
@@ -67,38 +65,18 @@ void TrackCmdBindIndexBufferHandles(CommandBufferWrapper* wrapper, VkBuffer buff
     wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(buffer));
 }
 
-void TrackCmdBindVertexBuffersHandles(CommandBufferWrapper* wrapper, uint32_t bindingCount, const VkBuffer* pBuffers)
+void TrackCmdUpdateBufferHandles(CommandBufferWrapper* wrapper, VkBuffer dstBuffer)
 {
     assert(wrapper != nullptr);
 
-    if (pBuffers != nullptr)
-    {
-        for (uint32_t i = 0; i < bindingCount; ++i)
-        {
-            wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(pBuffers[i]));
-        }
-    }
+    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(dstBuffer));
 }
 
-void TrackCmdDrawIndirectHandles(CommandBufferWrapper* wrapper, VkBuffer buffer)
+void TrackCmdPushConstantsHandles(CommandBufferWrapper* wrapper, VkPipelineLayout layout)
 {
     assert(wrapper != nullptr);
 
-    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(buffer));
-}
-
-void TrackCmdDrawIndexedIndirectHandles(CommandBufferWrapper* wrapper, VkBuffer buffer)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(buffer));
-}
-
-void TrackCmdDispatchIndirectHandles(CommandBufferWrapper* wrapper, VkBuffer buffer)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(buffer));
+    wrapper->command_handles[CommandHandleType::PipelineLayoutHandle].insert(GetWrappedId(layout));
 }
 
 void TrackCmdCopyBufferHandles(CommandBufferWrapper* wrapper, VkBuffer srcBuffer, VkBuffer dstBuffer)
@@ -109,86 +87,11 @@ void TrackCmdCopyBufferHandles(CommandBufferWrapper* wrapper, VkBuffer srcBuffer
     wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(dstBuffer));
 }
 
-void TrackCmdCopyImageHandles(CommandBufferWrapper* wrapper, VkImage srcImage, VkImage dstImage)
+void TrackCmdWriteTimestampHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool)
 {
     assert(wrapper != nullptr);
 
-    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(srcImage));
-    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(dstImage));
-}
-
-void TrackCmdBlitImageHandles(CommandBufferWrapper* wrapper, VkImage srcImage, VkImage dstImage)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(srcImage));
-    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(dstImage));
-}
-
-void TrackCmdCopyBufferToImageHandles(CommandBufferWrapper* wrapper, VkBuffer srcBuffer, VkImage dstImage)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(srcBuffer));
-    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(dstImage));
-}
-
-void TrackCmdCopyImageToBufferHandles(CommandBufferWrapper* wrapper, VkImage srcImage, VkBuffer dstBuffer)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(srcImage));
-    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(dstBuffer));
-}
-
-void TrackCmdUpdateBufferHandles(CommandBufferWrapper* wrapper, VkBuffer dstBuffer)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(dstBuffer));
-}
-
-void TrackCmdFillBufferHandles(CommandBufferWrapper* wrapper, VkBuffer dstBuffer)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(dstBuffer));
-}
-
-void TrackCmdClearColorImageHandles(CommandBufferWrapper* wrapper, VkImage image)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(image));
-}
-
-void TrackCmdClearDepthStencilImageHandles(CommandBufferWrapper* wrapper, VkImage image)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(image));
-}
-
-void TrackCmdResolveImageHandles(CommandBufferWrapper* wrapper, VkImage srcImage, VkImage dstImage)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(srcImage));
-    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(dstImage));
-}
-
-void TrackCmdSetEventHandles(CommandBufferWrapper* wrapper, VkEvent event)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::EventHandle].insert(GetWrappedId(event));
-}
-
-void TrackCmdResetEventHandles(CommandBufferWrapper* wrapper, VkEvent event)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::EventHandle].insert(GetWrappedId(event));
+    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
 }
 
 void TrackCmdWaitEventsHandles(CommandBufferWrapper* wrapper, uint32_t eventCount, const VkEvent* pEvents, uint32_t bufferMemoryBarrierCount, const VkBufferMemoryBarrier* pBufferMemoryBarriers, uint32_t imageMemoryBarrierCount, const VkImageMemoryBarrier* pImageMemoryBarriers)
@@ -220,6 +123,171 @@ void TrackCmdWaitEventsHandles(CommandBufferWrapper* wrapper, uint32_t eventCoun
     }
 }
 
+void TrackCmdEndQueryHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
+}
+
+void TrackBeginCommandBufferHandles(CommandBufferWrapper* wrapper, const VkCommandBufferBeginInfo* pBeginInfo)
+{
+    assert(wrapper != nullptr);
+
+    if (pBeginInfo != nullptr)
+    {
+        // TODO: Process handles from parameter "pInheritanceInfo" with type "const VkCommandBufferInheritanceInfo*"
+    }
+}
+
+void TrackCmdBeginRenderPassHandles(CommandBufferWrapper* wrapper, const VkRenderPassBeginInfo* pRenderPassBegin)
+{
+    assert(wrapper != nullptr);
+
+    if (pRenderPassBegin != nullptr)
+    {
+        // TODO: Process handles from parameter "pNext" with type "const void*"
+        wrapper->command_handles[CommandHandleType::RenderPassHandle].insert(GetWrappedId((*pRenderPassBegin).renderPass));
+        wrapper->command_handles[CommandHandleType::FramebufferHandle].insert(GetWrappedId((*pRenderPassBegin).framebuffer));
+    }
+}
+
+void TrackCmdBeginQueryHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
+}
+
+void TrackCmdBindPipelineHandles(CommandBufferWrapper* wrapper, VkPipeline pipeline)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::PipelineHandle].insert(GetWrappedId(pipeline));
+}
+
+void TrackCmdDrawIndexedIndirectHandles(CommandBufferWrapper* wrapper, VkBuffer buffer)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(buffer));
+}
+
+void TrackCmdResetEventHandles(CommandBufferWrapper* wrapper, VkEvent event)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::EventHandle].insert(GetWrappedId(event));
+}
+
+void TrackCmdDispatchIndirectHandles(CommandBufferWrapper* wrapper, VkBuffer buffer)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(buffer));
+}
+
+void TrackCmdResolveImageHandles(CommandBufferWrapper* wrapper, VkImage srcImage, VkImage dstImage)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(srcImage));
+    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(dstImage));
+}
+
+void TrackCmdSetEventHandles(CommandBufferWrapper* wrapper, VkEvent event)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::EventHandle].insert(GetWrappedId(event));
+}
+
+void TrackCmdExecuteCommandsHandles(CommandBufferWrapper* wrapper, uint32_t commandBufferCount, const VkCommandBuffer* pCommandBuffers)
+{
+    assert(wrapper != nullptr);
+
+    if (pCommandBuffers != nullptr)
+    {
+        for (uint32_t i = 0; i < commandBufferCount; ++i)
+        {
+            wrapper->command_handles[CommandHandleType::CommandBufferHandle].insert(GetWrappedId(pCommandBuffers[i]));
+        }
+    }
+}
+
+void TrackCmdClearColorImageHandles(CommandBufferWrapper* wrapper, VkImage image)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(image));
+}
+
+void TrackCmdBindVertexBuffersHandles(CommandBufferWrapper* wrapper, uint32_t bindingCount, const VkBuffer* pBuffers)
+{
+    assert(wrapper != nullptr);
+
+    if (pBuffers != nullptr)
+    {
+        for (uint32_t i = 0; i < bindingCount; ++i)
+        {
+            wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(pBuffers[i]));
+        }
+    }
+}
+
+void TrackCmdCopyImageToBufferHandles(CommandBufferWrapper* wrapper, VkImage srcImage, VkBuffer dstBuffer)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(srcImage));
+    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(dstBuffer));
+}
+
+void TrackCmdCopyImageHandles(CommandBufferWrapper* wrapper, VkImage srcImage, VkImage dstImage)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(srcImage));
+    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(dstImage));
+}
+
+void TrackCmdClearDepthStencilImageHandles(CommandBufferWrapper* wrapper, VkImage image)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(image));
+}
+
+void TrackCmdDrawIndirectHandles(CommandBufferWrapper* wrapper, VkBuffer buffer)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(buffer));
+}
+
+void TrackCmdBindDescriptorSetsHandles(CommandBufferWrapper* wrapper, VkPipelineLayout layout, uint32_t descriptorSetCount, const VkDescriptorSet* pDescriptorSets)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::PipelineLayoutHandle].insert(GetWrappedId(layout));
+
+    if (pDescriptorSets != nullptr)
+    {
+        for (uint32_t i = 0; i < descriptorSetCount; ++i)
+        {
+            wrapper->command_handles[CommandHandleType::DescriptorSetHandle].insert(GetWrappedId(pDescriptorSets[i]));
+        }
+    }
+}
+
+void TrackCmdCopyBufferToImageHandles(CommandBufferWrapper* wrapper, VkBuffer srcBuffer, VkImage dstImage)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(srcBuffer));
+    wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(dstImage));
+}
+
 void TrackCmdPipelineBarrierHandles(CommandBufferWrapper* wrapper, uint32_t bufferMemoryBarrierCount, const VkBufferMemoryBarrier* pBufferMemoryBarriers, uint32_t imageMemoryBarrierCount, const VkImageMemoryBarrier* pImageMemoryBarriers)
 {
     assert(wrapper != nullptr);
@@ -237,74 +305,6 @@ void TrackCmdPipelineBarrierHandles(CommandBufferWrapper* wrapper, uint32_t buff
         for (uint32_t i = 0; i < imageMemoryBarrierCount; ++i)
         {
             wrapper->command_handles[CommandHandleType::ImageHandle].insert(GetWrappedId(pImageMemoryBarriers[i].image));
-        }
-    }
-}
-
-void TrackCmdBeginQueryHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
-}
-
-void TrackCmdEndQueryHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
-}
-
-void TrackCmdResetQueryPoolHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
-}
-
-void TrackCmdWriteTimestampHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
-}
-
-void TrackCmdCopyQueryPoolResultsHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool, VkBuffer dstBuffer)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
-    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(dstBuffer));
-}
-
-void TrackCmdPushConstantsHandles(CommandBufferWrapper* wrapper, VkPipelineLayout layout)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::PipelineLayoutHandle].insert(GetWrappedId(layout));
-}
-
-void TrackCmdBeginRenderPassHandles(CommandBufferWrapper* wrapper, const VkRenderPassBeginInfo* pRenderPassBegin)
-{
-    assert(wrapper != nullptr);
-
-    if (pRenderPassBegin != nullptr)
-    {
-        // TODO: Process handles from parameter "pNext" with type "const void*"
-        wrapper->command_handles[CommandHandleType::RenderPassHandle].insert(GetWrappedId((*pRenderPassBegin).renderPass));
-        wrapper->command_handles[CommandHandleType::FramebufferHandle].insert(GetWrappedId((*pRenderPassBegin).framebuffer));
-    }
-}
-
-void TrackCmdExecuteCommandsHandles(CommandBufferWrapper* wrapper, uint32_t commandBufferCount, const VkCommandBuffer* pCommandBuffers)
-{
-    assert(wrapper != nullptr);
-
-    if (pCommandBuffers != nullptr)
-    {
-        for (uint32_t i = 0; i < commandBufferCount; ++i)
-        {
-            wrapper->command_handles[CommandHandleType::CommandBufferHandle].insert(GetWrappedId(pCommandBuffers[i]));
         }
     }
 }
@@ -369,6 +369,27 @@ void TrackCmdBindTransformFeedbackBuffersEXTHandles(CommandBufferWrapper* wrappe
     }
 }
 
+void TrackCmdBeginQueryIndexedEXTHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
+}
+
+void TrackCmdDrawIndirectByteCountEXTHandles(CommandBufferWrapper* wrapper, VkBuffer counterBuffer)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(counterBuffer));
+}
+
+void TrackCmdEndQueryIndexedEXTHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
+}
+
 void TrackCmdBeginTransformFeedbackEXTHandles(CommandBufferWrapper* wrapper, uint32_t counterBufferCount, const VkBuffer* pCounterBuffers)
 {
     assert(wrapper != nullptr);
@@ -393,27 +414,6 @@ void TrackCmdEndTransformFeedbackEXTHandles(CommandBufferWrapper* wrapper, uint3
             wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(pCounterBuffers[i]));
         }
     }
-}
-
-void TrackCmdBeginQueryIndexedEXTHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
-}
-
-void TrackCmdEndQueryIndexedEXTHandles(CommandBufferWrapper* wrapper, VkQueryPool queryPool)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::QueryPoolHandle].insert(GetWrappedId(queryPool));
-}
-
-void TrackCmdDrawIndirectByteCountEXTHandles(CommandBufferWrapper* wrapper, VkBuffer counterBuffer)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(counterBuffer));
 }
 
 void TrackCmdDrawIndirectCountAMDHandles(CommandBufferWrapper* wrapper, VkBuffer buffer, VkBuffer countBuffer)
@@ -442,6 +442,17 @@ void TrackCmdBeginConditionalRenderingEXTHandles(CommandBufferWrapper* wrapper, 
     }
 }
 
+void TrackCmdReserveSpaceForCommandsNVXHandles(CommandBufferWrapper* wrapper, const VkCmdReserveSpaceForCommandsInfoNVX* pReserveSpaceInfo)
+{
+    assert(wrapper != nullptr);
+
+    if (pReserveSpaceInfo != nullptr)
+    {
+        wrapper->command_handles[CommandHandleType::ObjectTableNVXHandle].insert(GetWrappedId((*pReserveSpaceInfo).objectTable));
+        wrapper->command_handles[CommandHandleType::IndirectCommandsLayoutNVXHandle].insert(GetWrappedId((*pReserveSpaceInfo).indirectCommandsLayout));
+    }
+}
+
 void TrackCmdProcessCommandsNVXHandles(CommandBufferWrapper* wrapper, const VkCmdProcessCommandsInfoNVX* pProcessCommandsInfo)
 {
     assert(wrapper != nullptr);
@@ -454,17 +465,6 @@ void TrackCmdProcessCommandsNVXHandles(CommandBufferWrapper* wrapper, const VkCm
         wrapper->command_handles[CommandHandleType::CommandBufferHandle].insert(GetWrappedId((*pProcessCommandsInfo).targetCommandBuffer));
         wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId((*pProcessCommandsInfo).sequencesCountBuffer));
         wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId((*pProcessCommandsInfo).sequencesIndexBuffer));
-    }
-}
-
-void TrackCmdReserveSpaceForCommandsNVXHandles(CommandBufferWrapper* wrapper, const VkCmdReserveSpaceForCommandsInfoNVX* pReserveSpaceInfo)
-{
-    assert(wrapper != nullptr);
-
-    if (pReserveSpaceInfo != nullptr)
-    {
-        wrapper->command_handles[CommandHandleType::ObjectTableNVXHandle].insert(GetWrappedId((*pReserveSpaceInfo).objectTable));
-        wrapper->command_handles[CommandHandleType::IndirectCommandsLayoutNVXHandle].insert(GetWrappedId((*pReserveSpaceInfo).indirectCommandsLayout));
     }
 }
 
@@ -489,14 +489,6 @@ void TrackCmdBuildAccelerationStructureNVHandles(CommandBufferWrapper* wrapper, 
     wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(scratch));
 }
 
-void TrackCmdCopyAccelerationStructureNVHandles(CommandBufferWrapper* wrapper, VkAccelerationStructureNV dst, VkAccelerationStructureNV src)
-{
-    assert(wrapper != nullptr);
-
-    wrapper->command_handles[CommandHandleType::AccelerationStructureNVHandle].insert(GetWrappedId(dst));
-    wrapper->command_handles[CommandHandleType::AccelerationStructureNVHandle].insert(GetWrappedId(src));
-}
-
 void TrackCmdTraceRaysNVHandles(CommandBufferWrapper* wrapper, VkBuffer raygenShaderBindingTableBuffer, VkBuffer missShaderBindingTableBuffer, VkBuffer hitShaderBindingTableBuffer, VkBuffer callableShaderBindingTableBuffer)
 {
     assert(wrapper != nullptr);
@@ -505,6 +497,14 @@ void TrackCmdTraceRaysNVHandles(CommandBufferWrapper* wrapper, VkBuffer raygenSh
     wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(missShaderBindingTableBuffer));
     wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(hitShaderBindingTableBuffer));
     wrapper->command_handles[CommandHandleType::BufferHandle].insert(GetWrappedId(callableShaderBindingTableBuffer));
+}
+
+void TrackCmdCopyAccelerationStructureNVHandles(CommandBufferWrapper* wrapper, VkAccelerationStructureNV dst, VkAccelerationStructureNV src)
+{
+    assert(wrapper != nullptr);
+
+    wrapper->command_handles[CommandHandleType::AccelerationStructureNVHandle].insert(GetWrappedId(dst));
+    wrapper->command_handles[CommandHandleType::AccelerationStructureNVHandle].insert(GetWrappedId(src));
 }
 
 void TrackCmdWriteAccelerationStructuresPropertiesNVHandles(CommandBufferWrapper* wrapper, uint32_t accelerationStructureCount, const VkAccelerationStructureNV* pAccelerationStructures, VkQueryPool queryPool)
