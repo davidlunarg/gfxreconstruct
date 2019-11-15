@@ -34,11 +34,11 @@ const char kShowShaderOption[] = "--showshader";
 const char kOutfileArgument[]  = "--outfile";
 const char kIndentArgument[]   = "--indent";
 
-const int defaultIndentSize = 4;
+const int kDefaultIndentSize = 4;
 
-int indentSize = defaultIndentSize;
-bool noAddr = false;
-bool printShaderCode = false;
+int kIndentSize = kDefaultIndentSize;  // Number of spaces to use for each indentation.
+bool kNoAddr = false;                  // When true, do no print addresses but print "address" instead.
+bool kPrintShaderCode = false;         // When true, print shader code.
 
 static bool PrintVersion(const char* exe_name, const gfxrecon::util::ArgumentParser& arg_parser)
 {
@@ -111,16 +111,16 @@ int main(int argc, const char** argv)
         input_filename                                       = positional_arguments[0];
     }
 
-    noAddr = arg_parser.IsOptionSet(kNoAddrOption);
+    kNoAddr = arg_parser.IsOptionSet(kNoAddrOption);
 
-    printShaderCode = arg_parser.IsOptionSet(kShowShaderOption);
+    kPrintShaderCode = arg_parser.IsOptionSet(kShowShaderOption);
 
     argValue = arg_parser.GetArgumentValue(kIndentArgument);
     if (!argValue.empty())
     {
-        indentSize = std::stoi(argValue);
-        if (indentSize < 0)
-            indentSize = defaultIndentSize;
+        kIndentSize = std::stoi(argValue);
+        if (kIndentSize < 0)
+            kIndentSize = kDefaultIndentSize;
     }
 
     output_filename = arg_parser.GetArgumentValue(kOutfileArgument);
