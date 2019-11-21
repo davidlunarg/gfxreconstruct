@@ -46,6 +46,7 @@ generate_targets = [
     'generated_decode_pnext_struct.cpp',
     'generated_vulkan_consumer.h',
     'generated_vulkan_ascii_enum_util.h',
+    'generated_vulkan_ascii_struct_util.h',
     'generated_vulkan_ascii_consumer.h',
     'generated_vulkan_ascii_consumer.cpp',
     'generated_vulkan_replay_consumer.h',
