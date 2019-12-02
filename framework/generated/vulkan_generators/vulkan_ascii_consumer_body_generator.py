@@ -16,11 +16,10 @@
 # limitations under the License.
 #
 # TODO:
-#   Traverse and print pNext structures
 #   Display thread information
 #   Print pValues data in vkCmdPushConstants
 #   Print wchar_t* strings. It's currently stubbed out to print only the addr.
-#   Rename executable to gfxrecon2text, gfxrecon-totext, gfxrecon-to-text, gfxreconToText, or gfxrecontotext
+#   Rename gfxrecon-convert
 
 import os,re,sys
 from base_generator import *

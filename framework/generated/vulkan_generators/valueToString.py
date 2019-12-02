@@ -174,8 +174,12 @@ class ValueToString(BaseGenerator):
                         self.wc('        ScalarValueToString(out, ' + value.name + '.GetPointer(), vinfo_' + value.name +'); // PWS')
                     else:
                         if value.name == 'pNext':
-                            self.wc('        uint64_t pnextLocal = ' + pstruct_in + value.name + '->GetAddress(); // PNX')
-                            self.wc('        ScalarValueToString(out, &pnextLocal, vinfo_' + value.name +');')
+                            self.wc('        void *pNextLocal = reinterpret_cast<void *>(' + pstruct_in + value.name + '->GetAddress()); // PNX')
+                            self.wc('        ScalarValueToString(out, &pNextLocal, vinfo_' + value.name +');')
+                            self.wc('        if (pNextLocal)')
+                            self.wc('        {')
+                            self.wc('            PnextStructToString(out, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); //POX ')
+                            self.wc('        }')
                         else:
                             self.wc('        ScalarValueToString(out, ' + pstruct_in + value.name + '->GetPointer(), vinfo_' + value.name +'); // PWT')
             self.wc('    }')

@@ -30,7 +30,6 @@ class VulkanAsciiStructGeneratorOptions(BaseGeneratorOptions):
                  prefixText = '',
                  protectFile = False,
                  protectFeature = True):
-        #print("@@__init__ 1 - ascii struct")
         BaseGeneratorOptions.__init__(self, blacklists, platformTypes,
                                       filename, directory, prefixText,
                                       protectFile, protectFeature)
@@ -45,6 +44,7 @@ class VulkanAsciiStructGenerator(BaseGenerator):
                  warnFile = sys.stderr,
                  diagFile = sys.stdout):
         self.structDict = dict()               # Dictionary of all structures, accumulated across all features
+        self.pNextStructs = dict()             # Map structure types to sType
         self.unionList = set()                 # List of unions. This is a subset of structDict.
         BaseGenerator.__init__(self,
                                processCmds=True, processStructs=True, featureBreak=True,
@@ -99,6 +99,10 @@ class VulkanAsciiStructGenerator(BaseGenerator):
                 self.unionList.add(name)
             if ((category == 'struct' or category == 'union') and name !="VkBaseOutStructure" and name != "VkBaseInStructure"):
                 self.structDict[name] = self.makeValueInfo(typeinfo.elem.findall('.//member'))
+                if typeinfo.elem.get('structextends'):
+                    sType = self.makeStructureTypeEnum(typeinfo, name)
+                    if sType:
+                        self.pNextStructs[name] = sType
 
     def endFile(self):
         # Generate forward references to struct functions
@@ -106,6 +110,23 @@ class VulkanAsciiStructGenerator(BaseGenerator):
             if structName != 'VkBaseInStructure' and structName != 'VkBaseOutStructure':
                 self.wc('void StructureToString(std::string* out, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr);')
         self.newline()
+
+        # Generate PnextStructToString function
+        # PnextStructToString will accept a pNext structure, examine the sType, and call the appropriate StructureToString function
+        self.wc('void PnextStructToString(std::string* out, int indent, void *pNext)')
+        self.wc('{')
+        self.wc('    assert(out != nullptr);')
+        self.wc('    switch (static_cast<Decoded_VkApplicationInfo*>(pNext)->decoded_value->sType)')
+        self.wc('    {')
+        for structName in self.pNextStructs:
+                self.wc('        case ' + self.pNextStructs[structName] + ':')
+                self.wc('            StructureToString(out, *(reinterpret_cast<const Decoded_' + structName + '*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));');
+                self.wc('            break;')
+        self.wc('        default:')
+        self.wc('            *out += "Unknown pNext struct";')
+        self.wc('            break;')
+        self.wc('    }')
+        self.wc('}')
 
         # Generate functions to print structures
         for structName in self.structDict:
