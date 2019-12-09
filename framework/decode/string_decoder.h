@@ -71,6 +71,7 @@ class BasicStringDecoder : public PointerDecoderBase
         {
             size_t string_len = GetLength();
             size_t alloc_len  = string_len + 1;
+            string_len        = string_len * sizeof(CharT);
 
             if (!is_memory_external_)
             {
