@@ -72,7 +72,7 @@ class VulkanAsciiEnumGeneratorCpp(BaseGenerator):
                 self.wc('void EnumToString' + enumName + '(FILE* outputFile, uint32_t enum_uint32)')
                 self.wc('{')
                 self.wc('    ' + enumName + ' e = static_cast<' + enumName + '>(enum_uint32);')
-                self.wc('    assert(outputFile != nullptr);')
+                self.wc('    assert(outputFile != nullptr); // RYZ')
                 # Use list e to eliminate duplicates and make sure we don't use aliases
                 e = list()
                 for enumValue in self.enumList[enumName]:
@@ -87,14 +87,14 @@ class VulkanAsciiEnumGeneratorCpp(BaseGenerator):
                     # Add a case for each enum
                     for enumValue in e:
                         self.wc('        case ' + enumValue + ':')
-                        self.wc('            OutputString(JsonoutputFile, "' + enumValue + '");')
+                        self.wc('            fprintf(outputFile, "' + enumValue + '");')
                         self.wc('            return;')
                     self.wc('        default:')
-                    self.wc('            OutputString(JsonoutputFile, "UNKNOWN");')
+                    self.wc('            fprintf(outputFile, "UNKNOWN");')
                     self.wc('            return;')
                     self.wc('    }')
                 else:
-                    self.wc('    OutputString(JsonoutputFile, "UNKNOWN");')
+                    self.wc('    fprintf(outputFile, "UNKNOWN");')
             self.wc('}')
 
         # Generate functions to convert aliased enum types to string
