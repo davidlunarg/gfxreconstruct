@@ -44,6 +44,7 @@ class VulkanAsciiStructGenerator(BaseGenerator):
                  warnFile = sys.stderr,
                  diagFile = sys.stdout):
         self.structDict = dict()               # Dictionary of all structures, accumulated across all features
+        self.pNextStructs = dict()             # Map structure types to sType
         self.unionList = set()                 # List of unions. This is a subset of structDict.
         BaseGenerator.__init__(self,
                                processCmds=True, processStructs=True, featureBreak=True,
@@ -64,8 +65,8 @@ class VulkanAsciiStructGenerator(BaseGenerator):
         BaseGenerator.beginFile(self, genOpts)
         self.wc('#include "generated/generated_vulkan_ascii_enum_util.h"')
         self.wc('#include "format/platform_types.h"')
-        self.wc('#include "util/defines.h"')
         self.wc('#include "util/ascii_utils.h"')
+        self.wc('#include "util/defines.h"')
         self.wc('#include "vulkan/vulkan.h"')
         self.wc('#include <inttypes.h>')
         self.wc('#include <string>')
@@ -98,34 +99,105 @@ class VulkanAsciiStructGenerator(BaseGenerator):
                 self.unionList.add(name)
             if ((category == 'struct' or category == 'union') and name !="VkBaseOutStructure" and name != "VkBaseInStructure"):
                 self.structDict[name] = self.makeValueInfo(typeinfo.elem.findall('.//member'))
+                if typeinfo.elem.get('structextends'):
+                    sType = self.makeStructureTypeEnum(typeinfo, name)
+                    if sType:
+                        self.pNextStructs[name] = sType
 
     def endFile(self):
         # Generate forward references to struct functions
         for structName in self.structDict:
             if structName != 'VkBaseInStructure' and structName != 'VkBaseOutStructure':
-                self.wc('void StructureToString(std::string* out, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr);')
+                self.wc('void StructureToString(FILE* outputFile, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr);')
         self.newline()
+
+        # Generate ArrayOfStructsToString
+        self.wc('template <typename T>')
+        self.wc('void ArrayOfStructsToString(FILE*        outputFile,')
+        self.wc('                            int          indent,')
+        self.wc('                            const int    pointer_count,')
+        self.wc('                            const char*  base_type_name,')
+        self.wc('                            T*           array,')
+        self.wc('                            const char*  array_name,')
+        self.wc('                            const size_t array_length,')
+        self.wc('                            bool         is_union,')
+        self.wc('                            uint64_t     base_addr)')
+        self.wc('{')
+        self.wc('    assert(outputFile != nullptr);')
+        self.wc('    if (array_length == 0 || array == nullptr)')
+        self.wc('    {')
+        self.wc('        return;')
+        self.wc('    }')
+        self.wc('    OutputString(outputFile, "\\n");')
+        self.wc('    for (uint64_t j = 0; j < array_length; j++)')
+        self.wc('    {')
+        self.wc('        std::string name_and_index;')
+        self.wc('        char tmp_string[100];')
+        self.wc('        IndentSpaces(outputFile, indent);')
+        self.wc('        name_and_index += array_name;')
+        self.wc('        snprintf(tmp_string, sizeof(tmp_string), "%s[%" PRIu64 "]: ", array_name, j);')
+        self.wc('        fprintf(outputFile, "%-32s", tmp_string);')
+        self.wc('        OutputString(outputFile, base_type_name);')
+        self.wc('        OutputString(outputFile, " = ");')
+        self.wc('        AddrToString(outputFile, base_addr + j * sizeof(T));')
+        self.wc('        if (is_union)')
+        self.wc('        {')
+        self.wc('            OutputString(outputFile, " (Union)");')
+        self.wc('        }')
+        self.wc('        OutputString(outputFile, ":");')
+        self.wc('        if (pointer_count > 1)')
+        self.wc('        {')
+        self.wc('            fprintf(stderr, "ERROR: ArrayOfStructsToString cannot handle arrays of arrays\\n");')
+        self.wc('        }')
+        self.wc('        else')
+        self.wc('        {')
+        self.wc('            StructureToString(outputFile, array[j], indent + 1, base_addr + j * sizeof(T));')
+        self.wc('        }')
+        self.wc('        if (j < array_length - 1)')
+        self.wc('        {')
+        self.wc('            OutputString(outputFile, "\\n");')
+        self.wc('        }')
+        self.wc('    }')
+        self.wc('}')
+        self.newline()
+
+        # Generate PnextStructToString function
+        # PnextStructToString will accept a pNext structure, examine the sType, and call the appropriate StructureToString function
+        self.wc('void PnextStructToString(FILE* outputFile, int indent, void *pNext)')
+        self.wc('{')
+        self.wc('    assert(outputFile != nullptr);')
+        self.wc('    switch (static_cast<Decoded_VkApplicationInfo*>(pNext)->decoded_value->sType)')
+        self.wc('    {')
+        for structName in self.pNextStructs:
+            self.wc('        case ' + self.pNextStructs[structName] + ':')
+            self.wc('            StructureToString(outputFile, *(reinterpret_cast<const Decoded_' + structName + '*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));');
+            self.wc('            break;')
+        self.wc('        default:')
+        self.wc('            OutputString(outputFile, "Unknown pNext struct");')
+        self.wc('            break;')
+        self.wc('    }')
+        self.wc('}')
 
         # Generate functions to print structures
         for structName in self.structDict:
             if structName == 'VkBaseInStructure' or structName == 'VkBaseOutStructure':
                 continue
-            self.wc('void StructureToString(std::string* out, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr)')
+            self.wc('void StructureToString(FILE* outputFile, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr)')
             self.wc('{')
             self.wc('    const ' + structName + ' *pstruct = (const ' + structName + ' *)pstruct_in.decoded_value; // BTB')
-            self.wc('    assert(out != nullptr);')
+            self.wc('    assert(outputFile != nullptr);')
             self.wc('    if (pstruct == nullptr)')
             self.wc('    {')
             self.wc('        return;')
             self.wc('    }')
-            self.wc('    *out += "\\n"; // UUR');
+            self.wc('    OutputString(outputFile, "\\n"); // UUR')
             sMembersList = list(self.structDict[structName])
             for member in sMembersList:
                 self.newline()
                 self.wc('    // struct member: ' + member.fullType + ' ' + member.name)
                 ValueToString.valueToString(self, member, structName)
                 if member != sMembersList[-1]:
-                    self.wc('    *out += "\\n"; // GDS')
+                    self.wc('    OutputString(outputFile, "\\n"); // GDS');
             self.wc('}')
             self.newline()
 

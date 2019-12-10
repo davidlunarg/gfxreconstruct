@@ -99,7 +99,6 @@ class VulkanJsonStructGenerator(BaseGenerator):
                 self.unionList.add(name)
             if ((category == 'struct' or category == 'union') and name !="VkBaseOutStructure" and name != "VkBaseInStructure"):
                 self.structDict[name] = self.makeValueInfo(typeinfo.elem.findall('.//member'))
-                print("Struct:", name)
                 if typeinfo.elem.get('structextends'):
                     sType = self.makeStructureTypeEnum(typeinfo, name)
                     if sType:
@@ -176,9 +175,8 @@ class VulkanJsonStructGenerator(BaseGenerator):
         self.wc('    OutputStringJson(outputFile, "]\\n");')
         self.wc('}')
 
-
-        # Generate PnextStructToString function
-        # PnextStructToString will accept a pNext structure, examine the sType, and call the appropriate StructureToString function
+        # Generate PnextStructToStringJson function
+        # PnextStructToStringJson will accept a pNext structure, examine the sType, and call the appropriate StructureToString function
         self.wc('void PnextStructToStringJson(FILE* outputFile, int indent, void *pNextStruct, uint64_t base_addr)')
         self.wc('{')
         self.wc('    assert(outputFile != nullptr);')
