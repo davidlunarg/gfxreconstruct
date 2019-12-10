@@ -23,7 +23,7 @@
 
 import os,re,sys
 from base_generator import *
-from valueToString import *
+from vulkan_ascii_value_to_string_generator import *
 
 class VulkanAsciiConsumerBodyGeneratorOptions(BaseGeneratorOptions):
     """Options for generating a C++ class for Vulkan capture file to ASCII file generation"""
