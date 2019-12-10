@@ -17,6 +17,7 @@
 #
 
 import os,re,sys
+from collections import OrderedDict
 from base_generator import *
 
 class VulkanAsciiEnumGeneratorOptions(BaseGeneratorOptions):
@@ -40,9 +41,9 @@ class VulkanAsciiEnumGenerator(BaseGenerator):
                  errFile = sys.stderr,
                  warnFile = sys.stderr,
                  diagFile = sys.stdout):
-        self.enumList = dict()          # Dictionary of enums
-        self.enumListNoAliases = set()  # List of enums that are not aliases
-        self.enumListAliases = dict()   # Dictionary of enumns that are aliases
+        self.enumList = OrderedDict()        # Dictionary of enums
+        self.enumListNoAliases = list()      # List of enums that are not aliases
+        self.enumListAliases = OrderedDict() # Dictionary of enumns that are aliases
         BaseGenerator.__init__(self,
                                processCmds=False, processStructs=False, featureBreak=False,
                                errFile=errFile, warnFile=warnFile, diagFile=diagFile)
@@ -69,14 +70,14 @@ class VulkanAsciiEnumGenerator(BaseGenerator):
                 self.wc('{')
                 self.wc('    ' + enumName + ' e = static_cast<' + enumName + '>(enum_uint32);')
                 self.wc('    assert(out != nullptr); // RYZ')
-                # Use set e to eliminate duplicates and make sure we don't use aliases
-                e = set()
+                # Use list e to eliminate duplicates and make sure we don't use aliases
+                e = list()
                 for enumValue in self.enumList[enumName]:
                     enumString=str(enumValue.attrib.get('name'));
                     isAlias = str(enumValue.attrib.get('alias'))
                     supported = str(enumValue.attrib.get('supported'))
-                    if isAlias == 'None' and supported != 'disabled':
-                        e.add(enumString);
+                    if (not enumString in e) and isAlias == 'None' and supported != 'disabled':
+                        e.append(enumString);
                 if len(e) > 0:
                     self.wc('    switch (e)')
                     self.wc('    {')
@@ -115,6 +116,6 @@ class VulkanAsciiEnumGenerator(BaseGenerator):
         if alias:
             self.enumListAliases[groupName] = alias
         else:
-            self.enumListNoAliases.add(groupName)
+            self.enumListNoAliases.append(groupName)
             self.enumNames.add(groupName)
             self.enumList[groupName] = groupinfo.elem.findall('enum')

@@ -46,6 +46,7 @@ void VulkanAsciiConsumer::Process_vkCreateInstance(
     fprintf(GetFile(), "vkCreateInstance(pCreateInfo, pAllocator, pInstance)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: const VkInstanceCreateInfo* pCreateInfo
     IndentSpaces(out, indent);
@@ -147,6 +148,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDevices(
     fprintf(GetFile(), "vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, pPhysicalDevices)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -291,6 +293,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     fprintf(GetFile(), "vkGetPhysicalDeviceImageFormatProperties(physicalDevice, format, type, tiling, usage, flags, pImageFormatProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -502,6 +505,7 @@ void VulkanAsciiConsumer::Process_vkCreateDevice(
     fprintf(GetFile(), "vkCreateDevice(physicalDevice, pCreateInfo, pAllocator, pDevice)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -663,6 +667,7 @@ void VulkanAsciiConsumer::Process_vkQueueSubmit(
     fprintf(GetFile(), "vkQueueSubmit(queue, submitCount, pSubmits, fence)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkQueue queue
     IndentSpaces(out, indent);
@@ -714,6 +719,7 @@ void VulkanAsciiConsumer::Process_vkQueueWaitIdle(
     fprintf(GetFile(), "vkQueueWaitIdle(queue)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkQueue queue
     IndentSpaces(out, indent);
@@ -736,6 +742,7 @@ void VulkanAsciiConsumer::Process_vkDeviceWaitIdle(
     fprintf(GetFile(), "vkDeviceWaitIdle(device)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -761,6 +768,7 @@ void VulkanAsciiConsumer::Process_vkAllocateMemory(
     fprintf(GetFile(), "vkAllocateMemory(device, pAllocateInfo, pAllocator, pMemory)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -880,6 +888,7 @@ void VulkanAsciiConsumer::Process_vkMapMemory(
     fprintf(GetFile(), "vkMapMemory(device, memory, offset, size, flags, ppData)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -975,6 +984,7 @@ void VulkanAsciiConsumer::Process_vkFlushMappedMemoryRanges(
     fprintf(GetFile(), "vkFlushMappedMemoryRanges(device, memoryRangeCount, pMemoryRanges)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -1021,6 +1031,7 @@ void VulkanAsciiConsumer::Process_vkInvalidateMappedMemoryRanges(
     fprintf(GetFile(), "vkInvalidateMappedMemoryRanges(device, memoryRangeCount, pMemoryRanges)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -1112,6 +1123,7 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory(
     fprintf(GetFile(), "vkBindBufferMemory(device, buffer, memory, memoryOffset)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -1158,6 +1170,7 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory(
     fprintf(GetFile(), "vkBindImageMemory(device, image, memory, memoryOffset)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -1458,6 +1471,7 @@ void VulkanAsciiConsumer::Process_vkQueueBindSparse(
     fprintf(GetFile(), "vkQueueBindSparse(queue, bindInfoCount, pBindInfo, fence)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkQueue queue
     IndentSpaces(out, indent);
@@ -1512,6 +1526,7 @@ void VulkanAsciiConsumer::Process_vkCreateFence(
     fprintf(GetFile(), "vkCreateFence(device, pCreateInfo, pAllocator, pFence)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -1628,6 +1643,7 @@ void VulkanAsciiConsumer::Process_vkResetFences(
     fprintf(GetFile(), "vkResetFences(device, fenceCount, pFences)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -1674,6 +1690,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceStatus(
     fprintf(GetFile(), "vkGetFenceStatus(device, fence)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -1707,6 +1724,7 @@ void VulkanAsciiConsumer::Process_vkWaitForFences(
     fprintf(GetFile(), "vkWaitForFences(device, fenceCount, pFences, waitAll, timeout)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -1769,6 +1787,7 @@ void VulkanAsciiConsumer::Process_vkCreateSemaphore(
     fprintf(GetFile(), "vkCreateSemaphore(device, pCreateInfo, pAllocator, pSemaphore)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -1886,6 +1905,7 @@ void VulkanAsciiConsumer::Process_vkCreateEvent(
     fprintf(GetFile(), "vkCreateEvent(device, pCreateInfo, pAllocator, pEvent)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -2001,6 +2021,7 @@ void VulkanAsciiConsumer::Process_vkGetEventStatus(
     fprintf(GetFile(), "vkGetEventStatus(device, event)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -2031,6 +2052,7 @@ void VulkanAsciiConsumer::Process_vkSetEvent(
     fprintf(GetFile(), "vkSetEvent(device, event)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -2061,6 +2083,7 @@ void VulkanAsciiConsumer::Process_vkResetEvent(
     fprintf(GetFile(), "vkResetEvent(device, event)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -2093,6 +2116,7 @@ void VulkanAsciiConsumer::Process_vkCreateQueryPool(
     fprintf(GetFile(), "vkCreateQueryPool(device, pCreateInfo, pAllocator, pQueryPool)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -2214,6 +2238,7 @@ void VulkanAsciiConsumer::Process_vkGetQueryPoolResults(
     fprintf(GetFile(), "vkGetQueryPoolResults(device, queryPool, firstQuery, queryCount, dataSize, pData, stride, flags)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -2295,6 +2320,7 @@ void VulkanAsciiConsumer::Process_vkCreateBuffer(
     fprintf(GetFile(), "vkCreateBuffer(device, pCreateInfo, pAllocator, pBuffer)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -2412,6 +2438,7 @@ void VulkanAsciiConsumer::Process_vkCreateBufferView(
     fprintf(GetFile(), "vkCreateBufferView(device, pCreateInfo, pAllocator, pView)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -2528,6 +2555,7 @@ void VulkanAsciiConsumer::Process_vkCreateImage(
     fprintf(GetFile(), "vkCreateImage(device, pCreateInfo, pAllocator, pImage)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -2707,6 +2735,7 @@ void VulkanAsciiConsumer::Process_vkCreateImageView(
     fprintf(GetFile(), "vkCreateImageView(device, pCreateInfo, pAllocator, pView)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -2823,6 +2852,7 @@ void VulkanAsciiConsumer::Process_vkCreateShaderModule(
     fprintf(GetFile(), "vkCreateShaderModule(device, pCreateInfo, pAllocator, pShaderModule)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -2940,6 +2970,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineCache(
     fprintf(GetFile(), "vkCreatePipelineCache(device, pCreateInfo, pAllocator, pPipelineCache)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -3057,6 +3088,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineCacheData(
     fprintf(GetFile(), "vkGetPipelineCacheData(device, pipelineCache, pDataSize, pData)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -3118,6 +3150,7 @@ void VulkanAsciiConsumer::Process_vkMergePipelineCaches(
     fprintf(GetFile(), "vkMergePipelineCaches(device, dstCache, srcCacheCount, pSrcCaches)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -3175,6 +3208,7 @@ void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
     fprintf(GetFile(), "vkCreateGraphicsPipelines(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -3263,6 +3297,7 @@ void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
     fprintf(GetFile(), "vkCreateComputePipelines(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -3394,6 +3429,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineLayout(
     fprintf(GetFile(), "vkCreatePipelineLayout(device, pCreateInfo, pAllocator, pPipelineLayout)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -3511,6 +3547,7 @@ void VulkanAsciiConsumer::Process_vkCreateSampler(
     fprintf(GetFile(), "vkCreateSampler(device, pCreateInfo, pAllocator, pSampler)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -3628,6 +3665,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorSetLayout(
     fprintf(GetFile(), "vkCreateDescriptorSetLayout(device, pCreateInfo, pAllocator, pSetLayout)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -3745,6 +3783,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorPool(
     fprintf(GetFile(), "vkCreateDescriptorPool(device, pCreateInfo, pAllocator, pDescriptorPool)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -3861,6 +3900,7 @@ void VulkanAsciiConsumer::Process_vkResetDescriptorPool(
     fprintf(GetFile(), "vkResetDescriptorPool(device, descriptorPool, flags)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -3899,6 +3939,7 @@ void VulkanAsciiConsumer::Process_vkAllocateDescriptorSets(
     fprintf(GetFile(), "vkAllocateDescriptorSets(device, pAllocateInfo, pDescriptorSets)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -3956,6 +3997,7 @@ void VulkanAsciiConsumer::Process_vkFreeDescriptorSets(
     fprintf(GetFile(), "vkFreeDescriptorSets(device, descriptorPool, descriptorSetCount, pDescriptorSets)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -4079,6 +4121,7 @@ void VulkanAsciiConsumer::Process_vkCreateFramebuffer(
     fprintf(GetFile(), "vkCreateFramebuffer(device, pCreateInfo, pAllocator, pFramebuffer)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -4196,6 +4239,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass(
     fprintf(GetFile(), "vkCreateRenderPass(device, pCreateInfo, pAllocator, pRenderPass)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -4358,6 +4402,7 @@ void VulkanAsciiConsumer::Process_vkCreateCommandPool(
     fprintf(GetFile(), "vkCreateCommandPool(device, pCreateInfo, pAllocator, pCommandPool)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -4474,6 +4519,7 @@ void VulkanAsciiConsumer::Process_vkResetCommandPool(
     fprintf(GetFile(), "vkResetCommandPool(device, commandPool, flags)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -4512,6 +4558,7 @@ void VulkanAsciiConsumer::Process_vkAllocateCommandBuffers(
     fprintf(GetFile(), "vkAllocateCommandBuffers(device, pAllocateInfo, pCommandBuffers)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -4620,6 +4667,7 @@ void VulkanAsciiConsumer::Process_vkBeginCommandBuffer(
     fprintf(GetFile(), "vkBeginCommandBuffer(commandBuffer, pBeginInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkCommandBuffer commandBuffer
     IndentSpaces(out, indent);
@@ -4658,6 +4706,7 @@ void VulkanAsciiConsumer::Process_vkEndCommandBuffer(
     fprintf(GetFile(), "vkEndCommandBuffer(commandBuffer)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkCommandBuffer commandBuffer
     IndentSpaces(out, indent);
@@ -4681,6 +4730,7 @@ void VulkanAsciiConsumer::Process_vkResetCommandBuffer(
     fprintf(GetFile(), "vkResetCommandBuffer(commandBuffer, flags)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkCommandBuffer commandBuffer
     IndentSpaces(out, indent);
@@ -7191,6 +7241,7 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory2(
     fprintf(GetFile(), "vkBindBufferMemory2(device, bindInfoCount, pBindInfos)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -7237,6 +7288,7 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory2(
     fprintf(GetFile(), "vkBindImageMemory2(device, bindInfoCount, pBindInfos)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -7439,6 +7491,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     fprintf(GetFile(), "vkEnumeratePhysicalDeviceGroups(instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -7792,6 +7845,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     fprintf(GetFile(), "vkGetPhysicalDeviceImageFormatProperties2(physicalDevice, pImageFormatInfo, pImageFormatProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -8096,6 +8150,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversion(
     fprintf(GetFile(), "vkCreateSamplerYcbcrConversion(device, pCreateInfo, pAllocator, pYcbcrConversion)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -8213,6 +8268,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplate(
     fprintf(GetFile(), "vkCreateDescriptorUpdateTemplate(device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -8592,6 +8648,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     fprintf(GetFile(), "vkGetPhysicalDeviceSurfaceSupportKHR(physicalDevice, queueFamilyIndex, surface, pSupported)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -8645,6 +8702,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     fprintf(GetFile(), "vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, pSurfaceCapabilities)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -8693,6 +8751,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     fprintf(GetFile(), "vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, pSurfaceFormatCount, pSurfaceFormats)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -8755,6 +8814,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     fprintf(GetFile(), "vkGetPhysicalDeviceSurfacePresentModesKHR(physicalDevice, surface, pPresentModeCount, pPresentModes)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -8819,6 +8879,7 @@ void VulkanAsciiConsumer::Process_vkCreateSwapchainKHR(
     fprintf(GetFile(), "vkCreateSwapchainKHR(device, pCreateInfo, pAllocator, pSwapchain)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -8936,6 +8997,7 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainImagesKHR(
     fprintf(GetFile(), "vkGetSwapchainImagesKHR(device, swapchain, pSwapchainImageCount, pSwapchainImages)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -9001,6 +9063,7 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImageKHR(
     fprintf(GetFile(), "vkAcquireNextImageKHR(device, swapchain, timeout, semaphore, fence, pImageIndex)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -9067,6 +9130,7 @@ void VulkanAsciiConsumer::Process_vkQueuePresentKHR(
     fprintf(GetFile(), "vkQueuePresentKHR(queue, pPresentInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkQueue queue
     IndentSpaces(out, indent);
@@ -9106,6 +9170,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     fprintf(GetFile(), "vkGetDeviceGroupPresentCapabilitiesKHR(device, pDeviceGroupPresentCapabilities)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -9146,6 +9211,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     fprintf(GetFile(), "vkGetDeviceGroupSurfacePresentModesKHR(device, surface, pModes)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -9193,6 +9259,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     fprintf(GetFile(), "vkGetPhysicalDevicePresentRectanglesKHR(physicalDevice, surface, pRectCount, pRects)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -9254,6 +9321,7 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImage2KHR(
     fprintf(GetFile(), "vkAcquireNextImage2KHR(device, pAcquireInfo, pImageIndex)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -9310,6 +9378,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     fprintf(GetFile(), "vkGetPhysicalDeviceDisplayPropertiesKHR(physicalDevice, pPropertyCount, pProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -9364,6 +9433,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     fprintf(GetFile(), "vkGetPhysicalDeviceDisplayPlanePropertiesKHR(physicalDevice, pPropertyCount, pProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -9419,6 +9489,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     fprintf(GetFile(), "vkGetDisplayPlaneSupportedDisplaysKHR(physicalDevice, planeIndex, pDisplayCount, pDisplays)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -9482,6 +9553,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModePropertiesKHR(
     fprintf(GetFile(), "vkGetDisplayModePropertiesKHR(physicalDevice, display, pPropertyCount, pProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -9545,6 +9617,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayModeKHR(
     fprintf(GetFile(), "vkCreateDisplayModeKHR(physicalDevice, display, pCreateInfo, pAllocator, pMode)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -9624,6 +9697,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     fprintf(GetFile(), "vkGetDisplayPlaneCapabilitiesKHR(physicalDevice, mode, planeIndex, pCapabilities)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -9679,6 +9753,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     fprintf(GetFile(), "vkCreateDisplayPlaneSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -9753,6 +9828,7 @@ void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
     fprintf(GetFile(), "vkCreateSharedSwapchainsKHR(device, swapchainCount, pCreateInfos, pAllocator, pSwapchains)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -9833,6 +9909,7 @@ void VulkanAsciiConsumer::Process_vkCreateXlibSurfaceKHR(
     fprintf(GetFile(), "vkCreateXlibSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -9904,6 +9981,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     uint32_t indent = 1;
     fprintf(GetFile(), "vkGetPhysicalDeviceXlibPresentationSupportKHR(physicalDevice, queueFamilyIndex, dpy, visualID)");
     fprintf(GetFile(), " returns %u:\n", returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -9951,6 +10029,7 @@ void VulkanAsciiConsumer::Process_vkCreateXcbSurfaceKHR(
     fprintf(GetFile(), "vkCreateXcbSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -10022,6 +10101,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     uint32_t indent = 1;
     fprintf(GetFile(), "vkGetPhysicalDeviceXcbPresentationSupportKHR(physicalDevice, queueFamilyIndex, connection, visual_id)");
     fprintf(GetFile(), " returns %u:\n", returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -10076,6 +10156,7 @@ void VulkanAsciiConsumer::Process_vkCreateWaylandSurfaceKHR(
     fprintf(GetFile(), "vkCreateWaylandSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -10146,6 +10227,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportK
     uint32_t indent = 1;
     fprintf(GetFile(), "vkGetPhysicalDeviceWaylandPresentationSupportKHR(physicalDevice, queueFamilyIndex, display)");
     fprintf(GetFile(), " returns %u:\n", returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -10193,6 +10275,7 @@ void VulkanAsciiConsumer::Process_vkCreateAndroidSurfaceKHR(
     fprintf(GetFile(), "vkCreateAndroidSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -10266,6 +10349,7 @@ void VulkanAsciiConsumer::Process_vkCreateWin32SurfaceKHR(
     fprintf(GetFile(), "vkCreateWin32SurfaceKHR(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -10335,6 +10419,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR
     uint32_t indent = 1;
     fprintf(GetFile(), "vkGetPhysicalDeviceWin32PresentationSupportKHR(physicalDevice, queueFamilyIndex)");
     fprintf(GetFile(), " returns %u:\n", returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -10489,6 +10574,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     fprintf(GetFile(), "vkGetPhysicalDeviceImageFormatProperties2KHR(physicalDevice, pImageFormatInfo, pImageFormatProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -10898,6 +10984,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     fprintf(GetFile(), "vkEnumeratePhysicalDeviceGroupsKHR(instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -11008,6 +11095,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleKHR(
     fprintf(GetFile(), "vkGetMemoryWin32HandleKHR(device, pGetWin32HandleInfo, pHandle)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -11064,6 +11152,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     fprintf(GetFile(), "vkGetMemoryWin32HandlePropertiesKHR(device, handleType, handle, pMemoryWin32HandleProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -11129,6 +11218,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdKHR(
     fprintf(GetFile(), "vkGetMemoryFdKHR(device, pGetFdInfo, pFd)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -11185,6 +11275,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdPropertiesKHR(
     fprintf(GetFile(), "vkGetMemoryFdPropertiesKHR(device, handleType, fd, pMemoryFdProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -11297,6 +11388,7 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     fprintf(GetFile(), "vkImportSemaphoreWin32HandleKHR(device, pImportSemaphoreWin32HandleInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -11337,6 +11429,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     fprintf(GetFile(), "vkGetSemaphoreWin32HandleKHR(device, pGetWin32HandleInfo, pHandle)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -11392,6 +11485,7 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreFdKHR(
     fprintf(GetFile(), "vkImportSemaphoreFdKHR(device, pImportSemaphoreFdInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -11432,6 +11526,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreFdKHR(
     fprintf(GetFile(), "vkGetSemaphoreFdKHR(device, pGetFdInfo, pFd)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -11561,6 +11656,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     fprintf(GetFile(), "vkCreateDescriptorUpdateTemplateKHR(device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -11679,6 +11775,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass2KHR(
     fprintf(GetFile(), "vkCreateRenderPass2KHR(device, pCreateInfo, pAllocator, pRenderPass)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -11895,6 +11992,7 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainStatusKHR(
     fprintf(GetFile(), "vkGetSwapchainStatusKHR(device, swapchain)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -11981,6 +12079,7 @@ void VulkanAsciiConsumer::Process_vkImportFenceWin32HandleKHR(
     fprintf(GetFile(), "vkImportFenceWin32HandleKHR(device, pImportFenceWin32HandleInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -12021,6 +12120,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceWin32HandleKHR(
     fprintf(GetFile(), "vkGetFenceWin32HandleKHR(device, pGetWin32HandleInfo, pHandle)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -12076,6 +12176,7 @@ void VulkanAsciiConsumer::Process_vkImportFenceFdKHR(
     fprintf(GetFile(), "vkImportFenceFdKHR(device, pImportFenceFdInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -12116,6 +12217,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceFdKHR(
     fprintf(GetFile(), "vkGetFenceFdKHR(device, pGetFdInfo, pFd)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -12172,6 +12274,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     fprintf(GetFile(), "vkGetPhysicalDeviceSurfaceCapabilities2KHR(physicalDevice, pSurfaceInfo, pSurfaceCapabilities)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -12229,6 +12332,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     fprintf(GetFile(), "vkGetPhysicalDeviceSurfaceFormats2KHR(physicalDevice, pSurfaceInfo, pSurfaceFormatCount, pSurfaceFormats)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -12300,6 +12404,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     fprintf(GetFile(), "vkGetPhysicalDeviceDisplayProperties2KHR(physicalDevice, pPropertyCount, pProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -12354,6 +12459,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     fprintf(GetFile(), "vkGetPhysicalDeviceDisplayPlaneProperties2KHR(physicalDevice, pPropertyCount, pProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -12409,6 +12515,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModeProperties2KHR(
     fprintf(GetFile(), "vkGetDisplayModeProperties2KHR(physicalDevice, display, pPropertyCount, pProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -12470,6 +12577,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     fprintf(GetFile(), "vkGetDisplayPlaneCapabilities2KHR(physicalDevice, pDisplayPlaneInfo, pCapabilities)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -12706,6 +12814,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     fprintf(GetFile(), "vkCreateSamplerYcbcrConversionKHR(device, pCreateInfo, pAllocator, pYcbcrConversion)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -12823,6 +12932,7 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory2KHR(
     fprintf(GetFile(), "vkBindBufferMemory2KHR(device, bindInfoCount, pBindInfos)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -12869,6 +12979,7 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory2KHR(
     fprintf(GetFile(), "vkBindImageMemory2KHR(device, bindInfoCount, pBindInfos)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -13108,6 +13219,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreCounterValueKHR(
     fprintf(GetFile(), "vkGetSemaphoreCounterValueKHR(device, semaphore, pValue)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -13154,6 +13266,7 @@ void VulkanAsciiConsumer::Process_vkWaitSemaphoresKHR(
     fprintf(GetFile(), "vkWaitSemaphoresKHR(device, pWaitInfo, timeout)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -13200,6 +13313,7 @@ void VulkanAsciiConsumer::Process_vkSignalSemaphoreKHR(
     fprintf(GetFile(), "vkSignalSemaphoreKHR(device, pSignalInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -13242,6 +13356,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     fprintf(GetFile(), "vkGetPipelineExecutablePropertiesKHR(device, pPipelineInfo, pExecutableCount, pProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -13313,6 +13428,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     fprintf(GetFile(), "vkGetPipelineExecutableStatisticsKHR(device, pExecutableInfo, pStatisticCount, pStatistics)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -13384,6 +13500,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableInternalRepresentations
     fprintf(GetFile(), "vkGetPipelineExecutableInternalRepresentationsKHR(device, pExecutableInfo, pInternalRepresentationCount, pInternalRepresentations)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -13456,6 +13573,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugReportCallbackEXT(
     fprintf(GetFile(), "vkCreateDebugReportCallbackEXT(instance, pCreateInfo, pAllocator, pCallback)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -13651,6 +13769,7 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     fprintf(GetFile(), "vkDebugMarkerSetObjectTagEXT(device, pTagInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -13690,6 +13809,7 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     fprintf(GetFile(), "vkDebugMarkerSetObjectNameEXT(device, pNameInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -14215,6 +14335,7 @@ void VulkanAsciiConsumer::Process_vkGetImageViewHandleNVX(
     uint32_t indent = 1;
     fprintf(GetFile(), "vkGetImageViewHandleNVX(device, pInfo)");
     fprintf(GetFile(), " returns %u:\n", returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -14396,6 +14517,7 @@ void VulkanAsciiConsumer::Process_vkGetShaderInfoAMD(
     fprintf(GetFile(), "vkGetShaderInfoAMD(device, pipeline, shaderStage, infoType, pInfoSize, pInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -14478,6 +14600,7 @@ void VulkanAsciiConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     fprintf(GetFile(), "vkCreateStreamDescriptorSurfaceGGP(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -14555,6 +14678,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalImageFormatProperti
     fprintf(GetFile(), "vkGetPhysicalDeviceExternalImageFormatPropertiesNV(physicalDevice, format, type, tiling, usage, flags, externalHandleType, pExternalImageFormatProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -14648,6 +14772,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleNV(
     fprintf(GetFile(), "vkGetMemoryWin32HandleNV(device, memory, handleType, pHandle)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -14703,6 +14828,7 @@ void VulkanAsciiConsumer::Process_vkCreateViSurfaceNN(
     fprintf(GetFile(), "vkCreateViSurfaceNN(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -14908,6 +15034,7 @@ void VulkanAsciiConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     fprintf(GetFile(), "vkCreateIndirectCommandsLayoutNVX(device, pCreateInfo, pAllocator, pIndirectCommandsLayout)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -15025,6 +15152,7 @@ void VulkanAsciiConsumer::Process_vkCreateObjectTableNVX(
     fprintf(GetFile(), "vkCreateObjectTableNVX(device, pCreateInfo, pAllocator, pObjectTable)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -15143,6 +15271,7 @@ void VulkanAsciiConsumer::Process_vkUnregisterObjectsNVX(
     fprintf(GetFile(), "vkUnregisterObjectsNVX(device, objectTable, objectCount, pObjectEntryTypes, pObjectIndices)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -15320,6 +15449,7 @@ void VulkanAsciiConsumer::Process_vkReleaseDisplayEXT(
     fprintf(GetFile(), "vkReleaseDisplayEXT(physicalDevice, display)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -15352,6 +15482,7 @@ void VulkanAsciiConsumer::Process_vkAcquireXlibDisplayEXT(
     fprintf(GetFile(), "vkAcquireXlibDisplayEXT(physicalDevice, dpy, display)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -15391,6 +15522,7 @@ void VulkanAsciiConsumer::Process_vkGetRandROutputDisplayEXT(
     fprintf(GetFile(), "vkGetRandROutputDisplayEXT(physicalDevice, dpy, rrOutput, pDisplay)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -15445,6 +15577,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     fprintf(GetFile(), "vkGetPhysicalDeviceSurfaceCapabilities2EXT(physicalDevice, surface, pSurfaceCapabilities)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -15493,6 +15626,7 @@ void VulkanAsciiConsumer::Process_vkDisplayPowerControlEXT(
     fprintf(GetFile(), "vkDisplayPowerControlEXT(device, display, pDisplayPowerInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -15541,6 +15675,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDeviceEventEXT(
     fprintf(GetFile(), "vkRegisterDeviceEventEXT(device, pDeviceEventInfo, pAllocator, pFence)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -15614,6 +15749,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDisplayEventEXT(
     fprintf(GetFile(), "vkRegisterDisplayEventEXT(device, display, pDisplayEventInfo, pAllocator, pFence)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -15693,6 +15829,7 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainCounterEXT(
     fprintf(GetFile(), "vkGetSwapchainCounterEXT(device, swapchain, counter, pCounterValue)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -15750,6 +15887,7 @@ void VulkanAsciiConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     fprintf(GetFile(), "vkGetRefreshCycleDurationGOOGLE(device, swapchain, pDisplayTimingProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -15798,6 +15936,7 @@ void VulkanAsciiConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     fprintf(GetFile(), "vkGetPastPresentationTimingGOOGLE(device, swapchain, pPresentationTimingCount, pPresentationTimings)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -15976,6 +16115,7 @@ void VulkanAsciiConsumer::Process_vkCreateIOSSurfaceMVK(
     fprintf(GetFile(), "vkCreateIOSSurfaceMVK(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -16049,6 +16189,7 @@ void VulkanAsciiConsumer::Process_vkCreateMacOSSurfaceMVK(
     fprintf(GetFile(), "vkCreateMacOSSurfaceMVK(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -16120,6 +16261,7 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     fprintf(GetFile(), "vkSetDebugUtilsObjectNameEXT(device, pNameInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -16159,6 +16301,7 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     fprintf(GetFile(), "vkSetDebugUtilsObjectTagEXT(device, pTagInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -16388,6 +16531,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     fprintf(GetFile(), "vkCreateDebugUtilsMessengerEXT(instance, pCreateInfo, pAllocator, pMessenger)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -16561,6 +16705,7 @@ void VulkanAsciiConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     fprintf(GetFile(), "vkGetAndroidHardwareBufferPropertiesANDROID(device, buffer, pProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -16615,6 +16760,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     fprintf(GetFile(), "vkGetMemoryAndroidHardwareBufferANDROID(device, pInfo, pBuffer)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -16757,6 +16903,7 @@ void VulkanAsciiConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     fprintf(GetFile(), "vkGetImageDrmFormatModifierPropertiesEXT(device, image, pProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -16806,6 +16953,7 @@ void VulkanAsciiConsumer::Process_vkCreateValidationCacheEXT(
     fprintf(GetFile(), "vkCreateValidationCacheEXT(device, pCreateInfo, pAllocator, pValidationCache)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -16923,6 +17071,7 @@ void VulkanAsciiConsumer::Process_vkMergeValidationCachesEXT(
     fprintf(GetFile(), "vkMergeValidationCachesEXT(device, dstCache, srcCacheCount, pSrcCaches)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -16978,6 +17127,7 @@ void VulkanAsciiConsumer::Process_vkGetValidationCacheDataEXT(
     fprintf(GetFile(), "vkGetValidationCacheDataEXT(device, validationCache, pDataSize, pData)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -17187,6 +17337,7 @@ void VulkanAsciiConsumer::Process_vkCreateAccelerationStructureNV(
     fprintf(GetFile(), "vkCreateAccelerationStructureNV(device, pCreateInfo, pAllocator, pAccelerationStructure)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -17357,6 +17508,7 @@ void VulkanAsciiConsumer::Process_vkBindAccelerationStructureMemoryNV(
     fprintf(GetFile(), "vkBindAccelerationStructureMemoryNV(device, bindInfoCount, pBindInfos)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -17678,6 +17830,7 @@ void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
     fprintf(GetFile(), "vkCreateRayTracingPipelinesNV(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -17766,6 +17919,7 @@ void VulkanAsciiConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     fprintf(GetFile(), "vkGetRayTracingShaderGroupHandlesNV(device, pipeline, firstGroup, groupCount, dataSize, pData)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -17833,6 +17987,7 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureHandleNV(
     fprintf(GetFile(), "vkGetAccelerationStructureHandleNV(device, accelerationStructure, dataSize, pData)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -17957,6 +18112,7 @@ void VulkanAsciiConsumer::Process_vkCompileDeferredNV(
     fprintf(GetFile(), "vkCompileDeferredNV(device, pipeline, shader)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -17997,6 +18153,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     fprintf(GetFile(), "vkGetMemoryHostPointerPropertiesEXT(device, handleType, pHostPointer, pMemoryHostPointerProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -18118,6 +18275,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT
     fprintf(GetFile(), "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(physicalDevice, pTimeDomainCount, pTimeDomains)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -18175,6 +18333,7 @@ void VulkanAsciiConsumer::Process_vkGetCalibratedTimestampsEXT(
     fprintf(GetFile(), "vkGetCalibratedTimestampsEXT(device, timestampCount, pTimestampInfos, pTimestamps, pMaxDeviation)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -18550,6 +18709,7 @@ void VulkanAsciiConsumer::Process_vkInitializePerformanceApiINTEL(
     fprintf(GetFile(), "vkInitializePerformanceApiINTEL(device, pInitializeInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -18609,6 +18769,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     fprintf(GetFile(), "vkCmdSetPerformanceMarkerINTEL(commandBuffer, pMarkerInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkCommandBuffer commandBuffer
     IndentSpaces(out, indent);
@@ -18648,6 +18809,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     fprintf(GetFile(), "vkCmdSetPerformanceStreamMarkerINTEL(commandBuffer, pMarkerInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkCommandBuffer commandBuffer
     IndentSpaces(out, indent);
@@ -18687,6 +18849,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     fprintf(GetFile(), "vkCmdSetPerformanceOverrideINTEL(commandBuffer, pOverrideInfo)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkCommandBuffer commandBuffer
     IndentSpaces(out, indent);
@@ -18727,6 +18890,7 @@ void VulkanAsciiConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     fprintf(GetFile(), "vkAcquirePerformanceConfigurationINTEL(device, pAcquireInfo, pConfiguration)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -18781,6 +18945,7 @@ void VulkanAsciiConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     fprintf(GetFile(), "vkReleasePerformanceConfigurationINTEL(device, configuration)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -18811,6 +18976,7 @@ void VulkanAsciiConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     fprintf(GetFile(), "vkQueueSetPerformanceConfigurationINTEL(queue, configuration)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkQueue queue
     IndentSpaces(out, indent);
@@ -18842,6 +19008,7 @@ void VulkanAsciiConsumer::Process_vkGetPerformanceParameterINTEL(
     fprintf(GetFile(), "vkGetPerformanceParameterINTEL(device, parameter, pValue)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -18931,6 +19098,7 @@ void VulkanAsciiConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     fprintf(GetFile(), "vkCreateImagePipeSurfaceFUCHSIA(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -19004,6 +19172,7 @@ void VulkanAsciiConsumer::Process_vkCreateMetalSurfaceEXT(
     fprintf(GetFile(), "vkCreateMetalSurfaceEXT(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
@@ -19074,6 +19243,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferDeviceAddressEXT(
     uint32_t indent = 1;
     fprintf(GetFile(), "vkGetBufferDeviceAddressEXT(device, pInfo)");
     fprintf(GetFile(), " returns 0x%" PRIx64 ":\n", returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -19115,6 +19285,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixProperties
     fprintf(GetFile(), "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(physicalDevice, pPropertyCount, pProperties)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -19170,6 +19341,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSa
     fprintf(GetFile(), "vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(physicalDevice, pCombinationCount, pCombinations)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -19226,6 +19398,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     fprintf(GetFile(), "vkGetPhysicalDeviceSurfacePresentModes2EXT(physicalDevice, pSurfaceInfo, pPresentModeCount, pPresentModes)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpaces(out, indent);
@@ -19296,6 +19469,7 @@ void VulkanAsciiConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     fprintf(GetFile(), "vkAcquireFullScreenExclusiveModeEXT(device, swapchain)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -19326,6 +19500,7 @@ void VulkanAsciiConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     fprintf(GetFile(), "vkReleaseFullScreenExclusiveModeEXT(device, swapchain)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -19357,6 +19532,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     fprintf(GetFile(), "vkGetDeviceGroupSurfacePresentModes2EXT(device, pSurfaceInfo, pModes)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkDevice device
     IndentSpaces(out, indent);
@@ -19414,6 +19590,7 @@ void VulkanAsciiConsumer::Process_vkCreateHeadlessSurfaceEXT(
     fprintf(GetFile(), "vkCreateHeadlessSurfaceEXT(instance, pCreateInfo, pAllocator, pSurface)");
     EnumToStringVkResult(&outString, returnValue);
     fprintf(GetFile(), " returns VkResult %s (%" PRId32 "):\n", outString.c_str(), returnValue);
+    outString = ""; //UYT
 
     // func arg: VkInstance instance
     IndentSpaces(out, indent);
