@@ -18,7 +18,6 @@
 # TODO:
 #   Display thread information
 #   Print pValues data in vkCmdPushConstants
-#   Print wchar_t* strings. It's currently stubbed out to print only the addr.
 #   Rename gfxrecon-convert
 
 import os,re,sys
@@ -125,9 +124,8 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
 
         # Begin function
         self.wc('{')
-        self.wc('    std::string outString = "";')
-        self.wc('    std::string *out = &outString;')
         self.wc('    uint32_t indent = 1;')
+        self.wc('    FILE *outputFile = GetFile();')
         needcomma=0
         args = ''
         for value in values:
@@ -135,31 +133,30 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
                 args += ', '
             args += value.name
             needcomma = 1
-        self.wc('    fprintf(GetFile(), "' + name + '(' + args  + ')");')
+        self.wc('    fprintf(outputFile, "' + name + '(' + args  + ')");')
         if returnType == 'void':
-            self.wc('    fprintf(GetFile(), " returns void:\\n");')
+            self.wc('    fprintf(outputFile, " returns void:\\n");')
         else:
             # The parameter name assigned to the return value by the code generator is 'returnValue'
             if self.isEnum(returnType):
-                self.wc('    EnumToStringVkResult(&outString, returnValue);')
-                self.wc('    fprintf(GetFile(), " returns ' + returnType + ' %s (%" PRId32 "):\\n", outString.c_str(), returnValue);')
+                self.wc('    fprintf(outputFile, " returns ' + returnType + ' ");')
+                self.wc('    EnumToStringVkResult(outputFile, returnValue);')
+                self.wc('    fprintf(outputFile, " (%" PRId32 "):\\n", returnValue);')
             elif self.isFunctionPtr(value.baseType):
                 # This is encoded as a 64-bit integer containing the address of the function pointer
-                self.wc('    fprintf(GetFile(), " returns 0x%" PRIx64 ":\\n", static_cast<uint64_t>(returnValue));\n')
+                self.wc('    fprintf(outputFile, " returns 0x%" PRIx64 ":\\n", static_cast<uint64_t>(returnValue));\n')
             else:
-                self.wc('    fprintf(GetFile(), " returns {}:\\n", returnValue);'.format(self.getFormatString(returnType)))
-            self.wc('    outString = ""; //UYT')
+                self.wc('    fprintf(outputFile, " returns {}:\\n", returnValue);'.format(self.getFormatString(returnType)))
 
         for value in values:
             self.newline()
             self.wc('    // func arg: ' + value.fullType + ' ' + value.name)
             ValueToString.valueToString(self, value, "")
-            self.wc('    outString += "\\n";   // HHS')
+            self.wc('    OutputString(outputFile, "\\n"); // HHS')
 
         # Add an extra new line to the output at the end of a func
         self.newline()
-        self.wc('    outString += "\\n";   // HDS')
-        self.wc('    fprintf(GetFile(), "%s", outString.c_str());')
+        self.wc('    OutputString(outputFile, "\\n"); // HDS')
         self.wc('}')
 
     def getFormatString(self, type):
