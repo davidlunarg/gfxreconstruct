@@ -140,18 +140,18 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         self.wc('    need_function_comma = true;')
         self.newline()
         self.wc('    IndentSpacesJson(outputFile, 2); // TWP')
-        self.wc('    OutputStringJson("{\\n");')
+        self.wc('    OutputStringJson(outputFile, "{\\n");')
         self.wc('    IndentSpacesJson(outputFile, 3); // TRP')
-        self.wc('    OutputStringJson("\\"name\\" : \\"' + name + '\\",\\n"); // FCN')
+        self.wc('    OutputStringJson(outputFile, "\\"name\\" : \\"' + name + '\\",\\n"); // FCN')
         self.wc('    IndentSpacesJson(outputFile, 3); // TNP')
-        self.wc('    OutputStringJson("\\"thread\\" : \\"Thread ");');
+        self.wc('    OutputStringJson(outputFile, "\\"thread\\" : \\"Thread ");');
         self.wc('    SignedDecimalToStringJson(outputFile, 0);')  # TODO: get thread id
-        self.wc('    OutputStringJson("\\",\\n");');
+        self.wc('    OutputStringJson(outputFile, "\\",\\n");');
         self.wc('    IndentSpacesJson(outputFile, 3); // TLP')
-        self.wc('    OutputStringJson("\\"returnType\\" : \\"' + returnType + '\\",\\n");')
+        self.wc('    OutputStringJson(outputFile, "\\"returnType\\" : \\"' + returnType + '\\",\\n");')
         if returnType != 'void':
             self.wc('    IndentSpacesJson(outputFile, 3); // TKP')
-            self.wc('    OutputStringJson("\\"returnValue\\" : \\"");')
+            self.wc('    OutputStringJson(outputFile, "\\"returnValue\\" : \\"");')
             if self.isEnum(returnType):
                 self.wc('    EnumToStringVkResult(outputFile, returnValue);')
             elif self.isFunctionPtr(returnType):
@@ -159,54 +159,54 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
             else:
                 self.wc('    char rval_str[100];')
                 self.wc('    snprintf(rval_str, sizeof(rval_str), "' + format(self.getFormatString(returnType)) + '"' + ', returnValue);')
-                self.wc('    OutputStringJson(rval_str);')
-            self.wc('    OutputStringJson("\\",\\n");')
+                self.wc('    OutputStringJson(outputFile, rval_str);')
+            self.wc('    OutputStringJson(outputFile, "\\",\\n");')
         self.wc('    IndentSpacesJson(outputFile, 3); // TTP')
-        self.wc('    OutputStringJson("\\"args\\" :\\n");')
+        self.wc('    OutputStringJson(outputFile, "\\"args\\" :\\n");')
         self.wc('    IndentSpacesJson(outputFile, 3);')
-        self.wc('    OutputStringJson("[\\n");')
+        self.wc('    OutputStringJson(outputFile, "[\\n");')
 
         # Print args
         for value in values:
             self.newline()
             self.wc('    // func arg: ' + value.fullType + ' ' + value.name)
             self.wc('    IndentSpacesJson(outputFile, 4); // UWP')
-            self.wc('    OutputStringJson("{\\n");')
+            self.wc('    OutputStringJson(outputFile, "{\\n");')
             ValueToString.valueToString(self, value, "")
             self.wc('    IndentSpacesJson(outputFile, 4);')
             if value == values[-1]:
                 # Don't put a comma after the last arg
-                self.wc('    OutputStringJson("}\\n");')
+                self.wc('    OutputStringJson(outputFile, "}\\n");')
             else:
-                self.wc('    OutputStringJson("},\\n");')
+                self.wc('    OutputStringJson(outputFile, "},\\n");')
 
         # End of arg list
         self.newline()
         self.wc('    IndentSpacesJson(outputFile, 3);')
-        self.wc('    OutputStringJson("]\\n");')
+        self.wc('    OutputStringJson(outputFile, "]\\n");')
 
         self.wc('    IndentSpacesJson(outputFile, 2); // RRW')
         if name != "vkQueuePresentKHR":
             # End of function
-            self.wc('    OutputStringJson("}");')    # Note the lack of comma/newline. They are printed on the next func call.
+            self.wc('    OutputStringJson(outputFile, "}");')    # Note the lack of comma/newline. They are printed on the next func call.
         else:
             # End function and start new frame
-            self.wc('    OutputStringJson("}\\n");')
+            self.wc('    OutputStringJson(outputFile, "}\\n");')
             self.newline()
             self.wc('    static uint32_t frameNumber = 0;')
             self.wc('    frameNumber++;')
             self.wc('    IndentSpacesJson(outputFile, 1); // RWW')
-            self.wc('    OutputStringJson("]\\n");')
-            self.wc('    OutputStringJson("},\\n");')
-            self.wc('    OutputStringJson("{\\n");')
+            self.wc('    OutputStringJson(outputFile, "]\\n");')
+            self.wc('    OutputStringJson(outputFile, "},\\n");')
+            self.wc('    OutputStringJson(outputFile, "{\\n");')
             self.wc('    IndentSpacesJson(outputFile, 1);')
-            self.wc('    OutputStringJson("\\"frameNumber\\" : \\"");')
+            self.wc('    OutputStringJson(outputFile, "\\"frameNumber\\" : \\"");')
             self.wc('    SignedDecimalToStringJson(outputFile, frameNumber);')
-            self.wc('    OutputStringJson("\\",\\n");')
+            self.wc('    OutputStringJson(outputFile, "\\",\\n");')
             self.wc('    IndentSpacesJson(outputFile, 1);')
-            self.wc('    OutputStringJson("\\"apiCalls\\" :\\n");')
+            self.wc('    OutputStringJson(outputFile, "\\"apiCalls\\" :\\n");')
             self.wc('    IndentSpacesJson(outputFile, 1);')
-            self.wc('    OutputStringJson("[\\n");')
+            self.wc('    OutputStringJson(outputFile, "[\\n");')
             self.wc('    need_function_comma = false;')
 
         self.newline()

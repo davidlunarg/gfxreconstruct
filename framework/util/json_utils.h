@@ -76,14 +76,14 @@ void DoubleToStringJson(FILE *outputFile, double d)
 
 void AddrToStringJson(FILE *outputFile, uint64_t a)
 {
-    assert(out != nullptr);
+    assert(outputFile != nullptr);
     if (kNoAddr)
     {
         fprintf(outputFile, "address");
     }
     else
     {
-        fprintf(outputFile, "0x" PRIx64, a);
+        fprintf(outputFile, "0x%" PRIx64, a);
     }
 }
 
@@ -179,7 +179,7 @@ void ScalarValueToStringJson(FILE *outputFile, const T* value, const ScalarValue
 
 void StringToQuotedStringJson(FILE *outputFile, const char* s)
 {
-    assert(out != nullptr);
+    assert(outputFile != nullptr);
     std::string out;
     if (s != nullptr)
     {
@@ -235,7 +235,7 @@ void ArrayToStringJson(FILE*                        outputFile,
     assert(vinfo.is_flags ? vinfo.enum_to_string_func != nullptr : true);
     if (array_length == 0 || array == nullptr)
     {
-        OutputStringJson(" [ ]\n");
+        OutputStringJson(outputFile, " [ ]\n");
         return;
     }
     if ((pointer_count > 2 && strstr(full_type_name, "char")) || (pointer_count > 1 && !strstr(full_type_name, "char")))
@@ -376,8 +376,7 @@ void ArrayOfScalarsToStringJson(FILE*                        outputFile,
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"name\" : \"[");
         std::string idx_str;
-        UnsignedDecimalToStringJson(&idx_str, j);
-        OutputStringJson(outputFile, idx_str);
+        UnsignedDecimalToStringJson(outputFile, j);
         OutputStringJson(outputFile, "]\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : ");
