@@ -185,7 +185,7 @@ class VulkanAsciiStructGenerator(BaseGenerator):
                 continue
             self.wc('void StructureToString(FILE* outputFile, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr)')
             self.wc('{')
-            self.wc('    const ' + structName + ' *pstruct = (const ' + structName + ' *)pstruct_in.decoded_value; // BTB')
+            self.wc('    const ' + structName + ' *pstruct = pstruct_in.decoded_value; // BTB')
             self.wc('    assert(outputFile != nullptr);')
             self.wc('    if (pstruct == nullptr)')
             self.wc('    {')

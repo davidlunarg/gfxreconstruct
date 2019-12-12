@@ -66,7 +66,13 @@ class ValueToString(BaseGenerator):
                 self.wc('    OutputString(outputFile, "' + value.arrayLength + '"); //DFX')
             self.wc('    OutputString(outputFile, "] = ");')
             if not isFuncArg:
-                self.wc('    AddrToString(outputFile, base_addr + offsetof(' + structName + ', ' + value.name + ')); // IYY')
+                 if self.isUnion(structName):
+                     self.wc('    AddrToString(outputFile, pstruct_in.' +  list(self.structDict[structName])[-1].name + '.GetAddress()); // IYX')
+                 else:
+                     if self.isStruct(value.baseType) and (value.baseType in self.structDict):
+                         self.wc('    AddrToString(outputFile, pstruct_in.' + value.name + '->GetAddress()); // IYY')
+                     else:
+                         self.wc('    AddrToString(outputFile, pstruct_in.' + value.name + '.GetAddress()); // IYZ')
         else:
             self.wc('    OutputString(outputFile, "' + value.fullType + ' = "); //TEQ')
 
@@ -210,7 +216,7 @@ class ValueToString(BaseGenerator):
             if self.isUnion(value.baseType):
                 self.wc('    OutputString(outputFile, "(Union):"); // RGT')
             if self.isUnion(structName):
-                self.wc('    StructureToString(outputFile, reinterpret_cast<const Decoded_' + value.fullType + '&>(pstruct_in), indent+1, ' +
+                self.wc('    StructureToString(outputFile, reinterpret_cast<const Decoded_' + value.fullType + '&>(*pstruct_in.' + list(self.structDict[structName])[0].name + ') , indent+1, ' +
                                  ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // RLN')
             else:
                 self.wc('    StructureToString(outputFile, *' + pstruct_in + value.name + ', indent+1, ' +
