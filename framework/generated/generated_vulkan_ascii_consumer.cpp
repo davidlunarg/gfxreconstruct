@@ -4805,7 +4805,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetBlendConstants(
     OutputString(outputFile, "4"); //DFX
     OutputString(outputFile, "] = ");
     ScalarValueToStringStruct vinfo_blendConstants = {false, false, false, nullptr};
-    ArrayToString<float*>(outputFile, indent, 0, "const float", blendConstants.GetPointer(), "blendConstants", 4, vinfo_blendConstants); // JPA
+    ArrayToString<float*>(outputFile, indent, 0, "const float", blendConstants.GetPointer(), "blendConstants", 4, vinfo_blendConstants); // JNA
     OutputString(outputFile, "\n"); // HHS
 
     OutputString(outputFile, "\n"); // HDS

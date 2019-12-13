@@ -206,11 +206,18 @@ class ValueToString(BaseGenerator):
                 self.wc('    ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
 
                 if isFuncArg:
-                    self.wc('    ArrayToString<' + value.baseType + '*>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                            '", ' + value.name + '.GetPointer(), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPA')
+                    if self.isHandle(value.baseType):
+                        print('Warning: code gen for function arguement that is an array of handles not implemented')
+                    else:
+                        self.wc('    ArrayToString<' + value.baseType + '*>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+                                '", ' + value.name + '.GetPointer(), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JNA')
                 else:
-                    self.wc('    ArrayToString<' + value.baseType + '*>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                            '", const_cast<' + value.baseType + '*>(' + pstruct + value.name + '), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPA')
+                    if self.isHandle(value.baseType):
+                        self.wc('    ArrayToString<format::HandleId*>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+                                '", const_cast<format::HandleId*>('+pstruct_in + value.name + '.GetPointer()), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JOA')
+                    else:
+                        self.wc('    ArrayToString<' + value.baseType + '*>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+                                '", const_cast<' + value.baseType + '*>(' + pstruct + value.name + '), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPA')
         elif self.isStruct(value.baseType) and (value.baseType in self.structDict):
             # Struct that is not a pointer
             if self.isUnion(value.baseType):

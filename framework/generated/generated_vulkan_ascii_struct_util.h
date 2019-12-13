@@ -10022,7 +10022,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceGroupProp
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, pstruct_in.physicalDevices.GetAddress()); // IYZ
     ScalarValueToStringStruct vinfo_physicalDevices = {true, false, false, nullptr};
-    ArrayToString<VkPhysicalDevice*>(outputFile, indent, 0, "VkPhysicalDevice", const_cast<VkPhysicalDevice*>(pstruct->physicalDevices), "physicalDevices", pstruct->physicalDeviceCount, vinfo_physicalDevices); // JPA
+    ArrayToString<format::HandleId*>(outputFile, indent, 0, "VkPhysicalDevice", const_cast<format::HandleId*>(pstruct_in.physicalDevices.GetPointer()), "physicalDevices", pstruct->physicalDeviceCount, vinfo_physicalDevices); // JOA
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkBool32 subsetAllocation
