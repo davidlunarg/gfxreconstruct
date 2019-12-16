@@ -22,7 +22,7 @@
 
 import os,re,sys
 from base_generator import *
-from vulkan_ascii_value_to_string_generator import *
+from vulkan_ascii_value_generator import *
 
 class VulkanAsciiConsumerBodyGeneratorOptions(BaseGeneratorOptions):
     """Options for generating a C++ class for Vulkan capture file to ASCII file generation"""
@@ -140,7 +140,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
             # The parameter name assigned to the return value by the code generator is 'returnValue'
             if self.isEnum(returnType):
                 self.wc('    fprintf(outputFile, " returns ' + returnType + ' ");')
-                self.wc('    EnumToStringVkResult(outputFile, returnValue);')
+                self.wc('    OutputEnumVkResult(outputFile, returnValue);')
                 self.wc('    fprintf(outputFile, " (%" PRId32 "):\\n", returnValue);')
             elif self.isFunctionPtr(value.baseType):
                 # This is encoded as a 64-bit integer containing the address of the function pointer
@@ -151,7 +151,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         for value in values:
             self.newline()
             self.wc('    // func arg: ' + value.fullType + ' ' + value.name)
-            ValueToString.valueToString(self, value, "")
+            OutputValue.outputValue(self, value, "")
             self.wc('    OutputString(outputFile, "\\n"); // HHS')
 
         # Add an extra new line to the output at the end of a func

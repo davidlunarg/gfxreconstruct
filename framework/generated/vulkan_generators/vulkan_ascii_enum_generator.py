@@ -67,7 +67,7 @@ class VulkanAsciiEnumGenerator(BaseGenerator):
         for enumName in self.enumListNoAliases:
             if enumName in self.enumList:
                 self.newline()
-                self.wc('void EnumToString' + enumName + '(FILE* outputFile, uint32_t enum_uint32)')
+                self.wc('void OutputEnum' + enumName + '(FILE* outputFile, uint32_t enum_uint32)')
                 self.wc('{')
                 self.wc('    ' + enumName + ' e = static_cast<' + enumName + '>(enum_uint32);')
                 self.wc('    assert(outputFile != nullptr); // RYZ')
@@ -97,10 +97,10 @@ class VulkanAsciiEnumGenerator(BaseGenerator):
 
         # Generate functions to convert aliased enum types to string
         for enumName in self.enumListAliases:
-            self.wc('\nvoid EnumToString' + enumName + '(FILE* outputFile, ' + enumName + ' e)')
+            self.wc('\nvoid OutputEnum' + enumName + '(FILE* outputFile, ' + enumName + ' e)')
             self.wc('{')
             self.wc('    assert(outputFile != nullptr); // JJJ')
-            self.wc('    EnumToString' + self.enumListAliases[enumName] + '(outputFile, e);')
+            self.wc('    OutputEnum' + self.enumListAliases[enumName] + '(outputFile, e);')
             self.wc('}')
 
         self.newline()
