@@ -568,637 +568,637 @@ void OutputArrayOfStructs(FILE*        outputFile,
     }
 }
 
-void OutputPnextStruct(FILE* outputFile, int indent, void *pNext)
+void OutputPnextStruct(FILE* outputFile, int indent, void *pNext, uint64_t base_addr)
 {
     assert(outputFile != nullptr);
     switch (static_cast<Decoded_VkApplicationInfo*>(pNext)->decoded_value->sType)
     {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSubgroupProperties*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSubgroupProperties*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDevice16BitStorageFeatures*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDevice16BitStorageFeatures*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkMemoryDedicatedRequirements*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkMemoryDedicatedRequirements*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkMemoryDedicatedAllocateInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkMemoryDedicatedAllocateInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkMemoryAllocateFlagsInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkMemoryAllocateFlagsInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupRenderPassBeginInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupRenderPassBeginInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupCommandBufferBeginInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupCommandBufferBeginInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupSubmitInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupSubmitInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupBindSparseInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupBindSparseInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkBindBufferMemoryDeviceGroupInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkBindBufferMemoryDeviceGroupInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkBindImageMemoryDeviceGroupInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkBindImageMemoryDeviceGroupInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupDeviceCreateInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupDeviceCreateInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFeatures2*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFeatures2*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDevicePointClippingProperties*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDevicePointClippingProperties*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkRenderPassInputAttachmentAspectCreateInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkRenderPassInputAttachmentAspectCreateInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageViewUsageCreateInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageViewUsageCreateInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineTessellationDomainOriginStateCreateInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineTessellationDomainOriginStateCreateInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkRenderPassMultiviewCreateInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkRenderPassMultiviewCreateInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMultiviewFeatures*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMultiviewFeatures*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMultiviewProperties*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMultiviewProperties*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceVariablePointersFeatures*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceVariablePointersFeatures*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceProtectedMemoryFeatures*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceProtectedMemoryFeatures*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceProtectedMemoryProperties*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceProtectedMemoryProperties*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkProtectedSubmitInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkProtectedSubmitInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSamplerYcbcrConversionInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSamplerYcbcrConversionInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkBindImagePlaneMemoryInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkBindImagePlaneMemoryInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImagePlaneMemoryRequirementsInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImagePlaneMemoryRequirementsInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSamplerYcbcrConversionFeatures*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSamplerYcbcrConversionFeatures*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSamplerYcbcrConversionImageFormatProperties*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSamplerYcbcrConversionImageFormatProperties*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceExternalImageFormatInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceExternalImageFormatInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExternalImageFormatProperties*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExternalImageFormatProperties*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceIDProperties*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceIDProperties*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExternalMemoryImageCreateInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExternalMemoryImageCreateInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExternalMemoryBufferCreateInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExternalMemoryBufferCreateInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportMemoryAllocateInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportMemoryAllocateInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportFenceCreateInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportFenceCreateInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportSemaphoreCreateInfo*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportSemaphoreCreateInfo*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMaintenance3Properties*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMaintenance3Properties*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderDrawParametersFeatures*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderDrawParametersFeatures*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageSwapchainCreateInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageSwapchainCreateInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkBindImageMemorySwapchainInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkBindImageMemorySwapchainInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupPresentInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupPresentInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupSwapchainCreateInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceGroupSwapchainCreateInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDisplayPresentInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDisplayPresentInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImportMemoryWin32HandleInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImportMemoryWin32HandleInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportMemoryWin32HandleInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportMemoryWin32HandleInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImportMemoryFdInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImportMemoryFdInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkWin32KeyedMutexAcquireReleaseInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkWin32KeyedMutexAcquireReleaseInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportSemaphoreWin32HandleInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportSemaphoreWin32HandleInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkD3D12FenceSubmitInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkD3D12FenceSubmitInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDevicePushDescriptorPropertiesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDevicePushDescriptorPropertiesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderFloat16Int8FeaturesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderFloat16Int8FeaturesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPresentRegionsKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPresentRegionsKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceImagelessFramebufferFeaturesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceImagelessFramebufferFeaturesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkFramebufferAttachmentsCreateInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkFramebufferAttachmentsCreateInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkRenderPassAttachmentBeginInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkRenderPassAttachmentBeginInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSharedPresentSurfaceCapabilitiesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSharedPresentSurfaceCapabilitiesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportFenceWin32HandleInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportFenceWin32HandleInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageFormatListCreateInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageFormatListCreateInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDevice8BitStorageFeaturesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDevice8BitStorageFeaturesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderAtomicInt64FeaturesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderAtomicInt64FeaturesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CLOCK_FEATURES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderClockFeaturesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderClockFeaturesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDriverPropertiesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDriverPropertiesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFloatControlsPropertiesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFloatControlsPropertiesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSubpassDescriptionDepthStencilResolveKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSubpassDescriptionDepthStencilResolveKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDepthStencilResolvePropertiesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDepthStencilResolvePropertiesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_FEATURES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTimelineSemaphoreFeaturesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTimelineSemaphoreFeaturesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTimelineSemaphorePropertiesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTimelineSemaphorePropertiesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SEMAPHORE_TYPE_CREATE_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSemaphoreTypeCreateInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSemaphoreTypeCreateInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkTimelineSemaphoreSubmitInfoKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkTimelineSemaphoreSubmitInfoKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSurfaceProtectedCapabilitiesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSurfaceProtectedCapabilitiesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSeparateDepthStencilLayoutsFeaturesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSeparateDepthStencilLayoutsFeaturesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_STENCIL_LAYOUT_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkAttachmentReferenceStencilLayoutKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkAttachmentReferenceStencilLayoutKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkAttachmentDescriptionStencilLayoutKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkAttachmentDescriptionStencilLayoutKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_EXECUTABLE_PROPERTIES_FEATURES_KHR:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDebugReportCallbackCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDebugReportCallbackCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineRasterizationStateRasterizationOrderAMD*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineRasterizationStateRasterizationOrderAMD*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDedicatedAllocationImageCreateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDedicatedAllocationImageCreateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDedicatedAllocationBufferCreateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDedicatedAllocationBufferCreateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDedicatedAllocationMemoryAllocateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDedicatedAllocationMemoryAllocateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTransformFeedbackFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTransformFeedbackFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTransformFeedbackPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTransformFeedbackPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineRasterizationStateStreamCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineRasterizationStateStreamCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkTextureLODGatherFormatPropertiesAMD*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkTextureLODGatherFormatPropertiesAMD*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCornerSampledImageFeaturesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCornerSampledImageFeaturesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExternalMemoryImageCreateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExternalMemoryImageCreateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportMemoryAllocateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportMemoryAllocateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImportMemoryWin32HandleInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImportMemoryWin32HandleInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportMemoryWin32HandleInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExportMemoryWin32HandleInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkWin32KeyedMutexAcquireReleaseInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkWin32KeyedMutexAcquireReleaseInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkValidationFlagsEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkValidationFlagsEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageViewASTCDecodeModeEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageViewASTCDecodeModeEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceASTCDecodeFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceASTCDecodeFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceConditionalRenderingFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceConditionalRenderingFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkCommandBufferInheritanceConditionalRenderingInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkCommandBufferInheritanceConditionalRenderingInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineViewportWScalingStateCreateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineViewportWScalingStateCreateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSwapchainCounterCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSwapchainCounterCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPresentTimesInfoGOOGLE*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPresentTimesInfoGOOGLE*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineViewportSwizzleStateCreateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineViewportSwizzleStateCreateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDiscardRectanglePropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDiscardRectanglePropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineDiscardRectangleStateCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineDiscardRectangleStateCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceConservativeRasterizationPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceConservativeRasterizationPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineRasterizationConservativeStateCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineRasterizationConservativeStateCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDepthClipEnableFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDepthClipEnableFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineRasterizationDepthClipStateCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineRasterizationDepthClipStateCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDebugUtilsMessengerCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDebugUtilsMessengerCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkAndroidHardwareBufferUsageANDROID*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkAndroidHardwareBufferUsageANDROID*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkAndroidHardwareBufferFormatPropertiesANDROID*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkAndroidHardwareBufferFormatPropertiesANDROID*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImportAndroidHardwareBufferInfoANDROID*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImportAndroidHardwareBufferInfoANDROID*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExternalFormatANDROID*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkExternalFormatANDROID*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSamplerReductionModeCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSamplerReductionModeCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceInlineUniformBlockFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceInlineUniformBlockFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceInlineUniformBlockPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceInlineUniformBlockPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkWriteDescriptorSetInlineUniformBlockEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkWriteDescriptorSetInlineUniformBlockEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDescriptorPoolInlineUniformBlockCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDescriptorPoolInlineUniformBlockCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSampleLocationsInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSampleLocationsInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkRenderPassSampleLocationsBeginInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkRenderPassSampleLocationsBeginInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineSampleLocationsStateCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineSampleLocationsStateCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSampleLocationsPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSampleLocationsPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineColorBlendAdvancedStateCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineColorBlendAdvancedStateCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineCoverageToColorStateCreateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineCoverageToColorStateCreateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineCoverageModulationStateCreateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineCoverageModulationStateCreateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderSMBuiltinsPropertiesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderSMBuiltinsPropertiesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_FEATURES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderSMBuiltinsFeaturesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderSMBuiltinsFeaturesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDrmFormatModifierPropertiesListEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDrmFormatModifierPropertiesListEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceImageDrmFormatModifierInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceImageDrmFormatModifierInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageDrmFormatModifierListCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageDrmFormatModifierListCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageDrmFormatModifierExplicitCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageDrmFormatModifierExplicitCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkShaderModuleValidationCacheCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkShaderModuleValidationCacheCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDescriptorSetLayoutBindingFlagsCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDescriptorSetLayoutBindingFlagsCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDescriptorIndexingFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDescriptorIndexingFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDescriptorIndexingPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDescriptorIndexingPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDescriptorSetVariableDescriptorCountAllocateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDescriptorSetVariableDescriptorCountAllocateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDescriptorSetVariableDescriptorCountLayoutSupportEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDescriptorSetVariableDescriptorCountLayoutSupportEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineViewportShadingRateImageStateCreateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineViewportShadingRateImageStateCreateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShadingRateImageFeaturesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShadingRateImageFeaturesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShadingRateImagePropertiesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShadingRateImagePropertiesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineViewportCoarseSampleOrderStateCreateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineViewportCoarseSampleOrderStateCreateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkWriteDescriptorSetAccelerationStructureNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkWriteDescriptorSetAccelerationStructureNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceRayTracingPropertiesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceRayTracingPropertiesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineRepresentativeFragmentTestStateCreateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineRepresentativeFragmentTestStateCreateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceImageViewImageFormatInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceImageViewImageFormatInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkFilterCubicImageViewImageFormatPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkFilterCubicImageViewImageFormatPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceQueueGlobalPriorityCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceQueueGlobalPriorityCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImportMemoryHostPointerInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImportMemoryHostPointerInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceExternalMemoryHostPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceExternalMemoryHostPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineCompilerControlCreateInfoAMD*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineCompilerControlCreateInfoAMD*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderCorePropertiesAMD*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderCorePropertiesAMD*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceMemoryOverallocationCreateInfoAMD*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDeviceMemoryOverallocationCreateInfoAMD*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineVertexInputDivisorStateCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineVertexInputDivisorStateCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPresentFrameTokenGGP*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPresentFrameTokenGGP*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineCreationFeedbackCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineCreationFeedbackCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMeshShaderFeaturesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMeshShaderFeaturesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMeshShaderPropertiesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMeshShaderPropertiesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderImageFootprintFeaturesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderImageFootprintFeaturesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineViewportExclusiveScissorStateCreateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineViewportExclusiveScissorStateCreateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceExclusiveScissorFeaturesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceExclusiveScissorFeaturesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkQueueFamilyCheckpointPropertiesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkQueueFamilyCheckpointPropertiesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDevicePCIBusInfoPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDevicePCIBusInfoPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDisplayNativeHdrSurfaceCapabilitiesAMD*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkDisplayNativeHdrSurfaceCapabilitiesAMD*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSwapchainDisplayNativeHdrCreateInfoAMD*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSwapchainDisplayNativeHdrCreateInfoAMD*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFragmentDensityMapFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFragmentDensityMapFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFragmentDensityMapPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFragmentDensityMapPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkRenderPassFragmentDensityMapCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkRenderPassFragmentDensityMapCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSubgroupSizeControlFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSubgroupSizeControlFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSubgroupSizeControlPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSubgroupSizeControlPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderCoreProperties2AMD*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderCoreProperties2AMD*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCoherentMemoryFeaturesAMD*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCoherentMemoryFeaturesAMD*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMemoryBudgetPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMemoryBudgetPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMemoryPriorityFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMemoryPriorityFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkMemoryPriorityAllocateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkMemoryPriorityAllocateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceBufferDeviceAddressFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceBufferDeviceAddressFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkBufferDeviceAddressCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkBufferDeviceAddressCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageStencilUsageCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkImageStencilUsageCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkValidationFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkValidationFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCooperativeMatrixFeaturesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCooperativeMatrixFeaturesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCooperativeMatrixPropertiesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCooperativeMatrixPropertiesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COVERAGE_REDUCTION_MODE_FEATURES_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCoverageReductionModeFeaturesNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCoverageReductionModeFeaturesNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineCoverageReductionStateCreateInfoNV*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineCoverageReductionStateCreateInfoNV*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_IMAGE_ARRAYS_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceYcbcrImageArraysFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceYcbcrImageArraysFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSurfaceFullScreenExclusiveInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSurfaceFullScreenExclusiveInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSurfaceCapabilitiesFullScreenExclusiveEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSurfaceCapabilitiesFullScreenExclusiveEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSurfaceFullScreenExclusiveWin32InfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkSurfaceFullScreenExclusiveWin32InfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceLineRasterizationFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceLineRasterizationFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceLineRasterizationPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceLineRasterizationPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineRasterizationLineStateCreateInfoEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPipelineRasterizationLineStateCreateInfoEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceHostQueryResetFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceHostQueryResetFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceIndexTypeUint8FeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceIndexTypeUint8FeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES_EXT:
-            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));
+            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT*>(pNext)) , indent, base_addr); // RWJ
             break;
         default:
             OutputString(outputFile, "Unknown pNext struct");
@@ -1241,7 +1241,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkApplicationInfo &pstruct_
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -1316,7 +1316,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkInstanceCreateInfo &pstru
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -3027,7 +3027,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceQueueCreateInfo &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -3104,7 +3104,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pstruct
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -3300,7 +3300,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in, i
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -3425,7 +3425,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryAllocateInfo &pstru
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -3479,7 +3479,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMappedMemoryRange &pstruc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -3923,7 +3923,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct_i
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4075,7 +4075,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkFenceCreateInfo &pstruct_
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4122,7 +4122,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSemaphoreCreateInfo &pstr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4169,7 +4169,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkEventCreateInfo &pstruct_
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4216,7 +4216,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkQueryPoolCreateInfo &pstr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4287,7 +4287,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBufferCreateInfo &pstruct
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4381,7 +4381,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBufferViewCreateInfo &pst
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4459,7 +4459,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageCreateInfo &pstruct_
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4757,7 +4757,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageViewCreateInfo &pstr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4845,7 +4845,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkShaderModuleCreateInfo &p
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4918,7 +4918,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineCacheCreateInfo &
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5070,7 +5070,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineShaderStageCreate
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5232,7 +5232,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineVertexInputStateC
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5323,7 +5323,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineInputAssemblyStat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5387,7 +5387,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineTessellationState
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5565,7 +5565,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineViewportStateCrea
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5656,7 +5656,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineRasterizationStat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5779,7 +5779,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineMultisampleStateC
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5951,7 +5951,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineDepthStencilState
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6148,7 +6148,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineColorBlendStateCr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6246,7 +6246,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineDynamicStateCreat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6316,7 +6316,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateInf
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6564,7 +6564,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkComputePipelineCreateInfo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6670,7 +6670,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineLayoutCreateInfo 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6762,7 +6762,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSamplerCreateInfo &pstruc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6995,7 +6995,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDescriptorSetLayoutCreate
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7091,7 +7091,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDescriptorPoolCreateInfo 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7167,7 +7167,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDescriptorSetAllocateInfo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7302,7 +7302,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkWriteDescriptorSet &pstru
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7426,7 +7426,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkCopyDescriptorSet &pstruc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7515,7 +7515,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkFramebufferCreateInfo &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7921,7 +7921,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkRenderPassCreateInfo &pst
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8034,7 +8034,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkCommandPoolCreateInfo &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8088,7 +8088,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkCommandBufferAllocateInfo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8152,7 +8152,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkCommandBufferInheritanceI
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8234,7 +8234,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkCommandBufferBeginInfo &p
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8712,7 +8712,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryBarrier &pstruct_in
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8766,7 +8766,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBufferMemoryBarrier &pstr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8855,7 +8855,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageMemoryBarrier &pstru
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8957,7 +8957,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkRenderPassBeginInfo &pstr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9154,7 +9154,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupPro
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9222,7 +9222,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBindBufferMemoryInfo &pst
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9283,7 +9283,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBindImageMemoryInfo &pstr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9344,7 +9344,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDevice16BitStorag
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9412,7 +9412,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryDedicatedRequiremen
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9466,7 +9466,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryDedicatedAllocateIn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9520,7 +9520,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryAllocateFlagsInfo &
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9574,7 +9574,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceGroupRenderPassBegi
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9643,7 +9643,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceGroupCommandBufferB
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9690,7 +9690,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInfo &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9799,7 +9799,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceGroupBindSparseInfo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9853,7 +9853,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBindBufferMemoryDeviceGro
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9916,7 +9916,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBindImageMemoryDeviceGrou
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10001,7 +10001,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceGroupProper
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10067,7 +10067,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceGroupDeviceCreateIn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10130,7 +10130,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBufferMemoryRequirementsI
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10177,7 +10177,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageMemoryRequirementsIn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10224,7 +10224,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageSparseMemoryRequirem
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10271,7 +10271,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryRequirements2 &pstr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10318,7 +10318,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSparseImageMemoryRequirem
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10365,7 +10365,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceFeatures2 &
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10412,7 +10412,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceProperties2
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10459,7 +10459,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkFormatProperties2 &pstruc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10506,7 +10506,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageFormatProperties2 &p
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10553,7 +10553,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceImageFormat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10637,7 +10637,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkQueueFamilyProperties2 &p
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10684,7 +10684,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPrope
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10731,7 +10731,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSparseImageFormatProperti
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10778,7 +10778,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceSparseImage
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10865,7 +10865,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDevicePointClippi
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10946,7 +10946,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkRenderPassInputAttachment
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11008,7 +11008,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageViewUsageCreateInfo 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11055,7 +11055,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineTessellationDomai
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11105,7 +11105,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkRenderPassMultiviewCreate
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11214,7 +11214,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiviewFe
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11275,7 +11275,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiviewPr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11329,7 +11329,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceVariablePoi
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11383,7 +11383,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceProtectedMe
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11430,7 +11430,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceProtectedMe
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11477,7 +11477,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceQueueInfo2 &pstruct
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11538,7 +11538,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkProtectedSubmitInfo &pstr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11585,7 +11585,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionCre
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11699,7 +11699,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionInf
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11746,7 +11746,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBindImagePlaneMemoryInfo 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11796,7 +11796,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImagePlaneMemoryRequireme
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11846,7 +11846,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceSamplerYcbc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11893,7 +11893,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionIma
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11995,7 +11995,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDescriptorUpdateTemplateC
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12136,7 +12136,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalIma
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12186,7 +12186,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExternalImageFormatProper
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12233,7 +12233,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalBuf
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12297,7 +12297,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExternalBufferProperties 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12344,7 +12344,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPropertie
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12434,7 +12434,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExternalMemoryImageCreate
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12481,7 +12481,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExternalMemoryBufferCreat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12528,7 +12528,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExportMemoryAllocateInfo 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12575,7 +12575,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalFen
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12625,7 +12625,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExternalFenceProperties &
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12686,7 +12686,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExportFenceCreateInfo &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12733,7 +12733,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExportSemaphoreCreateInfo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12780,7 +12780,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalSem
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12830,7 +12830,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExternalSemaphoreProperti
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12891,7 +12891,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceMaintenance
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12945,7 +12945,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDescriptorSetLayoutSuppor
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12992,7 +12992,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderDrawP
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13152,7 +13152,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSwapchainCreateInfoKHR &p
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13331,7 +13331,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstruct_i
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13449,7 +13449,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageSwapchainCreateInfoK
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13496,7 +13496,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBindImageMemorySwapchainI
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13550,7 +13550,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkAcquireNextImageInfoKHR &
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13625,7 +13625,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceGroupPresentCapabil
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13684,7 +13684,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceGroupPresentInfoKHR
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13757,7 +13757,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceGroupSwapchainCreat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13911,7 +13911,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDisplayModeCreateInfoKHR 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14062,7 +14062,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDisplaySurfaceCreateInfoK
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14164,7 +14164,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDisplayPresentInfoKHR &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14225,7 +14225,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkXlibSurfaceCreateInfoKHR 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14286,7 +14286,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInfoKHR &
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14354,7 +14354,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateInfoK
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14429,7 +14429,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkAndroidSurfaceCreateInfoK
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14490,7 +14490,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInfoKHR
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14565,7 +14565,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImportMemoryWin32HandleIn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14643,7 +14643,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExportMemoryWin32HandleIn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14719,7 +14719,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryWin32HandleProperti
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14766,7 +14766,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryGetWin32HandleInfoK
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14823,7 +14823,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImportMemoryFdInfoKHR &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14880,7 +14880,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryFdPropertiesKHR &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14927,7 +14927,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryGetFdInfoKHR &pstru
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14984,7 +14984,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireRel
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15118,7 +15118,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImportSemaphoreWin32Handl
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15210,7 +15210,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExportSemaphoreWin32Handl
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15286,7 +15286,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInfoKHR &
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15372,7 +15372,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSemaphoreGetWin32HandleIn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15429,7 +15429,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImportSemaphoreFdInfoKHR 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15500,7 +15500,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSemaphoreGetFdInfoKHR &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15557,7 +15557,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDevicePushDescrip
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15604,7 +15604,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderFloat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15721,7 +15721,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPresentRegionsKHR &pstruc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15783,7 +15783,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceImagelessFr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15830,7 +15830,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkFramebufferAttachmentImag
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15928,7 +15928,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkFramebufferAttachmentsCre
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15990,7 +15990,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkRenderPassAttachmentBegin
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16053,7 +16053,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkAttachmentDescription2KHR
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16180,7 +16180,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkAttachmentReference2KHR &
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16244,7 +16244,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSubpassDescription2KHR &p
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16406,7 +16406,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSubpassDependency2KHR &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16502,7 +16502,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2KHR 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16638,7 +16638,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSubpassBeginInfoKHR &pstr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16688,7 +16688,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSubpassEndInfoKHR &pstruc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
 }
@@ -16728,7 +16728,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSharedPresentSurfaceCapab
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16775,7 +16775,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImportFenceWin32HandleInf
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16867,7 +16867,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExportFenceWin32HandleInf
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16943,7 +16943,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkFenceGetWin32HandleInfoKH
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17000,7 +17000,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImportFenceFdInfoKHR &pst
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17071,7 +17071,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkFenceGetFdInfoKHR &pstruc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17128,7 +17128,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceSurfaceInfo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17175,7 +17175,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSurfaceCapabilities2KHR &
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17222,7 +17222,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSurfaceFormat2KHR &pstruc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17269,7 +17269,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDisplayProperties2KHR &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17316,7 +17316,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDisplayPlaneProperties2KH
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17363,7 +17363,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDisplayModeProperties2KHR
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17410,7 +17410,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDisplayPlaneInfo2KHR &pst
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17464,7 +17464,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilities2
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17511,7 +17511,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageFormatListCreateInfo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17574,7 +17574,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSubgr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17621,7 +17621,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDevice8BitStorage
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17682,7 +17682,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderAtomi
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17736,7 +17736,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderClock
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17828,7 +17828,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceDriverPrope
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17901,7 +17901,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceFloatContro
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18066,7 +18066,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSubpassDescriptionDepthSt
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18142,7 +18142,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthStenci
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18210,7 +18210,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelineSem
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18257,7 +18257,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelineSem
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18304,7 +18304,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSemaphoreTypeCreateInfoKH
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18361,7 +18361,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkTimelineSemaphoreSubmitIn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18447,7 +18447,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKHR &pst
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18533,7 +18533,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSemaphoreSignalInfoKHR &p
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18587,7 +18587,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceVulkanMemor
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18648,7 +18648,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSurfaceProtectedCapabilit
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18695,7 +18695,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceSeparateDep
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18742,7 +18742,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkAttachmentReferenceStenci
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18792,7 +18792,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkAttachmentDescriptionSten
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18852,7 +18852,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceUniformBuff
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18899,7 +18899,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDevicePipelineExe
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18946,7 +18946,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineInfoKHR &pstruct_
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18993,7 +18993,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineExecutablePropert
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19063,7 +19063,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineExecutableInfoKHR
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19155,7 +19155,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineExecutableStatist
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19229,7 +19229,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineExecutableInterna
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19313,7 +19313,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDebugReportCallbackCreate
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19381,7 +19381,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineRasterizationStat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19431,7 +19431,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDebugMarkerObjectNameInfo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19495,7 +19495,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDebugMarkerObjectTagInfoE
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19580,7 +19580,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDebugMarkerMarkerInfoEXT 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19639,7 +19639,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDedicatedAllocationImageC
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19686,7 +19686,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDedicatedAllocationBuffer
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19733,7 +19733,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDedicatedAllocationMemory
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19787,7 +19787,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceTransformFe
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19841,7 +19841,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceTransformFe
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19951,7 +19951,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineRasterizationStat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20005,7 +20005,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageViewHandleInfoNVX &p
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20069,7 +20069,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkTextureLODGatherFormatPro
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20225,7 +20225,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkStreamDescriptorSurfaceCr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20279,7 +20279,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceCornerSampl
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20364,7 +20364,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExternalMemoryImageCreate
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20411,7 +20411,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExportMemoryAllocateInfoN
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20458,7 +20458,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImportMemoryWin32HandleIn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20519,7 +20519,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExportMemoryWin32HandleIn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20581,7 +20581,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireRel
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20715,7 +20715,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkValidationFlagsEXT &pstru
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20778,7 +20778,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkViSurfaceCreateInfoNN &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20839,7 +20839,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceTextureComp
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20886,7 +20886,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageViewASTCDecodeModeEX
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20936,7 +20936,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceASTCDecodeF
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20983,7 +20983,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkConditionalRenderingBegin
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21044,7 +21044,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceConditional
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21098,7 +21098,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkCommandBufferInheritanceC
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21145,7 +21145,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceGeneratedCommandsFe
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21192,7 +21192,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceGeneratedCommandsLi
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21342,7 +21342,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkIndirectCommandsLayoutCre
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21421,7 +21421,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkCmdProcessCommandsInfoNVX
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21539,7 +21539,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkCmdReserveSpaceForCommand
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21600,7 +21600,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkObjectTableCreateInfoNVX 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21975,7 +21975,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineViewportWScalingS
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22044,7 +22044,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSurfaceCapabilities2EXT &
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22164,7 +22164,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDisplayPowerInfoEXT &pstr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22214,7 +22214,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceEventInfoEXT &pstru
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22264,7 +22264,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDisplayEventInfoEXT &pstr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22314,7 +22314,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSwapchainCounterCreateInf
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22447,7 +22447,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOGLE &p
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22509,7 +22509,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiviewPe
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22606,7 +22606,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineViewportSwizzleSt
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22675,7 +22675,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceDiscardRect
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22722,7 +22722,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineDiscardRectangleS
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22801,7 +22801,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceConservativ
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22904,7 +22904,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineRasterizationCons
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22968,7 +22968,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthClipEn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23015,7 +23015,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineRasterizationDept
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23093,7 +23093,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pstruct_i
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23189,7 +23189,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkIOSSurfaceCreateInfoMVK &
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23250,7 +23250,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMacOSSurfaceCreateInfoMVK
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23311,7 +23311,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDebugUtilsObjectNameInfoE
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23375,7 +23375,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDebugUtilsObjectTagInfoEX
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23460,7 +23460,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDebugUtilsLabelEXT &pstru
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23519,7 +23519,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCallba
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23653,7 +23653,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCreate
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23735,7 +23735,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkAndroidHardwareBufferUsag
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23782,7 +23782,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkAndroidHardwareBufferProp
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23836,7 +23836,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkAndroidHardwareBufferForm
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23947,7 +23947,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImportAndroidHardwareBuff
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24001,7 +24001,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryGetAndroidHardwareB
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24048,7 +24048,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkExternalFormatANDROID &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24095,7 +24095,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSamplerReductionModeCreat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24145,7 +24145,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceSamplerFilt
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24199,7 +24199,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineUnifo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24253,7 +24253,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineUnifo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24328,7 +24328,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkWriteDescriptorSetInlineU
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24389,7 +24389,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDescriptorPoolInlineUnifo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24460,7 +24460,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSampleLocationsInfoEXT &p
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24587,7 +24587,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkRenderPassSampleLocations
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24671,7 +24671,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineSampleLocationsSt
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24725,7 +24725,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceSampleLocat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24805,7 +24805,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMultisamplePropertiesEXT 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24852,7 +24852,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOperat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24899,7 +24899,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOperat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24981,7 +24981,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineColorBlendAdvance
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25045,7 +25045,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineCoverageToColorSt
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25106,7 +25106,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineCoverageModulatio
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25193,7 +25193,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSMBui
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25247,7 +25247,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSMBui
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25325,7 +25325,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDrmFormatModifierProperti
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25387,7 +25387,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceImageDrmFor
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25467,7 +25467,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageDrmFormatModifierLis
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25530,7 +25530,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageDrmFormatModifierExp
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25599,7 +25599,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageDrmFormatModifierPro
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25646,7 +25646,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkValidationCacheCreateInfo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25714,7 +25714,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkShaderModuleValidationCac
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25761,7 +25761,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBindin
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25824,7 +25824,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceDescriptorI
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26004,7 +26004,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceDescriptorI
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26205,7 +26205,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDescriptorSetVariableDesc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26268,7 +26268,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDescriptorSetVariableDesc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26348,7 +26348,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineViewportShadingRa
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26417,7 +26417,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShadingRate
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26471,7 +26471,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShadingRate
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26612,7 +26612,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineViewportCoarseSam
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26684,7 +26684,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkRayTracingShaderGroupCrea
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26762,7 +26762,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkRayTracingPipelineCreateI
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26881,7 +26881,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkGeometryTrianglesNV &pstr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27004,7 +27004,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkGeometryAABBNV &pstruct_i
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27096,7 +27096,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkGeometryNV &pstruct_in, i
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27160,7 +27160,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkAccelerationStructureInfo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27246,7 +27246,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkAccelerationStructureCrea
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27300,7 +27300,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBindAccelerationStructure
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27384,7 +27384,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkWriteDescriptorSetAcceler
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27447,7 +27447,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkAccelerationStructureMemo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27504,7 +27504,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceRayTracingP
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27600,7 +27600,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceRepresentat
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27647,7 +27647,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineRepresentativeFra
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27694,7 +27694,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceImageViewIm
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27744,7 +27744,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkFilterCubicImageViewImage
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27798,7 +27798,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceQueueGlobalPriority
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27848,7 +27848,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImportMemoryHostPointerIn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27912,7 +27912,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryHostPointerProperti
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27959,7 +27959,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalMem
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28006,7 +28006,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineCompilerControlCr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28053,7 +28053,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkCalibratedTimestampInfoEX
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28103,7 +28103,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderCoreP
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28241,7 +28241,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDeviceMemoryOverallocatio
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28291,7 +28291,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexAttri
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28362,7 +28362,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineVertexInputDiviso
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28424,7 +28424,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexAttri
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28478,7 +28478,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPresentFrameTokenGGP &pst
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28549,7 +28549,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineCreationFeedbackC
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28627,7 +28627,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceComputeShad
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28681,7 +28681,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShaderF
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28735,7 +28735,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShaderP
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28900,7 +28900,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentSha
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28947,7 +28947,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderImage
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28994,7 +28994,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineViewportExclusive
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29056,7 +29056,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceExclusiveSc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29103,7 +29103,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkQueueFamilyCheckpointProp
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29150,7 +29150,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkCheckpointDataNV &pstruct
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29214,7 +29214,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderInteg
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29334,7 +29334,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkInitializePerformanceApiI
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29388,7 +29388,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkQueryPoolCreateInfoINTEL 
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29438,7 +29438,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPerformanceMarkerInfoINTE
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29485,7 +29485,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPerformanceStreamMarkerIn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29532,7 +29532,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPerformanceOverrideInfoIN
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29596,7 +29596,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPerformanceConfigurationA
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29646,7 +29646,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDevicePCIBusInfoP
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29714,7 +29714,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkDisplayNativeHdrSurfaceCa
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29761,7 +29761,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSwapchainDisplayNativeHdr
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29808,7 +29808,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImagePipeSurfaceCreateInf
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29862,7 +29862,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMetalSurfaceCreateInfoEXT
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29923,7 +29923,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentDen
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29984,7 +29984,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentDen
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30045,7 +30045,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkRenderPassFragmentDensity
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30092,7 +30092,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceScalarBlock
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30139,7 +30139,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupSiz
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30193,7 +30193,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupSiz
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30261,7 +30261,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineShaderStageRequir
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30308,7 +30308,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderCoreP
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30362,7 +30362,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceCoherentMem
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30409,7 +30409,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryBudge
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30473,7 +30473,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPrior
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30520,7 +30520,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkMemoryPriorityAllocateInf
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30567,7 +30567,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceDedicatedAl
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30614,7 +30614,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceBufferDevic
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30675,7 +30675,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBufferDeviceAddressInfoEX
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30722,7 +30722,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkBufferDeviceAddressCreate
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30769,7 +30769,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkImageStencilUsageCreateIn
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30816,7 +30816,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkValidationFeaturesEXT &ps
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30902,7 +30902,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkCooperativeMatrixProperti
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31013,7 +31013,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceCooperative
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31067,7 +31067,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceCooperative
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31114,7 +31114,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceCoverageRed
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31161,7 +31161,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineCoverageReduction
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31218,7 +31218,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkFramebufferMixedSamplesCo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31292,7 +31292,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentSha
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31353,7 +31353,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceYcbcrImageA
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31400,7 +31400,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSurfaceFullScreenExclusiv
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31450,7 +31450,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesFullSc
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31497,7 +31497,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkSurfaceFullScreenExclusiv
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31551,7 +31551,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkHeadlessSurfaceCreateInfo
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31598,7 +31598,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRasteri
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31680,7 +31680,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRasteri
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31727,7 +31727,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPipelineRasterizationLine
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31798,7 +31798,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceHostQueryRe
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31845,7 +31845,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceIndexTypeUi
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31892,7 +31892,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderDemot
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31939,7 +31939,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBuffer
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31986,7 +31986,7 @@ void OutputStructure(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBuffer
         OutputScalarValue(outputFile, &pNextLocal, vinfo_pNext);
         if (pNextLocal)
         {
-            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX 
+            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX 
         }
     }
     OutputString(outputFile, "\n"); // GDS

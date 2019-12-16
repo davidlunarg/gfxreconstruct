@@ -163,14 +163,14 @@ class VulkanAsciiStructGenerator(BaseGenerator):
 
         # Generate OutputPnextStruct function
         # OutputPnextStruct will accept a pNext structure, examine the sType, and call the appropriate OutputStructure function
-        self.wc('void OutputPnextStruct(FILE* outputFile, int indent, void *pNext)')
+        self.wc('void OutputPnextStruct(FILE* outputFile, int indent, void *pNext, uint64_t base_addr)')
         self.wc('{')
         self.wc('    assert(outputFile != nullptr);')
         self.wc('    switch (static_cast<Decoded_VkApplicationInfo*>(pNext)->decoded_value->sType)')
         self.wc('    {')
         for structName in self.pNextStructs:
                 self.wc('        case ' + self.pNextStructs[structName] + ':')
-                self.wc('            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_' + structName + '*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));');
+                self.wc('            OutputStructure(outputFile, *(reinterpret_cast<const Decoded_' + structName + '*>(pNext)) , indent, base_addr); // RWJ');
                 self.wc('            break;')
         self.wc('        default:')
         self.wc('            OutputString(outputFile, "Unknown pNext struct");')

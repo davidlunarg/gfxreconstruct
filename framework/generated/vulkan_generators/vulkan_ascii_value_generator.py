@@ -188,7 +188,7 @@ class OutputValue(BaseGenerator):
                             self.wc('        OutputScalarValue(outputFile, &pNextLocal, vinfo_' + value.name +');')
                             self.wc('        if (pNextLocal)')
                             self.wc('        {')
-                            self.wc('            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX ')
+                            self.wc('            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNextLocal)); // POX ')
                             self.wc('        }')
                         else:
                             self.wc('        OutputScalarValue(outputFile, ' + pstruct_in + value.name + '->GetPointer(), vinfo_' + value.name +'); // PWT')
