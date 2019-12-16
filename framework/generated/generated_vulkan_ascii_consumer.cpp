@@ -49,8 +49,8 @@ void VulkanAsciiConsumer::Process_vkCreateInstance(
 
     // func arg: const VkInstanceCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkInstanceCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkInstanceCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -59,14 +59,14 @@ void VulkanAsciiConsumer::Process_vkCreateInstance(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -75,14 +75,14 @@ void VulkanAsciiConsumer::Process_vkCreateInstance(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkInstance* pInstance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInstance:                      "); //HRW
-    OutputString(outputFile, "VkInstance* = "); //TEQ
+    OutputString(outputFile, "pInstance:                      "); // HRW
+    OutputString(outputFile, "VkInstance* = "); // TEQ
     if (pInstance.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -108,15 +108,15 @@ void VulkanAsciiConsumer::Process_vkDestroyInstance(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -125,7 +125,7 @@ void VulkanAsciiConsumer::Process_vkDestroyInstance(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -147,15 +147,15 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDevices(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPhysicalDeviceCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPhysicalDeviceCount:           "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPhysicalDeviceCount:           "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPhysicalDeviceCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -169,8 +169,8 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDevices(
 
     // func arg: VkPhysicalDevice* pPhysicalDevices
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPhysicalDevices:               "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice* = "); //TEQ
+    OutputString(outputFile, "pPhysicalDevices:               "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice* = "); // TEQ
     if (pPhysicalDevices.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -197,15 +197,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPhysicalDeviceFeatures* pFeatures
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFeatures:                      "); //HRW
-    OutputString(outputFile, "VkPhysicalDeviceFeatures* = "); //TEQ
+    OutputString(outputFile, "pFeatures:                      "); // HRW
+    OutputString(outputFile, "VkPhysicalDeviceFeatures* = "); // TEQ
     if (pFeatures.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -214,7 +214,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures(
     {
         OutputAddr(outputFile, pFeatures.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pFeatures.GetMetaStructPointer(), indent+1,pFeatures.GetAddress()); // GLM
+        OutputStructure(outputFile, *pFeatures.GetMetaStructPointer(), indent+1, pFeatures.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -233,15 +233,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFormat format
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "format:                         "); //HRW
-    OutputString(outputFile, "VkFormat = "); //TEQ
+    OutputString(outputFile, "format:                         "); // HRW
+    OutputString(outputFile, "VkFormat = "); // TEQ
     OutputEnumVkFormat(outputFile, format); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, format);
@@ -250,8 +250,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties(
 
     // func arg: VkFormatProperties* pFormatProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFormatProperties:              "); //HRW
-    OutputString(outputFile, "VkFormatProperties* = "); //TEQ
+    OutputString(outputFile, "pFormatProperties:              "); // HRW
+    OutputString(outputFile, "VkFormatProperties* = "); // TEQ
     if (pFormatProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -260,7 +260,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     {
         OutputAddr(outputFile, pFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1,pFormatProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1, pFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -286,15 +286,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFormat format
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "format:                         "); //HRW
-    OutputString(outputFile, "VkFormat = "); //TEQ
+    OutputString(outputFile, "format:                         "); // HRW
+    OutputString(outputFile, "VkFormat = "); // TEQ
     OutputEnumVkFormat(outputFile, format); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, format);
@@ -303,8 +303,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
 
     // func arg: VkImageType type
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "type:                           "); //HRW
-    OutputString(outputFile, "VkImageType = "); //TEQ
+    OutputString(outputFile, "type:                           "); // HRW
+    OutputString(outputFile, "VkImageType = "); // TEQ
     OutputEnumVkImageType(outputFile, type); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, type);
@@ -313,8 +313,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
 
     // func arg: VkImageTiling tiling
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "tiling:                         "); //HRW
-    OutputString(outputFile, "VkImageTiling = "); //TEQ
+    OutputString(outputFile, "tiling:                         "); // HRW
+    OutputString(outputFile, "VkImageTiling = "); // TEQ
     OutputEnumVkImageTiling(outputFile, tiling); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, tiling);
@@ -323,22 +323,22 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
 
     // func arg: VkImageUsageFlags usage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "usage:                          "); //HRW
-    OutputString(outputFile, "VkImageUsageFlags = "); //TEQ
+    OutputString(outputFile, "usage:                          "); // HRW
+    OutputString(outputFile, "VkImageUsageFlags = "); // TEQ
     OutputFlags(outputFile, usage, OutputEnumVkImageUsageFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageCreateFlags flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkImageCreateFlags = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkImageCreateFlags = "); // TEQ
     OutputFlags(outputFile, flags, OutputEnumVkImageCreateFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageFormatProperties* pImageFormatProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImageFormatProperties:         "); //HRW
-    OutputString(outputFile, "VkImageFormatProperties* = "); //TEQ
+    OutputString(outputFile, "pImageFormatProperties:         "); // HRW
+    OutputString(outputFile, "VkImageFormatProperties* = "); // TEQ
     if (pImageFormatProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -347,7 +347,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     {
         OutputAddr(outputFile, pImageFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1,pImageFormatProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1, pImageFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -365,15 +365,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPhysicalDeviceProperties* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkPhysicalDeviceProperties* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkPhysicalDeviceProperties* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -382,7 +382,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties(
     {
         OutputAddr(outputFile, pProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pProperties.GetMetaStructPointer(), indent+1,pProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -401,15 +401,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pQueueFamilyPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pQueueFamilyPropertyCount:      "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pQueueFamilyPropertyCount:      "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -423,8 +423,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
 
     // func arg: VkQueueFamilyProperties* pQueueFamilyProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pQueueFamilyProperties:         "); //HRW
-    OutputString(outputFile, "VkQueueFamilyProperties* = "); //TEQ
+    OutputString(outputFile, "pQueueFamilyProperties:         "); // HRW
+    OutputString(outputFile, "VkQueueFamilyProperties* = "); // TEQ
     if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -450,15 +450,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPhysicalDeviceMemoryProperties* pMemoryProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryProperties:              "); //HRW
-    OutputString(outputFile, "VkPhysicalDeviceMemoryProperties* = "); //TEQ
+    OutputString(outputFile, "pMemoryProperties:              "); // HRW
+    OutputString(outputFile, "VkPhysicalDeviceMemoryProperties* = "); // TEQ
     if (pMemoryProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -467,7 +467,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     {
         OutputAddr(outputFile, pMemoryProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1,pMemoryProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1, pMemoryProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -490,15 +490,15 @@ void VulkanAsciiConsumer::Process_vkCreateDevice(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDeviceCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDeviceCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDeviceCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -507,14 +507,14 @@ void VulkanAsciiConsumer::Process_vkCreateDevice(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -523,14 +523,14 @@ void VulkanAsciiConsumer::Process_vkCreateDevice(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDevice* pDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDevice:                        "); //HRW
-    OutputString(outputFile, "VkDevice* = "); //TEQ
+    OutputString(outputFile, "pDevice:                        "); // HRW
+    OutputString(outputFile, "VkDevice* = "); // TEQ
     if (pDevice.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -556,15 +556,15 @@ void VulkanAsciiConsumer::Process_vkDestroyDevice(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -573,7 +573,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDevice(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -593,29 +593,29 @@ void VulkanAsciiConsumer::Process_vkGetDeviceQueue(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t queueFamilyIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queueFamilyIndex:               "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "queueFamilyIndex:               "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, queueFamilyIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t queueIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queueIndex:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "queueIndex:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, queueIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueue* pQueue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pQueue:                         "); //HRW
-    OutputString(outputFile, "VkQueue* = "); //TEQ
+    OutputString(outputFile, "pQueue:                         "); // HRW
+    OutputString(outputFile, "VkQueue* = "); // TEQ
     if (pQueue.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -646,22 +646,22 @@ void VulkanAsciiConsumer::Process_vkQueueSubmit(
 
     // func arg: VkQueue queue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queue:                          "); //HRW
-    OutputString(outputFile, "VkQueue = "); //TEQ
+    OutputString(outputFile, "queue:                          "); // HRW
+    OutputString(outputFile, "VkQueue = "); // TEQ
     OutputAddr(outputFile, queue); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t submitCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "submitCount:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "submitCount:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, submitCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSubmitInfo* pSubmits
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSubmits:                       "); //HRW
-    OutputString(outputFile, "const VkSubmitInfo* = "); //TEQ
+    OutputString(outputFile, "pSubmits:                       "); // HRW
+    OutputString(outputFile, "const VkSubmitInfo* = "); // TEQ
     if (pSubmits.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -675,8 +675,8 @@ void VulkanAsciiConsumer::Process_vkQueueSubmit(
 
     // func arg: VkFence fence
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "fence:                          "); //HRW
-    OutputString(outputFile, "VkFence = "); //TEQ
+    OutputString(outputFile, "fence:                          "); // HRW
+    OutputString(outputFile, "VkFence = "); // TEQ
     OutputAddr(outputFile, fence); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -696,8 +696,8 @@ void VulkanAsciiConsumer::Process_vkQueueWaitIdle(
 
     // func arg: VkQueue queue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queue:                          "); //HRW
-    OutputString(outputFile, "VkQueue = "); //TEQ
+    OutputString(outputFile, "queue:                          "); // HRW
+    OutputString(outputFile, "VkQueue = "); // TEQ
     OutputAddr(outputFile, queue); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -717,8 +717,8 @@ void VulkanAsciiConsumer::Process_vkDeviceWaitIdle(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -741,15 +741,15 @@ void VulkanAsciiConsumer::Process_vkAllocateMemory(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkMemoryAllocateInfo* pAllocateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocateInfo:                  "); //HRW
-    OutputString(outputFile, "const VkMemoryAllocateInfo* = "); //TEQ
+    OutputString(outputFile, "pAllocateInfo:                  "); // HRW
+    OutputString(outputFile, "const VkMemoryAllocateInfo* = "); // TEQ
     if (pAllocateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -758,14 +758,14 @@ void VulkanAsciiConsumer::Process_vkAllocateMemory(
     {
         OutputAddr(outputFile, pAllocateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent+1,pAllocateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent+1, pAllocateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -774,14 +774,14 @@ void VulkanAsciiConsumer::Process_vkAllocateMemory(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceMemory* pMemory
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemory:                        "); //HRW
-    OutputString(outputFile, "VkDeviceMemory* = "); //TEQ
+    OutputString(outputFile, "pMemory:                        "); // HRW
+    OutputString(outputFile, "VkDeviceMemory* = "); // TEQ
     if (pMemory.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -808,22 +808,22 @@ void VulkanAsciiConsumer::Process_vkFreeMemory(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceMemory memory
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memory:                         "); //HRW
-    OutputString(outputFile, "VkDeviceMemory = "); //TEQ
+    OutputString(outputFile, "memory:                         "); // HRW
+    OutputString(outputFile, "VkDeviceMemory = "); // TEQ
     OutputAddr(outputFile, memory); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -832,7 +832,7 @@ void VulkanAsciiConsumer::Process_vkFreeMemory(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -857,43 +857,43 @@ void VulkanAsciiConsumer::Process_vkMapMemory(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceMemory memory
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memory:                         "); //HRW
-    OutputString(outputFile, "VkDeviceMemory = "); //TEQ
+    OutputString(outputFile, "memory:                         "); // HRW
+    OutputString(outputFile, "VkDeviceMemory = "); // TEQ
     OutputAddr(outputFile, memory); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize offset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "offset:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, offset); //EQA
+    OutputString(outputFile, "offset:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, offset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize size
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "size:                           "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, size); //EQA
+    OutputString(outputFile, "size:                           "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, size); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkMemoryMapFlags flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkMemoryMapFlags = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkMemoryMapFlags = "); // TEQ
     OutputUnsignedDecimal(outputFile, flags); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: void** ppData
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "ppData:                         "); //HRW
-    OutputString(outputFile, "void** = "); //TEQ
+    OutputString(outputFile, "ppData:                         "); // HRW
+    OutputString(outputFile, "void** = "); // TEQ
     if (ppData.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -919,15 +919,15 @@ void VulkanAsciiConsumer::Process_vkUnmapMemory(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceMemory memory
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memory:                         "); //HRW
-    OutputString(outputFile, "VkDeviceMemory = "); //TEQ
+    OutputString(outputFile, "memory:                         "); // HRW
+    OutputString(outputFile, "VkDeviceMemory = "); // TEQ
     OutputAddr(outputFile, memory); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -949,22 +949,22 @@ void VulkanAsciiConsumer::Process_vkFlushMappedMemoryRanges(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t memoryRangeCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memoryRangeCount:               "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "memoryRangeCount:               "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, memoryRangeCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkMappedMemoryRange* pMemoryRanges
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryRanges:                  "); //HRW
-    OutputString(outputFile, "const VkMappedMemoryRange* = "); //TEQ
+    OutputString(outputFile, "pMemoryRanges:                  "); // HRW
+    OutputString(outputFile, "const VkMappedMemoryRange* = "); // TEQ
     if (pMemoryRanges.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -994,22 +994,22 @@ void VulkanAsciiConsumer::Process_vkInvalidateMappedMemoryRanges(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t memoryRangeCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memoryRangeCount:               "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "memoryRangeCount:               "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, memoryRangeCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkMappedMemoryRange* pMemoryRanges
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryRanges:                  "); //HRW
-    OutputString(outputFile, "const VkMappedMemoryRange* = "); //TEQ
+    OutputString(outputFile, "pMemoryRanges:                  "); // HRW
+    OutputString(outputFile, "const VkMappedMemoryRange* = "); // TEQ
     if (pMemoryRanges.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1036,22 +1036,22 @@ void VulkanAsciiConsumer::Process_vkGetDeviceMemoryCommitment(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceMemory memory
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memory:                         "); //HRW
-    OutputString(outputFile, "VkDeviceMemory = "); //TEQ
+    OutputString(outputFile, "memory:                         "); // HRW
+    OutputString(outputFile, "VkDeviceMemory = "); // TEQ
     OutputAddr(outputFile, memory); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize* pCommittedMemoryInBytes
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCommittedMemoryInBytes:        "); //HRW
-    OutputString(outputFile, "VkDeviceSize* = "); //TEQ
+    OutputString(outputFile, "pCommittedMemoryInBytes:        "); // HRW
+    OutputString(outputFile, "VkDeviceSize* = "); // TEQ
     if (pCommittedMemoryInBytes.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1082,30 +1082,30 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceMemory memory
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memory:                         "); //HRW
-    OutputString(outputFile, "VkDeviceMemory = "); //TEQ
+    OutputString(outputFile, "memory:                         "); // HRW
+    OutputString(outputFile, "VkDeviceMemory = "); // TEQ
     OutputAddr(outputFile, memory); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize memoryOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memoryOffset:                   "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, memoryOffset); //EQA
+    OutputString(outputFile, "memoryOffset:                   "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, memoryOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     OutputString(outputFile, "\n"); // HDS
@@ -1127,30 +1127,30 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage image
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "image:                          "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "image:                          "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, image); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceMemory memory
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memory:                         "); //HRW
-    OutputString(outputFile, "VkDeviceMemory = "); //TEQ
+    OutputString(outputFile, "memory:                         "); // HRW
+    OutputString(outputFile, "VkDeviceMemory = "); // TEQ
     OutputAddr(outputFile, memory); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize memoryOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memoryOffset:                   "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, memoryOffset); //EQA
+    OutputString(outputFile, "memoryOffset:                   "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, memoryOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     OutputString(outputFile, "\n"); // HDS
@@ -1168,22 +1168,22 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkMemoryRequirements* pMemoryRequirements
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryRequirements:            "); //HRW
-    OutputString(outputFile, "VkMemoryRequirements* = "); //TEQ
+    OutputString(outputFile, "pMemoryRequirements:            "); // HRW
+    OutputString(outputFile, "VkMemoryRequirements* = "); // TEQ
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1192,7 +1192,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements(
     {
         OutputAddr(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1211,22 +1211,22 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage image
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "image:                          "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "image:                          "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, image); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkMemoryRequirements* pMemoryRequirements
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryRequirements:            "); //HRW
-    OutputString(outputFile, "VkMemoryRequirements* = "); //TEQ
+    OutputString(outputFile, "pMemoryRequirements:            "); // HRW
+    OutputString(outputFile, "VkMemoryRequirements* = "); // TEQ
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1235,7 +1235,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements(
     {
         OutputAddr(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1255,22 +1255,22 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage image
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "image:                          "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "image:                          "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, image); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pSparseMemoryRequirementCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSparseMemoryRequirementCount:  "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pSparseMemoryRequirementCount:  "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1284,8 +1284,8 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements(
 
     // func arg: VkSparseImageMemoryRequirements* pSparseMemoryRequirements
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSparseMemoryRequirements:      "); //HRW
-    OutputString(outputFile, "VkSparseImageMemoryRequirements* = "); //TEQ
+    OutputString(outputFile, "pSparseMemoryRequirements:      "); // HRW
+    OutputString(outputFile, "VkSparseImageMemoryRequirements* = "); // TEQ
     if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1317,15 +1317,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFormat format
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "format:                         "); //HRW
-    OutputString(outputFile, "VkFormat = "); //TEQ
+    OutputString(outputFile, "format:                         "); // HRW
+    OutputString(outputFile, "VkFormat = "); // TEQ
     OutputEnumVkFormat(outputFile, format); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, format);
@@ -1334,8 +1334,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 
     // func arg: VkImageType type
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "type:                           "); //HRW
-    OutputString(outputFile, "VkImageType = "); //TEQ
+    OutputString(outputFile, "type:                           "); // HRW
+    OutputString(outputFile, "VkImageType = "); // TEQ
     OutputEnumVkImageType(outputFile, type); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, type);
@@ -1344,8 +1344,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 
     // func arg: VkSampleCountFlagBits samples
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "samples:                        "); //HRW
-    OutputString(outputFile, "VkSampleCountFlagBits = "); //TEQ
+    OutputString(outputFile, "samples:                        "); // HRW
+    OutputString(outputFile, "VkSampleCountFlagBits = "); // TEQ
     OutputEnumVkSampleCountFlagBits(outputFile, samples); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, samples);
@@ -1354,15 +1354,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 
     // func arg: VkImageUsageFlags usage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "usage:                          "); //HRW
-    OutputString(outputFile, "VkImageUsageFlags = "); //TEQ
+    OutputString(outputFile, "usage:                          "); // HRW
+    OutputString(outputFile, "VkImageUsageFlags = "); // TEQ
     OutputFlags(outputFile, usage, OutputEnumVkImageUsageFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageTiling tiling
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "tiling:                         "); //HRW
-    OutputString(outputFile, "VkImageTiling = "); //TEQ
+    OutputString(outputFile, "tiling:                         "); // HRW
+    OutputString(outputFile, "VkImageTiling = "); // TEQ
     OutputEnumVkImageTiling(outputFile, tiling); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, tiling);
@@ -1371,8 +1371,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 
     // func arg: uint32_t* pPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPropertyCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPropertyCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1386,8 +1386,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 
     // func arg: VkSparseImageFormatProperties* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkSparseImageFormatProperties* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkSparseImageFormatProperties* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1418,22 +1418,22 @@ void VulkanAsciiConsumer::Process_vkQueueBindSparse(
 
     // func arg: VkQueue queue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queue:                          "); //HRW
-    OutputString(outputFile, "VkQueue = "); //TEQ
+    OutputString(outputFile, "queue:                          "); // HRW
+    OutputString(outputFile, "VkQueue = "); // TEQ
     OutputAddr(outputFile, queue); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t bindInfoCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "bindInfoCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "bindInfoCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, bindInfoCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBindSparseInfo* pBindInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBindInfo:                      "); //HRW
-    OutputString(outputFile, "const VkBindSparseInfo* = "); //TEQ
+    OutputString(outputFile, "pBindInfo:                      "); // HRW
+    OutputString(outputFile, "const VkBindSparseInfo* = "); // TEQ
     if (pBindInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1447,8 +1447,8 @@ void VulkanAsciiConsumer::Process_vkQueueBindSparse(
 
     // func arg: VkFence fence
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "fence:                          "); //HRW
-    OutputString(outputFile, "VkFence = "); //TEQ
+    OutputString(outputFile, "fence:                          "); // HRW
+    OutputString(outputFile, "VkFence = "); // TEQ
     OutputAddr(outputFile, fence); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -1471,15 +1471,15 @@ void VulkanAsciiConsumer::Process_vkCreateFence(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkFenceCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkFenceCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkFenceCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1488,14 +1488,14 @@ void VulkanAsciiConsumer::Process_vkCreateFence(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1504,14 +1504,14 @@ void VulkanAsciiConsumer::Process_vkCreateFence(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFence* pFence
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFence:                         "); //HRW
-    OutputString(outputFile, "VkFence* = "); //TEQ
+    OutputString(outputFile, "pFence:                         "); // HRW
+    OutputString(outputFile, "VkFence* = "); // TEQ
     if (pFence.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1538,22 +1538,22 @@ void VulkanAsciiConsumer::Process_vkDestroyFence(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFence fence
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "fence:                          "); //HRW
-    OutputString(outputFile, "VkFence = "); //TEQ
+    OutputString(outputFile, "fence:                          "); // HRW
+    OutputString(outputFile, "VkFence = "); // TEQ
     OutputAddr(outputFile, fence); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1562,7 +1562,7 @@ void VulkanAsciiConsumer::Process_vkDestroyFence(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1584,22 +1584,22 @@ void VulkanAsciiConsumer::Process_vkResetFences(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t fenceCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "fenceCount:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "fenceCount:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, fenceCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkFence* pFences
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFences:                        "); //HRW
-    OutputString(outputFile, "const VkFence* = "); //TEQ
+    OutputString(outputFile, "pFences:                        "); // HRW
+    OutputString(outputFile, "const VkFence* = "); // TEQ
     if (pFences.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1629,15 +1629,15 @@ void VulkanAsciiConsumer::Process_vkGetFenceStatus(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFence fence
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "fence:                          "); //HRW
-    OutputString(outputFile, "VkFence = "); //TEQ
+    OutputString(outputFile, "fence:                          "); // HRW
+    OutputString(outputFile, "VkFence = "); // TEQ
     OutputAddr(outputFile, fence); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -1661,22 +1661,22 @@ void VulkanAsciiConsumer::Process_vkWaitForFences(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t fenceCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "fenceCount:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "fenceCount:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, fenceCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkFence* pFences
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFences:                        "); //HRW
-    OutputString(outputFile, "const VkFence* = "); //TEQ
+    OutputString(outputFile, "pFences:                        "); // HRW
+    OutputString(outputFile, "const VkFence* = "); // TEQ
     if (pFences.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1691,15 +1691,15 @@ void VulkanAsciiConsumer::Process_vkWaitForFences(
 
     // func arg: VkBool32 waitAll
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "waitAll:                        "); //HRW
-    OutputString(outputFile, "VkBool32 = "); //TEQ
-    OutputSignedDecimal(outputFile, waitAll); //EQA
+    OutputString(outputFile, "waitAll:                        "); // HRW
+    OutputString(outputFile, "VkBool32 = "); // TEQ
+    OutputSignedDecimal(outputFile, waitAll); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint64_t timeout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "timeout:                        "); //HRW
-    OutputString(outputFile, "uint64_t = "); //TEQ
+    OutputString(outputFile, "timeout:                        "); // HRW
+    OutputString(outputFile, "uint64_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, timeout); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -1722,15 +1722,15 @@ void VulkanAsciiConsumer::Process_vkCreateSemaphore(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSemaphoreCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkSemaphoreCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkSemaphoreCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1739,14 +1739,14 @@ void VulkanAsciiConsumer::Process_vkCreateSemaphore(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1755,14 +1755,14 @@ void VulkanAsciiConsumer::Process_vkCreateSemaphore(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSemaphore* pSemaphore
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSemaphore:                     "); //HRW
-    OutputString(outputFile, "VkSemaphore* = "); //TEQ
+    OutputString(outputFile, "pSemaphore:                     "); // HRW
+    OutputString(outputFile, "VkSemaphore* = "); // TEQ
     if (pSemaphore.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1789,22 +1789,22 @@ void VulkanAsciiConsumer::Process_vkDestroySemaphore(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSemaphore semaphore
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "semaphore:                      "); //HRW
-    OutputString(outputFile, "VkSemaphore = "); //TEQ
+    OutputString(outputFile, "semaphore:                      "); // HRW
+    OutputString(outputFile, "VkSemaphore = "); // TEQ
     OutputAddr(outputFile, semaphore); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1813,7 +1813,7 @@ void VulkanAsciiConsumer::Process_vkDestroySemaphore(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1836,15 +1836,15 @@ void VulkanAsciiConsumer::Process_vkCreateEvent(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkEventCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkEventCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkEventCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1853,14 +1853,14 @@ void VulkanAsciiConsumer::Process_vkCreateEvent(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1869,14 +1869,14 @@ void VulkanAsciiConsumer::Process_vkCreateEvent(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkEvent* pEvent
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pEvent:                         "); //HRW
-    OutputString(outputFile, "VkEvent* = "); //TEQ
+    OutputString(outputFile, "pEvent:                         "); // HRW
+    OutputString(outputFile, "VkEvent* = "); // TEQ
     if (pEvent.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1903,22 +1903,22 @@ void VulkanAsciiConsumer::Process_vkDestroyEvent(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkEvent event
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "event:                          "); //HRW
-    OutputString(outputFile, "VkEvent = "); //TEQ
+    OutputString(outputFile, "event:                          "); // HRW
+    OutputString(outputFile, "VkEvent = "); // TEQ
     OutputAddr(outputFile, event); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -1927,7 +1927,7 @@ void VulkanAsciiConsumer::Process_vkDestroyEvent(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1948,15 +1948,15 @@ void VulkanAsciiConsumer::Process_vkGetEventStatus(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkEvent event
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "event:                          "); //HRW
-    OutputString(outputFile, "VkEvent = "); //TEQ
+    OutputString(outputFile, "event:                          "); // HRW
+    OutputString(outputFile, "VkEvent = "); // TEQ
     OutputAddr(outputFile, event); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -1977,15 +1977,15 @@ void VulkanAsciiConsumer::Process_vkSetEvent(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkEvent event
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "event:                          "); //HRW
-    OutputString(outputFile, "VkEvent = "); //TEQ
+    OutputString(outputFile, "event:                          "); // HRW
+    OutputString(outputFile, "VkEvent = "); // TEQ
     OutputAddr(outputFile, event); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -2006,15 +2006,15 @@ void VulkanAsciiConsumer::Process_vkResetEvent(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkEvent event
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "event:                          "); //HRW
-    OutputString(outputFile, "VkEvent = "); //TEQ
+    OutputString(outputFile, "event:                          "); // HRW
+    OutputString(outputFile, "VkEvent = "); // TEQ
     OutputAddr(outputFile, event); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -2037,15 +2037,15 @@ void VulkanAsciiConsumer::Process_vkCreateQueryPool(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkQueryPoolCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkQueryPoolCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkQueryPoolCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2054,14 +2054,14 @@ void VulkanAsciiConsumer::Process_vkCreateQueryPool(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2070,14 +2070,14 @@ void VulkanAsciiConsumer::Process_vkCreateQueryPool(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryPool* pQueryPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pQueryPool:                     "); //HRW
-    OutputString(outputFile, "VkQueryPool* = "); //TEQ
+    OutputString(outputFile, "pQueryPool:                     "); // HRW
+    OutputString(outputFile, "VkQueryPool* = "); // TEQ
     if (pQueryPool.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2104,22 +2104,22 @@ void VulkanAsciiConsumer::Process_vkDestroyQueryPool(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryPool queryPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryPool:                      "); //HRW
-    OutputString(outputFile, "VkQueryPool = "); //TEQ
+    OutputString(outputFile, "queryPool:                      "); // HRW
+    OutputString(outputFile, "VkQueryPool = "); // TEQ
     OutputAddr(outputFile, queryPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2128,7 +2128,7 @@ void VulkanAsciiConsumer::Process_vkDestroyQueryPool(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2155,43 +2155,43 @@ void VulkanAsciiConsumer::Process_vkGetQueryPoolResults(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryPool queryPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryPool:                      "); //HRW
-    OutputString(outputFile, "VkQueryPool = "); //TEQ
+    OutputString(outputFile, "queryPool:                      "); // HRW
+    OutputString(outputFile, "VkQueryPool = "); // TEQ
     OutputAddr(outputFile, queryPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstQuery
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstQuery:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstQuery:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstQuery); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t queryCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryCount:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "queryCount:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, queryCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: size_t dataSize
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dataSize:                       "); //HRW
-    OutputString(outputFile, "size_t = "); //TEQ
+    OutputString(outputFile, "dataSize:                       "); // HRW
+    OutputString(outputFile, "size_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, dataSize); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: void* pData
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pData:                          "); //HRW
-    OutputString(outputFile, "void* = "); //TEQ
+    OutputString(outputFile, "pData:                          "); // HRW
+    OutputString(outputFile, "void* = "); // TEQ
     if (pData.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2204,15 +2204,15 @@ void VulkanAsciiConsumer::Process_vkGetQueryPoolResults(
 
     // func arg: VkDeviceSize stride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stride:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, stride); //EQA
+    OutputString(outputFile, "stride:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, stride); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryResultFlags flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkQueryResultFlags = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkQueryResultFlags = "); // TEQ
     OutputFlags(outputFile, flags, OutputEnumVkQueryResultFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
@@ -2235,15 +2235,15 @@ void VulkanAsciiConsumer::Process_vkCreateBuffer(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBufferCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkBufferCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkBufferCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2252,14 +2252,14 @@ void VulkanAsciiConsumer::Process_vkCreateBuffer(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2268,14 +2268,14 @@ void VulkanAsciiConsumer::Process_vkCreateBuffer(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer* pBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBuffer:                        "); //HRW
-    OutputString(outputFile, "VkBuffer* = "); //TEQ
+    OutputString(outputFile, "pBuffer:                        "); // HRW
+    OutputString(outputFile, "VkBuffer* = "); // TEQ
     if (pBuffer.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2302,22 +2302,22 @@ void VulkanAsciiConsumer::Process_vkDestroyBuffer(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2326,7 +2326,7 @@ void VulkanAsciiConsumer::Process_vkDestroyBuffer(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2349,15 +2349,15 @@ void VulkanAsciiConsumer::Process_vkCreateBufferView(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBufferViewCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkBufferViewCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkBufferViewCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2366,14 +2366,14 @@ void VulkanAsciiConsumer::Process_vkCreateBufferView(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2382,14 +2382,14 @@ void VulkanAsciiConsumer::Process_vkCreateBufferView(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBufferView* pView
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pView:                          "); //HRW
-    OutputString(outputFile, "VkBufferView* = "); //TEQ
+    OutputString(outputFile, "pView:                          "); // HRW
+    OutputString(outputFile, "VkBufferView* = "); // TEQ
     if (pView.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2415,22 +2415,22 @@ void VulkanAsciiConsumer::Process_vkDestroyBufferView(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBufferView bufferView
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "bufferView:                     "); //HRW
-    OutputString(outputFile, "VkBufferView = "); //TEQ
+    OutputString(outputFile, "bufferView:                     "); // HRW
+    OutputString(outputFile, "VkBufferView = "); // TEQ
     OutputAddr(outputFile, bufferView); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2439,7 +2439,7 @@ void VulkanAsciiConsumer::Process_vkDestroyBufferView(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2462,15 +2462,15 @@ void VulkanAsciiConsumer::Process_vkCreateImage(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkImageCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkImageCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2479,14 +2479,14 @@ void VulkanAsciiConsumer::Process_vkCreateImage(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2495,14 +2495,14 @@ void VulkanAsciiConsumer::Process_vkCreateImage(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage* pImage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImage:                         "); //HRW
-    OutputString(outputFile, "VkImage* = "); //TEQ
+    OutputString(outputFile, "pImage:                         "); // HRW
+    OutputString(outputFile, "VkImage* = "); // TEQ
     if (pImage.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2529,22 +2529,22 @@ void VulkanAsciiConsumer::Process_vkDestroyImage(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage image
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "image:                          "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "image:                          "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, image); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2553,7 +2553,7 @@ void VulkanAsciiConsumer::Process_vkDestroyImage(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2573,22 +2573,22 @@ void VulkanAsciiConsumer::Process_vkGetImageSubresourceLayout(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage image
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "image:                          "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "image:                          "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, image); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageSubresource* pSubresource
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSubresource:                   "); //HRW
-    OutputString(outputFile, "const VkImageSubresource* = "); //TEQ
+    OutputString(outputFile, "pSubresource:                   "); // HRW
+    OutputString(outputFile, "const VkImageSubresource* = "); // TEQ
     if (pSubresource.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2597,14 +2597,14 @@ void VulkanAsciiConsumer::Process_vkGetImageSubresourceLayout(
     {
         OutputAddr(outputFile, pSubresource.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSubresource.GetMetaStructPointer(), indent+1,pSubresource.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSubresource.GetMetaStructPointer(), indent+1, pSubresource.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSubresourceLayout* pLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pLayout:                        "); //HRW
-    OutputString(outputFile, "VkSubresourceLayout* = "); //TEQ
+    OutputString(outputFile, "pLayout:                        "); // HRW
+    OutputString(outputFile, "VkSubresourceLayout* = "); // TEQ
     if (pLayout.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2613,7 +2613,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSubresourceLayout(
     {
         OutputAddr(outputFile, pLayout.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pLayout.GetMetaStructPointer(), indent+1,pLayout.GetAddress()); // GLM
+        OutputStructure(outputFile, *pLayout.GetMetaStructPointer(), indent+1, pLayout.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2636,15 +2636,15 @@ void VulkanAsciiConsumer::Process_vkCreateImageView(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageViewCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkImageViewCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkImageViewCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2653,14 +2653,14 @@ void VulkanAsciiConsumer::Process_vkCreateImageView(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2669,14 +2669,14 @@ void VulkanAsciiConsumer::Process_vkCreateImageView(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageView* pView
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pView:                          "); //HRW
-    OutputString(outputFile, "VkImageView* = "); //TEQ
+    OutputString(outputFile, "pView:                          "); // HRW
+    OutputString(outputFile, "VkImageView* = "); // TEQ
     if (pView.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2702,22 +2702,22 @@ void VulkanAsciiConsumer::Process_vkDestroyImageView(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageView imageView
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "imageView:                      "); //HRW
-    OutputString(outputFile, "VkImageView = "); //TEQ
+    OutputString(outputFile, "imageView:                      "); // HRW
+    OutputString(outputFile, "VkImageView = "); // TEQ
     OutputAddr(outputFile, imageView); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2726,7 +2726,7 @@ void VulkanAsciiConsumer::Process_vkDestroyImageView(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2749,15 +2749,15 @@ void VulkanAsciiConsumer::Process_vkCreateShaderModule(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkShaderModuleCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkShaderModuleCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkShaderModuleCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2766,14 +2766,14 @@ void VulkanAsciiConsumer::Process_vkCreateShaderModule(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2782,14 +2782,14 @@ void VulkanAsciiConsumer::Process_vkCreateShaderModule(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkShaderModule* pShaderModule
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pShaderModule:                  "); //HRW
-    OutputString(outputFile, "VkShaderModule* = "); //TEQ
+    OutputString(outputFile, "pShaderModule:                  "); // HRW
+    OutputString(outputFile, "VkShaderModule* = "); // TEQ
     if (pShaderModule.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2816,22 +2816,22 @@ void VulkanAsciiConsumer::Process_vkDestroyShaderModule(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkShaderModule shaderModule
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "shaderModule:                   "); //HRW
-    OutputString(outputFile, "VkShaderModule = "); //TEQ
+    OutputString(outputFile, "shaderModule:                   "); // HRW
+    OutputString(outputFile, "VkShaderModule = "); // TEQ
     OutputAddr(outputFile, shaderModule); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2840,7 +2840,7 @@ void VulkanAsciiConsumer::Process_vkDestroyShaderModule(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2863,15 +2863,15 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineCache(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPipelineCacheCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkPipelineCacheCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkPipelineCacheCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2880,14 +2880,14 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineCache(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2896,14 +2896,14 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineCache(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineCache* pPipelineCache
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPipelineCache:                 "); //HRW
-    OutputString(outputFile, "VkPipelineCache* = "); //TEQ
+    OutputString(outputFile, "pPipelineCache:                 "); // HRW
+    OutputString(outputFile, "VkPipelineCache* = "); // TEQ
     if (pPipelineCache.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2930,22 +2930,22 @@ void VulkanAsciiConsumer::Process_vkDestroyPipelineCache(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineCache pipelineCache
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipelineCache:                  "); //HRW
-    OutputString(outputFile, "VkPipelineCache = "); //TEQ
+    OutputString(outputFile, "pipelineCache:                  "); // HRW
+    OutputString(outputFile, "VkPipelineCache = "); // TEQ
     OutputAddr(outputFile, pipelineCache); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -2954,7 +2954,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipelineCache(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2977,22 +2977,22 @@ void VulkanAsciiConsumer::Process_vkGetPipelineCacheData(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineCache pipelineCache
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipelineCache:                  "); //HRW
-    OutputString(outputFile, "VkPipelineCache = "); //TEQ
+    OutputString(outputFile, "pipelineCache:                  "); // HRW
+    OutputString(outputFile, "VkPipelineCache = "); // TEQ
     OutputAddr(outputFile, pipelineCache); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: size_t* pDataSize
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDataSize:                      "); //HRW
-    OutputString(outputFile, "size_t* = "); //TEQ
+    OutputString(outputFile, "pDataSize:                      "); // HRW
+    OutputString(outputFile, "size_t* = "); // TEQ
     if (pDataSize.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3006,8 +3006,8 @@ void VulkanAsciiConsumer::Process_vkGetPipelineCacheData(
 
     // func arg: void* pData
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pData:                          "); //HRW
-    OutputString(outputFile, "void* = "); //TEQ
+    OutputString(outputFile, "pData:                          "); // HRW
+    OutputString(outputFile, "void* = "); // TEQ
     if (pData.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3037,29 +3037,29 @@ void VulkanAsciiConsumer::Process_vkMergePipelineCaches(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineCache dstCache
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstCache:                       "); //HRW
-    OutputString(outputFile, "VkPipelineCache = "); //TEQ
+    OutputString(outputFile, "dstCache:                       "); // HRW
+    OutputString(outputFile, "VkPipelineCache = "); // TEQ
     OutputAddr(outputFile, dstCache); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t srcCacheCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcCacheCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "srcCacheCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, srcCacheCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPipelineCache* pSrcCaches
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSrcCaches:                     "); //HRW
-    OutputString(outputFile, "const VkPipelineCache* = "); //TEQ
+    OutputString(outputFile, "pSrcCaches:                     "); // HRW
+    OutputString(outputFile, "const VkPipelineCache* = "); // TEQ
     if (pSrcCaches.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3093,29 +3093,29 @@ void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineCache pipelineCache
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipelineCache:                  "); //HRW
-    OutputString(outputFile, "VkPipelineCache = "); //TEQ
+    OutputString(outputFile, "pipelineCache:                  "); // HRW
+    OutputString(outputFile, "VkPipelineCache = "); // TEQ
     OutputAddr(outputFile, pipelineCache); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t createInfoCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "createInfoCount:                "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "createInfoCount:                "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, createInfoCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkGraphicsPipelineCreateInfo* pCreateInfos
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfos:                   "); //HRW
-    OutputString(outputFile, "const VkGraphicsPipelineCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfos:                   "); // HRW
+    OutputString(outputFile, "const VkGraphicsPipelineCreateInfo* = "); // TEQ
     if (pCreateInfos.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3129,8 +3129,8 @@ void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3139,14 +3139,14 @@ void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipeline* pPipelines
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPipelines:                     "); //HRW
-    OutputString(outputFile, "VkPipeline* = "); //TEQ
+    OutputString(outputFile, "pPipelines:                     "); // HRW
+    OutputString(outputFile, "VkPipeline* = "); // TEQ
     if (pPipelines.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3180,29 +3180,29 @@ void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineCache pipelineCache
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipelineCache:                  "); //HRW
-    OutputString(outputFile, "VkPipelineCache = "); //TEQ
+    OutputString(outputFile, "pipelineCache:                  "); // HRW
+    OutputString(outputFile, "VkPipelineCache = "); // TEQ
     OutputAddr(outputFile, pipelineCache); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t createInfoCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "createInfoCount:                "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "createInfoCount:                "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, createInfoCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkComputePipelineCreateInfo* pCreateInfos
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfos:                   "); //HRW
-    OutputString(outputFile, "const VkComputePipelineCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfos:                   "); // HRW
+    OutputString(outputFile, "const VkComputePipelineCreateInfo* = "); // TEQ
     if (pCreateInfos.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3216,8 +3216,8 @@ void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3226,14 +3226,14 @@ void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipeline* pPipelines
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPipelines:                     "); //HRW
-    OutputString(outputFile, "VkPipeline* = "); //TEQ
+    OutputString(outputFile, "pPipelines:                     "); // HRW
+    OutputString(outputFile, "VkPipeline* = "); // TEQ
     if (pPipelines.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3261,22 +3261,22 @@ void VulkanAsciiConsumer::Process_vkDestroyPipeline(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipeline pipeline
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipeline:                       "); //HRW
-    OutputString(outputFile, "VkPipeline = "); //TEQ
+    OutputString(outputFile, "pipeline:                       "); // HRW
+    OutputString(outputFile, "VkPipeline = "); // TEQ
     OutputAddr(outputFile, pipeline); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3285,7 +3285,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipeline(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3308,15 +3308,15 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineLayout(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPipelineLayoutCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkPipelineLayoutCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkPipelineLayoutCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3325,14 +3325,14 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineLayout(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3341,14 +3341,14 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineLayout(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineLayout* pPipelineLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPipelineLayout:                "); //HRW
-    OutputString(outputFile, "VkPipelineLayout* = "); //TEQ
+    OutputString(outputFile, "pPipelineLayout:                "); // HRW
+    OutputString(outputFile, "VkPipelineLayout* = "); // TEQ
     if (pPipelineLayout.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3375,22 +3375,22 @@ void VulkanAsciiConsumer::Process_vkDestroyPipelineLayout(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineLayout pipelineLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipelineLayout:                 "); //HRW
-    OutputString(outputFile, "VkPipelineLayout = "); //TEQ
+    OutputString(outputFile, "pipelineLayout:                 "); // HRW
+    OutputString(outputFile, "VkPipelineLayout = "); // TEQ
     OutputAddr(outputFile, pipelineLayout); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3399,7 +3399,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipelineLayout(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3422,15 +3422,15 @@ void VulkanAsciiConsumer::Process_vkCreateSampler(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSamplerCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkSamplerCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkSamplerCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3439,14 +3439,14 @@ void VulkanAsciiConsumer::Process_vkCreateSampler(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3455,14 +3455,14 @@ void VulkanAsciiConsumer::Process_vkCreateSampler(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSampler* pSampler
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSampler:                       "); //HRW
-    OutputString(outputFile, "VkSampler* = "); //TEQ
+    OutputString(outputFile, "pSampler:                       "); // HRW
+    OutputString(outputFile, "VkSampler* = "); // TEQ
     if (pSampler.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3489,22 +3489,22 @@ void VulkanAsciiConsumer::Process_vkDestroySampler(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSampler sampler
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "sampler:                        "); //HRW
-    OutputString(outputFile, "VkSampler = "); //TEQ
+    OutputString(outputFile, "sampler:                        "); // HRW
+    OutputString(outputFile, "VkSampler = "); // TEQ
     OutputAddr(outputFile, sampler); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3513,7 +3513,7 @@ void VulkanAsciiConsumer::Process_vkDestroySampler(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3536,15 +3536,15 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorSetLayout(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDescriptorSetLayoutCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDescriptorSetLayoutCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDescriptorSetLayoutCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3553,14 +3553,14 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorSetLayout(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3569,14 +3569,14 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorSetLayout(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorSetLayout* pSetLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSetLayout:                     "); //HRW
-    OutputString(outputFile, "VkDescriptorSetLayout* = "); //TEQ
+    OutputString(outputFile, "pSetLayout:                     "); // HRW
+    OutputString(outputFile, "VkDescriptorSetLayout* = "); // TEQ
     if (pSetLayout.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3603,22 +3603,22 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorSetLayout(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorSetLayout descriptorSetLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "descriptorSetLayout:            "); //HRW
-    OutputString(outputFile, "VkDescriptorSetLayout = "); //TEQ
+    OutputString(outputFile, "descriptorSetLayout:            "); // HRW
+    OutputString(outputFile, "VkDescriptorSetLayout = "); // TEQ
     OutputAddr(outputFile, descriptorSetLayout); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3627,7 +3627,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorSetLayout(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3650,15 +3650,15 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorPool(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDescriptorPoolCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDescriptorPoolCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDescriptorPoolCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3667,14 +3667,14 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorPool(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3683,14 +3683,14 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorPool(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorPool* pDescriptorPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDescriptorPool:                "); //HRW
-    OutputString(outputFile, "VkDescriptorPool* = "); //TEQ
+    OutputString(outputFile, "pDescriptorPool:                "); // HRW
+    OutputString(outputFile, "VkDescriptorPool* = "); // TEQ
     if (pDescriptorPool.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3717,22 +3717,22 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorPool(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorPool descriptorPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "descriptorPool:                 "); //HRW
-    OutputString(outputFile, "VkDescriptorPool = "); //TEQ
+    OutputString(outputFile, "descriptorPool:                 "); // HRW
+    OutputString(outputFile, "VkDescriptorPool = "); // TEQ
     OutputAddr(outputFile, descriptorPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3741,7 +3741,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorPool(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3763,22 +3763,22 @@ void VulkanAsciiConsumer::Process_vkResetDescriptorPool(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorPool descriptorPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "descriptorPool:                 "); //HRW
-    OutputString(outputFile, "VkDescriptorPool = "); //TEQ
+    OutputString(outputFile, "descriptorPool:                 "); // HRW
+    OutputString(outputFile, "VkDescriptorPool = "); // TEQ
     OutputAddr(outputFile, descriptorPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorPoolResetFlags flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkDescriptorPoolResetFlags = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkDescriptorPoolResetFlags = "); // TEQ
     OutputUnsignedDecimal(outputFile, flags); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -3800,15 +3800,15 @@ void VulkanAsciiConsumer::Process_vkAllocateDescriptorSets(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDescriptorSetAllocateInfo* pAllocateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocateInfo:                  "); //HRW
-    OutputString(outputFile, "const VkDescriptorSetAllocateInfo* = "); //TEQ
+    OutputString(outputFile, "pAllocateInfo:                  "); // HRW
+    OutputString(outputFile, "const VkDescriptorSetAllocateInfo* = "); // TEQ
     if (pAllocateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3817,14 +3817,14 @@ void VulkanAsciiConsumer::Process_vkAllocateDescriptorSets(
     {
         OutputAddr(outputFile, pAllocateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent+1,pAllocateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent+1, pAllocateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorSet* pDescriptorSets
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDescriptorSets:                "); //HRW
-    OutputString(outputFile, "VkDescriptorSet* = "); //TEQ
+    OutputString(outputFile, "pDescriptorSets:                "); // HRW
+    OutputString(outputFile, "VkDescriptorSet* = "); // TEQ
     if (pDescriptorSets.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3856,29 +3856,29 @@ void VulkanAsciiConsumer::Process_vkFreeDescriptorSets(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorPool descriptorPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "descriptorPool:                 "); //HRW
-    OutputString(outputFile, "VkDescriptorPool = "); //TEQ
+    OutputString(outputFile, "descriptorPool:                 "); // HRW
+    OutputString(outputFile, "VkDescriptorPool = "); // TEQ
     OutputAddr(outputFile, descriptorPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t descriptorSetCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "descriptorSetCount:             "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "descriptorSetCount:             "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, descriptorSetCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDescriptorSet* pDescriptorSets
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDescriptorSets:                "); //HRW
-    OutputString(outputFile, "const VkDescriptorSet* = "); //TEQ
+    OutputString(outputFile, "pDescriptorSets:                "); // HRW
+    OutputString(outputFile, "const VkDescriptorSet* = "); // TEQ
     if (pDescriptorSets.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3908,22 +3908,22 @@ void VulkanAsciiConsumer::Process_vkUpdateDescriptorSets(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t descriptorWriteCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "descriptorWriteCount:           "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "descriptorWriteCount:           "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, descriptorWriteCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkWriteDescriptorSet* pDescriptorWrites
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDescriptorWrites:              "); //HRW
-    OutputString(outputFile, "const VkWriteDescriptorSet* = "); //TEQ
+    OutputString(outputFile, "pDescriptorWrites:              "); // HRW
+    OutputString(outputFile, "const VkWriteDescriptorSet* = "); // TEQ
     if (pDescriptorWrites.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3937,15 +3937,15 @@ void VulkanAsciiConsumer::Process_vkUpdateDescriptorSets(
 
     // func arg: uint32_t descriptorCopyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "descriptorCopyCount:            "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "descriptorCopyCount:            "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, descriptorCopyCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkCopyDescriptorSet* pDescriptorCopies
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDescriptorCopies:              "); //HRW
-    OutputString(outputFile, "const VkCopyDescriptorSet* = "); //TEQ
+    OutputString(outputFile, "pDescriptorCopies:              "); // HRW
+    OutputString(outputFile, "const VkCopyDescriptorSet* = "); // TEQ
     if (pDescriptorCopies.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3976,15 +3976,15 @@ void VulkanAsciiConsumer::Process_vkCreateFramebuffer(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkFramebufferCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkFramebufferCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkFramebufferCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -3993,14 +3993,14 @@ void VulkanAsciiConsumer::Process_vkCreateFramebuffer(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4009,14 +4009,14 @@ void VulkanAsciiConsumer::Process_vkCreateFramebuffer(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFramebuffer* pFramebuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFramebuffer:                   "); //HRW
-    OutputString(outputFile, "VkFramebuffer* = "); //TEQ
+    OutputString(outputFile, "pFramebuffer:                   "); // HRW
+    OutputString(outputFile, "VkFramebuffer* = "); // TEQ
     if (pFramebuffer.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4043,22 +4043,22 @@ void VulkanAsciiConsumer::Process_vkDestroyFramebuffer(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFramebuffer framebuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "framebuffer:                    "); //HRW
-    OutputString(outputFile, "VkFramebuffer = "); //TEQ
+    OutputString(outputFile, "framebuffer:                    "); // HRW
+    OutputString(outputFile, "VkFramebuffer = "); // TEQ
     OutputAddr(outputFile, framebuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4067,7 +4067,7 @@ void VulkanAsciiConsumer::Process_vkDestroyFramebuffer(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4090,15 +4090,15 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkRenderPassCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkRenderPassCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkRenderPassCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4107,14 +4107,14 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4123,14 +4123,14 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkRenderPass* pRenderPass
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRenderPass:                    "); //HRW
-    OutputString(outputFile, "VkRenderPass* = "); //TEQ
+    OutputString(outputFile, "pRenderPass:                    "); // HRW
+    OutputString(outputFile, "VkRenderPass* = "); // TEQ
     if (pRenderPass.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4157,22 +4157,22 @@ void VulkanAsciiConsumer::Process_vkDestroyRenderPass(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkRenderPass renderPass
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "renderPass:                     "); //HRW
-    OutputString(outputFile, "VkRenderPass = "); //TEQ
+    OutputString(outputFile, "renderPass:                     "); // HRW
+    OutputString(outputFile, "VkRenderPass = "); // TEQ
     OutputAddr(outputFile, renderPass); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4181,7 +4181,7 @@ void VulkanAsciiConsumer::Process_vkDestroyRenderPass(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4200,22 +4200,22 @@ void VulkanAsciiConsumer::Process_vkGetRenderAreaGranularity(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkRenderPass renderPass
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "renderPass:                     "); //HRW
-    OutputString(outputFile, "VkRenderPass = "); //TEQ
+    OutputString(outputFile, "renderPass:                     "); // HRW
+    OutputString(outputFile, "VkRenderPass = "); // TEQ
     OutputAddr(outputFile, renderPass); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExtent2D* pGranularity
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pGranularity:                   "); //HRW
-    OutputString(outputFile, "VkExtent2D* = "); //TEQ
+    OutputString(outputFile, "pGranularity:                   "); // HRW
+    OutputString(outputFile, "VkExtent2D* = "); // TEQ
     if (pGranularity.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4224,7 +4224,7 @@ void VulkanAsciiConsumer::Process_vkGetRenderAreaGranularity(
     {
         OutputAddr(outputFile, pGranularity.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pGranularity.GetMetaStructPointer(), indent+1,pGranularity.GetAddress()); // GLM
+        OutputStructure(outputFile, *pGranularity.GetMetaStructPointer(), indent+1, pGranularity.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4247,15 +4247,15 @@ void VulkanAsciiConsumer::Process_vkCreateCommandPool(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkCommandPoolCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkCommandPoolCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkCommandPoolCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4264,14 +4264,14 @@ void VulkanAsciiConsumer::Process_vkCreateCommandPool(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4280,14 +4280,14 @@ void VulkanAsciiConsumer::Process_vkCreateCommandPool(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCommandPool* pCommandPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCommandPool:                   "); //HRW
-    OutputString(outputFile, "VkCommandPool* = "); //TEQ
+    OutputString(outputFile, "pCommandPool:                   "); // HRW
+    OutputString(outputFile, "VkCommandPool* = "); // TEQ
     if (pCommandPool.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4314,22 +4314,22 @@ void VulkanAsciiConsumer::Process_vkDestroyCommandPool(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCommandPool commandPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandPool:                    "); //HRW
-    OutputString(outputFile, "VkCommandPool = "); //TEQ
+    OutputString(outputFile, "commandPool:                    "); // HRW
+    OutputString(outputFile, "VkCommandPool = "); // TEQ
     OutputAddr(outputFile, commandPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4338,7 +4338,7 @@ void VulkanAsciiConsumer::Process_vkDestroyCommandPool(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4360,22 +4360,22 @@ void VulkanAsciiConsumer::Process_vkResetCommandPool(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCommandPool commandPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandPool:                    "); //HRW
-    OutputString(outputFile, "VkCommandPool = "); //TEQ
+    OutputString(outputFile, "commandPool:                    "); // HRW
+    OutputString(outputFile, "VkCommandPool = "); // TEQ
     OutputAddr(outputFile, commandPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCommandPoolResetFlags flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkCommandPoolResetFlags = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkCommandPoolResetFlags = "); // TEQ
     OutputFlags(outputFile, flags, OutputEnumVkCommandPoolResetFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
@@ -4397,15 +4397,15 @@ void VulkanAsciiConsumer::Process_vkAllocateCommandBuffers(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkCommandBufferAllocateInfo* pAllocateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocateInfo:                  "); //HRW
-    OutputString(outputFile, "const VkCommandBufferAllocateInfo* = "); //TEQ
+    OutputString(outputFile, "pAllocateInfo:                  "); // HRW
+    OutputString(outputFile, "const VkCommandBufferAllocateInfo* = "); // TEQ
     if (pAllocateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4414,14 +4414,14 @@ void VulkanAsciiConsumer::Process_vkAllocateCommandBuffers(
     {
         OutputAddr(outputFile, pAllocateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent+1,pAllocateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent+1, pAllocateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCommandBuffer* pCommandBuffers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCommandBuffers:                "); //HRW
-    OutputString(outputFile, "VkCommandBuffer* = "); //TEQ
+    OutputString(outputFile, "pCommandBuffers:                "); // HRW
+    OutputString(outputFile, "VkCommandBuffer* = "); // TEQ
     if (pCommandBuffers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4450,29 +4450,29 @@ void VulkanAsciiConsumer::Process_vkFreeCommandBuffers(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCommandPool commandPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandPool:                    "); //HRW
-    OutputString(outputFile, "VkCommandPool = "); //TEQ
+    OutputString(outputFile, "commandPool:                    "); // HRW
+    OutputString(outputFile, "VkCommandPool = "); // TEQ
     OutputAddr(outputFile, commandPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t commandBufferCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBufferCount:             "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "commandBufferCount:             "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, commandBufferCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkCommandBuffer* pCommandBuffers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCommandBuffers:                "); //HRW
-    OutputString(outputFile, "const VkCommandBuffer* = "); //TEQ
+    OutputString(outputFile, "pCommandBuffers:                "); // HRW
+    OutputString(outputFile, "const VkCommandBuffer* = "); // TEQ
     if (pCommandBuffers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4502,15 +4502,15 @@ void VulkanAsciiConsumer::Process_vkBeginCommandBuffer(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkCommandBufferBeginInfo* pBeginInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBeginInfo:                     "); //HRW
-    OutputString(outputFile, "const VkCommandBufferBeginInfo* = "); //TEQ
+    OutputString(outputFile, "pBeginInfo:                     "); // HRW
+    OutputString(outputFile, "const VkCommandBufferBeginInfo* = "); // TEQ
     if (pBeginInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4519,7 +4519,7 @@ void VulkanAsciiConsumer::Process_vkBeginCommandBuffer(
     {
         OutputAddr(outputFile, pBeginInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pBeginInfo.GetMetaStructPointer(), indent+1,pBeginInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pBeginInfo.GetMetaStructPointer(), indent+1, pBeginInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4539,8 +4539,8 @@ void VulkanAsciiConsumer::Process_vkEndCommandBuffer(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -4561,15 +4561,15 @@ void VulkanAsciiConsumer::Process_vkResetCommandBuffer(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCommandBufferResetFlags flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkCommandBufferResetFlags = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkCommandBufferResetFlags = "); // TEQ
     OutputFlags(outputFile, flags, OutputEnumVkCommandBufferResetFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
@@ -4588,15 +4588,15 @@ void VulkanAsciiConsumer::Process_vkCmdBindPipeline(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineBindPoint pipelineBindPoint
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipelineBindPoint:              "); //HRW
-    OutputString(outputFile, "VkPipelineBindPoint = "); //TEQ
+    OutputString(outputFile, "pipelineBindPoint:              "); // HRW
+    OutputString(outputFile, "VkPipelineBindPoint = "); // TEQ
     OutputEnumVkPipelineBindPoint(outputFile, pipelineBindPoint); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, pipelineBindPoint);
@@ -4605,8 +4605,8 @@ void VulkanAsciiConsumer::Process_vkCmdBindPipeline(
 
     // func arg: VkPipeline pipeline
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipeline:                       "); //HRW
-    OutputString(outputFile, "VkPipeline = "); //TEQ
+    OutputString(outputFile, "pipeline:                       "); // HRW
+    OutputString(outputFile, "VkPipeline = "); // TEQ
     OutputAddr(outputFile, pipeline); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -4626,29 +4626,29 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewport(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstViewport
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstViewport:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstViewport:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstViewport); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t viewportCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "viewportCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "viewportCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, viewportCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkViewport* pViewports
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pViewports:                     "); //HRW
-    OutputString(outputFile, "const VkViewport* = "); //TEQ
+    OutputString(outputFile, "pViewports:                     "); // HRW
+    OutputString(outputFile, "const VkViewport* = "); // TEQ
     if (pViewports.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4676,29 +4676,29 @@ void VulkanAsciiConsumer::Process_vkCmdSetScissor(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstScissor
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstScissor:                   "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstScissor:                   "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstScissor); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t scissorCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "scissorCount:                   "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "scissorCount:                   "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, scissorCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkRect2D* pScissors
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pScissors:                      "); //HRW
-    OutputString(outputFile, "const VkRect2D* = "); //TEQ
+    OutputString(outputFile, "pScissors:                      "); // HRW
+    OutputString(outputFile, "const VkRect2D* = "); // TEQ
     if (pScissors.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -4724,15 +4724,15 @@ void VulkanAsciiConsumer::Process_vkCmdSetLineWidth(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: float lineWidth
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "lineWidth:                      "); //HRW
-    OutputString(outputFile, "float = "); //TEQ
+    OutputString(outputFile, "lineWidth:                      "); // HRW
+    OutputString(outputFile, "float = "); // TEQ
     OutputDouble(outputFile, lineWidth); // PEZ
     OutputString(outputFile, "\n"); // HHS
 
@@ -4752,29 +4752,29 @@ void VulkanAsciiConsumer::Process_vkCmdSetDepthBias(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: float depthBiasConstantFactor
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "depthBiasConstantFactor:        "); //HRW
-    OutputString(outputFile, "float = "); //TEQ
+    OutputString(outputFile, "depthBiasConstantFactor:        "); // HRW
+    OutputString(outputFile, "float = "); // TEQ
     OutputDouble(outputFile, depthBiasConstantFactor); // PEZ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: float depthBiasClamp
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "depthBiasClamp:                 "); //HRW
-    OutputString(outputFile, "float = "); //TEQ
+    OutputString(outputFile, "depthBiasClamp:                 "); // HRW
+    OutputString(outputFile, "float = "); // TEQ
     OutputDouble(outputFile, depthBiasClamp); // PEZ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: float depthBiasSlopeFactor
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "depthBiasSlopeFactor:           "); //HRW
-    OutputString(outputFile, "float = "); //TEQ
+    OutputString(outputFile, "depthBiasSlopeFactor:           "); // HRW
+    OutputString(outputFile, "float = "); // TEQ
     OutputDouble(outputFile, depthBiasSlopeFactor); // PEZ
     OutputString(outputFile, "\n"); // HHS
 
@@ -4792,17 +4792,17 @@ void VulkanAsciiConsumer::Process_vkCmdSetBlendConstants(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const float blendConstants
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "blendConstants:                 "); //HRW
-    OutputString(outputFile, "float"); //JUQ
+    OutputString(outputFile, "blendConstants:                 "); // HRW
+    OutputString(outputFile, "float"); // JUQ
     OutputString(outputFile, "[");
-    OutputString(outputFile, "4"); //DFX
+    OutputString(outputFile, "4"); // DFX
     OutputString(outputFile, "] = ");
     OutputScalarValueStructInfo vinfo_blendConstants = {false, false, false, nullptr}; // YPS
     OutputArray<float*>(outputFile, indent, 0, "const float", blendConstants.GetPointer(), "blendConstants", 4, vinfo_blendConstants); // JNA
@@ -4823,22 +4823,22 @@ void VulkanAsciiConsumer::Process_vkCmdSetDepthBounds(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: float minDepthBounds
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "minDepthBounds:                 "); //HRW
-    OutputString(outputFile, "float = "); //TEQ
+    OutputString(outputFile, "minDepthBounds:                 "); // HRW
+    OutputString(outputFile, "float = "); // TEQ
     OutputDouble(outputFile, minDepthBounds); // PEZ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: float maxDepthBounds
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "maxDepthBounds:                 "); //HRW
-    OutputString(outputFile, "float = "); //TEQ
+    OutputString(outputFile, "maxDepthBounds:                 "); // HRW
+    OutputString(outputFile, "float = "); // TEQ
     OutputDouble(outputFile, maxDepthBounds); // PEZ
     OutputString(outputFile, "\n"); // HHS
 
@@ -4857,22 +4857,22 @@ void VulkanAsciiConsumer::Process_vkCmdSetStencilCompareMask(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkStencilFaceFlags faceMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "faceMask:                       "); //HRW
-    OutputString(outputFile, "VkStencilFaceFlags = "); //TEQ
+    OutputString(outputFile, "faceMask:                       "); // HRW
+    OutputString(outputFile, "VkStencilFaceFlags = "); // TEQ
     OutputFlags(outputFile, faceMask, OutputEnumVkStencilFaceFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t compareMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "compareMask:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "compareMask:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, compareMask); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -4891,22 +4891,22 @@ void VulkanAsciiConsumer::Process_vkCmdSetStencilWriteMask(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkStencilFaceFlags faceMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "faceMask:                       "); //HRW
-    OutputString(outputFile, "VkStencilFaceFlags = "); //TEQ
+    OutputString(outputFile, "faceMask:                       "); // HRW
+    OutputString(outputFile, "VkStencilFaceFlags = "); // TEQ
     OutputFlags(outputFile, faceMask, OutputEnumVkStencilFaceFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t writeMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "writeMask:                      "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "writeMask:                      "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, writeMask); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -4925,22 +4925,22 @@ void VulkanAsciiConsumer::Process_vkCmdSetStencilReference(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkStencilFaceFlags faceMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "faceMask:                       "); //HRW
-    OutputString(outputFile, "VkStencilFaceFlags = "); //TEQ
+    OutputString(outputFile, "faceMask:                       "); // HRW
+    OutputString(outputFile, "VkStencilFaceFlags = "); // TEQ
     OutputFlags(outputFile, faceMask, OutputEnumVkStencilFaceFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t reference
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "reference:                      "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "reference:                      "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, reference); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -4964,15 +4964,15 @@ void VulkanAsciiConsumer::Process_vkCmdBindDescriptorSets(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineBindPoint pipelineBindPoint
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipelineBindPoint:              "); //HRW
-    OutputString(outputFile, "VkPipelineBindPoint = "); //TEQ
+    OutputString(outputFile, "pipelineBindPoint:              "); // HRW
+    OutputString(outputFile, "VkPipelineBindPoint = "); // TEQ
     OutputEnumVkPipelineBindPoint(outputFile, pipelineBindPoint); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, pipelineBindPoint);
@@ -4981,29 +4981,29 @@ void VulkanAsciiConsumer::Process_vkCmdBindDescriptorSets(
 
     // func arg: VkPipelineLayout layout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "layout:                         "); //HRW
-    OutputString(outputFile, "VkPipelineLayout = "); //TEQ
+    OutputString(outputFile, "layout:                         "); // HRW
+    OutputString(outputFile, "VkPipelineLayout = "); // TEQ
     OutputAddr(outputFile, layout); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstSet
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstSet:                       "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstSet:                       "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstSet); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t descriptorSetCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "descriptorSetCount:             "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "descriptorSetCount:             "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, descriptorSetCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDescriptorSet* pDescriptorSets
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDescriptorSets:                "); //HRW
-    OutputString(outputFile, "const VkDescriptorSet* = "); //TEQ
+    OutputString(outputFile, "pDescriptorSets:                "); // HRW
+    OutputString(outputFile, "const VkDescriptorSet* = "); // TEQ
     if (pDescriptorSets.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -5018,15 +5018,15 @@ void VulkanAsciiConsumer::Process_vkCmdBindDescriptorSets(
 
     // func arg: uint32_t dynamicOffsetCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dynamicOffsetCount:             "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "dynamicOffsetCount:             "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, dynamicOffsetCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const uint32_t* pDynamicOffsets
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDynamicOffsets:                "); //HRW
-    OutputString(outputFile, "const uint32_t* = "); //TEQ
+    OutputString(outputFile, "pDynamicOffsets:                "); // HRW
+    OutputString(outputFile, "const uint32_t* = "); // TEQ
     if (pDynamicOffsets.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -5055,29 +5055,29 @@ void VulkanAsciiConsumer::Process_vkCmdBindIndexBuffer(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize offset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "offset:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, offset); //EQA
+    OutputString(outputFile, "offset:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, offset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkIndexType indexType
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "indexType:                      "); //HRW
-    OutputString(outputFile, "VkIndexType = "); //TEQ
+    OutputString(outputFile, "indexType:                      "); // HRW
+    OutputString(outputFile, "VkIndexType = "); // TEQ
     OutputEnumVkIndexType(outputFile, indexType); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, indexType);
@@ -5101,29 +5101,29 @@ void VulkanAsciiConsumer::Process_vkCmdBindVertexBuffers(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstBinding
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstBinding:                   "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstBinding:                   "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstBinding); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t bindingCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "bindingCount:                   "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "bindingCount:                   "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, bindingCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBuffer* pBuffers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBuffers:                       "); //HRW
-    OutputString(outputFile, "const VkBuffer* = "); //TEQ
+    OutputString(outputFile, "pBuffers:                       "); // HRW
+    OutputString(outputFile, "const VkBuffer* = "); // TEQ
     if (pBuffers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -5138,8 +5138,8 @@ void VulkanAsciiConsumer::Process_vkCmdBindVertexBuffers(
 
     // func arg: const VkDeviceSize* pOffsets
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pOffsets:                       "); //HRW
-    OutputString(outputFile, "const VkDeviceSize* = "); //TEQ
+    OutputString(outputFile, "pOffsets:                       "); // HRW
+    OutputString(outputFile, "const VkDeviceSize* = "); // TEQ
     if (pOffsets.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -5169,36 +5169,36 @@ void VulkanAsciiConsumer::Process_vkCmdDraw(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t vertexCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "vertexCount:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "vertexCount:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, vertexCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t instanceCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instanceCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "instanceCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, instanceCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstVertex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstVertex:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstVertex:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstVertex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstInstance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstInstance:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstInstance:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstInstance); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -5220,43 +5220,43 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexed(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t indexCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "indexCount:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "indexCount:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, indexCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t instanceCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instanceCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "instanceCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, instanceCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstIndex:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstIndex:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: int32_t vertexOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "vertexOffset:                   "); //HRW
-    OutputString(outputFile, "int32_t = "); //TEQ
-    OutputSignedDecimal(outputFile, vertexOffset); //EQA
+    OutputString(outputFile, "vertexOffset:                   "); // HRW
+    OutputString(outputFile, "int32_t = "); // TEQ
+    OutputSignedDecimal(outputFile, vertexOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstInstance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstInstance:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstInstance:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstInstance); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -5277,36 +5277,36 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirect(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize offset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "offset:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, offset); //EQA
+    OutputString(outputFile, "offset:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, offset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t drawCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "drawCount:                      "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "drawCount:                      "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, drawCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t stride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stride:                         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "stride:                         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, stride); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -5327,36 +5327,36 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirect(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize offset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "offset:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, offset); //EQA
+    OutputString(outputFile, "offset:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, offset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t drawCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "drawCount:                      "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "drawCount:                      "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, drawCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t stride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stride:                         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "stride:                         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, stride); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -5376,29 +5376,29 @@ void VulkanAsciiConsumer::Process_vkCmdDispatch(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t groupCountX
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "groupCountX:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "groupCountX:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, groupCountX); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t groupCountY
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "groupCountY:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "groupCountY:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, groupCountY); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t groupCountZ
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "groupCountZ:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "groupCountZ:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, groupCountZ); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -5417,23 +5417,23 @@ void VulkanAsciiConsumer::Process_vkCmdDispatchIndirect(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize offset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "offset:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, offset); //EQA
+    OutputString(outputFile, "offset:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, offset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     OutputString(outputFile, "\n"); // HDS
@@ -5453,36 +5453,36 @@ void VulkanAsciiConsumer::Process_vkCmdCopyBuffer(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer srcBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcBuffer:                      "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "srcBuffer:                      "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, srcBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer dstBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstBuffer:                      "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "dstBuffer:                      "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, dstBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t regionCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "regionCount:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "regionCount:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, regionCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBufferCopy* pRegions
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRegions:                       "); //HRW
-    OutputString(outputFile, "const VkBufferCopy* = "); //TEQ
+    OutputString(outputFile, "pRegions:                       "); // HRW
+    OutputString(outputFile, "const VkBufferCopy* = "); // TEQ
     if (pRegions.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -5513,22 +5513,22 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImage(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage srcImage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcImage:                       "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "srcImage:                       "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, srcImage); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageLayout srcImageLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcImageLayout:                 "); //HRW
-    OutputString(outputFile, "VkImageLayout = "); //TEQ
+    OutputString(outputFile, "srcImageLayout:                 "); // HRW
+    OutputString(outputFile, "VkImageLayout = "); // TEQ
     OutputEnumVkImageLayout(outputFile, srcImageLayout); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, srcImageLayout);
@@ -5537,15 +5537,15 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImage(
 
     // func arg: VkImage dstImage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstImage:                       "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "dstImage:                       "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, dstImage); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageLayout dstImageLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstImageLayout:                 "); //HRW
-    OutputString(outputFile, "VkImageLayout = "); //TEQ
+    OutputString(outputFile, "dstImageLayout:                 "); // HRW
+    OutputString(outputFile, "VkImageLayout = "); // TEQ
     OutputEnumVkImageLayout(outputFile, dstImageLayout); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, dstImageLayout);
@@ -5554,15 +5554,15 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImage(
 
     // func arg: uint32_t regionCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "regionCount:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "regionCount:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, regionCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageCopy* pRegions
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRegions:                       "); //HRW
-    OutputString(outputFile, "const VkImageCopy* = "); //TEQ
+    OutputString(outputFile, "pRegions:                       "); // HRW
+    OutputString(outputFile, "const VkImageCopy* = "); // TEQ
     if (pRegions.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -5594,22 +5594,22 @@ void VulkanAsciiConsumer::Process_vkCmdBlitImage(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage srcImage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcImage:                       "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "srcImage:                       "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, srcImage); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageLayout srcImageLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcImageLayout:                 "); //HRW
-    OutputString(outputFile, "VkImageLayout = "); //TEQ
+    OutputString(outputFile, "srcImageLayout:                 "); // HRW
+    OutputString(outputFile, "VkImageLayout = "); // TEQ
     OutputEnumVkImageLayout(outputFile, srcImageLayout); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, srcImageLayout);
@@ -5618,15 +5618,15 @@ void VulkanAsciiConsumer::Process_vkCmdBlitImage(
 
     // func arg: VkImage dstImage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstImage:                       "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "dstImage:                       "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, dstImage); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageLayout dstImageLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstImageLayout:                 "); //HRW
-    OutputString(outputFile, "VkImageLayout = "); //TEQ
+    OutputString(outputFile, "dstImageLayout:                 "); // HRW
+    OutputString(outputFile, "VkImageLayout = "); // TEQ
     OutputEnumVkImageLayout(outputFile, dstImageLayout); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, dstImageLayout);
@@ -5635,15 +5635,15 @@ void VulkanAsciiConsumer::Process_vkCmdBlitImage(
 
     // func arg: uint32_t regionCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "regionCount:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "regionCount:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, regionCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageBlit* pRegions
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRegions:                       "); //HRW
-    OutputString(outputFile, "const VkImageBlit* = "); //TEQ
+    OutputString(outputFile, "pRegions:                       "); // HRW
+    OutputString(outputFile, "const VkImageBlit* = "); // TEQ
     if (pRegions.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -5657,8 +5657,8 @@ void VulkanAsciiConsumer::Process_vkCmdBlitImage(
 
     // func arg: VkFilter filter
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "filter:                         "); //HRW
-    OutputString(outputFile, "VkFilter = "); //TEQ
+    OutputString(outputFile, "filter:                         "); // HRW
+    OutputString(outputFile, "VkFilter = "); // TEQ
     OutputEnumVkFilter(outputFile, filter); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, filter);
@@ -5683,29 +5683,29 @@ void VulkanAsciiConsumer::Process_vkCmdCopyBufferToImage(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer srcBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcBuffer:                      "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "srcBuffer:                      "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, srcBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage dstImage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstImage:                       "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "dstImage:                       "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, dstImage); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageLayout dstImageLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstImageLayout:                 "); //HRW
-    OutputString(outputFile, "VkImageLayout = "); //TEQ
+    OutputString(outputFile, "dstImageLayout:                 "); // HRW
+    OutputString(outputFile, "VkImageLayout = "); // TEQ
     OutputEnumVkImageLayout(outputFile, dstImageLayout); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, dstImageLayout);
@@ -5714,15 +5714,15 @@ void VulkanAsciiConsumer::Process_vkCmdCopyBufferToImage(
 
     // func arg: uint32_t regionCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "regionCount:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "regionCount:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, regionCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBufferImageCopy* pRegions
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRegions:                       "); //HRW
-    OutputString(outputFile, "const VkBufferImageCopy* = "); //TEQ
+    OutputString(outputFile, "pRegions:                       "); // HRW
+    OutputString(outputFile, "const VkBufferImageCopy* = "); // TEQ
     if (pRegions.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -5752,22 +5752,22 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImageToBuffer(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage srcImage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcImage:                       "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "srcImage:                       "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, srcImage); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageLayout srcImageLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcImageLayout:                 "); //HRW
-    OutputString(outputFile, "VkImageLayout = "); //TEQ
+    OutputString(outputFile, "srcImageLayout:                 "); // HRW
+    OutputString(outputFile, "VkImageLayout = "); // TEQ
     OutputEnumVkImageLayout(outputFile, srcImageLayout); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, srcImageLayout);
@@ -5776,22 +5776,22 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImageToBuffer(
 
     // func arg: VkBuffer dstBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstBuffer:                      "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "dstBuffer:                      "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, dstBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t regionCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "regionCount:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "regionCount:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, regionCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBufferImageCopy* pRegions
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRegions:                       "); //HRW
-    OutputString(outputFile, "const VkBufferImageCopy* = "); //TEQ
+    OutputString(outputFile, "pRegions:                       "); // HRW
+    OutputString(outputFile, "const VkBufferImageCopy* = "); // TEQ
     if (pRegions.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -5820,36 +5820,36 @@ void VulkanAsciiConsumer::Process_vkCmdUpdateBuffer(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer dstBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstBuffer:                      "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "dstBuffer:                      "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, dstBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize dstOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstOffset:                      "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, dstOffset); //EQA
+    OutputString(outputFile, "dstOffset:                      "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, dstOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize dataSize
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dataSize:                       "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, dataSize); //EQA
+    OutputString(outputFile, "dataSize:                       "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, dataSize); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const void* pData
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pData:                          "); //HRW
-    OutputString(outputFile, "const void* = "); //TEQ
+    OutputString(outputFile, "pData:                          "); // HRW
+    OutputString(outputFile, "const void* = "); // TEQ
     if (pData.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -5877,36 +5877,36 @@ void VulkanAsciiConsumer::Process_vkCmdFillBuffer(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer dstBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstBuffer:                      "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "dstBuffer:                      "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, dstBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize dstOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstOffset:                      "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, dstOffset); //EQA
+    OutputString(outputFile, "dstOffset:                      "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, dstOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize size
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "size:                           "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, size); //EQA
+    OutputString(outputFile, "size:                           "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, size); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t data
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "data:                           "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "data:                           "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, data); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -5928,22 +5928,22 @@ void VulkanAsciiConsumer::Process_vkCmdClearColorImage(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage image
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "image:                          "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "image:                          "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, image); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageLayout imageLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "imageLayout:                    "); //HRW
-    OutputString(outputFile, "VkImageLayout = "); //TEQ
+    OutputString(outputFile, "imageLayout:                    "); // HRW
+    OutputString(outputFile, "VkImageLayout = "); // TEQ
     OutputEnumVkImageLayout(outputFile, imageLayout); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, imageLayout);
@@ -5952,8 +5952,8 @@ void VulkanAsciiConsumer::Process_vkCmdClearColorImage(
 
     // func arg: const VkClearColorValue* pColor
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pColor:                         "); //HRW
-    OutputString(outputFile, "const VkClearColorValue* = "); //TEQ
+    OutputString(outputFile, "pColor:                         "); // HRW
+    OutputString(outputFile, "const VkClearColorValue* = "); // TEQ
     if (pColor.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -5963,21 +5963,21 @@ void VulkanAsciiConsumer::Process_vkCmdClearColorImage(
         OutputAddr(outputFile, pColor.GetAddress()); // JHI
         OutputString(outputFile, " (Union)");
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pColor.GetMetaStructPointer(), indent+1,pColor.GetAddress()); // GLM
+        OutputStructure(outputFile, *pColor.GetMetaStructPointer(), indent+1, pColor.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t rangeCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "rangeCount:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "rangeCount:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, rangeCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageSubresourceRange* pRanges
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRanges:                        "); //HRW
-    OutputString(outputFile, "const VkImageSubresourceRange* = "); //TEQ
+    OutputString(outputFile, "pRanges:                        "); // HRW
+    OutputString(outputFile, "const VkImageSubresourceRange* = "); // TEQ
     if (pRanges.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6007,22 +6007,22 @@ void VulkanAsciiConsumer::Process_vkCmdClearDepthStencilImage(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage image
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "image:                          "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "image:                          "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, image); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageLayout imageLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "imageLayout:                    "); //HRW
-    OutputString(outputFile, "VkImageLayout = "); //TEQ
+    OutputString(outputFile, "imageLayout:                    "); // HRW
+    OutputString(outputFile, "VkImageLayout = "); // TEQ
     OutputEnumVkImageLayout(outputFile, imageLayout); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, imageLayout);
@@ -6031,8 +6031,8 @@ void VulkanAsciiConsumer::Process_vkCmdClearDepthStencilImage(
 
     // func arg: const VkClearDepthStencilValue* pDepthStencil
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDepthStencil:                  "); //HRW
-    OutputString(outputFile, "const VkClearDepthStencilValue* = "); //TEQ
+    OutputString(outputFile, "pDepthStencil:                  "); // HRW
+    OutputString(outputFile, "const VkClearDepthStencilValue* = "); // TEQ
     if (pDepthStencil.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6041,21 +6041,21 @@ void VulkanAsciiConsumer::Process_vkCmdClearDepthStencilImage(
     {
         OutputAddr(outputFile, pDepthStencil.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pDepthStencil.GetMetaStructPointer(), indent+1,pDepthStencil.GetAddress()); // GLM
+        OutputStructure(outputFile, *pDepthStencil.GetMetaStructPointer(), indent+1, pDepthStencil.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t rangeCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "rangeCount:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "rangeCount:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, rangeCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageSubresourceRange* pRanges
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRanges:                        "); //HRW
-    OutputString(outputFile, "const VkImageSubresourceRange* = "); //TEQ
+    OutputString(outputFile, "pRanges:                        "); // HRW
+    OutputString(outputFile, "const VkImageSubresourceRange* = "); // TEQ
     if (pRanges.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6084,22 +6084,22 @@ void VulkanAsciiConsumer::Process_vkCmdClearAttachments(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t attachmentCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "attachmentCount:                "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "attachmentCount:                "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, attachmentCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkClearAttachment* pAttachments
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAttachments:                   "); //HRW
-    OutputString(outputFile, "const VkClearAttachment* = "); //TEQ
+    OutputString(outputFile, "pAttachments:                   "); // HRW
+    OutputString(outputFile, "const VkClearAttachment* = "); // TEQ
     if (pAttachments.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6113,15 +6113,15 @@ void VulkanAsciiConsumer::Process_vkCmdClearAttachments(
 
     // func arg: uint32_t rectCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "rectCount:                      "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "rectCount:                      "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, rectCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkClearRect* pRects
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRects:                         "); //HRW
-    OutputString(outputFile, "const VkClearRect* = "); //TEQ
+    OutputString(outputFile, "pRects:                         "); // HRW
+    OutputString(outputFile, "const VkClearRect* = "); // TEQ
     if (pRects.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6152,22 +6152,22 @@ void VulkanAsciiConsumer::Process_vkCmdResolveImage(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage srcImage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcImage:                       "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "srcImage:                       "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, srcImage); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageLayout srcImageLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcImageLayout:                 "); //HRW
-    OutputString(outputFile, "VkImageLayout = "); //TEQ
+    OutputString(outputFile, "srcImageLayout:                 "); // HRW
+    OutputString(outputFile, "VkImageLayout = "); // TEQ
     OutputEnumVkImageLayout(outputFile, srcImageLayout); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, srcImageLayout);
@@ -6176,15 +6176,15 @@ void VulkanAsciiConsumer::Process_vkCmdResolveImage(
 
     // func arg: VkImage dstImage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstImage:                       "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "dstImage:                       "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, dstImage); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageLayout dstImageLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstImageLayout:                 "); //HRW
-    OutputString(outputFile, "VkImageLayout = "); //TEQ
+    OutputString(outputFile, "dstImageLayout:                 "); // HRW
+    OutputString(outputFile, "VkImageLayout = "); // TEQ
     OutputEnumVkImageLayout(outputFile, dstImageLayout); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, dstImageLayout);
@@ -6193,15 +6193,15 @@ void VulkanAsciiConsumer::Process_vkCmdResolveImage(
 
     // func arg: uint32_t regionCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "regionCount:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "regionCount:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, regionCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageResolve* pRegions
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRegions:                       "); //HRW
-    OutputString(outputFile, "const VkImageResolve* = "); //TEQ
+    OutputString(outputFile, "pRegions:                       "); // HRW
+    OutputString(outputFile, "const VkImageResolve* = "); // TEQ
     if (pRegions.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6228,22 +6228,22 @@ void VulkanAsciiConsumer::Process_vkCmdSetEvent(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkEvent event
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "event:                          "); //HRW
-    OutputString(outputFile, "VkEvent = "); //TEQ
+    OutputString(outputFile, "event:                          "); // HRW
+    OutputString(outputFile, "VkEvent = "); // TEQ
     OutputAddr(outputFile, event); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineStageFlags stageMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stageMask:                      "); //HRW
-    OutputString(outputFile, "VkPipelineStageFlags = "); //TEQ
+    OutputString(outputFile, "stageMask:                      "); // HRW
+    OutputString(outputFile, "VkPipelineStageFlags = "); // TEQ
     OutputFlags(outputFile, stageMask, OutputEnumVkPipelineStageFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
@@ -6262,22 +6262,22 @@ void VulkanAsciiConsumer::Process_vkCmdResetEvent(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkEvent event
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "event:                          "); //HRW
-    OutputString(outputFile, "VkEvent = "); //TEQ
+    OutputString(outputFile, "event:                          "); // HRW
+    OutputString(outputFile, "VkEvent = "); // TEQ
     OutputAddr(outputFile, event); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineStageFlags stageMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stageMask:                      "); //HRW
-    OutputString(outputFile, "VkPipelineStageFlags = "); //TEQ
+    OutputString(outputFile, "stageMask:                      "); // HRW
+    OutputString(outputFile, "VkPipelineStageFlags = "); // TEQ
     OutputFlags(outputFile, stageMask, OutputEnumVkPipelineStageFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
@@ -6304,22 +6304,22 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t eventCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "eventCount:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "eventCount:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, eventCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkEvent* pEvents
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pEvents:                        "); //HRW
-    OutputString(outputFile, "const VkEvent* = "); //TEQ
+    OutputString(outputFile, "pEvents:                        "); // HRW
+    OutputString(outputFile, "const VkEvent* = "); // TEQ
     if (pEvents.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6334,29 +6334,29 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
 
     // func arg: VkPipelineStageFlags srcStageMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcStageMask:                   "); //HRW
-    OutputString(outputFile, "VkPipelineStageFlags = "); //TEQ
+    OutputString(outputFile, "srcStageMask:                   "); // HRW
+    OutputString(outputFile, "VkPipelineStageFlags = "); // TEQ
     OutputFlags(outputFile, srcStageMask, OutputEnumVkPipelineStageFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineStageFlags dstStageMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstStageMask:                   "); //HRW
-    OutputString(outputFile, "VkPipelineStageFlags = "); //TEQ
+    OutputString(outputFile, "dstStageMask:                   "); // HRW
+    OutputString(outputFile, "VkPipelineStageFlags = "); // TEQ
     OutputFlags(outputFile, dstStageMask, OutputEnumVkPipelineStageFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t memoryBarrierCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memoryBarrierCount:             "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "memoryBarrierCount:             "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, memoryBarrierCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkMemoryBarrier* pMemoryBarriers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryBarriers:                "); //HRW
-    OutputString(outputFile, "const VkMemoryBarrier* = "); //TEQ
+    OutputString(outputFile, "pMemoryBarriers:                "); // HRW
+    OutputString(outputFile, "const VkMemoryBarrier* = "); // TEQ
     if (pMemoryBarriers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6370,15 +6370,15 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
 
     // func arg: uint32_t bufferMemoryBarrierCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "bufferMemoryBarrierCount:       "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "bufferMemoryBarrierCount:       "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, bufferMemoryBarrierCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBufferMemoryBarrier* pBufferMemoryBarriers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBufferMemoryBarriers:          "); //HRW
-    OutputString(outputFile, "const VkBufferMemoryBarrier* = "); //TEQ
+    OutputString(outputFile, "pBufferMemoryBarriers:          "); // HRW
+    OutputString(outputFile, "const VkBufferMemoryBarrier* = "); // TEQ
     if (pBufferMemoryBarriers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6392,15 +6392,15 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
 
     // func arg: uint32_t imageMemoryBarrierCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "imageMemoryBarrierCount:        "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "imageMemoryBarrierCount:        "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, imageMemoryBarrierCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageMemoryBarrier* pImageMemoryBarriers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImageMemoryBarriers:           "); //HRW
-    OutputString(outputFile, "const VkImageMemoryBarrier* = "); //TEQ
+    OutputString(outputFile, "pImageMemoryBarriers:           "); // HRW
+    OutputString(outputFile, "const VkImageMemoryBarrier* = "); // TEQ
     if (pImageMemoryBarriers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6434,43 +6434,43 @@ void VulkanAsciiConsumer::Process_vkCmdPipelineBarrier(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineStageFlags srcStageMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcStageMask:                   "); //HRW
-    OutputString(outputFile, "VkPipelineStageFlags = "); //TEQ
+    OutputString(outputFile, "srcStageMask:                   "); // HRW
+    OutputString(outputFile, "VkPipelineStageFlags = "); // TEQ
     OutputFlags(outputFile, srcStageMask, OutputEnumVkPipelineStageFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineStageFlags dstStageMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstStageMask:                   "); //HRW
-    OutputString(outputFile, "VkPipelineStageFlags = "); //TEQ
+    OutputString(outputFile, "dstStageMask:                   "); // HRW
+    OutputString(outputFile, "VkPipelineStageFlags = "); // TEQ
     OutputFlags(outputFile, dstStageMask, OutputEnumVkPipelineStageFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDependencyFlags dependencyFlags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dependencyFlags:                "); //HRW
-    OutputString(outputFile, "VkDependencyFlags = "); //TEQ
+    OutputString(outputFile, "dependencyFlags:                "); // HRW
+    OutputString(outputFile, "VkDependencyFlags = "); // TEQ
     OutputFlags(outputFile, dependencyFlags, OutputEnumVkDependencyFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t memoryBarrierCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memoryBarrierCount:             "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "memoryBarrierCount:             "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, memoryBarrierCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkMemoryBarrier* pMemoryBarriers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryBarriers:                "); //HRW
-    OutputString(outputFile, "const VkMemoryBarrier* = "); //TEQ
+    OutputString(outputFile, "pMemoryBarriers:                "); // HRW
+    OutputString(outputFile, "const VkMemoryBarrier* = "); // TEQ
     if (pMemoryBarriers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6484,15 +6484,15 @@ void VulkanAsciiConsumer::Process_vkCmdPipelineBarrier(
 
     // func arg: uint32_t bufferMemoryBarrierCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "bufferMemoryBarrierCount:       "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "bufferMemoryBarrierCount:       "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, bufferMemoryBarrierCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBufferMemoryBarrier* pBufferMemoryBarriers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBufferMemoryBarriers:          "); //HRW
-    OutputString(outputFile, "const VkBufferMemoryBarrier* = "); //TEQ
+    OutputString(outputFile, "pBufferMemoryBarriers:          "); // HRW
+    OutputString(outputFile, "const VkBufferMemoryBarrier* = "); // TEQ
     if (pBufferMemoryBarriers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6506,15 +6506,15 @@ void VulkanAsciiConsumer::Process_vkCmdPipelineBarrier(
 
     // func arg: uint32_t imageMemoryBarrierCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "imageMemoryBarrierCount:        "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "imageMemoryBarrierCount:        "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, imageMemoryBarrierCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageMemoryBarrier* pImageMemoryBarriers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImageMemoryBarriers:           "); //HRW
-    OutputString(outputFile, "const VkImageMemoryBarrier* = "); //TEQ
+    OutputString(outputFile, "pImageMemoryBarriers:           "); // HRW
+    OutputString(outputFile, "const VkImageMemoryBarrier* = "); // TEQ
     if (pImageMemoryBarriers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6542,29 +6542,29 @@ void VulkanAsciiConsumer::Process_vkCmdBeginQuery(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryPool queryPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryPool:                      "); //HRW
-    OutputString(outputFile, "VkQueryPool = "); //TEQ
+    OutputString(outputFile, "queryPool:                      "); // HRW
+    OutputString(outputFile, "VkQueryPool = "); // TEQ
     OutputAddr(outputFile, queryPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t query
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "query:                          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "query:                          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, query); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryControlFlags flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkQueryControlFlags = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkQueryControlFlags = "); // TEQ
     OutputFlags(outputFile, flags, OutputEnumVkQueryControlFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
@@ -6583,22 +6583,22 @@ void VulkanAsciiConsumer::Process_vkCmdEndQuery(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryPool queryPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryPool:                      "); //HRW
-    OutputString(outputFile, "VkQueryPool = "); //TEQ
+    OutputString(outputFile, "queryPool:                      "); // HRW
+    OutputString(outputFile, "VkQueryPool = "); // TEQ
     OutputAddr(outputFile, queryPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t query
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "query:                          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "query:                          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, query); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -6618,29 +6618,29 @@ void VulkanAsciiConsumer::Process_vkCmdResetQueryPool(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryPool queryPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryPool:                      "); //HRW
-    OutputString(outputFile, "VkQueryPool = "); //TEQ
+    OutputString(outputFile, "queryPool:                      "); // HRW
+    OutputString(outputFile, "VkQueryPool = "); // TEQ
     OutputAddr(outputFile, queryPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstQuery
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstQuery:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstQuery:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstQuery); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t queryCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryCount:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "queryCount:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, queryCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -6660,15 +6660,15 @@ void VulkanAsciiConsumer::Process_vkCmdWriteTimestamp(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineStageFlagBits pipelineStage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipelineStage:                  "); //HRW
-    OutputString(outputFile, "VkPipelineStageFlagBits = "); //TEQ
+    OutputString(outputFile, "pipelineStage:                  "); // HRW
+    OutputString(outputFile, "VkPipelineStageFlagBits = "); // TEQ
     OutputEnumVkPipelineStageFlagBits(outputFile, pipelineStage); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, pipelineStage);
@@ -6677,15 +6677,15 @@ void VulkanAsciiConsumer::Process_vkCmdWriteTimestamp(
 
     // func arg: VkQueryPool queryPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryPool:                      "); //HRW
-    OutputString(outputFile, "VkQueryPool = "); //TEQ
+    OutputString(outputFile, "queryPool:                      "); // HRW
+    OutputString(outputFile, "VkQueryPool = "); // TEQ
     OutputAddr(outputFile, queryPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t query
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "query:                          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "query:                          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, query); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -6709,57 +6709,57 @@ void VulkanAsciiConsumer::Process_vkCmdCopyQueryPoolResults(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryPool queryPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryPool:                      "); //HRW
-    OutputString(outputFile, "VkQueryPool = "); //TEQ
+    OutputString(outputFile, "queryPool:                      "); // HRW
+    OutputString(outputFile, "VkQueryPool = "); // TEQ
     OutputAddr(outputFile, queryPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstQuery
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstQuery:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstQuery:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstQuery); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t queryCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryCount:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "queryCount:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, queryCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer dstBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstBuffer:                      "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "dstBuffer:                      "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, dstBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize dstOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstOffset:                      "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, dstOffset); //EQA
+    OutputString(outputFile, "dstOffset:                      "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, dstOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize stride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stride:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, stride); //EQA
+    OutputString(outputFile, "stride:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, stride); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryResultFlags flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkQueryResultFlags = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkQueryResultFlags = "); // TEQ
     OutputFlags(outputFile, flags, OutputEnumVkQueryResultFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
@@ -6781,43 +6781,43 @@ void VulkanAsciiConsumer::Process_vkCmdPushConstants(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineLayout layout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "layout:                         "); //HRW
-    OutputString(outputFile, "VkPipelineLayout = "); //TEQ
+    OutputString(outputFile, "layout:                         "); // HRW
+    OutputString(outputFile, "VkPipelineLayout = "); // TEQ
     OutputAddr(outputFile, layout); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkShaderStageFlags stageFlags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stageFlags:                     "); //HRW
-    OutputString(outputFile, "VkShaderStageFlags = "); //TEQ
+    OutputString(outputFile, "stageFlags:                     "); // HRW
+    OutputString(outputFile, "VkShaderStageFlags = "); // TEQ
     OutputFlags(outputFile, stageFlags, OutputEnumVkShaderStageFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t offset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "offset:                         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "offset:                         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, offset); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t size
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "size:                           "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "size:                           "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, size); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const void* pValues
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pValues:                        "); //HRW
-    OutputString(outputFile, "const void* = "); //TEQ
+    OutputString(outputFile, "pValues:                        "); // HRW
+    OutputString(outputFile, "const void* = "); // TEQ
     if (pValues.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6843,15 +6843,15 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkRenderPassBeginInfo* pRenderPassBegin
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRenderPassBegin:               "); //HRW
-    OutputString(outputFile, "const VkRenderPassBeginInfo* = "); //TEQ
+    OutputString(outputFile, "pRenderPassBegin:               "); // HRW
+    OutputString(outputFile, "const VkRenderPassBeginInfo* = "); // TEQ
     if (pRenderPassBegin.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6860,14 +6860,14 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass(
     {
         OutputAddr(outputFile, pRenderPassBegin.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pRenderPassBegin.GetMetaStructPointer(), indent+1,pRenderPassBegin.GetAddress()); // GLM
+        OutputStructure(outputFile, *pRenderPassBegin.GetMetaStructPointer(), indent+1, pRenderPassBegin.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSubpassContents contents
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "contents:                       "); //HRW
-    OutputString(outputFile, "VkSubpassContents = "); //TEQ
+    OutputString(outputFile, "contents:                       "); // HRW
+    OutputString(outputFile, "VkSubpassContents = "); // TEQ
     OutputEnumVkSubpassContents(outputFile, contents); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, contents);
@@ -6888,15 +6888,15 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSubpassContents contents
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "contents:                       "); //HRW
-    OutputString(outputFile, "VkSubpassContents = "); //TEQ
+    OutputString(outputFile, "contents:                       "); // HRW
+    OutputString(outputFile, "VkSubpassContents = "); // TEQ
     OutputEnumVkSubpassContents(outputFile, contents); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, contents);
@@ -6916,8 +6916,8 @@ void VulkanAsciiConsumer::Process_vkCmdEndRenderPass(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -6936,22 +6936,22 @@ void VulkanAsciiConsumer::Process_vkCmdExecuteCommands(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t commandBufferCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBufferCount:             "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "commandBufferCount:             "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, commandBufferCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkCommandBuffer* pCommandBuffers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCommandBuffers:                "); //HRW
-    OutputString(outputFile, "const VkCommandBuffer* = "); //TEQ
+    OutputString(outputFile, "pCommandBuffers:                "); // HRW
+    OutputString(outputFile, "const VkCommandBuffer* = "); // TEQ
     if (pCommandBuffers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -6983,22 +6983,22 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory2(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t bindInfoCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "bindInfoCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "bindInfoCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, bindInfoCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBindBufferMemoryInfo* pBindInfos
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBindInfos:                     "); //HRW
-    OutputString(outputFile, "const VkBindBufferMemoryInfo* = "); //TEQ
+    OutputString(outputFile, "pBindInfos:                     "); // HRW
+    OutputString(outputFile, "const VkBindBufferMemoryInfo* = "); // TEQ
     if (pBindInfos.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7028,22 +7028,22 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory2(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t bindInfoCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "bindInfoCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "bindInfoCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, bindInfoCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBindImageMemoryInfo* pBindInfos
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBindInfos:                     "); //HRW
-    OutputString(outputFile, "const VkBindImageMemoryInfo* = "); //TEQ
+    OutputString(outputFile, "pBindInfos:                     "); // HRW
+    OutputString(outputFile, "const VkBindImageMemoryInfo* = "); // TEQ
     if (pBindInfos.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7072,36 +7072,36 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t heapIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "heapIndex:                      "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "heapIndex:                      "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, heapIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t localDeviceIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "localDeviceIndex:               "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "localDeviceIndex:               "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, localDeviceIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t remoteDeviceIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "remoteDeviceIndex:              "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "remoteDeviceIndex:              "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, remoteDeviceIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPeerMemoryFeatureFlags* pPeerMemoryFeatures
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPeerMemoryFeatures:            "); //HRW
-    OutputString(outputFile, "VkPeerMemoryFeatureFlags* = "); //TEQ
+    OutputString(outputFile, "pPeerMemoryFeatures:            "); // HRW
+    OutputString(outputFile, "VkPeerMemoryFeatureFlags* = "); // TEQ
     if (pPeerMemoryFeatures.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7127,15 +7127,15 @@ void VulkanAsciiConsumer::Process_vkCmdSetDeviceMask(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t deviceMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "deviceMask:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "deviceMask:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, deviceMask); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -7158,50 +7158,50 @@ void VulkanAsciiConsumer::Process_vkCmdDispatchBase(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t baseGroupX
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "baseGroupX:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "baseGroupX:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, baseGroupX); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t baseGroupY
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "baseGroupY:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "baseGroupY:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, baseGroupY); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t baseGroupZ
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "baseGroupZ:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "baseGroupZ:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, baseGroupZ); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t groupCountX
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "groupCountX:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "groupCountX:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, groupCountX); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t groupCountY
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "groupCountY:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "groupCountY:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, groupCountY); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t groupCountZ
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "groupCountZ:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "groupCountZ:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, groupCountZ); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -7223,15 +7223,15 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroups(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPhysicalDeviceGroupCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPhysicalDeviceGroupCount:      "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPhysicalDeviceGroupCount:      "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPhysicalDeviceGroupCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7245,8 +7245,8 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroups(
 
     // func arg: VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPhysicalDeviceGroupProperties: "); //HRW
-    OutputString(outputFile, "VkPhysicalDeviceGroupProperties* = "); //TEQ
+    OutputString(outputFile, "pPhysicalDeviceGroupProperties: "); // HRW
+    OutputString(outputFile, "VkPhysicalDeviceGroupProperties* = "); // TEQ
     if (pPhysicalDeviceGroupProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7273,15 +7273,15 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageMemoryRequirementsInfo2* pInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfo:                          "); //HRW
-    OutputString(outputFile, "const VkImageMemoryRequirementsInfo2* = "); //TEQ
+    OutputString(outputFile, "pInfo:                          "); // HRW
+    OutputString(outputFile, "const VkImageMemoryRequirementsInfo2* = "); // TEQ
     if (pInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7290,14 +7290,14 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2(
     {
         OutputAddr(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkMemoryRequirements2* pMemoryRequirements
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryRequirements:            "); //HRW
-    OutputString(outputFile, "VkMemoryRequirements2* = "); //TEQ
+    OutputString(outputFile, "pMemoryRequirements:            "); // HRW
+    OutputString(outputFile, "VkMemoryRequirements2* = "); // TEQ
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7306,7 +7306,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2(
     {
         OutputAddr(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7325,15 +7325,15 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBufferMemoryRequirementsInfo2* pInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfo:                          "); //HRW
-    OutputString(outputFile, "const VkBufferMemoryRequirementsInfo2* = "); //TEQ
+    OutputString(outputFile, "pInfo:                          "); // HRW
+    OutputString(outputFile, "const VkBufferMemoryRequirementsInfo2* = "); // TEQ
     if (pInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7342,14 +7342,14 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2(
     {
         OutputAddr(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkMemoryRequirements2* pMemoryRequirements
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryRequirements:            "); //HRW
-    OutputString(outputFile, "VkMemoryRequirements2* = "); //TEQ
+    OutputString(outputFile, "pMemoryRequirements:            "); // HRW
+    OutputString(outputFile, "VkMemoryRequirements2* = "); // TEQ
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7358,7 +7358,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2(
     {
         OutputAddr(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7378,15 +7378,15 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageSparseMemoryRequirementsInfo2* pInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfo:                          "); //HRW
-    OutputString(outputFile, "const VkImageSparseMemoryRequirementsInfo2* = "); //TEQ
+    OutputString(outputFile, "pInfo:                          "); // HRW
+    OutputString(outputFile, "const VkImageSparseMemoryRequirementsInfo2* = "); // TEQ
     if (pInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7395,14 +7395,14 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2(
     {
         OutputAddr(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pSparseMemoryRequirementCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSparseMemoryRequirementCount:  "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pSparseMemoryRequirementCount:  "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7416,8 +7416,8 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2(
 
     // func arg: VkSparseImageMemoryRequirements2* pSparseMemoryRequirements
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSparseMemoryRequirements:      "); //HRW
-    OutputString(outputFile, "VkSparseImageMemoryRequirements2* = "); //TEQ
+    OutputString(outputFile, "pSparseMemoryRequirements:      "); // HRW
+    OutputString(outputFile, "VkSparseImageMemoryRequirements2* = "); // TEQ
     if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7443,15 +7443,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPhysicalDeviceFeatures2* pFeatures
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFeatures:                      "); //HRW
-    OutputString(outputFile, "VkPhysicalDeviceFeatures2* = "); //TEQ
+    OutputString(outputFile, "pFeatures:                      "); // HRW
+    OutputString(outputFile, "VkPhysicalDeviceFeatures2* = "); // TEQ
     if (pFeatures.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7460,7 +7460,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2(
     {
         OutputAddr(outputFile, pFeatures.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pFeatures.GetMetaStructPointer(), indent+1,pFeatures.GetAddress()); // GLM
+        OutputStructure(outputFile, *pFeatures.GetMetaStructPointer(), indent+1, pFeatures.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7478,15 +7478,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPhysicalDeviceProperties2* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkPhysicalDeviceProperties2* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkPhysicalDeviceProperties2* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7495,7 +7495,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2(
     {
         OutputAddr(outputFile, pProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pProperties.GetMetaStructPointer(), indent+1,pProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7514,15 +7514,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFormat format
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "format:                         "); //HRW
-    OutputString(outputFile, "VkFormat = "); //TEQ
+    OutputString(outputFile, "format:                         "); // HRW
+    OutputString(outputFile, "VkFormat = "); // TEQ
     OutputEnumVkFormat(outputFile, format); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, format);
@@ -7531,8 +7531,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
 
     // func arg: VkFormatProperties2* pFormatProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFormatProperties:              "); //HRW
-    OutputString(outputFile, "VkFormatProperties2* = "); //TEQ
+    OutputString(outputFile, "pFormatProperties:              "); // HRW
+    OutputString(outputFile, "VkFormatProperties2* = "); // TEQ
     if (pFormatProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7541,7 +7541,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     {
         OutputAddr(outputFile, pFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1,pFormatProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1, pFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7563,15 +7563,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceImageFormatInfo2* pImageFormatInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImageFormatInfo:               "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceImageFormatInfo2* = "); //TEQ
+    OutputString(outputFile, "pImageFormatInfo:               "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceImageFormatInfo2* = "); // TEQ
     if (pImageFormatInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7580,14 +7580,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     {
         OutputAddr(outputFile, pImageFormatInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pImageFormatInfo.GetMetaStructPointer(), indent+1,pImageFormatInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pImageFormatInfo.GetMetaStructPointer(), indent+1, pImageFormatInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageFormatProperties2* pImageFormatProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImageFormatProperties:         "); //HRW
-    OutputString(outputFile, "VkImageFormatProperties2* = "); //TEQ
+    OutputString(outputFile, "pImageFormatProperties:         "); // HRW
+    OutputString(outputFile, "VkImageFormatProperties2* = "); // TEQ
     if (pImageFormatProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7596,7 +7596,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     {
         OutputAddr(outputFile, pImageFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1,pImageFormatProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1, pImageFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7615,15 +7615,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pQueueFamilyPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pQueueFamilyPropertyCount:      "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pQueueFamilyPropertyCount:      "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7637,8 +7637,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
 
     // func arg: VkQueueFamilyProperties2* pQueueFamilyProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pQueueFamilyProperties:         "); //HRW
-    OutputString(outputFile, "VkQueueFamilyProperties2* = "); //TEQ
+    OutputString(outputFile, "pQueueFamilyProperties:         "); // HRW
+    OutputString(outputFile, "VkQueueFamilyProperties2* = "); // TEQ
     if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7664,15 +7664,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPhysicalDeviceMemoryProperties2* pMemoryProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryProperties:              "); //HRW
-    OutputString(outputFile, "VkPhysicalDeviceMemoryProperties2* = "); //TEQ
+    OutputString(outputFile, "pMemoryProperties:              "); // HRW
+    OutputString(outputFile, "VkPhysicalDeviceMemoryProperties2* = "); // TEQ
     if (pMemoryProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7681,7 +7681,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     {
         OutputAddr(outputFile, pMemoryProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1,pMemoryProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1, pMemoryProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7701,15 +7701,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceSparseImageFormatInfo2* pFormatInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFormatInfo:                    "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceSparseImageFormatInfo2* = "); //TEQ
+    OutputString(outputFile, "pFormatInfo:                    "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceSparseImageFormatInfo2* = "); // TEQ
     if (pFormatInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7718,14 +7718,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     {
         OutputAddr(outputFile, pFormatInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pFormatInfo.GetMetaStructPointer(), indent+1,pFormatInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pFormatInfo.GetMetaStructPointer(), indent+1, pFormatInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPropertyCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPropertyCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7739,8 +7739,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 
     // func arg: VkSparseImageFormatProperties2* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkSparseImageFormatProperties2* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkSparseImageFormatProperties2* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7767,22 +7767,22 @@ void VulkanAsciiConsumer::Process_vkTrimCommandPool(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCommandPool commandPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandPool:                    "); //HRW
-    OutputString(outputFile, "VkCommandPool = "); //TEQ
+    OutputString(outputFile, "commandPool:                    "); // HRW
+    OutputString(outputFile, "VkCommandPool = "); // TEQ
     OutputAddr(outputFile, commandPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCommandPoolTrimFlags flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkCommandPoolTrimFlags = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkCommandPoolTrimFlags = "); // TEQ
     OutputUnsignedDecimal(outputFile, flags); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -7801,15 +7801,15 @@ void VulkanAsciiConsumer::Process_vkGetDeviceQueue2(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDeviceQueueInfo2* pQueueInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pQueueInfo:                     "); //HRW
-    OutputString(outputFile, "const VkDeviceQueueInfo2* = "); //TEQ
+    OutputString(outputFile, "pQueueInfo:                     "); // HRW
+    OutputString(outputFile, "const VkDeviceQueueInfo2* = "); // TEQ
     if (pQueueInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7818,14 +7818,14 @@ void VulkanAsciiConsumer::Process_vkGetDeviceQueue2(
     {
         OutputAddr(outputFile, pQueueInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pQueueInfo.GetMetaStructPointer(), indent+1,pQueueInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pQueueInfo.GetMetaStructPointer(), indent+1, pQueueInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueue* pQueue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pQueue:                         "); //HRW
-    OutputString(outputFile, "VkQueue* = "); //TEQ
+    OutputString(outputFile, "pQueue:                         "); // HRW
+    OutputString(outputFile, "VkQueue* = "); // TEQ
     if (pQueue.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7856,15 +7856,15 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversion(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSamplerYcbcrConversionCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkSamplerYcbcrConversionCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkSamplerYcbcrConversionCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7873,14 +7873,14 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversion(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7889,14 +7889,14 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversion(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSamplerYcbcrConversion* pYcbcrConversion
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pYcbcrConversion:               "); //HRW
-    OutputString(outputFile, "VkSamplerYcbcrConversion* = "); //TEQ
+    OutputString(outputFile, "pYcbcrConversion:               "); // HRW
+    OutputString(outputFile, "VkSamplerYcbcrConversion* = "); // TEQ
     if (pYcbcrConversion.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7923,22 +7923,22 @@ void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversion(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSamplerYcbcrConversion ycbcrConversion
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "ycbcrConversion:                "); //HRW
-    OutputString(outputFile, "VkSamplerYcbcrConversion = "); //TEQ
+    OutputString(outputFile, "ycbcrConversion:                "); // HRW
+    OutputString(outputFile, "VkSamplerYcbcrConversion = "); // TEQ
     OutputAddr(outputFile, ycbcrConversion); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7947,7 +7947,7 @@ void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversion(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7970,15 +7970,15 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplate(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDescriptorUpdateTemplateCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDescriptorUpdateTemplateCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDescriptorUpdateTemplateCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -7987,14 +7987,14 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplate(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8003,14 +8003,14 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplate(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorUpdateTemplate* pDescriptorUpdateTemplate
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDescriptorUpdateTemplate:      "); //HRW
-    OutputString(outputFile, "VkDescriptorUpdateTemplate* = "); //TEQ
+    OutputString(outputFile, "pDescriptorUpdateTemplate:      "); // HRW
+    OutputString(outputFile, "VkDescriptorUpdateTemplate* = "); // TEQ
     if (pDescriptorUpdateTemplate.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8037,22 +8037,22 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplate(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorUpdateTemplate descriptorUpdateTemplate
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "descriptorUpdateTemplate:       "); //HRW
-    OutputString(outputFile, "VkDescriptorUpdateTemplate = "); //TEQ
+    OutputString(outputFile, "descriptorUpdateTemplate:       "); // HRW
+    OutputString(outputFile, "VkDescriptorUpdateTemplate = "); // TEQ
     OutputAddr(outputFile, descriptorUpdateTemplate); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8061,7 +8061,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8080,15 +8080,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalBufferInfo:            "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceExternalBufferInfo* = "); //TEQ
+    OutputString(outputFile, "pExternalBufferInfo:            "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceExternalBufferInfo* = "); // TEQ
     if (pExternalBufferInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8097,14 +8097,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     {
         OutputAddr(outputFile, pExternalBufferInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalBufferInfo.GetMetaStructPointer(), indent+1,pExternalBufferInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalBufferInfo.GetMetaStructPointer(), indent+1, pExternalBufferInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExternalBufferProperties* pExternalBufferProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalBufferProperties:      "); //HRW
-    OutputString(outputFile, "VkExternalBufferProperties* = "); //TEQ
+    OutputString(outputFile, "pExternalBufferProperties:      "); // HRW
+    OutputString(outputFile, "VkExternalBufferProperties* = "); // TEQ
     if (pExternalBufferProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8113,7 +8113,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     {
         OutputAddr(outputFile, pExternalBufferProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalBufferProperties.GetMetaStructPointer(), indent+1,pExternalBufferProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalBufferProperties.GetMetaStructPointer(), indent+1, pExternalBufferProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8132,15 +8132,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalFenceInfo:             "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceExternalFenceInfo* = "); //TEQ
+    OutputString(outputFile, "pExternalFenceInfo:             "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceExternalFenceInfo* = "); // TEQ
     if (pExternalFenceInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8149,14 +8149,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     {
         OutputAddr(outputFile, pExternalFenceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalFenceInfo.GetMetaStructPointer(), indent+1,pExternalFenceInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalFenceInfo.GetMetaStructPointer(), indent+1, pExternalFenceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExternalFenceProperties* pExternalFenceProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalFenceProperties:       "); //HRW
-    OutputString(outputFile, "VkExternalFenceProperties* = "); //TEQ
+    OutputString(outputFile, "pExternalFenceProperties:       "); // HRW
+    OutputString(outputFile, "VkExternalFenceProperties* = "); // TEQ
     if (pExternalFenceProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8165,7 +8165,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     {
         OutputAddr(outputFile, pExternalFenceProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalFenceProperties.GetMetaStructPointer(), indent+1,pExternalFenceProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalFenceProperties.GetMetaStructPointer(), indent+1, pExternalFenceProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8184,15 +8184,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalSemaphoreInfo:         "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceExternalSemaphoreInfo* = "); //TEQ
+    OutputString(outputFile, "pExternalSemaphoreInfo:         "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceExternalSemaphoreInfo* = "); // TEQ
     if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8201,14 +8201,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
     {
         OutputAddr(outputFile, pExternalSemaphoreInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalSemaphoreInfo.GetMetaStructPointer(), indent+1,pExternalSemaphoreInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalSemaphoreInfo.GetMetaStructPointer(), indent+1, pExternalSemaphoreInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExternalSemaphoreProperties* pExternalSemaphoreProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalSemaphoreProperties:   "); //HRW
-    OutputString(outputFile, "VkExternalSemaphoreProperties* = "); //TEQ
+    OutputString(outputFile, "pExternalSemaphoreProperties:   "); // HRW
+    OutputString(outputFile, "VkExternalSemaphoreProperties* = "); // TEQ
     if (pExternalSemaphoreProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8217,7 +8217,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
     {
         OutputAddr(outputFile, pExternalSemaphoreProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalSemaphoreProperties.GetMetaStructPointer(), indent+1,pExternalSemaphoreProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalSemaphoreProperties.GetMetaStructPointer(), indent+1, pExternalSemaphoreProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8236,15 +8236,15 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupport(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDescriptorSetLayoutCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDescriptorSetLayoutCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDescriptorSetLayoutCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8253,14 +8253,14 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupport(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorSetLayoutSupport* pSupport
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSupport:                       "); //HRW
-    OutputString(outputFile, "VkDescriptorSetLayoutSupport* = "); //TEQ
+    OutputString(outputFile, "pSupport:                       "); // HRW
+    OutputString(outputFile, "VkDescriptorSetLayoutSupport* = "); // TEQ
     if (pSupport.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8269,7 +8269,7 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupport(
     {
         OutputAddr(outputFile, pSupport.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSupport.GetMetaStructPointer(), indent+1,pSupport.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSupport.GetMetaStructPointer(), indent+1, pSupport.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8289,22 +8289,22 @@ void VulkanAsciiConsumer::Process_vkDestroySurfaceKHR(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR surface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "surface:                        "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR = "); //TEQ
+    OutputString(outputFile, "surface:                        "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR = "); // TEQ
     OutputAddr(outputFile, surface); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8313,7 +8313,7 @@ void VulkanAsciiConsumer::Process_vkDestroySurfaceKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8336,29 +8336,29 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t queueFamilyIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queueFamilyIndex:               "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "queueFamilyIndex:               "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, queueFamilyIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR surface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "surface:                        "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR = "); //TEQ
+    OutputString(outputFile, "surface:                        "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR = "); // TEQ
     OutputAddr(outputFile, surface); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBool32* pSupported
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSupported:                     "); //HRW
-    OutputString(outputFile, "VkBool32* = "); //TEQ
+    OutputString(outputFile, "pSupported:                     "); // HRW
+    OutputString(outputFile, "VkBool32* = "); // TEQ
     if (pSupported.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8388,22 +8388,22 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR surface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "surface:                        "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR = "); //TEQ
+    OutputString(outputFile, "surface:                        "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR = "); // TEQ
     OutputAddr(outputFile, surface); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceCapabilitiesKHR* pSurfaceCapabilities
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurfaceCapabilities:           "); //HRW
-    OutputString(outputFile, "VkSurfaceCapabilitiesKHR* = "); //TEQ
+    OutputString(outputFile, "pSurfaceCapabilities:           "); // HRW
+    OutputString(outputFile, "VkSurfaceCapabilitiesKHR* = "); // TEQ
     if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8412,7 +8412,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     {
         OutputAddr(outputFile, pSurfaceCapabilities.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1,pSurfaceCapabilities.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1, pSurfaceCapabilities.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8435,22 +8435,22 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR surface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "surface:                        "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR = "); //TEQ
+    OutputString(outputFile, "surface:                        "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR = "); // TEQ
     OutputAddr(outputFile, surface); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pSurfaceFormatCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurfaceFormatCount:            "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pSurfaceFormatCount:            "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pSurfaceFormatCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8464,8 +8464,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
 
     // func arg: VkSurfaceFormatKHR* pSurfaceFormats
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurfaceFormats:                "); //HRW
-    OutputString(outputFile, "VkSurfaceFormatKHR* = "); //TEQ
+    OutputString(outputFile, "pSurfaceFormats:                "); // HRW
+    OutputString(outputFile, "VkSurfaceFormatKHR* = "); // TEQ
     if (pSurfaceFormats.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8496,22 +8496,22 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR surface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "surface:                        "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR = "); //TEQ
+    OutputString(outputFile, "surface:                        "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR = "); // TEQ
     OutputAddr(outputFile, surface); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPresentModeCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPresentModeCount:              "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPresentModeCount:              "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPresentModeCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8525,8 +8525,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
 
     // func arg: VkPresentModeKHR* pPresentModes
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPresentModes:                  "); //HRW
-    OutputString(outputFile, "VkPresentModeKHR* = "); //TEQ
+    OutputString(outputFile, "pPresentModes:                  "); // HRW
+    OutputString(outputFile, "VkPresentModeKHR* = "); // TEQ
     if (pPresentModes.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8559,15 +8559,15 @@ void VulkanAsciiConsumer::Process_vkCreateSwapchainKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSwapchainCreateInfoKHR* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkSwapchainCreateInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkSwapchainCreateInfoKHR* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8576,14 +8576,14 @@ void VulkanAsciiConsumer::Process_vkCreateSwapchainKHR(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8592,14 +8592,14 @@ void VulkanAsciiConsumer::Process_vkCreateSwapchainKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSwapchainKHR* pSwapchain
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSwapchain:                     "); //HRW
-    OutputString(outputFile, "VkSwapchainKHR* = "); //TEQ
+    OutputString(outputFile, "pSwapchain:                     "); // HRW
+    OutputString(outputFile, "VkSwapchainKHR* = "); // TEQ
     if (pSwapchain.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8626,22 +8626,22 @@ void VulkanAsciiConsumer::Process_vkDestroySwapchainKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSwapchainKHR swapchain
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "swapchain:                      "); //HRW
-    OutputString(outputFile, "VkSwapchainKHR = "); //TEQ
+    OutputString(outputFile, "swapchain:                      "); // HRW
+    OutputString(outputFile, "VkSwapchainKHR = "); // TEQ
     OutputAddr(outputFile, swapchain); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8650,7 +8650,7 @@ void VulkanAsciiConsumer::Process_vkDestroySwapchainKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8673,22 +8673,22 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainImagesKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSwapchainKHR swapchain
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "swapchain:                      "); //HRW
-    OutputString(outputFile, "VkSwapchainKHR = "); //TEQ
+    OutputString(outputFile, "swapchain:                      "); // HRW
+    OutputString(outputFile, "VkSwapchainKHR = "); // TEQ
     OutputAddr(outputFile, swapchain); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pSwapchainImageCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSwapchainImageCount:           "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pSwapchainImageCount:           "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pSwapchainImageCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8702,8 +8702,8 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainImagesKHR(
 
     // func arg: VkImage* pSwapchainImages
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSwapchainImages:               "); //HRW
-    OutputString(outputFile, "VkImage* = "); //TEQ
+    OutputString(outputFile, "pSwapchainImages:               "); // HRW
+    OutputString(outputFile, "VkImage* = "); // TEQ
     if (pSwapchainImages.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8737,43 +8737,43 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImageKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSwapchainKHR swapchain
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "swapchain:                      "); //HRW
-    OutputString(outputFile, "VkSwapchainKHR = "); //TEQ
+    OutputString(outputFile, "swapchain:                      "); // HRW
+    OutputString(outputFile, "VkSwapchainKHR = "); // TEQ
     OutputAddr(outputFile, swapchain); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint64_t timeout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "timeout:                        "); //HRW
-    OutputString(outputFile, "uint64_t = "); //TEQ
+    OutputString(outputFile, "timeout:                        "); // HRW
+    OutputString(outputFile, "uint64_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, timeout); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSemaphore semaphore
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "semaphore:                      "); //HRW
-    OutputString(outputFile, "VkSemaphore = "); //TEQ
+    OutputString(outputFile, "semaphore:                      "); // HRW
+    OutputString(outputFile, "VkSemaphore = "); // TEQ
     OutputAddr(outputFile, semaphore); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFence fence
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "fence:                          "); //HRW
-    OutputString(outputFile, "VkFence = "); //TEQ
+    OutputString(outputFile, "fence:                          "); // HRW
+    OutputString(outputFile, "VkFence = "); // TEQ
     OutputAddr(outputFile, fence); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pImageIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImageIndex:                    "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pImageIndex:                    "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pImageIndex.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8802,15 +8802,15 @@ void VulkanAsciiConsumer::Process_vkQueuePresentKHR(
 
     // func arg: VkQueue queue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queue:                          "); //HRW
-    OutputString(outputFile, "VkQueue = "); //TEQ
+    OutputString(outputFile, "queue:                          "); // HRW
+    OutputString(outputFile, "VkQueue = "); // TEQ
     OutputAddr(outputFile, queue); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPresentInfoKHR* pPresentInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPresentInfo:                   "); //HRW
-    OutputString(outputFile, "const VkPresentInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pPresentInfo:                   "); // HRW
+    OutputString(outputFile, "const VkPresentInfoKHR* = "); // TEQ
     if (pPresentInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8819,7 +8819,7 @@ void VulkanAsciiConsumer::Process_vkQueuePresentKHR(
     {
         OutputAddr(outputFile, pPresentInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pPresentInfo.GetMetaStructPointer(), indent+1,pPresentInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pPresentInfo.GetMetaStructPointer(), indent+1, pPresentInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8840,15 +8840,15 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceGroupPresentCapabilitiesKHR* pDeviceGroupPresentCapabilities
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDeviceGroupPresentCapabilities: "); //HRW
-    OutputString(outputFile, "VkDeviceGroupPresentCapabilitiesKHR* = "); //TEQ
+    OutputString(outputFile, "pDeviceGroupPresentCapabilities: "); // HRW
+    OutputString(outputFile, "VkDeviceGroupPresentCapabilitiesKHR* = "); // TEQ
     if (pDeviceGroupPresentCapabilities.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8857,7 +8857,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     {
         OutputAddr(outputFile, pDeviceGroupPresentCapabilities.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pDeviceGroupPresentCapabilities.GetMetaStructPointer(), indent+1,pDeviceGroupPresentCapabilities.GetAddress()); // GLM
+        OutputStructure(outputFile, *pDeviceGroupPresentCapabilities.GetMetaStructPointer(), indent+1, pDeviceGroupPresentCapabilities.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8879,22 +8879,22 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR surface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "surface:                        "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR = "); //TEQ
+    OutputString(outputFile, "surface:                        "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR = "); // TEQ
     OutputAddr(outputFile, surface); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceGroupPresentModeFlagsKHR* pModes
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pModes:                         "); //HRW
-    OutputString(outputFile, "VkDeviceGroupPresentModeFlagsKHR* = "); //TEQ
+    OutputString(outputFile, "pModes:                         "); // HRW
+    OutputString(outputFile, "VkDeviceGroupPresentModeFlagsKHR* = "); // TEQ
     if (pModes.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8925,22 +8925,22 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR surface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "surface:                        "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR = "); //TEQ
+    OutputString(outputFile, "surface:                        "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR = "); // TEQ
     OutputAddr(outputFile, surface); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pRectCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRectCount:                     "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pRectCount:                     "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pRectCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8954,8 +8954,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
 
     // func arg: VkRect2D* pRects
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRects:                         "); //HRW
-    OutputString(outputFile, "VkRect2D* = "); //TEQ
+    OutputString(outputFile, "pRects:                         "); // HRW
+    OutputString(outputFile, "VkRect2D* = "); // TEQ
     if (pRects.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -8985,15 +8985,15 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImage2KHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAcquireNextImageInfoKHR* pAcquireInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAcquireInfo:                   "); //HRW
-    OutputString(outputFile, "const VkAcquireNextImageInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pAcquireInfo:                   "); // HRW
+    OutputString(outputFile, "const VkAcquireNextImageInfoKHR* = "); // TEQ
     if (pAcquireInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9002,14 +9002,14 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImage2KHR(
     {
         OutputAddr(outputFile, pAcquireInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAcquireInfo.GetMetaStructPointer(), indent+1,pAcquireInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAcquireInfo.GetMetaStructPointer(), indent+1, pAcquireInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pImageIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImageIndex:                    "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pImageIndex:                    "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pImageIndex.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9040,15 +9040,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPropertyCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPropertyCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9062,8 +9062,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
 
     // func arg: VkDisplayPropertiesKHR* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkDisplayPropertiesKHR* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkDisplayPropertiesKHR* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9093,15 +9093,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPropertyCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPropertyCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9115,8 +9115,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
 
     // func arg: VkDisplayPlanePropertiesKHR* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkDisplayPlanePropertiesKHR* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkDisplayPlanePropertiesKHR* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9147,22 +9147,22 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t planeIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "planeIndex:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "planeIndex:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, planeIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pDisplayCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDisplayCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pDisplayCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pDisplayCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9176,8 +9176,8 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
 
     // func arg: VkDisplayKHR* pDisplays
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDisplays:                      "); //HRW
-    OutputString(outputFile, "VkDisplayKHR* = "); //TEQ
+    OutputString(outputFile, "pDisplays:                      "); // HRW
+    OutputString(outputFile, "VkDisplayKHR* = "); // TEQ
     if (pDisplays.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9209,22 +9209,22 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModePropertiesKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDisplayKHR display
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "display:                        "); //HRW
-    OutputString(outputFile, "VkDisplayKHR = "); //TEQ
+    OutputString(outputFile, "display:                        "); // HRW
+    OutputString(outputFile, "VkDisplayKHR = "); // TEQ
     OutputAddr(outputFile, display); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPropertyCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPropertyCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9238,8 +9238,8 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModePropertiesKHR(
 
     // func arg: VkDisplayModePropertiesKHR* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkDisplayModePropertiesKHR* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkDisplayModePropertiesKHR* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9271,22 +9271,22 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayModeKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDisplayKHR display
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "display:                        "); //HRW
-    OutputString(outputFile, "VkDisplayKHR = "); //TEQ
+    OutputString(outputFile, "display:                        "); // HRW
+    OutputString(outputFile, "VkDisplayKHR = "); // TEQ
     OutputAddr(outputFile, display); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDisplayModeCreateInfoKHR* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDisplayModeCreateInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDisplayModeCreateInfoKHR* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9295,14 +9295,14 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayModeKHR(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9311,14 +9311,14 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayModeKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDisplayModeKHR* pMode
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMode:                          "); //HRW
-    OutputString(outputFile, "VkDisplayModeKHR* = "); //TEQ
+    OutputString(outputFile, "pMode:                          "); // HRW
+    OutputString(outputFile, "VkDisplayModeKHR* = "); // TEQ
     if (pMode.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9349,29 +9349,29 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDisplayModeKHR mode
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "mode:                           "); //HRW
-    OutputString(outputFile, "VkDisplayModeKHR = "); //TEQ
+    OutputString(outputFile, "mode:                           "); // HRW
+    OutputString(outputFile, "VkDisplayModeKHR = "); // TEQ
     OutputAddr(outputFile, mode); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t planeIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "planeIndex:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "planeIndex:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, planeIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDisplayPlaneCapabilitiesKHR* pCapabilities
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCapabilities:                  "); //HRW
-    OutputString(outputFile, "VkDisplayPlaneCapabilitiesKHR* = "); //TEQ
+    OutputString(outputFile, "pCapabilities:                  "); // HRW
+    OutputString(outputFile, "VkDisplayPlaneCapabilitiesKHR* = "); // TEQ
     if (pCapabilities.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9380,7 +9380,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     {
         OutputAddr(outputFile, pCapabilities.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCapabilities.GetMetaStructPointer(), indent+1,pCapabilities.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCapabilities.GetMetaStructPointer(), indent+1, pCapabilities.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9403,15 +9403,15 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDisplaySurfaceCreateInfoKHR* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDisplaySurfaceCreateInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDisplaySurfaceCreateInfoKHR* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9420,14 +9420,14 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9436,14 +9436,14 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9476,22 +9476,22 @@ void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t swapchainCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "swapchainCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "swapchainCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, swapchainCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSwapchainCreateInfoKHR* pCreateInfos
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfos:                   "); //HRW
-    OutputString(outputFile, "const VkSwapchainCreateInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pCreateInfos:                   "); // HRW
+    OutputString(outputFile, "const VkSwapchainCreateInfoKHR* = "); // TEQ
     if (pCreateInfos.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9505,8 +9505,8 @@ void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9515,14 +9515,14 @@ void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSwapchainKHR* pSwapchains
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSwapchains:                    "); //HRW
-    OutputString(outputFile, "VkSwapchainKHR* = "); //TEQ
+    OutputString(outputFile, "pSwapchains:                    "); // HRW
+    OutputString(outputFile, "VkSwapchainKHR* = "); // TEQ
     if (pSwapchains.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9555,15 +9555,15 @@ void VulkanAsciiConsumer::Process_vkCreateXlibSurfaceKHR(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkXlibSurfaceCreateInfoKHR* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkXlibSurfaceCreateInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkXlibSurfaceCreateInfoKHR* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9572,14 +9572,14 @@ void VulkanAsciiConsumer::Process_vkCreateXlibSurfaceKHR(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9588,14 +9588,14 @@ void VulkanAsciiConsumer::Process_vkCreateXlibSurfaceKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9624,29 +9624,29 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t queueFamilyIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queueFamilyIndex:               "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "queueFamilyIndex:               "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, queueFamilyIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: void* dpy
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dpy:                            "); //HRW
-    OutputString(outputFile, "void* = "); //TEQ
+    OutputString(outputFile, "dpy:                            "); // HRW
+    OutputString(outputFile, "void* = "); // TEQ
     OutputAddr(outputFile, dpy); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: size_t visualID
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "visualID:                       "); //HRW
-    OutputString(outputFile, "size_t = "); //TEQ
+    OutputString(outputFile, "visualID:                       "); // HRW
+    OutputString(outputFile, "size_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, visualID); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -9670,15 +9670,15 @@ void VulkanAsciiConsumer::Process_vkCreateXcbSurfaceKHR(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkXcbSurfaceCreateInfoKHR* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkXcbSurfaceCreateInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkXcbSurfaceCreateInfoKHR* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9687,14 +9687,14 @@ void VulkanAsciiConsumer::Process_vkCreateXcbSurfaceKHR(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9703,14 +9703,14 @@ void VulkanAsciiConsumer::Process_vkCreateXcbSurfaceKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9739,22 +9739,22 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t queueFamilyIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queueFamilyIndex:               "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "queueFamilyIndex:               "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, queueFamilyIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: void* connection
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "connection:                     "); //HRW
-    OutputString(outputFile, "void* = "); //TEQ
+    OutputString(outputFile, "connection:                     "); // HRW
+    OutputString(outputFile, "void* = "); // TEQ
     if ( !connection) // WWW
     {
         OutputString(outputFile, "NULL");
@@ -9767,8 +9767,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
 
     // func arg: uint32_t visual_id
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "visual_id:                      "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "visual_id:                      "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, visual_id); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -9792,15 +9792,15 @@ void VulkanAsciiConsumer::Process_vkCreateWaylandSurfaceKHR(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkWaylandSurfaceCreateInfoKHR* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkWaylandSurfaceCreateInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkWaylandSurfaceCreateInfoKHR* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9809,14 +9809,14 @@ void VulkanAsciiConsumer::Process_vkCreateWaylandSurfaceKHR(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9825,14 +9825,14 @@ void VulkanAsciiConsumer::Process_vkCreateWaylandSurfaceKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9860,22 +9860,22 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportK
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t queueFamilyIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queueFamilyIndex:               "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "queueFamilyIndex:               "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, queueFamilyIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: struct void* display
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "display:                        "); //HRW
-    OutputString(outputFile, "struct void* = "); //TEQ
+    OutputString(outputFile, "display:                        "); // HRW
+    OutputString(outputFile, "struct void* = "); // TEQ
     if ( !display) // WWW
     {
         OutputString(outputFile, "NULL");
@@ -9906,15 +9906,15 @@ void VulkanAsciiConsumer::Process_vkCreateAndroidSurfaceKHR(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAndroidSurfaceCreateInfoKHR* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkAndroidSurfaceCreateInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkAndroidSurfaceCreateInfoKHR* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9923,14 +9923,14 @@ void VulkanAsciiConsumer::Process_vkCreateAndroidSurfaceKHR(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9939,14 +9939,14 @@ void VulkanAsciiConsumer::Process_vkCreateAndroidSurfaceKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9978,15 +9978,15 @@ void VulkanAsciiConsumer::Process_vkCreateWin32SurfaceKHR(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkWin32SurfaceCreateInfoKHR* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkWin32SurfaceCreateInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkWin32SurfaceCreateInfoKHR* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -9995,14 +9995,14 @@ void VulkanAsciiConsumer::Process_vkCreateWin32SurfaceKHR(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10011,14 +10011,14 @@ void VulkanAsciiConsumer::Process_vkCreateWin32SurfaceKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10045,15 +10045,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t queueFamilyIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queueFamilyIndex:               "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "queueFamilyIndex:               "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, queueFamilyIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -10072,15 +10072,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPhysicalDeviceFeatures2* pFeatures
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFeatures:                      "); //HRW
-    OutputString(outputFile, "VkPhysicalDeviceFeatures2* = "); //TEQ
+    OutputString(outputFile, "pFeatures:                      "); // HRW
+    OutputString(outputFile, "VkPhysicalDeviceFeatures2* = "); // TEQ
     if (pFeatures.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10089,7 +10089,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     {
         OutputAddr(outputFile, pFeatures.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pFeatures.GetMetaStructPointer(), indent+1,pFeatures.GetAddress()); // GLM
+        OutputStructure(outputFile, *pFeatures.GetMetaStructPointer(), indent+1, pFeatures.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10107,15 +10107,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPhysicalDeviceProperties2* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkPhysicalDeviceProperties2* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkPhysicalDeviceProperties2* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10124,7 +10124,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     {
         OutputAddr(outputFile, pProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pProperties.GetMetaStructPointer(), indent+1,pProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10143,15 +10143,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFormat format
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "format:                         "); //HRW
-    OutputString(outputFile, "VkFormat = "); //TEQ
+    OutputString(outputFile, "format:                         "); // HRW
+    OutputString(outputFile, "VkFormat = "); // TEQ
     OutputEnumVkFormat(outputFile, format); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, format);
@@ -10160,8 +10160,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
 
     // func arg: VkFormatProperties2* pFormatProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFormatProperties:              "); //HRW
-    OutputString(outputFile, "VkFormatProperties2* = "); //TEQ
+    OutputString(outputFile, "pFormatProperties:              "); // HRW
+    OutputString(outputFile, "VkFormatProperties2* = "); // TEQ
     if (pFormatProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10170,7 +10170,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     {
         OutputAddr(outputFile, pFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1,pFormatProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1, pFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10192,15 +10192,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceImageFormatInfo2* pImageFormatInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImageFormatInfo:               "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceImageFormatInfo2* = "); //TEQ
+    OutputString(outputFile, "pImageFormatInfo:               "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceImageFormatInfo2* = "); // TEQ
     if (pImageFormatInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10209,14 +10209,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     {
         OutputAddr(outputFile, pImageFormatInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pImageFormatInfo.GetMetaStructPointer(), indent+1,pImageFormatInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pImageFormatInfo.GetMetaStructPointer(), indent+1, pImageFormatInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageFormatProperties2* pImageFormatProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImageFormatProperties:         "); //HRW
-    OutputString(outputFile, "VkImageFormatProperties2* = "); //TEQ
+    OutputString(outputFile, "pImageFormatProperties:         "); // HRW
+    OutputString(outputFile, "VkImageFormatProperties2* = "); // TEQ
     if (pImageFormatProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10225,7 +10225,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     {
         OutputAddr(outputFile, pImageFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1,pImageFormatProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1, pImageFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10244,15 +10244,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pQueueFamilyPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pQueueFamilyPropertyCount:      "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pQueueFamilyPropertyCount:      "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10266,8 +10266,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
 
     // func arg: VkQueueFamilyProperties2* pQueueFamilyProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pQueueFamilyProperties:         "); //HRW
-    OutputString(outputFile, "VkQueueFamilyProperties2* = "); //TEQ
+    OutputString(outputFile, "pQueueFamilyProperties:         "); // HRW
+    OutputString(outputFile, "VkQueueFamilyProperties2* = "); // TEQ
     if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10293,15 +10293,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPhysicalDeviceMemoryProperties2* pMemoryProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryProperties:              "); //HRW
-    OutputString(outputFile, "VkPhysicalDeviceMemoryProperties2* = "); //TEQ
+    OutputString(outputFile, "pMemoryProperties:              "); // HRW
+    OutputString(outputFile, "VkPhysicalDeviceMemoryProperties2* = "); // TEQ
     if (pMemoryProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10310,7 +10310,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     {
         OutputAddr(outputFile, pMemoryProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1,pMemoryProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1, pMemoryProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10330,15 +10330,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceSparseImageFormatInfo2* pFormatInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFormatInfo:                    "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceSparseImageFormatInfo2* = "); //TEQ
+    OutputString(outputFile, "pFormatInfo:                    "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceSparseImageFormatInfo2* = "); // TEQ
     if (pFormatInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10347,14 +10347,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     {
         OutputAddr(outputFile, pFormatInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pFormatInfo.GetMetaStructPointer(), indent+1,pFormatInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pFormatInfo.GetMetaStructPointer(), indent+1, pFormatInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPropertyCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPropertyCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10368,8 +10368,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 
     // func arg: VkSparseImageFormatProperties2* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkSparseImageFormatProperties2* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkSparseImageFormatProperties2* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10399,36 +10399,36 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t heapIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "heapIndex:                      "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "heapIndex:                      "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, heapIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t localDeviceIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "localDeviceIndex:               "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "localDeviceIndex:               "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, localDeviceIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t remoteDeviceIndex
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "remoteDeviceIndex:              "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "remoteDeviceIndex:              "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, remoteDeviceIndex); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPeerMemoryFeatureFlags* pPeerMemoryFeatures
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPeerMemoryFeatures:            "); //HRW
-    OutputString(outputFile, "VkPeerMemoryFeatureFlags* = "); //TEQ
+    OutputString(outputFile, "pPeerMemoryFeatures:            "); // HRW
+    OutputString(outputFile, "VkPeerMemoryFeatureFlags* = "); // TEQ
     if (pPeerMemoryFeatures.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10454,15 +10454,15 @@ void VulkanAsciiConsumer::Process_vkCmdSetDeviceMaskKHR(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t deviceMask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "deviceMask:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "deviceMask:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, deviceMask); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -10485,50 +10485,50 @@ void VulkanAsciiConsumer::Process_vkCmdDispatchBaseKHR(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t baseGroupX
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "baseGroupX:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "baseGroupX:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, baseGroupX); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t baseGroupY
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "baseGroupY:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "baseGroupY:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, baseGroupY); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t baseGroupZ
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "baseGroupZ:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "baseGroupZ:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, baseGroupZ); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t groupCountX
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "groupCountX:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "groupCountX:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, groupCountX); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t groupCountY
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "groupCountY:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "groupCountY:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, groupCountY); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t groupCountZ
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "groupCountZ:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "groupCountZ:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, groupCountZ); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -10548,22 +10548,22 @@ void VulkanAsciiConsumer::Process_vkTrimCommandPoolKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCommandPool commandPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandPool:                    "); //HRW
-    OutputString(outputFile, "VkCommandPool = "); //TEQ
+    OutputString(outputFile, "commandPool:                    "); // HRW
+    OutputString(outputFile, "VkCommandPool = "); // TEQ
     OutputAddr(outputFile, commandPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCommandPoolTrimFlags flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkCommandPoolTrimFlags = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkCommandPoolTrimFlags = "); // TEQ
     OutputUnsignedDecimal(outputFile, flags); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -10586,15 +10586,15 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPhysicalDeviceGroupCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPhysicalDeviceGroupCount:      "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPhysicalDeviceGroupCount:      "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPhysicalDeviceGroupCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10608,8 +10608,8 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
 
     // func arg: VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPhysicalDeviceGroupProperties: "); //HRW
-    OutputString(outputFile, "VkPhysicalDeviceGroupProperties* = "); //TEQ
+    OutputString(outputFile, "pPhysicalDeviceGroupProperties: "); // HRW
+    OutputString(outputFile, "VkPhysicalDeviceGroupProperties* = "); // TEQ
     if (pPhysicalDeviceGroupProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10637,15 +10637,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalBufferInfo:            "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceExternalBufferInfo* = "); //TEQ
+    OutputString(outputFile, "pExternalBufferInfo:            "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceExternalBufferInfo* = "); // TEQ
     if (pExternalBufferInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10654,14 +10654,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR
     {
         OutputAddr(outputFile, pExternalBufferInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalBufferInfo.GetMetaStructPointer(), indent+1,pExternalBufferInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalBufferInfo.GetMetaStructPointer(), indent+1, pExternalBufferInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExternalBufferProperties* pExternalBufferProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalBufferProperties:      "); //HRW
-    OutputString(outputFile, "VkExternalBufferProperties* = "); //TEQ
+    OutputString(outputFile, "pExternalBufferProperties:      "); // HRW
+    OutputString(outputFile, "VkExternalBufferProperties* = "); // TEQ
     if (pExternalBufferProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10670,7 +10670,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR
     {
         OutputAddr(outputFile, pExternalBufferProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalBufferProperties.GetMetaStructPointer(), indent+1,pExternalBufferProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalBufferProperties.GetMetaStructPointer(), indent+1, pExternalBufferProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10693,15 +10693,15 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkMemoryGetWin32HandleInfoKHR* pGetWin32HandleInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pGetWin32HandleInfo:            "); //HRW
-    OutputString(outputFile, "const VkMemoryGetWin32HandleInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pGetWin32HandleInfo:            "); // HRW
+    OutputString(outputFile, "const VkMemoryGetWin32HandleInfoKHR* = "); // TEQ
     if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10710,14 +10710,14 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleKHR(
     {
         OutputAddr(outputFile, pGetWin32HandleInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent+1,pGetWin32HandleInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent+1, pGetWin32HandleInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: void** pHandle
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pHandle:                        "); //HRW
-    OutputString(outputFile, "void** = "); //TEQ
+    OutputString(outputFile, "pHandle:                        "); // HRW
+    OutputString(outputFile, "void** = "); // TEQ
     if (pHandle.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10748,15 +10748,15 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExternalMemoryHandleTypeFlagBits handleType
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "handleType:                     "); //HRW
-    OutputString(outputFile, "VkExternalMemoryHandleTypeFlagBits = "); //TEQ
+    OutputString(outputFile, "handleType:                     "); // HRW
+    OutputString(outputFile, "VkExternalMemoryHandleTypeFlagBits = "); // TEQ
     OutputEnumVkExternalMemoryHandleTypeFlagBits(outputFile, handleType); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, handleType);
@@ -10765,8 +10765,8 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
 
     // func arg: void* handle
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "handle:                         "); //HRW
-    OutputString(outputFile, "void* = "); //TEQ
+    OutputString(outputFile, "handle:                         "); // HRW
+    OutputString(outputFile, "void* = "); // TEQ
     if ( !handle) // WWW
     {
         OutputString(outputFile, "NULL");
@@ -10779,8 +10779,8 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
 
     // func arg: VkMemoryWin32HandlePropertiesKHR* pMemoryWin32HandleProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryWin32HandleProperties:   "); //HRW
-    OutputString(outputFile, "VkMemoryWin32HandlePropertiesKHR* = "); //TEQ
+    OutputString(outputFile, "pMemoryWin32HandleProperties:   "); // HRW
+    OutputString(outputFile, "VkMemoryWin32HandlePropertiesKHR* = "); // TEQ
     if (pMemoryWin32HandleProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10789,7 +10789,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     {
         OutputAddr(outputFile, pMemoryWin32HandleProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryWin32HandleProperties.GetMetaStructPointer(), indent+1,pMemoryWin32HandleProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryWin32HandleProperties.GetMetaStructPointer(), indent+1, pMemoryWin32HandleProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10812,15 +10812,15 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkMemoryGetFdInfoKHR* pGetFdInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pGetFdInfo:                     "); //HRW
-    OutputString(outputFile, "const VkMemoryGetFdInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pGetFdInfo:                     "); // HRW
+    OutputString(outputFile, "const VkMemoryGetFdInfoKHR* = "); // TEQ
     if (pGetFdInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10829,14 +10829,14 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdKHR(
     {
         OutputAddr(outputFile, pGetFdInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent+1,pGetFdInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent+1, pGetFdInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: int* pFd
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFd:                            "); //HRW
-    OutputString(outputFile, "int* = "); //TEQ
+    OutputString(outputFile, "pFd:                            "); // HRW
+    OutputString(outputFile, "int* = "); // TEQ
     if (pFd.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10867,15 +10867,15 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdPropertiesKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExternalMemoryHandleTypeFlagBits handleType
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "handleType:                     "); //HRW
-    OutputString(outputFile, "VkExternalMemoryHandleTypeFlagBits = "); //TEQ
+    OutputString(outputFile, "handleType:                     "); // HRW
+    OutputString(outputFile, "VkExternalMemoryHandleTypeFlagBits = "); // TEQ
     OutputEnumVkExternalMemoryHandleTypeFlagBits(outputFile, handleType); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, handleType);
@@ -10884,15 +10884,15 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdPropertiesKHR(
 
     // func arg: int fd
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "fd:                             "); //HRW
-    OutputString(outputFile, "int = "); //TEQ
-    OutputSignedDecimal(outputFile, fd); //EQA
+    OutputString(outputFile, "fd:                             "); // HRW
+    OutputString(outputFile, "int = "); // TEQ
+    OutputSignedDecimal(outputFile, fd); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkMemoryFdPropertiesKHR* pMemoryFdProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryFdProperties:            "); //HRW
-    OutputString(outputFile, "VkMemoryFdPropertiesKHR* = "); //TEQ
+    OutputString(outputFile, "pMemoryFdProperties:            "); // HRW
+    OutputString(outputFile, "VkMemoryFdPropertiesKHR* = "); // TEQ
     if (pMemoryFdProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10901,7 +10901,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdPropertiesKHR(
     {
         OutputAddr(outputFile, pMemoryFdProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryFdProperties.GetMetaStructPointer(), indent+1,pMemoryFdProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryFdProperties.GetMetaStructPointer(), indent+1, pMemoryFdProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10921,15 +10921,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalSemaphoreInfo:         "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceExternalSemaphoreInfo* = "); //TEQ
+    OutputString(outputFile, "pExternalSemaphoreInfo:         "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceExternalSemaphoreInfo* = "); // TEQ
     if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10938,14 +10938,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
     {
         OutputAddr(outputFile, pExternalSemaphoreInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalSemaphoreInfo.GetMetaStructPointer(), indent+1,pExternalSemaphoreInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalSemaphoreInfo.GetMetaStructPointer(), indent+1, pExternalSemaphoreInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExternalSemaphoreProperties* pExternalSemaphoreProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalSemaphoreProperties:   "); //HRW
-    OutputString(outputFile, "VkExternalSemaphoreProperties* = "); //TEQ
+    OutputString(outputFile, "pExternalSemaphoreProperties:   "); // HRW
+    OutputString(outputFile, "VkExternalSemaphoreProperties* = "); // TEQ
     if (pExternalSemaphoreProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10954,7 +10954,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
     {
         OutputAddr(outputFile, pExternalSemaphoreProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalSemaphoreProperties.GetMetaStructPointer(), indent+1,pExternalSemaphoreProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalSemaphoreProperties.GetMetaStructPointer(), indent+1, pExternalSemaphoreProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10976,15 +10976,15 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreWin32HandleKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImportSemaphoreWin32HandleInfoKHR* pImportSemaphoreWin32HandleInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImportSemaphoreWin32HandleInfo: "); //HRW
-    OutputString(outputFile, "const VkImportSemaphoreWin32HandleInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pImportSemaphoreWin32HandleInfo: "); // HRW
+    OutputString(outputFile, "const VkImportSemaphoreWin32HandleInfoKHR* = "); // TEQ
     if (pImportSemaphoreWin32HandleInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -10993,7 +10993,7 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     {
         OutputAddr(outputFile, pImportSemaphoreWin32HandleInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pImportSemaphoreWin32HandleInfo.GetMetaStructPointer(), indent+1,pImportSemaphoreWin32HandleInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pImportSemaphoreWin32HandleInfo.GetMetaStructPointer(), indent+1, pImportSemaphoreWin32HandleInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11015,15 +11015,15 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreWin32HandleKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSemaphoreGetWin32HandleInfoKHR* pGetWin32HandleInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pGetWin32HandleInfo:            "); //HRW
-    OutputString(outputFile, "const VkSemaphoreGetWin32HandleInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pGetWin32HandleInfo:            "); // HRW
+    OutputString(outputFile, "const VkSemaphoreGetWin32HandleInfoKHR* = "); // TEQ
     if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11032,14 +11032,14 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     {
         OutputAddr(outputFile, pGetWin32HandleInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent+1,pGetWin32HandleInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent+1, pGetWin32HandleInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: void** pHandle
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pHandle:                        "); //HRW
-    OutputString(outputFile, "void** = "); //TEQ
+    OutputString(outputFile, "pHandle:                        "); // HRW
+    OutputString(outputFile, "void** = "); // TEQ
     if (pHandle.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11069,15 +11069,15 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreFdKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImportSemaphoreFdInfoKHR* pImportSemaphoreFdInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImportSemaphoreFdInfo:         "); //HRW
-    OutputString(outputFile, "const VkImportSemaphoreFdInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pImportSemaphoreFdInfo:         "); // HRW
+    OutputString(outputFile, "const VkImportSemaphoreFdInfoKHR* = "); // TEQ
     if (pImportSemaphoreFdInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11086,7 +11086,7 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreFdKHR(
     {
         OutputAddr(outputFile, pImportSemaphoreFdInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pImportSemaphoreFdInfo.GetMetaStructPointer(), indent+1,pImportSemaphoreFdInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pImportSemaphoreFdInfo.GetMetaStructPointer(), indent+1, pImportSemaphoreFdInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11108,15 +11108,15 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreFdKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSemaphoreGetFdInfoKHR* pGetFdInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pGetFdInfo:                     "); //HRW
-    OutputString(outputFile, "const VkSemaphoreGetFdInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pGetFdInfo:                     "); // HRW
+    OutputString(outputFile, "const VkSemaphoreGetFdInfoKHR* = "); // TEQ
     if (pGetFdInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11125,14 +11125,14 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreFdKHR(
     {
         OutputAddr(outputFile, pGetFdInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent+1,pGetFdInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent+1, pGetFdInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: int* pFd
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFd:                            "); //HRW
-    OutputString(outputFile, "int* = "); //TEQ
+    OutputString(outputFile, "pFd:                            "); // HRW
+    OutputString(outputFile, "int* = "); // TEQ
     if (pFd.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11163,15 +11163,15 @@ void VulkanAsciiConsumer::Process_vkCmdPushDescriptorSetKHR(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineBindPoint pipelineBindPoint
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipelineBindPoint:              "); //HRW
-    OutputString(outputFile, "VkPipelineBindPoint = "); //TEQ
+    OutputString(outputFile, "pipelineBindPoint:              "); // HRW
+    OutputString(outputFile, "VkPipelineBindPoint = "); // TEQ
     OutputEnumVkPipelineBindPoint(outputFile, pipelineBindPoint); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, pipelineBindPoint);
@@ -11180,29 +11180,29 @@ void VulkanAsciiConsumer::Process_vkCmdPushDescriptorSetKHR(
 
     // func arg: VkPipelineLayout layout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "layout:                         "); //HRW
-    OutputString(outputFile, "VkPipelineLayout = "); //TEQ
+    OutputString(outputFile, "layout:                         "); // HRW
+    OutputString(outputFile, "VkPipelineLayout = "); // TEQ
     OutputAddr(outputFile, layout); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t set
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "set:                            "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "set:                            "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, set); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t descriptorWriteCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "descriptorWriteCount:           "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "descriptorWriteCount:           "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, descriptorWriteCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkWriteDescriptorSet* pDescriptorWrites
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDescriptorWrites:              "); //HRW
-    OutputString(outputFile, "const VkWriteDescriptorSet* = "); //TEQ
+    OutputString(outputFile, "pDescriptorWrites:              "); // HRW
+    OutputString(outputFile, "const VkWriteDescriptorSet* = "); // TEQ
     if (pDescriptorWrites.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11234,15 +11234,15 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDescriptorUpdateTemplateCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDescriptorUpdateTemplateCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDescriptorUpdateTemplateCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11251,14 +11251,14 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11267,14 +11267,14 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorUpdateTemplate* pDescriptorUpdateTemplate
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDescriptorUpdateTemplate:      "); //HRW
-    OutputString(outputFile, "VkDescriptorUpdateTemplate* = "); //TEQ
+    OutputString(outputFile, "pDescriptorUpdateTemplate:      "); // HRW
+    OutputString(outputFile, "VkDescriptorUpdateTemplate* = "); // TEQ
     if (pDescriptorUpdateTemplate.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11301,22 +11301,22 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorUpdateTemplate descriptorUpdateTemplate
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "descriptorUpdateTemplate:       "); //HRW
-    OutputString(outputFile, "VkDescriptorUpdateTemplate = "); //TEQ
+    OutputString(outputFile, "descriptorUpdateTemplate:       "); // HRW
+    OutputString(outputFile, "VkDescriptorUpdateTemplate = "); // TEQ
     OutputAddr(outputFile, descriptorUpdateTemplate); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11325,7 +11325,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11349,15 +11349,15 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass2KHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkRenderPassCreateInfo2KHR* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkRenderPassCreateInfo2KHR* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkRenderPassCreateInfo2KHR* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11366,14 +11366,14 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass2KHR(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11382,14 +11382,14 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass2KHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkRenderPass* pRenderPass
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRenderPass:                    "); //HRW
-    OutputString(outputFile, "VkRenderPass* = "); //TEQ
+    OutputString(outputFile, "pRenderPass:                    "); // HRW
+    OutputString(outputFile, "VkRenderPass* = "); // TEQ
     if (pRenderPass.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11416,15 +11416,15 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass2KHR(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkRenderPassBeginInfo* pRenderPassBegin
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pRenderPassBegin:               "); //HRW
-    OutputString(outputFile, "const VkRenderPassBeginInfo* = "); //TEQ
+    OutputString(outputFile, "pRenderPassBegin:               "); // HRW
+    OutputString(outputFile, "const VkRenderPassBeginInfo* = "); // TEQ
     if (pRenderPassBegin.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11433,14 +11433,14 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass2KHR(
     {
         OutputAddr(outputFile, pRenderPassBegin.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pRenderPassBegin.GetMetaStructPointer(), indent+1,pRenderPassBegin.GetAddress()); // GLM
+        OutputStructure(outputFile, *pRenderPassBegin.GetMetaStructPointer(), indent+1, pRenderPassBegin.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSubpassBeginInfoKHR* pSubpassBeginInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSubpassBeginInfo:              "); //HRW
-    OutputString(outputFile, "const VkSubpassBeginInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pSubpassBeginInfo:              "); // HRW
+    OutputString(outputFile, "const VkSubpassBeginInfoKHR* = "); // TEQ
     if (pSubpassBeginInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11449,7 +11449,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass2KHR(
     {
         OutputAddr(outputFile, pSubpassBeginInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSubpassBeginInfo.GetMetaStructPointer(), indent+1,pSubpassBeginInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSubpassBeginInfo.GetMetaStructPointer(), indent+1, pSubpassBeginInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11468,15 +11468,15 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass2KHR(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSubpassBeginInfoKHR* pSubpassBeginInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSubpassBeginInfo:              "); //HRW
-    OutputString(outputFile, "const VkSubpassBeginInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pSubpassBeginInfo:              "); // HRW
+    OutputString(outputFile, "const VkSubpassBeginInfoKHR* = "); // TEQ
     if (pSubpassBeginInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11485,14 +11485,14 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass2KHR(
     {
         OutputAddr(outputFile, pSubpassBeginInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSubpassBeginInfo.GetMetaStructPointer(), indent+1,pSubpassBeginInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSubpassBeginInfo.GetMetaStructPointer(), indent+1, pSubpassBeginInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSubpassEndInfoKHR* pSubpassEndInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSubpassEndInfo:                "); //HRW
-    OutputString(outputFile, "const VkSubpassEndInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pSubpassEndInfo:                "); // HRW
+    OutputString(outputFile, "const VkSubpassEndInfoKHR* = "); // TEQ
     if (pSubpassEndInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11501,7 +11501,7 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass2KHR(
     {
         OutputAddr(outputFile, pSubpassEndInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSubpassEndInfo.GetMetaStructPointer(), indent+1,pSubpassEndInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSubpassEndInfo.GetMetaStructPointer(), indent+1, pSubpassEndInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11519,15 +11519,15 @@ void VulkanAsciiConsumer::Process_vkCmdEndRenderPass2KHR(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSubpassEndInfoKHR* pSubpassEndInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSubpassEndInfo:                "); //HRW
-    OutputString(outputFile, "const VkSubpassEndInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pSubpassEndInfo:                "); // HRW
+    OutputString(outputFile, "const VkSubpassEndInfoKHR* = "); // TEQ
     if (pSubpassEndInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11536,7 +11536,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndRenderPass2KHR(
     {
         OutputAddr(outputFile, pSubpassEndInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSubpassEndInfo.GetMetaStructPointer(), indent+1,pSubpassEndInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSubpassEndInfo.GetMetaStructPointer(), indent+1, pSubpassEndInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11558,15 +11558,15 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainStatusKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSwapchainKHR swapchain
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "swapchain:                      "); //HRW
-    OutputString(outputFile, "VkSwapchainKHR = "); //TEQ
+    OutputString(outputFile, "swapchain:                      "); // HRW
+    OutputString(outputFile, "VkSwapchainKHR = "); // TEQ
     OutputAddr(outputFile, swapchain); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -11586,15 +11586,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalFenceInfo:             "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceExternalFenceInfo* = "); //TEQ
+    OutputString(outputFile, "pExternalFenceInfo:             "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceExternalFenceInfo* = "); // TEQ
     if (pExternalFenceInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11603,14 +11603,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     {
         OutputAddr(outputFile, pExternalFenceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalFenceInfo.GetMetaStructPointer(), indent+1,pExternalFenceInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalFenceInfo.GetMetaStructPointer(), indent+1, pExternalFenceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExternalFenceProperties* pExternalFenceProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalFenceProperties:       "); //HRW
-    OutputString(outputFile, "VkExternalFenceProperties* = "); //TEQ
+    OutputString(outputFile, "pExternalFenceProperties:       "); // HRW
+    OutputString(outputFile, "VkExternalFenceProperties* = "); // TEQ
     if (pExternalFenceProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11619,7 +11619,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     {
         OutputAddr(outputFile, pExternalFenceProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalFenceProperties.GetMetaStructPointer(), indent+1,pExternalFenceProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalFenceProperties.GetMetaStructPointer(), indent+1, pExternalFenceProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11641,15 +11641,15 @@ void VulkanAsciiConsumer::Process_vkImportFenceWin32HandleKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImportFenceWin32HandleInfoKHR* pImportFenceWin32HandleInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImportFenceWin32HandleInfo:    "); //HRW
-    OutputString(outputFile, "const VkImportFenceWin32HandleInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pImportFenceWin32HandleInfo:    "); // HRW
+    OutputString(outputFile, "const VkImportFenceWin32HandleInfoKHR* = "); // TEQ
     if (pImportFenceWin32HandleInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11658,7 +11658,7 @@ void VulkanAsciiConsumer::Process_vkImportFenceWin32HandleKHR(
     {
         OutputAddr(outputFile, pImportFenceWin32HandleInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pImportFenceWin32HandleInfo.GetMetaStructPointer(), indent+1,pImportFenceWin32HandleInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pImportFenceWin32HandleInfo.GetMetaStructPointer(), indent+1, pImportFenceWin32HandleInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11680,15 +11680,15 @@ void VulkanAsciiConsumer::Process_vkGetFenceWin32HandleKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkFenceGetWin32HandleInfoKHR* pGetWin32HandleInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pGetWin32HandleInfo:            "); //HRW
-    OutputString(outputFile, "const VkFenceGetWin32HandleInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pGetWin32HandleInfo:            "); // HRW
+    OutputString(outputFile, "const VkFenceGetWin32HandleInfoKHR* = "); // TEQ
     if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11697,14 +11697,14 @@ void VulkanAsciiConsumer::Process_vkGetFenceWin32HandleKHR(
     {
         OutputAddr(outputFile, pGetWin32HandleInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent+1,pGetWin32HandleInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent+1, pGetWin32HandleInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: void** pHandle
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pHandle:                        "); //HRW
-    OutputString(outputFile, "void** = "); //TEQ
+    OutputString(outputFile, "pHandle:                        "); // HRW
+    OutputString(outputFile, "void** = "); // TEQ
     if (pHandle.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11734,15 +11734,15 @@ void VulkanAsciiConsumer::Process_vkImportFenceFdKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImportFenceFdInfoKHR* pImportFenceFdInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pImportFenceFdInfo:             "); //HRW
-    OutputString(outputFile, "const VkImportFenceFdInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pImportFenceFdInfo:             "); // HRW
+    OutputString(outputFile, "const VkImportFenceFdInfoKHR* = "); // TEQ
     if (pImportFenceFdInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11751,7 +11751,7 @@ void VulkanAsciiConsumer::Process_vkImportFenceFdKHR(
     {
         OutputAddr(outputFile, pImportFenceFdInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pImportFenceFdInfo.GetMetaStructPointer(), indent+1,pImportFenceFdInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pImportFenceFdInfo.GetMetaStructPointer(), indent+1, pImportFenceFdInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11773,15 +11773,15 @@ void VulkanAsciiConsumer::Process_vkGetFenceFdKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkFenceGetFdInfoKHR* pGetFdInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pGetFdInfo:                     "); //HRW
-    OutputString(outputFile, "const VkFenceGetFdInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pGetFdInfo:                     "); // HRW
+    OutputString(outputFile, "const VkFenceGetFdInfoKHR* = "); // TEQ
     if (pGetFdInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11790,14 +11790,14 @@ void VulkanAsciiConsumer::Process_vkGetFenceFdKHR(
     {
         OutputAddr(outputFile, pGetFdInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent+1,pGetFdInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent+1, pGetFdInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: int* pFd
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFd:                            "); //HRW
-    OutputString(outputFile, "int* = "); //TEQ
+    OutputString(outputFile, "pFd:                            "); // HRW
+    OutputString(outputFile, "int* = "); // TEQ
     if (pFd.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11828,15 +11828,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurfaceInfo:                   "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceSurfaceInfo2KHR* = "); //TEQ
+    OutputString(outputFile, "pSurfaceInfo:                   "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceSurfaceInfo2KHR* = "); // TEQ
     if (pSurfaceInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11845,14 +11845,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     {
         OutputAddr(outputFile, pSurfaceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1,pSurfaceInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1, pSurfaceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceCapabilities2KHR* pSurfaceCapabilities
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurfaceCapabilities:           "); //HRW
-    OutputString(outputFile, "VkSurfaceCapabilities2KHR* = "); //TEQ
+    OutputString(outputFile, "pSurfaceCapabilities:           "); // HRW
+    OutputString(outputFile, "VkSurfaceCapabilities2KHR* = "); // TEQ
     if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11861,7 +11861,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     {
         OutputAddr(outputFile, pSurfaceCapabilities.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1,pSurfaceCapabilities.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1, pSurfaceCapabilities.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11884,15 +11884,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurfaceInfo:                   "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceSurfaceInfo2KHR* = "); //TEQ
+    OutputString(outputFile, "pSurfaceInfo:                   "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceSurfaceInfo2KHR* = "); // TEQ
     if (pSurfaceInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11901,14 +11901,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     {
         OutputAddr(outputFile, pSurfaceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1,pSurfaceInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1, pSurfaceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pSurfaceFormatCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurfaceFormatCount:            "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pSurfaceFormatCount:            "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pSurfaceFormatCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11922,8 +11922,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
 
     // func arg: VkSurfaceFormat2KHR* pSurfaceFormats
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurfaceFormats:                "); //HRW
-    OutputString(outputFile, "VkSurfaceFormat2KHR* = "); //TEQ
+    OutputString(outputFile, "pSurfaceFormats:                "); // HRW
+    OutputString(outputFile, "VkSurfaceFormat2KHR* = "); // TEQ
     if (pSurfaceFormats.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11954,15 +11954,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPropertyCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPropertyCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -11976,8 +11976,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
 
     // func arg: VkDisplayProperties2KHR* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkDisplayProperties2KHR* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkDisplayProperties2KHR* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12007,15 +12007,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPropertyCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPropertyCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12029,8 +12029,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
 
     // func arg: VkDisplayPlaneProperties2KHR* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkDisplayPlaneProperties2KHR* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkDisplayPlaneProperties2KHR* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12061,22 +12061,22 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModeProperties2KHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDisplayKHR display
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "display:                        "); //HRW
-    OutputString(outputFile, "VkDisplayKHR = "); //TEQ
+    OutputString(outputFile, "display:                        "); // HRW
+    OutputString(outputFile, "VkDisplayKHR = "); // TEQ
     OutputAddr(outputFile, display); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPropertyCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPropertyCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12090,8 +12090,8 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModeProperties2KHR(
 
     // func arg: VkDisplayModeProperties2KHR* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkDisplayModeProperties2KHR* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkDisplayModeProperties2KHR* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12121,15 +12121,15 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDisplayPlaneInfo2KHR* pDisplayPlaneInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDisplayPlaneInfo:              "); //HRW
-    OutputString(outputFile, "const VkDisplayPlaneInfo2KHR* = "); //TEQ
+    OutputString(outputFile, "pDisplayPlaneInfo:              "); // HRW
+    OutputString(outputFile, "const VkDisplayPlaneInfo2KHR* = "); // TEQ
     if (pDisplayPlaneInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12138,14 +12138,14 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     {
         OutputAddr(outputFile, pDisplayPlaneInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pDisplayPlaneInfo.GetMetaStructPointer(), indent+1,pDisplayPlaneInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pDisplayPlaneInfo.GetMetaStructPointer(), indent+1, pDisplayPlaneInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDisplayPlaneCapabilities2KHR* pCapabilities
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCapabilities:                  "); //HRW
-    OutputString(outputFile, "VkDisplayPlaneCapabilities2KHR* = "); //TEQ
+    OutputString(outputFile, "pCapabilities:                  "); // HRW
+    OutputString(outputFile, "VkDisplayPlaneCapabilities2KHR* = "); // TEQ
     if (pCapabilities.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12154,7 +12154,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     {
         OutputAddr(outputFile, pCapabilities.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCapabilities.GetMetaStructPointer(), indent+1,pCapabilities.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCapabilities.GetMetaStructPointer(), indent+1, pCapabilities.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12174,15 +12174,15 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2KHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageMemoryRequirementsInfo2* pInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfo:                          "); //HRW
-    OutputString(outputFile, "const VkImageMemoryRequirementsInfo2* = "); //TEQ
+    OutputString(outputFile, "pInfo:                          "); // HRW
+    OutputString(outputFile, "const VkImageMemoryRequirementsInfo2* = "); // TEQ
     if (pInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12191,14 +12191,14 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2KHR(
     {
         OutputAddr(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkMemoryRequirements2* pMemoryRequirements
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryRequirements:            "); //HRW
-    OutputString(outputFile, "VkMemoryRequirements2* = "); //TEQ
+    OutputString(outputFile, "pMemoryRequirements:            "); // HRW
+    OutputString(outputFile, "VkMemoryRequirements2* = "); // TEQ
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12207,7 +12207,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2KHR(
     {
         OutputAddr(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12226,15 +12226,15 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2KHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBufferMemoryRequirementsInfo2* pInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfo:                          "); //HRW
-    OutputString(outputFile, "const VkBufferMemoryRequirementsInfo2* = "); //TEQ
+    OutputString(outputFile, "pInfo:                          "); // HRW
+    OutputString(outputFile, "const VkBufferMemoryRequirementsInfo2* = "); // TEQ
     if (pInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12243,14 +12243,14 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     {
         OutputAddr(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkMemoryRequirements2* pMemoryRequirements
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryRequirements:            "); //HRW
-    OutputString(outputFile, "VkMemoryRequirements2* = "); //TEQ
+    OutputString(outputFile, "pMemoryRequirements:            "); // HRW
+    OutputString(outputFile, "VkMemoryRequirements2* = "); // TEQ
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12259,7 +12259,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     {
         OutputAddr(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12279,15 +12279,15 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageSparseMemoryRequirementsInfo2* pInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfo:                          "); //HRW
-    OutputString(outputFile, "const VkImageSparseMemoryRequirementsInfo2* = "); //TEQ
+    OutputString(outputFile, "pInfo:                          "); // HRW
+    OutputString(outputFile, "const VkImageSparseMemoryRequirementsInfo2* = "); // TEQ
     if (pInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12296,14 +12296,14 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     {
         OutputAddr(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pSparseMemoryRequirementCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSparseMemoryRequirementCount:  "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pSparseMemoryRequirementCount:  "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12317,8 +12317,8 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
 
     // func arg: VkSparseImageMemoryRequirements2* pSparseMemoryRequirements
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSparseMemoryRequirements:      "); //HRW
-    OutputString(outputFile, "VkSparseImageMemoryRequirements2* = "); //TEQ
+    OutputString(outputFile, "pSparseMemoryRequirements:      "); // HRW
+    OutputString(outputFile, "VkSparseImageMemoryRequirements2* = "); // TEQ
     if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12350,15 +12350,15 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSamplerYcbcrConversionCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkSamplerYcbcrConversionCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkSamplerYcbcrConversionCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12367,14 +12367,14 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12383,14 +12383,14 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSamplerYcbcrConversion* pYcbcrConversion
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pYcbcrConversion:               "); //HRW
-    OutputString(outputFile, "VkSamplerYcbcrConversion* = "); //TEQ
+    OutputString(outputFile, "pYcbcrConversion:               "); // HRW
+    OutputString(outputFile, "VkSamplerYcbcrConversion* = "); // TEQ
     if (pYcbcrConversion.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12417,22 +12417,22 @@ void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSamplerYcbcrConversion ycbcrConversion
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "ycbcrConversion:                "); //HRW
-    OutputString(outputFile, "VkSamplerYcbcrConversion = "); //TEQ
+    OutputString(outputFile, "ycbcrConversion:                "); // HRW
+    OutputString(outputFile, "VkSamplerYcbcrConversion = "); // TEQ
     OutputAddr(outputFile, ycbcrConversion); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12441,7 +12441,7 @@ void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12464,22 +12464,22 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory2KHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t bindInfoCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "bindInfoCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "bindInfoCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, bindInfoCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBindBufferMemoryInfo* pBindInfos
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBindInfos:                     "); //HRW
-    OutputString(outputFile, "const VkBindBufferMemoryInfo* = "); //TEQ
+    OutputString(outputFile, "pBindInfos:                     "); // HRW
+    OutputString(outputFile, "const VkBindBufferMemoryInfo* = "); // TEQ
     if (pBindInfos.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12509,22 +12509,22 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory2KHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t bindInfoCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "bindInfoCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "bindInfoCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, bindInfoCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBindImageMemoryInfo* pBindInfos
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBindInfos:                     "); //HRW
-    OutputString(outputFile, "const VkBindImageMemoryInfo* = "); //TEQ
+    OutputString(outputFile, "pBindInfos:                     "); // HRW
+    OutputString(outputFile, "const VkBindImageMemoryInfo* = "); // TEQ
     if (pBindInfos.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12552,15 +12552,15 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDescriptorSetLayoutCreateInfo* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDescriptorSetLayoutCreateInfo* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDescriptorSetLayoutCreateInfo* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12569,14 +12569,14 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDescriptorSetLayoutSupport* pSupport
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSupport:                       "); //HRW
-    OutputString(outputFile, "VkDescriptorSetLayoutSupport* = "); //TEQ
+    OutputString(outputFile, "pSupport:                       "); // HRW
+    OutputString(outputFile, "VkDescriptorSetLayoutSupport* = "); // TEQ
     if (pSupport.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12585,7 +12585,7 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     {
         OutputAddr(outputFile, pSupport.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSupport.GetMetaStructPointer(), indent+1,pSupport.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSupport.GetMetaStructPointer(), indent+1, pSupport.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12609,50 +12609,50 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirectCountKHR(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize offset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "offset:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, offset); //EQA
+    OutputString(outputFile, "offset:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, offset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer countBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "countBuffer:                    "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "countBuffer:                    "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, countBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize countBufferOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "countBufferOffset:              "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, countBufferOffset); //EQA
+    OutputString(outputFile, "countBufferOffset:              "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, countBufferOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t maxDrawCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "maxDrawCount:                   "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "maxDrawCount:                   "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, maxDrawCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t stride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stride:                         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "stride:                         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, stride); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -12675,50 +12675,50 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize offset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "offset:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, offset); //EQA
+    OutputString(outputFile, "offset:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, offset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer countBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "countBuffer:                    "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "countBuffer:                    "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, countBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize countBufferOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "countBufferOffset:              "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, countBufferOffset); //EQA
+    OutputString(outputFile, "countBufferOffset:              "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, countBufferOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t maxDrawCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "maxDrawCount:                   "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "maxDrawCount:                   "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, maxDrawCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t stride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stride:                         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "stride:                         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, stride); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -12741,22 +12741,22 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreCounterValueKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSemaphore semaphore
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "semaphore:                      "); //HRW
-    OutputString(outputFile, "VkSemaphore = "); //TEQ
+    OutputString(outputFile, "semaphore:                      "); // HRW
+    OutputString(outputFile, "VkSemaphore = "); // TEQ
     OutputAddr(outputFile, semaphore); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint64_t* pValue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pValue:                         "); //HRW
-    OutputString(outputFile, "uint64_t* = "); //TEQ
+    OutputString(outputFile, "pValue:                         "); // HRW
+    OutputString(outputFile, "uint64_t* = "); // TEQ
     if (pValue.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12786,15 +12786,15 @@ void VulkanAsciiConsumer::Process_vkWaitSemaphoresKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSemaphoreWaitInfoKHR* pWaitInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pWaitInfo:                      "); //HRW
-    OutputString(outputFile, "const VkSemaphoreWaitInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pWaitInfo:                      "); // HRW
+    OutputString(outputFile, "const VkSemaphoreWaitInfoKHR* = "); // TEQ
     if (pWaitInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12803,14 +12803,14 @@ void VulkanAsciiConsumer::Process_vkWaitSemaphoresKHR(
     {
         OutputAddr(outputFile, pWaitInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pWaitInfo.GetMetaStructPointer(), indent+1,pWaitInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pWaitInfo.GetMetaStructPointer(), indent+1, pWaitInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint64_t timeout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "timeout:                        "); //HRW
-    OutputString(outputFile, "uint64_t = "); //TEQ
+    OutputString(outputFile, "timeout:                        "); // HRW
+    OutputString(outputFile, "uint64_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, timeout); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -12831,15 +12831,15 @@ void VulkanAsciiConsumer::Process_vkSignalSemaphoreKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSemaphoreSignalInfoKHR* pSignalInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSignalInfo:                    "); //HRW
-    OutputString(outputFile, "const VkSemaphoreSignalInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pSignalInfo:                    "); // HRW
+    OutputString(outputFile, "const VkSemaphoreSignalInfoKHR* = "); // TEQ
     if (pSignalInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12848,7 +12848,7 @@ void VulkanAsciiConsumer::Process_vkSignalSemaphoreKHR(
     {
         OutputAddr(outputFile, pSignalInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSignalInfo.GetMetaStructPointer(), indent+1,pSignalInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSignalInfo.GetMetaStructPointer(), indent+1, pSignalInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12872,15 +12872,15 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPipelineInfoKHR* pPipelineInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPipelineInfo:                  "); //HRW
-    OutputString(outputFile, "const VkPipelineInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pPipelineInfo:                  "); // HRW
+    OutputString(outputFile, "const VkPipelineInfoKHR* = "); // TEQ
     if (pPipelineInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12889,14 +12889,14 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     {
         OutputAddr(outputFile, pPipelineInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pPipelineInfo.GetMetaStructPointer(), indent+1,pPipelineInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pPipelineInfo.GetMetaStructPointer(), indent+1, pPipelineInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pExecutableCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExecutableCount:               "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pExecutableCount:               "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pExecutableCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12910,8 +12910,8 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
 
     // func arg: VkPipelineExecutablePropertiesKHR* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkPipelineExecutablePropertiesKHR* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkPipelineExecutablePropertiesKHR* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12942,15 +12942,15 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPipelineExecutableInfoKHR* pExecutableInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExecutableInfo:                "); //HRW
-    OutputString(outputFile, "const VkPipelineExecutableInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pExecutableInfo:                "); // HRW
+    OutputString(outputFile, "const VkPipelineExecutableInfoKHR* = "); // TEQ
     if (pExecutableInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12959,14 +12959,14 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     {
         OutputAddr(outputFile, pExecutableInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExecutableInfo.GetMetaStructPointer(), indent+1,pExecutableInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExecutableInfo.GetMetaStructPointer(), indent+1, pExecutableInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pStatisticCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pStatisticCount:                "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pStatisticCount:                "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pStatisticCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -12980,8 +12980,8 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
 
     // func arg: VkPipelineExecutableStatisticKHR* pStatistics
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pStatistics:                    "); //HRW
-    OutputString(outputFile, "VkPipelineExecutableStatisticKHR* = "); //TEQ
+    OutputString(outputFile, "pStatistics:                    "); // HRW
+    OutputString(outputFile, "VkPipelineExecutableStatisticKHR* = "); // TEQ
     if (pStatistics.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13012,15 +13012,15 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableInternalRepresentations
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPipelineExecutableInfoKHR* pExecutableInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExecutableInfo:                "); //HRW
-    OutputString(outputFile, "const VkPipelineExecutableInfoKHR* = "); //TEQ
+    OutputString(outputFile, "pExecutableInfo:                "); // HRW
+    OutputString(outputFile, "const VkPipelineExecutableInfoKHR* = "); // TEQ
     if (pExecutableInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13029,14 +13029,14 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableInternalRepresentations
     {
         OutputAddr(outputFile, pExecutableInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExecutableInfo.GetMetaStructPointer(), indent+1,pExecutableInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExecutableInfo.GetMetaStructPointer(), indent+1, pExecutableInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pInternalRepresentationCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInternalRepresentationCount:   "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pInternalRepresentationCount:   "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pInternalRepresentationCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13050,8 +13050,8 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableInternalRepresentations
 
     // func arg: VkPipelineExecutableInternalRepresentationKHR* pInternalRepresentations
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInternalRepresentations:       "); //HRW
-    OutputString(outputFile, "VkPipelineExecutableInternalRepresentationKHR* = "); //TEQ
+    OutputString(outputFile, "pInternalRepresentations:       "); // HRW
+    OutputString(outputFile, "VkPipelineExecutableInternalRepresentationKHR* = "); // TEQ
     if (pInternalRepresentations.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13083,15 +13083,15 @@ void VulkanAsciiConsumer::Process_vkCreateDebugReportCallbackEXT(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugReportCallbackCreateInfoEXT* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDebugReportCallbackCreateInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDebugReportCallbackCreateInfoEXT* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13100,14 +13100,14 @@ void VulkanAsciiConsumer::Process_vkCreateDebugReportCallbackEXT(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13116,14 +13116,14 @@ void VulkanAsciiConsumer::Process_vkCreateDebugReportCallbackEXT(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDebugReportCallbackEXT* pCallback
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCallback:                      "); //HRW
-    OutputString(outputFile, "VkDebugReportCallbackEXT* = "); //TEQ
+    OutputString(outputFile, "pCallback:                      "); // HRW
+    OutputString(outputFile, "VkDebugReportCallbackEXT* = "); // TEQ
     if (pCallback.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13150,22 +13150,22 @@ void VulkanAsciiConsumer::Process_vkDestroyDebugReportCallbackEXT(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDebugReportCallbackEXT callback
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "callback:                       "); //HRW
-    OutputString(outputFile, "VkDebugReportCallbackEXT = "); //TEQ
+    OutputString(outputFile, "callback:                       "); // HRW
+    OutputString(outputFile, "VkDebugReportCallbackEXT = "); // TEQ
     OutputAddr(outputFile, callback); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13174,7 +13174,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDebugReportCallbackEXT(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13198,22 +13198,22 @@ void VulkanAsciiConsumer::Process_vkDebugReportMessageEXT(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDebugReportFlagsEXT flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkDebugReportFlagsEXT = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkDebugReportFlagsEXT = "); // TEQ
     OutputFlags(outputFile, flags, OutputEnumVkDebugReportFlagBitsEXT); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDebugReportObjectTypeEXT objectType
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "objectType:                     "); //HRW
-    OutputString(outputFile, "VkDebugReportObjectTypeEXT = "); //TEQ
+    OutputString(outputFile, "objectType:                     "); // HRW
+    OutputString(outputFile, "VkDebugReportObjectTypeEXT = "); // TEQ
     OutputEnumVkDebugReportObjectTypeEXT(outputFile, objectType); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, objectType);
@@ -13222,36 +13222,36 @@ void VulkanAsciiConsumer::Process_vkDebugReportMessageEXT(
 
     // func arg: uint64_t object
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "object:                         "); //HRW
-    OutputString(outputFile, "uint64_t = "); //TEQ
+    OutputString(outputFile, "object:                         "); // HRW
+    OutputString(outputFile, "uint64_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, object); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: size_t location
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "location:                       "); //HRW
-    OutputString(outputFile, "size_t = "); //TEQ
+    OutputString(outputFile, "location:                       "); // HRW
+    OutputString(outputFile, "size_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, location); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: int32_t messageCode
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "messageCode:                    "); //HRW
-    OutputString(outputFile, "int32_t = "); //TEQ
-    OutputSignedDecimal(outputFile, messageCode); //EQA
+    OutputString(outputFile, "messageCode:                    "); // HRW
+    OutputString(outputFile, "int32_t = "); // TEQ
+    OutputSignedDecimal(outputFile, messageCode); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const char* pLayerPrefix
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pLayerPrefix:                   "); //HRW
-    OutputString(outputFile, "const char* = "); //TEQ
+    OutputString(outputFile, "pLayerPrefix:                   "); // HRW
+    OutputString(outputFile, "const char* = "); // TEQ
     StringToQuotedString(outputFile, pLayerPrefix.GetPointer()); // TGH
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const char* pMessage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMessage:                       "); //HRW
-    OutputString(outputFile, "const char* = "); //TEQ
+    OutputString(outputFile, "pMessage:                       "); // HRW
+    OutputString(outputFile, "const char* = "); // TEQ
     StringToQuotedString(outputFile, pMessage.GetPointer()); // TGH
     OutputString(outputFile, "\n"); // HHS
 
@@ -13273,15 +13273,15 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectTagEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugMarkerObjectTagInfoEXT* pTagInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pTagInfo:                       "); //HRW
-    OutputString(outputFile, "const VkDebugMarkerObjectTagInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pTagInfo:                       "); // HRW
+    OutputString(outputFile, "const VkDebugMarkerObjectTagInfoEXT* = "); // TEQ
     if (pTagInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13290,7 +13290,7 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     {
         OutputAddr(outputFile, pTagInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pTagInfo.GetMetaStructPointer(), indent+1,pTagInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pTagInfo.GetMetaStructPointer(), indent+1, pTagInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13311,15 +13311,15 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectNameEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugMarkerObjectNameInfoEXT* pNameInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pNameInfo:                      "); //HRW
-    OutputString(outputFile, "const VkDebugMarkerObjectNameInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pNameInfo:                      "); // HRW
+    OutputString(outputFile, "const VkDebugMarkerObjectNameInfoEXT* = "); // TEQ
     if (pNameInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13328,7 +13328,7 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     {
         OutputAddr(outputFile, pNameInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pNameInfo.GetMetaStructPointer(), indent+1,pNameInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pNameInfo.GetMetaStructPointer(), indent+1, pNameInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13346,15 +13346,15 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerBeginEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugMarkerMarkerInfoEXT* pMarkerInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMarkerInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDebugMarkerMarkerInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pMarkerInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDebugMarkerMarkerInfoEXT* = "); // TEQ
     if (pMarkerInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13363,7 +13363,7 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerBeginEXT(
     {
         OutputAddr(outputFile, pMarkerInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1,pMarkerInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1, pMarkerInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13380,8 +13380,8 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerEndEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -13399,15 +13399,15 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerInsertEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugMarkerMarkerInfoEXT* pMarkerInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMarkerInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDebugMarkerMarkerInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pMarkerInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDebugMarkerMarkerInfoEXT* = "); // TEQ
     if (pMarkerInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13416,7 +13416,7 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerInsertEXT(
     {
         OutputAddr(outputFile, pMarkerInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1,pMarkerInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1, pMarkerInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13439,29 +13439,29 @@ void VulkanAsciiConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstBinding
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstBinding:                   "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstBinding:                   "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstBinding); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t bindingCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "bindingCount:                   "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "bindingCount:                   "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, bindingCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBuffer* pBuffers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBuffers:                       "); //HRW
-    OutputString(outputFile, "const VkBuffer* = "); //TEQ
+    OutputString(outputFile, "pBuffers:                       "); // HRW
+    OutputString(outputFile, "const VkBuffer* = "); // TEQ
     if (pBuffers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13476,8 +13476,8 @@ void VulkanAsciiConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
 
     // func arg: const VkDeviceSize* pOffsets
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pOffsets:                       "); //HRW
-    OutputString(outputFile, "const VkDeviceSize* = "); //TEQ
+    OutputString(outputFile, "pOffsets:                       "); // HRW
+    OutputString(outputFile, "const VkDeviceSize* = "); // TEQ
     if (pOffsets.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13492,8 +13492,8 @@ void VulkanAsciiConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
 
     // func arg: const VkDeviceSize* pSizes
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSizes:                         "); //HRW
-    OutputString(outputFile, "const VkDeviceSize* = "); //TEQ
+    OutputString(outputFile, "pSizes:                         "); // HRW
+    OutputString(outputFile, "const VkDeviceSize* = "); // TEQ
     if (pSizes.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13523,29 +13523,29 @@ void VulkanAsciiConsumer::Process_vkCmdBeginTransformFeedbackEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstCounterBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstCounterBuffer:             "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstCounterBuffer:             "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstCounterBuffer); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t counterBufferCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "counterBufferCount:             "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "counterBufferCount:             "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, counterBufferCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBuffer* pCounterBuffers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCounterBuffers:                "); //HRW
-    OutputString(outputFile, "const VkBuffer* = "); //TEQ
+    OutputString(outputFile, "pCounterBuffers:                "); // HRW
+    OutputString(outputFile, "const VkBuffer* = "); // TEQ
     if (pCounterBuffers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13560,8 +13560,8 @@ void VulkanAsciiConsumer::Process_vkCmdBeginTransformFeedbackEXT(
 
     // func arg: const VkDeviceSize* pCounterBufferOffsets
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCounterBufferOffsets:          "); //HRW
-    OutputString(outputFile, "const VkDeviceSize* = "); //TEQ
+    OutputString(outputFile, "pCounterBufferOffsets:          "); // HRW
+    OutputString(outputFile, "const VkDeviceSize* = "); // TEQ
     if (pCounterBufferOffsets.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13591,29 +13591,29 @@ void VulkanAsciiConsumer::Process_vkCmdEndTransformFeedbackEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstCounterBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstCounterBuffer:             "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstCounterBuffer:             "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstCounterBuffer); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t counterBufferCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "counterBufferCount:             "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "counterBufferCount:             "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, counterBufferCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBuffer* pCounterBuffers
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCounterBuffers:                "); //HRW
-    OutputString(outputFile, "const VkBuffer* = "); //TEQ
+    OutputString(outputFile, "pCounterBuffers:                "); // HRW
+    OutputString(outputFile, "const VkBuffer* = "); // TEQ
     if (pCounterBuffers.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13628,8 +13628,8 @@ void VulkanAsciiConsumer::Process_vkCmdEndTransformFeedbackEXT(
 
     // func arg: const VkDeviceSize* pCounterBufferOffsets
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCounterBufferOffsets:          "); //HRW
-    OutputString(outputFile, "const VkDeviceSize* = "); //TEQ
+    OutputString(outputFile, "pCounterBufferOffsets:          "); // HRW
+    OutputString(outputFile, "const VkDeviceSize* = "); // TEQ
     if (pCounterBufferOffsets.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13659,36 +13659,36 @@ void VulkanAsciiConsumer::Process_vkCmdBeginQueryIndexedEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryPool queryPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryPool:                      "); //HRW
-    OutputString(outputFile, "VkQueryPool = "); //TEQ
+    OutputString(outputFile, "queryPool:                      "); // HRW
+    OutputString(outputFile, "VkQueryPool = "); // TEQ
     OutputAddr(outputFile, queryPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t query
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "query:                          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "query:                          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, query); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryControlFlags flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkQueryControlFlags = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkQueryControlFlags = "); // TEQ
     OutputFlags(outputFile, flags, OutputEnumVkQueryControlFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t index
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "index:                          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "index:                          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, index); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -13708,29 +13708,29 @@ void VulkanAsciiConsumer::Process_vkCmdEndQueryIndexedEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryPool queryPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryPool:                      "); //HRW
-    OutputString(outputFile, "VkQueryPool = "); //TEQ
+    OutputString(outputFile, "queryPool:                      "); // HRW
+    OutputString(outputFile, "VkQueryPool = "); // TEQ
     OutputAddr(outputFile, queryPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t query
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "query:                          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "query:                          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, query); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t index
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "index:                          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "index:                          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, index); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -13753,50 +13753,50 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirectByteCountEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t instanceCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instanceCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "instanceCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, instanceCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstInstance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstInstance:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstInstance:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstInstance); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer counterBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "counterBuffer:                  "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "counterBuffer:                  "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, counterBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize counterBufferOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "counterBufferOffset:            "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, counterBufferOffset); //EQA
+    OutputString(outputFile, "counterBufferOffset:            "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, counterBufferOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t counterOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "counterOffset:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "counterOffset:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, counterOffset); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t vertexStride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "vertexStride:                   "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "vertexStride:                   "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, vertexStride); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -13816,15 +13816,15 @@ void VulkanAsciiConsumer::Process_vkGetImageViewHandleNVX(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImageViewHandleInfoNVX* pInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfo:                          "); //HRW
-    OutputString(outputFile, "const VkImageViewHandleInfoNVX* = "); //TEQ
+    OutputString(outputFile, "pInfo:                          "); // HRW
+    OutputString(outputFile, "const VkImageViewHandleInfoNVX* = "); // TEQ
     if (pInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -13833,7 +13833,7 @@ void VulkanAsciiConsumer::Process_vkGetImageViewHandleNVX(
     {
         OutputAddr(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13857,50 +13857,50 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirectCountAMD(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize offset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "offset:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, offset); //EQA
+    OutputString(outputFile, "offset:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, offset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer countBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "countBuffer:                    "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "countBuffer:                    "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, countBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize countBufferOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "countBufferOffset:              "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, countBufferOffset); //EQA
+    OutputString(outputFile, "countBufferOffset:              "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, countBufferOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t maxDrawCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "maxDrawCount:                   "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "maxDrawCount:                   "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, maxDrawCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t stride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stride:                         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "stride:                         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, stride); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -13923,50 +13923,50 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize offset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "offset:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, offset); //EQA
+    OutputString(outputFile, "offset:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, offset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer countBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "countBuffer:                    "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "countBuffer:                    "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, countBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize countBufferOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "countBufferOffset:              "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, countBufferOffset); //EQA
+    OutputString(outputFile, "countBufferOffset:              "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, countBufferOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t maxDrawCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "maxDrawCount:                   "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "maxDrawCount:                   "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, maxDrawCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t stride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stride:                         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "stride:                         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, stride); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -13992,22 +13992,22 @@ void VulkanAsciiConsumer::Process_vkGetShaderInfoAMD(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipeline pipeline
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipeline:                       "); //HRW
-    OutputString(outputFile, "VkPipeline = "); //TEQ
+    OutputString(outputFile, "pipeline:                       "); // HRW
+    OutputString(outputFile, "VkPipeline = "); // TEQ
     OutputAddr(outputFile, pipeline); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkShaderStageFlagBits shaderStage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "shaderStage:                    "); //HRW
-    OutputString(outputFile, "VkShaderStageFlagBits = "); //TEQ
+    OutputString(outputFile, "shaderStage:                    "); // HRW
+    OutputString(outputFile, "VkShaderStageFlagBits = "); // TEQ
     OutputEnumVkShaderStageFlagBits(outputFile, shaderStage); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, shaderStage);
@@ -14016,8 +14016,8 @@ void VulkanAsciiConsumer::Process_vkGetShaderInfoAMD(
 
     // func arg: VkShaderInfoTypeAMD infoType
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "infoType:                       "); //HRW
-    OutputString(outputFile, "VkShaderInfoTypeAMD = "); //TEQ
+    OutputString(outputFile, "infoType:                       "); // HRW
+    OutputString(outputFile, "VkShaderInfoTypeAMD = "); // TEQ
     OutputEnumVkShaderInfoTypeAMD(outputFile, infoType); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, infoType);
@@ -14026,8 +14026,8 @@ void VulkanAsciiConsumer::Process_vkGetShaderInfoAMD(
 
     // func arg: size_t* pInfoSize
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfoSize:                      "); //HRW
-    OutputString(outputFile, "size_t* = "); //TEQ
+    OutputString(outputFile, "pInfoSize:                      "); // HRW
+    OutputString(outputFile, "size_t* = "); // TEQ
     if (pInfoSize.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14041,8 +14041,8 @@ void VulkanAsciiConsumer::Process_vkGetShaderInfoAMD(
 
     // func arg: void* pInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfo:                          "); //HRW
-    OutputString(outputFile, "void* = "); //TEQ
+    OutputString(outputFile, "pInfo:                          "); // HRW
+    OutputString(outputFile, "void* = "); // TEQ
     if (pInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14073,15 +14073,15 @@ void VulkanAsciiConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkStreamDescriptorSurfaceCreateInfoGGP* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkStreamDescriptorSurfaceCreateInfoGGP* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkStreamDescriptorSurfaceCreateInfoGGP* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14090,14 +14090,14 @@ void VulkanAsciiConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14106,14 +14106,14 @@ void VulkanAsciiConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14149,15 +14149,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalImageFormatProperti
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFormat format
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "format:                         "); //HRW
-    OutputString(outputFile, "VkFormat = "); //TEQ
+    OutputString(outputFile, "format:                         "); // HRW
+    OutputString(outputFile, "VkFormat = "); // TEQ
     OutputEnumVkFormat(outputFile, format); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, format);
@@ -14166,8 +14166,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalImageFormatProperti
 
     // func arg: VkImageType type
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "type:                           "); //HRW
-    OutputString(outputFile, "VkImageType = "); //TEQ
+    OutputString(outputFile, "type:                           "); // HRW
+    OutputString(outputFile, "VkImageType = "); // TEQ
     OutputEnumVkImageType(outputFile, type); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, type);
@@ -14176,8 +14176,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalImageFormatProperti
 
     // func arg: VkImageTiling tiling
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "tiling:                         "); //HRW
-    OutputString(outputFile, "VkImageTiling = "); //TEQ
+    OutputString(outputFile, "tiling:                         "); // HRW
+    OutputString(outputFile, "VkImageTiling = "); // TEQ
     OutputEnumVkImageTiling(outputFile, tiling); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, tiling);
@@ -14186,29 +14186,29 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalImageFormatProperti
 
     // func arg: VkImageUsageFlags usage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "usage:                          "); //HRW
-    OutputString(outputFile, "VkImageUsageFlags = "); //TEQ
+    OutputString(outputFile, "usage:                          "); // HRW
+    OutputString(outputFile, "VkImageUsageFlags = "); // TEQ
     OutputFlags(outputFile, usage, OutputEnumVkImageUsageFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageCreateFlags flags
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "flags:                          "); //HRW
-    OutputString(outputFile, "VkImageCreateFlags = "); //TEQ
+    OutputString(outputFile, "flags:                          "); // HRW
+    OutputString(outputFile, "VkImageCreateFlags = "); // TEQ
     OutputFlags(outputFile, flags, OutputEnumVkImageCreateFlagBits); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExternalMemoryHandleTypeFlagsNV externalHandleType
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "externalHandleType:             "); //HRW
-    OutputString(outputFile, "VkExternalMemoryHandleTypeFlagsNV = "); //TEQ
+    OutputString(outputFile, "externalHandleType:             "); // HRW
+    OutputString(outputFile, "VkExternalMemoryHandleTypeFlagsNV = "); // TEQ
     OutputFlags(outputFile, externalHandleType, OutputEnumVkExternalMemoryHandleTypeFlagBitsNV); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExternalImageFormatPropertiesNV* pExternalImageFormatProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExternalImageFormatProperties: "); //HRW
-    OutputString(outputFile, "VkExternalImageFormatPropertiesNV* = "); //TEQ
+    OutputString(outputFile, "pExternalImageFormatProperties: "); // HRW
+    OutputString(outputFile, "VkExternalImageFormatPropertiesNV* = "); // TEQ
     if (pExternalImageFormatProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14217,7 +14217,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalImageFormatProperti
     {
         OutputAddr(outputFile, pExternalImageFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pExternalImageFormatProperties.GetMetaStructPointer(), indent+1,pExternalImageFormatProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pExternalImageFormatProperties.GetMetaStructPointer(), indent+1, pExternalImageFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14241,29 +14241,29 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleNV(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceMemory memory
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "memory:                         "); //HRW
-    OutputString(outputFile, "VkDeviceMemory = "); //TEQ
+    OutputString(outputFile, "memory:                         "); // HRW
+    OutputString(outputFile, "VkDeviceMemory = "); // TEQ
     OutputAddr(outputFile, memory); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExternalMemoryHandleTypeFlagsNV handleType
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "handleType:                     "); //HRW
-    OutputString(outputFile, "VkExternalMemoryHandleTypeFlagsNV = "); //TEQ
+    OutputString(outputFile, "handleType:                     "); // HRW
+    OutputString(outputFile, "VkExternalMemoryHandleTypeFlagsNV = "); // TEQ
     OutputFlags(outputFile, handleType, OutputEnumVkExternalMemoryHandleTypeFlagBitsNV); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: void** pHandle
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pHandle:                        "); //HRW
-    OutputString(outputFile, "void** = "); //TEQ
+    OutputString(outputFile, "pHandle:                        "); // HRW
+    OutputString(outputFile, "void** = "); // TEQ
     if (pHandle.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14295,15 +14295,15 @@ void VulkanAsciiConsumer::Process_vkCreateViSurfaceNN(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkViSurfaceCreateInfoNN* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkViSurfaceCreateInfoNN* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkViSurfaceCreateInfoNN* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14312,14 +14312,14 @@ void VulkanAsciiConsumer::Process_vkCreateViSurfaceNN(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14328,14 +14328,14 @@ void VulkanAsciiConsumer::Process_vkCreateViSurfaceNN(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14362,15 +14362,15 @@ void VulkanAsciiConsumer::Process_vkCmdBeginConditionalRenderingEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkConditionalRenderingBeginInfoEXT* pConditionalRenderingBegin
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pConditionalRenderingBegin:     "); //HRW
-    OutputString(outputFile, "const VkConditionalRenderingBeginInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pConditionalRenderingBegin:     "); // HRW
+    OutputString(outputFile, "const VkConditionalRenderingBeginInfoEXT* = "); // TEQ
     if (pConditionalRenderingBegin.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14379,7 +14379,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     {
         OutputAddr(outputFile, pConditionalRenderingBegin.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pConditionalRenderingBegin.GetMetaStructPointer(), indent+1,pConditionalRenderingBegin.GetAddress()); // GLM
+        OutputStructure(outputFile, *pConditionalRenderingBegin.GetMetaStructPointer(), indent+1, pConditionalRenderingBegin.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14396,8 +14396,8 @@ void VulkanAsciiConsumer::Process_vkCmdEndConditionalRenderingEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -14416,15 +14416,15 @@ void VulkanAsciiConsumer::Process_vkCmdProcessCommandsNVX(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkCmdProcessCommandsInfoNVX* pProcessCommandsInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProcessCommandsInfo:           "); //HRW
-    OutputString(outputFile, "const VkCmdProcessCommandsInfoNVX* = "); //TEQ
+    OutputString(outputFile, "pProcessCommandsInfo:           "); // HRW
+    OutputString(outputFile, "const VkCmdProcessCommandsInfoNVX* = "); // TEQ
     if (pProcessCommandsInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14433,7 +14433,7 @@ void VulkanAsciiConsumer::Process_vkCmdProcessCommandsNVX(
     {
         OutputAddr(outputFile, pProcessCommandsInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pProcessCommandsInfo.GetMetaStructPointer(), indent+1,pProcessCommandsInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pProcessCommandsInfo.GetMetaStructPointer(), indent+1, pProcessCommandsInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14451,15 +14451,15 @@ void VulkanAsciiConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkCmdReserveSpaceForCommandsInfoNVX* pReserveSpaceInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pReserveSpaceInfo:              "); //HRW
-    OutputString(outputFile, "const VkCmdReserveSpaceForCommandsInfoNVX* = "); //TEQ
+    OutputString(outputFile, "pReserveSpaceInfo:              "); // HRW
+    OutputString(outputFile, "const VkCmdReserveSpaceForCommandsInfoNVX* = "); // TEQ
     if (pReserveSpaceInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14468,7 +14468,7 @@ void VulkanAsciiConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     {
         OutputAddr(outputFile, pReserveSpaceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pReserveSpaceInfo.GetMetaStructPointer(), indent+1,pReserveSpaceInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pReserveSpaceInfo.GetMetaStructPointer(), indent+1, pReserveSpaceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14491,15 +14491,15 @@ void VulkanAsciiConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkIndirectCommandsLayoutCreateInfoNVX* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkIndirectCommandsLayoutCreateInfoNVX* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkIndirectCommandsLayoutCreateInfoNVX* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14508,14 +14508,14 @@ void VulkanAsciiConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14524,14 +14524,14 @@ void VulkanAsciiConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkIndirectCommandsLayoutNVX* pIndirectCommandsLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pIndirectCommandsLayout:        "); //HRW
-    OutputString(outputFile, "VkIndirectCommandsLayoutNVX* = "); //TEQ
+    OutputString(outputFile, "pIndirectCommandsLayout:        "); // HRW
+    OutputString(outputFile, "VkIndirectCommandsLayoutNVX* = "); // TEQ
     if (pIndirectCommandsLayout.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14558,22 +14558,22 @@ void VulkanAsciiConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkIndirectCommandsLayoutNVX indirectCommandsLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "indirectCommandsLayout:         "); //HRW
-    OutputString(outputFile, "VkIndirectCommandsLayoutNVX = "); //TEQ
+    OutputString(outputFile, "indirectCommandsLayout:         "); // HRW
+    OutputString(outputFile, "VkIndirectCommandsLayoutNVX = "); // TEQ
     OutputAddr(outputFile, indirectCommandsLayout); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14582,7 +14582,7 @@ void VulkanAsciiConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14605,15 +14605,15 @@ void VulkanAsciiConsumer::Process_vkCreateObjectTableNVX(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkObjectTableCreateInfoNVX* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkObjectTableCreateInfoNVX* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkObjectTableCreateInfoNVX* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14622,14 +14622,14 @@ void VulkanAsciiConsumer::Process_vkCreateObjectTableNVX(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14638,14 +14638,14 @@ void VulkanAsciiConsumer::Process_vkCreateObjectTableNVX(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkObjectTableNVX* pObjectTable
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pObjectTable:                   "); //HRW
-    OutputString(outputFile, "VkObjectTableNVX* = "); //TEQ
+    OutputString(outputFile, "pObjectTable:                   "); // HRW
+    OutputString(outputFile, "VkObjectTableNVX* = "); // TEQ
     if (pObjectTable.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14672,22 +14672,22 @@ void VulkanAsciiConsumer::Process_vkDestroyObjectTableNVX(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkObjectTableNVX objectTable
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "objectTable:                    "); //HRW
-    OutputString(outputFile, "VkObjectTableNVX = "); //TEQ
+    OutputString(outputFile, "objectTable:                    "); // HRW
+    OutputString(outputFile, "VkObjectTableNVX = "); // TEQ
     OutputAddr(outputFile, objectTable); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14696,7 +14696,7 @@ void VulkanAsciiConsumer::Process_vkDestroyObjectTableNVX(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14720,29 +14720,29 @@ void VulkanAsciiConsumer::Process_vkUnregisterObjectsNVX(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkObjectTableNVX objectTable
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "objectTable:                    "); //HRW
-    OutputString(outputFile, "VkObjectTableNVX = "); //TEQ
+    OutputString(outputFile, "objectTable:                    "); // HRW
+    OutputString(outputFile, "VkObjectTableNVX = "); // TEQ
     OutputAddr(outputFile, objectTable); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t objectCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "objectCount:                    "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "objectCount:                    "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, objectCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkObjectEntryTypeNVX* pObjectEntryTypes
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pObjectEntryTypes:              "); //HRW
-    OutputString(outputFile, "const VkObjectEntryTypeNVX* = "); //TEQ
+    OutputString(outputFile, "pObjectEntryTypes:              "); // HRW
+    OutputString(outputFile, "const VkObjectEntryTypeNVX* = "); // TEQ
     if (pObjectEntryTypes.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14757,8 +14757,8 @@ void VulkanAsciiConsumer::Process_vkUnregisterObjectsNVX(
 
     // func arg: const uint32_t* pObjectIndices
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pObjectIndices:                 "); //HRW
-    OutputString(outputFile, "const uint32_t* = "); //TEQ
+    OutputString(outputFile, "pObjectIndices:                 "); // HRW
+    OutputString(outputFile, "const uint32_t* = "); // TEQ
     if (pObjectIndices.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14786,15 +14786,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsProperties
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceGeneratedCommandsFeaturesNVX* pFeatures
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFeatures:                      "); //HRW
-    OutputString(outputFile, "VkDeviceGeneratedCommandsFeaturesNVX* = "); //TEQ
+    OutputString(outputFile, "pFeatures:                      "); // HRW
+    OutputString(outputFile, "VkDeviceGeneratedCommandsFeaturesNVX* = "); // TEQ
     if (pFeatures.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14803,14 +14803,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsProperties
     {
         OutputAddr(outputFile, pFeatures.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pFeatures.GetMetaStructPointer(), indent+1,pFeatures.GetAddress()); // GLM
+        OutputStructure(outputFile, *pFeatures.GetMetaStructPointer(), indent+1, pFeatures.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceGeneratedCommandsLimitsNVX* pLimits
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pLimits:                        "); //HRW
-    OutputString(outputFile, "VkDeviceGeneratedCommandsLimitsNVX* = "); //TEQ
+    OutputString(outputFile, "pLimits:                        "); // HRW
+    OutputString(outputFile, "VkDeviceGeneratedCommandsLimitsNVX* = "); // TEQ
     if (pLimits.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14819,7 +14819,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsProperties
     {
         OutputAddr(outputFile, pLimits.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pLimits.GetMetaStructPointer(), indent+1,pLimits.GetAddress()); // GLM
+        OutputStructure(outputFile, *pLimits.GetMetaStructPointer(), indent+1, pLimits.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14840,29 +14840,29 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewportWScalingNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstViewport
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstViewport:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstViewport:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstViewport); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t viewportCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "viewportCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "viewportCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, viewportCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkViewportWScalingNV* pViewportWScalings
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pViewportWScalings:             "); //HRW
-    OutputString(outputFile, "const VkViewportWScalingNV* = "); //TEQ
+    OutputString(outputFile, "pViewportWScalings:             "); // HRW
+    OutputString(outputFile, "const VkViewportWScalingNV* = "); // TEQ
     if (pViewportWScalings.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -14892,15 +14892,15 @@ void VulkanAsciiConsumer::Process_vkReleaseDisplayEXT(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDisplayKHR display
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "display:                        "); //HRW
-    OutputString(outputFile, "VkDisplayKHR = "); //TEQ
+    OutputString(outputFile, "display:                        "); // HRW
+    OutputString(outputFile, "VkDisplayKHR = "); // TEQ
     OutputAddr(outputFile, display); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -14923,22 +14923,22 @@ void VulkanAsciiConsumer::Process_vkAcquireXlibDisplayEXT(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: void* dpy
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dpy:                            "); //HRW
-    OutputString(outputFile, "void* = "); //TEQ
+    OutputString(outputFile, "dpy:                            "); // HRW
+    OutputString(outputFile, "void* = "); // TEQ
     OutputAddr(outputFile, dpy); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDisplayKHR display
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "display:                        "); //HRW
-    OutputString(outputFile, "VkDisplayKHR = "); //TEQ
+    OutputString(outputFile, "display:                        "); // HRW
+    OutputString(outputFile, "VkDisplayKHR = "); // TEQ
     OutputAddr(outputFile, display); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -14961,29 +14961,29 @@ void VulkanAsciiConsumer::Process_vkGetRandROutputDisplayEXT(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: void* dpy
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dpy:                            "); //HRW
-    OutputString(outputFile, "void* = "); //TEQ
+    OutputString(outputFile, "dpy:                            "); // HRW
+    OutputString(outputFile, "void* = "); // TEQ
     OutputAddr(outputFile, dpy); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: size_t rrOutput
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "rrOutput:                       "); //HRW
-    OutputString(outputFile, "size_t = "); //TEQ
+    OutputString(outputFile, "rrOutput:                       "); // HRW
+    OutputString(outputFile, "size_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, rrOutput); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDisplayKHR* pDisplay
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDisplay:                       "); //HRW
-    OutputString(outputFile, "VkDisplayKHR* = "); //TEQ
+    OutputString(outputFile, "pDisplay:                       "); // HRW
+    OutputString(outputFile, "VkDisplayKHR* = "); // TEQ
     if (pDisplay.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15014,22 +15014,22 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR surface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "surface:                        "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR = "); //TEQ
+    OutputString(outputFile, "surface:                        "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR = "); // TEQ
     OutputAddr(outputFile, surface); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceCapabilities2EXT* pSurfaceCapabilities
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurfaceCapabilities:           "); //HRW
-    OutputString(outputFile, "VkSurfaceCapabilities2EXT* = "); //TEQ
+    OutputString(outputFile, "pSurfaceCapabilities:           "); // HRW
+    OutputString(outputFile, "VkSurfaceCapabilities2EXT* = "); // TEQ
     if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15038,7 +15038,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     {
         OutputAddr(outputFile, pSurfaceCapabilities.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1,pSurfaceCapabilities.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1, pSurfaceCapabilities.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15061,22 +15061,22 @@ void VulkanAsciiConsumer::Process_vkDisplayPowerControlEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDisplayKHR display
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "display:                        "); //HRW
-    OutputString(outputFile, "VkDisplayKHR = "); //TEQ
+    OutputString(outputFile, "display:                        "); // HRW
+    OutputString(outputFile, "VkDisplayKHR = "); // TEQ
     OutputAddr(outputFile, display); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDisplayPowerInfoEXT* pDisplayPowerInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDisplayPowerInfo:              "); //HRW
-    OutputString(outputFile, "const VkDisplayPowerInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pDisplayPowerInfo:              "); // HRW
+    OutputString(outputFile, "const VkDisplayPowerInfoEXT* = "); // TEQ
     if (pDisplayPowerInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15085,7 +15085,7 @@ void VulkanAsciiConsumer::Process_vkDisplayPowerControlEXT(
     {
         OutputAddr(outputFile, pDisplayPowerInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pDisplayPowerInfo.GetMetaStructPointer(), indent+1,pDisplayPowerInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pDisplayPowerInfo.GetMetaStructPointer(), indent+1, pDisplayPowerInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15108,15 +15108,15 @@ void VulkanAsciiConsumer::Process_vkRegisterDeviceEventEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDeviceEventInfoEXT* pDeviceEventInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDeviceEventInfo:               "); //HRW
-    OutputString(outputFile, "const VkDeviceEventInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pDeviceEventInfo:               "); // HRW
+    OutputString(outputFile, "const VkDeviceEventInfoEXT* = "); // TEQ
     if (pDeviceEventInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15125,14 +15125,14 @@ void VulkanAsciiConsumer::Process_vkRegisterDeviceEventEXT(
     {
         OutputAddr(outputFile, pDeviceEventInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pDeviceEventInfo.GetMetaStructPointer(), indent+1,pDeviceEventInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pDeviceEventInfo.GetMetaStructPointer(), indent+1, pDeviceEventInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15141,14 +15141,14 @@ void VulkanAsciiConsumer::Process_vkRegisterDeviceEventEXT(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFence* pFence
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFence:                         "); //HRW
-    OutputString(outputFile, "VkFence* = "); //TEQ
+    OutputString(outputFile, "pFence:                         "); // HRW
+    OutputString(outputFile, "VkFence* = "); // TEQ
     if (pFence.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15180,22 +15180,22 @@ void VulkanAsciiConsumer::Process_vkRegisterDisplayEventEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDisplayKHR display
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "display:                        "); //HRW
-    OutputString(outputFile, "VkDisplayKHR = "); //TEQ
+    OutputString(outputFile, "display:                        "); // HRW
+    OutputString(outputFile, "VkDisplayKHR = "); // TEQ
     OutputAddr(outputFile, display); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDisplayEventInfoEXT* pDisplayEventInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDisplayEventInfo:              "); //HRW
-    OutputString(outputFile, "const VkDisplayEventInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pDisplayEventInfo:              "); // HRW
+    OutputString(outputFile, "const VkDisplayEventInfoEXT* = "); // TEQ
     if (pDisplayEventInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15204,14 +15204,14 @@ void VulkanAsciiConsumer::Process_vkRegisterDisplayEventEXT(
     {
         OutputAddr(outputFile, pDisplayEventInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pDisplayEventInfo.GetMetaStructPointer(), indent+1,pDisplayEventInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pDisplayEventInfo.GetMetaStructPointer(), indent+1, pDisplayEventInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15220,14 +15220,14 @@ void VulkanAsciiConsumer::Process_vkRegisterDisplayEventEXT(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkFence* pFence
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pFence:                         "); //HRW
-    OutputString(outputFile, "VkFence* = "); //TEQ
+    OutputString(outputFile, "pFence:                         "); // HRW
+    OutputString(outputFile, "VkFence* = "); // TEQ
     if (pFence.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15258,22 +15258,22 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainCounterEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSwapchainKHR swapchain
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "swapchain:                      "); //HRW
-    OutputString(outputFile, "VkSwapchainKHR = "); //TEQ
+    OutputString(outputFile, "swapchain:                      "); // HRW
+    OutputString(outputFile, "VkSwapchainKHR = "); // TEQ
     OutputAddr(outputFile, swapchain); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceCounterFlagBitsEXT counter
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "counter:                        "); //HRW
-    OutputString(outputFile, "VkSurfaceCounterFlagBitsEXT = "); //TEQ
+    OutputString(outputFile, "counter:                        "); // HRW
+    OutputString(outputFile, "VkSurfaceCounterFlagBitsEXT = "); // TEQ
     OutputEnumVkSurfaceCounterFlagBitsEXT(outputFile, counter); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, counter);
@@ -15282,8 +15282,8 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainCounterEXT(
 
     // func arg: uint64_t* pCounterValue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCounterValue:                  "); //HRW
-    OutputString(outputFile, "uint64_t* = "); //TEQ
+    OutputString(outputFile, "pCounterValue:                  "); // HRW
+    OutputString(outputFile, "uint64_t* = "); // TEQ
     if (pCounterValue.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15314,22 +15314,22 @@ void VulkanAsciiConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSwapchainKHR swapchain
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "swapchain:                      "); //HRW
-    OutputString(outputFile, "VkSwapchainKHR = "); //TEQ
+    OutputString(outputFile, "swapchain:                      "); // HRW
+    OutputString(outputFile, "VkSwapchainKHR = "); // TEQ
     OutputAddr(outputFile, swapchain); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkRefreshCycleDurationGOOGLE* pDisplayTimingProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDisplayTimingProperties:       "); //HRW
-    OutputString(outputFile, "VkRefreshCycleDurationGOOGLE* = "); //TEQ
+    OutputString(outputFile, "pDisplayTimingProperties:       "); // HRW
+    OutputString(outputFile, "VkRefreshCycleDurationGOOGLE* = "); // TEQ
     if (pDisplayTimingProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15338,7 +15338,7 @@ void VulkanAsciiConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     {
         OutputAddr(outputFile, pDisplayTimingProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pDisplayTimingProperties.GetMetaStructPointer(), indent+1,pDisplayTimingProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pDisplayTimingProperties.GetMetaStructPointer(), indent+1, pDisplayTimingProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15361,22 +15361,22 @@ void VulkanAsciiConsumer::Process_vkGetPastPresentationTimingGOOGLE(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSwapchainKHR swapchain
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "swapchain:                      "); //HRW
-    OutputString(outputFile, "VkSwapchainKHR = "); //TEQ
+    OutputString(outputFile, "swapchain:                      "); // HRW
+    OutputString(outputFile, "VkSwapchainKHR = "); // TEQ
     OutputAddr(outputFile, swapchain); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPresentationTimingCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPresentationTimingCount:       "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPresentationTimingCount:       "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPresentationTimingCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15390,8 +15390,8 @@ void VulkanAsciiConsumer::Process_vkGetPastPresentationTimingGOOGLE(
 
     // func arg: VkPastPresentationTimingGOOGLE* pPresentationTimings
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPresentationTimings:           "); //HRW
-    OutputString(outputFile, "VkPastPresentationTimingGOOGLE* = "); //TEQ
+    OutputString(outputFile, "pPresentationTimings:           "); // HRW
+    OutputString(outputFile, "VkPastPresentationTimingGOOGLE* = "); // TEQ
     if (pPresentationTimings.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15420,29 +15420,29 @@ void VulkanAsciiConsumer::Process_vkCmdSetDiscardRectangleEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstDiscardRectangle
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstDiscardRectangle:          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstDiscardRectangle:          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstDiscardRectangle); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t discardRectangleCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "discardRectangleCount:          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "discardRectangleCount:          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, discardRectangleCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkRect2D* pDiscardRectangles
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDiscardRectangles:             "); //HRW
-    OutputString(outputFile, "const VkRect2D* = "); //TEQ
+    OutputString(outputFile, "pDiscardRectangles:             "); // HRW
+    OutputString(outputFile, "const VkRect2D* = "); // TEQ
     if (pDiscardRectangles.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15471,22 +15471,22 @@ void VulkanAsciiConsumer::Process_vkSetHdrMetadataEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t swapchainCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "swapchainCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "swapchainCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, swapchainCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSwapchainKHR* pSwapchains
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSwapchains:                    "); //HRW
-    OutputString(outputFile, "const VkSwapchainKHR* = "); //TEQ
+    OutputString(outputFile, "pSwapchains:                    "); // HRW
+    OutputString(outputFile, "const VkSwapchainKHR* = "); // TEQ
     if (pSwapchains.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15501,8 +15501,8 @@ void VulkanAsciiConsumer::Process_vkSetHdrMetadataEXT(
 
     // func arg: const VkHdrMetadataEXT* pMetadata
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMetadata:                      "); //HRW
-    OutputString(outputFile, "const VkHdrMetadataEXT* = "); //TEQ
+    OutputString(outputFile, "pMetadata:                      "); // HRW
+    OutputString(outputFile, "const VkHdrMetadataEXT* = "); // TEQ
     if (pMetadata.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15534,15 +15534,15 @@ void VulkanAsciiConsumer::Process_vkCreateIOSSurfaceMVK(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkIOSSurfaceCreateInfoMVK* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkIOSSurfaceCreateInfoMVK* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkIOSSurfaceCreateInfoMVK* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15551,14 +15551,14 @@ void VulkanAsciiConsumer::Process_vkCreateIOSSurfaceMVK(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15567,14 +15567,14 @@ void VulkanAsciiConsumer::Process_vkCreateIOSSurfaceMVK(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15606,15 +15606,15 @@ void VulkanAsciiConsumer::Process_vkCreateMacOSSurfaceMVK(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkMacOSSurfaceCreateInfoMVK* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkMacOSSurfaceCreateInfoMVK* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkMacOSSurfaceCreateInfoMVK* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15623,14 +15623,14 @@ void VulkanAsciiConsumer::Process_vkCreateMacOSSurfaceMVK(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15639,14 +15639,14 @@ void VulkanAsciiConsumer::Process_vkCreateMacOSSurfaceMVK(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15676,15 +15676,15 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectNameEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugUtilsObjectNameInfoEXT* pNameInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pNameInfo:                      "); //HRW
-    OutputString(outputFile, "const VkDebugUtilsObjectNameInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pNameInfo:                      "); // HRW
+    OutputString(outputFile, "const VkDebugUtilsObjectNameInfoEXT* = "); // TEQ
     if (pNameInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15693,7 +15693,7 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     {
         OutputAddr(outputFile, pNameInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pNameInfo.GetMetaStructPointer(), indent+1,pNameInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pNameInfo.GetMetaStructPointer(), indent+1, pNameInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15714,15 +15714,15 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectTagEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugUtilsObjectTagInfoEXT* pTagInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pTagInfo:                       "); //HRW
-    OutputString(outputFile, "const VkDebugUtilsObjectTagInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pTagInfo:                       "); // HRW
+    OutputString(outputFile, "const VkDebugUtilsObjectTagInfoEXT* = "); // TEQ
     if (pTagInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15731,7 +15731,7 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     {
         OutputAddr(outputFile, pTagInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pTagInfo.GetMetaStructPointer(), indent+1,pTagInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pTagInfo.GetMetaStructPointer(), indent+1, pTagInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15749,15 +15749,15 @@ void VulkanAsciiConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
 
     // func arg: VkQueue queue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queue:                          "); //HRW
-    OutputString(outputFile, "VkQueue = "); //TEQ
+    OutputString(outputFile, "queue:                          "); // HRW
+    OutputString(outputFile, "VkQueue = "); // TEQ
     OutputAddr(outputFile, queue); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugUtilsLabelEXT* pLabelInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pLabelInfo:                     "); //HRW
-    OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); //TEQ
+    OutputString(outputFile, "pLabelInfo:                     "); // HRW
+    OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); // TEQ
     if (pLabelInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15766,7 +15766,7 @@ void VulkanAsciiConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     {
         OutputAddr(outputFile, pLabelInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1,pLabelInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1, pLabelInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15783,8 +15783,8 @@ void VulkanAsciiConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
 
     // func arg: VkQueue queue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queue:                          "); //HRW
-    OutputString(outputFile, "VkQueue = "); //TEQ
+    OutputString(outputFile, "queue:                          "); // HRW
+    OutputString(outputFile, "VkQueue = "); // TEQ
     OutputAddr(outputFile, queue); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -15802,15 +15802,15 @@ void VulkanAsciiConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
 
     // func arg: VkQueue queue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queue:                          "); //HRW
-    OutputString(outputFile, "VkQueue = "); //TEQ
+    OutputString(outputFile, "queue:                          "); // HRW
+    OutputString(outputFile, "VkQueue = "); // TEQ
     OutputAddr(outputFile, queue); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugUtilsLabelEXT* pLabelInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pLabelInfo:                     "); //HRW
-    OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); //TEQ
+    OutputString(outputFile, "pLabelInfo:                     "); // HRW
+    OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); // TEQ
     if (pLabelInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15819,7 +15819,7 @@ void VulkanAsciiConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     {
         OutputAddr(outputFile, pLabelInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1,pLabelInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1, pLabelInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15837,15 +15837,15 @@ void VulkanAsciiConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugUtilsLabelEXT* pLabelInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pLabelInfo:                     "); //HRW
-    OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); //TEQ
+    OutputString(outputFile, "pLabelInfo:                     "); // HRW
+    OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); // TEQ
     if (pLabelInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15854,7 +15854,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     {
         OutputAddr(outputFile, pLabelInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1,pLabelInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1, pLabelInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15871,8 +15871,8 @@ void VulkanAsciiConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -15890,15 +15890,15 @@ void VulkanAsciiConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugUtilsLabelEXT* pLabelInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pLabelInfo:                     "); //HRW
-    OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); //TEQ
+    OutputString(outputFile, "pLabelInfo:                     "); // HRW
+    OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); // TEQ
     if (pLabelInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15907,7 +15907,7 @@ void VulkanAsciiConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     {
         OutputAddr(outputFile, pLabelInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1,pLabelInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1, pLabelInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15930,15 +15930,15 @@ void VulkanAsciiConsumer::Process_vkCreateDebugUtilsMessengerEXT(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkDebugUtilsMessengerCreateInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkDebugUtilsMessengerCreateInfoEXT* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15947,14 +15947,14 @@ void VulkanAsciiConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15963,14 +15963,14 @@ void VulkanAsciiConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDebugUtilsMessengerEXT* pMessenger
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMessenger:                     "); //HRW
-    OutputString(outputFile, "VkDebugUtilsMessengerEXT* = "); //TEQ
+    OutputString(outputFile, "pMessenger:                     "); // HRW
+    OutputString(outputFile, "VkDebugUtilsMessengerEXT* = "); // TEQ
     if (pMessenger.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -15997,22 +15997,22 @@ void VulkanAsciiConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDebugUtilsMessengerEXT messenger
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "messenger:                      "); //HRW
-    OutputString(outputFile, "VkDebugUtilsMessengerEXT = "); //TEQ
+    OutputString(outputFile, "messenger:                      "); // HRW
+    OutputString(outputFile, "VkDebugUtilsMessengerEXT = "); // TEQ
     OutputAddr(outputFile, messenger); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16021,7 +16021,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16041,15 +16041,15 @@ void VulkanAsciiConsumer::Process_vkSubmitDebugUtilsMessageEXT(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "messageSeverity:                "); //HRW
-    OutputString(outputFile, "VkDebugUtilsMessageSeverityFlagBitsEXT = "); //TEQ
+    OutputString(outputFile, "messageSeverity:                "); // HRW
+    OutputString(outputFile, "VkDebugUtilsMessageSeverityFlagBitsEXT = "); // TEQ
     OutputEnumVkDebugUtilsMessageSeverityFlagBitsEXT(outputFile, messageSeverity); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, messageSeverity);
@@ -16058,15 +16058,15 @@ void VulkanAsciiConsumer::Process_vkSubmitDebugUtilsMessageEXT(
 
     // func arg: VkDebugUtilsMessageTypeFlagsEXT messageTypes
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "messageTypes:                   "); //HRW
-    OutputString(outputFile, "VkDebugUtilsMessageTypeFlagsEXT = "); //TEQ
+    OutputString(outputFile, "messageTypes:                   "); // HRW
+    OutputString(outputFile, "VkDebugUtilsMessageTypeFlagsEXT = "); // TEQ
     OutputFlags(outputFile, messageTypes, OutputEnumVkDebugUtilsMessageTypeFlagBitsEXT); // URW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCallbackData:                  "); //HRW
-    OutputString(outputFile, "const VkDebugUtilsMessengerCallbackDataEXT* = "); //TEQ
+    OutputString(outputFile, "pCallbackData:                  "); // HRW
+    OutputString(outputFile, "const VkDebugUtilsMessengerCallbackDataEXT* = "); // TEQ
     if (pCallbackData.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16075,7 +16075,7 @@ void VulkanAsciiConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     {
         OutputAddr(outputFile, pCallbackData.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCallbackData.GetMetaStructPointer(), indent+1,pCallbackData.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCallbackData.GetMetaStructPointer(), indent+1, pCallbackData.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16098,15 +16098,15 @@ void VulkanAsciiConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const struct void* buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "const struct void* = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "const struct void* = "); // TEQ
     if ( !buffer) // WWW
     {
         OutputString(outputFile, "NULL");
@@ -16119,8 +16119,8 @@ void VulkanAsciiConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
 
     // func arg: VkAndroidHardwareBufferPropertiesANDROID* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkAndroidHardwareBufferPropertiesANDROID* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkAndroidHardwareBufferPropertiesANDROID* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16129,7 +16129,7 @@ void VulkanAsciiConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     {
         OutputAddr(outputFile, pProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pProperties.GetMetaStructPointer(), indent+1,pProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16151,15 +16151,15 @@ void VulkanAsciiConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfo:                          "); //HRW
-    OutputString(outputFile, "const VkMemoryGetAndroidHardwareBufferInfoANDROID* = "); //TEQ
+    OutputString(outputFile, "pInfo:                          "); // HRW
+    OutputString(outputFile, "const VkMemoryGetAndroidHardwareBufferInfoANDROID* = "); // TEQ
     if (pInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16168,14 +16168,14 @@ void VulkanAsciiConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     {
         OutputAddr(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: struct void** pBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBuffer:                        "); //HRW
-    OutputString(outputFile, "struct void** = "); //TEQ
+    OutputString(outputFile, "pBuffer:                        "); // HRW
+    OutputString(outputFile, "struct void** = "); // TEQ
     if (pBuffer.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16202,15 +16202,15 @@ void VulkanAsciiConsumer::Process_vkCmdSetSampleLocationsEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkSampleLocationsInfoEXT* pSampleLocationsInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSampleLocationsInfo:           "); //HRW
-    OutputString(outputFile, "const VkSampleLocationsInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pSampleLocationsInfo:           "); // HRW
+    OutputString(outputFile, "const VkSampleLocationsInfoEXT* = "); // TEQ
     if (pSampleLocationsInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16219,7 +16219,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetSampleLocationsEXT(
     {
         OutputAddr(outputFile, pSampleLocationsInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSampleLocationsInfo.GetMetaStructPointer(), indent+1,pSampleLocationsInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSampleLocationsInfo.GetMetaStructPointer(), indent+1, pSampleLocationsInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16238,15 +16238,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSampleCountFlagBits samples
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "samples:                        "); //HRW
-    OutputString(outputFile, "VkSampleCountFlagBits = "); //TEQ
+    OutputString(outputFile, "samples:                        "); // HRW
+    OutputString(outputFile, "VkSampleCountFlagBits = "); // TEQ
     OutputEnumVkSampleCountFlagBits(outputFile, samples); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, samples);
@@ -16255,8 +16255,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
 
     // func arg: VkMultisamplePropertiesEXT* pMultisampleProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMultisampleProperties:         "); //HRW
-    OutputString(outputFile, "VkMultisamplePropertiesEXT* = "); //TEQ
+    OutputString(outputFile, "pMultisampleProperties:         "); // HRW
+    OutputString(outputFile, "VkMultisamplePropertiesEXT* = "); // TEQ
     if (pMultisampleProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16265,7 +16265,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     {
         OutputAddr(outputFile, pMultisampleProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMultisampleProperties.GetMetaStructPointer(), indent+1,pMultisampleProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMultisampleProperties.GetMetaStructPointer(), indent+1, pMultisampleProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16288,22 +16288,22 @@ void VulkanAsciiConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImage image
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "image:                          "); //HRW
-    OutputString(outputFile, "VkImage = "); //TEQ
+    OutputString(outputFile, "image:                          "); // HRW
+    OutputString(outputFile, "VkImage = "); // TEQ
     OutputAddr(outputFile, image); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageDrmFormatModifierPropertiesEXT* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkImageDrmFormatModifierPropertiesEXT* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkImageDrmFormatModifierPropertiesEXT* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16312,7 +16312,7 @@ void VulkanAsciiConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     {
         OutputAddr(outputFile, pProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pProperties.GetMetaStructPointer(), indent+1,pProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16336,15 +16336,15 @@ void VulkanAsciiConsumer::Process_vkCreateValidationCacheEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkValidationCacheCreateInfoEXT* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkValidationCacheCreateInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkValidationCacheCreateInfoEXT* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16353,14 +16353,14 @@ void VulkanAsciiConsumer::Process_vkCreateValidationCacheEXT(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16369,14 +16369,14 @@ void VulkanAsciiConsumer::Process_vkCreateValidationCacheEXT(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkValidationCacheEXT* pValidationCache
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pValidationCache:               "); //HRW
-    OutputString(outputFile, "VkValidationCacheEXT* = "); //TEQ
+    OutputString(outputFile, "pValidationCache:               "); // HRW
+    OutputString(outputFile, "VkValidationCacheEXT* = "); // TEQ
     if (pValidationCache.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16403,22 +16403,22 @@ void VulkanAsciiConsumer::Process_vkDestroyValidationCacheEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkValidationCacheEXT validationCache
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "validationCache:                "); //HRW
-    OutputString(outputFile, "VkValidationCacheEXT = "); //TEQ
+    OutputString(outputFile, "validationCache:                "); // HRW
+    OutputString(outputFile, "VkValidationCacheEXT = "); // TEQ
     OutputAddr(outputFile, validationCache); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16427,7 +16427,7 @@ void VulkanAsciiConsumer::Process_vkDestroyValidationCacheEXT(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16450,29 +16450,29 @@ void VulkanAsciiConsumer::Process_vkMergeValidationCachesEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkValidationCacheEXT dstCache
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstCache:                       "); //HRW
-    OutputString(outputFile, "VkValidationCacheEXT = "); //TEQ
+    OutputString(outputFile, "dstCache:                       "); // HRW
+    OutputString(outputFile, "VkValidationCacheEXT = "); // TEQ
     OutputAddr(outputFile, dstCache); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t srcCacheCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "srcCacheCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "srcCacheCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, srcCacheCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkValidationCacheEXT* pSrcCaches
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSrcCaches:                     "); //HRW
-    OutputString(outputFile, "const VkValidationCacheEXT* = "); //TEQ
+    OutputString(outputFile, "pSrcCaches:                     "); // HRW
+    OutputString(outputFile, "const VkValidationCacheEXT* = "); // TEQ
     if (pSrcCaches.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16504,22 +16504,22 @@ void VulkanAsciiConsumer::Process_vkGetValidationCacheDataEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkValidationCacheEXT validationCache
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "validationCache:                "); //HRW
-    OutputString(outputFile, "VkValidationCacheEXT = "); //TEQ
+    OutputString(outputFile, "validationCache:                "); // HRW
+    OutputString(outputFile, "VkValidationCacheEXT = "); // TEQ
     OutputAddr(outputFile, validationCache); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: size_t* pDataSize
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pDataSize:                      "); //HRW
-    OutputString(outputFile, "size_t* = "); //TEQ
+    OutputString(outputFile, "pDataSize:                      "); // HRW
+    OutputString(outputFile, "size_t* = "); // TEQ
     if (pDataSize.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16533,8 +16533,8 @@ void VulkanAsciiConsumer::Process_vkGetValidationCacheDataEXT(
 
     // func arg: void* pData
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pData:                          "); //HRW
-    OutputString(outputFile, "void* = "); //TEQ
+    OutputString(outputFile, "pData:                          "); // HRW
+    OutputString(outputFile, "void* = "); // TEQ
     if (pData.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16561,22 +16561,22 @@ void VulkanAsciiConsumer::Process_vkCmdBindShadingRateImageNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageView imageView
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "imageView:                      "); //HRW
-    OutputString(outputFile, "VkImageView = "); //TEQ
+    OutputString(outputFile, "imageView:                      "); // HRW
+    OutputString(outputFile, "VkImageView = "); // TEQ
     OutputAddr(outputFile, imageView); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkImageLayout imageLayout
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "imageLayout:                    "); //HRW
-    OutputString(outputFile, "VkImageLayout = "); //TEQ
+    OutputString(outputFile, "imageLayout:                    "); // HRW
+    OutputString(outputFile, "VkImageLayout = "); // TEQ
     OutputEnumVkImageLayout(outputFile, imageLayout); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, imageLayout);
@@ -16599,29 +16599,29 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstViewport
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstViewport:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstViewport:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstViewport); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t viewportCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "viewportCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "viewportCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, viewportCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkShadingRatePaletteNV* pShadingRatePalettes
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pShadingRatePalettes:           "); //HRW
-    OutputString(outputFile, "const VkShadingRatePaletteNV* = "); //TEQ
+    OutputString(outputFile, "pShadingRatePalettes:           "); // HRW
+    OutputString(outputFile, "const VkShadingRatePaletteNV* = "); // TEQ
     if (pShadingRatePalettes.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16649,15 +16649,15 @@ void VulkanAsciiConsumer::Process_vkCmdSetCoarseSampleOrderNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCoarseSampleOrderTypeNV sampleOrderType
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "sampleOrderType:                "); //HRW
-    OutputString(outputFile, "VkCoarseSampleOrderTypeNV = "); //TEQ
+    OutputString(outputFile, "sampleOrderType:                "); // HRW
+    OutputString(outputFile, "VkCoarseSampleOrderTypeNV = "); // TEQ
     OutputEnumVkCoarseSampleOrderTypeNV(outputFile, sampleOrderType); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, sampleOrderType);
@@ -16666,15 +16666,15 @@ void VulkanAsciiConsumer::Process_vkCmdSetCoarseSampleOrderNV(
 
     // func arg: uint32_t customSampleOrderCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "customSampleOrderCount:         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "customSampleOrderCount:         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, customSampleOrderCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkCoarseSampleOrderCustomNV* pCustomSampleOrders
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCustomSampleOrders:            "); //HRW
-    OutputString(outputFile, "const VkCoarseSampleOrderCustomNV* = "); //TEQ
+    OutputString(outputFile, "pCustomSampleOrders:            "); // HRW
+    OutputString(outputFile, "const VkCoarseSampleOrderCustomNV* = "); // TEQ
     if (pCustomSampleOrders.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16706,15 +16706,15 @@ void VulkanAsciiConsumer::Process_vkCreateAccelerationStructureNV(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAccelerationStructureCreateInfoNV* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkAccelerationStructureCreateInfoNV* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkAccelerationStructureCreateInfoNV* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16723,14 +16723,14 @@ void VulkanAsciiConsumer::Process_vkCreateAccelerationStructureNV(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16739,14 +16739,14 @@ void VulkanAsciiConsumer::Process_vkCreateAccelerationStructureNV(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkAccelerationStructureNV* pAccelerationStructure
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAccelerationStructure:         "); //HRW
-    OutputString(outputFile, "VkAccelerationStructureNV* = "); //TEQ
+    OutputString(outputFile, "pAccelerationStructure:         "); // HRW
+    OutputString(outputFile, "VkAccelerationStructureNV* = "); // TEQ
     if (pAccelerationStructure.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16773,22 +16773,22 @@ void VulkanAsciiConsumer::Process_vkDestroyAccelerationStructureNV(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkAccelerationStructureNV accelerationStructure
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "accelerationStructure:          "); //HRW
-    OutputString(outputFile, "VkAccelerationStructureNV = "); //TEQ
+    OutputString(outputFile, "accelerationStructure:          "); // HRW
+    OutputString(outputFile, "VkAccelerationStructureNV = "); // TEQ
     OutputAddr(outputFile, accelerationStructure); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16797,7 +16797,7 @@ void VulkanAsciiConsumer::Process_vkDestroyAccelerationStructureNV(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16816,15 +16816,15 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAccelerationStructureMemoryRequirementsInfoNV* pInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfo:                          "); //HRW
-    OutputString(outputFile, "const VkAccelerationStructureMemoryRequirementsInfoNV* = "); //TEQ
+    OutputString(outputFile, "pInfo:                          "); // HRW
+    OutputString(outputFile, "const VkAccelerationStructureMemoryRequirementsInfoNV* = "); // TEQ
     if (pInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16833,14 +16833,14 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV
     {
         OutputAddr(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkMemoryRequirements2KHR* pMemoryRequirements
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryRequirements:            "); //HRW
-    OutputString(outputFile, "VkMemoryRequirements2KHR* = "); //TEQ
+    OutputString(outputFile, "pMemoryRequirements:            "); // HRW
+    OutputString(outputFile, "VkMemoryRequirements2KHR* = "); // TEQ
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16849,7 +16849,7 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV
     {
         OutputAddr(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16871,22 +16871,22 @@ void VulkanAsciiConsumer::Process_vkBindAccelerationStructureMemoryNV(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t bindInfoCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "bindInfoCount:                  "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "bindInfoCount:                  "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, bindInfoCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBindAccelerationStructureMemoryInfoNV* pBindInfos
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pBindInfos:                     "); //HRW
-    OutputString(outputFile, "const VkBindAccelerationStructureMemoryInfoNV* = "); //TEQ
+    OutputString(outputFile, "pBindInfos:                     "); // HRW
+    OutputString(outputFile, "const VkBindAccelerationStructureMemoryInfoNV* = "); // TEQ
     if (pBindInfos.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16919,15 +16919,15 @@ void VulkanAsciiConsumer::Process_vkCmdBuildAccelerationStructureNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAccelerationStructureInfoNV* pInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfo:                          "); //HRW
-    OutputString(outputFile, "const VkAccelerationStructureInfoNV* = "); //TEQ
+    OutputString(outputFile, "pInfo:                          "); // HRW
+    OutputString(outputFile, "const VkAccelerationStructureInfoNV* = "); // TEQ
     if (pInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -16936,57 +16936,57 @@ void VulkanAsciiConsumer::Process_vkCmdBuildAccelerationStructureNV(
     {
         OutputAddr(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer instanceData
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instanceData:                   "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "instanceData:                   "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, instanceData); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize instanceOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instanceOffset:                 "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, instanceOffset); //EQA
+    OutputString(outputFile, "instanceOffset:                 "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, instanceOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBool32 update
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "update:                         "); //HRW
-    OutputString(outputFile, "VkBool32 = "); //TEQ
-    OutputSignedDecimal(outputFile, update); //EQA
+    OutputString(outputFile, "update:                         "); // HRW
+    OutputString(outputFile, "VkBool32 = "); // TEQ
+    OutputSignedDecimal(outputFile, update); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkAccelerationStructureNV dst
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dst:                            "); //HRW
-    OutputString(outputFile, "VkAccelerationStructureNV = "); //TEQ
+    OutputString(outputFile, "dst:                            "); // HRW
+    OutputString(outputFile, "VkAccelerationStructureNV = "); // TEQ
     OutputAddr(outputFile, dst); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkAccelerationStructureNV src
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "src:                            "); //HRW
-    OutputString(outputFile, "VkAccelerationStructureNV = "); //TEQ
+    OutputString(outputFile, "src:                            "); // HRW
+    OutputString(outputFile, "VkAccelerationStructureNV = "); // TEQ
     OutputAddr(outputFile, src); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer scratch
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "scratch:                        "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "scratch:                        "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, scratch); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize scratchOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "scratchOffset:                  "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, scratchOffset); //EQA
+    OutputString(outputFile, "scratchOffset:                  "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, scratchOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     OutputString(outputFile, "\n"); // HDS
@@ -17005,29 +17005,29 @@ void VulkanAsciiConsumer::Process_vkCmdCopyAccelerationStructureNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkAccelerationStructureNV dst
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dst:                            "); //HRW
-    OutputString(outputFile, "VkAccelerationStructureNV = "); //TEQ
+    OutputString(outputFile, "dst:                            "); // HRW
+    OutputString(outputFile, "VkAccelerationStructureNV = "); // TEQ
     OutputAddr(outputFile, dst); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkAccelerationStructureNV src
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "src:                            "); //HRW
-    OutputString(outputFile, "VkAccelerationStructureNV = "); //TEQ
+    OutputString(outputFile, "src:                            "); // HRW
+    OutputString(outputFile, "VkAccelerationStructureNV = "); // TEQ
     OutputAddr(outputFile, src); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkCopyAccelerationStructureModeNV mode
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "mode:                           "); //HRW
-    OutputString(outputFile, "VkCopyAccelerationStructureModeNV = "); //TEQ
+    OutputString(outputFile, "mode:                           "); // HRW
+    OutputString(outputFile, "VkCopyAccelerationStructureModeNV = "); // TEQ
     OutputEnumVkCopyAccelerationStructureModeNV(outputFile, mode); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, mode);
@@ -17061,106 +17061,106 @@ void VulkanAsciiConsumer::Process_vkCmdTraceRaysNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer raygenShaderBindingTableBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "raygenShaderBindingTableBuffer: "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "raygenShaderBindingTableBuffer: "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, raygenShaderBindingTableBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize raygenShaderBindingOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "raygenShaderBindingOffset:      "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, raygenShaderBindingOffset); //EQA
+    OutputString(outputFile, "raygenShaderBindingOffset:      "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, raygenShaderBindingOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer missShaderBindingTableBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "missShaderBindingTableBuffer:   "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "missShaderBindingTableBuffer:   "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, missShaderBindingTableBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize missShaderBindingOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "missShaderBindingOffset:        "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, missShaderBindingOffset); //EQA
+    OutputString(outputFile, "missShaderBindingOffset:        "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, missShaderBindingOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize missShaderBindingStride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "missShaderBindingStride:        "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, missShaderBindingStride); //EQA
+    OutputString(outputFile, "missShaderBindingStride:        "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, missShaderBindingStride); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer hitShaderBindingTableBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "hitShaderBindingTableBuffer:    "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "hitShaderBindingTableBuffer:    "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, hitShaderBindingTableBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize hitShaderBindingOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "hitShaderBindingOffset:         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, hitShaderBindingOffset); //EQA
+    OutputString(outputFile, "hitShaderBindingOffset:         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, hitShaderBindingOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize hitShaderBindingStride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "hitShaderBindingStride:         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, hitShaderBindingStride); //EQA
+    OutputString(outputFile, "hitShaderBindingStride:         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, hitShaderBindingStride); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer callableShaderBindingTableBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "callableShaderBindingTableBuffer: "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "callableShaderBindingTableBuffer: "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, callableShaderBindingTableBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize callableShaderBindingOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "callableShaderBindingOffset:    "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, callableShaderBindingOffset); //EQA
+    OutputString(outputFile, "callableShaderBindingOffset:    "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, callableShaderBindingOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize callableShaderBindingStride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "callableShaderBindingStride:    "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, callableShaderBindingStride); //EQA
+    OutputString(outputFile, "callableShaderBindingStride:    "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, callableShaderBindingStride); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t width
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "width:                          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "width:                          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, width); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t height
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "height:                         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "height:                         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, height); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t depth
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "depth:                          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "depth:                          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, depth); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -17185,29 +17185,29 @@ void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineCache pipelineCache
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipelineCache:                  "); //HRW
-    OutputString(outputFile, "VkPipelineCache = "); //TEQ
+    OutputString(outputFile, "pipelineCache:                  "); // HRW
+    OutputString(outputFile, "VkPipelineCache = "); // TEQ
     OutputAddr(outputFile, pipelineCache); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t createInfoCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "createInfoCount:                "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "createInfoCount:                "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, createInfoCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkRayTracingPipelineCreateInfoNV* pCreateInfos
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfos:                   "); //HRW
-    OutputString(outputFile, "const VkRayTracingPipelineCreateInfoNV* = "); //TEQ
+    OutputString(outputFile, "pCreateInfos:                   "); // HRW
+    OutputString(outputFile, "const VkRayTracingPipelineCreateInfoNV* = "); // TEQ
     if (pCreateInfos.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17221,8 +17221,8 @@ void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17231,14 +17231,14 @@ void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipeline* pPipelines
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPipelines:                     "); //HRW
-    OutputString(outputFile, "VkPipeline* = "); //TEQ
+    OutputString(outputFile, "pPipelines:                     "); // HRW
+    OutputString(outputFile, "VkPipeline* = "); // TEQ
     if (pPipelines.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17272,43 +17272,43 @@ void VulkanAsciiConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipeline pipeline
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipeline:                       "); //HRW
-    OutputString(outputFile, "VkPipeline = "); //TEQ
+    OutputString(outputFile, "pipeline:                       "); // HRW
+    OutputString(outputFile, "VkPipeline = "); // TEQ
     OutputAddr(outputFile, pipeline); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstGroup
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstGroup:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstGroup:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstGroup); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t groupCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "groupCount:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "groupCount:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, groupCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: size_t dataSize
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dataSize:                       "); //HRW
-    OutputString(outputFile, "size_t = "); //TEQ
+    OutputString(outputFile, "dataSize:                       "); // HRW
+    OutputString(outputFile, "size_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, dataSize); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: void* pData
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pData:                          "); //HRW
-    OutputString(outputFile, "void* = "); //TEQ
+    OutputString(outputFile, "pData:                          "); // HRW
+    OutputString(outputFile, "void* = "); // TEQ
     if (pData.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17338,29 +17338,29 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureHandleNV(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkAccelerationStructureNV accelerationStructure
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "accelerationStructure:          "); //HRW
-    OutputString(outputFile, "VkAccelerationStructureNV = "); //TEQ
+    OutputString(outputFile, "accelerationStructure:          "); // HRW
+    OutputString(outputFile, "VkAccelerationStructureNV = "); // TEQ
     OutputAddr(outputFile, accelerationStructure); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: size_t dataSize
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dataSize:                       "); //HRW
-    OutputString(outputFile, "size_t = "); //TEQ
+    OutputString(outputFile, "dataSize:                       "); // HRW
+    OutputString(outputFile, "size_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, dataSize); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: void* pData
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pData:                          "); //HRW
-    OutputString(outputFile, "void* = "); //TEQ
+    OutputString(outputFile, "pData:                          "); // HRW
+    OutputString(outputFile, "void* = "); // TEQ
     if (pData.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17389,22 +17389,22 @@ void VulkanAsciiConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t accelerationStructureCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "accelerationStructureCount:     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "accelerationStructureCount:     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, accelerationStructureCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAccelerationStructureNV* pAccelerationStructures
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAccelerationStructures:        "); //HRW
-    OutputString(outputFile, "const VkAccelerationStructureNV* = "); //TEQ
+    OutputString(outputFile, "pAccelerationStructures:        "); // HRW
+    OutputString(outputFile, "const VkAccelerationStructureNV* = "); // TEQ
     if (pAccelerationStructures.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17419,8 +17419,8 @@ void VulkanAsciiConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
 
     // func arg: VkQueryType queryType
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryType:                      "); //HRW
-    OutputString(outputFile, "VkQueryType = "); //TEQ
+    OutputString(outputFile, "queryType:                      "); // HRW
+    OutputString(outputFile, "VkQueryType = "); // TEQ
     OutputEnumVkQueryType(outputFile, queryType); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, queryType);
@@ -17429,15 +17429,15 @@ void VulkanAsciiConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
 
     // func arg: VkQueryPool queryPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryPool:                      "); //HRW
-    OutputString(outputFile, "VkQueryPool = "); //TEQ
+    OutputString(outputFile, "queryPool:                      "); // HRW
+    OutputString(outputFile, "VkQueryPool = "); // TEQ
     OutputAddr(outputFile, queryPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstQuery
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstQuery:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstQuery:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstQuery); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -17459,22 +17459,22 @@ void VulkanAsciiConsumer::Process_vkCompileDeferredNV(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipeline pipeline
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipeline:                       "); //HRW
-    OutputString(outputFile, "VkPipeline = "); //TEQ
+    OutputString(outputFile, "pipeline:                       "); // HRW
+    OutputString(outputFile, "VkPipeline = "); // TEQ
     OutputAddr(outputFile, pipeline); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t shader
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "shader:                         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "shader:                         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, shader); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -17498,15 +17498,15 @@ void VulkanAsciiConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkExternalMemoryHandleTypeFlagBits handleType
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "handleType:                     "); //HRW
-    OutputString(outputFile, "VkExternalMemoryHandleTypeFlagBits = "); //TEQ
+    OutputString(outputFile, "handleType:                     "); // HRW
+    OutputString(outputFile, "VkExternalMemoryHandleTypeFlagBits = "); // TEQ
     OutputEnumVkExternalMemoryHandleTypeFlagBits(outputFile, handleType); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, handleType);
@@ -17515,8 +17515,8 @@ void VulkanAsciiConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
 
     // func arg: const void* pHostPointer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pHostPointer:                   "); //HRW
-    OutputString(outputFile, "const void* = "); //TEQ
+    OutputString(outputFile, "pHostPointer:                   "); // HRW
+    OutputString(outputFile, "const void* = "); // TEQ
     if ( !pHostPointer) // WWW
     {
         OutputString(outputFile, "NULL");
@@ -17529,8 +17529,8 @@ void VulkanAsciiConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
 
     // func arg: VkMemoryHostPointerPropertiesEXT* pMemoryHostPointerProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMemoryHostPointerProperties:   "); //HRW
-    OutputString(outputFile, "VkMemoryHostPointerPropertiesEXT* = "); //TEQ
+    OutputString(outputFile, "pMemoryHostPointerProperties:   "); // HRW
+    OutputString(outputFile, "VkMemoryHostPointerPropertiesEXT* = "); // TEQ
     if (pMemoryHostPointerProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17539,7 +17539,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     {
         OutputAddr(outputFile, pMemoryHostPointerProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMemoryHostPointerProperties.GetMetaStructPointer(), indent+1,pMemoryHostPointerProperties.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMemoryHostPointerProperties.GetMetaStructPointer(), indent+1, pMemoryHostPointerProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17561,15 +17561,15 @@ void VulkanAsciiConsumer::Process_vkCmdWriteBufferMarkerAMD(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPipelineStageFlagBits pipelineStage
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pipelineStage:                  "); //HRW
-    OutputString(outputFile, "VkPipelineStageFlagBits = "); //TEQ
+    OutputString(outputFile, "pipelineStage:                  "); // HRW
+    OutputString(outputFile, "VkPipelineStageFlagBits = "); // TEQ
     OutputEnumVkPipelineStageFlagBits(outputFile, pipelineStage); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, pipelineStage);
@@ -17578,22 +17578,22 @@ void VulkanAsciiConsumer::Process_vkCmdWriteBufferMarkerAMD(
 
     // func arg: VkBuffer dstBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstBuffer:                      "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "dstBuffer:                      "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, dstBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize dstOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "dstOffset:                      "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, dstOffset); //EQA
+    OutputString(outputFile, "dstOffset:                      "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, dstOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t marker
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "marker:                         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "marker:                         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, marker); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -17616,15 +17616,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pTimeDomainCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pTimeDomainCount:               "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pTimeDomainCount:               "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pTimeDomainCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17638,8 +17638,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT
 
     // func arg: VkTimeDomainEXT* pTimeDomains
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pTimeDomains:                   "); //HRW
-    OutputString(outputFile, "VkTimeDomainEXT* = "); //TEQ
+    OutputString(outputFile, "pTimeDomains:                   "); // HRW
+    OutputString(outputFile, "VkTimeDomainEXT* = "); // TEQ
     if (pTimeDomains.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17672,22 +17672,22 @@ void VulkanAsciiConsumer::Process_vkGetCalibratedTimestampsEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t timestampCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "timestampCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "timestampCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, timestampCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkCalibratedTimestampInfoEXT* pTimestampInfos
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pTimestampInfos:                "); //HRW
-    OutputString(outputFile, "const VkCalibratedTimestampInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pTimestampInfos:                "); // HRW
+    OutputString(outputFile, "const VkCalibratedTimestampInfoEXT* = "); // TEQ
     if (pTimestampInfos.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17701,8 +17701,8 @@ void VulkanAsciiConsumer::Process_vkGetCalibratedTimestampsEXT(
 
     // func arg: uint64_t* pTimestamps
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pTimestamps:                    "); //HRW
-    OutputString(outputFile, "uint64_t* = "); //TEQ
+    OutputString(outputFile, "pTimestamps:                    "); // HRW
+    OutputString(outputFile, "uint64_t* = "); // TEQ
     if (pTimestamps.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17717,8 +17717,8 @@ void VulkanAsciiConsumer::Process_vkGetCalibratedTimestampsEXT(
 
     // func arg: uint64_t* pMaxDeviation
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMaxDeviation:                  "); //HRW
-    OutputString(outputFile, "uint64_t* = "); //TEQ
+    OutputString(outputFile, "pMaxDeviation:                  "); // HRW
+    OutputString(outputFile, "uint64_t* = "); // TEQ
     if (pMaxDeviation.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17746,22 +17746,22 @@ void VulkanAsciiConsumer::Process_vkCmdDrawMeshTasksNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t taskCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "taskCount:                      "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "taskCount:                      "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, taskCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstTask
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstTask:                      "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstTask:                      "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstTask); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -17782,36 +17782,36 @@ void VulkanAsciiConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize offset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "offset:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, offset); //EQA
+    OutputString(outputFile, "offset:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, offset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t drawCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "drawCount:                      "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "drawCount:                      "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, drawCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t stride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stride:                         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "stride:                         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, stride); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -17834,50 +17834,50 @@ void VulkanAsciiConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer buffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "buffer:                         "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "buffer:                         "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, buffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize offset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "offset:                         "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, offset); //EQA
+    OutputString(outputFile, "offset:                         "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, offset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBuffer countBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "countBuffer:                    "); //HRW
-    OutputString(outputFile, "VkBuffer = "); //TEQ
+    OutputString(outputFile, "countBuffer:                    "); // HRW
+    OutputString(outputFile, "VkBuffer = "); // TEQ
     OutputAddr(outputFile, countBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceSize countBufferOffset
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "countBufferOffset:              "); //HRW
-    OutputString(outputFile, "VkDeviceSize = "); //TEQ
-    OutputSignedDecimal(outputFile, countBufferOffset); //EQA
+    OutputString(outputFile, "countBufferOffset:              "); // HRW
+    OutputString(outputFile, "VkDeviceSize = "); // TEQ
+    OutputSignedDecimal(outputFile, countBufferOffset); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t maxDrawCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "maxDrawCount:                   "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "maxDrawCount:                   "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, maxDrawCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t stride
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "stride:                         "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "stride:                         "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, stride); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -17898,29 +17898,29 @@ void VulkanAsciiConsumer::Process_vkCmdSetExclusiveScissorNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstExclusiveScissor
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstExclusiveScissor:          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstExclusiveScissor:          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstExclusiveScissor); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t exclusiveScissorCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "exclusiveScissorCount:          "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "exclusiveScissorCount:          "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, exclusiveScissorCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkRect2D* pExclusiveScissors
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pExclusiveScissors:             "); //HRW
-    OutputString(outputFile, "const VkRect2D* = "); //TEQ
+    OutputString(outputFile, "pExclusiveScissors:             "); // HRW
+    OutputString(outputFile, "const VkRect2D* = "); // TEQ
     if (pExclusiveScissors.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -17947,15 +17947,15 @@ void VulkanAsciiConsumer::Process_vkCmdSetCheckpointNV(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const void* pCheckpointMarker
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCheckpointMarker:              "); //HRW
-    OutputString(outputFile, "const void* = "); //TEQ
+    OutputString(outputFile, "pCheckpointMarker:              "); // HRW
+    OutputString(outputFile, "const void* = "); // TEQ
     if ( !pCheckpointMarker) // WWW
     {
         OutputString(outputFile, "NULL");
@@ -17981,15 +17981,15 @@ void VulkanAsciiConsumer::Process_vkGetQueueCheckpointDataNV(
 
     // func arg: VkQueue queue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queue:                          "); //HRW
-    OutputString(outputFile, "VkQueue = "); //TEQ
+    OutputString(outputFile, "queue:                          "); // HRW
+    OutputString(outputFile, "VkQueue = "); // TEQ
     OutputAddr(outputFile, queue); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pCheckpointDataCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCheckpointDataCount:           "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pCheckpointDataCount:           "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pCheckpointDataCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18003,8 +18003,8 @@ void VulkanAsciiConsumer::Process_vkGetQueueCheckpointDataNV(
 
     // func arg: VkCheckpointDataNV* pCheckpointData
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCheckpointData:                "); //HRW
-    OutputString(outputFile, "VkCheckpointDataNV* = "); //TEQ
+    OutputString(outputFile, "pCheckpointData:                "); // HRW
+    OutputString(outputFile, "VkCheckpointDataNV* = "); // TEQ
     if (pCheckpointData.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18034,15 +18034,15 @@ void VulkanAsciiConsumer::Process_vkInitializePerformanceApiINTEL(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkInitializePerformanceApiInfoINTEL* pInitializeInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInitializeInfo:                "); //HRW
-    OutputString(outputFile, "const VkInitializePerformanceApiInfoINTEL* = "); //TEQ
+    OutputString(outputFile, "pInitializeInfo:                "); // HRW
+    OutputString(outputFile, "const VkInitializePerformanceApiInfoINTEL* = "); // TEQ
     if (pInitializeInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18051,7 +18051,7 @@ void VulkanAsciiConsumer::Process_vkInitializePerformanceApiINTEL(
     {
         OutputAddr(outputFile, pInitializeInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pInitializeInfo.GetMetaStructPointer(), indent+1,pInitializeInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pInitializeInfo.GetMetaStructPointer(), indent+1, pInitializeInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18068,8 +18068,8 @@ void VulkanAsciiConsumer::Process_vkUninitializePerformanceApiINTEL(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -18090,15 +18090,15 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPerformanceMarkerInfoINTEL* pMarkerInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMarkerInfo:                    "); //HRW
-    OutputString(outputFile, "const VkPerformanceMarkerInfoINTEL* = "); //TEQ
+    OutputString(outputFile, "pMarkerInfo:                    "); // HRW
+    OutputString(outputFile, "const VkPerformanceMarkerInfoINTEL* = "); // TEQ
     if (pMarkerInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18107,7 +18107,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     {
         OutputAddr(outputFile, pMarkerInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1,pMarkerInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1, pMarkerInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18128,15 +18128,15 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPerformanceStreamMarkerInfoINTEL* pMarkerInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pMarkerInfo:                    "); //HRW
-    OutputString(outputFile, "const VkPerformanceStreamMarkerInfoINTEL* = "); //TEQ
+    OutputString(outputFile, "pMarkerInfo:                    "); // HRW
+    OutputString(outputFile, "const VkPerformanceStreamMarkerInfoINTEL* = "); // TEQ
     if (pMarkerInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18145,7 +18145,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     {
         OutputAddr(outputFile, pMarkerInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1,pMarkerInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1, pMarkerInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18166,15 +18166,15 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPerformanceOverrideInfoINTEL* pOverrideInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pOverrideInfo:                  "); //HRW
-    OutputString(outputFile, "const VkPerformanceOverrideInfoINTEL* = "); //TEQ
+    OutputString(outputFile, "pOverrideInfo:                  "); // HRW
+    OutputString(outputFile, "const VkPerformanceOverrideInfoINTEL* = "); // TEQ
     if (pOverrideInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18183,7 +18183,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     {
         OutputAddr(outputFile, pOverrideInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pOverrideInfo.GetMetaStructPointer(), indent+1,pOverrideInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pOverrideInfo.GetMetaStructPointer(), indent+1, pOverrideInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18205,15 +18205,15 @@ void VulkanAsciiConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPerformanceConfigurationAcquireInfoINTEL* pAcquireInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAcquireInfo:                   "); //HRW
-    OutputString(outputFile, "const VkPerformanceConfigurationAcquireInfoINTEL* = "); //TEQ
+    OutputString(outputFile, "pAcquireInfo:                   "); // HRW
+    OutputString(outputFile, "const VkPerformanceConfigurationAcquireInfoINTEL* = "); // TEQ
     if (pAcquireInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18222,14 +18222,14 @@ void VulkanAsciiConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     {
         OutputAddr(outputFile, pAcquireInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAcquireInfo.GetMetaStructPointer(), indent+1,pAcquireInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAcquireInfo.GetMetaStructPointer(), indent+1, pAcquireInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPerformanceConfigurationINTEL* pConfiguration
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pConfiguration:                 "); //HRW
-    OutputString(outputFile, "VkPerformanceConfigurationINTEL* = "); //TEQ
+    OutputString(outputFile, "pConfiguration:                 "); // HRW
+    OutputString(outputFile, "VkPerformanceConfigurationINTEL* = "); // TEQ
     if (pConfiguration.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18258,15 +18258,15 @@ void VulkanAsciiConsumer::Process_vkReleasePerformanceConfigurationINTEL(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPerformanceConfigurationINTEL configuration
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "configuration:                  "); //HRW
-    OutputString(outputFile, "VkPerformanceConfigurationINTEL = "); //TEQ
+    OutputString(outputFile, "configuration:                  "); // HRW
+    OutputString(outputFile, "VkPerformanceConfigurationINTEL = "); // TEQ
     OutputAddr(outputFile, configuration); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -18287,15 +18287,15 @@ void VulkanAsciiConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
 
     // func arg: VkQueue queue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queue:                          "); //HRW
-    OutputString(outputFile, "VkQueue = "); //TEQ
+    OutputString(outputFile, "queue:                          "); // HRW
+    OutputString(outputFile, "VkQueue = "); // TEQ
     OutputAddr(outputFile, queue); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPerformanceConfigurationINTEL configuration
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "configuration:                  "); //HRW
-    OutputString(outputFile, "VkPerformanceConfigurationINTEL = "); //TEQ
+    OutputString(outputFile, "configuration:                  "); // HRW
+    OutputString(outputFile, "VkPerformanceConfigurationINTEL = "); // TEQ
     OutputAddr(outputFile, configuration); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -18317,15 +18317,15 @@ void VulkanAsciiConsumer::Process_vkGetPerformanceParameterINTEL(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkPerformanceParameterTypeINTEL parameter
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "parameter:                      "); //HRW
-    OutputString(outputFile, "VkPerformanceParameterTypeINTEL = "); //TEQ
+    OutputString(outputFile, "parameter:                      "); // HRW
+    OutputString(outputFile, "VkPerformanceParameterTypeINTEL = "); // TEQ
     OutputEnumVkPerformanceParameterTypeINTEL(outputFile, parameter); // VSA
     OutputString(outputFile, " (");
     OutputUnsignedDecimal(outputFile, parameter);
@@ -18334,8 +18334,8 @@ void VulkanAsciiConsumer::Process_vkGetPerformanceParameterINTEL(
 
     // func arg: VkPerformanceValueINTEL* pValue
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pValue:                         "); //HRW
-    OutputString(outputFile, "VkPerformanceValueINTEL* = "); //TEQ
+    OutputString(outputFile, "pValue:                         "); // HRW
+    OutputString(outputFile, "VkPerformanceValueINTEL* = "); // TEQ
     if (pValue.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18344,7 +18344,7 @@ void VulkanAsciiConsumer::Process_vkGetPerformanceParameterINTEL(
     {
         OutputAddr(outputFile, pValue.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pValue.GetMetaStructPointer(), indent+1,pValue.GetAddress()); // GLM
+        OutputStructure(outputFile, *pValue.GetMetaStructPointer(), indent+1, pValue.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18364,23 +18364,23 @@ void VulkanAsciiConsumer::Process_vkSetLocalDimmingAMD(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSwapchainKHR swapChain
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "swapChain:                      "); //HRW
-    OutputString(outputFile, "VkSwapchainKHR = "); //TEQ
+    OutputString(outputFile, "swapChain:                      "); // HRW
+    OutputString(outputFile, "VkSwapchainKHR = "); // TEQ
     OutputAddr(outputFile, swapChain); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkBool32 localDimmingEnable
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "localDimmingEnable:             "); //HRW
-    OutputString(outputFile, "VkBool32 = "); //TEQ
-    OutputSignedDecimal(outputFile, localDimmingEnable); //EQA
+    OutputString(outputFile, "localDimmingEnable:             "); // HRW
+    OutputString(outputFile, "VkBool32 = "); // TEQ
+    OutputSignedDecimal(outputFile, localDimmingEnable); // EQA
     OutputString(outputFile, "\n"); // HHS
 
     OutputString(outputFile, "\n"); // HDS
@@ -18403,15 +18403,15 @@ void VulkanAsciiConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkImagePipeSurfaceCreateInfoFUCHSIA* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkImagePipeSurfaceCreateInfoFUCHSIA* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkImagePipeSurfaceCreateInfoFUCHSIA* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18420,14 +18420,14 @@ void VulkanAsciiConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18436,14 +18436,14 @@ void VulkanAsciiConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18475,15 +18475,15 @@ void VulkanAsciiConsumer::Process_vkCreateMetalSurfaceEXT(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkMetalSurfaceCreateInfoEXT* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkMetalSurfaceCreateInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkMetalSurfaceCreateInfoEXT* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18492,14 +18492,14 @@ void VulkanAsciiConsumer::Process_vkCreateMetalSurfaceEXT(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18508,14 +18508,14 @@ void VulkanAsciiConsumer::Process_vkCreateMetalSurfaceEXT(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18543,15 +18543,15 @@ void VulkanAsciiConsumer::Process_vkGetBufferDeviceAddressEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkBufferDeviceAddressInfoEXT* pInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pInfo:                          "); //HRW
-    OutputString(outputFile, "const VkBufferDeviceAddressInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pInfo:                          "); // HRW
+    OutputString(outputFile, "const VkBufferDeviceAddressInfoEXT* = "); // TEQ
     if (pInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18560,7 +18560,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferDeviceAddressEXT(
     {
         OutputAddr(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18583,15 +18583,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixProperties
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPropertyCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPropertyCount:                 "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPropertyCount:                 "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18605,8 +18605,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixProperties
 
     // func arg: VkCooperativeMatrixPropertiesNV* pProperties
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pProperties:                    "); //HRW
-    OutputString(outputFile, "VkCooperativeMatrixPropertiesNV* = "); //TEQ
+    OutputString(outputFile, "pProperties:                    "); // HRW
+    OutputString(outputFile, "VkCooperativeMatrixPropertiesNV* = "); // TEQ
     if (pProperties.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18637,15 +18637,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSa
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pCombinationCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCombinationCount:              "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pCombinationCount:              "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pCombinationCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18659,8 +18659,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSa
 
     // func arg: VkFramebufferMixedSamplesCombinationNV* pCombinations
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCombinations:                  "); //HRW
-    OutputString(outputFile, "VkFramebufferMixedSamplesCombinationNV* = "); //TEQ
+    OutputString(outputFile, "pCombinations:                  "); // HRW
+    OutputString(outputFile, "VkFramebufferMixedSamplesCombinationNV* = "); // TEQ
     if (pCombinations.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18692,15 +18692,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
 
     // func arg: VkPhysicalDevice physicalDevice
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "physicalDevice:                 "); //HRW
-    OutputString(outputFile, "VkPhysicalDevice = "); //TEQ
+    OutputString(outputFile, "physicalDevice:                 "); // HRW
+    OutputString(outputFile, "VkPhysicalDevice = "); // TEQ
     OutputAddr(outputFile, physicalDevice); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurfaceInfo:                   "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceSurfaceInfo2KHR* = "); //TEQ
+    OutputString(outputFile, "pSurfaceInfo:                   "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceSurfaceInfo2KHR* = "); // TEQ
     if (pSurfaceInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18709,14 +18709,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     {
         OutputAddr(outputFile, pSurfaceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1,pSurfaceInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1, pSurfaceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t* pPresentModeCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPresentModeCount:              "); //HRW
-    OutputString(outputFile, "uint32_t* = "); //TEQ
+    OutputString(outputFile, "pPresentModeCount:              "); // HRW
+    OutputString(outputFile, "uint32_t* = "); // TEQ
     if (pPresentModeCount.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18730,8 +18730,8 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
 
     // func arg: VkPresentModeKHR* pPresentModes
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pPresentModes:                  "); //HRW
-    OutputString(outputFile, "VkPresentModeKHR* = "); //TEQ
+    OutputString(outputFile, "pPresentModes:                  "); // HRW
+    OutputString(outputFile, "VkPresentModeKHR* = "); // TEQ
     if (pPresentModes.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18761,15 +18761,15 @@ void VulkanAsciiConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSwapchainKHR swapchain
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "swapchain:                      "); //HRW
-    OutputString(outputFile, "VkSwapchainKHR = "); //TEQ
+    OutputString(outputFile, "swapchain:                      "); // HRW
+    OutputString(outputFile, "VkSwapchainKHR = "); // TEQ
     OutputAddr(outputFile, swapchain); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -18790,15 +18790,15 @@ void VulkanAsciiConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSwapchainKHR swapchain
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "swapchain:                      "); //HRW
-    OutputString(outputFile, "VkSwapchainKHR = "); //TEQ
+    OutputString(outputFile, "swapchain:                      "); // HRW
+    OutputString(outputFile, "VkSwapchainKHR = "); // TEQ
     OutputAddr(outputFile, swapchain); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
@@ -18820,15 +18820,15 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurfaceInfo:                   "); //HRW
-    OutputString(outputFile, "const VkPhysicalDeviceSurfaceInfo2KHR* = "); //TEQ
+    OutputString(outputFile, "pSurfaceInfo:                   "); // HRW
+    OutputString(outputFile, "const VkPhysicalDeviceSurfaceInfo2KHR* = "); // TEQ
     if (pSurfaceInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18837,14 +18837,14 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     {
         OutputAddr(outputFile, pSurfaceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1,pSurfaceInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1, pSurfaceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkDeviceGroupPresentModeFlagsKHR* pModes
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pModes:                         "); //HRW
-    OutputString(outputFile, "VkDeviceGroupPresentModeFlagsKHR* = "); //TEQ
+    OutputString(outputFile, "pModes:                         "); // HRW
+    OutputString(outputFile, "VkDeviceGroupPresentModeFlagsKHR* = "); // TEQ
     if (pModes.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18876,15 +18876,15 @@ void VulkanAsciiConsumer::Process_vkCreateHeadlessSurfaceEXT(
 
     // func arg: VkInstance instance
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "instance:                       "); //HRW
-    OutputString(outputFile, "VkInstance = "); //TEQ
+    OutputString(outputFile, "instance:                       "); // HRW
+    OutputString(outputFile, "VkInstance = "); // TEQ
     OutputAddr(outputFile, instance); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkHeadlessSurfaceCreateInfoEXT* pCreateInfo
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pCreateInfo:                    "); //HRW
-    OutputString(outputFile, "const VkHeadlessSurfaceCreateInfoEXT* = "); //TEQ
+    OutputString(outputFile, "pCreateInfo:                    "); // HRW
+    OutputString(outputFile, "const VkHeadlessSurfaceCreateInfoEXT* = "); // TEQ
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18893,14 +18893,14 @@ void VulkanAsciiConsumer::Process_vkCreateHeadlessSurfaceEXT(
     {
         OutputAddr(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        OutputStructure(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: const VkAllocationCallbacks* pAllocator
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pAllocator:                     "); //HRW
-    OutputString(outputFile, "const VkAllocationCallbacks* = "); //TEQ
+    OutputString(outputFile, "pAllocator:                     "); // HRW
+    OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18909,14 +18909,14 @@ void VulkanAsciiConsumer::Process_vkCreateHeadlessSurfaceEXT(
     {
         OutputAddr(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        OutputStructure(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkSurfaceKHR* pSurface
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "pSurface:                       "); //HRW
-    OutputString(outputFile, "VkSurfaceKHR* = "); //TEQ
+    OutputString(outputFile, "pSurface:                       "); // HRW
+    OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
     if (pSurface.GetPointer() == nullptr) // WWY
     {
         OutputString(outputFile, "NULL");
@@ -18944,22 +18944,22 @@ void VulkanAsciiConsumer::Process_vkCmdSetLineStippleEXT(
 
     // func arg: VkCommandBuffer commandBuffer
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "commandBuffer:                  "); //HRW
-    OutputString(outputFile, "VkCommandBuffer = "); //TEQ
+    OutputString(outputFile, "commandBuffer:                  "); // HRW
+    OutputString(outputFile, "VkCommandBuffer = "); // TEQ
     OutputAddr(outputFile, commandBuffer); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t lineStippleFactor
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "lineStippleFactor:              "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "lineStippleFactor:              "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, lineStippleFactor); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint16_t lineStipplePattern
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "lineStipplePattern:             "); //HRW
-    OutputString(outputFile, "uint16_t = "); //TEQ
+    OutputString(outputFile, "lineStipplePattern:             "); // HRW
+    OutputString(outputFile, "uint16_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, lineStipplePattern); // UYW
     OutputString(outputFile, "\n"); // HHS
 
@@ -18980,29 +18980,29 @@ void VulkanAsciiConsumer::Process_vkResetQueryPoolEXT(
 
     // func arg: VkDevice device
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "device:                         "); //HRW
-    OutputString(outputFile, "VkDevice = "); //TEQ
+    OutputString(outputFile, "device:                         "); // HRW
+    OutputString(outputFile, "VkDevice = "); // TEQ
     OutputAddr(outputFile, device); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: VkQueryPool queryPool
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryPool:                      "); //HRW
-    OutputString(outputFile, "VkQueryPool = "); //TEQ
+    OutputString(outputFile, "queryPool:                      "); // HRW
+    OutputString(outputFile, "VkQueryPool = "); // TEQ
     OutputAddr(outputFile, queryPool); // PAQ
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t firstQuery
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "firstQuery:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "firstQuery:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, firstQuery); // UYW
     OutputString(outputFile, "\n"); // HHS
 
     // func arg: uint32_t queryCount
     OutputIndent(outputFile, indent);
-    OutputString(outputFile, "queryCount:                     "); //HRW
-    OutputString(outputFile, "uint32_t = "); //TEQ
+    OutputString(outputFile, "queryCount:                     "); // HRW
+    OutputString(outputFile, "uint32_t = "); // TEQ
     OutputUnsignedDecimal(outputFile, queryCount); // UYW
     OutputString(outputFile, "\n"); // HHS
 

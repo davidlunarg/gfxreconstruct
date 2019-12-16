@@ -54,16 +54,16 @@ class OutputValue(BaseGenerator):
             pstruct_in = ''
             isFuncArg = True
         self.wc('    OutputIndent(outputFile, indent);')
-        self.wc('    OutputString(outputFile, "' + (value.name + ': ').ljust(32) + '"); //HRW')
+        self.wc('    OutputString(outputFile, "' + (value.name + ': ').ljust(32) + '"); // HRW')
 
         if not value.isPointer and value.isArray and value.baseType != 'char':
             # Generate code to print length of array
-            self.wc('    OutputString(outputFile, "' + value.baseType + '"); //JUQ')
+            self.wc('    OutputString(outputFile, "' + value.baseType + '"); // JUQ')
             self.wc('    OutputString(outputFile, "[");')
             if 'Count' in value.arrayLength:
                 self.wc('    OutputUnsignedDecimal(outputFile, ' + pstruct + value.arrayLength + '); // DFW')
             else:
-                self.wc('    OutputString(outputFile, "' + value.arrayLength + '"); //DFX')
+                self.wc('    OutputString(outputFile, "' + value.arrayLength + '"); // DFX')
             self.wc('    OutputString(outputFile, "] = ");')
             if not isFuncArg:
                  if self.isUnion(structName):
@@ -74,7 +74,7 @@ class OutputValue(BaseGenerator):
                      else:
                          self.wc('    OutputAddr(outputFile, pstruct_in.' + value.name + '.GetAddress()); // IYZ')
         else:
-            self.wc('    OutputString(outputFile, "' + value.fullType + ' = "); //TEQ')
+            self.wc('    OutputString(outputFile, "' + value.fullType + ' = "); // TEQ')
 
         if value.fullType == 'const char*':
             # Treat pointer to char as a string
@@ -162,11 +162,11 @@ class OutputValue(BaseGenerator):
                     self.wc('        OutputString(outputFile, " (Union)");')
                 self.wc('        OutputString(outputFile, ":");')
                 if isFuncArg:
-                    self.wc('        OutputStructure(outputFile, *' + value.name + '.GetMetaStructPointer(), indent+1,' +
+                    self.wc('        OutputStructure(outputFile, *' + value.name + '.GetMetaStructPointer(), indent+1, ' +
                                          value.name + '.GetAddress()); // GLM')
                 else:
-                    self.wc('        OutputStructure(outputFile, *' + pstruct_in + value.name + '->GetMetaStructPointer(), indent+1,' +
-                                         ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // GLN')
+                    self.wc('        OutputStructure(outputFile, *' + pstruct_in + value.name + '->GetMetaStructPointer(), indent+1, ' +
+                                         'base_addr + offsetof(' + structName + ', ' + value.name + ')); // GLN')
             else:
                 if (value.baseType == "wchar_t"):
                     if isFuncArg:
@@ -188,7 +188,7 @@ class OutputValue(BaseGenerator):
                             self.wc('        OutputScalarValue(outputFile, &pNextLocal, vinfo_' + value.name +');')
                             self.wc('        if (pNextLocal)')
                             self.wc('        {')
-                            self.wc('            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); //POX ')
+                            self.wc('            OutputPnextStruct(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); // POX ')
                             self.wc('        }')
                         else:
                             self.wc('        OutputScalarValue(outputFile, ' + pstruct_in + value.name + '->GetPointer(), vinfo_' + value.name +'); // PWT')
@@ -243,7 +243,7 @@ class OutputValue(BaseGenerator):
             elif value.baseType in ['float', 'double']:
                 self.wc('    OutputDouble(outputFile, ' + pstruct + value.name + '); // PEZ')
             elif value.baseType in ['int', 'int32_t', 'int64_t', 'VkDeviceSize', 'VkBool32']:
-                self.wc('    OutputSignedDecimal(outputFile, ' + pstruct + value.name + '); //EQA')
+                self.wc('    OutputSignedDecimal(outputFile, ' + pstruct + value.name + '); // EQA')
             else:     # 'unsigned int', 'uint32_t', 'uint64_t', 'size_t', and all others
                 self.wc('    OutputUnsignedDecimal(outputFile, ' + pstruct + value.name + '); // UYW')
         #}  For vi % cmd
