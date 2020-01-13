@@ -45,7 +45,9 @@ The GFXReconstruct components currently provided with this repository are:
    * **NOTE:** The gfxrecon-compress tool requires LZ4 and/or zlib,
      which are currently optional build dependencies.
  * The `gfxrecon-toascii` tool to output the contents of the commands in a
-   GFXReconstruct capture file.
+   GFXReconstruct capture file as ascii.
+ * The `gfxrecon-tojson` tool to output the contents of the commands in a
+   GFXReconstruct capture file as json.
 
 ## Contributing
 If you intend to contribute, the preferred work flow is for you to develop
