@@ -30,15 +30,18 @@ from vulkan_struct_decoders_forward_generator import VulkanStructDecodersForward
 from vulkan_struct_decoders_header_generator import VulkanStructDecodersHeaderGenerator,VulkanStructDecodersHeaderGeneratorOptions
 from decode_pnext_struct_generator import DecodePNextStructGenerator,DecodePNextStructGeneratorOptions
 
-# Enum to ascii utility file
+# Enum to ascii/json utility files
 from vulkan_ascii_enum_generator import VulkanAsciiEnumGenerator,VulkanAsciiEnumGeneratorOptions
+from vulkan_json_enum_generator import VulkanJsonEnumGenerator,VulkanJsonEnumGeneratorOptions
 
-# Structure to ascii utility file
+# Structure to ascii/json utility files
 from vulkan_ascii_struct_generator import VulkanAsciiStructGenerator,VulkanAsciiStructGeneratorOptions
+from vulkan_json_struct_generator import VulkanJsonStructGenerator,VulkanJsonStructGeneratorOptions
 
 # Consumers
 from vulkan_consumer_header_generator import VulkanConsumerHeaderGenerator,VulkanConsumerHeaderGeneratorOptions
 from vulkan_ascii_consumer_body_generator import VulkanAsciiConsumerBodyGenerator,VulkanAsciiConsumerBodyGeneratorOptions
+from vulkan_json_consumer_body_generator import VulkanJsonConsumerBodyGenerator,VulkanJsonConsumerBodyGeneratorOptions
 from vulkan_replay_consumer_body_generator import VulkanReplayConsumerBodyGenerator,VulkanReplayConsumerBodyGeneratorOptions
 from vulkan_struct_handle_mappers_header_generator import VulkanStructHandleMappersHeaderGenerator,VulkanStructHandleMappersHeaderGeneratorOptions
 from vulkan_struct_handle_mappers_body_generator import VulkanStructHandleMappersBodyGenerator,VulkanStructHandleMappersBodyGeneratorOptions
@@ -257,6 +260,45 @@ def makeGenOpts(args):
         protectFeature    = False)
     ]
 
+    genOpts['generated_vulkan_json_struct_util.h'] = [
+        VulkanJsonStructGenerator,
+        VulkanJsonStructGeneratorOptions(
+        filename          = 'generated_vulkan_json_struct_util.h',
+        directory         = directory,
+        blacklists        = blacklists,
+        platformTypes     = platformTypes,
+        prefixText        = prefixStrings + vkPrefixStrings,
+        protectFile       = True,
+        protectFeature    = False)
+    ]
+
+    genOpts['generated_vulkan_json_enum_util.h'] = [
+        VulkanJsonEnumGenerator,
+        VulkanJsonEnumGeneratorOptions(
+        filename          = 'generated_vulkan_json_enum_util.h',
+        directory         = directory,
+        blacklists        = blacklists,
+        platformTypes     = platformTypes,
+        prefixText        = prefixStrings + vkPrefixStrings,
+        protectFile       = True,
+        protectFeature    = False)
+    ]
+
+    genOpts['generated_vulkan_json_consumer.h'] = [
+        VulkanConsumerHeaderGenerator,
+        VulkanConsumerHeaderGeneratorOptions(
+        className         = 'VulkanJsonConsumer',
+        baseClassHeader   = 'vulkan_json_consumer_base.h',
+        isOverride        = True,
+        filename          = 'generated_vulkan_json_consumer.h',
+        directory         = directory,
+        blacklists        = blacklists,
+        platformTypes     = platformTypes,
+        prefixText        = prefixStrings + vkPrefixStrings,
+        protectFile       = True,
+        protectFeature    = False)
+    ]
+
     genOpts['generated_vulkan_replay_consumer.h'] = [
         VulkanConsumerHeaderGenerator,
         VulkanConsumerHeaderGeneratorOptions(
@@ -277,6 +319,18 @@ def makeGenOpts(args):
         VulkanAsciiConsumerBodyGenerator,
         VulkanAsciiConsumerBodyGeneratorOptions(
         filename          = 'generated_vulkan_ascii_consumer.cpp',
+        directory         = directory,
+        blacklists        = blacklists,
+        platformTypes     = platformTypes,
+        prefixText        = prefixStrings + vkPrefixStrings,
+        protectFile       = False,
+        protectFeature    = False)
+    ]
+
+    genOpts['generated_vulkan_json_consumer.cpp'] = [
+        VulkanJsonConsumerBodyGenerator,
+        VulkanJsonConsumerBodyGeneratorOptions(
+        filename          = 'generated_vulkan_json_consumer.cpp',
         directory         = directory,
         blacklists        = blacklists,
         platformTypes     = platformTypes,

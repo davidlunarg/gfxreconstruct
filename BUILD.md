@@ -39,6 +39,7 @@ organized with the following file structure:
 | | compress | Tool to compress or decompress GFXR capture files. |
 | | replay | Tool to replay GFXR capture files. |
 | | toascii | Tool to convert GFXR capture files to an ASCII listing of API calls. |
+| | tojson | Tool to convert GFXR capture files to json. |
 
 ## Repository Set-Up
 ### Download the Repository
