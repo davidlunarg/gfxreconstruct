@@ -29,7 +29,7 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
-void EnumToStringVkPipelineCacheHeaderVersion(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPipelineCacheHeaderVersionJson(std::string* out, uint32_t enum_uint32)
 {
     VkPipelineCacheHeaderVersion e = static_cast<VkPipelineCacheHeaderVersion>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -44,7 +44,7 @@ void EnumToStringVkPipelineCacheHeaderVersion(std::string* out, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkResult(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkResultJson(std::string* out, uint32_t enum_uint32)
 {
     VkResult e = static_cast<VkResult>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -152,7 +152,7 @@ void EnumToStringVkResult(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkStructureType(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkStructureTypeJson(std::string* out, uint32_t enum_uint32)
 {
     VkStructureType e = static_cast<VkStructureType>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -1307,7 +1307,7 @@ void EnumToStringVkStructureType(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSystemAllocationScope(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSystemAllocationScopeJson(std::string* out, uint32_t enum_uint32)
 {
     VkSystemAllocationScope e = static_cast<VkSystemAllocationScope>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -1334,7 +1334,7 @@ void EnumToStringVkSystemAllocationScope(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkInternalAllocationType(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkInternalAllocationTypeJson(std::string* out, uint32_t enum_uint32)
 {
     VkInternalAllocationType e = static_cast<VkInternalAllocationType>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -1349,7 +1349,7 @@ void EnumToStringVkInternalAllocationType(std::string* out, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkFormat(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkFormatJson(std::string* out, uint32_t enum_uint32)
 {
     VkFormat e = static_cast<VkFormat>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2084,7 +2084,7 @@ void EnumToStringVkFormat(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkFormatFeatureFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkFormatFeatureFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkFormatFeatureFlagBits e = static_cast<VkFormatFeatureFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2171,7 +2171,7 @@ void EnumToStringVkFormatFeatureFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageType(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkImageTypeJson(std::string* out, uint32_t enum_uint32)
 {
     VkImageType e = static_cast<VkImageType>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2192,7 +2192,7 @@ void EnumToStringVkImageType(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageTiling(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkImageTilingJson(std::string* out, uint32_t enum_uint32)
 {
     VkImageTiling e = static_cast<VkImageTiling>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2213,7 +2213,7 @@ void EnumToStringVkImageTiling(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageUsageFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkImageUsageFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkImageUsageFlagBits e = static_cast<VkImageUsageFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2255,7 +2255,7 @@ void EnumToStringVkImageUsageFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkImageCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkImageCreateFlagBits e = static_cast<VkImageCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2312,7 +2312,7 @@ void EnumToStringVkImageCreateFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSampleCountFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSampleCountFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkSampleCountFlagBits e = static_cast<VkSampleCountFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2345,7 +2345,7 @@ void EnumToStringVkSampleCountFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkPhysicalDeviceType(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPhysicalDeviceTypeJson(std::string* out, uint32_t enum_uint32)
 {
     VkPhysicalDeviceType e = static_cast<VkPhysicalDeviceType>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2372,7 +2372,7 @@ void EnumToStringVkPhysicalDeviceType(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkQueueFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkQueueFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkQueueFlagBits e = static_cast<VkQueueFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2399,7 +2399,7 @@ void EnumToStringVkQueueFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkMemoryPropertyFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkMemoryPropertyFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkMemoryPropertyFlagBits e = static_cast<VkMemoryPropertyFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2435,7 +2435,7 @@ void EnumToStringVkMemoryPropertyFlagBits(std::string* out, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkMemoryHeapFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkMemoryHeapFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkMemoryHeapFlagBits e = static_cast<VkMemoryHeapFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2453,7 +2453,7 @@ void EnumToStringVkMemoryHeapFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDeviceQueueCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDeviceQueueCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkDeviceQueueCreateFlagBits e = static_cast<VkDeviceQueueCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2468,7 +2468,7 @@ void EnumToStringVkDeviceQueueCreateFlagBits(std::string* out, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkPipelineStageFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPipelineStageFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkPipelineStageFlagBits e = static_cast<VkPipelineStageFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2558,7 +2558,7 @@ void EnumToStringVkPipelineStageFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageAspectFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkImageAspectFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkImageAspectFlagBits e = static_cast<VkImageAspectFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2603,7 +2603,7 @@ void EnumToStringVkImageAspectFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSparseImageFormatFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSparseImageFormatFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkSparseImageFormatFlagBits e = static_cast<VkSparseImageFormatFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2624,7 +2624,7 @@ void EnumToStringVkSparseImageFormatFlagBits(std::string* out, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkSparseMemoryBindFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSparseMemoryBindFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkSparseMemoryBindFlagBits e = static_cast<VkSparseMemoryBindFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2639,7 +2639,7 @@ void EnumToStringVkSparseMemoryBindFlagBits(std::string* out, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkFenceCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkFenceCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkFenceCreateFlagBits e = static_cast<VkFenceCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2654,7 +2654,7 @@ void EnumToStringVkFenceCreateFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkQueryType(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkQueryTypeJson(std::string* out, uint32_t enum_uint32)
 {
     VkQueryType e = static_cast<VkQueryType>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2684,7 +2684,7 @@ void EnumToStringVkQueryType(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkQueryPipelineStatisticFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkQueryPipelineStatisticFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkQueryPipelineStatisticFlagBits e = static_cast<VkQueryPipelineStatisticFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2729,7 +2729,7 @@ void EnumToStringVkQueryPipelineStatisticFlagBits(std::string* out, uint32_t enu
     }
 }
 
-void EnumToStringVkQueryResultFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkQueryResultFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkQueryResultFlagBits e = static_cast<VkQueryResultFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2753,7 +2753,7 @@ void EnumToStringVkQueryResultFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkBufferCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkBufferCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkBufferCreateFlagBits e = static_cast<VkBufferCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2780,7 +2780,7 @@ void EnumToStringVkBufferCreateFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkBufferUsageFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkBufferUsageFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkBufferUsageFlagBits e = static_cast<VkBufferUsageFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2834,7 +2834,7 @@ void EnumToStringVkBufferUsageFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSharingMode(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSharingModeJson(std::string* out, uint32_t enum_uint32)
 {
     VkSharingMode e = static_cast<VkSharingMode>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2852,7 +2852,7 @@ void EnumToStringVkSharingMode(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageLayout(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkImageLayoutJson(std::string* out, uint32_t enum_uint32)
 {
     VkImageLayout e = static_cast<VkImageLayout>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2909,7 +2909,7 @@ void EnumToStringVkImageLayout(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageViewCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkImageViewCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkImageViewCreateFlagBits e = static_cast<VkImageViewCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2924,7 +2924,7 @@ void EnumToStringVkImageViewCreateFlagBits(std::string* out, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkImageViewType(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkImageViewTypeJson(std::string* out, uint32_t enum_uint32)
 {
     VkImageViewType e = static_cast<VkImageViewType>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2957,7 +2957,7 @@ void EnumToStringVkImageViewType(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkComponentSwizzle(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkComponentSwizzleJson(std::string* out, uint32_t enum_uint32)
 {
     VkComponentSwizzle e = static_cast<VkComponentSwizzle>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -2990,14 +2990,14 @@ void EnumToStringVkComponentSwizzle(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkShaderModuleCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkShaderModuleCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkShaderModuleCreateFlagBits e = static_cast<VkShaderModuleCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
     *out += "UNKNOWN";
 }
 
-void EnumToStringVkPipelineCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPipelineCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkPipelineCreateFlagBits e = static_cast<VkPipelineCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3033,7 +3033,7 @@ void EnumToStringVkPipelineCreateFlagBits(std::string* out, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkPipelineShaderStageCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPipelineShaderStageCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkPipelineShaderStageCreateFlagBits e = static_cast<VkPipelineShaderStageCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3051,7 +3051,7 @@ void EnumToStringVkPipelineShaderStageCreateFlagBits(std::string* out, uint32_t 
     }
 }
 
-void EnumToStringVkShaderStageFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkShaderStageFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkShaderStageFlagBits e = static_cast<VkShaderStageFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3111,7 +3111,7 @@ void EnumToStringVkShaderStageFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkVertexInputRate(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkVertexInputRateJson(std::string* out, uint32_t enum_uint32)
 {
     VkVertexInputRate e = static_cast<VkVertexInputRate>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3129,7 +3129,7 @@ void EnumToStringVkVertexInputRate(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkPrimitiveTopology(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPrimitiveTopologyJson(std::string* out, uint32_t enum_uint32)
 {
     VkPrimitiveTopology e = static_cast<VkPrimitiveTopology>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3174,7 +3174,7 @@ void EnumToStringVkPrimitiveTopology(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkPolygonMode(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPolygonModeJson(std::string* out, uint32_t enum_uint32)
 {
     VkPolygonMode e = static_cast<VkPolygonMode>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3198,7 +3198,7 @@ void EnumToStringVkPolygonMode(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCullModeFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkCullModeFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkCullModeFlagBits e = static_cast<VkCullModeFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3222,7 +3222,7 @@ void EnumToStringVkCullModeFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkFrontFace(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkFrontFaceJson(std::string* out, uint32_t enum_uint32)
 {
     VkFrontFace e = static_cast<VkFrontFace>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3240,7 +3240,7 @@ void EnumToStringVkFrontFace(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCompareOp(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkCompareOpJson(std::string* out, uint32_t enum_uint32)
 {
     VkCompareOp e = static_cast<VkCompareOp>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3276,7 +3276,7 @@ void EnumToStringVkCompareOp(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkStencilOp(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkStencilOpJson(std::string* out, uint32_t enum_uint32)
 {
     VkStencilOp e = static_cast<VkStencilOp>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3312,7 +3312,7 @@ void EnumToStringVkStencilOp(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkLogicOp(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkLogicOpJson(std::string* out, uint32_t enum_uint32)
 {
     VkLogicOp e = static_cast<VkLogicOp>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3372,7 +3372,7 @@ void EnumToStringVkLogicOp(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkBlendFactor(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkBlendFactorJson(std::string* out, uint32_t enum_uint32)
 {
     VkBlendFactor e = static_cast<VkBlendFactor>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3441,7 +3441,7 @@ void EnumToStringVkBlendFactor(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkBlendOp(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkBlendOpJson(std::string* out, uint32_t enum_uint32)
 {
     VkBlendOp e = static_cast<VkBlendOp>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3606,7 +3606,7 @@ void EnumToStringVkBlendOp(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkColorComponentFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkColorComponentFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkColorComponentFlagBits e = static_cast<VkColorComponentFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3630,7 +3630,7 @@ void EnumToStringVkColorComponentFlagBits(std::string* out, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkDynamicState(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDynamicStateJson(std::string* out, uint32_t enum_uint32)
 {
     VkDynamicState e = static_cast<VkDynamicState>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3690,7 +3690,7 @@ void EnumToStringVkDynamicState(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSamplerCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSamplerCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkSamplerCreateFlagBits e = static_cast<VkSamplerCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3708,7 +3708,7 @@ void EnumToStringVkSamplerCreateFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkFilter(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkFilterJson(std::string* out, uint32_t enum_uint32)
 {
     VkFilter e = static_cast<VkFilter>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3729,7 +3729,7 @@ void EnumToStringVkFilter(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSamplerMipmapMode(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSamplerMipmapModeJson(std::string* out, uint32_t enum_uint32)
 {
     VkSamplerMipmapMode e = static_cast<VkSamplerMipmapMode>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3747,7 +3747,7 @@ void EnumToStringVkSamplerMipmapMode(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSamplerAddressMode(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSamplerAddressModeJson(std::string* out, uint32_t enum_uint32)
 {
     VkSamplerAddressMode e = static_cast<VkSamplerAddressMode>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3774,7 +3774,7 @@ void EnumToStringVkSamplerAddressMode(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkBorderColor(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkBorderColorJson(std::string* out, uint32_t enum_uint32)
 {
     VkBorderColor e = static_cast<VkBorderColor>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3804,7 +3804,7 @@ void EnumToStringVkBorderColor(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDescriptorSetLayoutCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDescriptorSetLayoutCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkDescriptorSetLayoutCreateFlagBits e = static_cast<VkDescriptorSetLayoutCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3822,7 +3822,7 @@ void EnumToStringVkDescriptorSetLayoutCreateFlagBits(std::string* out, uint32_t 
     }
 }
 
-void EnumToStringVkDescriptorType(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDescriptorTypeJson(std::string* out, uint32_t enum_uint32)
 {
     VkDescriptorType e = static_cast<VkDescriptorType>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3873,7 +3873,7 @@ void EnumToStringVkDescriptorType(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDescriptorPoolCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDescriptorPoolCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkDescriptorPoolCreateFlagBits e = static_cast<VkDescriptorPoolCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3891,7 +3891,7 @@ void EnumToStringVkDescriptorPoolCreateFlagBits(std::string* out, uint32_t enum_
     }
 }
 
-void EnumToStringVkFramebufferCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkFramebufferCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkFramebufferCreateFlagBits e = static_cast<VkFramebufferCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3906,14 +3906,14 @@ void EnumToStringVkFramebufferCreateFlagBits(std::string* out, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkRenderPassCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkRenderPassCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkRenderPassCreateFlagBits e = static_cast<VkRenderPassCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
     *out += "UNKNOWN";
 }
 
-void EnumToStringVkAttachmentDescriptionFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkAttachmentDescriptionFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkAttachmentDescriptionFlagBits e = static_cast<VkAttachmentDescriptionFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3928,7 +3928,7 @@ void EnumToStringVkAttachmentDescriptionFlagBits(std::string* out, uint32_t enum
     }
 }
 
-void EnumToStringVkAttachmentLoadOp(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkAttachmentLoadOpJson(std::string* out, uint32_t enum_uint32)
 {
     VkAttachmentLoadOp e = static_cast<VkAttachmentLoadOp>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3949,7 +3949,7 @@ void EnumToStringVkAttachmentLoadOp(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkAttachmentStoreOp(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkAttachmentStoreOpJson(std::string* out, uint32_t enum_uint32)
 {
     VkAttachmentStoreOp e = static_cast<VkAttachmentStoreOp>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3967,7 +3967,7 @@ void EnumToStringVkAttachmentStoreOp(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSubpassDescriptionFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSubpassDescriptionFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkSubpassDescriptionFlagBits e = static_cast<VkSubpassDescriptionFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -3985,7 +3985,7 @@ void EnumToStringVkSubpassDescriptionFlagBits(std::string* out, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkPipelineBindPoint(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPipelineBindPointJson(std::string* out, uint32_t enum_uint32)
 {
     VkPipelineBindPoint e = static_cast<VkPipelineBindPoint>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4006,7 +4006,7 @@ void EnumToStringVkPipelineBindPoint(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkAccessFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkAccessFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkAccessFlagBits e = static_cast<VkAccessFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4102,7 +4102,7 @@ void EnumToStringVkAccessFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDependencyFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDependencyFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkDependencyFlagBits e = static_cast<VkDependencyFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4123,7 +4123,7 @@ void EnumToStringVkDependencyFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCommandPoolCreateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkCommandPoolCreateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkCommandPoolCreateFlagBits e = static_cast<VkCommandPoolCreateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4144,7 +4144,7 @@ void EnumToStringVkCommandPoolCreateFlagBits(std::string* out, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkCommandPoolResetFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkCommandPoolResetFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkCommandPoolResetFlagBits e = static_cast<VkCommandPoolResetFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4159,7 +4159,7 @@ void EnumToStringVkCommandPoolResetFlagBits(std::string* out, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkCommandBufferLevel(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkCommandBufferLevelJson(std::string* out, uint32_t enum_uint32)
 {
     VkCommandBufferLevel e = static_cast<VkCommandBufferLevel>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4177,7 +4177,7 @@ void EnumToStringVkCommandBufferLevel(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCommandBufferUsageFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkCommandBufferUsageFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkCommandBufferUsageFlagBits e = static_cast<VkCommandBufferUsageFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4198,7 +4198,7 @@ void EnumToStringVkCommandBufferUsageFlagBits(std::string* out, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkQueryControlFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkQueryControlFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkQueryControlFlagBits e = static_cast<VkQueryControlFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4213,7 +4213,7 @@ void EnumToStringVkQueryControlFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCommandBufferResetFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkCommandBufferResetFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkCommandBufferResetFlagBits e = static_cast<VkCommandBufferResetFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4228,7 +4228,7 @@ void EnumToStringVkCommandBufferResetFlagBits(std::string* out, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkStencilFaceFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkStencilFaceFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkStencilFaceFlagBits e = static_cast<VkStencilFaceFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4249,7 +4249,7 @@ void EnumToStringVkStencilFaceFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkIndexType(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkIndexTypeJson(std::string* out, uint32_t enum_uint32)
 {
     VkIndexType e = static_cast<VkIndexType>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4273,7 +4273,7 @@ void EnumToStringVkIndexType(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSubpassContents(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSubpassContentsJson(std::string* out, uint32_t enum_uint32)
 {
     VkSubpassContents e = static_cast<VkSubpassContents>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4291,7 +4291,7 @@ void EnumToStringVkSubpassContents(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkObjectType(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkObjectTypeJson(std::string* out, uint32_t enum_uint32)
 {
     VkObjectType e = static_cast<VkObjectType>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4420,7 +4420,7 @@ void EnumToStringVkObjectType(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkVendorId(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkVendorIdJson(std::string* out, uint32_t enum_uint32)
 {
     VkVendorId e = static_cast<VkVendorId>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4441,7 +4441,7 @@ void EnumToStringVkVendorId(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSubgroupFeatureFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSubgroupFeatureFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkSubgroupFeatureFlagBits e = static_cast<VkSubgroupFeatureFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4480,7 +4480,7 @@ void EnumToStringVkSubgroupFeatureFlagBits(std::string* out, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkPeerMemoryFeatureFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPeerMemoryFeatureFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkPeerMemoryFeatureFlagBits e = static_cast<VkPeerMemoryFeatureFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4504,7 +4504,7 @@ void EnumToStringVkPeerMemoryFeatureFlagBits(std::string* out, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkMemoryAllocateFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkMemoryAllocateFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkMemoryAllocateFlagBits e = static_cast<VkMemoryAllocateFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4519,7 +4519,7 @@ void EnumToStringVkMemoryAllocateFlagBits(std::string* out, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkPointClippingBehavior(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPointClippingBehaviorJson(std::string* out, uint32_t enum_uint32)
 {
     VkPointClippingBehavior e = static_cast<VkPointClippingBehavior>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4537,7 +4537,7 @@ void EnumToStringVkPointClippingBehavior(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkTessellationDomainOrigin(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkTessellationDomainOriginJson(std::string* out, uint32_t enum_uint32)
 {
     VkTessellationDomainOrigin e = static_cast<VkTessellationDomainOrigin>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4555,7 +4555,7 @@ void EnumToStringVkTessellationDomainOrigin(std::string* out, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkSamplerYcbcrModelConversion(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSamplerYcbcrModelConversionJson(std::string* out, uint32_t enum_uint32)
 {
     VkSamplerYcbcrModelConversion e = static_cast<VkSamplerYcbcrModelConversion>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4582,7 +4582,7 @@ void EnumToStringVkSamplerYcbcrModelConversion(std::string* out, uint32_t enum_u
     }
 }
 
-void EnumToStringVkSamplerYcbcrRange(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSamplerYcbcrRangeJson(std::string* out, uint32_t enum_uint32)
 {
     VkSamplerYcbcrRange e = static_cast<VkSamplerYcbcrRange>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4600,7 +4600,7 @@ void EnumToStringVkSamplerYcbcrRange(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkChromaLocation(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkChromaLocationJson(std::string* out, uint32_t enum_uint32)
 {
     VkChromaLocation e = static_cast<VkChromaLocation>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4618,7 +4618,7 @@ void EnumToStringVkChromaLocation(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDescriptorUpdateTemplateType(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDescriptorUpdateTemplateTypeJson(std::string* out, uint32_t enum_uint32)
 {
     VkDescriptorUpdateTemplateType e = static_cast<VkDescriptorUpdateTemplateType>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4636,7 +4636,7 @@ void EnumToStringVkDescriptorUpdateTemplateType(std::string* out, uint32_t enum_
     }
 }
 
-void EnumToStringVkExternalMemoryHandleTypeFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkExternalMemoryHandleTypeFlagBits e = static_cast<VkExternalMemoryHandleTypeFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4681,7 +4681,7 @@ void EnumToStringVkExternalMemoryHandleTypeFlagBits(std::string* out, uint32_t e
     }
 }
 
-void EnumToStringVkExternalMemoryFeatureFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkExternalMemoryFeatureFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkExternalMemoryFeatureFlagBits e = static_cast<VkExternalMemoryFeatureFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4702,7 +4702,7 @@ void EnumToStringVkExternalMemoryFeatureFlagBits(std::string* out, uint32_t enum
     }
 }
 
-void EnumToStringVkExternalFenceHandleTypeFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkExternalFenceHandleTypeFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkExternalFenceHandleTypeFlagBits e = static_cast<VkExternalFenceHandleTypeFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4726,7 +4726,7 @@ void EnumToStringVkExternalFenceHandleTypeFlagBits(std::string* out, uint32_t en
     }
 }
 
-void EnumToStringVkExternalFenceFeatureFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkExternalFenceFeatureFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkExternalFenceFeatureFlagBits e = static_cast<VkExternalFenceFeatureFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4744,7 +4744,7 @@ void EnumToStringVkExternalFenceFeatureFlagBits(std::string* out, uint32_t enum_
     }
 }
 
-void EnumToStringVkFenceImportFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkFenceImportFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkFenceImportFlagBits e = static_cast<VkFenceImportFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4759,7 +4759,7 @@ void EnumToStringVkFenceImportFlagBits(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSemaphoreImportFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSemaphoreImportFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkSemaphoreImportFlagBits e = static_cast<VkSemaphoreImportFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4774,7 +4774,7 @@ void EnumToStringVkSemaphoreImportFlagBits(std::string* out, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkExternalSemaphoreHandleTypeFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkExternalSemaphoreHandleTypeFlagBits e = static_cast<VkExternalSemaphoreHandleTypeFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4801,7 +4801,7 @@ void EnumToStringVkExternalSemaphoreHandleTypeFlagBits(std::string* out, uint32_
     }
 }
 
-void EnumToStringVkExternalSemaphoreFeatureFlagBits(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkExternalSemaphoreFeatureFlagBitsJson(std::string* out, uint32_t enum_uint32)
 {
     VkExternalSemaphoreFeatureFlagBits e = static_cast<VkExternalSemaphoreFeatureFlagBits>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4819,7 +4819,7 @@ void EnumToStringVkExternalSemaphoreFeatureFlagBits(std::string* out, uint32_t e
     }
 }
 
-void EnumToStringVkSurfaceTransformFlagBitsKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSurfaceTransformFlagBitsKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkSurfaceTransformFlagBitsKHR e = static_cast<VkSurfaceTransformFlagBitsKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4858,7 +4858,7 @@ void EnumToStringVkSurfaceTransformFlagBitsKHR(std::string* out, uint32_t enum_u
     }
 }
 
-void EnumToStringVkCompositeAlphaFlagBitsKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkCompositeAlphaFlagBitsKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkCompositeAlphaFlagBitsKHR e = static_cast<VkCompositeAlphaFlagBitsKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4882,7 +4882,7 @@ void EnumToStringVkCompositeAlphaFlagBitsKHR(std::string* out, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkColorSpaceKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkColorSpaceKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkColorSpaceKHR e = static_cast<VkColorSpaceKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4942,7 +4942,7 @@ void EnumToStringVkColorSpaceKHR(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkPresentModeKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPresentModeKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkPresentModeKHR e = static_cast<VkPresentModeKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4972,7 +4972,7 @@ void EnumToStringVkPresentModeKHR(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSwapchainCreateFlagBitsKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSwapchainCreateFlagBitsKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkSwapchainCreateFlagBitsKHR e = static_cast<VkSwapchainCreateFlagBitsKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -4993,7 +4993,7 @@ void EnumToStringVkSwapchainCreateFlagBitsKHR(std::string* out, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkDeviceGroupPresentModeFlagBitsKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkDeviceGroupPresentModeFlagBitsKHR e = static_cast<VkDeviceGroupPresentModeFlagBitsKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5017,7 +5017,7 @@ void EnumToStringVkDeviceGroupPresentModeFlagBitsKHR(std::string* out, uint32_t 
     }
 }
 
-void EnumToStringVkDisplayPlaneAlphaFlagBitsKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDisplayPlaneAlphaFlagBitsKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkDisplayPlaneAlphaFlagBitsKHR e = static_cast<VkDisplayPlaneAlphaFlagBitsKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5041,7 +5041,7 @@ void EnumToStringVkDisplayPlaneAlphaFlagBitsKHR(std::string* out, uint32_t enum_
     }
 }
 
-void EnumToStringVkDriverIdKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDriverIdKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkDriverIdKHR e = static_cast<VkDriverIdKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5089,7 +5089,7 @@ void EnumToStringVkDriverIdKHR(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkShaderFloatControlsIndependenceKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkShaderFloatControlsIndependenceKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkShaderFloatControlsIndependenceKHR e = static_cast<VkShaderFloatControlsIndependenceKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5110,7 +5110,7 @@ void EnumToStringVkShaderFloatControlsIndependenceKHR(std::string* out, uint32_t
     }
 }
 
-void EnumToStringVkResolveModeFlagBitsKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkResolveModeFlagBitsKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkResolveModeFlagBitsKHR e = static_cast<VkResolveModeFlagBitsKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5137,7 +5137,7 @@ void EnumToStringVkResolveModeFlagBitsKHR(std::string* out, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkSemaphoreTypeKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSemaphoreTypeKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkSemaphoreTypeKHR e = static_cast<VkSemaphoreTypeKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5155,7 +5155,7 @@ void EnumToStringVkSemaphoreTypeKHR(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSemaphoreWaitFlagBitsKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSemaphoreWaitFlagBitsKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkSemaphoreWaitFlagBitsKHR e = static_cast<VkSemaphoreWaitFlagBitsKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5170,7 +5170,7 @@ void EnumToStringVkSemaphoreWaitFlagBitsKHR(std::string* out, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkPipelineExecutableStatisticFormatKHR(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPipelineExecutableStatisticFormatKHRJson(std::string* out, uint32_t enum_uint32)
 {
     VkPipelineExecutableStatisticFormatKHR e = static_cast<VkPipelineExecutableStatisticFormatKHR>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5194,7 +5194,7 @@ void EnumToStringVkPipelineExecutableStatisticFormatKHR(std::string* out, uint32
     }
 }
 
-void EnumToStringVkDebugReportObjectTypeEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDebugReportObjectTypeEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkDebugReportObjectTypeEXT e = static_cast<VkDebugReportObjectTypeEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5317,7 +5317,7 @@ void EnumToStringVkDebugReportObjectTypeEXT(std::string* out, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkDebugReportFlagBitsEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDebugReportFlagBitsEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkDebugReportFlagBitsEXT e = static_cast<VkDebugReportFlagBitsEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5344,7 +5344,7 @@ void EnumToStringVkDebugReportFlagBitsEXT(std::string* out, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkRasterizationOrderAMD(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkRasterizationOrderAMDJson(std::string* out, uint32_t enum_uint32)
 {
     VkRasterizationOrderAMD e = static_cast<VkRasterizationOrderAMD>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5362,7 +5362,7 @@ void EnumToStringVkRasterizationOrderAMD(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkShaderInfoTypeAMD(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkShaderInfoTypeAMDJson(std::string* out, uint32_t enum_uint32)
 {
     VkShaderInfoTypeAMD e = static_cast<VkShaderInfoTypeAMD>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5383,7 +5383,7 @@ void EnumToStringVkShaderInfoTypeAMD(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkExternalMemoryHandleTypeFlagBitsNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkExternalMemoryHandleTypeFlagBitsNV e = static_cast<VkExternalMemoryHandleTypeFlagBitsNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5407,7 +5407,7 @@ void EnumToStringVkExternalMemoryHandleTypeFlagBitsNV(std::string* out, uint32_t
     }
 }
 
-void EnumToStringVkExternalMemoryFeatureFlagBitsNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkExternalMemoryFeatureFlagBitsNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkExternalMemoryFeatureFlagBitsNV e = static_cast<VkExternalMemoryFeatureFlagBitsNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5428,7 +5428,7 @@ void EnumToStringVkExternalMemoryFeatureFlagBitsNV(std::string* out, uint32_t en
     }
 }
 
-void EnumToStringVkValidationCheckEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkValidationCheckEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkValidationCheckEXT e = static_cast<VkValidationCheckEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5446,7 +5446,7 @@ void EnumToStringVkValidationCheckEXT(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkConditionalRenderingFlagBitsEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkConditionalRenderingFlagBitsEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkConditionalRenderingFlagBitsEXT e = static_cast<VkConditionalRenderingFlagBitsEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5461,7 +5461,7 @@ void EnumToStringVkConditionalRenderingFlagBitsEXT(std::string* out, uint32_t en
     }
 }
 
-void EnumToStringVkIndirectCommandsLayoutUsageFlagBitsNVX(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkIndirectCommandsLayoutUsageFlagBitsNVXJson(std::string* out, uint32_t enum_uint32)
 {
     VkIndirectCommandsLayoutUsageFlagBitsNVX e = static_cast<VkIndirectCommandsLayoutUsageFlagBitsNVX>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5485,7 +5485,7 @@ void EnumToStringVkIndirectCommandsLayoutUsageFlagBitsNVX(std::string* out, uint
     }
 }
 
-void EnumToStringVkObjectEntryUsageFlagBitsNVX(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkObjectEntryUsageFlagBitsNVXJson(std::string* out, uint32_t enum_uint32)
 {
     VkObjectEntryUsageFlagBitsNVX e = static_cast<VkObjectEntryUsageFlagBitsNVX>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5503,7 +5503,7 @@ void EnumToStringVkObjectEntryUsageFlagBitsNVX(std::string* out, uint32_t enum_u
     }
 }
 
-void EnumToStringVkIndirectCommandsTokenTypeNVX(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkIndirectCommandsTokenTypeNVXJson(std::string* out, uint32_t enum_uint32)
 {
     VkIndirectCommandsTokenTypeNVX e = static_cast<VkIndirectCommandsTokenTypeNVX>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5539,7 +5539,7 @@ void EnumToStringVkIndirectCommandsTokenTypeNVX(std::string* out, uint32_t enum_
     }
 }
 
-void EnumToStringVkObjectEntryTypeNVX(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkObjectEntryTypeNVXJson(std::string* out, uint32_t enum_uint32)
 {
     VkObjectEntryTypeNVX e = static_cast<VkObjectEntryTypeNVX>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5566,7 +5566,7 @@ void EnumToStringVkObjectEntryTypeNVX(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSurfaceCounterFlagBitsEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSurfaceCounterFlagBitsEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkSurfaceCounterFlagBitsEXT e = static_cast<VkSurfaceCounterFlagBitsEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5581,7 +5581,7 @@ void EnumToStringVkSurfaceCounterFlagBitsEXT(std::string* out, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkDisplayPowerStateEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDisplayPowerStateEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkDisplayPowerStateEXT e = static_cast<VkDisplayPowerStateEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5602,7 +5602,7 @@ void EnumToStringVkDisplayPowerStateEXT(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDeviceEventTypeEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDeviceEventTypeEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkDeviceEventTypeEXT e = static_cast<VkDeviceEventTypeEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5617,7 +5617,7 @@ void EnumToStringVkDeviceEventTypeEXT(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDisplayEventTypeEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDisplayEventTypeEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkDisplayEventTypeEXT e = static_cast<VkDisplayEventTypeEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5632,7 +5632,7 @@ void EnumToStringVkDisplayEventTypeEXT(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkViewportCoordinateSwizzleNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkViewportCoordinateSwizzleNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkViewportCoordinateSwizzleNV e = static_cast<VkViewportCoordinateSwizzleNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5668,7 +5668,7 @@ void EnumToStringVkViewportCoordinateSwizzleNV(std::string* out, uint32_t enum_u
     }
 }
 
-void EnumToStringVkDiscardRectangleModeEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDiscardRectangleModeEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkDiscardRectangleModeEXT e = static_cast<VkDiscardRectangleModeEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5686,7 +5686,7 @@ void EnumToStringVkDiscardRectangleModeEXT(std::string* out, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkConservativeRasterizationModeEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkConservativeRasterizationModeEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkConservativeRasterizationModeEXT e = static_cast<VkConservativeRasterizationModeEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5707,7 +5707,7 @@ void EnumToStringVkConservativeRasterizationModeEXT(std::string* out, uint32_t e
     }
 }
 
-void EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkDebugUtilsMessageSeverityFlagBitsEXT e = static_cast<VkDebugUtilsMessageSeverityFlagBitsEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5731,7 +5731,7 @@ void EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXT(std::string* out, uint32
     }
 }
 
-void EnumToStringVkDebugUtilsMessageTypeFlagBitsEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDebugUtilsMessageTypeFlagBitsEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkDebugUtilsMessageTypeFlagBitsEXT e = static_cast<VkDebugUtilsMessageTypeFlagBitsEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5752,7 +5752,7 @@ void EnumToStringVkDebugUtilsMessageTypeFlagBitsEXT(std::string* out, uint32_t e
     }
 }
 
-void EnumToStringVkSamplerReductionModeEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkSamplerReductionModeEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkSamplerReductionModeEXT e = static_cast<VkSamplerReductionModeEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5773,7 +5773,7 @@ void EnumToStringVkSamplerReductionModeEXT(std::string* out, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkBlendOverlapEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkBlendOverlapEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkBlendOverlapEXT e = static_cast<VkBlendOverlapEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5794,7 +5794,7 @@ void EnumToStringVkBlendOverlapEXT(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCoverageModulationModeNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkCoverageModulationModeNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkCoverageModulationModeNV e = static_cast<VkCoverageModulationModeNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5818,7 +5818,7 @@ void EnumToStringVkCoverageModulationModeNV(std::string* out, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkValidationCacheHeaderVersionEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkValidationCacheHeaderVersionEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkValidationCacheHeaderVersionEXT e = static_cast<VkValidationCacheHeaderVersionEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5833,7 +5833,7 @@ void EnumToStringVkValidationCacheHeaderVersionEXT(std::string* out, uint32_t en
     }
 }
 
-void EnumToStringVkDescriptorBindingFlagBitsEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkDescriptorBindingFlagBitsEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkDescriptorBindingFlagBitsEXT e = static_cast<VkDescriptorBindingFlagBitsEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5857,7 +5857,7 @@ void EnumToStringVkDescriptorBindingFlagBitsEXT(std::string* out, uint32_t enum_
     }
 }
 
-void EnumToStringVkShadingRatePaletteEntryNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkShadingRatePaletteEntryNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkShadingRatePaletteEntryNV e = static_cast<VkShadingRatePaletteEntryNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5905,7 +5905,7 @@ void EnumToStringVkShadingRatePaletteEntryNV(std::string* out, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkCoarseSampleOrderTypeNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkCoarseSampleOrderTypeNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkCoarseSampleOrderTypeNV e = static_cast<VkCoarseSampleOrderTypeNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5929,7 +5929,7 @@ void EnumToStringVkCoarseSampleOrderTypeNV(std::string* out, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkAccelerationStructureTypeNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkAccelerationStructureTypeNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkAccelerationStructureTypeNV e = static_cast<VkAccelerationStructureTypeNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5947,7 +5947,7 @@ void EnumToStringVkAccelerationStructureTypeNV(std::string* out, uint32_t enum_u
     }
 }
 
-void EnumToStringVkRayTracingShaderGroupTypeNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkRayTracingShaderGroupTypeNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkRayTracingShaderGroupTypeNV e = static_cast<VkRayTracingShaderGroupTypeNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5968,7 +5968,7 @@ void EnumToStringVkRayTracingShaderGroupTypeNV(std::string* out, uint32_t enum_u
     }
 }
 
-void EnumToStringVkGeometryTypeNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkGeometryTypeNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkGeometryTypeNV e = static_cast<VkGeometryTypeNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -5986,7 +5986,7 @@ void EnumToStringVkGeometryTypeNV(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkGeometryFlagBitsNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkGeometryFlagBitsNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkGeometryFlagBitsNV e = static_cast<VkGeometryFlagBitsNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6004,7 +6004,7 @@ void EnumToStringVkGeometryFlagBitsNV(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkGeometryInstanceFlagBitsNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkGeometryInstanceFlagBitsNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkGeometryInstanceFlagBitsNV e = static_cast<VkGeometryInstanceFlagBitsNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6028,7 +6028,7 @@ void EnumToStringVkGeometryInstanceFlagBitsNV(std::string* out, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkBuildAccelerationStructureFlagBitsNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkBuildAccelerationStructureFlagBitsNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkBuildAccelerationStructureFlagBitsNV e = static_cast<VkBuildAccelerationStructureFlagBitsNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6055,7 +6055,7 @@ void EnumToStringVkBuildAccelerationStructureFlagBitsNV(std::string* out, uint32
     }
 }
 
-void EnumToStringVkCopyAccelerationStructureModeNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkCopyAccelerationStructureModeNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkCopyAccelerationStructureModeNV e = static_cast<VkCopyAccelerationStructureModeNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6073,7 +6073,7 @@ void EnumToStringVkCopyAccelerationStructureModeNV(std::string* out, uint32_t en
     }
 }
 
-void EnumToStringVkAccelerationStructureMemoryRequirementsTypeNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkAccelerationStructureMemoryRequirementsTypeNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkAccelerationStructureMemoryRequirementsTypeNV e = static_cast<VkAccelerationStructureMemoryRequirementsTypeNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6094,7 +6094,7 @@ void EnumToStringVkAccelerationStructureMemoryRequirementsTypeNV(std::string* ou
     }
 }
 
-void EnumToStringVkQueueGlobalPriorityEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkQueueGlobalPriorityEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkQueueGlobalPriorityEXT e = static_cast<VkQueueGlobalPriorityEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6118,14 +6118,14 @@ void EnumToStringVkQueueGlobalPriorityEXT(std::string* out, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkPipelineCompilerControlFlagBitsAMD(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPipelineCompilerControlFlagBitsAMDJson(std::string* out, uint32_t enum_uint32)
 {
     VkPipelineCompilerControlFlagBitsAMD e = static_cast<VkPipelineCompilerControlFlagBitsAMD>(enum_uint32);
     assert(out != nullptr); // RYZ
     *out += "UNKNOWN";
 }
 
-void EnumToStringVkTimeDomainEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkTimeDomainEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkTimeDomainEXT e = static_cast<VkTimeDomainEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6149,7 +6149,7 @@ void EnumToStringVkTimeDomainEXT(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkMemoryOverallocationBehaviorAMD(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkMemoryOverallocationBehaviorAMDJson(std::string* out, uint32_t enum_uint32)
 {
     VkMemoryOverallocationBehaviorAMD e = static_cast<VkMemoryOverallocationBehaviorAMD>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6170,7 +6170,7 @@ void EnumToStringVkMemoryOverallocationBehaviorAMD(std::string* out, uint32_t en
     }
 }
 
-void EnumToStringVkPipelineCreationFeedbackFlagBitsEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPipelineCreationFeedbackFlagBitsEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkPipelineCreationFeedbackFlagBitsEXT e = static_cast<VkPipelineCreationFeedbackFlagBitsEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6191,7 +6191,7 @@ void EnumToStringVkPipelineCreationFeedbackFlagBitsEXT(std::string* out, uint32_
     }
 }
 
-void EnumToStringVkPerformanceConfigurationTypeINTEL(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPerformanceConfigurationTypeINTELJson(std::string* out, uint32_t enum_uint32)
 {
     VkPerformanceConfigurationTypeINTEL e = static_cast<VkPerformanceConfigurationTypeINTEL>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6206,7 +6206,7 @@ void EnumToStringVkPerformanceConfigurationTypeINTEL(std::string* out, uint32_t 
     }
 }
 
-void EnumToStringVkQueryPoolSamplingModeINTEL(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkQueryPoolSamplingModeINTELJson(std::string* out, uint32_t enum_uint32)
 {
     VkQueryPoolSamplingModeINTEL e = static_cast<VkQueryPoolSamplingModeINTEL>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6221,7 +6221,7 @@ void EnumToStringVkQueryPoolSamplingModeINTEL(std::string* out, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkPerformanceOverrideTypeINTEL(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPerformanceOverrideTypeINTELJson(std::string* out, uint32_t enum_uint32)
 {
     VkPerformanceOverrideTypeINTEL e = static_cast<VkPerformanceOverrideTypeINTEL>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6239,7 +6239,7 @@ void EnumToStringVkPerformanceOverrideTypeINTEL(std::string* out, uint32_t enum_
     }
 }
 
-void EnumToStringVkPerformanceParameterTypeINTEL(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPerformanceParameterTypeINTELJson(std::string* out, uint32_t enum_uint32)
 {
     VkPerformanceParameterTypeINTEL e = static_cast<VkPerformanceParameterTypeINTEL>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6257,7 +6257,7 @@ void EnumToStringVkPerformanceParameterTypeINTEL(std::string* out, uint32_t enum
     }
 }
 
-void EnumToStringVkPerformanceValueTypeINTEL(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkPerformanceValueTypeINTELJson(std::string* out, uint32_t enum_uint32)
 {
     VkPerformanceValueTypeINTEL e = static_cast<VkPerformanceValueTypeINTEL>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6284,14 +6284,14 @@ void EnumToStringVkPerformanceValueTypeINTEL(std::string* out, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkShaderCorePropertiesFlagBitsAMD(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkShaderCorePropertiesFlagBitsAMDJson(std::string* out, uint32_t enum_uint32)
 {
     VkShaderCorePropertiesFlagBitsAMD e = static_cast<VkShaderCorePropertiesFlagBitsAMD>(enum_uint32);
     assert(out != nullptr); // RYZ
     *out += "UNKNOWN";
 }
 
-void EnumToStringVkValidationFeatureEnableEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkValidationFeatureEnableEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkValidationFeatureEnableEXT e = static_cast<VkValidationFeatureEnableEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6312,7 +6312,7 @@ void EnumToStringVkValidationFeatureEnableEXT(std::string* out, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkValidationFeatureDisableEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkValidationFeatureDisableEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkValidationFeatureDisableEXT e = static_cast<VkValidationFeatureDisableEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6345,7 +6345,7 @@ void EnumToStringVkValidationFeatureDisableEXT(std::string* out, uint32_t enum_u
     }
 }
 
-void EnumToStringVkComponentTypeNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkComponentTypeNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkComponentTypeNV e = static_cast<VkComponentTypeNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6390,7 +6390,7 @@ void EnumToStringVkComponentTypeNV(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkScopeNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkScopeNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkScopeNV e = static_cast<VkScopeNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6414,7 +6414,7 @@ void EnumToStringVkScopeNV(std::string* out, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCoverageReductionModeNV(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkCoverageReductionModeNVJson(std::string* out, uint32_t enum_uint32)
 {
     VkCoverageReductionModeNV e = static_cast<VkCoverageReductionModeNV>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6432,7 +6432,7 @@ void EnumToStringVkCoverageReductionModeNV(std::string* out, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkFullScreenExclusiveEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkFullScreenExclusiveEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkFullScreenExclusiveEXT e = static_cast<VkFullScreenExclusiveEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6456,7 +6456,7 @@ void EnumToStringVkFullScreenExclusiveEXT(std::string* out, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkLineRasterizationModeEXT(std::string* out, uint32_t enum_uint32)
+void EnumToStringVkLineRasterizationModeEXTJson(std::string* out, uint32_t enum_uint32)
 {
     VkLineRasterizationModeEXT e = static_cast<VkLineRasterizationModeEXT>(enum_uint32);
     assert(out != nullptr); // RYZ
@@ -6480,100 +6480,100 @@ void EnumToStringVkLineRasterizationModeEXT(std::string* out, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkPeerMemoryFeatureFlagBitsKHR(std::string* out, VkPeerMemoryFeatureFlagBitsKHR e)
+void EnumToStringVkPeerMemoryFeatureFlagBitsKHRJson(std::string* out, VkPeerMemoryFeatureFlagBitsKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkPeerMemoryFeatureFlagBits(out, e);
+    EnumToStringVkPeerMemoryFeatureFlagBitsJson(out, e);
 }
 
-void EnumToStringVkMemoryAllocateFlagBitsKHR(std::string* out, VkMemoryAllocateFlagBitsKHR e)
+void EnumToStringVkMemoryAllocateFlagBitsKHRJson(std::string* out, VkMemoryAllocateFlagBitsKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkMemoryAllocateFlagBits(out, e);
+    EnumToStringVkMemoryAllocateFlagBitsJson(out, e);
 }
 
-void EnumToStringVkExternalMemoryHandleTypeFlagBitsKHR(std::string* out, VkExternalMemoryHandleTypeFlagBitsKHR e)
+void EnumToStringVkExternalMemoryHandleTypeFlagBitsKHRJson(std::string* out, VkExternalMemoryHandleTypeFlagBitsKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkExternalMemoryHandleTypeFlagBits(out, e);
+    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, e);
 }
 
-void EnumToStringVkExternalMemoryFeatureFlagBitsKHR(std::string* out, VkExternalMemoryFeatureFlagBitsKHR e)
+void EnumToStringVkExternalMemoryFeatureFlagBitsKHRJson(std::string* out, VkExternalMemoryFeatureFlagBitsKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkExternalMemoryFeatureFlagBits(out, e);
+    EnumToStringVkExternalMemoryFeatureFlagBitsJson(out, e);
 }
 
-void EnumToStringVkExternalSemaphoreHandleTypeFlagBitsKHR(std::string* out, VkExternalSemaphoreHandleTypeFlagBitsKHR e)
+void EnumToStringVkExternalSemaphoreHandleTypeFlagBitsKHRJson(std::string* out, VkExternalSemaphoreHandleTypeFlagBitsKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkExternalSemaphoreHandleTypeFlagBits(out, e);
+    EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson(out, e);
 }
 
-void EnumToStringVkExternalSemaphoreFeatureFlagBitsKHR(std::string* out, VkExternalSemaphoreFeatureFlagBitsKHR e)
+void EnumToStringVkExternalSemaphoreFeatureFlagBitsKHRJson(std::string* out, VkExternalSemaphoreFeatureFlagBitsKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkExternalSemaphoreFeatureFlagBits(out, e);
+    EnumToStringVkExternalSemaphoreFeatureFlagBitsJson(out, e);
 }
 
-void EnumToStringVkSemaphoreImportFlagBitsKHR(std::string* out, VkSemaphoreImportFlagBitsKHR e)
+void EnumToStringVkSemaphoreImportFlagBitsKHRJson(std::string* out, VkSemaphoreImportFlagBitsKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkSemaphoreImportFlagBits(out, e);
+    EnumToStringVkSemaphoreImportFlagBitsJson(out, e);
 }
 
-void EnumToStringVkDescriptorUpdateTemplateTypeKHR(std::string* out, VkDescriptorUpdateTemplateTypeKHR e)
+void EnumToStringVkDescriptorUpdateTemplateTypeKHRJson(std::string* out, VkDescriptorUpdateTemplateTypeKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkDescriptorUpdateTemplateType(out, e);
+    EnumToStringVkDescriptorUpdateTemplateTypeJson(out, e);
 }
 
-void EnumToStringVkExternalFenceHandleTypeFlagBitsKHR(std::string* out, VkExternalFenceHandleTypeFlagBitsKHR e)
+void EnumToStringVkExternalFenceHandleTypeFlagBitsKHRJson(std::string* out, VkExternalFenceHandleTypeFlagBitsKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkExternalFenceHandleTypeFlagBits(out, e);
+    EnumToStringVkExternalFenceHandleTypeFlagBitsJson(out, e);
 }
 
-void EnumToStringVkExternalFenceFeatureFlagBitsKHR(std::string* out, VkExternalFenceFeatureFlagBitsKHR e)
+void EnumToStringVkExternalFenceFeatureFlagBitsKHRJson(std::string* out, VkExternalFenceFeatureFlagBitsKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkExternalFenceFeatureFlagBits(out, e);
+    EnumToStringVkExternalFenceFeatureFlagBitsJson(out, e);
 }
 
-void EnumToStringVkFenceImportFlagBitsKHR(std::string* out, VkFenceImportFlagBitsKHR e)
+void EnumToStringVkFenceImportFlagBitsKHRJson(std::string* out, VkFenceImportFlagBitsKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkFenceImportFlagBits(out, e);
+    EnumToStringVkFenceImportFlagBitsJson(out, e);
 }
 
-void EnumToStringVkPointClippingBehaviorKHR(std::string* out, VkPointClippingBehaviorKHR e)
+void EnumToStringVkPointClippingBehaviorKHRJson(std::string* out, VkPointClippingBehaviorKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkPointClippingBehavior(out, e);
+    EnumToStringVkPointClippingBehaviorJson(out, e);
 }
 
-void EnumToStringVkTessellationDomainOriginKHR(std::string* out, VkTessellationDomainOriginKHR e)
+void EnumToStringVkTessellationDomainOriginKHRJson(std::string* out, VkTessellationDomainOriginKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkTessellationDomainOrigin(out, e);
+    EnumToStringVkTessellationDomainOriginJson(out, e);
 }
 
-void EnumToStringVkSamplerYcbcrModelConversionKHR(std::string* out, VkSamplerYcbcrModelConversionKHR e)
+void EnumToStringVkSamplerYcbcrModelConversionKHRJson(std::string* out, VkSamplerYcbcrModelConversionKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkSamplerYcbcrModelConversion(out, e);
+    EnumToStringVkSamplerYcbcrModelConversionJson(out, e);
 }
 
-void EnumToStringVkSamplerYcbcrRangeKHR(std::string* out, VkSamplerYcbcrRangeKHR e)
+void EnumToStringVkSamplerYcbcrRangeKHRJson(std::string* out, VkSamplerYcbcrRangeKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkSamplerYcbcrRange(out, e);
+    EnumToStringVkSamplerYcbcrRangeJson(out, e);
 }
 
-void EnumToStringVkChromaLocationKHR(std::string* out, VkChromaLocationKHR e)
+void EnumToStringVkChromaLocationKHRJson(std::string* out, VkChromaLocationKHR e)
 {
     assert(out != nullptr); // JJJ
-    EnumToStringVkChromaLocation(out, e);
+    EnumToStringVkChromaLocationJson(out, e);
 }
 
 GFXRECON_END_NAMESPACE(decode)

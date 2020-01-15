@@ -129,39 +129,80 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         self.wc('    std::string outString = "";')
         self.wc('    std::string *out = &outString;')
         self.wc('    uint32_t indent = 1;')
-        needcomma=0
-        args = ''
-        for value in values:
-            if needcomma:
-                args += ', '
-            args += value.name
-            needcomma = 1
-        self.wc('    fprintf(GetFile(), "' + name + '(' + args  + ')");')
+        self.wc('    fprintf(GetFile(), "        {\\n");')
+        self.wc('    fprintf(GetFile(), "            \\"name\\" : \\"' + name + '\\",\\n");   // FCN')
+        self.wc('    fprintf(GetFile(), "            \\"thread\\" : \\"Thread %ld\\",\\n", 0);')   #TODO: get thread id
+        self.wc('    fprintf(GetFile(), "            \\"returnType\\" : \\"' + returnType + '\\",\\n");')
+        self.wc('    fprintf(GetFile(), "            \\"returnValue\\" : \\"");')
         if returnType == 'void':
-            self.wc('    fprintf(GetFile(), " returns void:\\n");')
+            self.wc('    fprintf(GetFile(), "\\"void\\"");')
+        elif self.isEnum(returnType):
+            self.wc('    EnumToStringVkResultJson(&outString, returnValue);')
+            #self.wc('    fprintf(GetFile(), "%s (%" PRId32 ")", outString.c_str(), returnValue);')
+            self.wc('    fprintf(GetFile(), "%s\\"", outString.c_str());')
+        elif self.isFunctionPtr(returnType):
+            self.wc('    fprintf(GetFile(), "0x%" PRIx64 ", static_cast<uint64_t>(returnValue));\n"')
         else:
-            # The parameter name assigned to the return value by the code generator is 'returnValue'
-            if self.isEnum(returnType):
-                self.wc('    EnumToStringVkResult(&outString, returnValue);')
-                self.wc('    fprintf(GetFile(), " returns ' + returnType + ' %s (%" PRId32 "):\\n", outString.c_str(), returnValue);')
-            elif self.isFunctionPtr(value.baseType):
-                # This is encoded as a 64-bit integer containing the address of the function pointer
-                self.wc('    fprintf(GetFile(), " returns 0x%" PRIx64 ":\\n", static_cast<uint64_t>(returnValue));\n')
-            else:
-                self.wc('    fprintf(GetFile(), " returns {}:\\n", returnValue);'.format(self.getFormatString(returnType)))
-            self.wc('    outString = ""; //UYT')
+            self.wc('    fprintf(GetFile(), "' + format(self.getFormatString(returnType)) + '\\"\\n", returnValue);')
+        self.wc('    fprintf(GetFile(), ",\\n");')
+        self.wc('    fprintf(GetFile(), "            \\"args\\" :\\n");')
+        self.wc('    fprintf(GetFile(), "            [\\n");')
 
+        # Print args
+        self.wc('    outString = ""; //URT')
+        self.wc('    indent = 6;')
         for value in values:
             self.newline()
             self.wc('    // func arg: ' + value.fullType + ' ' + value.name)
+            self.wc('    outString += "                {\\n";')
             ValueToString.valueToString(self, value, "")
-            self.wc('    outString += "\\n";   // HHS')
-
-        # Add an extra new line to the output at the end of a func
-        self.newline()
-        self.wc('    outString += "\\n";   // HDS')
+            if value == values[-1]:
+                # Don't put a comma after the last arg
+                self.wc('    outString += "                }\\n";')
+            else:
+                self.wc('    outString += "                },\\n";')
         self.wc('    fprintf(GetFile(), "%s", outString.c_str());')
+
+        # End function
+        self.newline()
+        self.wc('    fprintf(GetFile(), "            ]\\n");')
+        self.wc('    fprintf(GetFile(), "        },\\n");')     # TODO: Dont need a comma on last api call. Should move {}, to calling func
         self.wc('}')
+
+        #
+        #        needcomma=0
+        #        args = ''
+        #        for value in values:
+        #            if needcomma:
+        #                args += ', '
+        #            args += value.name
+        #            needcomma = 1
+        #        self.wc('    fprintf(GetFile(), "' + name + '(' + args  + ')");')
+        #        if returnType == 'void':
+        #            self.wc('    fprintf(GetFile(), " returns void:\\n");')
+        #        else:
+        #            # The parameter name assigned to the return value by the code generator is 'returnValue'
+        #            if self.isEnum(returnType):
+        #                self.wc('    EnumToStringVkResultJson(&outString, returnValue);')
+        #                self.wc('    fprintf(GetFile(), " returns ' + returnType + ' %s (%" PRId32 "):\\n", outString.c_str(), returnValue);')
+        #            elif self.isFunctionPtr(value.baseType):
+        #                # This is encoded as a 64-bit integer containing the address of the function pointer
+        #                self.wc('    fprintf(GetFile(), " returns 0x%" PRIx64 ":\\n", static_cast<uint64_t>(returnValue));\n')
+        #            else:
+        #                self.wc('    fprintf(GetFile(), " returns {}:\\n", returnValue);'.format(self.getFormatString(returnType)))
+        #            self.wc('    outString = ""; //UYT')
+        #
+        #        for value in values:
+        #            self.newline()
+        #            self.wc('    // func arg: ' + value.fullType + ' ' + value.name)
+        #            ValueToString.valueToString(self, value, "")
+        #            self.wc('    outString += "\\n";   // HHS')
+        #
+        #        # Add an extra new line to the output at the end of a func
+        #        self.newline()
+        #        self.wc('    outString += "\\n";   // HDS')
+        #        self.wc('    fprintf(GetFile(), "%s", outString.c_str());')
+        #        self.wc('}')
 
     def getFormatString(self, type):
         if type in ['int', 'int32_t']:

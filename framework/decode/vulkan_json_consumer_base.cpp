@@ -40,6 +40,11 @@ bool VulkanJsonConsumerBase::Initialize(const std::string& filename)
         {
             success    = true;
             m_filename = filename;
+            fprintf(m_file, "[\n");   // Start program
+            fprintf(m_file, "{\n");   // Start frame
+			fprintf(m_file, "    \"frameNumber\" : \"0\",\n");
+            fprintf(m_file, "    \"apiCalls\" :\n");
+            fprintf(m_file, "    [\n");
         }
     }
 
@@ -50,14 +55,17 @@ void VulkanJsonConsumerBase::Destroy()
 {
     if (m_file != nullptr)
     {
-        util::platform::FileClose(m_file);
+        fprintf(m_file, "    ]\n");  // Close program
+        fprintf(m_file, "}\n");  // Close frame - previous item should be an api call, and it should have been closed already
+        fprintf(m_file, "]\n");  // Close program
+		util::platform::FileClose(m_file);
     }
 }
 
 void VulkanJsonConsumerBase::Process_vkUpdateDescriptorSetWithTemplate(format::HandleId device,
-                                                                        format::HandleId descriptorSet,
-                                                                        format::HandleId descriptorUpdateTemplate,
-                                                                        const DescriptorUpdateTemplateDecoder& pData)
+                                                                       format::HandleId descriptorSet,
+                                                                       format::HandleId descriptorUpdateTemplate,
+                                                                       const DescriptorUpdateTemplateDecoder& pData)
 {
     GFXRECON_UNREFERENCED_PARAMETER(device);
     GFXRECON_UNREFERENCED_PARAMETER(descriptorSet);
@@ -66,12 +74,11 @@ void VulkanJsonConsumerBase::Process_vkUpdateDescriptorSetWithTemplate(format::H
     fprintf(m_file, "%s\n", "vkUpdateDescriptorSetWithTemplate");
 }
 
-void VulkanJsonConsumerBase::Process_vkCmdPushDescriptorSetWithTemplateKHR(
-    format::HandleId                       commandBuffer,
-    format::HandleId                       descriptorUpdateTemplate,
-    format::HandleId                       layout,
-    uint32_t                               set,
-    const DescriptorUpdateTemplateDecoder& pData)
+void VulkanJsonConsumerBase::Process_vkCmdPushDescriptorSetWithTemplateKHR(format::HandleId commandBuffer,
+                                                                           format::HandleId descriptorUpdateTemplate,
+                                                                           format::HandleId layout,
+                                                                           uint32_t         set,
+                                                                           const DescriptorUpdateTemplateDecoder& pData)
 {
     GFXRECON_UNREFERENCED_PARAMETER(commandBuffer);
     GFXRECON_UNREFERENCED_PARAMETER(descriptorUpdateTemplate);
@@ -82,9 +89,9 @@ void VulkanJsonConsumerBase::Process_vkCmdPushDescriptorSetWithTemplateKHR(
 }
 
 void VulkanJsonConsumerBase::Process_vkUpdateDescriptorSetWithTemplateKHR(format::HandleId device,
-                                                                           format::HandleId descriptorSet,
-                                                                           format::HandleId descriptorUpdateTemplate,
-                                                                           const DescriptorUpdateTemplateDecoder& pData)
+                                                                          format::HandleId descriptorSet,
+                                                                          format::HandleId descriptorUpdateTemplate,
+                                                                          const DescriptorUpdateTemplateDecoder& pData)
 {
     GFXRECON_UNREFERENCED_PARAMETER(device);
     GFXRECON_UNREFERENCED_PARAMETER(descriptorSet);

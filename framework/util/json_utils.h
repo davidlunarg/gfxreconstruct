@@ -49,7 +49,7 @@ typedef struct ScalarValueToStringStruct {
    EnumToStringFuncPtr enum_to_string_func;
 } ScalarValueToStringStruct;
 
-void SignedDecimalToString(std::string* out, int64_t n)
+void SignedDecimalToStringJson(std::string* out, int64_t n)
 {
     char tmp[30];
     assert(out != nullptr);
@@ -58,7 +58,7 @@ void SignedDecimalToString(std::string* out, int64_t n)
     *out += tmp;
 }
 
-void UnsignedDecimalToString(std::string* out, uint64_t n)
+void UnsignedDecimalToStringJson(std::string* out, uint64_t n)
 {
     char tmp[30];
     assert(out != nullptr);
@@ -66,14 +66,14 @@ void UnsignedDecimalToString(std::string* out, uint64_t n)
     *out += tmp;
 }
 
-void DoubleToString(std::string* out, double d)
+void DoubleToStringJson(std::string* out, double d)
 {
     char tmp[30];
     snprintf(tmp, sizeof(tmp), "%g", d);
     *out += tmp;
 }
 
-void AddrToString(std::string* out, uint64_t a)
+void AddrToStringJson(std::string* out, uint64_t a)
 {
     assert(out != nullptr);
     if (kNoAddr)
@@ -88,17 +88,17 @@ void AddrToString(std::string* out, uint64_t a)
     }
 }
 
-void IndentSpaces(std::string* out, int indent)
+void IndentSpacesJson(std::string* out, int indent)
 {
     assert(out != nullptr);
     out->insert(out->end(), indent * kIndentSize, ' ');
 }
 
-void FlagsToString(std::string* out, VkFlags flags, EnumToStringFuncPtr enum_to_string_func)
+void FlagsToStringJson(std::string* out, VkFlags flags, EnumToStringFuncPtr enum_to_string_func)
 {
     VkFlags m = 1;
     assert(out != nullptr);
-    UnsignedDecimalToString(out, flags);
+    UnsignedDecimalToStringJson(out, flags);
     if (flags != 0)
     {
         *out += " (";
@@ -125,7 +125,7 @@ void FlagsToString(std::string* out, VkFlags flags, EnumToStringFuncPtr enum_to_
 }
 
 template <typename T>
-void ScalarValueToString(std::string* out, const T* value, const ScalarValueToStringStruct& vinfo)
+void ScalarValueToStringJson(std::string* out, const T* value, const ScalarValueToStringStruct& vinfo)
 {
     assert(out != nullptr);
     assert((vinfo.is_handle_or_addr + vinfo.is_enum  + vinfo.is_flags) <= 1);
@@ -133,11 +133,11 @@ void ScalarValueToString(std::string* out, const T* value, const ScalarValueToSt
     assert(vinfo.is_flags ? vinfo.enum_to_string_func != nullptr : true);
     if (vinfo.is_handle_or_addr)
     {
-        AddrToString(out, *(reinterpret_cast<const uint64_t*>(value)));
+        AddrToStringJson(out, *(reinterpret_cast<const uint64_t*>(value)));
     }
     else if (vinfo.is_flags)
     {
-        FlagsToString(out, *(reinterpret_cast<const uint32_t*>(value)), vinfo.enum_to_string_func);
+        FlagsToStringJson(out, *(reinterpret_cast<const uint32_t*>(value)), vinfo.enum_to_string_func);
     }
     else if (vinfo.is_enum)
     {
@@ -145,39 +145,39 @@ void ScalarValueToString(std::string* out, const T* value, const ScalarValueToSt
     }
     else if (std::is_same<T, float>::value)
     {
-        DoubleToString(out, *(reinterpret_cast<const float*>(value)));
+        DoubleToStringJson(out, *(reinterpret_cast<const float*>(value)));
     }
     else if (std::is_same<T, double>::value)
     {
-        DoubleToString(out, *(reinterpret_cast<const double*>(value))); //??
+        DoubleToStringJson(out, *(reinterpret_cast<const double*>(value))); //??
     }
     else if (std::is_same<T, int32_t>::value)
     {
-        SignedDecimalToString(out, *(reinterpret_cast<const int32_t*>(value)));
+        SignedDecimalToStringJson(out, *(reinterpret_cast<const int32_t*>(value)));
     }
     else if (std::is_same<T, uint32_t>::value)
     {
-        UnsignedDecimalToString(out, *(reinterpret_cast<const uint32_t*>(value)));
+        UnsignedDecimalToStringJson(out, *(reinterpret_cast<const uint32_t*>(value)));
     }
     else if (std::is_same<T, int64_t>::value)
     {
-        SignedDecimalToString(out, *(reinterpret_cast<const int64_t*>(value)));
+        SignedDecimalToStringJson(out, *(reinterpret_cast<const int64_t*>(value)));
     }
     else if (std::is_same<T, unsigned int>::value)
     {
-        UnsignedDecimalToString(out, *(reinterpret_cast<const int*>(value)));
+        UnsignedDecimalToStringJson(out, *(reinterpret_cast<const int*>(value)));
     }
     else if (std::is_same<T, unsigned char>::value)
     {
-        UnsignedDecimalToString(out, *(reinterpret_cast<const unsigned char*>(value)));
+        UnsignedDecimalToStringJson(out, *(reinterpret_cast<const unsigned char*>(value)));
     }
     else
     {
-        UnsignedDecimalToString(out, *(reinterpret_cast<const uint64_t*>(value)));
+        UnsignedDecimalToStringJson(out, *(reinterpret_cast<const uint64_t*>(value)));
     }
 }
 
-void StringToQuotedString(std::string* out, const char* s)
+void StringToQuotedStringJson(std::string* out, const char* s)
 {
     assert(out != nullptr);
     if (s != nullptr)
@@ -192,7 +192,7 @@ void StringToQuotedString(std::string* out, const char* s)
     }
 }
 
-void PadString(std::string* s, size_t len)
+void PadStringJson(std::string* s, size_t len)
 {
     assert(s != nullptr);
     if (s->length() < len)
@@ -202,7 +202,7 @@ void PadString(std::string* s, size_t len)
 }
 
 template <typename T>
-void ArrayToString(std::string*                     out,
+void ArrayToStringJson(std::string*                     out,
                    int                              indent,
                    const int                        pointer_count,
                    const char*                      full_type_name,
@@ -221,7 +221,7 @@ void ArrayToString(std::string*                     out,
     }
     if ((pointer_count > 2 && strstr(full_type_name, "char")) || (pointer_count > 1 && !strstr(full_type_name, "char")))
     {
-        fprintf(stderr, "Error in ArrayToString: arrays of arrays not implemented\n");
+        fprintf(stderr, "Error in ArrayToStringJson: arrays of arrays not implemented\n");
         return;
     }
 
@@ -229,7 +229,7 @@ void ArrayToString(std::string*                     out,
         (std::is_same<T, const char>::value || std::is_same<T, const char>::value || std::is_same<T, char>::value ||
          std::is_same<T, const char*>::value || std::is_same<T, char*>::value))
     {
-        StringToQuotedString(out, reinterpret_cast<const char*>(array));
+        StringToQuotedStringJson(out, reinterpret_cast<const char*>(array));
     }
     else
     {
@@ -241,19 +241,19 @@ void ArrayToString(std::string*                     out,
         *out += "\n";
         for (uint64_t j = 0; j < array_length; j++)
         {
-            IndentSpaces(out, indent + 1);
+            IndentSpacesJson(out, indent + 1);
             std::string name_and_index;
             name_and_index += array_name;
             name_and_index += "[";
-            UnsignedDecimalToString(&name_and_index, j);
+            UnsignedDecimalToStringJson(&name_and_index, j);
             name_and_index += "]: ";
-            PadString(&name_and_index, 32);
+            PadStringJson(&name_and_index, 32);
             *out += name_and_index;
             *out += full_type_name_str;
             *out += " = ";
             if (strstr(full_type_name, "char"))
             {
-                StringToQuotedString(
+                StringToQuotedStringJson(
                     out,
                     ((reinterpret_cast<const BasicStringArrayDecoder<char, format::PointerAttributes::kIsString>*>(
                           array))
@@ -263,11 +263,11 @@ void ArrayToString(std::string*                     out,
             {
                 if (vinfo.is_handle_or_addr)
                 {
-                    ScalarValueToString(out, array->GetPointer() + j, vinfo);
+                    ScalarValueToStringJson(out, array->GetPointer() + j, vinfo);
                 }
                 else
                 {
-                    ScalarValueToString(out, array->GetPointer() + j, vinfo);
+                    ScalarValueToStringJson(out, array->GetPointer() + j, vinfo);
                 }
             }
             if (j < array_length - 1)
@@ -279,7 +279,7 @@ void ArrayToString(std::string*                     out,
 }
 
 template <typename T>
-void ArrayOfScalarsToString(std::string*                     out,
+void ArrayOfScalarsToStringJson(std::string*                     out,
                             int                              indent,
                             const int                        pointer_count,
                             const char*                      full_type_name,
@@ -298,7 +298,7 @@ void ArrayOfScalarsToString(std::string*                     out,
     }
     if ((pointer_count > 2 && strstr(full_type_name, "char")) || (pointer_count > 1 && !strstr(full_type_name, "char")))
     {
-        fprintf(stderr, "Error in ArrayOfScalersToString: arrays of arrays not implemented\n");
+        fprintf(stderr, "Error in ArrayOfScalersToStringJson: arrays of arrays not implemented\n");
         return;
     }
 
@@ -306,7 +306,7 @@ void ArrayOfScalarsToString(std::string*                     out,
         (std::is_same<T, const char>::value || std::is_same<T, const char>::value || std::is_same<T, char>::value ||
          std::is_same<T, const char*>::value || std::is_same<T, char*>::value))
     {
-        StringToQuotedString(out, reinterpret_cast<const char*>(array));
+        StringToQuotedStringJson(out, reinterpret_cast<const char*>(array));
     }
     else
     {
@@ -318,19 +318,19 @@ void ArrayOfScalarsToString(std::string*                     out,
         *out += "\n";
         for (uint64_t j = 0; j < array_length; j++)
         {
-            IndentSpaces(out, indent + 1);
+            IndentSpacesJson(out, indent + 1);
             std::string name_and_index;
             name_and_index += array_name;
             name_and_index += "[";
-            UnsignedDecimalToString(&name_and_index, j);
+            UnsignedDecimalToStringJson(&name_and_index, j);
             name_and_index += "]: ";
-            PadString(&name_and_index, 32);
+            PadStringJson(&name_and_index, 32);
             *out += name_and_index;
             *out += full_type_name_str;
             *out += " = ";
             if (strstr(full_type_name, "char"))
             {
-                StringToQuotedString(
+                StringToQuotedStringJson(
                     out,
                     ((reinterpret_cast<const BasicStringArrayDecoder<char, format::PointerAttributes::kIsString>*>(
                           array))
@@ -338,7 +338,7 @@ void ArrayOfScalarsToString(std::string*                     out,
             }
             else
             {
-                ScalarValueToString<T>(out, &array[j], vinfo);
+                ScalarValueToStringJson<T>(out, &array[j], vinfo);
             }
             if (j < array_length - 1)
             {
@@ -349,7 +349,7 @@ void ArrayOfScalarsToString(std::string*                     out,
 }
 
 template <typename T>
-void ArrayOfStructsToString(std::string* out,
+void ArrayOfStructsToStringJson(std::string* out,
                             int          indent,
                             const int    pointer_count,
                             const char*  base_type_name,
@@ -367,17 +367,17 @@ void ArrayOfStructsToString(std::string* out,
     *out += "\n";
     for (uint64_t j = 0; j < array_length; j++)
     {
-        IndentSpaces(out, indent);
+        IndentSpacesJson(out, indent);
         std::string name_and_index;
         name_and_index += array_name;
         name_and_index += "[";
-        UnsignedDecimalToString(&name_and_index, j);
+        UnsignedDecimalToStringJson(&name_and_index, j);
         name_and_index += "]: ";
-        PadString(&name_and_index, 32);
+        PadStringJson(&name_and_index, 32);
         *out += name_and_index;
         *out += base_type_name;
         *out += " = ";
-        AddrToString(out, base_addr + j * sizeof(T)); // UEW
+        AddrToStringJson(out, base_addr + j * sizeof(T)); // UEW
         if (is_union)
         {
             *out += " (Union)";
@@ -385,7 +385,7 @@ void ArrayOfStructsToString(std::string* out,
         *out += ":";
         if (pointer_count > 1)
         {
-            fprintf(stderr, "ERROR: ArrayOfStructsToString cannot handle arrays of arrays\n");
+            fprintf(stderr, "ERROR: ArrayOfStructsToStringJson cannot handle arrays of arrays\n");
         }
         else
         {

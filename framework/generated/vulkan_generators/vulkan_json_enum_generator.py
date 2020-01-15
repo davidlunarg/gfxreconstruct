@@ -66,7 +66,7 @@ class VulkanJsonEnumGenerator(BaseGenerator):
         for enumName in self.enumListNoAliases:
             if enumName in self.enumList:
                 self.newline()
-                self.wc('void EnumToString' + enumName + '(std::string* out, uint32_t enum_uint32)')
+                self.wc('void EnumToString' + enumName + 'Json(std::string* out, uint32_t enum_uint32)')   # TODO: May be able to share these with toascii??
                 self.wc('{')
                 self.wc('    ' + enumName + ' e = static_cast<' + enumName + '>(enum_uint32);')
                 self.wc('    assert(out != nullptr); // RYZ')
@@ -96,10 +96,10 @@ class VulkanJsonEnumGenerator(BaseGenerator):
 
         # Generate functions to convert aliased enum types to string
         for enumName in self.enumListAliases:
-            self.wc('\nvoid EnumToString' + enumName + '(std::string* out, ' + enumName + ' e)')
+            self.wc('\nvoid EnumToString' + enumName + 'Json(std::string* out, ' + enumName + ' e)')
             self.wc('{')
             self.wc('    assert(out != nullptr); // JJJ')
-            self.wc('    EnumToString' + self.enumListAliases[enumName] + '(out, e);')
+            self.wc('    EnumToString' + self.enumListAliases[enumName] + 'Json(out, e);')
             self.wc('}')
 
         self.newline()
