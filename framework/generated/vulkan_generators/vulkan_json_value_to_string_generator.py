@@ -55,25 +55,13 @@ class ValueToString(BaseGenerator):
             pstruct_in = ''
             isFuncArg = True
 
+        # Print type and variable/member name
         self.wc('    IndentSpacesJson(out, indent);')
         self.wc('    *out += "\\"type\\" : \\"' + value.fullType + '\\",\\n";')
         self.wc('    IndentSpacesJson(out, indent);')
         self.wc('    *out += "\\"name\\" : \\"' + value.name + '\\",\\n";')
 
-        # For reference
-        #self.wc('    *out += "\\"address\\" : \\"";')
-        #self.wc('    AddrToStringJson(out, ' + value.name + '.GetAddress()); // WPS')
-        #self.wc('    AddrToStringJson(out, ' + pstruct_in +  value.name + '->GetAddress()); // YRX')
-        #self.wc('    *out += "\\",";')
-
-        if not value.isPointer and value.isArray:   #[
-            if not isFuncArg: #[
-                self.wc('    IndentSpacesJson(out, indent);')
-                self.wc('    *out += "\\"address\\" : \\"";')
-                self.wc('    AddrToStringJson(out, base_addr + offsetof(' + structName + ', ' + value.name + ')); // IYY')
-                self.wc('    *out += "\\n";')
-                #]
-
+        # For dev/debug
         if value.name == "pAttributes" or value.name == "pPhysicalDeviceCount" or value.name == "pPhysicalDevices":
             print('@@@')
             print('name', str(value.name))
@@ -85,73 +73,52 @@ class ValueToString(BaseGenerator):
             print('inStructDict', str(value.baseType in self.structDict))
             print("")
 
-
-        specialPtr = (value.name in ["pUserData", "handle", "hwnd", "surface", "connection", "hwnd", "hinstance", "pHostPointer", "window", "display", "pCheckpointMarker", "buffer", "hmonitor", "pLayer"])
+        # Print address line if needed
+        addrExpression = None
+        specialPtr = (value.name in
+                     ["pUserData", "handle", "hwnd", "surface", "connection", "hwnd", "hinstance",
+                      "pHostPointer", "window", "display", "pCheckpointMarker", "buffer", "hmonitor", "pLayer"])
+        #TODO: Simplify this...
+        if not value.isPointer and value.isArray:
+            if not isFuncArg:
+                addrExpression = 'base_addr + offsetof(' + structName + ', ' + value.name + ') /* RKQ */'
+            else:
+                addrExpression = pstruct_in + value.name + '.GetAddress() /* UYA */'
         if value.isPointer and value.name != "dpy":
             if value.isArray:
                 if value.baseType in self.structDict:
                     if isFuncArg:
-                        self.wc('    IndentSpacesJson(out, indent);')
-                        self.wc('    *out += "\\"address\\" : \\"";')
-                        self.wc('    AddrToStringJson(out, ' + value.name + '.GetAddress()); // WUS')
-                        self.wc('    *out += "\\n";')
+                        addrExpression = pstruct_in + value.name + '.GetAddress() /* RQA */'
                     else:
-                        self.wc('    IndentSpacesJson(out, indent);')
-                        self.wc('    *out += "\\"address\\" : \\"";')
-                        self.wc('    AddrToStringJson(out, ' + pstruct_in +  value.name + '->GetAddress()); // WUT')
-                        self.wc('    *out += "\\n";')
+                        addrExpression = pstruct_in + value.name + '->GetAddress() /* IIO */'
                 else:
                     if isFuncArg:
-                        self.wc('    IndentSpacesJson(out, indent);')
-                        self.wc('    *out += "\\"address\\" : \\"";')
-                        self.wc('    AddrToStringJson(out, ' + value.name + '.GetAddress()); // WIS')
-                        self.wc('    *out += "\\n";')
+                        addrExpression = pstruct_in + value.name + '.GetAddress() /* TWO */'
                     else:
-                        self.wc('    IndentSpacesJson(out, indent);')
-                        self.wc('    *out += "\\"address\\" : \\"";')
-                        #self.wc('    AddrToStringJson(out, ' + pstruct_in +  value.name + '->GetAddress()); // WPT')
-                        self.wc('    AddrToStringJson(out, ' + pstruct_in +  value.name + '.GetAddress()); // WPT')
-                        self.wc('    *out += "\\n";')
-
+                        addrExpression = pstruct_in + value.name + '.GetAddress() /* UTW */'
             elif self.isStruct(value.baseType):
                 if isFuncArg:
-                    self.wc('    IndentSpacesJson(out, indent);')
-                    self.wc('    *out += "\\"address\\" : \\"";')
-                    self.wc('    AddrToStringJson(out, ' + value.name + '.GetAddress()); // JHI')
-                    self.wc('    *out += "\\n";')
+                    addrExpression = pstruct_in + value.name + '.GetAddress() /* UYR */'
                 else:
-                    self.wc('    IndentSpacesJson(out, indent);')
-                    self.wc('    *out += "\\"address\\" : \\"";')
-                    self.wc('    AddrToStringJson(out, ' + pstruct_in + value.name + '->GetAddress()); // JHJ')
-                    self.wc('    *out += "\\n";')
-
+                    addrExpression = pstruct_in + value.name + '->GetAddress() /* KWO */'
             elif specialPtr or (value.name == "pView"):
                 if specialPtr or not isFuncArg:
-                    self.wc('    IndentSpacesJson(out, indent);')
-                    self.wc('    *out += "\\"address\\" : \\"";')
-                    self.wc('    AddrToStringJson(out, ' + pstruct_in + value.name + '); // PWR')
-                    self.wc('    *out += "\\n";')
+                    addrExpression = pstruct_in + value.name + ' /* ACF */'
                 else:
-                    self.wc('    IndentSpacesJson(out, indent);')
-                    self.wc('    *out += "\\"address\\" : \\"";')
-                    self.wc('    AddrToStringJson(out, *(static_cast<uint64_t*>(' + value.name + '.GetPointer()))); // PWA')
-                    self.wc('    *out += "\\n";')
+                    addrExpression = pstruct_in + value.name + '.GetAddress() /* PIO */'
             else:
-                #TODO: Combined these?. If fact, combine all the addr printing ...
                 if value.name == 'pNext':
-                    self.wc('    IndentSpacesJson(out, indent);')
-                    self.wc('    *out += "\\"address\\" : \\"";')
-                    self.wc('    AddrToStringJson(out, ' + pstruct_in + value.name + '->GetAddress()); // KRJ')
-                    self.wc('    *out += "\\n";')
+                    addrExpression = pstruct_in + value.name + '->GetAddress() /* YYQ */'
                 else:
-                    self.wc('    IndentSpacesJson(out, indent);')
-                    self.wc('    *out += "\\"address\\" : \\"";')
-                    self.wc('    AddrToStringJson(out, ' + pstruct_in + value.name + '.GetAddress()); // KGJ')  # pAttributes fails
-                    self.wc('    *out += "\\n";')
+                    addrExpression = pstruct_in + value.name + '.GetAddress() /* QZX */'
+        if addrExpression is not None:
+            self.wc('    IndentSpacesJson(out, indent);')
+            self.wc('    *out += "\\"address\\" : \\"";')
+            self.wc('    AddrToStringJson(out, ' + addrExpression + ' );')
+            addrExpression = pstruct_in + value.name + '.GetAddress()'
+            self.wc('    *out += "\\n";')
 
     #===============
-
-
 
 
 
