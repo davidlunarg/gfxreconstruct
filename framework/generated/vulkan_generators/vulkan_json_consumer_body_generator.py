@@ -150,7 +150,7 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
 
         # Print args
         self.wc('    outString = ""; //URT')
-        self.wc('    indent = 6;')
+        self.wc('    indent = 5;')
         for value in values:
             self.newline()
             self.wc('    // func arg: ' + value.fullType + ' ' + value.name)

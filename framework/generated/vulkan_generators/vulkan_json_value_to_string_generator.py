@@ -56,7 +56,7 @@ class ValueToString(BaseGenerator):
             isFuncArg = True
 
         self.wc('    IndentSpacesJson(out, indent);')
-        self.wc('    *out += "\\"type\\" : \\"' + value.baseType + '\\",\\n";')
+        self.wc('    *out += "\\"type\\" : \\"' + value.fullType + '\\",\\n";')
         self.wc('    IndentSpacesJson(out, indent);')
         self.wc('    *out += "\\"name\\" : \\"' + value.name + '\\",\\n";')
 

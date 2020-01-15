@@ -54,12 +54,12 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: const VkInstanceCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstanceCreateInfo\",\n";
+    *out += "\"type\" : \"const VkInstanceCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -71,7 +71,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -83,7 +83,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     // func arg: VkInstance* pInstance
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    *out += "\"type\" : \"VkInstance*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInstance\",\n";
     IndentSpacesJson(out, indent);
@@ -114,7 +114,7 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -127,7 +127,7 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -161,7 +161,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -174,7 +174,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     // func arg: uint32_t* pPhysicalDeviceCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDeviceCount\",\n";
     IndentSpacesJson(out, indent);
@@ -186,7 +186,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     // func arg: VkPhysicalDevice* pPhysicalDevices
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    *out += "\"type\" : \"VkPhysicalDevice*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDevices\",\n";
     IndentSpacesJson(out, indent);
@@ -217,7 +217,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -230,7 +230,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     // func arg: VkPhysicalDeviceFeatures* pFeatures
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceFeatures\",\n";
+    *out += "\"type\" : \"VkPhysicalDeviceFeatures*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFeatures\",\n";
     IndentSpacesJson(out, indent);
@@ -262,7 +262,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -283,7 +283,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     // func arg: VkFormatProperties* pFormatProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormatProperties\",\n";
+    *out += "\"type\" : \"VkFormatProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFormatProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -321,7 +321,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -374,7 +374,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     // func arg: VkImageFormatProperties* pImageFormatProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageFormatProperties\",\n";
+    *out += "\"type\" : \"VkImageFormatProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageFormatProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -405,7 +405,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -418,7 +418,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     // func arg: VkPhysicalDeviceProperties* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceProperties\",\n";
+    *out += "\"type\" : \"VkPhysicalDeviceProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -450,7 +450,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -463,7 +463,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     // func arg: uint32_t* pQueueFamilyPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -475,7 +475,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     // func arg: VkQueueFamilyProperties* pQueueFamilyProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueueFamilyProperties\",\n";
+    *out += "\"type\" : \"VkQueueFamilyProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -506,7 +506,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -519,7 +519,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     // func arg: VkPhysicalDeviceMemoryProperties* pMemoryProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceMemoryProperties\",\n";
+    *out += "\"type\" : \"VkPhysicalDeviceMemoryProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -554,7 +554,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -567,7 +567,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     // func arg: const VkDeviceCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceCreateInfo\",\n";
+    *out += "\"type\" : \"const VkDeviceCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -579,7 +579,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -591,7 +591,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     // func arg: VkDevice* pDevice
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    *out += "\"type\" : \"VkDevice*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -622,7 +622,7 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -635,7 +635,7 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -668,7 +668,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -697,7 +697,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     // func arg: VkQueue* pQueue
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue\",\n";
+    *out += "\"type\" : \"VkQueue*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueue\",\n";
     IndentSpacesJson(out, indent);
@@ -732,7 +732,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkQueue queue
     outString += "                {\n";
@@ -753,7 +753,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     // func arg: const VkSubmitInfo* pSubmits
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubmitInfo\",\n";
+    *out += "\"type\" : \"const VkSubmitInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubmits\",\n";
     IndentSpacesJson(out, indent);
@@ -793,7 +793,7 @@ void VulkanJsonConsumer::Process_vkQueueWaitIdle(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkQueue queue
     outString += "                {\n";
@@ -826,7 +826,7 @@ void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -862,7 +862,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -875,7 +875,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     // func arg: const VkMemoryAllocateInfo* pAllocateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryAllocateInfo\",\n";
+    *out += "\"type\" : \"const VkMemoryAllocateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -887,7 +887,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -899,7 +899,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     // func arg: VkDeviceMemory* pMemory
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory\",\n";
+    *out += "\"type\" : \"VkDeviceMemory*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemory\",\n";
     IndentSpacesJson(out, indent);
@@ -931,7 +931,7 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -952,7 +952,7 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -989,7 +989,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1034,7 +1034,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     // func arg: void** ppData
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void**\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ppData\",\n";
     IndentSpacesJson(out, indent);
@@ -1065,7 +1065,7 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1108,7 +1108,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1129,7 +1129,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     // func arg: const VkMappedMemoryRange* pMemoryRanges
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMappedMemoryRange\",\n";
+    *out += "\"type\" : \"const VkMappedMemoryRange*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRanges\",\n";
     IndentSpacesJson(out, indent);
@@ -1163,7 +1163,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1184,7 +1184,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     // func arg: const VkMappedMemoryRange* pMemoryRanges
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMappedMemoryRange\",\n";
+    *out += "\"type\" : \"const VkMappedMemoryRange*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRanges\",\n";
     IndentSpacesJson(out, indent);
@@ -1216,7 +1216,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1237,7 +1237,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     // func arg: VkDeviceSize* pCommittedMemoryInBytes
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    *out += "\"type\" : \"VkDeviceSize*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCommittedMemoryInBytes\",\n";
     IndentSpacesJson(out, indent);
@@ -1272,7 +1272,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1332,7 +1332,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1389,7 +1389,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1410,7 +1410,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     // func arg: VkMemoryRequirements* pMemoryRequirements
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements\",\n";
+    *out += "\"type\" : \"VkMemoryRequirements*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     IndentSpacesJson(out, indent);
@@ -1442,7 +1442,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1463,7 +1463,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     // func arg: VkMemoryRequirements* pMemoryRequirements
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements\",\n";
+    *out += "\"type\" : \"VkMemoryRequirements*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     IndentSpacesJson(out, indent);
@@ -1496,7 +1496,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1517,7 +1517,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     // func arg: uint32_t* pSparseMemoryRequirementCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSparseMemoryRequirementCount\",\n";
     IndentSpacesJson(out, indent);
@@ -1529,7 +1529,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     // func arg: VkSparseImageMemoryRequirements* pSparseMemoryRequirements
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageMemoryRequirements\",\n";
+    *out += "\"type\" : \"VkSparseImageMemoryRequirements*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSparseMemoryRequirements\",\n";
     IndentSpacesJson(out, indent);
@@ -1566,7 +1566,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -1619,7 +1619,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     // func arg: uint32_t* pPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -1631,7 +1631,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     // func arg: VkSparseImageFormatProperties* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageFormatProperties\",\n";
+    *out += "\"type\" : \"VkSparseImageFormatProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -1666,7 +1666,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkQueue queue
     outString += "                {\n";
@@ -1687,7 +1687,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     // func arg: const VkBindSparseInfo* pBindInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBindSparseInfo\",\n";
+    *out += "\"type\" : \"const VkBindSparseInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -1730,7 +1730,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1743,7 +1743,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     // func arg: const VkFenceCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFenceCreateInfo\",\n";
+    *out += "\"type\" : \"const VkFenceCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -1755,7 +1755,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -1767,7 +1767,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     // func arg: VkFence* pFence
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence\",\n";
+    *out += "\"type\" : \"VkFence*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFence\",\n";
     IndentSpacesJson(out, indent);
@@ -1799,7 +1799,7 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1820,7 +1820,7 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -1854,7 +1854,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1875,7 +1875,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     // func arg: const VkFence* pFences
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence\",\n";
+    *out += "\"type\" : \"const VkFence*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFences\",\n";
     IndentSpacesJson(out, indent);
@@ -1908,7 +1908,7 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1953,7 +1953,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -1974,7 +1974,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     // func arg: const VkFence* pFences
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence\",\n";
+    *out += "\"type\" : \"const VkFence*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFences\",\n";
     IndentSpacesJson(out, indent);
@@ -2025,7 +2025,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2038,7 +2038,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     // func arg: const VkSemaphoreCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphoreCreateInfo\",\n";
+    *out += "\"type\" : \"const VkSemaphoreCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -2050,7 +2050,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -2062,7 +2062,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     // func arg: VkSemaphore* pSemaphore
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphore\",\n";
+    *out += "\"type\" : \"VkSemaphore*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSemaphore\",\n";
     IndentSpacesJson(out, indent);
@@ -2094,7 +2094,7 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2115,7 +2115,7 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -2150,7 +2150,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2163,7 +2163,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     // func arg: const VkEventCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkEventCreateInfo\",\n";
+    *out += "\"type\" : \"const VkEventCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -2175,7 +2175,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -2187,7 +2187,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     // func arg: VkEvent* pEvent
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkEvent\",\n";
+    *out += "\"type\" : \"VkEvent*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pEvent\",\n";
     IndentSpacesJson(out, indent);
@@ -2219,7 +2219,7 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2240,7 +2240,7 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -2273,7 +2273,7 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2315,7 +2315,7 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2357,7 +2357,7 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2401,7 +2401,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2414,7 +2414,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     // func arg: const VkQueryPoolCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPoolCreateInfo\",\n";
+    *out += "\"type\" : \"const VkQueryPoolCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -2426,7 +2426,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -2438,7 +2438,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     // func arg: VkQueryPool* pQueryPool
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool\",\n";
+    *out += "\"type\" : \"VkQueryPool*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueryPool\",\n";
     IndentSpacesJson(out, indent);
@@ -2470,7 +2470,7 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2491,7 +2491,7 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -2530,7 +2530,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2575,7 +2575,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     // func arg: void* pData
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     IndentSpacesJson(out, indent);
@@ -2626,7 +2626,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2639,7 +2639,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     // func arg: const VkBufferCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferCreateInfo\",\n";
+    *out += "\"type\" : \"const VkBufferCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -2651,7 +2651,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -2663,7 +2663,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     // func arg: VkBuffer* pBuffer
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    *out += "\"type\" : \"VkBuffer*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -2695,7 +2695,7 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2716,7 +2716,7 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -2751,7 +2751,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2764,7 +2764,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     // func arg: const VkBufferViewCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferViewCreateInfo\",\n";
+    *out += "\"type\" : \"const VkBufferViewCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -2776,7 +2776,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -2788,7 +2788,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     // func arg: VkBufferView* pView
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferView\",\n";
+    *out += "\"type\" : \"VkBufferView*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pView\",\n";
     IndentSpacesJson(out, indent);
@@ -2820,7 +2820,7 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2841,7 +2841,7 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -2876,7 +2876,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2889,7 +2889,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     // func arg: const VkImageCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageCreateInfo\",\n";
+    *out += "\"type\" : \"const VkImageCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -2901,7 +2901,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -2913,7 +2913,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     // func arg: VkImage* pImage
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    *out += "\"type\" : \"VkImage*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImage\",\n";
     IndentSpacesJson(out, indent);
@@ -2945,7 +2945,7 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -2966,7 +2966,7 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -2999,7 +2999,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3020,7 +3020,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     // func arg: const VkImageSubresource* pSubresource
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageSubresource\",\n";
+    *out += "\"type\" : \"const VkImageSubresource*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubresource\",\n";
     IndentSpacesJson(out, indent);
@@ -3032,7 +3032,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     // func arg: VkSubresourceLayout* pLayout
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubresourceLayout\",\n";
+    *out += "\"type\" : \"VkSubresourceLayout*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -3067,7 +3067,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3080,7 +3080,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     // func arg: const VkImageViewCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageViewCreateInfo\",\n";
+    *out += "\"type\" : \"const VkImageViewCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -3092,7 +3092,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -3104,7 +3104,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     // func arg: VkImageView* pView
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageView\",\n";
+    *out += "\"type\" : \"VkImageView*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pView\",\n";
     IndentSpacesJson(out, indent);
@@ -3136,7 +3136,7 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3157,7 +3157,7 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -3192,7 +3192,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3205,7 +3205,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     // func arg: const VkShaderModuleCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkShaderModuleCreateInfo\",\n";
+    *out += "\"type\" : \"const VkShaderModuleCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -3217,7 +3217,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -3229,7 +3229,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     // func arg: VkShaderModule* pShaderModule
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkShaderModule\",\n";
+    *out += "\"type\" : \"VkShaderModule*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pShaderModule\",\n";
     IndentSpacesJson(out, indent);
@@ -3261,7 +3261,7 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3282,7 +3282,7 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -3317,7 +3317,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3330,7 +3330,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     // func arg: const VkPipelineCacheCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineCacheCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineCacheCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -3342,7 +3342,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -3354,7 +3354,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     // func arg: VkPipelineCache* pPipelineCache
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineCache\",\n";
+    *out += "\"type\" : \"VkPipelineCache*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelineCache\",\n";
     IndentSpacesJson(out, indent);
@@ -3386,7 +3386,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3407,7 +3407,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -3442,7 +3442,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3463,7 +3463,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     // func arg: size_t* pDataSize
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"size_t\",\n";
+    *out += "\"type\" : \"size_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDataSize\",\n";
     IndentSpacesJson(out, indent);
@@ -3475,7 +3475,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     // func arg: void* pData
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     IndentSpacesJson(out, indent);
@@ -3510,7 +3510,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3539,7 +3539,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     // func arg: const VkPipelineCache* pSrcCaches
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineCache\",\n";
+    *out += "\"type\" : \"const VkPipelineCache*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSrcCaches\",\n";
     IndentSpacesJson(out, indent);
@@ -3576,7 +3576,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3605,7 +3605,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     // func arg: const VkGraphicsPipelineCreateInfo* pCreateInfos
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkGraphicsPipelineCreateInfo\",\n";
+    *out += "\"type\" : \"const VkGraphicsPipelineCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfos\",\n";
     IndentSpacesJson(out, indent);
@@ -3617,7 +3617,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -3629,7 +3629,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     // func arg: VkPipeline* pPipelines
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipeline\",\n";
+    *out += "\"type\" : \"VkPipeline*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelines\",\n";
     IndentSpacesJson(out, indent);
@@ -3666,7 +3666,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3695,7 +3695,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     // func arg: const VkComputePipelineCreateInfo* pCreateInfos
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkComputePipelineCreateInfo\",\n";
+    *out += "\"type\" : \"const VkComputePipelineCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfos\",\n";
     IndentSpacesJson(out, indent);
@@ -3707,7 +3707,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -3719,7 +3719,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     // func arg: VkPipeline* pPipelines
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipeline\",\n";
+    *out += "\"type\" : \"VkPipeline*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelines\",\n";
     IndentSpacesJson(out, indent);
@@ -3751,7 +3751,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3772,7 +3772,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -3807,7 +3807,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3820,7 +3820,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     // func arg: const VkPipelineLayoutCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineLayoutCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineLayoutCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -3832,7 +3832,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -3844,7 +3844,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     // func arg: VkPipelineLayout* pPipelineLayout
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineLayout\",\n";
+    *out += "\"type\" : \"VkPipelineLayout*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelineLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -3876,7 +3876,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3897,7 +3897,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -3932,7 +3932,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -3945,7 +3945,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     // func arg: const VkSamplerCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSamplerCreateInfo\",\n";
+    *out += "\"type\" : \"const VkSamplerCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -3957,7 +3957,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -3969,7 +3969,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     // func arg: VkSampler* pSampler
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSampler\",\n";
+    *out += "\"type\" : \"VkSampler*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSampler\",\n";
     IndentSpacesJson(out, indent);
@@ -4001,7 +4001,7 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4022,7 +4022,7 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -4057,7 +4057,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4070,7 +4070,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     // func arg: const VkDescriptorSetLayoutCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayoutCreateInfo\",\n";
+    *out += "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -4082,7 +4082,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -4094,7 +4094,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     // func arg: VkDescriptorSetLayout* pSetLayout
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayout\",\n";
+    *out += "\"type\" : \"VkDescriptorSetLayout*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSetLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -4126,7 +4126,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4147,7 +4147,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -4182,7 +4182,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4195,7 +4195,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     // func arg: const VkDescriptorPoolCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorPoolCreateInfo\",\n";
+    *out += "\"type\" : \"const VkDescriptorPoolCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -4207,7 +4207,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -4219,7 +4219,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     // func arg: VkDescriptorPool* pDescriptorPool
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorPool\",\n";
+    *out += "\"type\" : \"VkDescriptorPool*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorPool\",\n";
     IndentSpacesJson(out, indent);
@@ -4251,7 +4251,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4272,7 +4272,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -4306,7 +4306,7 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4357,7 +4357,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4370,7 +4370,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     // func arg: const VkDescriptorSetAllocateInfo* pAllocateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetAllocateInfo\",\n";
+    *out += "\"type\" : \"const VkDescriptorSetAllocateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -4382,7 +4382,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     // func arg: VkDescriptorSet* pDescriptorSets
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSet\",\n";
+    *out += "\"type\" : \"VkDescriptorSet*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorSets\",\n";
     IndentSpacesJson(out, indent);
@@ -4417,7 +4417,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4446,7 +4446,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     // func arg: const VkDescriptorSet* pDescriptorSets
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSet\",\n";
+    *out += "\"type\" : \"const VkDescriptorSet*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorSets\",\n";
     IndentSpacesJson(out, indent);
@@ -4480,7 +4480,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4501,7 +4501,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     // func arg: const VkWriteDescriptorSet* pDescriptorWrites
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkWriteDescriptorSet\",\n";
+    *out += "\"type\" : \"const VkWriteDescriptorSet*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorWrites\",\n";
     IndentSpacesJson(out, indent);
@@ -4521,7 +4521,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     // func arg: const VkCopyDescriptorSet* pDescriptorCopies
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCopyDescriptorSet\",\n";
+    *out += "\"type\" : \"const VkCopyDescriptorSet*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorCopies\",\n";
     IndentSpacesJson(out, indent);
@@ -4556,7 +4556,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4569,7 +4569,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     // func arg: const VkFramebufferCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFramebufferCreateInfo\",\n";
+    *out += "\"type\" : \"const VkFramebufferCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -4581,7 +4581,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -4593,7 +4593,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     // func arg: VkFramebuffer* pFramebuffer
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFramebuffer\",\n";
+    *out += "\"type\" : \"VkFramebuffer*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFramebuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -4625,7 +4625,7 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4646,7 +4646,7 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -4681,7 +4681,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4694,7 +4694,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     // func arg: const VkRenderPassCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRenderPassCreateInfo\",\n";
+    *out += "\"type\" : \"const VkRenderPassCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -4706,7 +4706,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -4718,7 +4718,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     // func arg: VkRenderPass* pRenderPass
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRenderPass\",\n";
+    *out += "\"type\" : \"VkRenderPass*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRenderPass\",\n";
     IndentSpacesJson(out, indent);
@@ -4750,7 +4750,7 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4771,7 +4771,7 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -4803,7 +4803,7 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4824,7 +4824,7 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     // func arg: VkExtent2D* pGranularity
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExtent2D\",\n";
+    *out += "\"type\" : \"VkExtent2D*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGranularity\",\n";
     IndentSpacesJson(out, indent);
@@ -4859,7 +4859,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4872,7 +4872,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     // func arg: const VkCommandPoolCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandPoolCreateInfo\",\n";
+    *out += "\"type\" : \"const VkCommandPoolCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -4884,7 +4884,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -4896,7 +4896,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     // func arg: VkCommandPool* pCommandPool
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandPool\",\n";
+    *out += "\"type\" : \"VkCommandPool*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCommandPool\",\n";
     IndentSpacesJson(out, indent);
@@ -4928,7 +4928,7 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -4949,7 +4949,7 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -4983,7 +4983,7 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -5034,7 +5034,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -5047,7 +5047,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     // func arg: const VkCommandBufferAllocateInfo* pAllocateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBufferAllocateInfo\",\n";
+    *out += "\"type\" : \"const VkCommandBufferAllocateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -5059,7 +5059,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     // func arg: VkCommandBuffer* pCommandBuffers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    *out += "\"type\" : \"VkCommandBuffer*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCommandBuffers\",\n";
     IndentSpacesJson(out, indent);
@@ -5092,7 +5092,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -5121,7 +5121,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     // func arg: const VkCommandBuffer* pCommandBuffers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    *out += "\"type\" : \"const VkCommandBuffer*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCommandBuffers\",\n";
     IndentSpacesJson(out, indent);
@@ -5154,7 +5154,7 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5167,7 +5167,7 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     // func arg: const VkCommandBufferBeginInfo* pBeginInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBufferBeginInfo\",\n";
+    *out += "\"type\" : \"const VkCommandBufferBeginInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBeginInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -5199,7 +5199,7 @@ void VulkanJsonConsumer::Process_vkEndCommandBuffer(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5233,7 +5233,7 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5274,7 +5274,7 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5324,7 +5324,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5353,7 +5353,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     // func arg: const VkViewport* pViewports
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkViewport\",\n";
+    *out += "\"type\" : \"const VkViewport*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pViewports\",\n";
     IndentSpacesJson(out, indent);
@@ -5386,7 +5386,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5415,7 +5415,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     // func arg: const VkRect2D* pScissors
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRect2D\",\n";
+    *out += "\"type\" : \"const VkRect2D*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pScissors\",\n";
     IndentSpacesJson(out, indent);
@@ -5446,7 +5446,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5488,7 +5488,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5544,7 +5544,7 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5557,7 +5557,7 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     // func arg: const float blendConstants
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"float\",\n";
+    *out += "\"type\" : \"const float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"blendConstants\",\n";
     outString += "                }\n";
@@ -5585,7 +5585,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5634,7 +5634,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5683,7 +5683,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5732,7 +5732,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5786,7 +5786,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5831,7 +5831,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     // func arg: const VkDescriptorSet* pDescriptorSets
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSet\",\n";
+    *out += "\"type\" : \"const VkDescriptorSet*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorSets\",\n";
     IndentSpacesJson(out, indent);
@@ -5851,7 +5851,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     // func arg: const uint32_t* pDynamicOffsets
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDynamicOffsets\",\n";
     IndentSpacesJson(out, indent);
@@ -5884,7 +5884,7 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5943,7 +5943,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -5972,7 +5972,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     // func arg: const VkBuffer* pBuffers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    *out += "\"type\" : \"const VkBuffer*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBuffers\",\n";
     IndentSpacesJson(out, indent);
@@ -5984,7 +5984,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     // func arg: const VkDeviceSize* pOffsets
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    *out += "\"type\" : \"const VkDeviceSize*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pOffsets\",\n";
     IndentSpacesJson(out, indent);
@@ -6018,7 +6018,7 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6086,7 +6086,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6161,7 +6161,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6228,7 +6228,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6294,7 +6294,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6351,7 +6351,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6402,7 +6402,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6439,7 +6439,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     // func arg: const VkBufferCopy* pRegions
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferCopy\",\n";
+    *out += "\"type\" : \"const VkBufferCopy*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     IndentSpacesJson(out, indent);
@@ -6475,7 +6475,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6528,7 +6528,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     // func arg: const VkImageCopy* pRegions
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageCopy\",\n";
+    *out += "\"type\" : \"const VkImageCopy*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     IndentSpacesJson(out, indent);
@@ -6565,7 +6565,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6618,7 +6618,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     // func arg: const VkImageBlit* pRegions
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageBlit\",\n";
+    *out += "\"type\" : \"const VkImageBlit*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     IndentSpacesJson(out, indent);
@@ -6661,7 +6661,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6706,7 +6706,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     // func arg: const VkBufferImageCopy* pRegions
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferImageCopy\",\n";
+    *out += "\"type\" : \"const VkBufferImageCopy*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     IndentSpacesJson(out, indent);
@@ -6741,7 +6741,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6786,7 +6786,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     // func arg: const VkBufferImageCopy* pRegions
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferImageCopy\",\n";
+    *out += "\"type\" : \"const VkBufferImageCopy*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     IndentSpacesJson(out, indent);
@@ -6820,7 +6820,7 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6857,7 +6857,7 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     // func arg: const void* pData
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     IndentSpacesJson(out, indent);
@@ -6891,7 +6891,7 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6959,7 +6959,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -6988,7 +6988,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     // func arg: const VkClearColorValue* pColor
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkClearColorValue\",\n";
+    *out += "\"type\" : \"const VkClearColorValue*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pColor\",\n";
     IndentSpacesJson(out, indent);
@@ -7008,7 +7008,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     // func arg: const VkImageSubresourceRange* pRanges
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageSubresourceRange\",\n";
+    *out += "\"type\" : \"const VkImageSubresourceRange*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRanges\",\n";
     IndentSpacesJson(out, indent);
@@ -7043,7 +7043,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -7072,7 +7072,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     // func arg: const VkClearDepthStencilValue* pDepthStencil
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkClearDepthStencilValue\",\n";
+    *out += "\"type\" : \"const VkClearDepthStencilValue*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDepthStencil\",\n";
     IndentSpacesJson(out, indent);
@@ -7092,7 +7092,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     // func arg: const VkImageSubresourceRange* pRanges
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageSubresourceRange\",\n";
+    *out += "\"type\" : \"const VkImageSubresourceRange*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRanges\",\n";
     IndentSpacesJson(out, indent);
@@ -7126,7 +7126,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -7147,7 +7147,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     // func arg: const VkClearAttachment* pAttachments
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkClearAttachment\",\n";
+    *out += "\"type\" : \"const VkClearAttachment*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -7167,7 +7167,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     // func arg: const VkClearRect* pRects
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkClearRect\",\n";
+    *out += "\"type\" : \"const VkClearRect*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRects\",\n";
     IndentSpacesJson(out, indent);
@@ -7203,7 +7203,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -7256,7 +7256,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     // func arg: const VkImageResolve* pRegions
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageResolve\",\n";
+    *out += "\"type\" : \"const VkImageResolve*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     IndentSpacesJson(out, indent);
@@ -7288,7 +7288,7 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -7337,7 +7337,7 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -7394,7 +7394,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -7415,7 +7415,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: const VkEvent* pEvents
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkEvent\",\n";
+    *out += "\"type\" : \"const VkEvent*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pEvents\",\n";
     IndentSpacesJson(out, indent);
@@ -7451,7 +7451,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: const VkMemoryBarrier* pMemoryBarriers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryBarrier\",\n";
+    *out += "\"type\" : \"const VkMemoryBarrier*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryBarriers\",\n";
     IndentSpacesJson(out, indent);
@@ -7471,7 +7471,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: const VkBufferMemoryBarrier* pBufferMemoryBarriers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferMemoryBarrier\",\n";
+    *out += "\"type\" : \"const VkBufferMemoryBarrier*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBufferMemoryBarriers\",\n";
     IndentSpacesJson(out, indent);
@@ -7491,7 +7491,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: const VkImageMemoryBarrier* pImageMemoryBarriers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageMemoryBarrier\",\n";
+    *out += "\"type\" : \"const VkImageMemoryBarrier*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageMemoryBarriers\",\n";
     IndentSpacesJson(out, indent);
@@ -7530,7 +7530,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -7575,7 +7575,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: const VkMemoryBarrier* pMemoryBarriers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryBarrier\",\n";
+    *out += "\"type\" : \"const VkMemoryBarrier*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryBarriers\",\n";
     IndentSpacesJson(out, indent);
@@ -7595,7 +7595,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: const VkBufferMemoryBarrier* pBufferMemoryBarriers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferMemoryBarrier\",\n";
+    *out += "\"type\" : \"const VkBufferMemoryBarrier*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBufferMemoryBarriers\",\n";
     IndentSpacesJson(out, indent);
@@ -7615,7 +7615,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: const VkImageMemoryBarrier* pImageMemoryBarriers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageMemoryBarrier\",\n";
+    *out += "\"type\" : \"const VkImageMemoryBarrier*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageMemoryBarriers\",\n";
     IndentSpacesJson(out, indent);
@@ -7648,7 +7648,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -7705,7 +7705,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -7755,7 +7755,7 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -7813,7 +7813,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -7875,7 +7875,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -7967,7 +7967,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -8012,7 +8012,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     // func arg: const void* pValues
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pValues\",\n";
     IndentSpacesJson(out, indent);
@@ -8044,7 +8044,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -8057,7 +8057,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     // func arg: const VkRenderPassBeginInfo* pRenderPassBegin
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRenderPassBeginInfo\",\n";
+    *out += "\"type\" : \"const VkRenderPassBeginInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRenderPassBegin\",\n";
     IndentSpacesJson(out, indent);
@@ -8096,7 +8096,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -8135,7 +8135,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -8168,7 +8168,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -8189,7 +8189,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     // func arg: const VkCommandBuffer* pCommandBuffers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    *out += "\"type\" : \"const VkCommandBuffer*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCommandBuffers\",\n";
     IndentSpacesJson(out, indent);
@@ -8224,7 +8224,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -8245,7 +8245,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     // func arg: const VkBindBufferMemoryInfo* pBindInfos
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBindBufferMemoryInfo\",\n";
+    *out += "\"type\" : \"const VkBindBufferMemoryInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindInfos\",\n";
     IndentSpacesJson(out, indent);
@@ -8279,7 +8279,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -8300,7 +8300,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     // func arg: const VkBindImageMemoryInfo* pBindInfos
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBindImageMemoryInfo\",\n";
+    *out += "\"type\" : \"const VkBindImageMemoryInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindInfos\",\n";
     IndentSpacesJson(out, indent);
@@ -8334,7 +8334,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -8371,7 +8371,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     // func arg: VkPeerMemoryFeatureFlags* pPeerMemoryFeatures
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPeerMemoryFeatureFlags\",\n";
+    *out += "\"type\" : \"VkPeerMemoryFeatureFlags*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPeerMemoryFeatures\",\n";
     IndentSpacesJson(out, indent);
@@ -8402,7 +8402,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -8447,7 +8447,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -8530,7 +8530,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -8543,7 +8543,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     // func arg: uint32_t* pPhysicalDeviceGroupCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDeviceGroupCount\",\n";
     IndentSpacesJson(out, indent);
@@ -8555,7 +8555,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     // func arg: VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceGroupProperties\",\n";
+    *out += "\"type\" : \"VkPhysicalDeviceGroupProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDeviceGroupProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -8587,7 +8587,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -8600,7 +8600,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     // func arg: const VkImageMemoryRequirementsInfo2* pInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageMemoryRequirementsInfo2\",\n";
+    *out += "\"type\" : \"const VkImageMemoryRequirementsInfo2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -8612,7 +8612,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     // func arg: VkMemoryRequirements2* pMemoryRequirements
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements2\",\n";
+    *out += "\"type\" : \"VkMemoryRequirements2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     IndentSpacesJson(out, indent);
@@ -8644,7 +8644,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -8657,7 +8657,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     // func arg: const VkBufferMemoryRequirementsInfo2* pInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferMemoryRequirementsInfo2\",\n";
+    *out += "\"type\" : \"const VkBufferMemoryRequirementsInfo2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -8669,7 +8669,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     // func arg: VkMemoryRequirements2* pMemoryRequirements
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements2\",\n";
+    *out += "\"type\" : \"VkMemoryRequirements2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     IndentSpacesJson(out, indent);
@@ -8702,7 +8702,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -8715,7 +8715,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     // func arg: const VkImageSparseMemoryRequirementsInfo2* pInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageSparseMemoryRequirementsInfo2\",\n";
+    *out += "\"type\" : \"const VkImageSparseMemoryRequirementsInfo2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -8727,7 +8727,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     // func arg: uint32_t* pSparseMemoryRequirementCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSparseMemoryRequirementCount\",\n";
     IndentSpacesJson(out, indent);
@@ -8739,7 +8739,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     // func arg: VkSparseImageMemoryRequirements2* pSparseMemoryRequirements
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageMemoryRequirements2\",\n";
+    *out += "\"type\" : \"VkSparseImageMemoryRequirements2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSparseMemoryRequirements\",\n";
     IndentSpacesJson(out, indent);
@@ -8770,7 +8770,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -8783,7 +8783,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     // func arg: VkPhysicalDeviceFeatures2* pFeatures
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceFeatures2\",\n";
+    *out += "\"type\" : \"VkPhysicalDeviceFeatures2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFeatures\",\n";
     IndentSpacesJson(out, indent);
@@ -8814,7 +8814,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -8827,7 +8827,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     // func arg: VkPhysicalDeviceProperties2* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceProperties2\",\n";
+    *out += "\"type\" : \"VkPhysicalDeviceProperties2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -8859,7 +8859,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -8880,7 +8880,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     // func arg: VkFormatProperties2* pFormatProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormatProperties2\",\n";
+    *out += "\"type\" : \"VkFormatProperties2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFormatProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -8914,7 +8914,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -8927,7 +8927,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     // func arg: const VkPhysicalDeviceImageFormatInfo2* pImageFormatInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceImageFormatInfo2\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceImageFormatInfo2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageFormatInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -8939,7 +8939,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     // func arg: VkImageFormatProperties2* pImageFormatProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageFormatProperties2\",\n";
+    *out += "\"type\" : \"VkImageFormatProperties2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageFormatProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -8971,7 +8971,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -8984,7 +8984,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     // func arg: uint32_t* pQueueFamilyPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -8996,7 +8996,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     // func arg: VkQueueFamilyProperties2* pQueueFamilyProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueueFamilyProperties2\",\n";
+    *out += "\"type\" : \"VkQueueFamilyProperties2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -9027,7 +9027,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -9040,7 +9040,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     // func arg: VkPhysicalDeviceMemoryProperties2* pMemoryProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceMemoryProperties2\",\n";
+    *out += "\"type\" : \"VkPhysicalDeviceMemoryProperties2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -9073,7 +9073,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -9086,7 +9086,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: const VkPhysicalDeviceSparseImageFormatInfo2* pFormatInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceSparseImageFormatInfo2\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceSparseImageFormatInfo2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFormatInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -9098,7 +9098,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: uint32_t* pPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -9110,7 +9110,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: VkSparseImageFormatProperties2* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageFormatProperties2\",\n";
+    *out += "\"type\" : \"VkSparseImageFormatProperties2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -9142,7 +9142,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -9191,7 +9191,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -9204,7 +9204,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     // func arg: const VkDeviceQueueInfo2* pQueueInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceQueueInfo2\",\n";
+    *out += "\"type\" : \"const VkDeviceQueueInfo2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -9216,7 +9216,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     // func arg: VkQueue* pQueue
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue\",\n";
+    *out += "\"type\" : \"VkQueue*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueue\",\n";
     IndentSpacesJson(out, indent);
@@ -9251,7 +9251,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -9264,7 +9264,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     // func arg: const VkSamplerYcbcrConversionCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSamplerYcbcrConversionCreateInfo\",\n";
+    *out += "\"type\" : \"const VkSamplerYcbcrConversionCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -9276,7 +9276,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -9288,7 +9288,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     // func arg: VkSamplerYcbcrConversion* pYcbcrConversion
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSamplerYcbcrConversion\",\n";
+    *out += "\"type\" : \"VkSamplerYcbcrConversion*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pYcbcrConversion\",\n";
     IndentSpacesJson(out, indent);
@@ -9320,7 +9320,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -9341,7 +9341,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -9376,7 +9376,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -9389,7 +9389,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     // func arg: const VkDescriptorUpdateTemplateCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorUpdateTemplateCreateInfo\",\n";
+    *out += "\"type\" : \"const VkDescriptorUpdateTemplateCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -9401,7 +9401,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -9413,7 +9413,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     // func arg: VkDescriptorUpdateTemplate* pDescriptorUpdateTemplate
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorUpdateTemplate\",\n";
+    *out += "\"type\" : \"VkDescriptorUpdateTemplate*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorUpdateTemplate\",\n";
     IndentSpacesJson(out, indent);
@@ -9445,7 +9445,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -9466,7 +9466,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -9498,7 +9498,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -9511,7 +9511,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     // func arg: const VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceExternalBufferInfo\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceExternalBufferInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalBufferInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -9523,7 +9523,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     // func arg: VkExternalBufferProperties* pExternalBufferProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalBufferProperties\",\n";
+    *out += "\"type\" : \"VkExternalBufferProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalBufferProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -9555,7 +9555,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -9568,7 +9568,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     // func arg: const VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceExternalFenceInfo\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceExternalFenceInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalFenceInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -9580,7 +9580,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     // func arg: VkExternalFenceProperties* pExternalFenceProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalFenceProperties\",\n";
+    *out += "\"type\" : \"VkExternalFenceProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalFenceProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -9612,7 +9612,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -9625,7 +9625,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     // func arg: const VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceExternalSemaphoreInfo\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceExternalSemaphoreInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalSemaphoreInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -9637,7 +9637,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     // func arg: VkExternalSemaphoreProperties* pExternalSemaphoreProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalSemaphoreProperties\",\n";
+    *out += "\"type\" : \"VkExternalSemaphoreProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalSemaphoreProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -9669,7 +9669,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -9682,7 +9682,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     // func arg: const VkDescriptorSetLayoutCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayoutCreateInfo\",\n";
+    *out += "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -9694,7 +9694,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     // func arg: VkDescriptorSetLayoutSupport* pSupport
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayoutSupport\",\n";
+    *out += "\"type\" : \"VkDescriptorSetLayoutSupport*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSupport\",\n";
     IndentSpacesJson(out, indent);
@@ -9727,7 +9727,7 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -9748,7 +9748,7 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -9783,7 +9783,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -9812,7 +9812,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     // func arg: VkBool32* pSupported
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBool32\",\n";
+    *out += "\"type\" : \"VkBool32*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSupported\",\n";
     IndentSpacesJson(out, indent);
@@ -9846,7 +9846,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -9867,7 +9867,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     // func arg: VkSurfaceCapabilitiesKHR* pSurfaceCapabilities
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceCapabilitiesKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceCapabilitiesKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceCapabilities\",\n";
     IndentSpacesJson(out, indent);
@@ -9902,7 +9902,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -9923,7 +9923,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     // func arg: uint32_t* pSurfaceFormatCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceFormatCount\",\n";
     IndentSpacesJson(out, indent);
@@ -9935,7 +9935,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     // func arg: VkSurfaceFormatKHR* pSurfaceFormats
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceFormatKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceFormatKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceFormats\",\n";
     IndentSpacesJson(out, indent);
@@ -9970,7 +9970,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -9991,7 +9991,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     // func arg: uint32_t* pPresentModeCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentModeCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10003,7 +10003,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     // func arg: VkPresentModeKHR* pPresentModes
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPresentModeKHR\",\n";
+    *out += "\"type\" : \"VkPresentModeKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentModes\",\n";
     IndentSpacesJson(out, indent);
@@ -10039,7 +10039,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -10052,7 +10052,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     // func arg: const VkSwapchainCreateInfoKHR* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainCreateInfoKHR\",\n";
+    *out += "\"type\" : \"const VkSwapchainCreateInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -10064,7 +10064,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -10076,7 +10076,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     // func arg: VkSwapchainKHR* pSwapchain
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    *out += "\"type\" : \"VkSwapchainKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSwapchain\",\n";
     IndentSpacesJson(out, indent);
@@ -10108,7 +10108,7 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -10129,7 +10129,7 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -10164,7 +10164,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -10185,7 +10185,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     // func arg: uint32_t* pSwapchainImageCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSwapchainImageCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10197,7 +10197,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     // func arg: VkImage* pSwapchainImages
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    *out += "\"type\" : \"VkImage*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSwapchainImages\",\n";
     IndentSpacesJson(out, indent);
@@ -10234,7 +10234,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -10279,7 +10279,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     // func arg: uint32_t* pImageIndex
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -10312,7 +10312,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkQueue queue
     outString += "                {\n";
@@ -10325,7 +10325,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     // func arg: const VkPresentInfoKHR* pPresentInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPresentInfoKHR\",\n";
+    *out += "\"type\" : \"const VkPresentInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -10358,7 +10358,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -10371,7 +10371,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     // func arg: VkDeviceGroupPresentCapabilitiesKHR* pDeviceGroupPresentCapabilities
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceGroupPresentCapabilitiesKHR\",\n";
+    *out += "\"type\" : \"VkDeviceGroupPresentCapabilitiesKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDeviceGroupPresentCapabilities\",\n";
     IndentSpacesJson(out, indent);
@@ -10405,7 +10405,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -10426,7 +10426,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     // func arg: VkDeviceGroupPresentModeFlagsKHR* pModes
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR\",\n";
+    *out += "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pModes\",\n";
     IndentSpacesJson(out, indent);
@@ -10461,7 +10461,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -10482,7 +10482,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     // func arg: uint32_t* pRectCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRectCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10494,7 +10494,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     // func arg: VkRect2D* pRects
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRect2D\",\n";
+    *out += "\"type\" : \"VkRect2D*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRects\",\n";
     IndentSpacesJson(out, indent);
@@ -10528,7 +10528,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -10541,7 +10541,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     // func arg: const VkAcquireNextImageInfoKHR* pAcquireInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAcquireNextImageInfoKHR\",\n";
+    *out += "\"type\" : \"const VkAcquireNextImageInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAcquireInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -10553,7 +10553,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     // func arg: uint32_t* pImageIndex
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -10588,7 +10588,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -10601,7 +10601,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     // func arg: uint32_t* pPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10613,7 +10613,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     // func arg: VkDisplayPropertiesKHR* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayPropertiesKHR\",\n";
+    *out += "\"type\" : \"VkDisplayPropertiesKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -10647,7 +10647,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -10660,7 +10660,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     // func arg: uint32_t* pPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10672,7 +10672,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     // func arg: VkDisplayPlanePropertiesKHR* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayPlanePropertiesKHR\",\n";
+    *out += "\"type\" : \"VkDisplayPlanePropertiesKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -10707,7 +10707,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -10728,7 +10728,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     // func arg: uint32_t* pDisplayCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplayCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10740,7 +10740,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     // func arg: VkDisplayKHR* pDisplays
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayKHR\",\n";
+    *out += "\"type\" : \"VkDisplayKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplays\",\n";
     IndentSpacesJson(out, indent);
@@ -10775,7 +10775,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -10796,7 +10796,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     // func arg: uint32_t* pPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10808,7 +10808,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     // func arg: VkDisplayModePropertiesKHR* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayModePropertiesKHR\",\n";
+    *out += "\"type\" : \"VkDisplayModePropertiesKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -10844,7 +10844,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -10865,7 +10865,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     // func arg: const VkDisplayModeCreateInfoKHR* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayModeCreateInfoKHR\",\n";
+    *out += "\"type\" : \"const VkDisplayModeCreateInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -10877,7 +10877,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -10889,7 +10889,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     // func arg: VkDisplayModeKHR* pMode
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayModeKHR\",\n";
+    *out += "\"type\" : \"VkDisplayModeKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMode\",\n";
     IndentSpacesJson(out, indent);
@@ -10924,7 +10924,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -10953,7 +10953,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     // func arg: VkDisplayPlaneCapabilitiesKHR* pCapabilities
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayPlaneCapabilitiesKHR\",\n";
+    *out += "\"type\" : \"VkDisplayPlaneCapabilitiesKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCapabilities\",\n";
     IndentSpacesJson(out, indent);
@@ -10988,7 +10988,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -11001,7 +11001,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     // func arg: const VkDisplaySurfaceCreateInfoKHR* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplaySurfaceCreateInfoKHR\",\n";
+    *out += "\"type\" : \"const VkDisplaySurfaceCreateInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -11013,7 +11013,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -11025,7 +11025,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -11062,7 +11062,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -11083,7 +11083,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     // func arg: const VkSwapchainCreateInfoKHR* pCreateInfos
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainCreateInfoKHR\",\n";
+    *out += "\"type\" : \"const VkSwapchainCreateInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfos\",\n";
     IndentSpacesJson(out, indent);
@@ -11095,7 +11095,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -11107,7 +11107,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     // func arg: VkSwapchainKHR* pSwapchains
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    *out += "\"type\" : \"VkSwapchainKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSwapchains\",\n";
     IndentSpacesJson(out, indent);
@@ -11143,7 +11143,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -11156,7 +11156,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     // func arg: const VkXlibSurfaceCreateInfoKHR* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkXlibSurfaceCreateInfoKHR\",\n";
+    *out += "\"type\" : \"const VkXlibSurfaceCreateInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -11168,7 +11168,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -11180,7 +11180,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -11214,7 +11214,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -11235,7 +11235,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     // func arg: void* dpy
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
     outString += "                },\n";
@@ -11275,7 +11275,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -11288,7 +11288,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     // func arg: const VkXcbSurfaceCreateInfoKHR* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkXcbSurfaceCreateInfoKHR\",\n";
+    *out += "\"type\" : \"const VkXcbSurfaceCreateInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -11300,7 +11300,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -11312,7 +11312,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -11346,7 +11346,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -11367,7 +11367,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     // func arg: void* connection
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"connection\",\n";
     IndentSpacesJson(out, indent);
@@ -11411,7 +11411,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -11424,7 +11424,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     // func arg: const VkWaylandSurfaceCreateInfoKHR* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkWaylandSurfaceCreateInfoKHR\",\n";
+    *out += "\"type\" : \"const VkWaylandSurfaceCreateInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -11436,7 +11436,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -11448,7 +11448,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -11481,7 +11481,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -11502,7 +11502,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     // func arg: struct void* display
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"struct void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
     IndentSpacesJson(out, indent);
@@ -11538,7 +11538,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -11551,7 +11551,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     // func arg: const VkAndroidSurfaceCreateInfoKHR* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAndroidSurfaceCreateInfoKHR\",\n";
+    *out += "\"type\" : \"const VkAndroidSurfaceCreateInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -11563,7 +11563,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -11575,7 +11575,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -11611,7 +11611,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -11624,7 +11624,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     // func arg: const VkWin32SurfaceCreateInfoKHR* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkWin32SurfaceCreateInfoKHR\",\n";
+    *out += "\"type\" : \"const VkWin32SurfaceCreateInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -11636,7 +11636,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -11648,7 +11648,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -11680,7 +11680,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -11721,7 +11721,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -11734,7 +11734,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     // func arg: VkPhysicalDeviceFeatures2* pFeatures
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceFeatures2\",\n";
+    *out += "\"type\" : \"VkPhysicalDeviceFeatures2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFeatures\",\n";
     IndentSpacesJson(out, indent);
@@ -11765,7 +11765,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -11778,7 +11778,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     // func arg: VkPhysicalDeviceProperties2* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceProperties2\",\n";
+    *out += "\"type\" : \"VkPhysicalDeviceProperties2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -11810,7 +11810,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -11831,7 +11831,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     // func arg: VkFormatProperties2* pFormatProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormatProperties2\",\n";
+    *out += "\"type\" : \"VkFormatProperties2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFormatProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -11865,7 +11865,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -11878,7 +11878,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     // func arg: const VkPhysicalDeviceImageFormatInfo2* pImageFormatInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceImageFormatInfo2\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceImageFormatInfo2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageFormatInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -11890,7 +11890,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     // func arg: VkImageFormatProperties2* pImageFormatProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageFormatProperties2\",\n";
+    *out += "\"type\" : \"VkImageFormatProperties2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageFormatProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -11922,7 +11922,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -11935,7 +11935,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     // func arg: uint32_t* pQueueFamilyPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -11947,7 +11947,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     // func arg: VkQueueFamilyProperties2* pQueueFamilyProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueueFamilyProperties2\",\n";
+    *out += "\"type\" : \"VkQueueFamilyProperties2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -11978,7 +11978,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -11991,7 +11991,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     // func arg: VkPhysicalDeviceMemoryProperties2* pMemoryProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceMemoryProperties2\",\n";
+    *out += "\"type\" : \"VkPhysicalDeviceMemoryProperties2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -12024,7 +12024,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -12037,7 +12037,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: const VkPhysicalDeviceSparseImageFormatInfo2* pFormatInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceSparseImageFormatInfo2\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceSparseImageFormatInfo2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFormatInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -12049,7 +12049,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: uint32_t* pPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -12061,7 +12061,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: VkSparseImageFormatProperties2* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageFormatProperties2\",\n";
+    *out += "\"type\" : \"VkSparseImageFormatProperties2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -12096,7 +12096,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -12133,7 +12133,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     // func arg: VkPeerMemoryFeatureFlags* pPeerMemoryFeatures
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPeerMemoryFeatureFlags\",\n";
+    *out += "\"type\" : \"VkPeerMemoryFeatureFlags*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPeerMemoryFeatures\",\n";
     IndentSpacesJson(out, indent);
@@ -12164,7 +12164,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -12209,7 +12209,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -12291,7 +12291,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -12343,7 +12343,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -12356,7 +12356,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     // func arg: uint32_t* pPhysicalDeviceGroupCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDeviceGroupCount\",\n";
     IndentSpacesJson(out, indent);
@@ -12368,7 +12368,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     // func arg: VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceGroupProperties\",\n";
+    *out += "\"type\" : \"VkPhysicalDeviceGroupProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDeviceGroupProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -12401,7 +12401,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -12414,7 +12414,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     // func arg: const VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceExternalBufferInfo\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceExternalBufferInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalBufferInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -12426,7 +12426,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     // func arg: VkExternalBufferProperties* pExternalBufferProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalBufferProperties\",\n";
+    *out += "\"type\" : \"VkExternalBufferProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalBufferProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -12461,7 +12461,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -12474,7 +12474,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     // func arg: const VkMemoryGetWin32HandleInfoKHR* pGetWin32HandleInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryGetWin32HandleInfoKHR\",\n";
+    *out += "\"type\" : \"const VkMemoryGetWin32HandleInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGetWin32HandleInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -12486,7 +12486,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     // func arg: void** pHandle
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void**\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pHandle\",\n";
     IndentSpacesJson(out, indent);
@@ -12521,7 +12521,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -12542,7 +12542,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     // func arg: void* handle
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handle\",\n";
     IndentSpacesJson(out, indent);
@@ -12554,7 +12554,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     // func arg: VkMemoryWin32HandlePropertiesKHR* pMemoryWin32HandleProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryWin32HandlePropertiesKHR\",\n";
+    *out += "\"type\" : \"VkMemoryWin32HandlePropertiesKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryWin32HandleProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -12589,7 +12589,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -12602,7 +12602,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     // func arg: const VkMemoryGetFdInfoKHR* pGetFdInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryGetFdInfoKHR\",\n";
+    *out += "\"type\" : \"const VkMemoryGetFdInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGetFdInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -12614,7 +12614,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     // func arg: int* pFd
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"int\",\n";
+    *out += "\"type\" : \"int*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFd\",\n";
     IndentSpacesJson(out, indent);
@@ -12649,7 +12649,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -12678,7 +12678,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     // func arg: VkMemoryFdPropertiesKHR* pMemoryFdProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryFdPropertiesKHR\",\n";
+    *out += "\"type\" : \"VkMemoryFdPropertiesKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryFdProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -12711,7 +12711,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -12724,7 +12724,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     // func arg: const VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceExternalSemaphoreInfo\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceExternalSemaphoreInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalSemaphoreInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -12736,7 +12736,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     // func arg: VkExternalSemaphoreProperties* pExternalSemaphoreProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalSemaphoreProperties\",\n";
+    *out += "\"type\" : \"VkExternalSemaphoreProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalSemaphoreProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -12770,7 +12770,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -12783,7 +12783,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     // func arg: const VkImportSemaphoreWin32HandleInfoKHR* pImportSemaphoreWin32HandleInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImportSemaphoreWin32HandleInfoKHR\",\n";
+    *out += "\"type\" : \"const VkImportSemaphoreWin32HandleInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImportSemaphoreWin32HandleInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -12817,7 +12817,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -12830,7 +12830,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     // func arg: const VkSemaphoreGetWin32HandleInfoKHR* pGetWin32HandleInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphoreGetWin32HandleInfoKHR\",\n";
+    *out += "\"type\" : \"const VkSemaphoreGetWin32HandleInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGetWin32HandleInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -12842,7 +12842,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     // func arg: void** pHandle
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void**\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pHandle\",\n";
     IndentSpacesJson(out, indent);
@@ -12876,7 +12876,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -12889,7 +12889,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     // func arg: const VkImportSemaphoreFdInfoKHR* pImportSemaphoreFdInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImportSemaphoreFdInfoKHR\",\n";
+    *out += "\"type\" : \"const VkImportSemaphoreFdInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImportSemaphoreFdInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -12923,7 +12923,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -12936,7 +12936,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     // func arg: const VkSemaphoreGetFdInfoKHR* pGetFdInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphoreGetFdInfoKHR\",\n";
+    *out += "\"type\" : \"const VkSemaphoreGetFdInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGetFdInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -12948,7 +12948,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     // func arg: int* pFd
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"int\",\n";
+    *out += "\"type\" : \"int*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFd\",\n";
     IndentSpacesJson(out, indent);
@@ -12984,7 +12984,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -13029,7 +13029,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     // func arg: const VkWriteDescriptorSet* pDescriptorWrites
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkWriteDescriptorSet\",\n";
+    *out += "\"type\" : \"const VkWriteDescriptorSet*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorWrites\",\n";
     IndentSpacesJson(out, indent);
@@ -13065,7 +13065,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -13078,7 +13078,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     // func arg: const VkDescriptorUpdateTemplateCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorUpdateTemplateCreateInfo\",\n";
+    *out += "\"type\" : \"const VkDescriptorUpdateTemplateCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13090,7 +13090,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -13102,7 +13102,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     // func arg: VkDescriptorUpdateTemplate* pDescriptorUpdateTemplate
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorUpdateTemplate\",\n";
+    *out += "\"type\" : \"VkDescriptorUpdateTemplate*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorUpdateTemplate\",\n";
     IndentSpacesJson(out, indent);
@@ -13134,7 +13134,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -13155,7 +13155,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -13191,7 +13191,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -13204,7 +13204,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     // func arg: const VkRenderPassCreateInfo2KHR* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRenderPassCreateInfo2KHR\",\n";
+    *out += "\"type\" : \"const VkRenderPassCreateInfo2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13216,7 +13216,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -13228,7 +13228,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     // func arg: VkRenderPass* pRenderPass
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRenderPass\",\n";
+    *out += "\"type\" : \"VkRenderPass*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRenderPass\",\n";
     IndentSpacesJson(out, indent);
@@ -13260,7 +13260,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -13273,7 +13273,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     // func arg: const VkRenderPassBeginInfo* pRenderPassBegin
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRenderPassBeginInfo\",\n";
+    *out += "\"type\" : \"const VkRenderPassBeginInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRenderPassBegin\",\n";
     IndentSpacesJson(out, indent);
@@ -13285,7 +13285,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     // func arg: const VkSubpassBeginInfoKHR* pSubpassBeginInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubpassBeginInfoKHR\",\n";
+    *out += "\"type\" : \"const VkSubpassBeginInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubpassBeginInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13317,7 +13317,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -13330,7 +13330,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     // func arg: const VkSubpassBeginInfoKHR* pSubpassBeginInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubpassBeginInfoKHR\",\n";
+    *out += "\"type\" : \"const VkSubpassBeginInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubpassBeginInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13342,7 +13342,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     // func arg: const VkSubpassEndInfoKHR* pSubpassEndInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubpassEndInfoKHR\",\n";
+    *out += "\"type\" : \"const VkSubpassEndInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubpassEndInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13373,7 +13373,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -13386,7 +13386,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     // func arg: const VkSubpassEndInfoKHR* pSubpassEndInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubpassEndInfoKHR\",\n";
+    *out += "\"type\" : \"const VkSubpassEndInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubpassEndInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13420,7 +13420,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -13462,7 +13462,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -13475,7 +13475,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     // func arg: const VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceExternalFenceInfo\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceExternalFenceInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalFenceInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13487,7 +13487,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     // func arg: VkExternalFenceProperties* pExternalFenceProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalFenceProperties\",\n";
+    *out += "\"type\" : \"VkExternalFenceProperties*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalFenceProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -13521,7 +13521,7 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -13534,7 +13534,7 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     // func arg: const VkImportFenceWin32HandleInfoKHR* pImportFenceWin32HandleInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImportFenceWin32HandleInfoKHR\",\n";
+    *out += "\"type\" : \"const VkImportFenceWin32HandleInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImportFenceWin32HandleInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13568,7 +13568,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -13581,7 +13581,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     // func arg: const VkFenceGetWin32HandleInfoKHR* pGetWin32HandleInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFenceGetWin32HandleInfoKHR\",\n";
+    *out += "\"type\" : \"const VkFenceGetWin32HandleInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGetWin32HandleInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13593,7 +13593,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     // func arg: void** pHandle
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void**\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pHandle\",\n";
     IndentSpacesJson(out, indent);
@@ -13627,7 +13627,7 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -13640,7 +13640,7 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     // func arg: const VkImportFenceFdInfoKHR* pImportFenceFdInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImportFenceFdInfoKHR\",\n";
+    *out += "\"type\" : \"const VkImportFenceFdInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImportFenceFdInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13674,7 +13674,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -13687,7 +13687,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     // func arg: const VkFenceGetFdInfoKHR* pGetFdInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFenceGetFdInfoKHR\",\n";
+    *out += "\"type\" : \"const VkFenceGetFdInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGetFdInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13699,7 +13699,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     // func arg: int* pFd
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"int\",\n";
+    *out += "\"type\" : \"int*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFd\",\n";
     IndentSpacesJson(out, indent);
@@ -13734,7 +13734,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -13747,7 +13747,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     // func arg: const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceSurfaceInfo2KHR\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13759,7 +13759,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     // func arg: VkSurfaceCapabilities2KHR* pSurfaceCapabilities
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceCapabilities2KHR\",\n";
+    *out += "\"type\" : \"VkSurfaceCapabilities2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceCapabilities\",\n";
     IndentSpacesJson(out, indent);
@@ -13794,7 +13794,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -13807,7 +13807,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     // func arg: const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceSurfaceInfo2KHR\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -13819,7 +13819,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     // func arg: uint32_t* pSurfaceFormatCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceFormatCount\",\n";
     IndentSpacesJson(out, indent);
@@ -13831,7 +13831,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     // func arg: VkSurfaceFormat2KHR* pSurfaceFormats
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceFormat2KHR\",\n";
+    *out += "\"type\" : \"VkSurfaceFormat2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceFormats\",\n";
     IndentSpacesJson(out, indent);
@@ -13866,7 +13866,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -13879,7 +13879,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     // func arg: uint32_t* pPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -13891,7 +13891,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     // func arg: VkDisplayProperties2KHR* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayProperties2KHR\",\n";
+    *out += "\"type\" : \"VkDisplayProperties2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -13925,7 +13925,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -13938,7 +13938,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     // func arg: uint32_t* pPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -13950,7 +13950,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     // func arg: VkDisplayPlaneProperties2KHR* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayPlaneProperties2KHR\",\n";
+    *out += "\"type\" : \"VkDisplayPlaneProperties2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -13985,7 +13985,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -14006,7 +14006,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     // func arg: uint32_t* pPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -14018,7 +14018,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     // func arg: VkDisplayModeProperties2KHR* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayModeProperties2KHR\",\n";
+    *out += "\"type\" : \"VkDisplayModeProperties2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -14052,7 +14052,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -14065,7 +14065,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     // func arg: const VkDisplayPlaneInfo2KHR* pDisplayPlaneInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayPlaneInfo2KHR\",\n";
+    *out += "\"type\" : \"const VkDisplayPlaneInfo2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplayPlaneInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -14077,7 +14077,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     // func arg: VkDisplayPlaneCapabilities2KHR* pCapabilities
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayPlaneCapabilities2KHR\",\n";
+    *out += "\"type\" : \"VkDisplayPlaneCapabilities2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCapabilities\",\n";
     IndentSpacesJson(out, indent);
@@ -14110,7 +14110,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -14123,7 +14123,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     // func arg: const VkImageMemoryRequirementsInfo2* pInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageMemoryRequirementsInfo2\",\n";
+    *out += "\"type\" : \"const VkImageMemoryRequirementsInfo2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -14135,7 +14135,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     // func arg: VkMemoryRequirements2* pMemoryRequirements
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements2\",\n";
+    *out += "\"type\" : \"VkMemoryRequirements2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     IndentSpacesJson(out, indent);
@@ -14167,7 +14167,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -14180,7 +14180,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     // func arg: const VkBufferMemoryRequirementsInfo2* pInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferMemoryRequirementsInfo2\",\n";
+    *out += "\"type\" : \"const VkBufferMemoryRequirementsInfo2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -14192,7 +14192,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     // func arg: VkMemoryRequirements2* pMemoryRequirements
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements2\",\n";
+    *out += "\"type\" : \"VkMemoryRequirements2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     IndentSpacesJson(out, indent);
@@ -14225,7 +14225,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -14238,7 +14238,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     // func arg: const VkImageSparseMemoryRequirementsInfo2* pInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageSparseMemoryRequirementsInfo2\",\n";
+    *out += "\"type\" : \"const VkImageSparseMemoryRequirementsInfo2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -14250,7 +14250,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     // func arg: uint32_t* pSparseMemoryRequirementCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSparseMemoryRequirementCount\",\n";
     IndentSpacesJson(out, indent);
@@ -14262,7 +14262,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     // func arg: VkSparseImageMemoryRequirements2* pSparseMemoryRequirements
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageMemoryRequirements2\",\n";
+    *out += "\"type\" : \"VkSparseImageMemoryRequirements2*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSparseMemoryRequirements\",\n";
     IndentSpacesJson(out, indent);
@@ -14298,7 +14298,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -14311,7 +14311,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     // func arg: const VkSamplerYcbcrConversionCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSamplerYcbcrConversionCreateInfo\",\n";
+    *out += "\"type\" : \"const VkSamplerYcbcrConversionCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -14323,7 +14323,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -14335,7 +14335,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     // func arg: VkSamplerYcbcrConversion* pYcbcrConversion
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSamplerYcbcrConversion\",\n";
+    *out += "\"type\" : \"VkSamplerYcbcrConversion*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pYcbcrConversion\",\n";
     IndentSpacesJson(out, indent);
@@ -14367,7 +14367,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -14388,7 +14388,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -14423,7 +14423,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -14444,7 +14444,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     // func arg: const VkBindBufferMemoryInfo* pBindInfos
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBindBufferMemoryInfo\",\n";
+    *out += "\"type\" : \"const VkBindBufferMemoryInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindInfos\",\n";
     IndentSpacesJson(out, indent);
@@ -14478,7 +14478,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -14499,7 +14499,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     // func arg: const VkBindImageMemoryInfo* pBindInfos
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBindImageMemoryInfo\",\n";
+    *out += "\"type\" : \"const VkBindImageMemoryInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindInfos\",\n";
     IndentSpacesJson(out, indent);
@@ -14532,7 +14532,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -14545,7 +14545,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     // func arg: const VkDescriptorSetLayoutCreateInfo* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayoutCreateInfo\",\n";
+    *out += "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -14557,7 +14557,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     // func arg: VkDescriptorSetLayoutSupport* pSupport
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayoutSupport\",\n";
+    *out += "\"type\" : \"VkDescriptorSetLayoutSupport*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSupport\",\n";
     IndentSpacesJson(out, indent);
@@ -14594,7 +14594,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -14679,7 +14679,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -14763,7 +14763,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -14784,7 +14784,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     // func arg: uint64_t* pValue
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pValue\",\n";
     IndentSpacesJson(out, indent);
@@ -14818,7 +14818,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -14831,7 +14831,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     // func arg: const VkSemaphoreWaitInfoKHR* pWaitInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphoreWaitInfoKHR\",\n";
+    *out += "\"type\" : \"const VkSemaphoreWaitInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pWaitInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -14872,7 +14872,7 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -14885,7 +14885,7 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     // func arg: const VkSemaphoreSignalInfoKHR* pSignalInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphoreSignalInfoKHR\",\n";
+    *out += "\"type\" : \"const VkSemaphoreSignalInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSignalInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -14921,7 +14921,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -14934,7 +14934,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     // func arg: const VkPipelineInfoKHR* pPipelineInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineInfoKHR\",\n";
+    *out += "\"type\" : \"const VkPipelineInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelineInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -14946,7 +14946,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     // func arg: uint32_t* pExecutableCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExecutableCount\",\n";
     IndentSpacesJson(out, indent);
@@ -14958,7 +14958,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     // func arg: VkPipelineExecutablePropertiesKHR* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineExecutablePropertiesKHR\",\n";
+    *out += "\"type\" : \"VkPipelineExecutablePropertiesKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -14993,7 +14993,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -15006,7 +15006,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     // func arg: const VkPipelineExecutableInfoKHR* pExecutableInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineExecutableInfoKHR\",\n";
+    *out += "\"type\" : \"const VkPipelineExecutableInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExecutableInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -15018,7 +15018,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     // func arg: uint32_t* pStatisticCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pStatisticCount\",\n";
     IndentSpacesJson(out, indent);
@@ -15030,7 +15030,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     // func arg: VkPipelineExecutableStatisticKHR* pStatistics
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineExecutableStatisticKHR\",\n";
+    *out += "\"type\" : \"VkPipelineExecutableStatisticKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pStatistics\",\n";
     IndentSpacesJson(out, indent);
@@ -15065,7 +15065,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -15078,7 +15078,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     // func arg: const VkPipelineExecutableInfoKHR* pExecutableInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineExecutableInfoKHR\",\n";
+    *out += "\"type\" : \"const VkPipelineExecutableInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExecutableInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -15090,7 +15090,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     // func arg: uint32_t* pInternalRepresentationCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInternalRepresentationCount\",\n";
     IndentSpacesJson(out, indent);
@@ -15102,7 +15102,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     // func arg: VkPipelineExecutableInternalRepresentationKHR* pInternalRepresentations
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineExecutableInternalRepresentationKHR\",\n";
+    *out += "\"type\" : \"VkPipelineExecutableInternalRepresentationKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInternalRepresentations\",\n";
     IndentSpacesJson(out, indent);
@@ -15138,7 +15138,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -15151,7 +15151,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     // func arg: const VkDebugReportCallbackCreateInfoEXT* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugReportCallbackCreateInfoEXT\",\n";
+    *out += "\"type\" : \"const VkDebugReportCallbackCreateInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -15163,7 +15163,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -15175,7 +15175,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     // func arg: VkDebugReportCallbackEXT* pCallback
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugReportCallbackEXT\",\n";
+    *out += "\"type\" : \"VkDebugReportCallbackEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCallback\",\n";
     IndentSpacesJson(out, indent);
@@ -15207,7 +15207,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -15228,7 +15228,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -15265,7 +15265,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -15318,7 +15318,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     // func arg: const char* pLayerPrefix
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLayerPrefix\",\n";
     IndentSpacesJson(out, indent);
@@ -15330,7 +15330,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     // func arg: const char* pMessage
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMessage\",\n";
     IndentSpacesJson(out, indent);
@@ -15364,7 +15364,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -15377,7 +15377,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     // func arg: const VkDebugMarkerObjectTagInfoEXT* pTagInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugMarkerObjectTagInfoEXT\",\n";
+    *out += "\"type\" : \"const VkDebugMarkerObjectTagInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTagInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -15410,7 +15410,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -15423,7 +15423,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     // func arg: const VkDebugMarkerObjectNameInfoEXT* pNameInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugMarkerObjectNameInfoEXT\",\n";
+    *out += "\"type\" : \"const VkDebugMarkerObjectNameInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNameInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -15454,7 +15454,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -15467,7 +15467,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     // func arg: const VkDebugMarkerMarkerInfoEXT* pMarkerInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugMarkerMarkerInfoEXT\",\n";
+    *out += "\"type\" : \"const VkDebugMarkerMarkerInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMarkerInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -15497,7 +15497,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerEndEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -15529,7 +15529,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -15542,7 +15542,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     // func arg: const VkDebugMarkerMarkerInfoEXT* pMarkerInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugMarkerMarkerInfoEXT\",\n";
+    *out += "\"type\" : \"const VkDebugMarkerMarkerInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMarkerInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -15578,7 +15578,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -15607,7 +15607,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     // func arg: const VkBuffer* pBuffers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    *out += "\"type\" : \"const VkBuffer*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBuffers\",\n";
     IndentSpacesJson(out, indent);
@@ -15619,7 +15619,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     // func arg: const VkDeviceSize* pOffsets
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    *out += "\"type\" : \"const VkDeviceSize*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pOffsets\",\n";
     IndentSpacesJson(out, indent);
@@ -15631,7 +15631,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     // func arg: const VkDeviceSize* pSizes
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    *out += "\"type\" : \"const VkDeviceSize*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSizes\",\n";
     IndentSpacesJson(out, indent);
@@ -15665,7 +15665,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -15694,7 +15694,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     // func arg: const VkBuffer* pCounterBuffers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    *out += "\"type\" : \"const VkBuffer*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCounterBuffers\",\n";
     IndentSpacesJson(out, indent);
@@ -15706,7 +15706,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     // func arg: const VkDeviceSize* pCounterBufferOffsets
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    *out += "\"type\" : \"const VkDeviceSize*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCounterBufferOffsets\",\n";
     IndentSpacesJson(out, indent);
@@ -15740,7 +15740,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -15769,7 +15769,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     // func arg: const VkBuffer* pCounterBuffers
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    *out += "\"type\" : \"const VkBuffer*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCounterBuffers\",\n";
     IndentSpacesJson(out, indent);
@@ -15781,7 +15781,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     // func arg: const VkDeviceSize* pCounterBufferOffsets
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    *out += "\"type\" : \"const VkDeviceSize*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCounterBufferOffsets\",\n";
     IndentSpacesJson(out, indent);
@@ -15815,7 +15815,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -15881,7 +15881,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -15942,7 +15942,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -16024,7 +16024,7 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -16037,7 +16037,7 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     // func arg: const VkImageViewHandleInfoNVX* pInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageViewHandleInfoNVX\",\n";
+    *out += "\"type\" : \"const VkImageViewHandleInfoNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -16074,7 +16074,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -16159,7 +16159,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -16246,7 +16246,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -16283,7 +16283,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     // func arg: size_t* pInfoSize
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"size_t\",\n";
+    *out += "\"type\" : \"size_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfoSize\",\n";
     IndentSpacesJson(out, indent);
@@ -16295,7 +16295,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     // func arg: void* pInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -16331,7 +16331,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -16344,7 +16344,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     // func arg: const VkStreamDescriptorSurfaceCreateInfoGGP* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkStreamDescriptorSurfaceCreateInfoGGP\",\n";
+    *out += "\"type\" : \"const VkStreamDescriptorSurfaceCreateInfoGGP*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -16356,7 +16356,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -16368,7 +16368,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -16408,7 +16408,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -16469,7 +16469,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     // func arg: VkExternalImageFormatPropertiesNV* pExternalImageFormatProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalImageFormatPropertiesNV\",\n";
+    *out += "\"type\" : \"VkExternalImageFormatPropertiesNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalImageFormatProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -16505,7 +16505,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -16534,7 +16534,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     // func arg: void** pHandle
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void**\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pHandle\",\n";
     IndentSpacesJson(out, indent);
@@ -16570,7 +16570,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -16583,7 +16583,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     // func arg: const VkViSurfaceCreateInfoNN* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkViSurfaceCreateInfoNN\",\n";
+    *out += "\"type\" : \"const VkViSurfaceCreateInfoNN*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -16595,7 +16595,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -16607,7 +16607,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -16639,7 +16639,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -16652,7 +16652,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     // func arg: const VkConditionalRenderingBeginInfoEXT* pConditionalRenderingBegin
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkConditionalRenderingBeginInfoEXT\",\n";
+    *out += "\"type\" : \"const VkConditionalRenderingBeginInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pConditionalRenderingBegin\",\n";
     IndentSpacesJson(out, indent);
@@ -16682,7 +16682,7 @@ void VulkanJsonConsumer::Process_vkCmdEndConditionalRenderingEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -16715,7 +16715,7 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -16728,7 +16728,7 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     // func arg: const VkCmdProcessCommandsInfoNVX* pProcessCommandsInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCmdProcessCommandsInfoNVX\",\n";
+    *out += "\"type\" : \"const VkCmdProcessCommandsInfoNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProcessCommandsInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -16759,7 +16759,7 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -16772,7 +16772,7 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     // func arg: const VkCmdReserveSpaceForCommandsInfoNVX* pReserveSpaceInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCmdReserveSpaceForCommandsInfoNVX\",\n";
+    *out += "\"type\" : \"const VkCmdReserveSpaceForCommandsInfoNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pReserveSpaceInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -16807,7 +16807,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -16820,7 +16820,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     // func arg: const VkIndirectCommandsLayoutCreateInfoNVX* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkIndirectCommandsLayoutCreateInfoNVX\",\n";
+    *out += "\"type\" : \"const VkIndirectCommandsLayoutCreateInfoNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -16832,7 +16832,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -16844,7 +16844,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     // func arg: VkIndirectCommandsLayoutNVX* pIndirectCommandsLayout
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkIndirectCommandsLayoutNVX\",\n";
+    *out += "\"type\" : \"VkIndirectCommandsLayoutNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pIndirectCommandsLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -16876,7 +16876,7 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -16897,7 +16897,7 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -16932,7 +16932,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -16945,7 +16945,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     // func arg: const VkObjectTableCreateInfoNVX* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkObjectTableCreateInfoNVX\",\n";
+    *out += "\"type\" : \"const VkObjectTableCreateInfoNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -16957,7 +16957,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -16969,7 +16969,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     // func arg: VkObjectTableNVX* pObjectTable
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkObjectTableNVX\",\n";
+    *out += "\"type\" : \"VkObjectTableNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pObjectTable\",\n";
     IndentSpacesJson(out, indent);
@@ -17001,7 +17001,7 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -17022,7 +17022,7 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -17058,7 +17058,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -17087,7 +17087,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     // func arg: const VkObjectEntryTypeNVX* pObjectEntryTypes
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkObjectEntryTypeNVX\",\n";
+    *out += "\"type\" : \"const VkObjectEntryTypeNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pObjectEntryTypes\",\n";
     IndentSpacesJson(out, indent);
@@ -17099,7 +17099,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     // func arg: const uint32_t* pObjectIndices
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pObjectIndices\",\n";
     IndentSpacesJson(out, indent);
@@ -17131,7 +17131,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -17144,7 +17144,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     // func arg: VkDeviceGeneratedCommandsFeaturesNVX* pFeatures
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceGeneratedCommandsFeaturesNVX\",\n";
+    *out += "\"type\" : \"VkDeviceGeneratedCommandsFeaturesNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFeatures\",\n";
     IndentSpacesJson(out, indent);
@@ -17156,7 +17156,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     // func arg: VkDeviceGeneratedCommandsLimitsNVX* pLimits
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceGeneratedCommandsLimitsNVX\",\n";
+    *out += "\"type\" : \"VkDeviceGeneratedCommandsLimitsNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLimits\",\n";
     IndentSpacesJson(out, indent);
@@ -17190,7 +17190,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -17219,7 +17219,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     // func arg: const VkViewportWScalingNV* pViewportWScalings
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkViewportWScalingNV\",\n";
+    *out += "\"type\" : \"const VkViewportWScalingNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pViewportWScalings\",\n";
     IndentSpacesJson(out, indent);
@@ -17253,7 +17253,7 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -17297,7 +17297,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -17310,7 +17310,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     // func arg: void* dpy
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
     outString += "                },\n";
@@ -17349,7 +17349,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -17362,7 +17362,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     // func arg: void* dpy
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
     outString += "                },\n";
@@ -17378,7 +17378,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     // func arg: VkDisplayKHR* pDisplay
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayKHR\",\n";
+    *out += "\"type\" : \"VkDisplayKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplay\",\n";
     IndentSpacesJson(out, indent);
@@ -17413,7 +17413,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -17434,7 +17434,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     // func arg: VkSurfaceCapabilities2EXT* pSurfaceCapabilities
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceCapabilities2EXT\",\n";
+    *out += "\"type\" : \"VkSurfaceCapabilities2EXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceCapabilities\",\n";
     IndentSpacesJson(out, indent);
@@ -17469,7 +17469,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -17490,7 +17490,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     // func arg: const VkDisplayPowerInfoEXT* pDisplayPowerInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayPowerInfoEXT\",\n";
+    *out += "\"type\" : \"const VkDisplayPowerInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplayPowerInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -17525,7 +17525,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -17538,7 +17538,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     // func arg: const VkDeviceEventInfoEXT* pDeviceEventInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceEventInfoEXT\",\n";
+    *out += "\"type\" : \"const VkDeviceEventInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDeviceEventInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -17550,7 +17550,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -17562,7 +17562,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     // func arg: VkFence* pFence
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence\",\n";
+    *out += "\"type\" : \"VkFence*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFence\",\n";
     IndentSpacesJson(out, indent);
@@ -17598,7 +17598,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -17619,7 +17619,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     // func arg: const VkDisplayEventInfoEXT* pDisplayEventInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayEventInfoEXT\",\n";
+    *out += "\"type\" : \"const VkDisplayEventInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplayEventInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -17631,7 +17631,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -17643,7 +17643,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     // func arg: VkFence* pFence
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence\",\n";
+    *out += "\"type\" : \"VkFence*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFence\",\n";
     IndentSpacesJson(out, indent);
@@ -17678,7 +17678,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -17707,7 +17707,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     // func arg: uint64_t* pCounterValue
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCounterValue\",\n";
     IndentSpacesJson(out, indent);
@@ -17742,7 +17742,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -17763,7 +17763,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     // func arg: VkRefreshCycleDurationGOOGLE* pDisplayTimingProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRefreshCycleDurationGOOGLE\",\n";
+    *out += "\"type\" : \"VkRefreshCycleDurationGOOGLE*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplayTimingProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -17798,7 +17798,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -17819,7 +17819,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     // func arg: uint32_t* pPresentationTimingCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentationTimingCount\",\n";
     IndentSpacesJson(out, indent);
@@ -17831,7 +17831,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     // func arg: VkPastPresentationTimingGOOGLE* pPresentationTimings
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPastPresentationTimingGOOGLE\",\n";
+    *out += "\"type\" : \"VkPastPresentationTimingGOOGLE*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentationTimings\",\n";
     IndentSpacesJson(out, indent);
@@ -17865,7 +17865,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -17894,7 +17894,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     // func arg: const VkRect2D* pDiscardRectangles
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRect2D\",\n";
+    *out += "\"type\" : \"const VkRect2D*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDiscardRectangles\",\n";
     IndentSpacesJson(out, indent);
@@ -17928,7 +17928,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -17949,7 +17949,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     // func arg: const VkSwapchainKHR* pSwapchains
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    *out += "\"type\" : \"const VkSwapchainKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSwapchains\",\n";
     IndentSpacesJson(out, indent);
@@ -17961,7 +17961,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     // func arg: const VkHdrMetadataEXT* pMetadata
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkHdrMetadataEXT\",\n";
+    *out += "\"type\" : \"const VkHdrMetadataEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMetadata\",\n";
     IndentSpacesJson(out, indent);
@@ -17997,7 +17997,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -18010,7 +18010,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     // func arg: const VkIOSSurfaceCreateInfoMVK* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkIOSSurfaceCreateInfoMVK\",\n";
+    *out += "\"type\" : \"const VkIOSSurfaceCreateInfoMVK*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -18022,7 +18022,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -18034,7 +18034,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -18070,7 +18070,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -18083,7 +18083,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     // func arg: const VkMacOSSurfaceCreateInfoMVK* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMacOSSurfaceCreateInfoMVK\",\n";
+    *out += "\"type\" : \"const VkMacOSSurfaceCreateInfoMVK*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -18095,7 +18095,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -18107,7 +18107,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -18141,7 +18141,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -18154,7 +18154,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     // func arg: const VkDebugUtilsObjectNameInfoEXT* pNameInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsObjectNameInfoEXT\",\n";
+    *out += "\"type\" : \"const VkDebugUtilsObjectNameInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNameInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -18187,7 +18187,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -18200,7 +18200,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     // func arg: const VkDebugUtilsObjectTagInfoEXT* pTagInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsObjectTagInfoEXT\",\n";
+    *out += "\"type\" : \"const VkDebugUtilsObjectTagInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTagInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -18231,7 +18231,7 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkQueue queue
     outString += "                {\n";
@@ -18244,7 +18244,7 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     // func arg: const VkDebugUtilsLabelEXT* pLabelInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsLabelEXT\",\n";
+    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLabelInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -18274,7 +18274,7 @@ void VulkanJsonConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkQueue queue
     outString += "                {\n";
@@ -18306,7 +18306,7 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkQueue queue
     outString += "                {\n";
@@ -18319,7 +18319,7 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     // func arg: const VkDebugUtilsLabelEXT* pLabelInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsLabelEXT\",\n";
+    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLabelInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -18350,7 +18350,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -18363,7 +18363,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     // func arg: const VkDebugUtilsLabelEXT* pLabelInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsLabelEXT\",\n";
+    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLabelInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -18393,7 +18393,7 @@ void VulkanJsonConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -18425,7 +18425,7 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -18438,7 +18438,7 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     // func arg: const VkDebugUtilsLabelEXT* pLabelInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsLabelEXT\",\n";
+    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLabelInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -18473,7 +18473,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -18486,7 +18486,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     // func arg: const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsMessengerCreateInfoEXT\",\n";
+    *out += "\"type\" : \"const VkDebugUtilsMessengerCreateInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -18498,7 +18498,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -18510,7 +18510,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     // func arg: VkDebugUtilsMessengerEXT* pMessenger
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsMessengerEXT\",\n";
+    *out += "\"type\" : \"VkDebugUtilsMessengerEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMessenger\",\n";
     IndentSpacesJson(out, indent);
@@ -18542,7 +18542,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -18563,7 +18563,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -18596,7 +18596,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -18625,7 +18625,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     // func arg: const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsMessengerCallbackDataEXT\",\n";
+    *out += "\"type\" : \"const VkDebugUtilsMessengerCallbackDataEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCallbackData\",\n";
     IndentSpacesJson(out, indent);
@@ -18660,7 +18660,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -18673,7 +18673,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     // func arg: const struct void* buffer
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const struct void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -18685,7 +18685,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     // func arg: VkAndroidHardwareBufferPropertiesANDROID* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAndroidHardwareBufferPropertiesANDROID\",\n";
+    *out += "\"type\" : \"VkAndroidHardwareBufferPropertiesANDROID*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -18719,7 +18719,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -18732,7 +18732,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     // func arg: const VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryGetAndroidHardwareBufferInfoANDROID\",\n";
+    *out += "\"type\" : \"const VkMemoryGetAndroidHardwareBufferInfoANDROID*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -18744,7 +18744,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     // func arg: struct void** pBuffer
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"struct void**\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -18776,7 +18776,7 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -18789,7 +18789,7 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     // func arg: const VkSampleLocationsInfoEXT* pSampleLocationsInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSampleLocationsInfoEXT\",\n";
+    *out += "\"type\" : \"const VkSampleLocationsInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSampleLocationsInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -18821,7 +18821,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -18842,7 +18842,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     // func arg: VkMultisamplePropertiesEXT* pMultisampleProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMultisamplePropertiesEXT\",\n";
+    *out += "\"type\" : \"VkMultisamplePropertiesEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMultisampleProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -18877,7 +18877,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -18898,7 +18898,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     // func arg: VkImageDrmFormatModifierPropertiesEXT* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageDrmFormatModifierPropertiesEXT\",\n";
+    *out += "\"type\" : \"VkImageDrmFormatModifierPropertiesEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -18934,7 +18934,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -18947,7 +18947,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     // func arg: const VkValidationCacheCreateInfoEXT* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkValidationCacheCreateInfoEXT\",\n";
+    *out += "\"type\" : \"const VkValidationCacheCreateInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -18959,7 +18959,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -18971,7 +18971,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     // func arg: VkValidationCacheEXT* pValidationCache
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkValidationCacheEXT\",\n";
+    *out += "\"type\" : \"VkValidationCacheEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pValidationCache\",\n";
     IndentSpacesJson(out, indent);
@@ -19003,7 +19003,7 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -19024,7 +19024,7 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -19059,7 +19059,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -19088,7 +19088,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     // func arg: const VkValidationCacheEXT* pSrcCaches
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkValidationCacheEXT\",\n";
+    *out += "\"type\" : \"const VkValidationCacheEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSrcCaches\",\n";
     IndentSpacesJson(out, indent);
@@ -19123,7 +19123,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -19144,7 +19144,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     // func arg: size_t* pDataSize
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"size_t\",\n";
+    *out += "\"type\" : \"size_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDataSize\",\n";
     IndentSpacesJson(out, indent);
@@ -19156,7 +19156,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     // func arg: void* pData
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     IndentSpacesJson(out, indent);
@@ -19189,7 +19189,7 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -19239,7 +19239,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -19268,7 +19268,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     // func arg: const VkShadingRatePaletteNV* pShadingRatePalettes
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkShadingRatePaletteNV\",\n";
+    *out += "\"type\" : \"const VkShadingRatePaletteNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pShadingRatePalettes\",\n";
     IndentSpacesJson(out, indent);
@@ -19301,7 +19301,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -19330,7 +19330,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     // func arg: const VkCoarseSampleOrderCustomNV* pCustomSampleOrders
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCoarseSampleOrderCustomNV\",\n";
+    *out += "\"type\" : \"const VkCoarseSampleOrderCustomNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCustomSampleOrders\",\n";
     IndentSpacesJson(out, indent);
@@ -19366,7 +19366,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -19379,7 +19379,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     // func arg: const VkAccelerationStructureCreateInfoNV* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureCreateInfoNV\",\n";
+    *out += "\"type\" : \"const VkAccelerationStructureCreateInfoNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -19391,7 +19391,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -19403,7 +19403,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     // func arg: VkAccelerationStructureNV* pAccelerationStructure
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
+    *out += "\"type\" : \"VkAccelerationStructureNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAccelerationStructure\",\n";
     IndentSpacesJson(out, indent);
@@ -19435,7 +19435,7 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -19456,7 +19456,7 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -19488,7 +19488,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -19501,7 +19501,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     // func arg: const VkAccelerationStructureMemoryRequirementsInfoNV* pInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureMemoryRequirementsInfoNV\",\n";
+    *out += "\"type\" : \"const VkAccelerationStructureMemoryRequirementsInfoNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -19513,7 +19513,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     // func arg: VkMemoryRequirements2KHR* pMemoryRequirements
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements2KHR\",\n";
+    *out += "\"type\" : \"VkMemoryRequirements2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     IndentSpacesJson(out, indent);
@@ -19547,7 +19547,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -19568,7 +19568,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     // func arg: const VkBindAccelerationStructureMemoryInfoNV* pBindInfos
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBindAccelerationStructureMemoryInfoNV\",\n";
+    *out += "\"type\" : \"const VkBindAccelerationStructureMemoryInfoNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindInfos\",\n";
     IndentSpacesJson(out, indent);
@@ -19606,7 +19606,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -19619,7 +19619,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     // func arg: const VkAccelerationStructureInfoNV* pInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureInfoNV\",\n";
+    *out += "\"type\" : \"const VkAccelerationStructureInfoNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -19708,7 +19708,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -19777,7 +19777,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -19927,7 +19927,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -19956,7 +19956,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     // func arg: const VkRayTracingPipelineCreateInfoNV* pCreateInfos
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRayTracingPipelineCreateInfoNV\",\n";
+    *out += "\"type\" : \"const VkRayTracingPipelineCreateInfoNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfos\",\n";
     IndentSpacesJson(out, indent);
@@ -19968,7 +19968,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -19980,7 +19980,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     // func arg: VkPipeline* pPipelines
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipeline\",\n";
+    *out += "\"type\" : \"VkPipeline*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelines\",\n";
     IndentSpacesJson(out, indent);
@@ -20017,7 +20017,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -20062,7 +20062,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     // func arg: void* pData
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     IndentSpacesJson(out, indent);
@@ -20097,7 +20097,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -20126,7 +20126,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     // func arg: void* pData
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     IndentSpacesJson(out, indent);
@@ -20161,7 +20161,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -20182,7 +20182,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     // func arg: const VkAccelerationStructureNV* pAccelerationStructures
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
+    *out += "\"type\" : \"const VkAccelerationStructureNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAccelerationStructures\",\n";
     IndentSpacesJson(out, indent);
@@ -20240,7 +20240,7 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -20293,7 +20293,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -20314,7 +20314,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     // func arg: const void* pHostPointer
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pHostPointer\",\n";
     IndentSpacesJson(out, indent);
@@ -20326,7 +20326,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     // func arg: VkMemoryHostPointerPropertiesEXT* pMemoryHostPointerProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryHostPointerPropertiesEXT\",\n";
+    *out += "\"type\" : \"VkMemoryHostPointerPropertiesEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryHostPointerProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -20361,7 +20361,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -20429,7 +20429,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -20442,7 +20442,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     // func arg: uint32_t* pTimeDomainCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTimeDomainCount\",\n";
     IndentSpacesJson(out, indent);
@@ -20454,7 +20454,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     // func arg: VkTimeDomainEXT* pTimeDomains
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkTimeDomainEXT\",\n";
+    *out += "\"type\" : \"VkTimeDomainEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTimeDomains\",\n";
     IndentSpacesJson(out, indent);
@@ -20490,7 +20490,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -20511,7 +20511,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     // func arg: const VkCalibratedTimestampInfoEXT* pTimestampInfos
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCalibratedTimestampInfoEXT\",\n";
+    *out += "\"type\" : \"const VkCalibratedTimestampInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTimestampInfos\",\n";
     IndentSpacesJson(out, indent);
@@ -20523,7 +20523,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     // func arg: uint64_t* pTimestamps
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTimestamps\",\n";
     IndentSpacesJson(out, indent);
@@ -20535,7 +20535,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     // func arg: uint64_t* pMaxDeviation
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMaxDeviation\",\n";
     IndentSpacesJson(out, indent);
@@ -20568,7 +20568,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -20619,7 +20619,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -20688,7 +20688,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -20771,7 +20771,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -20800,7 +20800,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     // func arg: const VkRect2D* pExclusiveScissors
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRect2D\",\n";
+    *out += "\"type\" : \"const VkRect2D*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExclusiveScissors\",\n";
     IndentSpacesJson(out, indent);
@@ -20832,7 +20832,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -20845,7 +20845,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     // func arg: const void* pCheckpointMarker
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCheckpointMarker\",\n";
     IndentSpacesJson(out, indent);
@@ -20877,7 +20877,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkQueue queue
     outString += "                {\n";
@@ -20890,7 +20890,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     // func arg: uint32_t* pCheckpointDataCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCheckpointDataCount\",\n";
     IndentSpacesJson(out, indent);
@@ -20902,7 +20902,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     // func arg: VkCheckpointDataNV* pCheckpointData
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCheckpointDataNV\",\n";
+    *out += "\"type\" : \"VkCheckpointDataNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCheckpointData\",\n";
     IndentSpacesJson(out, indent);
@@ -20936,7 +20936,7 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -20949,7 +20949,7 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     // func arg: const VkInitializePerformanceApiInfoINTEL* pInitializeInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInitializePerformanceApiInfoINTEL\",\n";
+    *out += "\"type\" : \"const VkInitializePerformanceApiInfoINTEL*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInitializeInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -20979,7 +20979,7 @@ void VulkanJsonConsumer::Process_vkUninitializePerformanceApiINTEL(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -21013,7 +21013,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -21026,7 +21026,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     // func arg: const VkPerformanceMarkerInfoINTEL* pMarkerInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPerformanceMarkerInfoINTEL\",\n";
+    *out += "\"type\" : \"const VkPerformanceMarkerInfoINTEL*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMarkerInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -21059,7 +21059,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -21072,7 +21072,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     // func arg: const VkPerformanceStreamMarkerInfoINTEL* pMarkerInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPerformanceStreamMarkerInfoINTEL\",\n";
+    *out += "\"type\" : \"const VkPerformanceStreamMarkerInfoINTEL*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMarkerInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -21105,7 +21105,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -21118,7 +21118,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     // func arg: const VkPerformanceOverrideInfoINTEL* pOverrideInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPerformanceOverrideInfoINTEL\",\n";
+    *out += "\"type\" : \"const VkPerformanceOverrideInfoINTEL*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pOverrideInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -21152,7 +21152,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -21165,7 +21165,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     // func arg: const VkPerformanceConfigurationAcquireInfoINTEL* pAcquireInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPerformanceConfigurationAcquireInfoINTEL\",\n";
+    *out += "\"type\" : \"const VkPerformanceConfigurationAcquireInfoINTEL*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAcquireInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -21177,7 +21177,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     // func arg: VkPerformanceConfigurationINTEL* pConfiguration
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPerformanceConfigurationINTEL\",\n";
+    *out += "\"type\" : \"VkPerformanceConfigurationINTEL*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pConfiguration\",\n";
     IndentSpacesJson(out, indent);
@@ -21210,7 +21210,7 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -21252,7 +21252,7 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkQueue queue
     outString += "                {\n";
@@ -21295,7 +21295,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -21316,7 +21316,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     // func arg: VkPerformanceValueINTEL* pValue
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPerformanceValueINTEL\",\n";
+    *out += "\"type\" : \"VkPerformanceValueINTEL*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pValue\",\n";
     IndentSpacesJson(out, indent);
@@ -21349,7 +21349,7 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -21402,7 +21402,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -21415,7 +21415,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     // func arg: const VkImagePipeSurfaceCreateInfoFUCHSIA* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImagePipeSurfaceCreateInfoFUCHSIA\",\n";
+    *out += "\"type\" : \"const VkImagePipeSurfaceCreateInfoFUCHSIA*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -21427,7 +21427,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -21439,7 +21439,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -21475,7 +21475,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -21488,7 +21488,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     // func arg: const VkMetalSurfaceCreateInfoEXT* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMetalSurfaceCreateInfoEXT\",\n";
+    *out += "\"type\" : \"const VkMetalSurfaceCreateInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -21500,7 +21500,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -21512,7 +21512,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -21545,7 +21545,7 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -21558,7 +21558,7 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     // func arg: const VkBufferDeviceAddressInfoEXT* pInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferDeviceAddressInfoEXT\",\n";
+    *out += "\"type\" : \"const VkBufferDeviceAddressInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -21593,7 +21593,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -21606,7 +21606,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     // func arg: uint32_t* pPropertyCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -21618,7 +21618,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     // func arg: VkCooperativeMatrixPropertiesNV* pProperties
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCooperativeMatrixPropertiesNV\",\n";
+    *out += "\"type\" : \"VkCooperativeMatrixPropertiesNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -21653,7 +21653,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -21666,7 +21666,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     // func arg: uint32_t* pCombinationCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCombinationCount\",\n";
     IndentSpacesJson(out, indent);
@@ -21678,7 +21678,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     // func arg: VkFramebufferMixedSamplesCombinationNV* pCombinations
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFramebufferMixedSamplesCombinationNV\",\n";
+    *out += "\"type\" : \"VkFramebufferMixedSamplesCombinationNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCombinations\",\n";
     IndentSpacesJson(out, indent);
@@ -21714,7 +21714,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkPhysicalDevice physicalDevice
     outString += "                {\n";
@@ -21727,7 +21727,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     // func arg: const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceSurfaceInfo2KHR\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -21739,7 +21739,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     // func arg: uint32_t* pPresentModeCount
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentModeCount\",\n";
     IndentSpacesJson(out, indent);
@@ -21751,7 +21751,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     // func arg: VkPresentModeKHR* pPresentModes
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPresentModeKHR\",\n";
+    *out += "\"type\" : \"VkPresentModeKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentModes\",\n";
     IndentSpacesJson(out, indent);
@@ -21784,7 +21784,7 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -21826,7 +21826,7 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -21869,7 +21869,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";
@@ -21882,7 +21882,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     // func arg: const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceSurfaceInfo2KHR\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -21894,7 +21894,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     // func arg: VkDeviceGroupPresentModeFlagsKHR* pModes
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR\",\n";
+    *out += "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pModes\",\n";
     IndentSpacesJson(out, indent);
@@ -21930,7 +21930,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkInstance instance
     outString += "                {\n";
@@ -21943,7 +21943,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     // func arg: const VkHeadlessSurfaceCreateInfoEXT* pCreateInfo
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkHeadlessSurfaceCreateInfoEXT\",\n";
+    *out += "\"type\" : \"const VkHeadlessSurfaceCreateInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -21955,7 +21955,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAllocationCallbacks\",\n";
+    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     IndentSpacesJson(out, indent);
@@ -21967,7 +21967,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     // func arg: VkSurfaceKHR* pSurface
     outString += "                {\n";
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     IndentSpacesJson(out, indent);
@@ -22000,7 +22000,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkCommandBuffer commandBuffer
     outString += "                {\n";
@@ -22051,7 +22051,7 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
-    indent = 6;
+    indent = 5;
 
     // func arg: VkDevice device
     outString += "                {\n";

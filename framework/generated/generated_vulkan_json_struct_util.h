@@ -536,7 +536,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &ps
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -547,7 +547,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &ps
 
     // struct member: const char* pApplicationName
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pApplicationName\",\n";
     IndentSpacesJson(out, indent);
@@ -565,7 +565,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &ps
 
     // struct member: const char* pEngineName
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pEngineName\",\n";
     IndentSpacesJson(out, indent);
@@ -607,7 +607,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -625,7 +625,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
 
     // struct member: const VkApplicationInfo* pApplicationInfo
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkApplicationInfo\",\n";
+    *out += "\"type\" : \"const VkApplicationInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pApplicationInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -643,7 +643,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
 
     // struct member: const char* const* ppEnabledLayerNames
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char* const*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ppEnabledLayerNames\",\n";
     IndentSpacesJson(out, indent);
@@ -661,7 +661,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
 
     // struct member: const char* const* ppEnabledExtensionNames
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char* const*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ppEnabledExtensionNames\",\n";
     IndentSpacesJson(out, indent);
@@ -682,7 +682,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAllocationCallbacks
 
     // struct member: void* pUserData
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pUserData\",\n";
     IndentSpacesJson(out, indent);
@@ -2281,7 +2281,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueCreateIn
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -2313,7 +2313,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueCreateIn
 
     // struct member: const float* pQueuePriorities
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"float\",\n";
+    *out += "\"type\" : \"const float*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueuePriorities\",\n";
     IndentSpacesJson(out, indent);
@@ -2341,7 +2341,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -2366,7 +2366,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
 
     // struct member: const VkDeviceQueueCreateInfo* pQueueCreateInfos
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceQueueCreateInfo\",\n";
+    *out += "\"type\" : \"const VkDeviceQueueCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueCreateInfos\",\n";
     IndentSpacesJson(out, indent);
@@ -2384,7 +2384,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
 
     // struct member: const char* const* ppEnabledLayerNames
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char* const*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ppEnabledLayerNames\",\n";
     IndentSpacesJson(out, indent);
@@ -2402,7 +2402,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
 
     // struct member: const char* const* ppEnabledExtensionNames
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char* const*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ppEnabledExtensionNames\",\n";
     IndentSpacesJson(out, indent);
@@ -2413,7 +2413,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
 
     // struct member: const VkPhysicalDeviceFeatures* pEnabledFeatures
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceFeatures\",\n";
+    *out += "\"type\" : \"const VkPhysicalDeviceFeatures*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pEnabledFeatures\",\n";
     IndentSpacesJson(out, indent);
@@ -2515,7 +2515,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -2533,7 +2533,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
 
     // struct member: const VkSemaphore* pWaitSemaphores
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphore\",\n";
+    *out += "\"type\" : \"const VkSemaphore*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pWaitSemaphores\",\n";
     IndentSpacesJson(out, indent);
@@ -2544,7 +2544,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
 
     // struct member: const VkPipelineStageFlags* pWaitDstStageMask
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineStageFlags\",\n";
+    *out += "\"type\" : \"const VkPipelineStageFlags*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pWaitDstStageMask\",\n";
     IndentSpacesJson(out, indent);
@@ -2562,7 +2562,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
 
     // struct member: const VkCommandBuffer* pCommandBuffers
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    *out += "\"type\" : \"const VkCommandBuffer*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCommandBuffers\",\n";
     IndentSpacesJson(out, indent);
@@ -2580,7 +2580,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
 
     // struct member: const VkSemaphore* pSignalSemaphores
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphore\",\n";
+    *out += "\"type\" : \"const VkSemaphore*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSignalSemaphores\",\n";
     IndentSpacesJson(out, indent);
@@ -2608,7 +2608,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateInfo 
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -2650,7 +2650,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMappedMemoryRange &
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -2858,7 +2858,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseBufferMemoryB
 
     // struct member: const VkSparseMemoryBind* pBinds
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseMemoryBind\",\n";
+    *out += "\"type\" : \"const VkSparseMemoryBind*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBinds\",\n";
     IndentSpacesJson(out, indent);
@@ -2893,7 +2893,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageOpaqueMe
 
     // struct member: const VkSparseMemoryBind* pBinds
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseMemoryBind\",\n";
+    *out += "\"type\" : \"const VkSparseMemoryBind*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBinds\",\n";
     IndentSpacesJson(out, indent);
@@ -3042,7 +3042,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryBi
 
     // struct member: const VkSparseImageMemoryBind* pBinds
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageMemoryBind\",\n";
+    *out += "\"type\" : \"const VkSparseImageMemoryBind*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBinds\",\n";
     IndentSpacesJson(out, indent);
@@ -3070,7 +3070,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -3088,7 +3088,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
 
     // struct member: const VkSemaphore* pWaitSemaphores
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphore\",\n";
+    *out += "\"type\" : \"const VkSemaphore*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pWaitSemaphores\",\n";
     IndentSpacesJson(out, indent);
@@ -3106,7 +3106,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
 
     // struct member: const VkSparseBufferMemoryBindInfo* pBufferBinds
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseBufferMemoryBindInfo\",\n";
+    *out += "\"type\" : \"const VkSparseBufferMemoryBindInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBufferBinds\",\n";
     IndentSpacesJson(out, indent);
@@ -3124,7 +3124,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
 
     // struct member: const VkSparseImageOpaqueMemoryBindInfo* pImageOpaqueBinds
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageOpaqueMemoryBindInfo\",\n";
+    *out += "\"type\" : \"const VkSparseImageOpaqueMemoryBindInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageOpaqueBinds\",\n";
     IndentSpacesJson(out, indent);
@@ -3142,7 +3142,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
 
     // struct member: const VkSparseImageMemoryBindInfo* pImageBinds
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageMemoryBindInfo\",\n";
+    *out += "\"type\" : \"const VkSparseImageMemoryBindInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageBinds\",\n";
     IndentSpacesJson(out, indent);
@@ -3160,7 +3160,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
 
     // struct member: const VkSemaphore* pSignalSemaphores
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphore\",\n";
+    *out += "\"type\" : \"const VkSemaphore*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSignalSemaphores\",\n";
     IndentSpacesJson(out, indent);
@@ -3188,7 +3188,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceCreateInfo &ps
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -3223,7 +3223,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreCreateInfo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -3258,7 +3258,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkEventCreateInfo &ps
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -3293,7 +3293,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -3349,7 +3349,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -3395,7 +3395,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
 
     // struct member: const uint32_t* pQueueFamilyIndices
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyIndices\",\n";
     IndentSpacesJson(out, indent);
@@ -3423,7 +3423,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferViewCreateInf
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -3486,7 +3486,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -3574,7 +3574,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
 
     // struct member: const uint32_t* pQueueFamilyIndices
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyIndices\",\n";
     IndentSpacesJson(out, indent);
@@ -3737,7 +3737,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -3807,7 +3807,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleCreateI
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -3832,7 +3832,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleCreateI
 
     // struct member: const uint32_t* pCode
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCode\",\n";
     IndentSpacesJson(out, indent);
@@ -3860,7 +3860,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCacheCreate
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -3885,7 +3885,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCacheCreate
 
     // struct member: const void* pInitialData
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInitialData\",\n";
     IndentSpacesJson(out, indent);
@@ -3944,7 +3944,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSpecializationInfo 
 
     // struct member: const VkSpecializationMapEntry* pMapEntries
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSpecializationMapEntry\",\n";
+    *out += "\"type\" : \"const VkSpecializationMapEntry*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMapEntries\",\n";
     IndentSpacesJson(out, indent);
@@ -3962,7 +3962,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSpecializationInfo 
 
     // struct member: const void* pData
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     IndentSpacesJson(out, indent);
@@ -3990,7 +3990,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -4022,7 +4022,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
 
     // struct member: const char* pName
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pName\",\n";
     IndentSpacesJson(out, indent);
@@ -4033,7 +4033,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
 
     // struct member: const VkSpecializationInfo* pSpecializationInfo
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSpecializationInfo\",\n";
+    *out += "\"type\" : \"const VkSpecializationInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSpecializationInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -4130,7 +4130,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -4155,7 +4155,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
 
     // struct member: const VkVertexInputBindingDescription* pVertexBindingDescriptions
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkVertexInputBindingDescription\",\n";
+    *out += "\"type\" : \"const VkVertexInputBindingDescription*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pVertexBindingDescriptions\",\n";
     IndentSpacesJson(out, indent);
@@ -4173,7 +4173,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
 
     // struct member: const VkVertexInputAttributeDescription* pVertexAttributeDescriptions
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkVertexInputAttributeDescription\",\n";
+    *out += "\"type\" : \"const VkVertexInputAttributeDescription*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pVertexAttributeDescriptions\",\n";
     IndentSpacesJson(out, indent);
@@ -4201,7 +4201,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInputAssemb
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -4250,7 +4250,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -4416,7 +4416,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSta
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -4441,7 +4441,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSta
 
     // struct member: const VkViewport* pViewports
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkViewport\",\n";
+    *out += "\"type\" : \"const VkViewport*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pViewports\",\n";
     IndentSpacesJson(out, indent);
@@ -4459,7 +4459,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSta
 
     // struct member: const VkRect2D* pScissors
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRect2D\",\n";
+    *out += "\"type\" : \"const VkRect2D*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pScissors\",\n";
     IndentSpacesJson(out, indent);
@@ -4487,7 +4487,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -4592,7 +4592,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -4631,7 +4631,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
 
     // struct member: const VkSampleMask* pSampleMask
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSampleMask\",\n";
+    *out += "\"type\" : \"const VkSampleMask*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSampleMask\",\n";
     IndentSpacesJson(out, indent);
@@ -4732,7 +4732,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -4896,7 +4896,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -4935,7 +4935,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
 
     // struct member: const VkPipelineColorBlendAttachmentState* pAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineColorBlendAttachmentState\",\n";
+    *out += "\"type\" : \"const VkPipelineColorBlendAttachmentState*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -4974,7 +4974,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDynamicStat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -4999,7 +4999,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDynamicStat
 
     // struct member: const VkDynamicState* pDynamicStates
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDynamicState\",\n";
+    *out += "\"type\" : \"const VkDynamicState*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDynamicStates\",\n";
     IndentSpacesJson(out, indent);
@@ -5027,7 +5027,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -5052,7 +5052,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
 
     // struct member: const VkPipelineShaderStageCreateInfo* pStages
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineShaderStageCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineShaderStageCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pStages\",\n";
     IndentSpacesJson(out, indent);
@@ -5063,7 +5063,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
 
     // struct member: const VkPipelineVertexInputStateCreateInfo* pVertexInputState
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineVertexInputStateCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineVertexInputStateCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pVertexInputState\",\n";
     IndentSpacesJson(out, indent);
@@ -5074,7 +5074,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
 
     // struct member: const VkPipelineInputAssemblyStateCreateInfo* pInputAssemblyState
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineInputAssemblyStateCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineInputAssemblyStateCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInputAssemblyState\",\n";
     IndentSpacesJson(out, indent);
@@ -5085,7 +5085,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
 
     // struct member: const VkPipelineTessellationStateCreateInfo* pTessellationState
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineTessellationStateCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineTessellationStateCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTessellationState\",\n";
     IndentSpacesJson(out, indent);
@@ -5096,7 +5096,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
 
     // struct member: const VkPipelineViewportStateCreateInfo* pViewportState
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineViewportStateCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineViewportStateCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pViewportState\",\n";
     IndentSpacesJson(out, indent);
@@ -5107,7 +5107,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
 
     // struct member: const VkPipelineRasterizationStateCreateInfo* pRasterizationState
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineRasterizationStateCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineRasterizationStateCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRasterizationState\",\n";
     IndentSpacesJson(out, indent);
@@ -5118,7 +5118,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
 
     // struct member: const VkPipelineMultisampleStateCreateInfo* pMultisampleState
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineMultisampleStateCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineMultisampleStateCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMultisampleState\",\n";
     IndentSpacesJson(out, indent);
@@ -5129,7 +5129,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
 
     // struct member: const VkPipelineDepthStencilStateCreateInfo* pDepthStencilState
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineDepthStencilStateCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineDepthStencilStateCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDepthStencilState\",\n";
     IndentSpacesJson(out, indent);
@@ -5140,7 +5140,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
 
     // struct member: const VkPipelineColorBlendStateCreateInfo* pColorBlendState
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineColorBlendStateCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineColorBlendStateCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pColorBlendState\",\n";
     IndentSpacesJson(out, indent);
@@ -5151,7 +5151,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
 
     // struct member: const VkPipelineDynamicStateCreateInfo* pDynamicState
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineDynamicStateCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineDynamicStateCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDynamicState\",\n";
     IndentSpacesJson(out, indent);
@@ -5214,7 +5214,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkComputePipelineCrea
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -5308,7 +5308,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineLayoutCreat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -5333,7 +5333,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineLayoutCreat
 
     // struct member: const VkDescriptorSetLayout* pSetLayouts
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayout\",\n";
+    *out += "\"type\" : \"const VkDescriptorSetLayout*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSetLayouts\",\n";
     IndentSpacesJson(out, indent);
@@ -5351,7 +5351,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineLayoutCreat
 
     // struct member: const VkPushConstantRange* pPushConstantRanges
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPushConstantRange\",\n";
+    *out += "\"type\" : \"const VkPushConstantRange*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPushConstantRanges\",\n";
     IndentSpacesJson(out, indent);
@@ -5379,7 +5379,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -5540,7 +5540,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
 
     // struct member: const VkSampler* pImmutableSamplers
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSampler\",\n";
+    *out += "\"type\" : \"const VkSampler*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImmutableSamplers\",\n";
     IndentSpacesJson(out, indent);
@@ -5568,7 +5568,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -5593,7 +5593,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
 
     // struct member: const VkDescriptorSetLayoutBinding* pBindings
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayoutBinding\",\n";
+    *out += "\"type\" : \"const VkDescriptorSetLayoutBinding*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindings\",\n";
     IndentSpacesJson(out, indent);
@@ -5645,7 +5645,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolCreat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -5677,7 +5677,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolCreat
 
     // struct member: const VkDescriptorPoolSize* pPoolSizes
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorPoolSize\",\n";
+    *out += "\"type\" : \"const VkDescriptorPoolSize*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPoolSizes\",\n";
     IndentSpacesJson(out, indent);
@@ -5705,7 +5705,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetAlloca
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -5730,7 +5730,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetAlloca
 
     // struct member: const VkDescriptorSetLayout* pSetLayouts
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayout\",\n";
+    *out += "\"type\" : \"const VkDescriptorSetLayout*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSetLayouts\",\n";
     IndentSpacesJson(out, indent);
@@ -5820,7 +5820,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -5866,7 +5866,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
 
     // struct member: const VkDescriptorImageInfo* pImageInfo
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorImageInfo\",\n";
+    *out += "\"type\" : \"const VkDescriptorImageInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -5877,7 +5877,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
 
     // struct member: const VkDescriptorBufferInfo* pBufferInfo
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorBufferInfo\",\n";
+    *out += "\"type\" : \"const VkDescriptorBufferInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBufferInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -5888,7 +5888,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
 
     // struct member: const VkBufferView* pTexelBufferView
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferView\",\n";
+    *out += "\"type\" : \"const VkBufferView*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTexelBufferView\",\n";
     IndentSpacesJson(out, indent);
@@ -5916,7 +5916,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCopyDescriptorSet &
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -5993,7 +5993,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -6025,7 +6025,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
 
     // struct member: const VkImageView* pAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageView\",\n";
+    *out += "\"type\" : \"const VkImageView*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -6185,7 +6185,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
 
     // struct member: const VkAttachmentReference* pInputAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAttachmentReference\",\n";
+    *out += "\"type\" : \"const VkAttachmentReference*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInputAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -6203,7 +6203,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
 
     // struct member: const VkAttachmentReference* pColorAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAttachmentReference\",\n";
+    *out += "\"type\" : \"const VkAttachmentReference*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pColorAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -6214,7 +6214,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
 
     // struct member: const VkAttachmentReference* pResolveAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAttachmentReference\",\n";
+    *out += "\"type\" : \"const VkAttachmentReference*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pResolveAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -6225,7 +6225,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
 
     // struct member: const VkAttachmentReference* pDepthStencilAttachment
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAttachmentReference\",\n";
+    *out += "\"type\" : \"const VkAttachmentReference*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDepthStencilAttachment\",\n";
     IndentSpacesJson(out, indent);
@@ -6243,7 +6243,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
 
     // struct member: const uint32_t* pPreserveAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPreserveAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -6330,7 +6330,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -6355,7 +6355,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
 
     // struct member: const VkAttachmentDescription* pAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAttachmentDescription\",\n";
+    *out += "\"type\" : \"const VkAttachmentDescription*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -6373,7 +6373,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
 
     // struct member: const VkSubpassDescription* pSubpasses
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubpassDescription\",\n";
+    *out += "\"type\" : \"const VkSubpassDescription*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubpasses\",\n";
     IndentSpacesJson(out, indent);
@@ -6391,7 +6391,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
 
     // struct member: const VkSubpassDependency* pDependencies
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubpassDependency\",\n";
+    *out += "\"type\" : \"const VkSubpassDependency*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDependencies\",\n";
     IndentSpacesJson(out, indent);
@@ -6419,7 +6419,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandPoolCreateIn
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -6461,7 +6461,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferAlloca
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -6510,7 +6510,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -6580,7 +6580,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferBeginI
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -6598,7 +6598,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferBeginI
 
     // struct member: const VkCommandBufferInheritanceInfo* pInheritanceInfo
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBufferInheritanceInfo\",\n";
+    *out += "\"type\" : \"const VkCommandBufferInheritanceInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInheritanceInfo\",\n";
     IndentSpacesJson(out, indent);
@@ -7036,7 +7036,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryBarrier &pstr
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7078,7 +7078,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7155,7 +7155,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7239,7 +7239,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassBeginInfo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7278,7 +7278,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassBeginInfo
 
     // struct member: const VkClearValue* pClearValues
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkClearValue\",\n";
+    *out += "\"type\" : \"const VkClearValue*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pClearValues\",\n";
     IndentSpacesJson(out, indent);
@@ -7420,7 +7420,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7476,7 +7476,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryInf
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7525,7 +7525,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryInfo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7574,7 +7574,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice16Bit
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7630,7 +7630,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedRequ
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7672,7 +7672,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedAllo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7714,7 +7714,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateFlags
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7756,7 +7756,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupRenderPa
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7781,7 +7781,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupRenderPa
 
     // struct member: const VkRect2D* pDeviceRenderAreas
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRect2D\",\n";
+    *out += "\"type\" : \"const VkRect2D*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDeviceRenderAreas\",\n";
     IndentSpacesJson(out, indent);
@@ -7809,7 +7809,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupCommandB
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7844,7 +7844,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7862,7 +7862,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
 
     // struct member: const uint32_t* pWaitSemaphoreDeviceIndices
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pWaitSemaphoreDeviceIndices\",\n";
     IndentSpacesJson(out, indent);
@@ -7880,7 +7880,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
 
     // struct member: const uint32_t* pCommandBufferDeviceMasks
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCommandBufferDeviceMasks\",\n";
     IndentSpacesJson(out, indent);
@@ -7898,7 +7898,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
 
     // struct member: const uint32_t* pSignalSemaphoreDeviceIndices
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSignalSemaphoreDeviceIndices\",\n";
     IndentSpacesJson(out, indent);
@@ -7926,7 +7926,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupBindSpar
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7968,7 +7968,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryDev
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -7986,7 +7986,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryDev
 
     // struct member: const uint32_t* pDeviceIndices
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDeviceIndices\",\n";
     IndentSpacesJson(out, indent);
@@ -8014,7 +8014,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryDevi
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8032,7 +8032,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryDevi
 
     // struct member: const uint32_t* pDeviceIndices
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDeviceIndices\",\n";
     IndentSpacesJson(out, indent);
@@ -8050,7 +8050,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryDevi
 
     // struct member: const VkRect2D* pSplitInstanceBindRegions
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRect2D\",\n";
+    *out += "\"type\" : \"const VkRect2D*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSplitInstanceBindRegions\",\n";
     IndentSpacesJson(out, indent);
@@ -8078,7 +8078,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceGroup
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8131,7 +8131,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupDeviceCr
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8149,7 +8149,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupDeviceCr
 
     // struct member: const VkPhysicalDevice* pPhysicalDevices
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    *out += "\"type\" : \"const VkPhysicalDevice*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDevices\",\n";
     IndentSpacesJson(out, indent);
@@ -8177,7 +8177,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryRequire
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8212,7 +8212,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryRequirem
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8247,7 +8247,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSparseMemoryRe
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8282,7 +8282,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryRequirements2
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8317,7 +8317,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryRe
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8352,7 +8352,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8387,7 +8387,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8422,7 +8422,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties2 &
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8457,7 +8457,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatProperti
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8492,7 +8492,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8555,7 +8555,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyProperti
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8590,7 +8590,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8625,7 +8625,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageFormatPr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8660,7 +8660,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8723,7 +8723,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePoint
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8789,7 +8789,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassInputAtta
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8807,7 +8807,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassInputAtta
 
     // struct member: const VkInputAttachmentAspectReference* pAspectReferences
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInputAttachmentAspectReference\",\n";
+    *out += "\"type\" : \"const VkInputAttachmentAspectReference*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAspectReferences\",\n";
     IndentSpacesJson(out, indent);
@@ -8835,7 +8835,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewUsageCreat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8870,7 +8870,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8905,7 +8905,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -8923,7 +8923,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
 
     // struct member: const uint32_t* pViewMasks
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pViewMasks\",\n";
     IndentSpacesJson(out, indent);
@@ -8941,7 +8941,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
 
     // struct member: const int32_t* pViewOffsets
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"int32_t\",\n";
+    *out += "\"type\" : \"const int32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pViewOffsets\",\n";
     IndentSpacesJson(out, indent);
@@ -8959,7 +8959,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
 
     // struct member: const uint32_t* pCorrelationMasks
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCorrelationMasks\",\n";
     IndentSpacesJson(out, indent);
@@ -8987,7 +8987,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9036,7 +9036,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9078,7 +9078,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVaria
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9120,7 +9120,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceProte
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9155,7 +9155,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceProte
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9190,7 +9190,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueInfo2 &p
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9239,7 +9239,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkProtectedSubmitInfo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9274,7 +9274,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9358,7 +9358,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9393,7 +9393,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImagePlaneMemor
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9428,7 +9428,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePlaneMemoryReq
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9463,7 +9463,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9498,7 +9498,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9585,7 +9585,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9610,7 +9610,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
 
     // struct member: const VkDescriptorUpdateTemplateEntry* pDescriptorUpdateEntries
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorUpdateTemplateEntry\",\n";
+    *out += "\"type\" : \"const VkDescriptorUpdateTemplateEntry*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorUpdateEntries\",\n";
     IndentSpacesJson(out, indent);
@@ -9704,7 +9704,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9739,7 +9739,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9774,7 +9774,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9823,7 +9823,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalBufferPrope
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9858,7 +9858,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIDPro
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9933,7 +9933,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -9968,7 +9968,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryBuffe
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10003,7 +10003,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10038,7 +10038,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10073,7 +10073,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10122,7 +10122,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceCreateIn
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10157,7 +10157,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreCrea
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10192,7 +10192,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10227,7 +10227,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10276,7 +10276,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMaint
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10318,7 +10318,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10353,7 +10353,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10492,7 +10492,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10573,7 +10573,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
 
     // struct member: const uint32_t* pQueueFamilyIndices
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyIndices\",\n";
     IndentSpacesJson(out, indent);
@@ -10636,7 +10636,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10654,7 +10654,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
 
     // struct member: const VkSemaphore* pWaitSemaphores
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphore\",\n";
+    *out += "\"type\" : \"const VkSemaphore*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pWaitSemaphores\",\n";
     IndentSpacesJson(out, indent);
@@ -10672,7 +10672,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
 
     // struct member: const VkSwapchainKHR* pSwapchains
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    *out += "\"type\" : \"const VkSwapchainKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSwapchains\",\n";
     IndentSpacesJson(out, indent);
@@ -10683,7 +10683,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
 
     // struct member: const uint32_t* pImageIndices
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageIndices\",\n";
     IndentSpacesJson(out, indent);
@@ -10694,7 +10694,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
 
     // struct member: VkResult* pResults
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkResult\",\n";
+    *out += "\"type\" : \"VkResult*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pResults\",\n";
     IndentSpacesJson(out, indent);
@@ -10722,7 +10722,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSwapchainCreat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10757,7 +10757,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemorySwap
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10799,7 +10799,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAcquireNextImageInf
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10862,7 +10862,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentC
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10908,7 +10908,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentI
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10926,7 +10926,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentI
 
     // struct member: const uint32_t* pDeviceMasks
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDeviceMasks\",\n";
     IndentSpacesJson(out, indent);
@@ -10961,7 +10961,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSwapchai
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -10996,7 +10996,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPropertiesKH
 
     // struct member: const char* displayName
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"displayName\",\n";
     IndentSpacesJson(out, indent);
@@ -11107,7 +11107,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeCreateIn
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11246,7 +11246,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11330,7 +11330,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPresentInfoK
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11379,7 +11379,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkXlibSurfaceCreateIn
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11397,7 +11397,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkXlibSurfaceCreateIn
 
     // struct member: void* dpy
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
     *out += "\n"; // GDS
@@ -11428,7 +11428,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkXcbSurfaceCreateInf
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11446,7 +11446,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkXcbSurfaceCreateInf
 
     // struct member: void* connection
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"connection\",\n";
     IndentSpacesJson(out, indent);
@@ -11481,7 +11481,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWaylandSurfaceCreat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11499,7 +11499,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWaylandSurfaceCreat
 
     // struct member: struct void* display
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"struct void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
     IndentSpacesJson(out, indent);
@@ -11510,7 +11510,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWaylandSurfaceCreat
 
     // struct member: struct void* surface
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"struct void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
     IndentSpacesJson(out, indent);
@@ -11538,7 +11538,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidSurfaceCreat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11556,7 +11556,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidSurfaceCreat
 
     // struct member: struct void* window
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"struct void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"window\",\n";
     IndentSpacesJson(out, indent);
@@ -11584,7 +11584,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32SurfaceCreateI
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11602,7 +11602,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32SurfaceCreateI
 
     // struct member: void* hinstance
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"hinstance\",\n";
     IndentSpacesJson(out, indent);
@@ -11613,7 +11613,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32SurfaceCreateI
 
     // struct member: void* hwnd
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"hwnd\",\n";
     IndentSpacesJson(out, indent);
@@ -11641,7 +11641,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11659,7 +11659,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
 
     // struct member: void* handle
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handle\",\n";
     IndentSpacesJson(out, indent);
@@ -11670,7 +11670,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
 
     // struct member: const wchar_t* name
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"wchar_t\",\n";
+    *out += "\"type\" : \"const wchar_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"name\",\n";
     IndentSpacesJson(out, indent);
@@ -11698,7 +11698,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11709,7 +11709,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
 
     // struct member: const SECURITY_ATTRIBUTES* pAttributes
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"SECURITY_ATTRIBUTES\",\n";
+    *out += "\"type\" : \"const SECURITY_ATTRIBUTES*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttributes\",\n";
     IndentSpacesJson(out, indent);
@@ -11727,7 +11727,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
 
     // struct member: const wchar_t* name
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"wchar_t\",\n";
+    *out += "\"type\" : \"const wchar_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"name\",\n";
     IndentSpacesJson(out, indent);
@@ -11755,7 +11755,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryWin32HandlePr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11790,7 +11790,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetWin32Handl
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11832,7 +11832,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryFdInfoK
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11874,7 +11874,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryFdPropertiesK
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11909,7 +11909,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetFdInfoKHR 
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11951,7 +11951,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -11969,7 +11969,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
 
     // struct member: const VkDeviceMemory* pAcquireSyncs
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory\",\n";
+    *out += "\"type\" : \"const VkDeviceMemory*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAcquireSyncs\",\n";
     IndentSpacesJson(out, indent);
@@ -11980,7 +11980,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
 
     // struct member: const uint64_t* pAcquireKeys
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"const uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAcquireKeys\",\n";
     IndentSpacesJson(out, indent);
@@ -11991,7 +11991,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
 
     // struct member: const uint32_t* pAcquireTimeouts
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAcquireTimeouts\",\n";
     IndentSpacesJson(out, indent);
@@ -12009,7 +12009,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
 
     // struct member: const VkDeviceMemory* pReleaseSyncs
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory\",\n";
+    *out += "\"type\" : \"const VkDeviceMemory*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pReleaseSyncs\",\n";
     IndentSpacesJson(out, indent);
@@ -12020,7 +12020,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
 
     // struct member: const uint64_t* pReleaseKeys
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"const uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pReleaseKeys\",\n";
     IndentSpacesJson(out, indent);
@@ -12048,7 +12048,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12080,7 +12080,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
 
     // struct member: void* handle
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handle\",\n";
     IndentSpacesJson(out, indent);
@@ -12091,7 +12091,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
 
     // struct member: const wchar_t* name
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"wchar_t\",\n";
+    *out += "\"type\" : \"const wchar_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"name\",\n";
     IndentSpacesJson(out, indent);
@@ -12119,7 +12119,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreWin3
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12130,7 +12130,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreWin3
 
     // struct member: const SECURITY_ATTRIBUTES* pAttributes
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"SECURITY_ATTRIBUTES\",\n";
+    *out += "\"type\" : \"const SECURITY_ATTRIBUTES*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttributes\",\n";
     IndentSpacesJson(out, indent);
@@ -12148,7 +12148,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreWin3
 
     // struct member: const wchar_t* name
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"wchar_t\",\n";
+    *out += "\"type\" : \"const wchar_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"name\",\n";
     IndentSpacesJson(out, indent);
@@ -12176,7 +12176,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkD3D12FenceSubmitInf
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12194,7 +12194,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkD3D12FenceSubmitInf
 
     // struct member: const uint64_t* pWaitSemaphoreValues
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"const uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pWaitSemaphoreValues\",\n";
     IndentSpacesJson(out, indent);
@@ -12212,7 +12212,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkD3D12FenceSubmitInf
 
     // struct member: const uint64_t* pSignalSemaphoreValues
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"const uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSignalSemaphoreValues\",\n";
     IndentSpacesJson(out, indent);
@@ -12240,7 +12240,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetWin32Ha
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12282,7 +12282,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreFdIn
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12338,7 +12338,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetFdInfoK
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12380,7 +12380,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePushD
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12415,7 +12415,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12488,7 +12488,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentRegionKHR &p
 
     // struct member: const VkRectLayerKHR* pRectangles
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRectLayerKHR\",\n";
+    *out += "\"type\" : \"const VkRectLayerKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRectangles\",\n";
     IndentSpacesJson(out, indent);
@@ -12516,7 +12516,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentRegionsKHR &
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12534,7 +12534,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentRegionsKHR &
 
     // struct member: const VkPresentRegionKHR* pRegions
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPresentRegionKHR\",\n";
+    *out += "\"type\" : \"const VkPresentRegionKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     IndentSpacesJson(out, indent);
@@ -12562,7 +12562,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12597,7 +12597,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12650,7 +12650,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
 
     // struct member: const VkFormat* pViewFormats
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormat\",\n";
+    *out += "\"type\" : \"const VkFormat*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pViewFormats\",\n";
     IndentSpacesJson(out, indent);
@@ -12678,7 +12678,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12696,7 +12696,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
 
     // struct member: const VkFramebufferAttachmentImageInfoKHR* pAttachmentImageInfos
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFramebufferAttachmentImageInfoKHR\",\n";
+    *out += "\"type\" : \"const VkFramebufferAttachmentImageInfoKHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttachmentImageInfos\",\n";
     IndentSpacesJson(out, indent);
@@ -12724,7 +12724,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassAttachmen
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12742,7 +12742,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassAttachmen
 
     // struct member: const VkImageView* pAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageView\",\n";
+    *out += "\"type\" : \"const VkImageView*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -12770,7 +12770,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12861,7 +12861,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12910,7 +12910,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -12949,7 +12949,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
 
     // struct member: const VkAttachmentReference2KHR* pInputAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAttachmentReference2KHR\",\n";
+    *out += "\"type\" : \"const VkAttachmentReference2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInputAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -12967,7 +12967,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
 
     // struct member: const VkAttachmentReference2KHR* pColorAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAttachmentReference2KHR\",\n";
+    *out += "\"type\" : \"const VkAttachmentReference2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pColorAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -12978,7 +12978,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
 
     // struct member: const VkAttachmentReference2KHR* pResolveAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAttachmentReference2KHR\",\n";
+    *out += "\"type\" : \"const VkAttachmentReference2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pResolveAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -12989,7 +12989,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
 
     // struct member: const VkAttachmentReference2KHR* pDepthStencilAttachment
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAttachmentReference2KHR\",\n";
+    *out += "\"type\" : \"const VkAttachmentReference2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDepthStencilAttachment\",\n";
     IndentSpacesJson(out, indent);
@@ -13007,7 +13007,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
 
     // struct member: const uint32_t* pPreserveAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPreserveAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -13035,7 +13035,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13119,7 +13119,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13144,7 +13144,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
 
     // struct member: const VkAttachmentDescription2KHR* pAttachments
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAttachmentDescription2KHR\",\n";
+    *out += "\"type\" : \"const VkAttachmentDescription2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttachments\",\n";
     IndentSpacesJson(out, indent);
@@ -13162,7 +13162,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
 
     // struct member: const VkSubpassDescription2KHR* pSubpasses
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubpassDescription2KHR\",\n";
+    *out += "\"type\" : \"const VkSubpassDescription2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubpasses\",\n";
     IndentSpacesJson(out, indent);
@@ -13180,7 +13180,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
 
     // struct member: const VkSubpassDependency2KHR* pDependencies
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubpassDependency2KHR\",\n";
+    *out += "\"type\" : \"const VkSubpassDependency2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDependencies\",\n";
     IndentSpacesJson(out, indent);
@@ -13198,7 +13198,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
 
     // struct member: const uint32_t* pCorrelatedViewMasks
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCorrelatedViewMasks\",\n";
     IndentSpacesJson(out, indent);
@@ -13226,7 +13226,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassBeginInfoKHR
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13261,7 +13261,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassEndInfoKHR &
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13289,7 +13289,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSharedPresentSurfac
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13324,7 +13324,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13356,7 +13356,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
 
     // struct member: void* handle
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handle\",\n";
     IndentSpacesJson(out, indent);
@@ -13367,7 +13367,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
 
     // struct member: const wchar_t* name
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"wchar_t\",\n";
+    *out += "\"type\" : \"const wchar_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"name\",\n";
     IndentSpacesJson(out, indent);
@@ -13395,7 +13395,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceWin32Han
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13406,7 +13406,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceWin32Han
 
     // struct member: const SECURITY_ATTRIBUTES* pAttributes
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"SECURITY_ATTRIBUTES\",\n";
+    *out += "\"type\" : \"const SECURITY_ATTRIBUTES*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttributes\",\n";
     IndentSpacesJson(out, indent);
@@ -13424,7 +13424,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceWin32Han
 
     // struct member: const wchar_t* name
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"wchar_t\",\n";
+    *out += "\"type\" : \"const wchar_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"name\",\n";
     IndentSpacesJson(out, indent);
@@ -13452,7 +13452,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetWin32Handle
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13494,7 +13494,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceFdInfoKH
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13550,7 +13550,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetFdInfoKHR &
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13592,7 +13592,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSurfa
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13627,7 +13627,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13662,7 +13662,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFormat2KHR &
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13697,7 +13697,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayProperties2K
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13732,7 +13732,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlanePropert
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13767,7 +13767,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeProperti
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13802,7 +13802,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneInfo2KH
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13844,7 +13844,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneCapabil
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13879,7 +13879,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatListCrea
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13897,7 +13897,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatListCrea
 
     // struct member: const VkFormat* pViewFormats
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormat\",\n";
+    *out += "\"type\" : \"const VkFormat*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pViewFormats\",\n";
     IndentSpacesJson(out, indent);
@@ -13925,7 +13925,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -13960,7 +13960,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice8BitS
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14009,7 +14009,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14051,7 +14051,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14131,7 +14131,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDrive
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14195,7 +14195,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14342,7 +14342,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescriptionD
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14367,7 +14367,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescriptionD
 
     // struct member: const VkAttachmentReference2KHR* pDepthStencilResolveAttachment
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAttachmentReference2KHR\",\n";
+    *out += "\"type\" : \"const VkAttachmentReference2KHR*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDepthStencilResolveAttachment\",\n";
     IndentSpacesJson(out, indent);
@@ -14395,7 +14395,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14451,7 +14451,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTimel
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14486,7 +14486,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTimel
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14521,7 +14521,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreTypeCreate
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14563,7 +14563,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkTimelineSemaphoreSu
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14581,7 +14581,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkTimelineSemaphoreSu
 
     // struct member: const uint64_t* pWaitSemaphoreValues
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"const uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pWaitSemaphoreValues\",\n";
     IndentSpacesJson(out, indent);
@@ -14599,7 +14599,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkTimelineSemaphoreSu
 
     // struct member: const uint64_t* pSignalSemaphoreValues
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"const uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSignalSemaphoreValues\",\n";
     IndentSpacesJson(out, indent);
@@ -14627,7 +14627,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14652,7 +14652,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
 
     // struct member: const VkSemaphore* pSemaphores
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphore\",\n";
+    *out += "\"type\" : \"const VkSemaphore*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSemaphores\",\n";
     IndentSpacesJson(out, indent);
@@ -14663,7 +14663,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
 
     // struct member: const uint64_t* pValues
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"const uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pValues\",\n";
     IndentSpacesJson(out, indent);
@@ -14691,7 +14691,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreSignalInfo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14733,7 +14733,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVulka
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14782,7 +14782,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceProtectedCap
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14817,7 +14817,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceUnifo
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14852,7 +14852,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePipel
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14887,7 +14887,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInfoKHR &ps
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14922,7 +14922,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableP
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -14986,7 +14986,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15066,7 +15066,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15130,7 +15130,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15177,7 +15177,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
 
     // struct member: void* pData
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     IndentSpacesJson(out, indent);
@@ -15205,7 +15205,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugReportCallback
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15230,7 +15230,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugReportCallback
 
     // struct member: void* pUserData
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pUserData\",\n";
     IndentSpacesJson(out, indent);
@@ -15258,7 +15258,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15293,7 +15293,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectNa
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15318,7 +15318,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectNa
 
     // struct member: const char* pObjectName
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pObjectName\",\n";
     IndentSpacesJson(out, indent);
@@ -15346,7 +15346,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectTa
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15385,7 +15385,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectTa
 
     // struct member: const void* pTag
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTag\",\n";
     IndentSpacesJson(out, indent);
@@ -15413,7 +15413,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerMarkerIn
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15424,7 +15424,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerMarkerIn
 
     // struct member: const char* pMarkerName
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMarkerName\",\n";
     IndentSpacesJson(out, indent);
@@ -15463,7 +15463,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15498,7 +15498,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15533,7 +15533,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15575,7 +15575,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15617,7 +15617,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15715,7 +15715,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15757,7 +15757,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewHandleInfo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15806,7 +15806,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkTextureLODGatherFor
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15949,7 +15949,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkStreamDescriptorSur
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -15991,7 +15991,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCorne
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16064,7 +16064,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16099,7 +16099,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16134,7 +16134,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16152,7 +16152,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
 
     // struct member: void* handle
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handle\",\n";
     IndentSpacesJson(out, indent);
@@ -16180,7 +16180,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16191,7 +16191,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
 
     // struct member: const SECURITY_ATTRIBUTES* pAttributes
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"SECURITY_ATTRIBUTES\",\n";
+    *out += "\"type\" : \"const SECURITY_ATTRIBUTES*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttributes\",\n";
     IndentSpacesJson(out, indent);
@@ -16226,7 +16226,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16244,7 +16244,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
 
     // struct member: const VkDeviceMemory* pAcquireSyncs
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory\",\n";
+    *out += "\"type\" : \"const VkDeviceMemory*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAcquireSyncs\",\n";
     IndentSpacesJson(out, indent);
@@ -16255,7 +16255,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
 
     // struct member: const uint64_t* pAcquireKeys
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"const uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAcquireKeys\",\n";
     IndentSpacesJson(out, indent);
@@ -16266,7 +16266,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
 
     // struct member: const uint32_t* pAcquireTimeoutMilliseconds
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAcquireTimeoutMilliseconds\",\n";
     IndentSpacesJson(out, indent);
@@ -16284,7 +16284,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
 
     // struct member: const VkDeviceMemory* pReleaseSyncs
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory\",\n";
+    *out += "\"type\" : \"const VkDeviceMemory*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pReleaseSyncs\",\n";
     IndentSpacesJson(out, indent);
@@ -16295,7 +16295,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
 
     // struct member: const uint64_t* pReleaseKeys
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"const uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pReleaseKeys\",\n";
     IndentSpacesJson(out, indent);
@@ -16323,7 +16323,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFlagsEXT 
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16341,7 +16341,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFlagsEXT 
 
     // struct member: const VkValidationCheckEXT* pDisabledValidationChecks
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkValidationCheckEXT\",\n";
+    *out += "\"type\" : \"const VkValidationCheckEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisabledValidationChecks\",\n";
     IndentSpacesJson(out, indent);
@@ -16369,7 +16369,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkViSurfaceCreateInfo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16387,7 +16387,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkViSurfaceCreateInfo
 
     // struct member: void* window
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"window\",\n";
     IndentSpacesJson(out, indent);
@@ -16415,7 +16415,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTextu
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16450,7 +16450,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewASTCDecode
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16485,7 +16485,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceASTCD
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16520,7 +16520,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkConditionalRenderin
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16569,7 +16569,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCondi
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16611,7 +16611,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16646,7 +16646,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16681,7 +16681,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16813,7 +16813,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16845,7 +16845,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
 
     // struct member: const VkIndirectCommandsLayoutTokenNVX* pTokens
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkIndirectCommandsLayoutTokenNVX\",\n";
+    *out += "\"type\" : \"const VkIndirectCommandsLayoutTokenNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTokens\",\n";
     IndentSpacesJson(out, indent);
@@ -16873,7 +16873,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -16905,7 +16905,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
 
     // struct member: const VkIndirectCommandsTokenNVX* pIndirectCommandsTokens
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkIndirectCommandsTokenNVX\",\n";
+    *out += "\"type\" : \"const VkIndirectCommandsTokenNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pIndirectCommandsTokens\",\n";
     IndentSpacesJson(out, indent);
@@ -16975,7 +16975,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdReserveSpaceForC
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17024,7 +17024,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17042,7 +17042,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
 
     // struct member: const VkObjectEntryTypeNVX* pObjectEntryTypes
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkObjectEntryTypeNVX\",\n";
+    *out += "\"type\" : \"const VkObjectEntryTypeNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pObjectEntryTypes\",\n";
     IndentSpacesJson(out, indent);
@@ -17053,7 +17053,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
 
     // struct member: const uint32_t* pObjectEntryCounts
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pObjectEntryCounts\",\n";
     IndentSpacesJson(out, indent);
@@ -17064,7 +17064,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
 
     // struct member: const VkObjectEntryUsageFlagsNVX* pObjectEntryUsageFlags
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkObjectEntryUsageFlagsNVX\",\n";
+    *out += "\"type\" : \"const VkObjectEntryUsageFlagsNVX*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pObjectEntryUsageFlags\",\n";
     IndentSpacesJson(out, indent);
@@ -17351,7 +17351,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportWSc
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17376,7 +17376,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportWSc
 
     // struct member: const VkViewportWScalingNV* pViewportWScalings
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkViewportWScalingNV\",\n";
+    *out += "\"type\" : \"const VkViewportWScalingNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pViewportWScalings\",\n";
     IndentSpacesJson(out, indent);
@@ -17404,7 +17404,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17509,7 +17509,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPowerInfoEXT
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17544,7 +17544,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceEventInfoEXT 
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17579,7 +17579,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayEventInfoEXT
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17614,7 +17614,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCounterCre
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17735,7 +17735,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentTimesInfoGOO
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17753,7 +17753,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentTimesInfoGOO
 
     // struct member: const VkPresentTimeGOOGLE* pTimes
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPresentTimeGOOGLE\",\n";
+    *out += "\"type\" : \"const VkPresentTimeGOOGLE*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTimes\",\n";
     IndentSpacesJson(out, indent);
@@ -17781,7 +17781,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17854,7 +17854,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSwi
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17879,7 +17879,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSwi
 
     // struct member: const VkViewportSwizzleNV* pViewportSwizzles
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkViewportSwizzleNV\",\n";
+    *out += "\"type\" : \"const VkViewportSwizzleNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pViewportSwizzles\",\n";
     IndentSpacesJson(out, indent);
@@ -17907,7 +17907,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDisca
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17942,7 +17942,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDiscardRect
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -17974,7 +17974,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDiscardRect
 
     // struct member: const VkRect2D* pDiscardRectangles
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRect2D\",\n";
+    *out += "\"type\" : \"const VkRect2D*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDiscardRectangles\",\n";
     IndentSpacesJson(out, indent);
@@ -18002,7 +18002,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18093,7 +18093,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18142,7 +18142,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18177,7 +18177,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18243,7 +18243,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkHdrMetadataEXT &pst
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18327,7 +18327,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIOSSurfaceCreateInf
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18345,7 +18345,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIOSSurfaceCreateInf
 
     // struct member: const void* pView
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pView\",\n";
     IndentSpacesJson(out, indent);
@@ -18373,7 +18373,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMacOSSurfaceCreateI
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18391,7 +18391,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMacOSSurfaceCreateI
 
     // struct member: const void* pView
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pView\",\n";
     IndentSpacesJson(out, indent);
@@ -18419,7 +18419,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectNam
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18444,7 +18444,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectNam
 
     // struct member: const char* pObjectName
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pObjectName\",\n";
     IndentSpacesJson(out, indent);
@@ -18472,7 +18472,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectTag
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18511,7 +18511,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectTag
 
     // struct member: const void* pTag
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTag\",\n";
     IndentSpacesJson(out, indent);
@@ -18539,7 +18539,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsLabelEXT 
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18550,7 +18550,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsLabelEXT 
 
     // struct member: const char* pLabelName
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLabelName\",\n";
     IndentSpacesJson(out, indent);
@@ -18589,7 +18589,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18607,7 +18607,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
 
     // struct member: const char* pMessageIdName
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMessageIdName\",\n";
     IndentSpacesJson(out, indent);
@@ -18625,7 +18625,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
 
     // struct member: const char* pMessage
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMessage\",\n";
     IndentSpacesJson(out, indent);
@@ -18643,7 +18643,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
 
     // struct member: const VkDebugUtilsLabelEXT* pQueueLabels
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsLabelEXT\",\n";
+    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueLabels\",\n";
     IndentSpacesJson(out, indent);
@@ -18661,7 +18661,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
 
     // struct member: const VkDebugUtilsLabelEXT* pCmdBufLabels
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsLabelEXT\",\n";
+    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCmdBufLabels\",\n";
     IndentSpacesJson(out, indent);
@@ -18679,7 +18679,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
 
     // struct member: const VkDebugUtilsObjectNameInfoEXT* pObjects
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsObjectNameInfoEXT\",\n";
+    *out += "\"type\" : \"const VkDebugUtilsObjectNameInfoEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pObjects\",\n";
     IndentSpacesJson(out, indent);
@@ -18707,7 +18707,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18746,7 +18746,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
 
     // struct member: void* pUserData
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pUserData\",\n";
     IndentSpacesJson(out, indent);
@@ -18774,7 +18774,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18809,7 +18809,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18851,7 +18851,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18935,7 +18935,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportAndroidHardwa
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -18946,7 +18946,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportAndroidHardwa
 
     // struct member: struct void* buffer
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"struct void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -18974,7 +18974,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetAndroidHar
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19009,7 +19009,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFormatANDRO
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19044,7 +19044,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerReductionMod
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19079,7 +19079,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19121,7 +19121,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19163,7 +19163,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19226,7 +19226,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetI
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19244,7 +19244,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetI
 
     // struct member: const void* pData
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     IndentSpacesJson(out, indent);
@@ -19272,7 +19272,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolInlin
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19331,7 +19331,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSampleLocationsInfo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19363,7 +19363,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSampleLocationsInfo
 
     // struct member: const VkSampleLocationEXT* pSampleLocations
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSampleLocationEXT\",\n";
+    *out += "\"type\" : \"const VkSampleLocationEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSampleLocations\",\n";
     IndentSpacesJson(out, indent);
@@ -19439,7 +19439,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassSampleLoc
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19457,7 +19457,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassSampleLoc
 
     // struct member: const VkAttachmentSampleLocationsEXT* pAttachmentInitialSampleLocations
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAttachmentSampleLocationsEXT\",\n";
+    *out += "\"type\" : \"const VkAttachmentSampleLocationsEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttachmentInitialSampleLocations\",\n";
     IndentSpacesJson(out, indent);
@@ -19475,7 +19475,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassSampleLoc
 
     // struct member: const VkSubpassSampleLocationsEXT* pPostSubpassSampleLocations
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubpassSampleLocationsEXT\",\n";
+    *out += "\"type\" : \"const VkSubpassSampleLocationsEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPostSubpassSampleLocations\",\n";
     IndentSpacesJson(out, indent);
@@ -19503,7 +19503,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineSampleLocat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19545,7 +19545,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19612,7 +19612,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMultisampleProperti
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19647,7 +19647,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19682,7 +19682,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19752,7 +19752,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19801,7 +19801,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageToC
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19850,7 +19850,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageMod
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19889,7 +19889,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageMod
 
     // struct member: const float* pCoverageModulationTable
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"float\",\n";
+    *out += "\"type\" : \"const float*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCoverageModulationTable\",\n";
     IndentSpacesJson(out, indent);
@@ -19917,7 +19917,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -19959,7 +19959,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20025,7 +20025,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20043,7 +20043,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
 
     // struct member: VkDrmFormatModifierPropertiesEXT* pDrmFormatModifierProperties
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDrmFormatModifierPropertiesEXT\",\n";
+    *out += "\"type\" : \"VkDrmFormatModifierPropertiesEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDrmFormatModifierProperties\",\n";
     IndentSpacesJson(out, indent);
@@ -20071,7 +20071,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20103,7 +20103,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
 
     // struct member: const uint32_t* pQueueFamilyIndices
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyIndices\",\n";
     IndentSpacesJson(out, indent);
@@ -20131,7 +20131,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20149,7 +20149,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
 
     // struct member: const uint64_t* pDrmFormatModifiers
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    *out += "\"type\" : \"const uint64_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDrmFormatModifiers\",\n";
     IndentSpacesJson(out, indent);
@@ -20177,7 +20177,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20202,7 +20202,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
 
     // struct member: const VkSubresourceLayout* pPlaneLayouts
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubresourceLayout\",\n";
+    *out += "\"type\" : \"const VkSubresourceLayout*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPlaneLayouts\",\n";
     IndentSpacesJson(out, indent);
@@ -20230,7 +20230,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20265,7 +20265,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationCacheCrea
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20290,7 +20290,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationCacheCrea
 
     // struct member: const void* pInitialData
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInitialData\",\n";
     IndentSpacesJson(out, indent);
@@ -20318,7 +20318,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleValidat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20353,7 +20353,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20371,7 +20371,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
 
     // struct member: const VkDescriptorBindingFlagsEXT* pBindingFlags
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorBindingFlagsEXT\",\n";
+    *out += "\"type\" : \"const VkDescriptorBindingFlagsEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindingFlags\",\n";
     IndentSpacesJson(out, indent);
@@ -20399,7 +20399,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20567,7 +20567,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20756,7 +20756,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20774,7 +20774,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
 
     // struct member: const uint32_t* pDescriptorCounts
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorCounts\",\n";
     IndentSpacesJson(out, indent);
@@ -20802,7 +20802,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20837,7 +20837,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShadingRatePaletteN
 
     // struct member: const VkShadingRatePaletteEntryNV* pShadingRatePaletteEntries
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkShadingRatePaletteEntryNV\",\n";
+    *out += "\"type\" : \"const VkShadingRatePaletteEntryNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pShadingRatePaletteEntries\",\n";
     IndentSpacesJson(out, indent);
@@ -20865,7 +20865,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSha
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20890,7 +20890,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSha
 
     // struct member: const VkShadingRatePaletteNV* pShadingRatePalettes
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkShadingRatePaletteNV\",\n";
+    *out += "\"type\" : \"const VkShadingRatePaletteNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pShadingRatePalettes\",\n";
     IndentSpacesJson(out, indent);
@@ -20918,7 +20918,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -20960,7 +20960,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21054,7 +21054,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCoarseSampleOrderCu
 
     // struct member: const VkCoarseSampleLocationNV* pSampleLocations
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCoarseSampleLocationNV\",\n";
+    *out += "\"type\" : \"const VkCoarseSampleLocationNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSampleLocations\",\n";
     IndentSpacesJson(out, indent);
@@ -21082,7 +21082,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportCoa
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21107,7 +21107,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportCoa
 
     // struct member: const VkCoarseSampleOrderCustomNV* pCustomSampleOrders
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCoarseSampleOrderCustomNV\",\n";
+    *out += "\"type\" : \"const VkCoarseSampleOrderCustomNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCustomSampleOrders\",\n";
     IndentSpacesJson(out, indent);
@@ -21135,7 +21135,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingShaderGro
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21198,7 +21198,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21223,7 +21223,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
 
     // struct member: const VkPipelineShaderStageCreateInfo* pStages
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineShaderStageCreateInfo\",\n";
+    *out += "\"type\" : \"const VkPipelineShaderStageCreateInfo*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pStages\",\n";
     IndentSpacesJson(out, indent);
@@ -21241,7 +21241,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
 
     // struct member: const VkRayTracingShaderGroupCreateInfoNV* pGroups
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRayTracingShaderGroupCreateInfoNV\",\n";
+    *out += "\"type\" : \"const VkRayTracingShaderGroupCreateInfoNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGroups\",\n";
     IndentSpacesJson(out, indent);
@@ -21297,7 +21297,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21402,7 +21402,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryAABBNV &pst
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21482,7 +21482,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryNV &pstruct
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21531,7 +21531,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21570,7 +21570,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
 
     // struct member: const VkGeometryNV* pGeometries
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkGeometryNV\",\n";
+    *out += "\"type\" : \"const VkGeometryNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGeometries\",\n";
     IndentSpacesJson(out, indent);
@@ -21598,7 +21598,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21640,7 +21640,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindAccelerationStr
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21679,7 +21679,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindAccelerationStr
 
     // struct member: const uint32_t* pDeviceIndices
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    *out += "\"type\" : \"const uint32_t*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDeviceIndices\",\n";
     IndentSpacesJson(out, indent);
@@ -21707,7 +21707,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetA
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21725,7 +21725,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetA
 
     // struct member: const VkAccelerationStructureNV* pAccelerationStructures
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
+    *out += "\"type\" : \"const VkAccelerationStructureNV*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAccelerationStructures\",\n";
     IndentSpacesJson(out, indent);
@@ -21753,7 +21753,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21795,7 +21795,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21879,7 +21879,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRepre
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21914,7 +21914,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRepresentat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21949,7 +21949,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -21984,7 +21984,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFilterCubicImageVie
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22026,7 +22026,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueGlobalPr
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22061,7 +22061,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryHostPoi
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22079,7 +22079,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryHostPoi
 
     // struct member: void* pHostPointer
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pHostPointer\",\n";
     IndentSpacesJson(out, indent);
@@ -22107,7 +22107,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryHostPointerPr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22142,7 +22142,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22177,7 +22177,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCompilerCon
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22212,7 +22212,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCalibratedTimestamp
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22247,7 +22247,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22373,7 +22373,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceMemoryOverall
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22408,7 +22408,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22467,7 +22467,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22485,7 +22485,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
 
     // struct member: const VkVertexInputBindingDivisorDescriptionEXT* pVertexBindingDivisors
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkVertexInputBindingDivisorDescriptionEXT\",\n";
+    *out += "\"type\" : \"const VkVertexInputBindingDivisorDescriptionEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pVertexBindingDivisors\",\n";
     IndentSpacesJson(out, indent);
@@ -22513,7 +22513,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22555,7 +22555,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentFrameTokenGG
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22614,7 +22614,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22625,7 +22625,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
 
     // struct member: VkPipelineCreationFeedbackEXT* pPipelineCreationFeedback
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineCreationFeedbackEXT\",\n";
+    *out += "\"type\" : \"VkPipelineCreationFeedbackEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelineCreationFeedback\",\n";
     IndentSpacesJson(out, indent);
@@ -22643,7 +22643,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
 
     // struct member: VkPipelineCreationFeedbackEXT* pPipelineStageCreationFeedbacks
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineCreationFeedbackEXT\",\n";
+    *out += "\"type\" : \"VkPipelineCreationFeedbackEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelineStageCreationFeedbacks\",\n";
     IndentSpacesJson(out, indent);
@@ -22671,7 +22671,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCompu
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22713,7 +22713,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22755,7 +22755,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22906,7 +22906,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22941,7 +22941,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22976,7 +22976,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportExc
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -22994,7 +22994,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportExc
 
     // struct member: const VkRect2D* pExclusiveScissors
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRect2D\",\n";
+    *out += "\"type\" : \"const VkRect2D*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExclusiveScissors\",\n";
     IndentSpacesJson(out, indent);
@@ -23022,7 +23022,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExclu
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23057,7 +23057,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyCheckpoi
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23092,7 +23092,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCheckpointDataNV &p
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23110,7 +23110,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCheckpointDataNV &p
 
     // struct member: void* pCheckpointMarker
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCheckpointMarker\",\n";
     IndentSpacesJson(out, indent);
@@ -23138,7 +23138,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23194,7 +23194,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceValueDat
 
     // struct member: const char* valueString
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"char\",\n";
+    *out += "\"type\" : \"const char*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"valueString\",\n";
     IndentSpacesJson(out, indent);
@@ -23246,7 +23246,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInitializePerforman
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23257,7 +23257,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInitializePerforman
 
     // struct member: void* pUserData
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pUserData\",\n";
     IndentSpacesJson(out, indent);
@@ -23285,7 +23285,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23320,7 +23320,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceMarkerIn
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23355,7 +23355,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceStreamMa
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23390,7 +23390,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceOverride
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23439,7 +23439,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceConfigur
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23474,7 +23474,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePCIBu
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23530,7 +23530,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayNativeHdrSur
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23565,7 +23565,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainDisplayNat
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23600,7 +23600,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePipeSurfaceCre
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23642,7 +23642,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMetalSurfaceCreateI
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23660,7 +23660,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMetalSurfaceCreateI
 
     // struct member: const void* pLayer
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLayer\",\n";
     IndentSpacesJson(out, indent);
@@ -23688,7 +23688,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23737,7 +23737,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23786,7 +23786,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassFragmentD
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23821,7 +23821,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceScala
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23856,7 +23856,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23898,7 +23898,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23954,7 +23954,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -23989,7 +23989,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24031,7 +24031,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoher
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24066,7 +24066,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24116,7 +24116,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24151,7 +24151,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryPriorityAlloc
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24186,7 +24186,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDedic
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24221,7 +24221,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBuffe
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24270,7 +24270,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferDeviceAddress
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24305,7 +24305,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferDeviceAddress
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24340,7 +24340,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageStencilUsageCr
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24375,7 +24375,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24393,7 +24393,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
 
     // struct member: const VkValidationFeatureEnableEXT* pEnabledValidationFeatures
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkValidationFeatureEnableEXT\",\n";
+    *out += "\"type\" : \"const VkValidationFeatureEnableEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pEnabledValidationFeatures\",\n";
     IndentSpacesJson(out, indent);
@@ -24411,7 +24411,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
 
     // struct member: const VkValidationFeatureDisableEXT* pDisabledValidationFeatures
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkValidationFeatureDisableEXT\",\n";
+    *out += "\"type\" : \"const VkValidationFeatureDisableEXT*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisabledValidationFeatures\",\n";
     IndentSpacesJson(out, indent);
@@ -24439,7 +24439,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24523,7 +24523,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24565,7 +24565,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24600,7 +24600,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCover
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24635,7 +24635,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageRed
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24677,7 +24677,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24733,7 +24733,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24782,7 +24782,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceYcbcr
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24817,7 +24817,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24852,7 +24852,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24887,7 +24887,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24898,7 +24898,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
 
     // struct member: void* hmonitor
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"hmonitor\",\n";
     IndentSpacesJson(out, indent);
@@ -24926,7 +24926,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkHeadlessSurfaceCrea
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -24961,7 +24961,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -25031,7 +25031,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -25066,7 +25066,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
 
     // struct member: const void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"const void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -25122,7 +25122,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceHostQ
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -25157,7 +25157,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIndex
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -25192,7 +25192,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -25227,7 +25227,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
@@ -25262,7 +25262,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
 
     // struct member: void* pNext
     IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void\",\n";
+    *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNext\",\n";
     IndentSpacesJson(out, indent);
