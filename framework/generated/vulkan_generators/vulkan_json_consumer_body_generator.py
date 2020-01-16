@@ -128,7 +128,7 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         self.wc('{')
         self.wc('    std::string outString = "";')
         self.wc('    std::string *out = &outString;')
-        self.wc('    uint32_t indent = 1;')
+        self.wc('    uint32_t indent = 5;')
         self.wc('    fprintf(GetFile(), "        {\\n");')
         self.wc('    fprintf(GetFile(), "            \\"name\\" : \\"' + name + '\\",\\n");   // FCN')
         self.wc('    fprintf(GetFile(), "            \\"thread\\" : \\"Thread %ld\\",\\n", 0);')   #TODO: get thread id
@@ -150,23 +150,24 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
 
         # Print args
         self.wc('    outString = ""; //URT')
-        self.wc('    indent = 5;')
         for value in values:
             self.newline()
             self.wc('    // func arg: ' + value.fullType + ' ' + value.name)
-            self.wc('    outString += "                {\\n";')
+            self.wc('    IndentSpacesJson(out, 4);  // UWP')
+            self.wc('    *out += "{\\n";')
             ValueToString.valueToString(self, value, "")
+            self.wc('    IndentSpacesJson(out, 4);')
             if value == values[-1]:
                 # Don't put a comma after the last arg
-                self.wc('    outString += "                }\\n";')
+                self.wc('    *out += "}\\n";')
             else:
-                self.wc('    outString += "                },\\n";')
+                self.wc('    *out += "},\\n";')
         self.wc('    fprintf(GetFile(), "%s", outString.c_str());')
 
         # End function
         self.newline()
         self.wc('    fprintf(GetFile(), "            ]\\n");')
-        self.wc('    fprintf(GetFile(), "        },\\n");')     # TODO: Dont need a comma on last api call. Should move {}, to calling func
+        self.wc('    fprintf(GetFile(), "        },\\n");')     # TODO: Dont need a comma on last api call. Should move {}, to calling func??
         self.wc('}')
 
         #

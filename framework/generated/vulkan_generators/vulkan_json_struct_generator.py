@@ -118,14 +118,20 @@ class VulkanJsonStructGenerator(BaseGenerator):
             self.wc('    {')
             self.wc('        return;')
             self.wc('    }')
-            self.wc('    *out += "\\n"; // UUR');
             sMembersList = list(self.structDict[structName])
             for member in sMembersList:
                 self.newline()
                 self.wc('    // struct member: ' + member.fullType + ' ' + member.name)
+                self.wc('    IndentSpacesJson(out, indent);')
+                self.wc('    *out += "{\\n"; // UXR');
+                self.wc('    indent++;')
                 ValueToString.valueToString(self, member, structName)
-                if member != sMembersList[-1]:
-                    self.wc('    *out += "\\n"; // GDS')
+                self.wc('    indent--;')
+                self.wc('    IndentSpacesJson(out, indent);')
+                if member == sMembersList[-1]:
+                    self.wc('    *out += "}\\n"; // UXS');
+                else:
+                    self.wc('    *out += "},\\n"; // UXT');
             self.wc('}')
             self.newline()
 
