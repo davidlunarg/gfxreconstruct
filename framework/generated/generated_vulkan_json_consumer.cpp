@@ -131,6 +131,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pInstance.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pInstance
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -165,6 +166,10 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -230,6 +235,10 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -251,6 +260,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPhysicalDeviceCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPhysicalDeviceCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -312,6 +322,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -375,6 +389,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -385,6 +403,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, format); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -454,6 +476,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -464,6 +490,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, format); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -474,6 +504,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"type\" : \"VkImageType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageTypeJson(out, type); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -484,6 +518,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"type\" : \"VkImageTiling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tiling\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageTilingJson(out, tiling); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -494,6 +532,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -504,6 +546,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"type\" : \"VkImageCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, flags, EnumToStringVkImageCreateFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -566,6 +612,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -629,6 +679,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -650,6 +704,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pQueueFamilyPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pQueueFamilyPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -712,6 +767,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -778,6 +837,10 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -857,6 +920,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pDevice.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pDevice
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -891,6 +955,10 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -955,6 +1023,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -965,6 +1037,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, queueFamilyIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -975,6 +1051,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, queueIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -996,6 +1076,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pQueue.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pQueue
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -1034,6 +1115,10 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     *out += "\"type\" : \"VkQueue\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queue); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1044,6 +1129,10 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"submitCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, submitCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1082,6 +1171,10 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     *out += "\"type\" : \"VkFence\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, fence); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -1116,6 +1209,10 @@ void VulkanJsonConsumer::Process_vkQueueWaitIdle(
     *out += "\"type\" : \"VkQueue\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queue); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -1150,6 +1247,10 @@ void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -1187,6 +1288,10 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1266,6 +1371,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pMemory.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pMemory
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -1301,6 +1407,10 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1311,6 +1421,10 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, memory); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1379,6 +1493,10 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1389,6 +1507,10 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, memory); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1399,6 +1521,10 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, offset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1409,6 +1535,10 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, size); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1419,6 +1549,10 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     *out += "\"type\" : \"VkMemoryMapFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, flags); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1440,6 +1574,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
         *out += "\"address\" : \"";
         AddrToStringJson(out, ppData.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *ppData
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -1474,6 +1609,10 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1484,6 +1623,10 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, memory); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -1520,6 +1663,10 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1530,6 +1677,10 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryRangeCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, memoryRangeCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1594,6 +1745,10 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1604,6 +1759,10 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryRangeCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, memoryRangeCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1666,6 +1825,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1676,6 +1839,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, memory); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1697,6 +1864,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pCommittedMemoryInBytes.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pCommittedMemoryInBytes
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -1735,6 +1903,10 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1745,6 +1917,10 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1755,6 +1931,10 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, memory); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1765,6 +1945,10 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, memoryOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -1802,6 +1986,10 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1812,6 +2000,10 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, image); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1822,6 +2014,10 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, memory); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1832,6 +2028,10 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, memoryOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -1866,6 +2066,10 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1876,6 +2080,10 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1939,6 +2147,10 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -1949,6 +2161,10 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, image); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2013,6 +2229,10 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2023,6 +2243,10 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, image); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2044,6 +2268,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSparseMemoryRequirementCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSparseMemoryRequirementCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -2112,6 +2337,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2122,6 +2351,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, format); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2132,6 +2365,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"type\" : \"VkImageType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageTypeJson(out, type); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2142,6 +2379,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"type\" : \"VkSampleCountFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"samples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSampleCountFlagBitsJson(out, samples); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2152,6 +2393,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2162,6 +2407,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"type\" : \"VkImageTiling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tiling\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageTilingJson(out, tiling); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2183,6 +2432,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -2249,6 +2499,10 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     *out += "\"type\" : \"VkQueue\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queue); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2259,6 +2513,10 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindInfoCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, bindInfoCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2297,6 +2555,10 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     *out += "\"type\" : \"VkFence\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, fence); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -2334,6 +2596,10 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2413,6 +2679,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pFence.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pFence
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -2448,6 +2715,10 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2458,6 +2729,10 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     *out += "\"type\" : \"VkFence\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, fence); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2523,6 +2798,10 @@ void VulkanJsonConsumer::Process_vkResetFences(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2533,6 +2812,10 @@ void VulkanJsonConsumer::Process_vkResetFences(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fenceCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, fenceCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2595,6 +2878,10 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2605,6 +2892,10 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     *out += "\"type\" : \"VkFence\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, fence); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -2643,6 +2934,10 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2653,6 +2948,10 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fenceCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, fenceCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2690,6 +2989,10 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"waitAll\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, waitAll); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2700,6 +3003,10 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timeout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, timeout); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -2737,6 +3044,10 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2816,6 +3127,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSemaphore.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSemaphore
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -2851,6 +3163,10 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2861,6 +3177,10 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     *out += "\"type\" : \"VkSemaphore\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphore\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, semaphore); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -2927,6 +3247,10 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3006,6 +3330,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pEvent.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pEvent
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -3041,6 +3366,10 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3051,6 +3380,10 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     *out += "\"type\" : \"VkEvent\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"event\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, event); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3115,6 +3448,10 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3125,6 +3462,10 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     *out += "\"type\" : \"VkEvent\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"event\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, event); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -3160,6 +3501,10 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3170,6 +3515,10 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     *out += "\"type\" : \"VkEvent\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"event\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, event); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -3205,6 +3554,10 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3215,6 +3568,10 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     *out += "\"type\" : \"VkEvent\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"event\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, event); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -3252,6 +3609,10 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3331,6 +3692,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pQueryPool.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pQueryPool
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -3366,6 +3728,10 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3376,6 +3742,10 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     *out += "\"type\" : \"VkQueryPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queryPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3446,6 +3816,10 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3456,6 +3830,10 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     *out += "\"type\" : \"VkQueryPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queryPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3466,6 +3844,10 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstQuery\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstQuery); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3476,6 +3858,10 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, queryCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3486,6 +3872,10 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dataSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, dataSize); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3523,6 +3913,10 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, stride); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3533,6 +3927,10 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     *out += "\"type\" : \"VkQueryResultFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, flags, EnumToStringVkQueryResultFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -3570,6 +3968,10 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3649,6 +4051,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pBuffer.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pBuffer
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -3684,6 +4087,10 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3694,6 +4101,10 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3760,6 +4171,10 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3839,6 +4254,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pView.GetAddress() /* PIO */ );
         *out += "\n";
+        //TODO: Output *pView
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -3874,6 +4290,10 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3884,6 +4304,10 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     *out += "\"type\" : \"VkBufferView\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferView\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, bufferView); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -3950,6 +4374,10 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4029,6 +4457,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pImage.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pImage
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -4064,6 +4493,10 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4074,6 +4507,10 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, image); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4138,6 +4575,10 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4148,6 +4589,10 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, image); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4243,6 +4688,10 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4322,6 +4771,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pView.GetAddress() /* PIO */ );
         *out += "\n";
+        //TODO: Output *pView
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -4357,6 +4807,10 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4367,6 +4821,10 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     *out += "\"type\" : \"VkImageView\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageView\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, imageView); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4433,6 +4891,10 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4512,6 +4974,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pShaderModule.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pShaderModule
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -4547,6 +5010,10 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4557,6 +5024,10 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     *out += "\"type\" : \"VkShaderModule\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderModule\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, shaderModule); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4623,6 +5094,10 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4702,6 +5177,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPipelineCache.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPipelineCache
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -4737,6 +5213,10 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4747,6 +5227,10 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     *out += "\"type\" : \"VkPipelineCache\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineCache\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pipelineCache); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4813,6 +5297,10 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4823,6 +5311,10 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     *out += "\"type\" : \"VkPipelineCache\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineCache\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pipelineCache); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4844,6 +5336,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pDataSize.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pDataSize
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -4909,6 +5402,10 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4919,6 +5416,10 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     *out += "\"type\" : \"VkPipelineCache\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstCache\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dstCache); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4929,6 +5430,10 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcCacheCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, srcCacheCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -4995,6 +5500,10 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5005,6 +5514,10 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     *out += "\"type\" : \"VkPipelineCache\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineCache\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pipelineCache); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5015,6 +5528,10 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"createInfoCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, createInfoCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5138,6 +5655,10 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5148,6 +5669,10 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     *out += "\"type\" : \"VkPipelineCache\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineCache\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pipelineCache); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5158,6 +5683,10 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"createInfoCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, createInfoCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5276,6 +5805,10 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5286,6 +5819,10 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     *out += "\"type\" : \"VkPipeline\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pipeline); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5352,6 +5889,10 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5431,6 +5972,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPipelineLayout.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPipelineLayout
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -5466,6 +6008,10 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5476,6 +6022,10 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     *out += "\"type\" : \"VkPipelineLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pipelineLayout); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5542,6 +6092,10 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5621,6 +6175,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSampler.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSampler
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -5656,6 +6211,10 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5666,6 +6225,10 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     *out += "\"type\" : \"VkSampler\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampler\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, sampler); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5732,6 +6295,10 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5811,6 +6378,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSetLayout.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSetLayout
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -5846,6 +6414,10 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5856,6 +6428,10 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     *out += "\"type\" : \"VkDescriptorSetLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorSetLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, descriptorSetLayout); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -5922,6 +6498,10 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6001,6 +6581,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pDescriptorPool.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pDescriptorPool
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -6036,6 +6617,10 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6046,6 +6631,10 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     *out += "\"type\" : \"VkDescriptorPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, descriptorPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6111,6 +6700,10 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6121,6 +6714,10 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     *out += "\"type\" : \"VkDescriptorPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, descriptorPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6131,6 +6728,10 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     *out += "\"type\" : \"VkDescriptorPoolResetFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, flags); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -6167,6 +6768,10 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6260,6 +6865,10 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6270,6 +6879,10 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     *out += "\"type\" : \"VkDescriptorPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, descriptorPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6280,6 +6893,10 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorSetCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, descriptorSetCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6343,6 +6960,10 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6353,6 +6974,10 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorWriteCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, descriptorWriteCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6391,6 +7016,10 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorCopyCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, descriptorCopyCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6456,6 +7085,10 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6535,6 +7168,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pFramebuffer.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pFramebuffer
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -6570,6 +7204,10 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6580,6 +7218,10 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     *out += "\"type\" : \"VkFramebuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"framebuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, framebuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6646,6 +7288,10 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6725,6 +7371,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pRenderPass.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pRenderPass
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -6760,6 +7407,10 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6770,6 +7421,10 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     *out += "\"type\" : \"VkRenderPass\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"renderPass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, renderPass); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6833,6 +7488,10 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6843,6 +7502,10 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     *out += "\"type\" : \"VkRenderPass\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"renderPass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, renderPass); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6909,6 +7572,10 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -6988,6 +7655,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pCommandPool.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pCommandPool
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -7023,6 +7691,10 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7033,6 +7705,10 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     *out += "\"type\" : \"VkCommandPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7098,6 +7774,10 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7108,6 +7788,10 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     *out += "\"type\" : \"VkCommandPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7118,6 +7802,10 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     *out += "\"type\" : \"VkCommandPoolResetFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, flags, EnumToStringVkCommandPoolResetFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -7154,6 +7842,10 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7245,6 +7937,10 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7255,6 +7951,10 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     *out += "\"type\" : \"VkCommandPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7265,6 +7965,10 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBufferCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, commandBufferCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7327,6 +8031,10 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7390,6 +8098,10 @@ void VulkanJsonConsumer::Process_vkEndCommandBuffer(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -7425,6 +8137,10 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7435,6 +8151,10 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     *out += "\"type\" : \"VkCommandBufferResetFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, flags, EnumToStringVkCommandBufferResetFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -7469,6 +8189,10 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7479,6 +8203,10 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     *out += "\"type\" : \"VkPipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineBindPoint\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPipelineBindPointJson(out, pipelineBindPoint); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7489,6 +8217,10 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     *out += "\"type\" : \"VkPipeline\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pipeline); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -7524,6 +8256,10 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7534,6 +8270,10 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstViewport\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstViewport); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7544,6 +8284,10 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewportCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, viewportCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7607,6 +8351,10 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7617,6 +8365,10 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstScissor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstScissor); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7627,6 +8379,10 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"scissorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, scissorCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7688,6 +8444,10 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7698,6 +8458,10 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"lineWidth\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, lineWidth); // PEZ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -7733,6 +8497,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7743,6 +8511,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBiasConstantFactor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, depthBiasConstantFactor); // PEZ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7753,6 +8525,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBiasClamp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, depthBiasClamp); // PEZ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7763,6 +8539,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBiasSlopeFactor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, depthBiasSlopeFactor); // PEZ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -7796,6 +8576,10 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7849,6 +8633,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7859,6 +8647,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minDepthBounds\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, minDepthBounds); // PEZ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7869,6 +8661,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDepthBounds\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, maxDepthBounds); // PEZ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -7903,6 +8699,10 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7913,6 +8713,10 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     *out += "\"type\" : \"VkStencilFaceFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"faceMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7923,6 +8727,10 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compareMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, compareMask); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -7957,6 +8765,10 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7967,6 +8779,10 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     *out += "\"type\" : \"VkStencilFaceFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"faceMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -7977,6 +8793,10 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"writeMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, writeMask); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -8011,6 +8831,10 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8021,6 +8845,10 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     *out += "\"type\" : \"VkStencilFaceFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"faceMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8031,6 +8859,10 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"reference\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, reference); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -8070,6 +8902,10 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8080,6 +8916,10 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     *out += "\"type\" : \"VkPipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineBindPoint\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPipelineBindPointJson(out, pipelineBindPoint); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8090,6 +8930,10 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     *out += "\"type\" : \"VkPipelineLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, layout); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8100,6 +8944,10 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstSet\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstSet); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8110,6 +8958,10 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorSetCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, descriptorSetCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8147,6 +8999,10 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dynamicOffsetCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, dynamicOffsetCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8209,6 +9065,10 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8219,6 +9079,10 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8229,6 +9093,10 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, offset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8239,6 +9107,10 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     *out += "\"type\" : \"VkIndexType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indexType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkIndexTypeJson(out, indexType); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -8275,6 +9147,10 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8285,6 +9161,10 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstBinding\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstBinding); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8295,6 +9175,10 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindingCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, bindingCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8385,6 +9269,10 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8395,6 +9283,10 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, vertexCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8405,6 +9297,10 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, instanceCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8415,6 +9311,10 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstVertex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstVertex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8425,6 +9325,10 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstInstance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstInstance); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -8462,6 +9366,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8472,6 +9380,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, indexCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8482,6 +9394,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, instanceCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8492,6 +9408,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8502,6 +9422,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, vertexOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8512,6 +9436,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstInstance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstInstance); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -8548,6 +9476,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8558,6 +9490,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8568,6 +9504,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, offset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8578,6 +9518,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drawCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, drawCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8588,6 +9532,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, stride); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -8624,6 +9572,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8634,6 +9586,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8644,6 +9600,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, offset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8654,6 +9614,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drawCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, drawCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8664,6 +9628,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, stride); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -8699,6 +9667,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8709,6 +9681,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountX\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, groupCountX); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8719,6 +9695,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountY\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, groupCountY); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8729,6 +9709,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountZ\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, groupCountZ); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -8763,6 +9747,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8773,6 +9761,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8783,6 +9775,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, offset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -8819,6 +9815,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8829,6 +9829,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, srcBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8839,6 +9843,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dstBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8849,6 +9857,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"regionCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, regionCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8915,6 +9927,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8925,6 +9941,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, srcImage); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8935,6 +9955,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImageLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, srcImageLayout); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8945,6 +9969,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dstImage); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8955,6 +9983,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImageLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, dstImageLayout); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -8965,6 +9997,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"regionCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, regionCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9032,6 +10068,10 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9042,6 +10082,10 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, srcImage); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9052,6 +10096,10 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImageLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, srcImageLayout); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9062,6 +10110,10 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dstImage); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9072,6 +10124,10 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImageLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, dstImageLayout); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9082,6 +10138,10 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"regionCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, regionCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9120,6 +10180,10 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     *out += "\"type\" : \"VkFilter\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"filter\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFilterJson(out, filter); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -9157,6 +10221,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9167,6 +10235,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, srcBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9177,6 +10249,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dstImage); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9187,6 +10263,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImageLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, dstImageLayout); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9197,6 +10277,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"regionCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, regionCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9262,6 +10346,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9272,6 +10360,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, srcImage); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9282,6 +10374,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImageLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, srcImageLayout); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9292,6 +10388,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dstBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9302,6 +10402,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"regionCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, regionCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9366,6 +10470,10 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9376,6 +10484,10 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dstBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9386,6 +10498,10 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, dstOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9396,6 +10512,10 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dataSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, dataSize); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9459,6 +10579,10 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9469,6 +10593,10 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dstBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9479,6 +10607,10 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, dstOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9489,6 +10621,10 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, size); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9499,6 +10635,10 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"data\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, data); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -9536,6 +10676,10 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9546,6 +10690,10 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, image); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9556,6 +10704,10 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, imageLayout); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9595,6 +10747,10 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rangeCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, rangeCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9660,6 +10816,10 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9670,6 +10830,10 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, image); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9680,6 +10844,10 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, imageLayout); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9719,6 +10887,10 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rangeCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, rangeCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9783,6 +10955,10 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9793,6 +10969,10 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"attachmentCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, attachmentCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9831,6 +11011,10 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rectCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, rectCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9897,6 +11081,10 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9907,6 +11095,10 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, srcImage); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9917,6 +11109,10 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImageLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, srcImageLayout); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9927,6 +11123,10 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dstImage); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9937,6 +11137,10 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImageLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, dstImageLayout); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -9947,6 +11151,10 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"regionCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, regionCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10009,6 +11217,10 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10019,6 +11231,10 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     *out += "\"type\" : \"VkEvent\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"event\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, event); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10029,6 +11245,10 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     *out += "\"type\" : \"VkPipelineStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stageMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, stageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -10063,6 +11283,10 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10073,6 +11297,10 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     *out += "\"type\" : \"VkEvent\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"event\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, event); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10083,6 +11311,10 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     *out += "\"type\" : \"VkPipelineStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stageMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, stageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -10125,6 +11357,10 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10135,6 +11371,10 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"eventCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, eventCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10172,6 +11412,10 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"type\" : \"VkPipelineStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcStageMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10182,6 +11426,10 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"type\" : \"VkPipelineStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstStageMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10192,6 +11440,10 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryBarrierCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, memoryBarrierCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10230,6 +11482,10 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferMemoryBarrierCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, bufferMemoryBarrierCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10268,6 +11524,10 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageMemoryBarrierCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, imageMemoryBarrierCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10337,6 +11597,10 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10347,6 +11611,10 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"type\" : \"VkPipelineStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcStageMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10357,6 +11625,10 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"type\" : \"VkPipelineStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstStageMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10367,6 +11639,10 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"type\" : \"VkDependencyFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dependencyFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, dependencyFlags, EnumToStringVkDependencyFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10377,6 +11653,10 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryBarrierCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, memoryBarrierCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10415,6 +11695,10 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferMemoryBarrierCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, bufferMemoryBarrierCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10453,6 +11737,10 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageMemoryBarrierCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, imageMemoryBarrierCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10516,6 +11804,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10526,6 +11818,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     *out += "\"type\" : \"VkQueryPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queryPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10536,6 +11832,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"query\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, query); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10546,6 +11846,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     *out += "\"type\" : \"VkQueryControlFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, flags, EnumToStringVkQueryControlFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -10580,6 +11884,10 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10590,6 +11898,10 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     *out += "\"type\" : \"VkQueryPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queryPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10600,6 +11912,10 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"query\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, query); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -10635,6 +11951,10 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10645,6 +11965,10 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     *out += "\"type\" : \"VkQueryPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queryPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10655,6 +11979,10 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstQuery\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstQuery); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10665,6 +11993,10 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, queryCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -10700,6 +12032,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10710,6 +12046,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     *out += "\"type\" : \"VkPipelineStageFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineStage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPipelineStageFlagBitsJson(out, pipelineStage); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10720,6 +12060,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     *out += "\"type\" : \"VkQueryPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queryPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10730,6 +12074,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"query\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, query); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -10769,6 +12117,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10779,6 +12131,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     *out += "\"type\" : \"VkQueryPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queryPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10789,6 +12145,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstQuery\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstQuery); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10799,6 +12159,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, queryCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10809,6 +12173,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dstBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10819,6 +12187,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, dstOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10829,6 +12201,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, stride); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10839,6 +12215,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     *out += "\"type\" : \"VkQueryResultFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, flags, EnumToStringVkQueryResultFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -10876,6 +12256,10 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10886,6 +12270,10 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     *out += "\"type\" : \"VkPipelineLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, layout); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10896,6 +12284,10 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     *out += "\"type\" : \"VkShaderStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stageFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10906,6 +12298,10 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, offset); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10916,6 +12312,10 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, size); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -10977,6 +12377,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11016,6 +12420,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     *out += "\"type\" : \"VkSubpassContents\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"contents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSubpassContentsJson(out, contents); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -11049,6 +12457,10 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11059,6 +12471,10 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     *out += "\"type\" : \"VkSubpassContents\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"contents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSubpassContentsJson(out, contents); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -11091,6 +12507,10 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -11125,6 +12545,10 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11135,6 +12559,10 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBufferCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, commandBufferCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11199,6 +12627,10 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11209,6 +12641,10 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindInfoCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, bindInfoCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11273,6 +12709,10 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11283,6 +12723,10 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindInfoCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, bindInfoCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11347,6 +12791,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11357,6 +12805,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"heapIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, heapIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11367,6 +12819,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"localDeviceIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, localDeviceIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11377,6 +12833,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"remoteDeviceIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, remoteDeviceIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11398,6 +12858,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPeerMemoryFeatures.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPeerMemoryFeatures
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -11432,6 +12893,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11442,6 +12907,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, deviceMask); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -11480,6 +12949,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11490,6 +12963,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseGroupX\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, baseGroupX); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11500,6 +12977,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseGroupY\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, baseGroupY); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11510,6 +12991,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseGroupZ\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, baseGroupZ); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11520,6 +13005,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountX\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, groupCountX); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11530,6 +13019,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountY\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, groupCountY); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11540,6 +13033,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountZ\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, groupCountZ); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -11576,6 +13073,10 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11597,6 +13098,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPhysicalDeviceGroupCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPhysicalDeviceGroupCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11660,6 +13162,10 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11752,6 +13258,10 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11845,6 +13355,10 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -11895,6 +13409,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSparseMemoryRequirementCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSparseMemoryRequirementCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11957,6 +13472,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12019,6 +13538,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12082,6 +13605,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12092,6 +13619,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, format); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12157,6 +13688,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12249,6 +13784,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12270,6 +13809,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pQueueFamilyPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pQueueFamilyPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -12332,6 +13872,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12396,6 +13940,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12446,6 +13994,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -12509,6 +14058,10 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12519,6 +14072,10 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     *out += "\"type\" : \"VkCommandPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12529,6 +14086,10 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     *out += "\"type\" : \"VkCommandPoolTrimFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, flags); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -12563,6 +14124,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12613,6 +14178,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pQueue.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pQueue
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -12651,6 +14217,10 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12730,6 +14300,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pYcbcrConversion.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pYcbcrConversion
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -12765,6 +14336,10 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12775,6 +14350,10 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     *out += "\"type\" : \"VkSamplerYcbcrConversion\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ycbcrConversion\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, ycbcrConversion); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12841,6 +14420,10 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12920,6 +14503,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pDescriptorUpdateTemplate.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pDescriptorUpdateTemplate
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -12955,6 +14539,10 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -12965,6 +14553,10 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     *out += "\"type\" : \"VkDescriptorUpdateTemplate\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorUpdateTemplate\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, descriptorUpdateTemplate); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13028,6 +14620,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13120,6 +14716,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13212,6 +14812,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13304,6 +14908,10 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13397,6 +15005,10 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13407,6 +15019,10 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     *out += "\"type\" : \"VkSurfaceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, surface); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13473,6 +15089,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13483,6 +15103,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, queueFamilyIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13493,6 +15117,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     *out += "\"type\" : \"VkSurfaceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, surface); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13514,6 +15142,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSupported.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSupported
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -13551,6 +15180,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13561,6 +15194,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     *out += "\"type\" : \"VkSurfaceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, surface); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13627,6 +15264,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13637,6 +15278,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     *out += "\"type\" : \"VkSurfaceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, surface); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13658,6 +15303,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurfaceFormatCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurfaceFormatCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13724,6 +15370,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13734,6 +15384,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     *out += "\"type\" : \"VkSurfaceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, surface); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13755,6 +15409,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPresentModeCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPresentModeCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13821,6 +15476,10 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13900,6 +15559,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSwapchain.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSwapchain
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -13935,6 +15595,10 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -13945,6 +15609,10 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, swapchain); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14011,6 +15679,10 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14021,6 +15693,10 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, swapchain); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14042,6 +15718,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSwapchainImageCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSwapchainImageCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -14109,6 +15786,10 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14119,6 +15800,10 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, swapchain); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14129,6 +15814,10 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timeout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, timeout); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14139,6 +15828,10 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     *out += "\"type\" : \"VkSemaphore\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphore\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, semaphore); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14149,6 +15842,10 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     *out += "\"type\" : \"VkFence\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, fence); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14170,6 +15867,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pImageIndex.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pImageIndex
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -14206,6 +15904,10 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     *out += "\"type\" : \"VkQueue\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queue); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14270,6 +15972,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14335,6 +16041,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14345,6 +16055,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     *out += "\"type\" : \"VkSurfaceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, surface); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14366,6 +16080,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pModes.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pModes
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -14404,6 +16119,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14414,6 +16133,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     *out += "\"type\" : \"VkSurfaceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, surface); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14435,6 +16158,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pRectCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pRectCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -14500,6 +16224,10 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14550,6 +16278,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pImageIndex.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pImageIndex
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -14588,6 +16317,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14609,6 +16342,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -14674,6 +16408,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14695,6 +16433,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -14761,6 +16500,10 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14771,6 +16514,10 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"planeIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, planeIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14792,6 +16539,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pDisplayCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pDisplayCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -14857,6 +16605,10 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14867,6 +16619,10 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     *out += "\"type\" : \"VkDisplayKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, display); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14888,6 +16644,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -14955,6 +16712,10 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -14965,6 +16726,10 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     *out += "\"type\" : \"VkDisplayKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, display); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15044,6 +16809,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pMode.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pMode
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -15082,6 +16848,10 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15092,6 +16862,10 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     *out += "\"type\" : \"VkDisplayModeKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, mode); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15102,6 +16876,10 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"planeIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, planeIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15168,6 +16946,10 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15247,6 +17029,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -15287,6 +17070,10 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15297,6 +17084,10 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchainCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, swapchainCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15419,6 +17210,10 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15498,6 +17293,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -15535,6 +17331,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15545,6 +17345,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, queueFamilyIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15555,6 +17359,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
+        //TODO: Output *dpy
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15565,6 +17370,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"visualID\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, visualID); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -15603,6 +17412,10 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15682,6 +17495,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -15719,6 +17533,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15729,6 +17547,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, queueFamilyIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15750,6 +17572,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, connection /* ACF */ );
         *out += "\n";
+        //TODO: Output *connection
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -15761,6 +17584,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"visual_id\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, visual_id); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -15799,6 +17626,10 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15878,6 +17709,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -15914,6 +17746,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15924,6 +17760,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, queueFamilyIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -15945,6 +17785,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
         *out += "\"address\" : \"";
         AddrToStringJson(out, display /* ACF */ );
         *out += "\n";
+        //TODO: Output *display
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -15984,6 +17825,10 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16063,6 +17908,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -16102,6 +17948,10 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16181,6 +18031,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -16216,6 +18067,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16226,6 +18081,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, queueFamilyIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -16260,6 +18119,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16322,6 +18185,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16385,6 +18252,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16395,6 +18266,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, format); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16460,6 +18335,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16552,6 +18431,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16573,6 +18456,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pQueueFamilyPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pQueueFamilyPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -16635,6 +18519,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16699,6 +18587,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16749,6 +18641,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -16815,6 +18708,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16825,6 +18722,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"heapIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, heapIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16835,6 +18736,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"localDeviceIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, localDeviceIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16845,6 +18750,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"remoteDeviceIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, remoteDeviceIndex); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16866,6 +18775,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPeerMemoryFeatures.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPeerMemoryFeatures
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -16900,6 +18810,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16910,6 +18824,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, deviceMask); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -16948,6 +18866,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16958,6 +18880,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseGroupX\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, baseGroupX); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16968,6 +18894,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseGroupY\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, baseGroupY); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16978,6 +18908,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseGroupZ\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, baseGroupZ); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16988,6 +18922,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountX\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, groupCountX); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -16998,6 +18936,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountY\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, groupCountY); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17008,6 +18950,10 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountZ\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, groupCountZ); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -17043,6 +18989,10 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17053,6 +19003,10 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     *out += "\"type\" : \"VkCommandPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17063,6 +19017,10 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     *out += "\"type\" : \"VkCommandPoolTrimFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, flags); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -17100,6 +19058,10 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17121,6 +19083,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPhysicalDeviceGroupCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPhysicalDeviceGroupCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -17185,6 +19148,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17280,6 +19247,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17330,6 +19301,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pHandle.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pHandle
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -17368,6 +19340,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17378,6 +19354,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, handleType); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17399,6 +19379,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, handle /* ACF */ );
         *out += "\n";
+        //TODO: Output *handle
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -17466,6 +19447,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17516,6 +19501,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pFd.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pFd
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -17554,6 +19540,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17564,6 +19554,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, handleType); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17574,6 +19568,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     *out += "\"type\" : \"int\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fd\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, fd); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17638,6 +19636,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17732,6 +19734,10 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17797,6 +19803,10 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17847,6 +19857,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pHandle.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pHandle
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -17884,6 +19895,10 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17949,6 +19964,10 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -17999,6 +20018,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pFd.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pFd
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -18038,6 +20058,10 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18048,6 +20072,10 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     *out += "\"type\" : \"VkPipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineBindPoint\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPipelineBindPointJson(out, pipelineBindPoint); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18058,6 +20086,10 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     *out += "\"type\" : \"VkPipelineLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, layout); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18068,6 +20100,10 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"set\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, set); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18078,6 +20114,10 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorWriteCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, descriptorWriteCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18144,6 +20184,10 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18223,6 +20267,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pDescriptorUpdateTemplate.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pDescriptorUpdateTemplate
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -18258,6 +20303,10 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18268,6 +20317,10 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     *out += "\"type\" : \"VkDescriptorUpdateTemplate\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorUpdateTemplate\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, descriptorUpdateTemplate); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18335,6 +20388,10 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18414,6 +20471,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pRenderPass.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pRenderPass
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -18449,6 +20507,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18541,6 +20603,10 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18632,6 +20698,10 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18697,6 +20767,10 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18707,6 +20781,10 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, swapchain); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -18742,6 +20820,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18836,6 +20918,10 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18901,6 +20987,10 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -18951,6 +21041,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pHandle.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pHandle
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -18988,6 +21079,10 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19053,6 +21148,10 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19103,6 +21202,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pFd.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pFd
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -19141,6 +21241,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19236,6 +21340,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19286,6 +21394,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurfaceFormatCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurfaceFormatCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -19352,6 +21461,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19373,6 +21486,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -19438,6 +21552,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19459,6 +21577,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -19525,6 +21644,10 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19535,6 +21658,10 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     *out += "\"type\" : \"VkDisplayKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, display); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19556,6 +21683,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -19621,6 +21749,10 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19714,6 +21846,10 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19806,6 +21942,10 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19899,6 +22039,10 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19949,6 +22093,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSparseMemoryRequirementCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSparseMemoryRequirementCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -20016,6 +22161,10 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20095,6 +22244,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pYcbcrConversion.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pYcbcrConversion
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -20130,6 +22280,10 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20140,6 +22294,10 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     *out += "\"type\" : \"VkSamplerYcbcrConversion\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ycbcrConversion\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, ycbcrConversion); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20206,6 +22364,10 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20216,6 +22378,10 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindInfoCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, bindInfoCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20280,6 +22446,10 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20290,6 +22460,10 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindInfoCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, bindInfoCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20353,6 +22527,10 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20450,6 +22628,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20460,6 +22642,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20470,6 +22656,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, offset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20480,6 +22670,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, countBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20490,6 +22684,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBufferOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, countBufferOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20500,6 +22698,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, maxDrawCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20510,6 +22712,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, stride); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -20548,6 +22754,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20558,6 +22768,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20568,6 +22782,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, offset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20578,6 +22796,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, countBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20588,6 +22810,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBufferOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, countBufferOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20598,6 +22824,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, maxDrawCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20608,6 +22838,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, stride); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -20645,6 +22879,10 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20655,6 +22893,10 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     *out += "\"type\" : \"VkSemaphore\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphore\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, semaphore); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20676,6 +22918,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pValue.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pValue
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -20713,6 +22956,10 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20752,6 +22999,10 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timeout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, timeout); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -20787,6 +23038,10 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20854,6 +23109,10 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -20904,6 +23163,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pExecutableCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pExecutableCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -20970,6 +23230,10 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21020,6 +23284,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pStatisticCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pStatisticCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -21086,6 +23351,10 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21136,6 +23405,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
         *out += "\"address\" : \"";
         AddrToStringJson(out, pInternalRepresentationCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pInternalRepresentationCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -21203,6 +23473,10 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21282,6 +23556,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pCallback.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pCallback
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -21317,6 +23592,10 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21327,6 +23606,10 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     *out += "\"type\" : \"VkDebugReportCallbackEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"callback\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, callback); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21395,6 +23678,10 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21405,6 +23692,10 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     *out += "\"type\" : \"VkDebugReportFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, flags, EnumToStringVkDebugReportFlagBitsEXTJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21415,6 +23706,10 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     *out += "\"type\" : \"VkDebugReportObjectTypeEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDebugReportObjectTypeEXTJson(out, objectType); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21425,6 +23720,10 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"object\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, object); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21435,6 +23734,10 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"location\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, location); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21445,6 +23748,10 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"messageCode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, messageCode); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21466,6 +23773,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pLayerPrefix.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pLayerPrefix
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -21488,6 +23796,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pMessage.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pMessage
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -21525,6 +23834,10 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21589,6 +23902,10 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21651,6 +23968,10 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21712,6 +24033,10 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerEndEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -21745,6 +24070,10 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21812,6 +24141,10 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21822,6 +24155,10 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstBinding\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstBinding); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21832,6 +24169,10 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindingCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, bindingCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21949,6 +24290,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21959,6 +24304,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstCounterBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstCounterBuffer); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -21969,6 +24318,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"counterBufferCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, counterBufferCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22059,6 +24412,10 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22069,6 +24426,10 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstCounterBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstCounterBuffer); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22079,6 +24440,10 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"counterBufferCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, counterBufferCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22169,6 +24534,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22179,6 +24548,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     *out += "\"type\" : \"VkQueryPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queryPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22189,6 +24562,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"query\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, query); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22199,6 +24576,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     *out += "\"type\" : \"VkQueryControlFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, flags, EnumToStringVkQueryControlFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22209,6 +24590,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"index\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, index); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -22244,6 +24629,10 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22254,6 +24643,10 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     *out += "\"type\" : \"VkQueryPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queryPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22264,6 +24657,10 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"query\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, query); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22274,6 +24671,10 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"index\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, index); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -22312,6 +24713,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22322,6 +24727,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, instanceCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22332,6 +24741,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstInstance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstInstance); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22342,6 +24755,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"counterBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, counterBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22352,6 +24769,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"counterBufferOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, counterBufferOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22362,6 +24783,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"counterOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, counterOffset); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22372,6 +24797,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexStride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, vertexStride); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -22407,6 +24836,10 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22475,6 +24908,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22485,6 +24922,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22495,6 +24936,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, offset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22505,6 +24950,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, countBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22515,6 +24964,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBufferOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, countBufferOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22525,6 +24978,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, maxDrawCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22535,6 +24992,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, stride); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -22573,6 +25034,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22583,6 +25048,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22593,6 +25062,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, offset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22603,6 +25076,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, countBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22613,6 +25090,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBufferOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, countBufferOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22623,6 +25104,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, maxDrawCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22633,6 +25118,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, stride); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -22673,6 +25162,10 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22683,6 +25176,10 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     *out += "\"type\" : \"VkPipeline\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pipeline); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22693,6 +25190,10 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     *out += "\"type\" : \"VkShaderStageFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkShaderStageFlagBitsJson(out, shaderStage); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22703,6 +25204,10 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     *out += "\"type\" : \"VkShaderInfoTypeAMD\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"infoType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkShaderInfoTypeAMDJson(out, infoType); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22724,6 +25229,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pInfoSize.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pInfoSize
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -22790,6 +25296,10 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22869,6 +25379,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -22912,6 +25423,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22922,6 +25437,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, format); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22932,6 +25451,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"type\" : \"VkImageType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageTypeJson(out, type); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22942,6 +25465,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"type\" : \"VkImageTiling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tiling\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageTilingJson(out, tiling); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22952,6 +25479,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22962,6 +25493,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"type\" : \"VkImageCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, flags, EnumToStringVkImageCreateFlagBitsJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -22972,6 +25507,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"externalHandleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, externalHandleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23039,6 +25578,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23049,6 +25592,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, memory); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23059,6 +25606,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23080,6 +25631,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pHandle.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pHandle
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -23119,6 +25671,10 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23198,6 +25754,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -23233,6 +25790,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23294,6 +25855,10 @@ void VulkanJsonConsumer::Process_vkCmdEndConditionalRenderingEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -23328,6 +25893,10 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23390,6 +25959,10 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23456,6 +26029,10 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23535,6 +26112,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pIndirectCommandsLayout.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pIndirectCommandsLayout
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -23570,6 +26148,10 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23580,6 +26162,10 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     *out += "\"type\" : \"VkIndirectCommandsLayoutNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indirectCommandsLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, indirectCommandsLayout); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23646,6 +26232,10 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23725,6 +26315,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pObjectTable.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pObjectTable
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -23760,6 +26351,10 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23770,6 +26365,10 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     *out += "\"type\" : \"VkObjectTableNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectTable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, objectTable); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23837,6 +26436,10 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23847,6 +26450,10 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     *out += "\"type\" : \"VkObjectTableNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectTable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, objectTable); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23857,6 +26464,10 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, objectCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -23945,6 +26556,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24039,6 +26654,10 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24049,6 +26668,10 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstViewport\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstViewport); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24059,6 +26682,10 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewportCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, viewportCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24123,6 +26750,10 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24133,6 +26764,10 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     *out += "\"type\" : \"VkDisplayKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, display); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -24170,6 +26805,10 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24180,6 +26819,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
+        //TODO: Output *dpy
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24190,6 +26830,10 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     *out += "\"type\" : \"VkDisplayKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, display); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -24227,6 +26871,10 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24237,6 +26885,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
+        //TODO: Output *dpy
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24247,6 +26896,10 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rrOutput\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, rrOutput); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24268,6 +26921,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pDisplay.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pDisplay
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -24306,6 +26960,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24316,6 +26974,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     *out += "\"type\" : \"VkSurfaceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, surface); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24382,6 +27044,10 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24392,6 +27058,10 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     *out += "\"type\" : \"VkDisplayKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, display); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24458,6 +27128,10 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24537,6 +27211,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pFence.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pFence
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -24576,6 +27251,10 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24586,6 +27265,10 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     *out += "\"type\" : \"VkDisplayKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, display); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24665,6 +27348,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pFence.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pFence
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -24703,6 +27387,10 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24713,6 +27401,10 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, swapchain); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24723,6 +27415,10 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     *out += "\"type\" : \"VkSurfaceCounterFlagBitsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"counter\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSurfaceCounterFlagBitsEXTJson(out, counter); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24744,6 +27440,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pCounterValue.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pCounterValue
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -24782,6 +27479,10 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24792,6 +27493,10 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, swapchain); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24858,6 +27563,10 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24868,6 +27577,10 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, swapchain); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24889,6 +27602,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPresentationTimingCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPresentationTimingCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -24954,6 +27668,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24964,6 +27682,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstDiscardRectangle\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstDiscardRectangle); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -24974,6 +27696,10 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"discardRectangleCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, discardRectangleCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25038,6 +27764,10 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25048,6 +27778,10 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchainCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, swapchainCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25141,6 +27875,10 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25220,6 +27958,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -25259,6 +27998,10 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25338,6 +28081,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -25375,6 +28119,10 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25439,6 +28187,10 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25501,6 +28253,10 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     *out += "\"type\" : \"VkQueue\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queue); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25562,6 +28318,10 @@ void VulkanJsonConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
     *out += "\"type\" : \"VkQueue\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queue); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -25595,6 +28355,10 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     *out += "\"type\" : \"VkQueue\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queue); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25657,6 +28421,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25718,6 +28486,10 @@ void VulkanJsonConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -25751,6 +28523,10 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25817,6 +28593,10 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25896,6 +28676,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pMessenger.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pMessenger
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -25931,6 +28712,10 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -25941,6 +28726,10 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     *out += "\"type\" : \"VkDebugUtilsMessengerEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"messenger\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, messenger); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26005,6 +28794,10 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26015,6 +28808,10 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     *out += "\"type\" : \"VkDebugUtilsMessageSeverityFlagBitsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"messageSeverity\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXTJson(out, messageSeverity); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26025,6 +28822,10 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     *out += "\"type\" : \"VkDebugUtilsMessageTypeFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"messageTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, messageTypes, EnumToStringVkDebugUtilsMessageTypeFlagBitsEXTJson); // URY
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26091,6 +28892,10 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26112,6 +28917,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
         *out += "\"address\" : \"";
         AddrToStringJson(out, buffer /* ACF */ );
         *out += "\n";
+        //TODO: Output *buffer
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -26178,6 +28984,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26228,6 +29038,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pBuffer.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pBuffer
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -26263,6 +29074,10 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26326,6 +29141,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26336,6 +29155,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     *out += "\"type\" : \"VkSampleCountFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"samples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSampleCountFlagBitsJson(out, samples); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26402,6 +29225,10 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26412,6 +29239,10 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, image); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26479,6 +29310,10 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26558,6 +29393,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pValidationCache.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pValidationCache
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -26593,6 +29429,10 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26603,6 +29443,10 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     *out += "\"type\" : \"VkValidationCacheEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"validationCache\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, validationCache); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26669,6 +29513,10 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26679,6 +29527,10 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     *out += "\"type\" : \"VkValidationCacheEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstCache\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dstCache); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26689,6 +29541,10 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcCacheCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, srcCacheCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26753,6 +29609,10 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26763,6 +29623,10 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     *out += "\"type\" : \"VkValidationCacheEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"validationCache\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, validationCache); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26784,6 +29648,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pDataSize.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pDataSize
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -26847,6 +29712,10 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26857,6 +29726,10 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     *out += "\"type\" : \"VkImageView\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageView\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, imageView); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26867,6 +29740,10 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, imageLayout); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -26902,6 +29779,10 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26912,6 +29793,10 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstViewport\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstViewport); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26922,6 +29807,10 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewportCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, viewportCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26985,6 +29874,10 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -26995,6 +29888,10 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     *out += "\"type\" : \"VkCoarseSampleOrderTypeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleOrderType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkCoarseSampleOrderTypeNVJson(out, sampleOrderType); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27005,6 +29902,10 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"customSampleOrderCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, customSampleOrderCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27071,6 +29972,10 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27150,6 +30055,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pAccelerationStructure.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pAccelerationStructure
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -27185,6 +30091,10 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27195,6 +30105,10 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"accelerationStructure\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, accelerationStructure); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27258,6 +30172,10 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27352,6 +30270,10 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27362,6 +30284,10 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindInfoCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, bindInfoCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27430,6 +30356,10 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27469,6 +30399,10 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceData\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instanceData); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27479,6 +30413,10 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, instanceOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27489,6 +30427,10 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"update\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, update); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27499,6 +30441,10 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dst\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dst); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27509,6 +30455,10 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"src\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, src); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27519,6 +30469,10 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"scratch\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, scratch); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27529,6 +30483,10 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"scratchOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, scratchOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -27564,6 +30522,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27574,6 +30536,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dst\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dst); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27584,6 +30550,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"src\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, src); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27594,6 +30564,10 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     *out += "\"type\" : \"VkCopyAccelerationStructureModeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkCopyAccelerationStructureModeNVJson(out, mode); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -27640,6 +30614,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27650,6 +30628,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"raygenShaderBindingTableBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, raygenShaderBindingTableBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27660,6 +30642,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"raygenShaderBindingOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, raygenShaderBindingOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27670,6 +30656,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"missShaderBindingTableBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, missShaderBindingTableBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27680,6 +30670,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"missShaderBindingOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, missShaderBindingOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27690,6 +30684,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"missShaderBindingStride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, missShaderBindingStride); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27700,6 +30698,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"hitShaderBindingTableBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, hitShaderBindingTableBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27710,6 +30712,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"hitShaderBindingOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, hitShaderBindingOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27720,6 +30726,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"hitShaderBindingStride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, hitShaderBindingStride); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27730,6 +30740,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"callableShaderBindingTableBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, callableShaderBindingTableBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27740,6 +30754,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"callableShaderBindingOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, callableShaderBindingOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27750,6 +30768,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"callableShaderBindingStride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, callableShaderBindingStride); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27760,6 +30782,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"width\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, width); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27770,6 +30796,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"height\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, height); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27780,6 +30810,10 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depth\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, depth); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -27819,6 +30853,10 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27829,6 +30867,10 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     *out += "\"type\" : \"VkPipelineCache\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineCache\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pipelineCache); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27839,6 +30881,10 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"createInfoCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, createInfoCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27962,6 +31008,10 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27972,6 +31022,10 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     *out += "\"type\" : \"VkPipeline\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pipeline); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27982,6 +31036,10 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstGroup\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstGroup); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -27992,6 +31050,10 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, groupCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28002,6 +31064,10 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dataSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, dataSize); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28066,6 +31132,10 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28076,6 +31146,10 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"accelerationStructure\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, accelerationStructure); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28086,6 +31160,10 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dataSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, dataSize); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28150,6 +31228,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28160,6 +31242,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"accelerationStructureCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, accelerationStructureCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28197,6 +31283,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     *out += "\"type\" : \"VkQueryType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkQueryTypeJson(out, queryType); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28207,6 +31297,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     *out += "\"type\" : \"VkQueryPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queryPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28217,6 +31311,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstQuery\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstQuery); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -28253,6 +31351,10 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28263,6 +31365,10 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     *out += "\"type\" : \"VkPipeline\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pipeline); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28273,6 +31379,10 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shader\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, shader); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -28311,6 +31421,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28321,6 +31435,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, handleType); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28342,6 +31460,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pHostPointer /* ACF */ );
         *out += "\n";
+        //TODO: Output *pHostPointer
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -28409,6 +31528,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28419,6 +31542,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     *out += "\"type\" : \"VkPipelineStageFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineStage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPipelineStageFlagBitsJson(out, pipelineStage); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28429,6 +31556,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dstBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28439,6 +31570,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, dstOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28449,6 +31584,10 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"marker\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, marker); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -28486,6 +31625,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28507,6 +31650,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pTimeDomainCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pTimeDomainCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -28573,6 +31717,10 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28583,6 +31731,10 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timestampCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, timestampCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28659,6 +31811,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pMaxDeviation.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pMaxDeviation
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -28695,6 +31848,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28705,6 +31862,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"taskCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, taskCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28715,6 +31876,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstTask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstTask); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -28751,6 +31916,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28761,6 +31930,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28771,6 +31944,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, offset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28781,6 +31958,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drawCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, drawCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28791,6 +31972,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, stride); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -28829,6 +32014,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28839,6 +32028,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, buffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28849,6 +32042,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, offset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28859,6 +32056,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, countBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28869,6 +32070,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBufferOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, countBufferOffset); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28879,6 +32084,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, maxDrawCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28889,6 +32098,10 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, stride); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -28925,6 +32138,10 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28935,6 +32152,10 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstExclusiveScissor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstExclusiveScissor); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -28945,6 +32166,10 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"exclusiveScissorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, exclusiveScissorCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29007,6 +32232,10 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29028,6 +32257,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pCheckpointMarker /* ACF */ );
         *out += "\n";
+        //TODO: Output *pCheckpointMarker
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -29063,6 +32293,10 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     *out += "\"type\" : \"VkQueue\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queue); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29084,6 +32318,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pCheckpointDataCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pCheckpointDataCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -29149,6 +32384,10 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29210,6 +32449,10 @@ void VulkanJsonConsumer::Process_vkUninitializePerformanceApiINTEL(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -29245,6 +32488,10 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29309,6 +32556,10 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29373,6 +32624,10 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29438,6 +32693,10 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29488,6 +32747,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pConfiguration.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pConfiguration
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -29524,6 +32784,10 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29534,6 +32798,10 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     *out += "\"type\" : \"VkPerformanceConfigurationINTEL\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"configuration\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, configuration); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -29569,6 +32837,10 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     *out += "\"type\" : \"VkQueue\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queue); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29579,6 +32851,10 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     *out += "\"type\" : \"VkPerformanceConfigurationINTEL\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"configuration\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, configuration); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -29615,6 +32891,10 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29625,6 +32905,10 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     *out += "\"type\" : \"VkPerformanceParameterTypeINTEL\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"parameter\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPerformanceParameterTypeINTELJson(out, parameter); // ESA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29689,6 +32973,10 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29699,6 +32987,10 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapChain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, swapChain); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29709,6 +33001,10 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"localDimmingEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, localDimmingEnable); //EQA
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -29747,6 +33043,10 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29826,6 +33126,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -29865,6 +33166,10 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29944,6 +33249,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -29980,6 +33286,10 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30046,6 +33356,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30067,6 +33381,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPropertyCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPropertyCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -30133,6 +33448,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30154,6 +33473,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
         *out += "\"address\" : \"";
         AddrToStringJson(out, pCombinationCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pCombinationCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -30221,6 +33541,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     *out += "\"type\" : \"VkPhysicalDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, physicalDevice); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30271,6 +33595,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pPresentModeCount.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pPresentModeCount
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -30334,6 +33659,10 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30344,6 +33673,10 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, swapchain); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -30379,6 +33712,10 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30389,6 +33726,10 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, swapchain); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -30425,6 +33766,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30475,6 +33820,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pModes.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pModes
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -30514,6 +33860,10 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     *out += "\"type\" : \"VkInstance\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, instance); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30593,6 +33943,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
         *out += "\"address\" : \"";
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pSurface
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -30629,6 +33980,10 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, commandBuffer); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30639,6 +33994,10 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"lineStippleFactor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, lineStippleFactor); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30649,6 +34008,10 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     *out += "\"type\" : \"uint16_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"lineStipplePattern\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, lineStipplePattern); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -30685,6 +34048,10 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     *out += "\"type\" : \"VkDevice\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, device); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30695,6 +34062,10 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     *out += "\"type\" : \"VkQueryPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, queryPool); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30705,6 +34076,10 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstQuery\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, firstQuery); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -30715,6 +34090,10 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, queryCount); // UYW
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());

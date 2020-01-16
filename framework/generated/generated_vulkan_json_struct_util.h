@@ -534,6 +534,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &ps
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -557,6 +561,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &ps
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -581,6 +586,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &ps
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pApplicationName.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pApplicationName
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -594,6 +600,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &ps
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"applicationVersion\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->applicationVersion); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -617,6 +627,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &ps
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pEngineName.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pEngineName
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -630,6 +641,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &ps
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"engineVersion\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->engineVersion); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -642,6 +657,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &ps
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"apiVersion\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->apiVersion); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -664,6 +683,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -687,6 +710,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -700,6 +724,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
     *out += "\"type\" : \"VkInstanceCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -743,6 +771,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"enabledLayerCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->enabledLayerCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -784,6 +816,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"enabledExtensionCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->enabledExtensionCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -846,6 +882,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAllocationCallbacks
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pUserData /* ACF */ );
         *out += "\n";
+        //TODO: Output *pUserData
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -859,6 +896,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAllocationCallbacks
     *out += "\"type\" : \"PFN_vkAllocationFunction\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pfnAllocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, reinterpret_cast<uint64_t>(pstruct->pfnAllocation)); // WRX
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -871,6 +912,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAllocationCallbacks
     *out += "\"type\" : \"PFN_vkReallocationFunction\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pfnReallocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, reinterpret_cast<uint64_t>(pstruct->pfnReallocation)); // WRX
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -883,6 +928,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAllocationCallbacks
     *out += "\"type\" : \"PFN_vkFreeFunction\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pfnFree\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, reinterpret_cast<uint64_t>(pstruct->pfnFree)); // WRX
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -895,6 +944,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAllocationCallbacks
     *out += "\"type\" : \"PFN_vkInternalAllocationNotification\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pfnInternalAllocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, reinterpret_cast<uint64_t>(pstruct->pfnInternalAllocation)); // WRX
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -907,6 +960,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAllocationCallbacks
     *out += "\"type\" : \"PFN_vkInternalFreeNotification\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pfnInternalFree\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, reinterpret_cast<uint64_t>(pstruct->pfnInternalFree)); // WRX
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -929,6 +986,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"robustBufferAccess\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->robustBufferAccess); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -941,6 +1002,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fullDrawIndexUint32\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fullDrawIndexUint32); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -953,6 +1018,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageCubeArray\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->imageCubeArray); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -965,6 +1034,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"independentBlend\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->independentBlend); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -977,6 +1050,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"geometryShader\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->geometryShader); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -989,6 +1066,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tessellationShader\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->tessellationShader); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1001,6 +1082,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleRateShading\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sampleRateShading); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1013,6 +1098,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dualSrcBlend\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->dualSrcBlend); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1025,6 +1114,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"logicOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->logicOp); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1037,6 +1130,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"multiDrawIndirect\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->multiDrawIndirect); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1049,6 +1146,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drawIndirectFirstInstance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->drawIndirectFirstInstance); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1061,6 +1162,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthClamp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->depthClamp); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1073,6 +1178,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBiasClamp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->depthBiasClamp); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1085,6 +1194,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fillModeNonSolid\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fillModeNonSolid); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1097,6 +1210,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBounds\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->depthBounds); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1109,6 +1226,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"wideLines\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->wideLines); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1121,6 +1242,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"largePoints\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->largePoints); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1133,6 +1258,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"alphaToOne\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->alphaToOne); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1145,6 +1274,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"multiViewport\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->multiViewport); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1157,6 +1290,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"samplerAnisotropy\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->samplerAnisotropy); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1169,6 +1306,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"textureCompressionETC2\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->textureCompressionETC2); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1181,6 +1322,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"textureCompressionASTC_LDR\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->textureCompressionASTC_LDR); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1193,6 +1338,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"textureCompressionBC\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->textureCompressionBC); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1205,6 +1354,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"occlusionQueryPrecise\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->occlusionQueryPrecise); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1217,6 +1370,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineStatisticsQuery\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->pipelineStatisticsQuery); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1229,6 +1386,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexPipelineStoresAndAtomics\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->vertexPipelineStoresAndAtomics); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1241,6 +1402,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fragmentStoresAndAtomics\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fragmentStoresAndAtomics); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1253,6 +1418,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderTessellationAndGeometryPointSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderTessellationAndGeometryPointSize); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1265,6 +1434,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderImageGatherExtended\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderImageGatherExtended); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1277,6 +1450,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStorageImageExtendedFormats\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderStorageImageExtendedFormats); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1289,6 +1466,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStorageImageMultisample\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderStorageImageMultisample); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1301,6 +1482,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStorageImageReadWithoutFormat\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderStorageImageReadWithoutFormat); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1313,6 +1498,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStorageImageWriteWithoutFormat\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderStorageImageWriteWithoutFormat); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1325,6 +1514,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderUniformBufferArrayDynamicIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderUniformBufferArrayDynamicIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1337,6 +1530,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderSampledImageArrayDynamicIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderSampledImageArrayDynamicIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1349,6 +1546,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStorageBufferArrayDynamicIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderStorageBufferArrayDynamicIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1361,6 +1562,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStorageImageArrayDynamicIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderStorageImageArrayDynamicIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1373,6 +1578,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderClipDistance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderClipDistance); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1385,6 +1594,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderCullDistance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderCullDistance); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1397,6 +1610,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderFloat64\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderFloat64); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1409,6 +1626,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderInt64\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderInt64); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1421,6 +1642,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderInt16\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderInt16); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1433,6 +1658,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderResourceResidency\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderResourceResidency); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1445,6 +1674,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderResourceMinLod\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderResourceMinLod); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1457,6 +1690,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sparseBinding\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sparseBinding); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1469,6 +1706,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sparseResidencyBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sparseResidencyBuffer); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1481,6 +1722,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sparseResidencyImage2D\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sparseResidencyImage2D); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1493,6 +1738,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sparseResidencyImage3D\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sparseResidencyImage3D); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1505,6 +1754,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sparseResidency2Samples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sparseResidency2Samples); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1517,6 +1770,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sparseResidency4Samples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sparseResidency4Samples); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1529,6 +1786,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sparseResidency8Samples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sparseResidency8Samples); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1541,6 +1802,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sparseResidency16Samples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sparseResidency16Samples); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1553,6 +1818,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sparseResidencyAliased\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sparseResidencyAliased); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1565,6 +1834,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"variableMultisampleRate\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->variableMultisampleRate); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1577,6 +1850,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"inheritedQueries\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->inheritedQueries); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -1599,6 +1876,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties &p
     *out += "\"type\" : \"VkFormatFeatureFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"linearTilingFeatures\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->linearTilingFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1611,6 +1892,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties &p
     *out += "\"type\" : \"VkFormatFeatureFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"optimalTilingFeatures\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->optimalTilingFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1623,6 +1908,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties &p
     *out += "\"type\" : \"VkFormatFeatureFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferFeatures\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->bufferFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -1645,6 +1934,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExtent3D &pstruct_i
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"width\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->width); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1657,6 +1950,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExtent3D &pstruct_i
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"height\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->height); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1669,6 +1966,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExtent3D &pstruct_i
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depth\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->depth); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -1710,6 +2011,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatProperti
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxMipLevels\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxMipLevels); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1722,6 +2027,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatProperti
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxArrayLayers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxArrayLayers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1734,6 +2043,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatProperti
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleCounts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->sampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1746,6 +2059,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatProperti
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxResourceSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->maxResourceSize); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -1768,6 +2085,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxImageDimension1D\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxImageDimension1D); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1780,6 +2101,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxImageDimension2D\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxImageDimension2D); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1792,6 +2117,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxImageDimension3D\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxImageDimension3D); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1804,6 +2133,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxImageDimensionCube\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxImageDimensionCube); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1816,6 +2149,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxImageArrayLayers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxImageArrayLayers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1828,6 +2165,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTexelBufferElements\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTexelBufferElements); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1840,6 +2181,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxUniformBufferRange\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxUniformBufferRange); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1852,6 +2197,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxStorageBufferRange\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxStorageBufferRange); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1864,6 +2213,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPushConstantsSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPushConstantsSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1876,6 +2229,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxMemoryAllocationCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxMemoryAllocationCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1888,6 +2245,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxSamplerAllocationCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxSamplerAllocationCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1900,6 +2261,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferImageGranularity\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->bufferImageGranularity); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1912,6 +2277,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sparseAddressSpaceSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sparseAddressSpaceSize); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1924,6 +2293,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxBoundDescriptorSets\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxBoundDescriptorSets); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1936,6 +2309,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorSamplers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorSamplers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1948,6 +2325,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorUniformBuffers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorUniformBuffers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1960,6 +2341,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorStorageBuffers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorStorageBuffers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1972,6 +2357,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorSampledImages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorSampledImages); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1984,6 +2373,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorStorageImages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorStorageImages); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -1996,6 +2389,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorInputAttachments\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorInputAttachments); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2008,6 +2405,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageResources\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageResources); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2020,6 +2421,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetSamplers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetSamplers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2032,6 +2437,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetUniformBuffers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetUniformBuffers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2044,6 +2453,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetUniformBuffersDynamic\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetUniformBuffersDynamic); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2056,6 +2469,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetStorageBuffers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetStorageBuffers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2068,6 +2485,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetStorageBuffersDynamic\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetStorageBuffersDynamic); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2080,6 +2501,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetSampledImages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetSampledImages); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2092,6 +2517,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetStorageImages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetStorageImages); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2104,6 +2533,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetInputAttachments\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetInputAttachments); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2116,6 +2549,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxVertexInputAttributes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxVertexInputAttributes); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2128,6 +2565,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxVertexInputBindings\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxVertexInputBindings); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2140,6 +2581,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxVertexInputAttributeOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxVertexInputAttributeOffset); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2152,6 +2597,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxVertexInputBindingStride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxVertexInputBindingStride); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2164,6 +2613,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxVertexOutputComponents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxVertexOutputComponents); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2176,6 +2629,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTessellationGenerationLevel\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTessellationGenerationLevel); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2188,6 +2645,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTessellationPatchSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTessellationPatchSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2200,6 +2661,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTessellationControlPerVertexInputComponents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTessellationControlPerVertexInputComponents); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2212,6 +2677,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTessellationControlPerVertexOutputComponents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTessellationControlPerVertexOutputComponents); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2224,6 +2693,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTessellationControlPerPatchOutputComponents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTessellationControlPerPatchOutputComponents); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2236,6 +2709,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTessellationControlTotalOutputComponents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTessellationControlTotalOutputComponents); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2248,6 +2725,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTessellationEvaluationInputComponents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTessellationEvaluationInputComponents); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2260,6 +2741,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTessellationEvaluationOutputComponents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTessellationEvaluationOutputComponents); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2272,6 +2757,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxGeometryShaderInvocations\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxGeometryShaderInvocations); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2284,6 +2773,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxGeometryInputComponents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxGeometryInputComponents); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2296,6 +2789,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxGeometryOutputComponents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxGeometryOutputComponents); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2308,6 +2805,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxGeometryOutputVertices\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxGeometryOutputVertices); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2320,6 +2821,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxGeometryTotalOutputComponents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxGeometryTotalOutputComponents); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2332,6 +2837,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxFragmentInputComponents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxFragmentInputComponents); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2344,6 +2853,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxFragmentOutputAttachments\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxFragmentOutputAttachments); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2356,6 +2869,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxFragmentDualSrcAttachments\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxFragmentDualSrcAttachments); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2368,6 +2885,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxFragmentCombinedOutputResources\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxFragmentCombinedOutputResources); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2380,6 +2901,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxComputeSharedMemorySize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxComputeSharedMemorySize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2413,6 +2938,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxComputeWorkGroupInvocations\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxComputeWorkGroupInvocations); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2446,6 +2975,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subPixelPrecisionBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subPixelPrecisionBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2458,6 +2991,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subTexelPrecisionBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subTexelPrecisionBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2470,6 +3007,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mipmapPrecisionBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->mipmapPrecisionBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2482,6 +3023,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawIndexedIndexValue\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDrawIndexedIndexValue); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2494,6 +3039,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawIndirectCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDrawIndirectCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2506,6 +3055,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxSamplerLodBias\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->maxSamplerLodBias); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2518,6 +3071,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxSamplerAnisotropy\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->maxSamplerAnisotropy); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2530,6 +3087,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxViewports\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxViewports); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2584,6 +3145,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewportSubPixelBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->viewportSubPixelBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2596,6 +3161,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minMemoryMapAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->minMemoryMapAlignment); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2608,6 +3177,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minTexelBufferOffsetAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->minTexelBufferOffsetAlignment); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2620,6 +3193,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minUniformBufferOffsetAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->minUniformBufferOffsetAlignment); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2632,6 +3209,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minStorageBufferOffsetAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->minStorageBufferOffsetAlignment); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2644,6 +3225,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minTexelOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->minTexelOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2656,6 +3241,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTexelOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTexelOffset); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2668,6 +3257,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minTexelGatherOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->minTexelGatherOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2680,6 +3273,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTexelGatherOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTexelGatherOffset); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2692,6 +3289,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minInterpolationOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->minInterpolationOffset); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2704,6 +3305,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxInterpolationOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->maxInterpolationOffset); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2716,6 +3321,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subPixelInterpolationOffsetBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subPixelInterpolationOffsetBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2728,6 +3337,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxFramebufferWidth\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxFramebufferWidth); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2740,6 +3353,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxFramebufferHeight\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxFramebufferHeight); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2752,6 +3369,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxFramebufferLayers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxFramebufferLayers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2764,6 +3385,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"framebufferColorSampleCounts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->framebufferColorSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2776,6 +3401,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"framebufferDepthSampleCounts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->framebufferDepthSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2788,6 +3417,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"framebufferStencilSampleCounts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->framebufferStencilSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2800,6 +3433,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"framebufferNoAttachmentsSampleCounts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->framebufferNoAttachmentsSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2812,6 +3449,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxColorAttachments\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxColorAttachments); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2824,6 +3465,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampledImageColorSampleCounts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->sampledImageColorSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2836,6 +3481,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampledImageIntegerSampleCounts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->sampledImageIntegerSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2848,6 +3497,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampledImageDepthSampleCounts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->sampledImageDepthSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2860,6 +3513,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampledImageStencilSampleCounts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->sampledImageStencilSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2872,6 +3529,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"storageImageSampleCounts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->storageImageSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2884,6 +3545,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxSampleMaskWords\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxSampleMaskWords); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2896,6 +3561,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timestampComputeAndGraphics\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->timestampComputeAndGraphics); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2908,6 +3577,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timestampPeriod\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->timestampPeriod); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2920,6 +3593,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxClipDistances\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxClipDistances); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2932,6 +3609,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxCullDistances\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxCullDistances); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2944,6 +3625,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxCombinedClipAndCullDistances\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxCombinedClipAndCullDistances); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -2956,6 +3641,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"discreteQueuePriorities\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->discreteQueuePriorities); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3010,6 +3699,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pointSizeGranularity\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->pointSizeGranularity); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3022,6 +3715,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"lineWidthGranularity\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->lineWidthGranularity); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3034,6 +3731,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"strictLines\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->strictLines); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3046,6 +3747,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"standardSampleLocations\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->standardSampleLocations); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3058,6 +3763,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"optimalBufferCopyOffsetAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->optimalBufferCopyOffsetAlignment); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3070,6 +3779,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"optimalBufferCopyRowPitchAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->optimalBufferCopyRowPitchAlignment); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3082,6 +3795,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"nonCoherentAtomSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->nonCoherentAtomSize); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -3104,6 +3821,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"residencyStandard2DBlockShape\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->residencyStandard2DBlockShape); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3116,6 +3837,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"residencyStandard2DMultisampleBlockShape\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->residencyStandard2DMultisampleBlockShape); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3128,6 +3853,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"residencyStandard3DBlockShape\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->residencyStandard3DBlockShape); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3140,6 +3869,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"residencyAlignedMipSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->residencyAlignedMipSize); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3152,6 +3885,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"residencyNonResidentStrict\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->residencyNonResidentStrict); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -3174,6 +3911,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"apiVersion\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->apiVersion); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3186,6 +3927,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"driverVersion\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->driverVersion); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3198,6 +3943,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vendorID\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->vendorID); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3210,6 +3959,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceID\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->deviceID); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3222,6 +3975,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
     *out += "\"type\" : \"VkPhysicalDeviceType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPhysicalDeviceTypeJson(out, pstruct->deviceType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3324,6 +4081,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyProperti
     *out += "\"type\" : \"VkQueueFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->queueFlags, EnumToStringVkQueueFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3336,6 +4097,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyProperti
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queueCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3348,6 +4113,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyProperti
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timestampValidBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->timestampValidBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3389,6 +4158,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryType &pstruct
     *out += "\"type\" : \"VkMemoryPropertyFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"propertyFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->propertyFlags, EnumToStringVkMemoryPropertyFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3401,6 +4174,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryType &pstruct
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"heapIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->heapIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -3423,6 +4200,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryHeap &pstruct
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->size); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3435,6 +4216,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryHeap &pstruct
     *out += "\"type\" : \"VkMemoryHeapFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkMemoryHeapFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -3457,6 +4242,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryTypeCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->memoryTypeCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3491,6 +4280,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryHeapCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->memoryHeapCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3535,6 +4328,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueCreateIn
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3558,6 +4355,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueCreateIn
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -3571,6 +4369,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueCreateIn
     *out += "\"type\" : \"VkDeviceQueueCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDeviceQueueCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3583,6 +4385,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queueFamilyIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3595,6 +4401,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queueCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3646,6 +4456,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3669,6 +4483,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -3682,6 +4497,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
     *out += "\"type\" : \"VkDeviceCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3694,6 +4513,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueCreateInfoCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queueCreateInfoCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3736,6 +4559,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"enabledLayerCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->enabledLayerCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3777,6 +4604,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"enabledExtensionCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->enabledExtensionCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3880,6 +4711,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExtensionProperties
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"specVersion\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->specVersion); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -3923,6 +4758,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkLayerProperties &ps
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"specVersion\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->specVersion); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3935,6 +4774,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkLayerProperties &ps
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"implementationVersion\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->implementationVersion); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -3978,6 +4821,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4001,6 +4848,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -4014,6 +4862,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"waitSemaphoreCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->waitSemaphoreCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4084,6 +4936,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBufferCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->commandBufferCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4125,6 +4981,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"signalSemaphoreCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->signalSemaphoreCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4176,6 +5036,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateInfo 
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4199,6 +5063,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateInfo 
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -4212,6 +5077,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateInfo 
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"allocationSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->allocationSize); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4224,6 +5093,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateInfo 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryTypeIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->memoryTypeIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -4246,6 +5119,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMappedMemoryRange &
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4269,6 +5146,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMappedMemoryRange &
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -4282,6 +5160,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMappedMemoryRange &
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.memory); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4294,6 +5176,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMappedMemoryRange &
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->offset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4306,6 +5192,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMappedMemoryRange &
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->size); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -4328,6 +5218,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryRequirements 
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->size); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4340,6 +5234,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryRequirements 
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"alignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->alignment); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4352,6 +5250,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryRequirements 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryTypeBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->memoryTypeBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -4374,6 +5276,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageFormatPr
     *out += "\"type\" : \"VkImageAspectFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"aspectMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4405,6 +5311,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageFormatPr
     *out += "\"type\" : \"VkSparseImageFormatFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseImageFormatFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -4446,6 +5356,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryRe
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageMipTailFirstLod\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->imageMipTailFirstLod); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4458,6 +5372,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryRe
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageMipTailSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->imageMipTailSize); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4470,6 +5388,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryRe
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageMipTailOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->imageMipTailOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4482,6 +5404,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryRe
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageMipTailStride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->imageMipTailStride); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -4504,6 +5430,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseMemoryBind &p
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"resourceOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->resourceOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4516,6 +5446,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseMemoryBind &p
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->size); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4528,6 +5462,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseMemoryBind &p
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.memory); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4540,6 +5478,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseMemoryBind &p
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->memoryOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4552,6 +5494,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseMemoryBind &p
     *out += "\"type\" : \"VkSparseMemoryBindFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseMemoryBindFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -4574,6 +5520,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseBufferMemoryB
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4586,6 +5536,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseBufferMemoryB
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->bindCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4638,6 +5592,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageOpaqueMe
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.image); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4650,6 +5608,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageOpaqueMe
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->bindCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4702,6 +5664,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresource &p
     *out += "\"type\" : \"VkImageAspectFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"aspectMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4714,6 +5680,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresource &p
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mipLevel\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->mipLevel); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4726,6 +5696,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresource &p
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"arrayLayer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->arrayLayer); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -4748,6 +5722,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkOffset3D &pstruct_i
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"x\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->x); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4760,6 +5738,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkOffset3D &pstruct_i
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"y\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->y); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4772,6 +5754,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkOffset3D &pstruct_i
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"z\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->z); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -4851,6 +5837,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryBi
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.memory); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4863,6 +5853,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryBi
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->memoryOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4875,6 +5869,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryBi
     *out += "\"type\" : \"VkSparseMemoryBindFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseMemoryBindFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -4897,6 +5895,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryBi
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.image); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4909,6 +5911,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryBi
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->bindCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4961,6 +5967,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -4984,6 +5994,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -4997,6 +6008,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"waitSemaphoreCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->waitSemaphoreCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5038,6 +6053,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferBindCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->bufferBindCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5080,6 +6099,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageOpaqueBindCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->imageOpaqueBindCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5122,6 +6145,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageBindCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->imageBindCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5164,6 +6191,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"signalSemaphoreCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->signalSemaphoreCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5215,6 +6246,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceCreateInfo &ps
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5238,6 +6273,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceCreateInfo &ps
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -5251,6 +6287,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceCreateInfo &ps
     *out += "\"type\" : \"VkFenceCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -5273,6 +6313,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreCreateInfo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5296,6 +6340,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreCreateInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -5309,6 +6354,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreCreateInfo
     *out += "\"type\" : \"VkSemaphoreCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -5331,6 +6380,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkEventCreateInfo &ps
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5354,6 +6407,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkEventCreateInfo &ps
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -5367,6 +6421,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkEventCreateInfo &ps
     *out += "\"type\" : \"VkEventCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -5389,6 +6447,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5412,6 +6474,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -5425,6 +6488,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"type\" : \"VkQueryPoolCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5437,6 +6504,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"type\" : \"VkQueryType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkQueryTypeJson(out, pstruct->queryType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5449,6 +6520,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queryCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5461,6 +6536,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"type\" : \"VkQueryPipelineStatisticFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineStatistics\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->pipelineStatistics, EnumToStringVkQueryPipelineStatisticFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -5483,6 +6562,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5506,6 +6589,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -5519,6 +6603,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
     *out += "\"type\" : \"VkBufferCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBufferCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5531,6 +6619,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->size); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5543,6 +6635,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
     *out += "\"type\" : \"VkBufferUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkBufferUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5555,6 +6651,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
     *out += "\"type\" : \"VkSharingMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sharingMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSharingModeJson(out, pstruct->sharingMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5567,6 +6667,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queueFamilyIndexCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5618,6 +6722,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferViewCreateInf
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5641,6 +6749,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferViewCreateInf
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -5654,6 +6763,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferViewCreateInf
     *out += "\"type\" : \"VkBufferViewCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5666,6 +6779,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferViewCreateInf
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5678,6 +6795,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferViewCreateInf
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5690,6 +6811,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferViewCreateInf
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->offset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5702,6 +6827,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferViewCreateInf
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"range\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->range); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -5724,6 +6853,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5747,6 +6880,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -5760,6 +6894,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"type\" : \"VkImageCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5772,6 +6910,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"type\" : \"VkImageType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageTypeJson(out, pstruct->imageType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5784,6 +6926,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5815,6 +6961,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mipLevels\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->mipLevels); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5827,6 +6977,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"arrayLayers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->arrayLayers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5839,6 +6993,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"type\" : \"VkSampleCountFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"samples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSampleCountFlagBitsJson(out, pstruct->samples); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5851,6 +7009,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"type\" : \"VkImageTiling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tiling\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageTilingJson(out, pstruct->tiling); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5863,6 +7025,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5875,6 +7041,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"type\" : \"VkSharingMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sharingMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSharingModeJson(out, pstruct->sharingMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5887,6 +7057,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queueFamilyIndexCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5928,6 +7102,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"initialLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, pstruct->initialLayout); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -5950,6 +7128,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubresourceLayout &
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->offset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5962,6 +7144,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubresourceLayout &
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->size); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5974,6 +7160,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubresourceLayout &
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rowPitch\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->rowPitch); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5986,6 +7176,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubresourceLayout &
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"arrayPitch\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->arrayPitch); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -5998,6 +7192,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubresourceLayout &
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthPitch\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->depthPitch); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -6020,6 +7218,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkComponentMapping &p
     *out += "\"type\" : \"VkComponentSwizzle\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"r\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkComponentSwizzleJson(out, pstruct->r); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6032,6 +7234,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkComponentMapping &p
     *out += "\"type\" : \"VkComponentSwizzle\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"g\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkComponentSwizzleJson(out, pstruct->g); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6044,6 +7250,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkComponentMapping &p
     *out += "\"type\" : \"VkComponentSwizzle\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"b\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkComponentSwizzleJson(out, pstruct->b); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6056,6 +7266,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkComponentMapping &p
     *out += "\"type\" : \"VkComponentSwizzle\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"a\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkComponentSwizzleJson(out, pstruct->a); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -6078,6 +7292,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceRan
     *out += "\"type\" : \"VkImageAspectFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"aspectMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6090,6 +7308,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceRan
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseMipLevel\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->baseMipLevel); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6102,6 +7324,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceRan
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"levelCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->levelCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6114,6 +7340,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceRan
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseArrayLayer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->baseArrayLayer); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6126,6 +7356,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceRan
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layerCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->layerCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -6148,6 +7382,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6171,6 +7409,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -6184,6 +7423,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
     *out += "\"type\" : \"VkImageViewCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageViewCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6196,6 +7439,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.image); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6208,6 +7455,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
     *out += "\"type\" : \"VkImageViewType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageViewTypeJson(out, pstruct->viewType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6220,6 +7471,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6280,6 +7535,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleCreateI
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6303,6 +7562,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleCreateI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -6316,6 +7576,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleCreateI
     *out += "\"type\" : \"VkShaderModuleCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkShaderModuleCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6328,6 +7592,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleCreateI
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"codeSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->codeSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6379,6 +7647,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCacheCreate
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6402,6 +7674,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCacheCreate
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -6415,6 +7688,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCacheCreate
     *out += "\"type\" : \"VkPipelineCacheCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6427,6 +7704,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCacheCreate
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"initialDataSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->initialDataSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6478,6 +7759,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSpecializationMapEn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"constantID\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->constantID); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6490,6 +7775,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSpecializationMapEn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->offset); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6502,6 +7791,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSpecializationMapEn
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->size); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -6524,6 +7817,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSpecializationInfo 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mapEntryCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->mapEntryCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6566,6 +7863,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSpecializationInfo 
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dataSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dataSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6617,6 +7918,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6640,6 +7945,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -6653,6 +7959,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
     *out += "\"type\" : \"VkPipelineShaderStageCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineShaderStageCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6665,6 +7975,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
     *out += "\"type\" : \"VkShaderStageFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkShaderStageFlagBitsJson(out, pstruct->stage); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6677,6 +7991,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
     *out += "\"type\" : \"VkShaderModule\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"module\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.module); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6700,6 +8018,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pName.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pName
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -6754,6 +8073,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkVertexInputBindingD
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"binding\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->binding); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6766,6 +8089,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkVertexInputBindingD
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->stride); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6778,6 +8105,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkVertexInputBindingD
     *out += "\"type\" : \"VkVertexInputRate\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"inputRate\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkVertexInputRateJson(out, pstruct->inputRate); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -6800,6 +8131,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkVertexInputAttribut
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"location\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->location); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6812,6 +8147,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkVertexInputAttribut
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"binding\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->binding); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6824,6 +8163,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkVertexInputAttribut
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6836,6 +8179,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkVertexInputAttribut
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->offset); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -6858,6 +8205,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6881,6 +8232,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -6894,6 +8246,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
     *out += "\"type\" : \"VkPipelineVertexInputStateCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6906,6 +8262,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexBindingDescriptionCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->vertexBindingDescriptionCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -6948,6 +8308,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexAttributeDescriptionCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->vertexAttributeDescriptionCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7000,6 +8364,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInputAssemb
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7023,6 +8391,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInputAssemb
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -7036,6 +8405,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInputAssemb
     *out += "\"type\" : \"VkPipelineInputAssemblyStateCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7048,6 +8421,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInputAssemb
     *out += "\"type\" : \"VkPrimitiveTopology\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"topology\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPrimitiveTopologyJson(out, pstruct->topology); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7060,6 +8437,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInputAssemb
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"primitiveRestartEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->primitiveRestartEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -7082,6 +8463,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7105,6 +8490,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -7118,6 +8504,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
     *out += "\"type\" : \"VkPipelineTessellationStateCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7130,6 +8520,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"patchControlPoints\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->patchControlPoints); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -7152,6 +8546,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewport &pstruct_i
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"x\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->x); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7164,6 +8562,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewport &pstruct_i
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"y\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->y); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7176,6 +8578,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewport &pstruct_i
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"width\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->width); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7188,6 +8594,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewport &pstruct_i
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"height\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->height); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7200,6 +8610,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewport &pstruct_i
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minDepth\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->minDepth); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7212,6 +8626,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewport &pstruct_i
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDepth\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->maxDepth); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -7234,6 +8652,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkOffset2D &pstruct_i
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"x\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->x); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7246,6 +8668,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkOffset2D &pstruct_i
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"y\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->y); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -7268,6 +8694,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExtent2D &pstruct_i
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"width\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->width); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7280,6 +8710,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExtent2D &pstruct_i
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"height\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->height); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -7350,6 +8784,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSta
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7373,6 +8811,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSta
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -7386,6 +8825,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSta
     *out += "\"type\" : \"VkPipelineViewportStateCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7398,6 +8841,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSta
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewportCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->viewportCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7440,6 +8887,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSta
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"scissorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->scissorCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7492,6 +8943,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7515,6 +8970,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -7528,6 +8984,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkPipelineRasterizationStateCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7540,6 +9000,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthClampEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->depthClampEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7552,6 +9016,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rasterizerDiscardEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->rasterizerDiscardEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7564,6 +9032,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkPolygonMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"polygonMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPolygonModeJson(out, pstruct->polygonMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7576,6 +9048,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkCullModeFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"cullMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->cullMode, EnumToStringVkCullModeFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7588,6 +9064,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkFrontFace\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"frontFace\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFrontFaceJson(out, pstruct->frontFace); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7600,6 +9080,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBiasEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->depthBiasEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7612,6 +9096,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBiasConstantFactor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->depthBiasConstantFactor); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7624,6 +9112,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBiasClamp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->depthBiasClamp); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7636,6 +9128,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBiasSlopeFactor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->depthBiasSlopeFactor); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7648,6 +9144,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"lineWidth\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->lineWidth); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -7670,6 +9170,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7693,6 +9197,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -7706,6 +9211,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
     *out += "\"type\" : \"VkPipelineMultisampleStateCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7718,6 +9227,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
     *out += "\"type\" : \"VkSampleCountFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rasterizationSamples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSampleCountFlagBitsJson(out, pstruct->rasterizationSamples); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7730,6 +9243,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleShadingEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sampleShadingEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7742,6 +9259,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minSampleShading\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->minSampleShading); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7783,6 +9304,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"alphaToCoverageEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->alphaToCoverageEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7795,6 +9320,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"alphaToOneEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->alphaToOneEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -7817,6 +9346,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkStencilOpState &pst
     *out += "\"type\" : \"VkStencilOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"failOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStencilOpJson(out, pstruct->failOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7829,6 +9362,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkStencilOpState &pst
     *out += "\"type\" : \"VkStencilOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"passOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStencilOpJson(out, pstruct->passOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7841,6 +9378,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkStencilOpState &pst
     *out += "\"type\" : \"VkStencilOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthFailOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStencilOpJson(out, pstruct->depthFailOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7853,6 +9394,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkStencilOpState &pst
     *out += "\"type\" : \"VkCompareOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compareOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkCompareOpJson(out, pstruct->compareOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7865,6 +9410,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkStencilOpState &pst
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compareMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->compareMask); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7877,6 +9426,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkStencilOpState &pst
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"writeMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->writeMask); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7889,6 +9442,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkStencilOpState &pst
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"reference\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->reference); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -7911,6 +9468,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7934,6 +9495,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -7947,6 +9509,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
     *out += "\"type\" : \"VkPipelineDepthStencilStateCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7959,6 +9525,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthTestEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->depthTestEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7971,6 +9541,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthWriteEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->depthWriteEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7983,6 +9557,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
     *out += "\"type\" : \"VkCompareOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthCompareOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkCompareOpJson(out, pstruct->depthCompareOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -7995,6 +9573,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBoundsTestEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->depthBoundsTestEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8007,6 +9589,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stencilTestEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->stencilTestEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8057,6 +9643,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minDepthBounds\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->minDepthBounds); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8069,6 +9659,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDepthBounds\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->maxDepthBounds); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -8091,6 +9685,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"blendEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->blendEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8103,6 +9701,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"type\" : \"VkBlendFactor\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcColorBlendFactor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkBlendFactorJson(out, pstruct->srcColorBlendFactor); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8115,6 +9717,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"type\" : \"VkBlendFactor\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstColorBlendFactor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkBlendFactorJson(out, pstruct->dstColorBlendFactor); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8127,6 +9733,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"type\" : \"VkBlendOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"colorBlendOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkBlendOpJson(out, pstruct->colorBlendOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8139,6 +9749,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"type\" : \"VkBlendFactor\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcAlphaBlendFactor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkBlendFactorJson(out, pstruct->srcAlphaBlendFactor); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8151,6 +9765,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"type\" : \"VkBlendFactor\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstAlphaBlendFactor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkBlendFactorJson(out, pstruct->dstAlphaBlendFactor); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8163,6 +9781,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"type\" : \"VkBlendOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"alphaBlendOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkBlendOpJson(out, pstruct->alphaBlendOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8175,6 +9797,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"type\" : \"VkColorComponentFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"colorWriteMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->colorWriteMask, EnumToStringVkColorComponentFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -8197,6 +9823,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8220,6 +9850,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -8233,6 +9864,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
     *out += "\"type\" : \"VkPipelineColorBlendStateCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8245,6 +9880,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"logicOpEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->logicOpEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8257,6 +9896,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
     *out += "\"type\" : \"VkLogicOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"logicOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkLogicOpJson(out, pstruct->logicOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8269,6 +9912,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"attachmentCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->attachmentCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8342,6 +9989,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDynamicStat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8365,6 +10016,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDynamicStat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -8378,6 +10030,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDynamicStat
     *out += "\"type\" : \"VkPipelineDynamicStateCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8390,6 +10046,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDynamicStat
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dynamicStateCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dynamicStateCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8441,6 +10101,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8464,6 +10128,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -8477,6 +10142,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
     *out += "\"type\" : \"VkPipelineCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8489,6 +10158,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stageCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->stageCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8810,6 +10483,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
     *out += "\"type\" : \"VkPipelineLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.layout); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8822,6 +10499,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
     *out += "\"type\" : \"VkRenderPass\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"renderPass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.renderPass); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8834,6 +10515,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subpass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subpass); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8846,6 +10531,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
     *out += "\"type\" : \"VkPipeline\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"basePipelineHandle\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.basePipelineHandle); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8858,6 +10547,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"basePipelineIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->basePipelineIndex); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -8880,6 +10573,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkComputePipelineCrea
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8903,6 +10600,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkComputePipelineCrea
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -8916,6 +10614,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkComputePipelineCrea
     *out += "\"type\" : \"VkPipelineCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8947,6 +10649,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkComputePipelineCrea
     *out += "\"type\" : \"VkPipelineLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.layout); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8959,6 +10665,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkComputePipelineCrea
     *out += "\"type\" : \"VkPipeline\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"basePipelineHandle\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.basePipelineHandle); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -8971,6 +10681,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkComputePipelineCrea
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"basePipelineIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->basePipelineIndex); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -8993,6 +10707,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPushConstantRange &
     *out += "\"type\" : \"VkShaderStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stageFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9005,6 +10723,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPushConstantRange &
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->offset); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9017,6 +10739,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPushConstantRange &
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->size); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -9039,6 +10765,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineLayoutCreat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9062,6 +10792,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineLayoutCreat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -9075,6 +10806,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineLayoutCreat
     *out += "\"type\" : \"VkPipelineLayoutCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9087,6 +10822,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineLayoutCreat
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"setLayoutCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->setLayoutCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9128,6 +10867,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineLayoutCreat
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pushConstantRangeCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->pushConstantRangeCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9180,6 +10923,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9203,6 +10950,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -9216,6 +10964,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkSamplerCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSamplerCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9228,6 +10980,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkFilter\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"magFilter\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFilterJson(out, pstruct->magFilter); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9240,6 +10996,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkFilter\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minFilter\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFilterJson(out, pstruct->minFilter); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9252,6 +11012,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkSamplerMipmapMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mipmapMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSamplerMipmapModeJson(out, pstruct->mipmapMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9264,6 +11028,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkSamplerAddressMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"addressModeU\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSamplerAddressModeJson(out, pstruct->addressModeU); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9276,6 +11044,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkSamplerAddressMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"addressModeV\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSamplerAddressModeJson(out, pstruct->addressModeV); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9288,6 +11060,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkSamplerAddressMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"addressModeW\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSamplerAddressModeJson(out, pstruct->addressModeW); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9300,6 +11076,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mipLodBias\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->mipLodBias); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9312,6 +11092,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"anisotropyEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->anisotropyEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9324,6 +11108,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxAnisotropy\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->maxAnisotropy); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9336,6 +11124,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compareEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->compareEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9348,6 +11140,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkCompareOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compareOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkCompareOpJson(out, pstruct->compareOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9360,6 +11156,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minLod\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->minLod); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9372,6 +11172,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxLod\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->maxLod); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9384,6 +11188,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkBorderColor\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"borderColor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkBorderColorJson(out, pstruct->borderColor); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9396,6 +11204,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"unnormalizedCoordinates\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->unnormalizedCoordinates); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -9418,6 +11230,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"binding\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->binding); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9430,6 +11246,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"type\" : \"VkDescriptorType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDescriptorTypeJson(out, pstruct->descriptorType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9442,6 +11262,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->descriptorCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9454,6 +11278,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"type\" : \"VkShaderStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stageFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9505,6 +11333,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9528,6 +11360,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -9541,6 +11374,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"type\" : \"VkDescriptorSetLayoutCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDescriptorSetLayoutCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9553,6 +11390,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindingCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->bindingCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9605,6 +11446,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolSize 
     *out += "\"type\" : \"VkDescriptorType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDescriptorTypeJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9617,6 +11462,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolSize 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->descriptorCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -9639,6 +11488,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolCreat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9662,6 +11515,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolCreat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -9675,6 +11529,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolCreat
     *out += "\"type\" : \"VkDescriptorPoolCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDescriptorPoolCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9687,6 +11545,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolCreat
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxSets\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxSets); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9699,6 +11561,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolCreat
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"poolSizeCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->poolSizeCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9751,6 +11617,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetAlloca
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9774,6 +11644,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetAlloca
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -9787,6 +11658,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetAlloca
     *out += "\"type\" : \"VkDescriptorPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.descriptorPool); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9799,6 +11674,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetAlloca
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorSetCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->descriptorSetCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9850,6 +11729,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorImageInfo
     *out += "\"type\" : \"VkSampler\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampler\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.sampler); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9862,6 +11745,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorImageInfo
     *out += "\"type\" : \"VkImageView\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageView\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.imageView); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9874,6 +11761,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorImageInfo
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, pstruct->imageLayout); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -9896,6 +11787,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorBufferInf
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9908,6 +11803,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorBufferInf
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->offset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9920,6 +11819,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorBufferInf
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"range\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->range); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -9942,6 +11845,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9965,6 +11872,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -9978,6 +11886,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
     *out += "\"type\" : \"VkDescriptorSet\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstSet\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.dstSet); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -9990,6 +11902,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBinding\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dstBinding); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10002,6 +11918,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstArrayElement\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dstArrayElement); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10014,6 +11934,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->descriptorCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10026,6 +11950,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
     *out += "\"type\" : \"VkDescriptorType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDescriptorTypeJson(out, pstruct->descriptorType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10137,6 +12065,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCopyDescriptorSet &
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10160,6 +12092,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCopyDescriptorSet &
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -10173,6 +12106,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCopyDescriptorSet &
     *out += "\"type\" : \"VkDescriptorSet\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcSet\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.srcSet); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10185,6 +12122,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCopyDescriptorSet &
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcBinding\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->srcBinding); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10197,6 +12138,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCopyDescriptorSet &
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcArrayElement\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->srcArrayElement); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10209,6 +12154,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCopyDescriptorSet &
     *out += "\"type\" : \"VkDescriptorSet\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstSet\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.dstSet); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10221,6 +12170,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCopyDescriptorSet &
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBinding\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dstBinding); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10233,6 +12186,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCopyDescriptorSet &
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstArrayElement\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dstArrayElement); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10245,6 +12202,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCopyDescriptorSet &
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->descriptorCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -10267,6 +12228,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10290,6 +12255,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -10303,6 +12269,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
     *out += "\"type\" : \"VkFramebufferCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFramebufferCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10315,6 +12285,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
     *out += "\"type\" : \"VkRenderPass\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"renderPass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.renderPass); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10327,6 +12301,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"attachmentCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->attachmentCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10368,6 +12346,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"width\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->width); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10380,6 +12362,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"height\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->height); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10392,6 +12378,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->layers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -10414,6 +12404,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkAttachmentDescriptionFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkAttachmentDescriptionFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10426,6 +12420,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10438,6 +12436,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkSampleCountFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"samples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSampleCountFlagBitsJson(out, pstruct->samples); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10450,6 +12452,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkAttachmentLoadOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"loadOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkAttachmentLoadOpJson(out, pstruct->loadOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10462,6 +12468,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkAttachmentStoreOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"storeOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkAttachmentStoreOpJson(out, pstruct->storeOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10474,6 +12484,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkAttachmentLoadOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stencilLoadOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkAttachmentLoadOpJson(out, pstruct->stencilLoadOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10486,6 +12500,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkAttachmentStoreOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stencilStoreOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkAttachmentStoreOpJson(out, pstruct->stencilStoreOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10498,6 +12516,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"initialLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, pstruct->initialLayout); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10510,6 +12532,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"finalLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, pstruct->finalLayout); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -10532,6 +12558,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"attachment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->attachment); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10544,6 +12574,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, pstruct->layout); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -10566,6 +12600,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
     *out += "\"type\" : \"VkSubpassDescriptionFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSubpassDescriptionFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10578,6 +12616,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
     *out += "\"type\" : \"VkPipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineBindPoint\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPipelineBindPointJson(out, pstruct->pipelineBindPoint); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10590,6 +12632,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"inputAttachmentCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->inputAttachmentCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10632,6 +12678,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"colorAttachmentCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->colorAttachmentCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10735,6 +12785,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"preserveAttachmentCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->preserveAttachmentCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10786,6 +12840,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcSubpass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->srcSubpass); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10798,6 +12856,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstSubpass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dstSubpass); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10810,6 +12872,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"type\" : \"VkPipelineStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcStageMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10822,6 +12888,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"type\" : \"VkPipelineStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstStageMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10834,6 +12904,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"type\" : \"VkAccessFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcAccessMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10846,6 +12920,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"type\" : \"VkAccessFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstAccessMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10858,6 +12936,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"type\" : \"VkDependencyFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dependencyFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->dependencyFlags, EnumToStringVkDependencyFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -10880,6 +12962,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10903,6 +12989,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -10916,6 +13003,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"type\" : \"VkRenderPassCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkRenderPassCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10928,6 +13019,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"attachmentCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->attachmentCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -10970,6 +13065,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subpassCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subpassCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11012,6 +13111,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dependencyCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dependencyCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11064,6 +13167,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandPoolCreateIn
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11087,6 +13194,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandPoolCreateIn
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -11100,6 +13208,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandPoolCreateIn
     *out += "\"type\" : \"VkCommandPoolCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkCommandPoolCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11112,6 +13224,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandPoolCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queueFamilyIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -11134,6 +13250,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferAlloca
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11157,6 +13277,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferAlloca
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -11170,6 +13291,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferAlloca
     *out += "\"type\" : \"VkCommandPool\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandPool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.commandPool); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11182,6 +13307,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferAlloca
     *out += "\"type\" : \"VkCommandBufferLevel\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"level\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkCommandBufferLevelJson(out, pstruct->level); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11194,6 +13323,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferAlloca
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBufferCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->commandBufferCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -11216,6 +13349,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11239,6 +13376,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -11252,6 +13390,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"type\" : \"VkRenderPass\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"renderPass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.renderPass); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11264,6 +13406,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subpass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subpass); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11276,6 +13422,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"type\" : \"VkFramebuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"framebuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.framebuffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11288,6 +13438,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"occlusionQueryEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->occlusionQueryEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11300,6 +13454,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"type\" : \"VkQueryControlFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->queryFlags, EnumToStringVkQueryControlFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11312,6 +13470,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"type\" : \"VkQueryPipelineStatisticFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineStatistics\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->pipelineStatistics, EnumToStringVkQueryPipelineStatisticFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -11334,6 +13496,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferBeginI
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11357,6 +13523,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferBeginI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -11370,6 +13537,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferBeginI
     *out += "\"type\" : \"VkCommandBufferUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkCommandBufferUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11423,6 +13594,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCopy &pstruct
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->srcOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11435,6 +13610,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCopy &pstruct
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->dstOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11447,6 +13626,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCopy &pstruct
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->size); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -11469,6 +13652,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceLay
     *out += "\"type\" : \"VkImageAspectFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"aspectMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11481,6 +13668,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceLay
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mipLevel\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->mipLevel); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11493,6 +13684,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceLay
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseArrayLayer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->baseArrayLayer); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11505,6 +13700,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceLay
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layerCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->layerCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -11724,6 +13923,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferImageCopy &ps
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->bufferOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11736,6 +13939,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferImageCopy &ps
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferRowLength\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->bufferRowLength); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11748,6 +13955,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferImageCopy &ps
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferImageHeight\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->bufferImageHeight); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11900,6 +14111,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearDepthStencilVa
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depth\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->depth); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11912,6 +14127,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearDepthStencilVa
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stencil\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->stencil); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -11982,6 +14201,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearAttachment &ps
     *out += "\"type\" : \"VkImageAspectFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"aspectMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -11994,6 +14217,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearAttachment &ps
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"colorAttachment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->colorAttachment); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12054,6 +14281,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearRect &pstruct_
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseArrayLayer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->baseArrayLayer); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12066,6 +14297,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearRect &pstruct_
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layerCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->layerCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -12193,6 +14428,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryBarrier &pstr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12216,6 +14455,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryBarrier &pstr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -12229,6 +14469,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryBarrier &pstr
     *out += "\"type\" : \"VkAccessFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcAccessMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12241,6 +14485,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryBarrier &pstr
     *out += "\"type\" : \"VkAccessFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstAccessMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -12263,6 +14511,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12286,6 +14538,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -12299,6 +14552,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"type\" : \"VkAccessFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcAccessMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12311,6 +14568,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"type\" : \"VkAccessFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstAccessMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12323,6 +14584,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcQueueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->srcQueueFamilyIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12335,6 +14600,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstQueueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dstQueueFamilyIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12347,6 +14616,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12359,6 +14632,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->offset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12371,6 +14648,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->size); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -12393,6 +14674,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12416,6 +14701,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -12429,6 +14715,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"type\" : \"VkAccessFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcAccessMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12441,6 +14731,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"type\" : \"VkAccessFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstAccessMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12453,6 +14747,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"oldLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, pstruct->oldLayout); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12465,6 +14763,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"newLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, pstruct->newLayout); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12477,6 +14779,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcQueueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->srcQueueFamilyIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12489,6 +14795,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstQueueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dstQueueFamilyIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12501,6 +14811,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.image); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12542,6 +14856,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassBeginInfo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12565,6 +14883,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassBeginInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -12578,6 +14897,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassBeginInfo
     *out += "\"type\" : \"VkRenderPass\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"renderPass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.renderPass); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12590,6 +14913,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassBeginInfo
     *out += "\"type\" : \"VkFramebuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"framebuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.framebuffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12621,6 +14948,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassBeginInfo
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"clearValueCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->clearValueCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12673,6 +15004,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDispatchIndirectCom
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"x\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->x); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12685,6 +15020,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDispatchIndirectCom
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"y\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->y); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12697,6 +15036,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDispatchIndirectCom
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"z\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->z); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -12719,6 +15062,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrawIndexedIndirect
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->indexCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12731,6 +15078,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrawIndexedIndirect
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->instanceCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12743,6 +15094,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrawIndexedIndirect
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->firstIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12755,6 +15110,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrawIndexedIndirect
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->vertexOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12767,6 +15126,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrawIndexedIndirect
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstInstance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->firstInstance); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -12789,6 +15152,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrawIndirectCommand
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->vertexCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12801,6 +15168,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrawIndirectCommand
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->instanceCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12813,6 +15184,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrawIndirectCommand
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstVertex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->firstVertex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12825,6 +15200,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrawIndirectCommand
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstInstance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->firstInstance); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -12847,6 +15226,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12870,6 +15253,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -12883,6 +15267,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subgroupSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subgroupSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12895,6 +15283,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"VkShaderStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedStages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedStages, EnumToStringVkShaderStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12907,6 +15299,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"VkSubgroupFeatureFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedOperations\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedOperations, EnumToStringVkSubgroupFeatureFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12919,6 +15315,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"quadOperationsInAllStages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->quadOperationsInAllStages); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -12941,6 +15341,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryInf
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12964,6 +15368,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryInf
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -12977,6 +15382,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryInf
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -12989,6 +15398,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryInf
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.memory); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13001,6 +15414,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryInf
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->memoryOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -13023,6 +15440,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryInfo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13046,6 +15467,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -13059,6 +15481,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryInfo
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.image); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13071,6 +15497,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryInfo
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.memory); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13083,6 +15513,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryInfo
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->memoryOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -13105,6 +15539,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice16Bit
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13128,6 +15566,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice16Bit
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -13141,6 +15580,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice16Bit
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"storageBuffer16BitAccess\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->storageBuffer16BitAccess); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13153,6 +15596,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice16Bit
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"uniformAndStorageBuffer16BitAccess\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->uniformAndStorageBuffer16BitAccess); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13165,6 +15612,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice16Bit
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"storagePushConstant16\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->storagePushConstant16); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13177,6 +15628,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice16Bit
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"storageInputOutput16\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->storageInputOutput16); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -13199,6 +15654,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedRequ
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13222,6 +15681,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedRequ
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -13235,6 +15695,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedRequ
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"prefersDedicatedAllocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->prefersDedicatedAllocation); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13247,6 +15711,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedRequ
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"requiresDedicatedAllocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->requiresDedicatedAllocation); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -13269,6 +15737,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedAllo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13292,6 +15764,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedAllo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -13305,6 +15778,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedAllo
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.image); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13317,6 +15794,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedAllo
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -13339,6 +15820,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateFlags
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13362,6 +15847,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateFlags
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -13375,6 +15861,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateFlags
     *out += "\"type\" : \"VkMemoryAllocateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkMemoryAllocateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13387,6 +15877,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateFlags
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->deviceMask); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -13409,6 +15903,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupRenderPa
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13432,6 +15930,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupRenderPa
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -13445,6 +15944,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupRenderPa
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->deviceMask); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13457,6 +15960,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupRenderPa
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceRenderAreaCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->deviceRenderAreaCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13509,6 +16016,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupCommandB
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13532,6 +16043,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupCommandB
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -13545,6 +16057,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupCommandB
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->deviceMask); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -13567,6 +16083,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13590,6 +16110,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -13603,6 +16124,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"waitSemaphoreCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->waitSemaphoreCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13644,6 +16169,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBufferCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->commandBufferCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13685,6 +16214,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"signalSemaphoreCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->signalSemaphoreCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13736,6 +16269,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupBindSpar
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13759,6 +16296,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupBindSpar
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -13772,6 +16310,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupBindSpar
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"resourceDeviceIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->resourceDeviceIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13784,6 +16326,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupBindSpar
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryDeviceIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->memoryDeviceIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -13806,6 +16352,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryDev
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13829,6 +16379,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryDev
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -13842,6 +16393,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryDev
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceIndexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->deviceIndexCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13893,6 +16448,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryDevi
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13916,6 +16475,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryDevi
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -13929,6 +16489,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryDevi
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceIndexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->deviceIndexCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -13970,6 +16534,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryDevi
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"splitInstanceBindRegionCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->splitInstanceBindRegionCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14022,6 +16590,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceGroup
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14045,6 +16617,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceGroup
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14058,6 +16631,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceGroup
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDeviceCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->physicalDeviceCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14091,6 +16668,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceGroup
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subsetAllocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->subsetAllocation); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -14113,6 +16694,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupDeviceCr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14136,6 +16721,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupDeviceCr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14149,6 +16735,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupDeviceCr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDeviceCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->physicalDeviceCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14200,6 +16790,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryRequire
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14223,6 +16817,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryRequire
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14236,6 +16831,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryRequire
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -14258,6 +16857,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryRequirem
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14281,6 +16884,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryRequirem
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14294,6 +16898,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryRequirem
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.image); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -14316,6 +16924,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSparseMemoryRe
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14339,6 +16951,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSparseMemoryRe
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14352,6 +16965,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSparseMemoryRe
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.image); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -14374,6 +16991,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryRequirements2
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14397,6 +17018,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryRequirements2
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14439,6 +17061,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryRe
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14462,6 +17088,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryRe
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14504,6 +17131,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14527,6 +17158,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14569,6 +17201,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14592,6 +17228,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14634,6 +17271,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties2 &
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14657,6 +17298,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties2 &
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14699,6 +17341,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatProperti
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14722,6 +17368,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatProperti
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14764,6 +17411,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14787,6 +17438,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14800,6 +17452,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14812,6 +17468,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"VkImageType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageTypeJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14824,6 +17484,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"VkImageTiling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tiling\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageTilingJson(out, pstruct->tiling); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14836,6 +17500,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14848,6 +17516,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"VkImageCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -14870,6 +17542,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyProperti
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14893,6 +17569,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyProperti
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -14935,6 +17612,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -14958,6 +17639,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15000,6 +17682,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageFormatPr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15023,6 +17709,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageFormatPr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15065,6 +17752,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15088,6 +17779,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15101,6 +17793,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15113,6 +17809,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"type\" : \"VkImageType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageTypeJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15125,6 +17825,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"type\" : \"VkSampleCountFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"samples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSampleCountFlagBitsJson(out, pstruct->samples); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15137,6 +17841,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15149,6 +17857,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"type\" : \"VkImageTiling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tiling\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageTilingJson(out, pstruct->tiling); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -15171,6 +17883,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePoint
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15194,6 +17910,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePoint
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15207,6 +17924,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePoint
     *out += "\"type\" : \"VkPointClippingBehavior\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pointClippingBehavior\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPointClippingBehaviorJson(out, pstruct->pointClippingBehavior); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -15229,6 +17950,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkInputAttachmentAspe
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subpass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subpass); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15241,6 +17966,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkInputAttachmentAspe
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"inputAttachmentIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->inputAttachmentIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15253,6 +17982,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkInputAttachmentAspe
     *out += "\"type\" : \"VkImageAspectFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"aspectMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -15275,6 +18008,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassInputAtta
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15298,6 +18035,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassInputAtta
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15311,6 +18049,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassInputAtta
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"aspectReferenceCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->aspectReferenceCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15363,6 +18105,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewUsageCreat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15386,6 +18132,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewUsageCreat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15399,6 +18146,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewUsageCreat
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -15421,6 +18172,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15444,6 +18199,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15457,6 +18213,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
     *out += "\"type\" : \"VkTessellationDomainOrigin\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"domainOrigin\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkTessellationDomainOriginJson(out, pstruct->domainOrigin); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -15479,6 +18239,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15502,6 +18266,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15515,6 +18280,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subpassCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subpassCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15556,6 +18325,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dependencyCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dependencyCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15597,6 +18370,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"correlationMaskCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->correlationMaskCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15648,6 +18425,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15671,6 +18452,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15684,6 +18466,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"multiview\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->multiview); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15696,6 +18482,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"multiviewGeometryShader\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->multiviewGeometryShader); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15708,6 +18498,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"multiviewTessellationShader\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->multiviewTessellationShader); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -15730,6 +18524,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15753,6 +18551,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15766,6 +18565,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxMultiviewViewCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxMultiviewViewCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15778,6 +18581,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxMultiviewInstanceIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxMultiviewInstanceIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -15800,6 +18607,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVaria
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15823,6 +18634,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVaria
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15836,6 +18648,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVaria
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"variablePointersStorageBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->variablePointersStorageBuffer); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15848,6 +18664,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVaria
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"variablePointers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->variablePointers); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -15870,6 +18690,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceProte
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15893,6 +18717,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceProte
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15906,6 +18731,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceProte
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"protectedMemory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->protectedMemory); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -15928,6 +18757,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceProte
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -15951,6 +18784,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceProte
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -15964,6 +18798,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceProte
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"protectedNoFault\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->protectedNoFault); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -15986,6 +18824,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueInfo2 &p
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16009,6 +18851,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueInfo2 &p
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -16022,6 +18865,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueInfo2 &p
     *out += "\"type\" : \"VkDeviceQueueCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDeviceQueueCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16034,6 +18881,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueInfo2 &p
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queueFamilyIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16046,6 +18897,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueInfo2 &p
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queueIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -16068,6 +18923,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkProtectedSubmitInfo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16091,6 +18950,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkProtectedSubmitInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -16104,6 +18964,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkProtectedSubmitInfo
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"protectedSubmit\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->protectedSubmit); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -16126,6 +18990,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16149,6 +19017,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -16162,6 +19031,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16174,6 +19047,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"type\" : \"VkSamplerYcbcrModelConversion\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ycbcrModel\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSamplerYcbcrModelConversionJson(out, pstruct->ycbcrModel); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16186,6 +19063,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"type\" : \"VkSamplerYcbcrRange\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ycbcrRange\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSamplerYcbcrRangeJson(out, pstruct->ycbcrRange); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16217,6 +19098,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"type\" : \"VkChromaLocation\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"xChromaOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkChromaLocationJson(out, pstruct->xChromaOffset); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16229,6 +19114,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"type\" : \"VkChromaLocation\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"yChromaOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkChromaLocationJson(out, pstruct->yChromaOffset); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16241,6 +19130,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"type\" : \"VkFilter\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"chromaFilter\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFilterJson(out, pstruct->chromaFilter); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16253,6 +19146,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"forceExplicitReconstruction\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->forceExplicitReconstruction); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -16275,6 +19172,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16298,6 +19199,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -16311,6 +19213,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"type\" : \"VkSamplerYcbcrConversion\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"conversion\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.conversion); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -16333,6 +19239,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImagePlaneMemor
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16356,6 +19266,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImagePlaneMemor
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -16369,6 +19280,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImagePlaneMemor
     *out += "\"type\" : \"VkImageAspectFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"planeAspect\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageAspectFlagBitsJson(out, pstruct->planeAspect); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -16391,6 +19306,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePlaneMemoryReq
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16414,6 +19333,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePlaneMemoryReq
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -16427,6 +19347,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePlaneMemoryReq
     *out += "\"type\" : \"VkImageAspectFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"planeAspect\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageAspectFlagBitsJson(out, pstruct->planeAspect); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -16449,6 +19373,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16472,6 +19400,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -16485,6 +19414,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"samplerYcbcrConversion\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->samplerYcbcrConversion); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -16507,6 +19440,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16530,6 +19467,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -16543,6 +19481,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"combinedImageSamplerDescriptorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->combinedImageSamplerDescriptorCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -16565,6 +19507,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBinding\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dstBinding); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16577,6 +19523,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstArrayElement\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dstArrayElement); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16589,6 +19539,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->descriptorCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16601,6 +19555,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"VkDescriptorType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDescriptorTypeJson(out, pstruct->descriptorType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16613,6 +19571,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->offset); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16625,6 +19587,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->stride); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -16647,6 +19613,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16670,6 +19640,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -16683,6 +19654,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"VkDescriptorUpdateTemplateCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16695,6 +19670,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorUpdateEntryCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->descriptorUpdateEntryCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16737,6 +19716,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"VkDescriptorUpdateTemplateType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"templateType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDescriptorUpdateTemplateTypeJson(out, pstruct->templateType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16749,6 +19732,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"VkDescriptorSetLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorSetLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.descriptorSetLayout); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16761,6 +19748,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"VkPipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineBindPoint\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPipelineBindPointJson(out, pstruct->pipelineBindPoint); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16773,6 +19764,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"VkPipelineLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.pipelineLayout); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16785,6 +19780,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"set\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->set); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -16807,6 +19806,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryPrope
     *out += "\"type\" : \"VkExternalMemoryFeatureFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"externalMemoryFeatures\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->externalMemoryFeatures, EnumToStringVkExternalMemoryFeatureFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16819,6 +19822,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryPrope
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"exportFromImportedHandleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16831,6 +19838,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryPrope
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compatibleHandleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -16853,6 +19864,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16876,6 +19891,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -16889,6 +19905,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -16911,6 +19931,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16934,6 +19958,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -16976,6 +20001,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -16999,6 +20028,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17012,6 +20042,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"type\" : \"VkBufferCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBufferCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17024,6 +20058,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"type\" : \"VkBufferUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkBufferUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17036,6 +20074,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17058,6 +20100,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalBufferPrope
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17081,6 +20127,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalBufferPrope
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17123,6 +20170,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIDPro
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17146,6 +20197,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIDPro
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17222,6 +20274,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIDPro
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceNodeMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->deviceNodeMask); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17234,6 +20290,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIDPro
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceLUIDValid\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->deviceLUIDValid); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17256,6 +20316,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17279,6 +20343,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17292,6 +20357,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17314,6 +20383,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryBuffe
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17337,6 +20410,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryBuffe
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17350,6 +20424,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryBuffe
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17372,6 +20450,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17395,6 +20477,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17408,6 +20491,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17430,6 +20517,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17453,6 +20544,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17466,6 +20558,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"type\" : \"VkExternalFenceHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalFenceHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17488,6 +20584,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17511,6 +20611,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17524,6 +20625,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
     *out += "\"type\" : \"VkExternalFenceHandleTypeFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"exportFromImportedHandleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17536,6 +20641,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
     *out += "\"type\" : \"VkExternalFenceHandleTypeFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compatibleHandleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17548,6 +20657,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
     *out += "\"type\" : \"VkExternalFenceFeatureFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"externalFenceFeatures\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->externalFenceFeatures, EnumToStringVkExternalFenceFeatureFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17570,6 +20683,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceCreateIn
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17593,6 +20710,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceCreateIn
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17606,6 +20724,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceCreateIn
     *out += "\"type\" : \"VkExternalFenceHandleTypeFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17628,6 +20750,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreCrea
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17651,6 +20777,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreCrea
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17664,6 +20791,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreCrea
     *out += "\"type\" : \"VkExternalSemaphoreHandleTypeFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17686,6 +20817,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17709,6 +20844,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17722,6 +20858,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"type\" : \"VkExternalSemaphoreHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17744,6 +20884,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17767,6 +20911,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17780,6 +20925,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
     *out += "\"type\" : \"VkExternalSemaphoreHandleTypeFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"exportFromImportedHandleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17792,6 +20941,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
     *out += "\"type\" : \"VkExternalSemaphoreHandleTypeFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compatibleHandleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17804,6 +20957,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
     *out += "\"type\" : \"VkExternalSemaphoreFeatureFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"externalSemaphoreFeatures\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->externalSemaphoreFeatures, EnumToStringVkExternalSemaphoreFeatureFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17826,6 +20983,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMaint
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17849,6 +21010,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMaint
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17862,6 +21024,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMaint
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerSetDescriptors\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerSetDescriptors); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17874,6 +21040,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMaint
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxMemoryAllocationSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->maxMemoryAllocationSize); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17896,6 +21066,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17919,6 +21093,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17932,6 +21107,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supported\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->supported); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -17954,6 +21133,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -17977,6 +21160,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -17990,6 +21174,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderDrawParameters\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderDrawParameters); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -18012,6 +21200,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minImageCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->minImageCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18024,6 +21216,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxImageCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxImageCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18093,6 +21289,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxImageArrayLayers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxImageArrayLayers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18105,6 +21305,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkSurfaceTransformFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedTransforms\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18117,6 +21321,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkSurfaceTransformFlagBitsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"currentTransform\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSurfaceTransformFlagBitsKHRJson(out, pstruct->currentTransform); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18129,6 +21337,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkCompositeAlphaFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedCompositeAlpha\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedCompositeAlpha, EnumToStringVkCompositeAlphaFlagBitsKHRJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18141,6 +21353,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedUsageFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedUsageFlags, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -18163,6 +21379,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFormatKHR &p
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18175,6 +21395,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFormatKHR &p
     *out += "\"type\" : \"VkColorSpaceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"colorSpace\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkColorSpaceKHRJson(out, pstruct->colorSpace); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -18197,6 +21421,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18220,6 +21448,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -18233,6 +21462,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"VkSwapchainCreateFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSwapchainCreateFlagBitsKHRJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18245,6 +21478,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"VkSurfaceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.surface); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18257,6 +21494,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minImageCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->minImageCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18269,6 +21510,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageFormat\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->imageFormat); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18281,6 +21526,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"VkColorSpaceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageColorSpace\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkColorSpaceKHRJson(out, pstruct->imageColorSpace); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18312,6 +21561,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageArrayLayers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->imageArrayLayers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18324,6 +21577,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageUsage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->imageUsage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18336,6 +21593,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"VkSharingMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageSharingMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSharingModeJson(out, pstruct->imageSharingMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18348,6 +21609,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queueFamilyIndexCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18389,6 +21654,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"VkSurfaceTransformFlagBitsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"preTransform\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSurfaceTransformFlagBitsKHRJson(out, pstruct->preTransform); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18401,6 +21670,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"VkCompositeAlphaFlagBitsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compositeAlpha\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkCompositeAlphaFlagBitsKHRJson(out, pstruct->compositeAlpha); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18413,6 +21686,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"VkPresentModeKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"presentMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPresentModeKHRJson(out, pstruct->presentMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18425,6 +21702,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"clipped\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->clipped); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18437,6 +21718,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"oldSwapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.oldSwapchain); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -18459,6 +21744,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18482,6 +21771,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -18495,6 +21785,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"waitSemaphoreCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->waitSemaphoreCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18536,6 +21830,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchainCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->swapchainCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18645,6 +21943,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSwapchainCreat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18668,6 +21970,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSwapchainCreat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -18681,6 +21984,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSwapchainCreat
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.swapchain); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -18703,6 +22010,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemorySwap
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18726,6 +22037,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemorySwap
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -18739,6 +22051,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemorySwap
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.swapchain); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18751,6 +22067,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemorySwap
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->imageIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -18773,6 +22093,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAcquireNextImageInf
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18796,6 +22120,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAcquireNextImageInf
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -18809,6 +22134,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAcquireNextImageInf
     *out += "\"type\" : \"VkSwapchainKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.swapchain); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18821,6 +22150,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAcquireNextImageInf
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timeout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->timeout); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18833,6 +22166,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAcquireNextImageInf
     *out += "\"type\" : \"VkSemaphore\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphore\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.semaphore); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18845,6 +22182,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAcquireNextImageInf
     *out += "\"type\" : \"VkFence\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.fence); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18857,6 +22198,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAcquireNextImageInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->deviceMask); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -18879,6 +22224,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentC
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18902,6 +22251,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentC
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -18936,6 +22286,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentC
     *out += "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"modes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->modes, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -18958,6 +22312,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentI
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -18981,6 +22339,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -18994,6 +22353,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentI
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchainCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->swapchainCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19035,6 +22398,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentI
     *out += "\"type\" : \"VkDeviceGroupPresentModeFlagBitsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson(out, pstruct->mode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -19057,6 +22424,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSwapchai
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19080,6 +22451,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSwapchai
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -19093,6 +22465,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSwapchai
     *out += "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"modes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->modes, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -19115,6 +22491,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPropertiesKH
     *out += "\"type\" : \"VkDisplayKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.display); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19138,6 +22518,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPropertiesKH
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.displayName.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *displayName
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -19189,6 +22570,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPropertiesKH
     *out += "\"type\" : \"VkSurfaceTransformFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedTransforms\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19201,6 +22586,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPropertiesKH
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"planeReorderPossible\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->planeReorderPossible); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19213,6 +22602,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPropertiesKH
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"persistentContent\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->persistentContent); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -19254,6 +22647,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeParamete
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"refreshRate\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->refreshRate); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -19276,6 +22673,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeProperti
     *out += "\"type\" : \"VkDisplayModeKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"displayMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.displayMode); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19317,6 +22718,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeCreateIn
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19340,6 +22745,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeCreateIn
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -19353,6 +22759,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeCreateIn
     *out += "\"type\" : \"VkDisplayModeCreateFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19394,6 +22804,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneCapabil
     *out += "\"type\" : \"VkDisplayPlaneAlphaFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedAlpha\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedAlpha, EnumToStringVkDisplayPlaneAlphaFlagBitsKHRJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19568,6 +22982,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlanePropert
     *out += "\"type\" : \"VkDisplayKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"currentDisplay\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.currentDisplay); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19580,6 +22998,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlanePropert
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"currentStackIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->currentStackIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -19602,6 +23024,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19625,6 +23051,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -19638,6 +23065,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
     *out += "\"type\" : \"VkDisplaySurfaceCreateFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19650,6 +23081,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
     *out += "\"type\" : \"VkDisplayModeKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"displayMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.displayMode); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19662,6 +23097,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"planeIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->planeIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19674,6 +23113,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"planeStackIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->planeStackIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19686,6 +23129,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
     *out += "\"type\" : \"VkSurfaceTransformFlagBitsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"transform\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSurfaceTransformFlagBitsKHRJson(out, pstruct->transform); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19698,6 +23145,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"globalAlpha\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->globalAlpha); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19710,6 +23161,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
     *out += "\"type\" : \"VkDisplayPlaneAlphaFlagBitsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"alphaMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDisplayPlaneAlphaFlagBitsKHRJson(out, pstruct->alphaMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19751,6 +23206,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPresentInfoK
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19774,6 +23233,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPresentInfoK
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -19825,6 +23285,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPresentInfoK
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"persistent\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->persistent); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -19847,6 +23311,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkXlibSurfaceCreateIn
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19870,6 +23338,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkXlibSurfaceCreateIn
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -19883,6 +23352,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkXlibSurfaceCreateIn
     *out += "\"type\" : \"VkXlibSurfaceCreateFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19895,6 +23368,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkXlibSurfaceCreateIn
     *out += "\"type\" : \"void*\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
+        //TODO: Output *dpy
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19907,6 +23381,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkXlibSurfaceCreateIn
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"window\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->window); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -19929,6 +23407,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkXcbSurfaceCreateInf
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19952,6 +23434,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkXcbSurfaceCreateInf
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -19965,6 +23448,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkXcbSurfaceCreateInf
     *out += "\"type\" : \"VkXcbSurfaceCreateFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -19988,6 +23475,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkXcbSurfaceCreateInf
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.connection /* ACF */ );
         *out += "\n";
+        //TODO: Output *connection
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20001,6 +23489,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkXcbSurfaceCreateInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"window\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->window); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -20023,6 +23515,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWaylandSurfaceCreat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20046,6 +23542,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWaylandSurfaceCreat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20059,6 +23556,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWaylandSurfaceCreat
     *out += "\"type\" : \"VkWaylandSurfaceCreateFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20082,6 +23583,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWaylandSurfaceCreat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.display /* ACF */ );
         *out += "\n";
+        //TODO: Output *display
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20106,6 +23608,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWaylandSurfaceCreat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.surface /* ACF */ );
         *out += "\n";
+        //TODO: Output *surface
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20129,6 +23632,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidSurfaceCreat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20152,6 +23659,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidSurfaceCreat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20165,6 +23673,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidSurfaceCreat
     *out += "\"type\" : \"VkAndroidSurfaceCreateFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20188,6 +23700,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidSurfaceCreat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.window /* ACF */ );
         *out += "\n";
+        //TODO: Output *window
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20211,6 +23724,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32SurfaceCreateI
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20234,6 +23751,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32SurfaceCreateI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20247,6 +23765,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32SurfaceCreateI
     *out += "\"type\" : \"VkWin32SurfaceCreateFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20270,6 +23792,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32SurfaceCreateI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.hinstance /* ACF */ );
         *out += "\n";
+        //TODO: Output *hinstance
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20294,6 +23817,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32SurfaceCreateI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.hwnd /* ACF */ );
         *out += "\n";
+        //TODO: Output *hwnd
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20317,6 +23841,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20340,6 +23868,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20353,6 +23882,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20376,6 +23909,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.handle /* ACF */ );
         *out += "\n";
+        //TODO: Output *handle
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20400,6 +23934,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.name.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *name
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20423,6 +23958,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20446,6 +23985,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20470,6 +24010,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pAttributes->GetAddress() /* KWO */ );
         *out += "\n";
+        //TODO: Output *pAttributes
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20483,6 +24024,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dwAccess\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dwAccess); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20506,6 +24051,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.name.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *name
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20529,6 +24075,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryWin32HandlePr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20552,6 +24102,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryWin32HandlePr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20565,6 +24116,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryWin32HandlePr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryTypeBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->memoryTypeBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -20587,6 +24142,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetWin32Handl
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20610,6 +24169,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetWin32Handl
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20623,6 +24183,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetWin32Handl
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.memory); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20635,6 +24199,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetWin32Handl
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -20657,6 +24225,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryFdInfoK
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20680,6 +24252,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryFdInfoK
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20693,6 +24266,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryFdInfoK
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20705,6 +24282,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryFdInfoK
     *out += "\"type\" : \"int\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fd\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fd); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -20727,6 +24308,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryFdPropertiesK
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20750,6 +24335,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryFdPropertiesK
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20763,6 +24349,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryFdPropertiesK
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryTypeBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->memoryTypeBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -20785,6 +24375,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetFdInfoKHR 
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20808,6 +24402,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetFdInfoKHR 
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20821,6 +24416,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetFdInfoKHR 
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.memory); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20833,6 +24432,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetFdInfoKHR 
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -20855,6 +24458,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20878,6 +24485,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -20891,6 +24499,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"acquireCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->acquireCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -20990,6 +24602,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"releaseCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->releaseCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21070,6 +24686,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21093,6 +24713,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21106,6 +24727,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
     *out += "\"type\" : \"VkSemaphore\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphore\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.semaphore); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21118,6 +24743,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
     *out += "\"type\" : \"VkSemaphoreImportFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreImportFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21130,6 +24759,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
     *out += "\"type\" : \"VkExternalSemaphoreHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21153,6 +24786,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.handle /* ACF */ );
         *out += "\n";
+        //TODO: Output *handle
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21177,6 +24811,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.name.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *name
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21200,6 +24835,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreWin3
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21223,6 +24862,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreWin3
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21247,6 +24887,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreWin3
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pAttributes->GetAddress() /* KWO */ );
         *out += "\n";
+        //TODO: Output *pAttributes
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21260,6 +24901,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreWin3
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dwAccess\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dwAccess); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21283,6 +24928,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreWin3
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.name.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *name
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21306,6 +24952,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkD3D12FenceSubmitInf
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21329,6 +24979,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkD3D12FenceSubmitInf
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21342,6 +24993,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkD3D12FenceSubmitInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"waitSemaphoreValuesCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->waitSemaphoreValuesCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21383,6 +25038,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkD3D12FenceSubmitInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"signalSemaphoreValuesCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->signalSemaphoreValuesCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21434,6 +25093,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetWin32Ha
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21457,6 +25120,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetWin32Ha
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21470,6 +25134,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetWin32Ha
     *out += "\"type\" : \"VkSemaphore\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphore\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.semaphore); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21482,6 +25150,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetWin32Ha
     *out += "\"type\" : \"VkExternalSemaphoreHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -21504,6 +25176,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreFdIn
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21527,6 +25203,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreFdIn
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21540,6 +25217,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreFdIn
     *out += "\"type\" : \"VkSemaphore\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphore\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.semaphore); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21552,6 +25233,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreFdIn
     *out += "\"type\" : \"VkSemaphoreImportFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreImportFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21564,6 +25249,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreFdIn
     *out += "\"type\" : \"VkExternalSemaphoreHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21576,6 +25265,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreFdIn
     *out += "\"type\" : \"int\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fd\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fd); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -21598,6 +25291,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetFdInfoK
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21621,6 +25318,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetFdInfoK
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21634,6 +25332,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetFdInfoK
     *out += "\"type\" : \"VkSemaphore\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphore\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.semaphore); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21646,6 +25348,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetFdInfoK
     *out += "\"type\" : \"VkExternalSemaphoreHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -21668,6 +25374,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePushD
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21691,6 +25401,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePushD
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21704,6 +25415,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePushD
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPushDescriptors\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPushDescriptors); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -21726,6 +25441,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21749,6 +25468,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21762,6 +25482,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderFloat16\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderFloat16); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21774,6 +25498,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderInt8\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderInt8); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -21834,6 +25562,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRectLayerKHR &pstru
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->layer); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -21856,6 +25588,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentRegionKHR &p
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rectangleCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->rectangleCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21908,6 +25644,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentRegionsKHR &
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21931,6 +25671,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentRegionsKHR &
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -21944,6 +25685,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentRegionsKHR &
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchainCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->swapchainCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -21996,6 +25741,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22019,6 +25768,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -22032,6 +25782,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imagelessFramebuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->imagelessFramebuffer); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -22054,6 +25808,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22077,6 +25835,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -22090,6 +25849,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"type\" : \"VkImageCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22102,6 +25865,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22114,6 +25881,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"width\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->width); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22126,6 +25897,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"height\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->height); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22138,6 +25913,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layerCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->layerCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22150,6 +25929,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewFormatCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->viewFormatCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22201,6 +25984,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22224,6 +26011,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -22237,6 +26025,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"attachmentImageInfoCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->attachmentImageInfoCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22289,6 +26081,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassAttachmen
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22312,6 +26108,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassAttachmen
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -22325,6 +26122,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassAttachmen
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"attachmentCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->attachmentCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22376,6 +26177,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22399,6 +26204,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -22412,6 +26218,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkAttachmentDescriptionFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkAttachmentDescriptionFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22424,6 +26234,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22436,6 +26250,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkSampleCountFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"samples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSampleCountFlagBitsJson(out, pstruct->samples); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22448,6 +26266,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkAttachmentLoadOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"loadOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkAttachmentLoadOpJson(out, pstruct->loadOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22460,6 +26282,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkAttachmentStoreOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"storeOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkAttachmentStoreOpJson(out, pstruct->storeOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22472,6 +26298,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkAttachmentLoadOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stencilLoadOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkAttachmentLoadOpJson(out, pstruct->stencilLoadOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22484,6 +26314,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkAttachmentStoreOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stencilStoreOp\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkAttachmentStoreOpJson(out, pstruct->stencilStoreOp); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22496,6 +26330,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"initialLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, pstruct->initialLayout); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22508,6 +26346,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"finalLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, pstruct->finalLayout); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -22530,6 +26372,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22553,6 +26399,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -22566,6 +26413,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"attachment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->attachment); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22578,6 +26429,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
     *out += "\"type\" : \"VkImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageLayoutJson(out, pstruct->layout); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22590,6 +26445,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
     *out += "\"type\" : \"VkImageAspectFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"aspectMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -22612,6 +26471,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22635,6 +26498,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -22648,6 +26512,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
     *out += "\"type\" : \"VkSubpassDescriptionFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSubpassDescriptionFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22660,6 +26528,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
     *out += "\"type\" : \"VkPipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineBindPoint\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPipelineBindPointJson(out, pstruct->pipelineBindPoint); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22672,6 +26544,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->viewMask); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22684,6 +26560,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"inputAttachmentCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->inputAttachmentCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22726,6 +26606,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"colorAttachmentCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->colorAttachmentCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22829,6 +26713,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"preserveAttachmentCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->preserveAttachmentCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22880,6 +26768,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22903,6 +26795,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -22916,6 +26809,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcSubpass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->srcSubpass); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22928,6 +26825,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstSubpass\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dstSubpass); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22940,6 +26841,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"type\" : \"VkPipelineStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcStageMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22952,6 +26857,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"type\" : \"VkPipelineStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstStageMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22964,6 +26873,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"type\" : \"VkAccessFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcAccessMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22976,6 +26889,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"type\" : \"VkAccessFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstAccessMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -22988,6 +26905,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"type\" : \"VkDependencyFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dependencyFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->dependencyFlags, EnumToStringVkDependencyFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23000,6 +26921,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->viewOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -23022,6 +26947,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23045,6 +26974,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23058,6 +26988,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"type\" : \"VkRenderPassCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkRenderPassCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23070,6 +27004,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"attachmentCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->attachmentCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23112,6 +27050,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subpassCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subpassCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23154,6 +27096,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dependencyCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dependencyCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23196,6 +27142,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"correlatedViewMaskCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->correlatedViewMaskCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23247,6 +27197,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassBeginInfoKHR
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23270,6 +27224,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassBeginInfoKHR
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23283,6 +27238,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassBeginInfoKHR
     *out += "\"type\" : \"VkSubpassContents\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"contents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSubpassContentsJson(out, pstruct->contents); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -23305,6 +27264,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassEndInfoKHR &
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23328,6 +27291,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassEndInfoKHR &
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23351,6 +27315,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSharedPresentSurfac
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23374,6 +27342,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSharedPresentSurfac
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23387,6 +27356,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSharedPresentSurfac
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sharedPresentSupportedUsageFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->sharedPresentSupportedUsageFlags, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -23409,6 +27382,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23432,6 +27409,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23445,6 +27423,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
     *out += "\"type\" : \"VkFence\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.fence); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23457,6 +27439,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
     *out += "\"type\" : \"VkFenceImportFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceImportFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23469,6 +27455,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
     *out += "\"type\" : \"VkExternalFenceHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalFenceHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23492,6 +27482,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.handle /* ACF */ );
         *out += "\n";
+        //TODO: Output *handle
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23516,6 +27507,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.name.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *name
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23539,6 +27531,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceWin32Han
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23562,6 +27558,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceWin32Han
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23586,6 +27583,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceWin32Han
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pAttributes->GetAddress() /* KWO */ );
         *out += "\n";
+        //TODO: Output *pAttributes
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23599,6 +27597,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceWin32Han
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dwAccess\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dwAccess); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23622,6 +27624,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceWin32Han
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.name.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *name
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23645,6 +27648,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetWin32Handle
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23668,6 +27675,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetWin32Handle
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23681,6 +27689,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetWin32Handle
     *out += "\"type\" : \"VkFence\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.fence); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23693,6 +27705,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetWin32Handle
     *out += "\"type\" : \"VkExternalFenceHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalFenceHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -23715,6 +27731,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceFdInfoKH
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23738,6 +27758,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceFdInfoKH
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23751,6 +27772,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceFdInfoKH
     *out += "\"type\" : \"VkFence\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.fence); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23763,6 +27788,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceFdInfoKH
     *out += "\"type\" : \"VkFenceImportFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceImportFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23775,6 +27804,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceFdInfoKH
     *out += "\"type\" : \"VkExternalFenceHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalFenceHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23787,6 +27820,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceFdInfoKH
     *out += "\"type\" : \"int\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fd\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fd); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -23809,6 +27846,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetFdInfoKHR &
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23832,6 +27873,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetFdInfoKHR &
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23845,6 +27887,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetFdInfoKHR &
     *out += "\"type\" : \"VkFence\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.fence); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23857,6 +27903,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetFdInfoKHR &
     *out += "\"type\" : \"VkExternalFenceHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalFenceHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -23879,6 +27929,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSurfa
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23902,6 +27956,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSurfa
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -23915,6 +27970,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSurfa
     *out += "\"type\" : \"VkSurfaceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.surface); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -23937,6 +27996,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -23960,6 +28023,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24002,6 +28066,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFormat2KHR &
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24025,6 +28093,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFormat2KHR &
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24067,6 +28136,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayProperties2K
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24090,6 +28163,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayProperties2K
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24132,6 +28206,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlanePropert
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24155,6 +28233,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlanePropert
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24197,6 +28276,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeProperti
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24220,6 +28303,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeProperti
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24262,6 +28346,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneInfo2KH
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24285,6 +28373,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneInfo2KH
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24298,6 +28387,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneInfo2KH
     *out += "\"type\" : \"VkDisplayModeKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.mode); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24310,6 +28403,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneInfo2KH
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"planeIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->planeIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -24332,6 +28429,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneCapabil
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24355,6 +28456,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneCapabil
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24397,6 +28499,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatListCrea
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24420,6 +28526,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatListCrea
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24433,6 +28540,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatListCrea
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewFormatCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->viewFormatCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24484,6 +28595,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24507,6 +28622,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24520,6 +28636,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderSubgroupExtendedTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderSubgroupExtendedTypes); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -24542,6 +28662,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice8BitS
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24565,6 +28689,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice8BitS
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24578,6 +28703,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice8BitS
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"storageBuffer8BitAccess\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->storageBuffer8BitAccess); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24590,6 +28719,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice8BitS
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"uniformAndStorageBuffer8BitAccess\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->uniformAndStorageBuffer8BitAccess); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24602,6 +28735,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice8BitS
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"storagePushConstant8\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->storagePushConstant8); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -24624,6 +28761,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24647,6 +28788,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24660,6 +28802,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderBufferInt64Atomics\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderBufferInt64Atomics); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24672,6 +28818,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderSharedInt64Atomics\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderSharedInt64Atomics); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -24694,6 +28844,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24717,6 +28871,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24730,6 +28885,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderSubgroupClock\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderSubgroupClock); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24742,6 +28901,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderDeviceClock\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderDeviceClock); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -24764,6 +28927,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkConformanceVersionK
     *out += "\"type\" : \"uint8_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"major\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->major); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24776,6 +28943,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkConformanceVersionK
     *out += "\"type\" : \"uint8_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->minor); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24788,6 +28959,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkConformanceVersionK
     *out += "\"type\" : \"uint8_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subminor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subminor); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24800,6 +28975,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkConformanceVersionK
     *out += "\"type\" : \"uint8_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"patch\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->patch); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -24822,6 +29001,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDrive
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24845,6 +29028,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDrive
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24858,6 +29042,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDrive
     *out += "\"type\" : \"VkDriverIdKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"driverID\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDriverIdKHRJson(out, pstruct->driverID); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24941,6 +29129,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24964,6 +29156,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -24977,6 +29170,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkShaderFloatControlsIndependenceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"denormBehaviorIndependence\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkShaderFloatControlsIndependenceKHRJson(out, pstruct->denormBehaviorIndependence); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -24989,6 +29186,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkShaderFloatControlsIndependenceKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"roundingModeIndependence\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkShaderFloatControlsIndependenceKHRJson(out, pstruct->roundingModeIndependence); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25001,6 +29202,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderSignedZeroInfNanPreserveFloat16\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderSignedZeroInfNanPreserveFloat16); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25013,6 +29218,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderSignedZeroInfNanPreserveFloat32\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderSignedZeroInfNanPreserveFloat32); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25025,6 +29234,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderSignedZeroInfNanPreserveFloat64\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderSignedZeroInfNanPreserveFloat64); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25037,6 +29250,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderDenormPreserveFloat16\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderDenormPreserveFloat16); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25049,6 +29266,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderDenormPreserveFloat32\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderDenormPreserveFloat32); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25061,6 +29282,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderDenormPreserveFloat64\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderDenormPreserveFloat64); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25073,6 +29298,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderDenormFlushToZeroFloat16\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderDenormFlushToZeroFloat16); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25085,6 +29314,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderDenormFlushToZeroFloat32\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderDenormFlushToZeroFloat32); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25097,6 +29330,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderDenormFlushToZeroFloat64\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderDenormFlushToZeroFloat64); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25109,6 +29346,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderRoundingModeRTEFloat16\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderRoundingModeRTEFloat16); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25121,6 +29362,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderRoundingModeRTEFloat32\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderRoundingModeRTEFloat32); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25133,6 +29378,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderRoundingModeRTEFloat64\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderRoundingModeRTEFloat64); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25145,6 +29394,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderRoundingModeRTZFloat16\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderRoundingModeRTZFloat16); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25157,6 +29410,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderRoundingModeRTZFloat32\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderRoundingModeRTZFloat32); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25169,6 +29426,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderRoundingModeRTZFloat64\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderRoundingModeRTZFloat64); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -25191,6 +29452,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescriptionD
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25214,6 +29479,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescriptionD
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -25227,6 +29493,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescriptionD
     *out += "\"type\" : \"VkResolveModeFlagBitsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthResolveMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkResolveModeFlagBitsKHRJson(out, pstruct->depthResolveMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25239,6 +29509,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescriptionD
     *out += "\"type\" : \"VkResolveModeFlagBitsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stencilResolveMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkResolveModeFlagBitsKHRJson(out, pstruct->stencilResolveMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25292,6 +29566,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25315,6 +29593,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -25328,6 +29607,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"type\" : \"VkResolveModeFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedDepthResolveModes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedDepthResolveModes, EnumToStringVkResolveModeFlagBitsKHRJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25340,6 +29623,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"type\" : \"VkResolveModeFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedStencilResolveModes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedStencilResolveModes, EnumToStringVkResolveModeFlagBitsKHRJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25352,6 +29639,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"independentResolveNone\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->independentResolveNone); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25364,6 +29655,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"independentResolve\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->independentResolve); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -25386,6 +29681,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTimel
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25409,6 +29708,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTimel
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -25422,6 +29722,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTimel
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timelineSemaphore\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->timelineSemaphore); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -25444,6 +29748,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTimel
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25467,6 +29775,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTimel
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -25480,6 +29789,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTimel
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTimelineSemaphoreValueDifference\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTimelineSemaphoreValueDifference); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -25502,6 +29815,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreTypeCreate
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25525,6 +29842,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreTypeCreate
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -25538,6 +29856,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreTypeCreate
     *out += "\"type\" : \"VkSemaphoreTypeKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphoreType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSemaphoreTypeKHRJson(out, pstruct->semaphoreType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25550,6 +29872,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreTypeCreate
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"initialValue\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->initialValue); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -25572,6 +29898,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkTimelineSemaphoreSu
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25595,6 +29925,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkTimelineSemaphoreSu
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -25608,6 +29939,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkTimelineSemaphoreSu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"waitSemaphoreValueCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->waitSemaphoreValueCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25649,6 +29984,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkTimelineSemaphoreSu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"signalSemaphoreValueCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->signalSemaphoreValueCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25700,6 +30039,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25723,6 +30066,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -25736,6 +30080,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
     *out += "\"type\" : \"VkSemaphoreWaitFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreWaitFlagBitsKHRJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25748,6 +30096,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphoreCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->semaphoreCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25828,6 +30180,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreSignalInfo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25851,6 +30207,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreSignalInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -25864,6 +30221,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreSignalInfo
     *out += "\"type\" : \"VkSemaphore\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphore\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.semaphore); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25876,6 +30237,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreSignalInfo
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"value\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->value); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -25898,6 +30263,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVulka
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25921,6 +30290,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVulka
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -25934,6 +30304,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVulka
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vulkanMemoryModel\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->vulkanMemoryModel); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25946,6 +30320,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVulka
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vulkanMemoryModelDeviceScope\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->vulkanMemoryModelDeviceScope); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -25958,6 +30336,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVulka
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vulkanMemoryModelAvailabilityVisibilityChains\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->vulkanMemoryModelAvailabilityVisibilityChains); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -25980,6 +30362,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceProtectedCap
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26003,6 +30389,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceProtectedCap
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26016,6 +30403,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceProtectedCap
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportsProtected\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->supportsProtected); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -26038,6 +30429,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceUnifo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26061,6 +30456,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceUnifo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26074,6 +30470,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceUnifo
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"uniformBufferStandardLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->uniformBufferStandardLayout); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -26096,6 +30496,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePipel
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26119,6 +30523,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePipel
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26132,6 +30537,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePipel
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineExecutableInfo\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->pipelineExecutableInfo); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -26154,6 +30563,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInfoKHR &ps
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26177,6 +30590,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInfoKHR &ps
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26190,6 +30604,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInfoKHR &ps
     *out += "\"type\" : \"VkPipeline\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.pipeline); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -26212,6 +30630,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableP
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26235,6 +30657,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableP
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26248,6 +30671,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableP
     *out += "\"type\" : \"VkShaderStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->stages, EnumToStringVkShaderStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26302,6 +30729,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableP
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subgroupSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subgroupSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -26324,6 +30755,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26347,6 +30782,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26360,6 +30796,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
     *out += "\"type\" : \"VkPipeline\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.pipeline); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26372,6 +30812,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"executableIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->executableIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -26394,6 +30838,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"b32\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->b32); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26406,6 +30854,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
     *out += "\"type\" : \"int64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"i64\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->i64); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26418,6 +30870,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"u64\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->u64); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26430,6 +30886,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
     *out += "\"type\" : \"double\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"f64\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->f64); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -26452,6 +30912,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26475,6 +30939,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26530,6 +30995,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
     *out += "\"type\" : \"VkPipelineExecutableStatisticFormatKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPipelineExecutableStatisticFormatKHRJson(out, pstruct->format); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26571,6 +31040,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26594,6 +31067,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26649,6 +31123,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"isText\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->isText); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26661,6 +31139,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dataSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dataSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26712,6 +31194,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugReportCallback
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26735,6 +31221,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugReportCallback
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26748,6 +31235,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugReportCallback
     *out += "\"type\" : \"VkDebugReportFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDebugReportFlagBitsEXTJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26760,6 +31251,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugReportCallback
     *out += "\"type\" : \"PFN_vkDebugReportCallbackEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pfnCallback\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, reinterpret_cast<uint64_t>(pstruct->pfnCallback)); // WRX
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26783,6 +31278,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugReportCallback
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pUserData /* ACF */ );
         *out += "\n";
+        //TODO: Output *pUserData
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26806,6 +31302,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26829,6 +31329,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26842,6 +31343,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkRasterizationOrderAMD\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rasterizationOrder\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkRasterizationOrderAMDJson(out, pstruct->rasterizationOrder); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -26864,6 +31369,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectNa
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26887,6 +31396,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectNa
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26900,6 +31410,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectNa
     *out += "\"type\" : \"VkDebugReportObjectTypeEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDebugReportObjectTypeEXTJson(out, pstruct->objectType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26912,6 +31426,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectNa
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"object\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->object); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26935,6 +31453,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectNa
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pObjectName.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pObjectName
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26958,6 +31477,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectTa
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -26981,6 +31504,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectTa
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -26994,6 +31518,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectTa
     *out += "\"type\" : \"VkDebugReportObjectTypeEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDebugReportObjectTypeEXTJson(out, pstruct->objectType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27006,6 +31534,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectTa
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"object\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->object); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27018,6 +31550,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectTa
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tagName\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->tagName); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27030,6 +31566,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectTa
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tagSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->tagSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27081,6 +31621,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerMarkerIn
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27104,6 +31648,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerMarkerIn
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -27128,6 +31673,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerMarkerIn
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pMarkerName.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pMarkerName
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -27172,6 +31718,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27195,6 +31745,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -27208,6 +31759,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dedicatedAllocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->dedicatedAllocation); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -27230,6 +31785,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27253,6 +31812,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -27266,6 +31826,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dedicatedAllocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->dedicatedAllocation); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -27288,6 +31852,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27311,6 +31879,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -27324,6 +31893,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
     *out += "\"type\" : \"VkImage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.image); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27336,6 +31909,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -27358,6 +31935,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27381,6 +31962,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -27394,6 +31976,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"transformFeedback\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->transformFeedback); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27406,6 +31992,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"geometryStreams\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->geometryStreams); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -27428,6 +32018,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27451,6 +32045,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -27464,6 +32059,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTransformFeedbackStreams\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTransformFeedbackStreams); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27476,6 +32075,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTransformFeedbackBuffers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTransformFeedbackBuffers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27488,6 +32091,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTransformFeedbackBufferSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->maxTransformFeedbackBufferSize); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27500,6 +32107,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTransformFeedbackStreamDataSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTransformFeedbackStreamDataSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27512,6 +32123,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTransformFeedbackBufferDataSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTransformFeedbackBufferDataSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27524,6 +32139,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTransformFeedbackBufferDataStride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTransformFeedbackBufferDataStride); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27536,6 +32155,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"transformFeedbackQueries\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->transformFeedbackQueries); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27548,6 +32171,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"transformFeedbackStreamsLinesTriangles\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->transformFeedbackStreamsLinesTriangles); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27560,6 +32187,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"transformFeedbackRasterizationStreamSelect\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->transformFeedbackRasterizationStreamSelect); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27572,6 +32203,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"transformFeedbackDraw\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->transformFeedbackDraw); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -27594,6 +32229,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27617,6 +32256,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -27630,6 +32270,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkPipelineRasterizationStateStreamCreateFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27642,6 +32286,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rasterizationStream\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->rasterizationStream); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -27664,6 +32312,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewHandleInfo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27687,6 +32339,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewHandleInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -27700,6 +32353,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewHandleInfo
     *out += "\"type\" : \"VkImageView\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageView\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.imageView); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27712,6 +32369,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewHandleInfo
     *out += "\"type\" : \"VkDescriptorType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDescriptorTypeJson(out, pstruct->descriptorType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27724,6 +32385,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewHandleInfo
     *out += "\"type\" : \"VkSampler\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampler\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.sampler); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -27746,6 +32411,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkTextureLODGatherFor
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27769,6 +32438,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkTextureLODGatherFor
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -27782,6 +32452,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkTextureLODGatherFor
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportsTextureGatherLODBiasAMD\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->supportsTextureGatherLODBiasAMD); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -27804,6 +32478,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderResourceUsage
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"numUsedVgprs\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->numUsedVgprs); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27816,6 +32494,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderResourceUsage
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"numUsedSgprs\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->numUsedSgprs); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27828,6 +32510,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderResourceUsage
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ldsSizePerLocalWorkGroup\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->ldsSizePerLocalWorkGroup); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27840,6 +32526,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderResourceUsage
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ldsUsageSizeInBytes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->ldsUsageSizeInBytes); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27852,6 +32542,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderResourceUsage
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"scratchMemUsageInBytes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->scratchMemUsageInBytes); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -27874,6 +32568,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderStatisticsInf
     *out += "\"type\" : \"VkShaderStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStageMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->shaderStageMask, EnumToStringVkShaderStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27905,6 +32603,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderStatisticsInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"numPhysicalVgprs\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->numPhysicalVgprs); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27917,6 +32619,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderStatisticsInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"numPhysicalSgprs\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->numPhysicalSgprs); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27929,6 +32635,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderStatisticsInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"numAvailableVgprs\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->numAvailableVgprs); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27941,6 +32651,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderStatisticsInf
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"numAvailableSgprs\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->numAvailableSgprs); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -27984,6 +32698,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkStreamDescriptorSur
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28007,6 +32725,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkStreamDescriptorSur
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28020,6 +32739,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkStreamDescriptorSur
     *out += "\"type\" : \"VkStreamDescriptorSurfaceCreateFlagsGGP\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28032,6 +32755,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkStreamDescriptorSur
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"streamDescriptor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->streamDescriptor); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -28054,6 +32781,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCorne
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28077,6 +32808,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCorne
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28090,6 +32822,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCorne
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"cornerSampledImage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->cornerSampledImage); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -28131,6 +32867,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
     *out += "\"type\" : \"VkExternalMemoryFeatureFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"externalMemoryFeatures\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->externalMemoryFeatures, EnumToStringVkExternalMemoryFeatureFlagBitsNVJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28143,6 +32883,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"exportFromImportedHandleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28155,6 +32899,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compatibleHandleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -28177,6 +32925,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28200,6 +32952,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28213,6 +32966,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -28235,6 +32992,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28258,6 +33019,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28271,6 +33033,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleTypes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -28293,6 +33059,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28316,6 +33086,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28329,6 +33100,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28352,6 +33127,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.handle /* ACF */ );
         *out += "\n";
+        //TODO: Output *handle
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28375,6 +33151,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28398,6 +33178,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28422,6 +33203,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pAttributes->GetAddress() /* KWO */ );
         *out += "\n";
+        //TODO: Output *pAttributes
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28435,6 +33217,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dwAccess\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dwAccess); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -28457,6 +33243,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28480,6 +33270,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28493,6 +33284,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"acquireCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->acquireCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28592,6 +33387,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"releaseCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->releaseCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28672,6 +33471,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFlagsEXT 
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28695,6 +33498,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFlagsEXT 
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28708,6 +33512,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFlagsEXT 
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"disabledValidationCheckCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->disabledValidationCheckCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28759,6 +33567,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViSurfaceCreateInfo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28782,6 +33594,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkViSurfaceCreateInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28795,6 +33608,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViSurfaceCreateInfo
     *out += "\"type\" : \"VkViSurfaceCreateFlagsNN\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28818,6 +33635,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkViSurfaceCreateInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.window /* ACF */ );
         *out += "\n";
+        //TODO: Output *window
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28841,6 +33659,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTextu
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28864,6 +33686,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTextu
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28877,6 +33700,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTextu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"textureCompressionASTC_HDR\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->textureCompressionASTC_HDR); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -28899,6 +33726,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewASTCDecode
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28922,6 +33753,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewASTCDecode
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28935,6 +33767,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewASTCDecode
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"decodeMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->decodeMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -28957,6 +33793,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceASTCD
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -28980,6 +33820,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceASTCD
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -28993,6 +33834,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceASTCD
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"decodeModeSharedExponent\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->decodeModeSharedExponent); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -29015,6 +33860,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkConditionalRenderin
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29038,6 +33887,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkConditionalRenderin
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -29051,6 +33901,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkConditionalRenderin
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29063,6 +33917,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkConditionalRenderin
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->offset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29075,6 +33933,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkConditionalRenderin
     *out += "\"type\" : \"VkConditionalRenderingFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkConditionalRenderingFlagBitsEXTJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -29097,6 +33959,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCondi
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29120,6 +33986,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCondi
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -29133,6 +34000,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCondi
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"conditionalRendering\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->conditionalRendering); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29145,6 +34016,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCondi
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"inheritedConditionalRendering\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->inheritedConditionalRendering); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -29167,6 +34042,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29190,6 +34069,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -29203,6 +34083,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"conditionalRenderingEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->conditionalRenderingEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -29225,6 +34109,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29248,6 +34136,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -29261,6 +34150,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"computeBindingPointSupport\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->computeBindingPointSupport); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -29283,6 +34176,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29306,6 +34203,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -29319,6 +34217,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxIndirectCommandsLayoutTokenCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxIndirectCommandsLayoutTokenCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29331,6 +34233,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxObjectEntryCounts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxObjectEntryCounts); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29343,6 +34249,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minSequenceCountBufferOffsetAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->minSequenceCountBufferOffsetAlignment); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29355,6 +34265,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minSequenceIndexBufferOffsetAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->minSequenceIndexBufferOffsetAlignment); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29367,6 +34281,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minCommandsTokenBufferOffsetAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->minCommandsTokenBufferOffsetAlignment); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -29389,6 +34307,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsTok
     *out += "\"type\" : \"VkIndirectCommandsTokenTypeNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tokenType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkIndirectCommandsTokenTypeNVXJson(out, pstruct->tokenType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29401,6 +34323,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsTok
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29413,6 +34339,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsTok
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->offset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -29435,6 +34365,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"type\" : \"VkIndirectCommandsTokenTypeNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tokenType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkIndirectCommandsTokenTypeNVXJson(out, pstruct->tokenType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29447,6 +34381,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindingUnit\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->bindingUnit); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29459,6 +34397,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dynamicCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dynamicCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29471,6 +34413,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"divisor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->divisor); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -29493,6 +34439,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29516,6 +34466,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -29529,6 +34480,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"type\" : \"VkPipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineBindPoint\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPipelineBindPointJson(out, pstruct->pipelineBindPoint); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29541,6 +34496,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"type\" : \"VkIndirectCommandsLayoutUsageFlagsNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkIndirectCommandsLayoutUsageFlagBitsNVXJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29553,6 +34512,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tokenCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->tokenCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29605,6 +34568,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29628,6 +34595,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -29641,6 +34609,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
     *out += "\"type\" : \"VkObjectTableNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectTable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.objectTable); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29653,6 +34625,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
     *out += "\"type\" : \"VkIndirectCommandsLayoutNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indirectCommandsLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.indirectCommandsLayout); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29665,6 +34641,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indirectCommandsTokenCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->indirectCommandsTokenCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29707,6 +34687,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxSequencesCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxSequencesCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29719,6 +34703,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
     *out += "\"type\" : \"VkCommandBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"targetCommandBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.targetCommandBuffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29731,6 +34719,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sequencesCountBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.sequencesCountBuffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29743,6 +34735,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sequencesCountOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sequencesCountOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29755,6 +34751,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sequencesIndexBuffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.sequencesIndexBuffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29767,6 +34767,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sequencesIndexOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sequencesIndexOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -29789,6 +34793,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdReserveSpaceForC
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29812,6 +34820,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdReserveSpaceForC
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -29825,6 +34834,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdReserveSpaceForC
     *out += "\"type\" : \"VkObjectTableNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectTable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.objectTable); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29837,6 +34850,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdReserveSpaceForC
     *out += "\"type\" : \"VkIndirectCommandsLayoutNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indirectCommandsLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.indirectCommandsLayout); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29849,6 +34866,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdReserveSpaceForC
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxSequencesCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxSequencesCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -29871,6 +34892,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -29894,6 +34919,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -29907,6 +34933,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->objectCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30006,6 +35036,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxUniformBuffersPerDescriptor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxUniformBuffersPerDescriptor); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30018,6 +35052,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxStorageBuffersPerDescriptor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxStorageBuffersPerDescriptor); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30030,6 +35068,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxStorageImagesPerDescriptor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxStorageImagesPerDescriptor); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30042,6 +35084,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxSampledImagesPerDescriptor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxSampledImagesPerDescriptor); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30054,6 +35100,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPipelineLayouts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPipelineLayouts); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30076,6 +35126,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableEntryNVX
     *out += "\"type\" : \"VkObjectEntryTypeNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkObjectEntryTypeNVXJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30088,6 +35142,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableEntryNVX
     *out += "\"type\" : \"VkObjectEntryUsageFlagsNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30110,6 +35168,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePipeline
     *out += "\"type\" : \"VkObjectEntryTypeNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkObjectEntryTypeNVXJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30122,6 +35184,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePipeline
     *out += "\"type\" : \"VkObjectEntryUsageFlagsNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30134,6 +35200,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePipeline
     *out += "\"type\" : \"VkPipeline\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.pipeline); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30156,6 +35226,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableDescript
     *out += "\"type\" : \"VkObjectEntryTypeNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkObjectEntryTypeNVXJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30168,6 +35242,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableDescript
     *out += "\"type\" : \"VkObjectEntryUsageFlagsNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30180,6 +35258,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableDescript
     *out += "\"type\" : \"VkPipelineLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.pipelineLayout); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30192,6 +35274,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableDescript
     *out += "\"type\" : \"VkDescriptorSet\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorSet\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.descriptorSet); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30214,6 +35300,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableVertexBu
     *out += "\"type\" : \"VkObjectEntryTypeNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkObjectEntryTypeNVXJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30226,6 +35316,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableVertexBu
     *out += "\"type\" : \"VkObjectEntryUsageFlagsNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30238,6 +35332,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableVertexBu
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30260,6 +35358,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableIndexBuf
     *out += "\"type\" : \"VkObjectEntryTypeNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkObjectEntryTypeNVXJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30272,6 +35374,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableIndexBuf
     *out += "\"type\" : \"VkObjectEntryUsageFlagsNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30284,6 +35390,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableIndexBuf
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30296,6 +35406,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableIndexBuf
     *out += "\"type\" : \"VkIndexType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indexType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkIndexTypeJson(out, pstruct->indexType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30318,6 +35432,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePushCons
     *out += "\"type\" : \"VkObjectEntryTypeNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkObjectEntryTypeNVXJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30330,6 +35448,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePushCons
     *out += "\"type\" : \"VkObjectEntryUsageFlagsNVX\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30342,6 +35464,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePushCons
     *out += "\"type\" : \"VkPipelineLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.pipelineLayout); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30354,6 +35480,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePushCons
     *out += "\"type\" : \"VkShaderStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stageFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30376,6 +35506,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewportWScalingNV 
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"xcoeff\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->xcoeff); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30388,6 +35522,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewportWScalingNV 
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ycoeff\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->ycoeff); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30410,6 +35548,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportWSc
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30433,6 +35575,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportWSc
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -30446,6 +35589,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportWSc
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewportWScalingEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->viewportWScalingEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30458,6 +35605,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportWSc
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewportCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->viewportCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30510,6 +35661,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30533,6 +35688,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -30546,6 +35702,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minImageCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->minImageCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30558,6 +35718,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxImageCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxImageCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30627,6 +35791,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxImageArrayLayers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxImageArrayLayers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30639,6 +35807,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkSurfaceTransformFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedTransforms\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30651,6 +35823,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkSurfaceTransformFlagBitsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"currentTransform\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSurfaceTransformFlagBitsKHRJson(out, pstruct->currentTransform); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30663,6 +35839,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkCompositeAlphaFlagsKHR\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedCompositeAlpha\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedCompositeAlpha, EnumToStringVkCompositeAlphaFlagBitsKHRJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30675,6 +35855,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedUsageFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedUsageFlags, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30687,6 +35871,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkSurfaceCounterFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"supportedSurfaceCounters\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->supportedSurfaceCounters, EnumToStringVkSurfaceCounterFlagBitsEXTJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30709,6 +35897,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPowerInfoEXT
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30732,6 +35924,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPowerInfoEXT
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -30745,6 +35938,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPowerInfoEXT
     *out += "\"type\" : \"VkDisplayPowerStateEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"powerState\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDisplayPowerStateEXTJson(out, pstruct->powerState); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30767,6 +35964,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceEventInfoEXT 
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30790,6 +35991,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceEventInfoEXT 
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -30803,6 +36005,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceEventInfoEXT 
     *out += "\"type\" : \"VkDeviceEventTypeEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceEvent\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDeviceEventTypeEXTJson(out, pstruct->deviceEvent); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30825,6 +36031,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayEventInfoEXT
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30848,6 +36058,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayEventInfoEXT
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -30861,6 +36072,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayEventInfoEXT
     *out += "\"type\" : \"VkDisplayEventTypeEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"displayEvent\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDisplayEventTypeEXTJson(out, pstruct->displayEvent); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30883,6 +36098,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCounterCre
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30906,6 +36125,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCounterCre
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -30919,6 +36139,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCounterCre
     *out += "\"type\" : \"VkSurfaceCounterFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surfaceCounters\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->surfaceCounters, EnumToStringVkSurfaceCounterFlagBitsEXTJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30941,6 +36165,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRefreshCycleDuratio
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"refreshDuration\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->refreshDuration); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -30963,6 +36191,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPastPresentationTim
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"presentID\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->presentID); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30975,6 +36207,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPastPresentationTim
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"desiredPresentTime\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->desiredPresentTime); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30987,6 +36223,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPastPresentationTim
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"actualPresentTime\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->actualPresentTime); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -30999,6 +36239,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPastPresentationTim
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"earliestPresentTime\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->earliestPresentTime); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31011,6 +36255,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPastPresentationTim
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"presentMargin\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->presentMargin); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -31033,6 +36281,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentTimeGOOGLE &
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"presentID\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->presentID); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31045,6 +36297,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentTimeGOOGLE &
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"desiredPresentTime\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->desiredPresentTime); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -31067,6 +36323,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentTimesInfoGOO
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31090,6 +36350,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentTimesInfoGOO
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -31103,6 +36364,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentTimesInfoGOO
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchainCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->swapchainCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31155,6 +36420,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31178,6 +36447,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -31191,6 +36461,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"perViewPositionAllComponents\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->perViewPositionAllComponents); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -31213,6 +36487,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewportSwizzleNV &
     *out += "\"type\" : \"VkViewportCoordinateSwizzleNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"x\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkViewportCoordinateSwizzleNVJson(out, pstruct->x); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31225,6 +36503,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewportSwizzleNV &
     *out += "\"type\" : \"VkViewportCoordinateSwizzleNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"y\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkViewportCoordinateSwizzleNVJson(out, pstruct->y); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31237,6 +36519,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewportSwizzleNV &
     *out += "\"type\" : \"VkViewportCoordinateSwizzleNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"z\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkViewportCoordinateSwizzleNVJson(out, pstruct->z); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31249,6 +36535,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewportSwizzleNV &
     *out += "\"type\" : \"VkViewportCoordinateSwizzleNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"w\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkViewportCoordinateSwizzleNVJson(out, pstruct->w); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -31271,6 +36561,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSwi
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31294,6 +36588,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSwi
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -31307,6 +36602,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSwi
     *out += "\"type\" : \"VkPipelineViewportSwizzleStateCreateFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31319,6 +36618,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSwi
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewportCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->viewportCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31371,6 +36674,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDisca
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31394,6 +36701,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDisca
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -31407,6 +36715,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDisca
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDiscardRectangles\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDiscardRectangles); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -31429,6 +36741,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDiscardRect
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31452,6 +36768,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDiscardRect
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -31465,6 +36782,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDiscardRect
     *out += "\"type\" : \"VkPipelineDiscardRectangleStateCreateFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31477,6 +36798,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDiscardRect
     *out += "\"type\" : \"VkDiscardRectangleModeEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"discardRectangleMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkDiscardRectangleModeEXTJson(out, pstruct->discardRectangleMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31489,6 +36814,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDiscardRect
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"discardRectangleCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->discardRectangleCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31541,6 +36870,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31564,6 +36897,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -31577,6 +36911,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"primitiveOverestimationSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->primitiveOverestimationSize); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31589,6 +36927,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxExtraPrimitiveOverestimationSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->maxExtraPrimitiveOverestimationSize); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31601,6 +36943,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"extraPrimitiveOverestimationSizeGranularity\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->extraPrimitiveOverestimationSizeGranularity); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31613,6 +36959,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"primitiveUnderestimation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->primitiveUnderestimation); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31625,6 +36975,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"conservativePointAndLineRasterization\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->conservativePointAndLineRasterization); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31637,6 +36991,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"degenerateTrianglesRasterized\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->degenerateTrianglesRasterized); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31649,6 +37007,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"degenerateLinesRasterized\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->degenerateLinesRasterized); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31661,6 +37023,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fullyCoveredFragmentShaderInputVariable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fullyCoveredFragmentShaderInputVariable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31673,6 +37039,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"conservativeRasterizationPostDepthCoverage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->conservativeRasterizationPostDepthCoverage); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -31695,6 +37065,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31718,6 +37092,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -31731,6 +37106,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkPipelineRasterizationConservativeStateCreateFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31743,6 +37122,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkConservativeRasterizationModeEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"conservativeRasterizationMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkConservativeRasterizationModeEXTJson(out, pstruct->conservativeRasterizationMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31755,6 +37138,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"extraPrimitiveOverestimationSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->extraPrimitiveOverestimationSize); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -31777,6 +37164,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31800,6 +37191,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -31813,6 +37205,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthClipEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->depthClipEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -31835,6 +37231,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31858,6 +37258,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -31871,6 +37272,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkPipelineRasterizationDepthClipStateCreateFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31883,6 +37288,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthClipEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->depthClipEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -31905,6 +37314,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkXYColorEXT &pstruct
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"x\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->x); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31917,6 +37330,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkXYColorEXT &pstruct
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"y\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->y); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -31939,6 +37356,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkHdrMetadataEXT &pst
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -31962,6 +37383,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkHdrMetadataEXT &pst
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32051,6 +37473,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkHdrMetadataEXT &pst
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxLuminance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->maxLuminance); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32063,6 +37489,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkHdrMetadataEXT &pst
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minLuminance\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->minLuminance); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32075,6 +37505,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkHdrMetadataEXT &pst
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxContentLightLevel\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->maxContentLightLevel); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32087,6 +37521,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkHdrMetadataEXT &pst
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxFrameAverageLightLevel\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->maxFrameAverageLightLevel); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -32109,6 +37547,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIOSSurfaceCreateInf
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32132,6 +37574,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIOSSurfaceCreateInf
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32145,6 +37588,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkIOSSurfaceCreateInf
     *out += "\"type\" : \"VkIOSSurfaceCreateFlagsMVK\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32168,6 +37615,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIOSSurfaceCreateInf
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pView /* ACF */ );
         *out += "\n";
+        //TODO: Output *pView
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32191,6 +37639,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMacOSSurfaceCreateI
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32214,6 +37666,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMacOSSurfaceCreateI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32227,6 +37680,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMacOSSurfaceCreateI
     *out += "\"type\" : \"VkMacOSSurfaceCreateFlagsMVK\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32250,6 +37707,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMacOSSurfaceCreateI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pView /* ACF */ );
         *out += "\n";
+        //TODO: Output *pView
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32273,6 +37731,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectNam
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32296,6 +37758,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectNam
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32309,6 +37772,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectNam
     *out += "\"type\" : \"VkObjectType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkObjectTypeJson(out, pstruct->objectType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32321,6 +37788,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectNam
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectHandle\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->objectHandle); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32344,6 +37815,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectNam
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pObjectName.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pObjectName
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32367,6 +37839,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectTag
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32390,6 +37866,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectTag
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32403,6 +37880,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectTag
     *out += "\"type\" : \"VkObjectType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkObjectTypeJson(out, pstruct->objectType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32415,6 +37896,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectTag
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectHandle\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->objectHandle); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32427,6 +37912,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectTag
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tagName\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->tagName); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32439,6 +37928,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectTag
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tagSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->tagSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32490,6 +37983,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsLabelEXT 
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32513,6 +38010,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsLabelEXT 
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32537,6 +38035,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsLabelEXT 
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pLabelName.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pLabelName
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32581,6 +38080,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32604,6 +38107,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32617,6 +38121,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"type\" : \"VkDebugUtilsMessengerCallbackDataFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32640,6 +38148,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pMessageIdName.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pMessageIdName
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32653,6 +38162,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"messageIdNumber\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->messageIdNumber); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32676,6 +38189,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pMessage.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *pMessage
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32689,6 +38203,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueLabelCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queueLabelCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32731,6 +38249,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"cmdBufLabelCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->cmdBufLabelCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32773,6 +38295,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->objectCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32825,6 +38351,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32848,6 +38378,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32861,6 +38392,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"type\" : \"VkDebugUtilsMessengerCreateFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32873,6 +38408,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"type\" : \"VkDebugUtilsMessageSeverityFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"messageSeverity\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->messageSeverity, EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXTJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32885,6 +38424,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"type\" : \"VkDebugUtilsMessageTypeFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"messageType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->messageType, EnumToStringVkDebugUtilsMessageTypeFlagBitsEXTJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32897,6 +38440,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"type\" : \"PFN_vkDebugUtilsMessengerCallbackEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pfnUserCallback\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, reinterpret_cast<uint64_t>(pstruct->pfnUserCallback)); // WRX
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32920,6 +38467,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pUserData /* ACF */ );
         *out += "\n";
+        //TODO: Output *pUserData
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32943,6 +38491,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -32966,6 +38518,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -32979,6 +38532,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"androidHardwareBufferUsage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->androidHardwareBufferUsage); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -33001,6 +38558,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33024,6 +38585,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33037,6 +38599,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"allocationSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->allocationSize); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33049,6 +38615,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryTypeBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->memoryTypeBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -33071,6 +38641,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33094,6 +38668,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33107,6 +38682,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33119,6 +38698,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"externalFormat\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->externalFormat); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33131,6 +38714,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"VkFormatFeatureFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"formatFeatures\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->formatFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33162,6 +38749,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"VkSamplerYcbcrModelConversion\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"suggestedYcbcrModel\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSamplerYcbcrModelConversionJson(out, pstruct->suggestedYcbcrModel); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33174,6 +38765,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"VkSamplerYcbcrRange\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"suggestedYcbcrRange\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSamplerYcbcrRangeJson(out, pstruct->suggestedYcbcrRange); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33186,6 +38781,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"VkChromaLocation\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"suggestedXChromaOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkChromaLocationJson(out, pstruct->suggestedXChromaOffset); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33198,6 +38797,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"type\" : \"VkChromaLocation\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"suggestedYChromaOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkChromaLocationJson(out, pstruct->suggestedYChromaOffset); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -33220,6 +38823,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportAndroidHardwa
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33243,6 +38850,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportAndroidHardwa
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33267,6 +38875,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportAndroidHardwa
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.buffer /* ACF */ );
         *out += "\n";
+        //TODO: Output *buffer
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33290,6 +38899,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetAndroidHar
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33313,6 +38926,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetAndroidHar
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33326,6 +38940,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetAndroidHar
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.memory); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -33348,6 +38966,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFormatANDRO
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33371,6 +38993,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFormatANDRO
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33384,6 +39007,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFormatANDRO
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"externalFormat\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->externalFormat); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -33406,6 +39033,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerReductionMod
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33429,6 +39060,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerReductionMod
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33442,6 +39074,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerReductionMod
     *out += "\"type\" : \"VkSamplerReductionModeEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"reductionMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSamplerReductionModeEXTJson(out, pstruct->reductionMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -33464,6 +39100,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33487,6 +39127,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33500,6 +39141,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"filterMinmaxSingleComponentFormats\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->filterMinmaxSingleComponentFormats); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33512,6 +39157,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"filterMinmaxImageComponentMapping\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->filterMinmaxImageComponentMapping); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -33534,6 +39183,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33557,6 +39210,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33570,6 +39224,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"inlineUniformBlock\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->inlineUniformBlock); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33582,6 +39240,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorBindingInlineUniformBlockUpdateAfterBind\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->descriptorBindingInlineUniformBlockUpdateAfterBind); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -33604,6 +39266,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33627,6 +39293,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33640,6 +39307,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxInlineUniformBlockSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxInlineUniformBlockSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33652,6 +39323,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorInlineUniformBlocks\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorInlineUniformBlocks); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33664,6 +39339,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33676,6 +39355,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetInlineUniformBlocks\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetInlineUniformBlocks); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33688,6 +39371,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetUpdateAfterBindInlineUniformBlocks\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetUpdateAfterBindInlineUniformBlocks); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -33710,6 +39397,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetI
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33733,6 +39424,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33746,6 +39438,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetI
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dataSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->dataSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33797,6 +39493,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolInlin
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33820,6 +39520,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolInlin
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33833,6 +39534,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolInlin
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxInlineUniformBlockBindings\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxInlineUniformBlockBindings); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -33855,6 +39560,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSampleLocationEXT &
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"x\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->x); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33867,6 +39576,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSampleLocationEXT &
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"y\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->y); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -33889,6 +39602,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSampleLocationsInfo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33912,6 +39629,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSampleLocationsInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -33925,6 +39643,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSampleLocationsInfo
     *out += "\"type\" : \"VkSampleCountFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleLocationsPerPixel\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSampleCountFlagBitsJson(out, pstruct->sampleLocationsPerPixel); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -33956,6 +39678,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSampleLocationsInfo
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleLocationsCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->sampleLocationsCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34008,6 +39734,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentSampleLoc
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"attachmentIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->attachmentIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34049,6 +39779,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassSampleLocati
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subpassIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->subpassIndex); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34090,6 +39824,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassSampleLoc
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34113,6 +39851,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassSampleLoc
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -34126,6 +39865,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassSampleLoc
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"attachmentInitialSampleLocationsCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->attachmentInitialSampleLocationsCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34168,6 +39911,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassSampleLoc
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"postSubpassSampleLocationsCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->postSubpassSampleLocationsCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34220,6 +39967,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineSampleLocat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34243,6 +39994,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineSampleLocat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -34256,6 +40008,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineSampleLocat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleLocationsEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->sampleLocationsEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34297,6 +40053,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34320,6 +40080,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -34333,6 +40094,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleLocationSampleCounts\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->sampleLocationSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34385,6 +40150,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleLocationSubPixelBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->sampleLocationSubPixelBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34397,6 +40166,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"variableSampleLocations\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->variableSampleLocations); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -34419,6 +40192,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMultisampleProperti
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34442,6 +40219,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMultisampleProperti
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -34484,6 +40262,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34507,6 +40289,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -34520,6 +40303,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"advancedBlendCoherentOperations\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->advancedBlendCoherentOperations); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -34542,6 +40329,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34565,6 +40356,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -34578,6 +40370,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"advancedBlendMaxColorAttachments\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->advancedBlendMaxColorAttachments); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34590,6 +40386,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"advancedBlendIndependentBlend\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->advancedBlendIndependentBlend); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34602,6 +40402,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"advancedBlendNonPremultipliedSrcColor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->advancedBlendNonPremultipliedSrcColor); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34614,6 +40418,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"advancedBlendNonPremultipliedDstColor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->advancedBlendNonPremultipliedDstColor); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34626,6 +40434,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"advancedBlendCorrelatedOverlap\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->advancedBlendCorrelatedOverlap); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34638,6 +40450,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"advancedBlendAllOperations\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->advancedBlendAllOperations); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -34660,6 +40476,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34683,6 +40503,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -34696,6 +40517,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcPremultiplied\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->srcPremultiplied); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34708,6 +40533,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstPremultiplied\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->dstPremultiplied); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34720,6 +40549,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"type\" : \"VkBlendOverlapEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"blendOverlap\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkBlendOverlapEXTJson(out, pstruct->blendOverlap); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -34742,6 +40575,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageToC
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34765,6 +40602,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageToC
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -34778,6 +40616,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageToC
     *out += "\"type\" : \"VkPipelineCoverageToColorStateCreateFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34790,6 +40632,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageToC
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"coverageToColorEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->coverageToColorEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34802,6 +40648,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageToC
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"coverageToColorLocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->coverageToColorLocation); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -34824,6 +40674,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageMod
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34847,6 +40701,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageMod
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -34860,6 +40715,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageMod
     *out += "\"type\" : \"VkPipelineCoverageModulationStateCreateFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34872,6 +40731,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageMod
     *out += "\"type\" : \"VkCoverageModulationModeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"coverageModulationMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkCoverageModulationModeNVJson(out, pstruct->coverageModulationMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34884,6 +40747,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageMod
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"coverageModulationTableEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->coverageModulationTableEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34896,6 +40763,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageMod
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"coverageModulationTableCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->coverageModulationTableCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34947,6 +40818,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34970,6 +40845,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -34983,6 +40859,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderSMCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->shaderSMCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -34995,6 +40875,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderWarpsPerSM\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->shaderWarpsPerSM); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -35017,6 +40901,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35040,6 +40928,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -35053,6 +40942,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderSMBuiltins\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderSMBuiltins); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -35075,6 +40968,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drmFormatModifier\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->drmFormatModifier); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35087,6 +40984,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drmFormatModifierPlaneCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->drmFormatModifierPlaneCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35099,6 +41000,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
     *out += "\"type\" : \"VkFormatFeatureFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drmFormatModifierTilingFeatures\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->drmFormatModifierTilingFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -35121,6 +41026,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35144,6 +41053,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -35157,6 +41067,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drmFormatModifierCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->drmFormatModifierCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35209,6 +41123,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35232,6 +41150,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -35245,6 +41164,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drmFormatModifier\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->drmFormatModifier); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35257,6 +41180,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"VkSharingMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sharingMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSharingModeJson(out, pstruct->sharingMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35269,6 +41196,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->queueFamilyIndexCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35320,6 +41251,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35343,6 +41278,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -35356,6 +41292,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drmFormatModifierCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->drmFormatModifierCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35407,6 +41347,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35430,6 +41374,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -35443,6 +41388,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drmFormatModifier\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->drmFormatModifier); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35455,6 +41404,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drmFormatModifierPlaneCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->drmFormatModifierPlaneCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35507,6 +41460,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35530,6 +41487,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -35543,6 +41501,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drmFormatModifier\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->drmFormatModifier); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -35565,6 +41527,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationCacheCrea
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35588,6 +41554,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationCacheCrea
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -35601,6 +41568,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationCacheCrea
     *out += "\"type\" : \"VkValidationCacheCreateFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35613,6 +41584,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationCacheCrea
     *out += "\"type\" : \"size_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"initialDataSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->initialDataSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35664,6 +41639,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleValidat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35687,6 +41666,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleValidat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -35700,6 +41680,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleValidat
     *out += "\"type\" : \"VkValidationCacheEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"validationCache\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.validationCache); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -35722,6 +41706,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35745,6 +41733,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -35758,6 +41747,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindingCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->bindingCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35809,6 +41802,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35832,6 +41829,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -35845,6 +41843,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderInputAttachmentArrayDynamicIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderInputAttachmentArrayDynamicIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35857,6 +41859,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderUniformTexelBufferArrayDynamicIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderUniformTexelBufferArrayDynamicIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35869,6 +41875,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStorageTexelBufferArrayDynamicIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderStorageTexelBufferArrayDynamicIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35881,6 +41891,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderUniformBufferArrayNonUniformIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderUniformBufferArrayNonUniformIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35893,6 +41907,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderSampledImageArrayNonUniformIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderSampledImageArrayNonUniformIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35905,6 +41923,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStorageBufferArrayNonUniformIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderStorageBufferArrayNonUniformIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35917,6 +41939,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStorageImageArrayNonUniformIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderStorageImageArrayNonUniformIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35929,6 +41955,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderInputAttachmentArrayNonUniformIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderInputAttachmentArrayNonUniformIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35941,6 +41971,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderUniformTexelBufferArrayNonUniformIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderUniformTexelBufferArrayNonUniformIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35953,6 +41987,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStorageTexelBufferArrayNonUniformIndexing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderStorageTexelBufferArrayNonUniformIndexing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35965,6 +42003,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorBindingUniformBufferUpdateAfterBind\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->descriptorBindingUniformBufferUpdateAfterBind); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35977,6 +42019,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorBindingSampledImageUpdateAfterBind\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->descriptorBindingSampledImageUpdateAfterBind); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -35989,6 +42035,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorBindingStorageImageUpdateAfterBind\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->descriptorBindingStorageImageUpdateAfterBind); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36001,6 +42051,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorBindingStorageBufferUpdateAfterBind\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->descriptorBindingStorageBufferUpdateAfterBind); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36013,6 +42067,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorBindingUniformTexelBufferUpdateAfterBind\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->descriptorBindingUniformTexelBufferUpdateAfterBind); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36025,6 +42083,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorBindingStorageTexelBufferUpdateAfterBind\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->descriptorBindingStorageTexelBufferUpdateAfterBind); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36037,6 +42099,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorBindingUpdateUnusedWhilePending\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->descriptorBindingUpdateUnusedWhilePending); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36049,6 +42115,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorBindingPartiallyBound\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->descriptorBindingPartiallyBound); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36061,6 +42131,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorBindingVariableDescriptorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->descriptorBindingVariableDescriptorCount); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36073,6 +42147,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"runtimeDescriptorArray\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->runtimeDescriptorArray); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -36095,6 +42173,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36118,6 +42200,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -36131,6 +42214,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxUpdateAfterBindDescriptorsInAllPools\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxUpdateAfterBindDescriptorsInAllPools); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36143,6 +42230,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderUniformBufferArrayNonUniformIndexingNative\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderUniformBufferArrayNonUniformIndexingNative); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36155,6 +42246,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderSampledImageArrayNonUniformIndexingNative\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderSampledImageArrayNonUniformIndexingNative); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36167,6 +42262,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStorageBufferArrayNonUniformIndexingNative\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderStorageBufferArrayNonUniformIndexingNative); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36179,6 +42278,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStorageImageArrayNonUniformIndexingNative\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderStorageImageArrayNonUniformIndexingNative); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36191,6 +42294,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderInputAttachmentArrayNonUniformIndexingNative\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderInputAttachmentArrayNonUniformIndexingNative); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36203,6 +42310,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"robustBufferAccessUpdateAfterBind\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->robustBufferAccessUpdateAfterBind); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36215,6 +42326,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"quadDivergentImplicitLod\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->quadDivergentImplicitLod); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36227,6 +42342,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorUpdateAfterBindSamplers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorUpdateAfterBindSamplers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36239,6 +42358,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorUpdateAfterBindUniformBuffers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorUpdateAfterBindUniformBuffers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36251,6 +42374,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorUpdateAfterBindStorageBuffers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorUpdateAfterBindStorageBuffers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36263,6 +42390,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorUpdateAfterBindSampledImages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorUpdateAfterBindSampledImages); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36275,6 +42406,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorUpdateAfterBindStorageImages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorUpdateAfterBindStorageImages); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36287,6 +42422,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageDescriptorUpdateAfterBindInputAttachments\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageDescriptorUpdateAfterBindInputAttachments); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36299,6 +42438,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxPerStageUpdateAfterBindResources\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxPerStageUpdateAfterBindResources); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36311,6 +42454,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetUpdateAfterBindSamplers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetUpdateAfterBindSamplers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36323,6 +42470,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetUpdateAfterBindUniformBuffers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetUpdateAfterBindUniformBuffers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36335,6 +42486,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetUpdateAfterBindUniformBuffersDynamic\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetUpdateAfterBindUniformBuffersDynamic); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36347,6 +42502,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetUpdateAfterBindStorageBuffers\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetUpdateAfterBindStorageBuffers); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36359,6 +42518,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetUpdateAfterBindStorageBuffersDynamic\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetUpdateAfterBindStorageBuffersDynamic); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36371,6 +42534,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetUpdateAfterBindSampledImages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetUpdateAfterBindSampledImages); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36383,6 +42550,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetUpdateAfterBindStorageImages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetUpdateAfterBindStorageImages); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36395,6 +42566,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetUpdateAfterBindInputAttachments\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetUpdateAfterBindInputAttachments); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -36417,6 +42592,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36440,6 +42619,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -36453,6 +42633,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorSetCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->descriptorSetCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36504,6 +42688,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36527,6 +42715,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -36540,6 +42729,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxVariableDescriptorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxVariableDescriptorCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -36562,6 +42755,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShadingRatePaletteN
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shadingRatePaletteEntryCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->shadingRatePaletteEntryCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36613,6 +42810,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSha
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36636,6 +42837,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSha
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -36649,6 +42851,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSha
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shadingRateImageEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shadingRateImageEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36661,6 +42867,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSha
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewportCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->viewportCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36713,6 +42923,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36736,6 +42950,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -36749,6 +42964,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shadingRateImage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shadingRateImage); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36761,6 +42980,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shadingRateCoarseSampleOrder\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shadingRateCoarseSampleOrder); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -36783,6 +43006,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36806,6 +43033,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -36838,6 +43066,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shadingRatePaletteSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->shadingRatePaletteSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36850,6 +43082,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shadingRateMaxCoarseSamples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->shadingRateMaxCoarseSamples); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -36872,6 +43108,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCoarseSampleLocatio
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pixelX\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->pixelX); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36884,6 +43124,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCoarseSampleLocatio
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pixelY\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->pixelY); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36896,6 +43140,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCoarseSampleLocatio
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sample\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->sample); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -36918,6 +43166,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCoarseSampleOrderCu
     *out += "\"type\" : \"VkShadingRatePaletteEntryNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shadingRate\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkShadingRatePaletteEntryNVJson(out, pstruct->shadingRate); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36930,6 +43182,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCoarseSampleOrderCu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->sampleCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36942,6 +43198,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCoarseSampleOrderCu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleLocationCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->sampleLocationCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -36994,6 +43254,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportCoa
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37017,6 +43281,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportCoa
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -37030,6 +43295,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportCoa
     *out += "\"type\" : \"VkCoarseSampleOrderTypeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleOrderType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkCoarseSampleOrderTypeNVJson(out, pstruct->sampleOrderType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37042,6 +43311,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportCoa
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"customSampleOrderCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->customSampleOrderCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37094,6 +43367,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingShaderGro
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37117,6 +43394,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingShaderGro
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -37130,6 +43408,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingShaderGro
     *out += "\"type\" : \"VkRayTracingShaderGroupTypeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkRayTracingShaderGroupTypeNVJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37142,6 +43424,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingShaderGro
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"generalShader\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->generalShader); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37154,6 +43440,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingShaderGro
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"closestHitShader\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->closestHitShader); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37166,6 +43456,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingShaderGro
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"anyHitShader\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->anyHitShader); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37178,6 +43472,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingShaderGro
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"intersectionShader\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->intersectionShader); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -37200,6 +43498,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37223,6 +43525,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -37236,6 +43539,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
     *out += "\"type\" : \"VkPipelineCreateFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37248,6 +43555,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stageCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->stageCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37290,6 +43601,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->groupCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37332,6 +43647,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxRecursionDepth\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxRecursionDepth); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37344,6 +43663,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
     *out += "\"type\" : \"VkPipelineLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.layout); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37356,6 +43679,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
     *out += "\"type\" : \"VkPipeline\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"basePipelineHandle\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.basePipelineHandle); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37368,6 +43695,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
     *out += "\"type\" : \"int32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"basePipelineIndex\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->basePipelineIndex); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -37390,6 +43721,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37413,6 +43748,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -37426,6 +43762,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexData\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.vertexData); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37438,6 +43778,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->vertexOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37450,6 +43794,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->vertexCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37462,6 +43810,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexStride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->vertexStride); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37474,6 +43826,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"type\" : \"VkFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexFormat\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFormatJson(out, pstruct->vertexFormat); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37486,6 +43842,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indexData\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.indexData); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37498,6 +43858,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indexOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->indexOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37510,6 +43874,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->indexCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37522,6 +43890,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"type\" : \"VkIndexType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indexType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkIndexTypeJson(out, pstruct->indexType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37534,6 +43906,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"transformData\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.transformData); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37546,6 +43922,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"transformOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->transformOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -37568,6 +43948,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryAABBNV &pst
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37591,6 +43975,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryAABBNV &pst
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -37604,6 +43989,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryAABBNV &pst
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"aabbData\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.aabbData); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37616,6 +44005,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryAABBNV &pst
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"numAABBs\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->numAABBs); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37628,6 +44021,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryAABBNV &pst
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->stride); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37640,6 +44037,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryAABBNV &pst
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->offset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -37710,6 +44111,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryNV &pstruct
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37733,6 +44138,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryNV &pstruct
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -37746,6 +44152,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryNV &pstruct
     *out += "\"type\" : \"VkGeometryTypeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"geometryType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkGeometryTypeNVJson(out, pstruct->geometryType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37777,6 +44187,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryNV &pstruct
     *out += "\"type\" : \"VkGeometryFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkGeometryFlagBitsNVJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -37799,6 +44213,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37822,6 +44240,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -37835,6 +44254,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"type\" : \"VkAccelerationStructureTypeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkAccelerationStructureTypeNVJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37847,6 +44270,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"type\" : \"VkBuildAccelerationStructureFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBuildAccelerationStructureFlagBitsNVJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37859,6 +44286,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->instanceCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37871,6 +44302,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"geometryCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->geometryCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37923,6 +44358,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -37946,6 +44385,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -37959,6 +44399,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compactedSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->compactedSize); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38000,6 +44444,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindAccelerationStr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38023,6 +44471,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindAccelerationStr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38036,6 +44485,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindAccelerationStr
     *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"accelerationStructure\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.accelerationStructure); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38048,6 +44501,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindAccelerationStr
     *out += "\"type\" : \"VkDeviceMemory\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.memory); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38060,6 +44517,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindAccelerationStr
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryOffset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->memoryOffset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38072,6 +44533,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindAccelerationStr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceIndexCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->deviceIndexCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38123,6 +44588,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetA
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38146,6 +44615,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetA
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38159,6 +44629,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetA
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"accelerationStructureCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->accelerationStructureCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38210,6 +44684,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38233,6 +44711,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38246,6 +44725,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"type\" : \"VkAccelerationStructureMemoryRequirementsTypeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkAccelerationStructureMemoryRequirementsTypeNVJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38258,6 +44741,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"accelerationStructure\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.accelerationStructure); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -38280,6 +44767,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38303,6 +44794,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38316,6 +44808,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderGroupHandleSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->shaderGroupHandleSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38328,6 +44824,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxRecursionDepth\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxRecursionDepth); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38340,6 +44840,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxShaderGroupStride\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxShaderGroupStride); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38352,6 +44856,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderGroupBaseAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->shaderGroupBaseAlignment); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38364,6 +44872,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxGeometryCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxGeometryCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38376,6 +44888,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxInstanceCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxInstanceCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38388,6 +44904,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTriangleCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTriangleCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38400,6 +44920,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDescriptorSetAccelerationStructures\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDescriptorSetAccelerationStructures); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -38422,6 +44946,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRepre
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38445,6 +44973,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRepre
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38458,6 +44987,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRepre
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"representativeFragmentTest\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->representativeFragmentTest); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -38480,6 +45013,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRepresentat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38503,6 +45040,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRepresentat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38516,6 +45054,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRepresentat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"representativeFragmentTestEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->representativeFragmentTestEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -38538,6 +45080,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38561,6 +45107,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38574,6 +45121,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"type\" : \"VkImageViewType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageViewType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkImageViewTypeJson(out, pstruct->imageViewType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -38596,6 +45147,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFilterCubicImageVie
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38619,6 +45174,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFilterCubicImageVie
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38632,6 +45188,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFilterCubicImageVie
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"filterCubic\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->filterCubic); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38644,6 +45204,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFilterCubicImageVie
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"filterCubicMinmax\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->filterCubicMinmax); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -38666,6 +45230,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueGlobalPr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38689,6 +45257,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueGlobalPr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38702,6 +45271,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueGlobalPr
     *out += "\"type\" : \"VkQueueGlobalPriorityEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"globalPriority\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkQueueGlobalPriorityEXTJson(out, pstruct->globalPriority); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -38724,6 +45297,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryHostPoi
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38747,6 +45324,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryHostPoi
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38760,6 +45338,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryHostPoi
     *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, pstruct->handleType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38783,6 +45365,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryHostPoi
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pHostPointer /* ACF */ );
         *out += "\n";
+        //TODO: Output *pHostPointer
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38806,6 +45389,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryHostPointerPr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38829,6 +45416,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryHostPointerPr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38842,6 +45430,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryHostPointerPr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryTypeBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->memoryTypeBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -38864,6 +45456,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38887,6 +45483,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38900,6 +45497,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minImportedHostPointerAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->minImportedHostPointerAlignment); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -38922,6 +45523,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCompilerCon
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -38945,6 +45550,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCompilerCon
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -38958,6 +45564,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCompilerCon
     *out += "\"type\" : \"VkPipelineCompilerControlFlagsAMD\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compilerControlFlags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->compilerControlFlags, EnumToStringVkPipelineCompilerControlFlagBitsAMDJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -38980,6 +45590,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCalibratedTimestamp
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39003,6 +45617,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCalibratedTimestamp
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -39016,6 +45631,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCalibratedTimestamp
     *out += "\"type\" : \"VkTimeDomainEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timeDomain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkTimeDomainEXTJson(out, pstruct->timeDomain); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -39038,6 +45657,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39061,6 +45684,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -39074,6 +45698,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderEngineCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->shaderEngineCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39086,6 +45714,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderArraysPerEngineCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->shaderArraysPerEngineCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39098,6 +45730,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"computeUnitsPerShaderArray\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->computeUnitsPerShaderArray); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39110,6 +45746,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"simdPerComputeUnit\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->simdPerComputeUnit); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39122,6 +45762,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"wavefrontsPerSimd\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->wavefrontsPerSimd); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39134,6 +45778,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"wavefrontSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->wavefrontSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39146,6 +45794,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sgprsPerSimd\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->sgprsPerSimd); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39158,6 +45810,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minSgprAllocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->minSgprAllocation); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39170,6 +45826,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxSgprAllocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxSgprAllocation); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39182,6 +45842,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sgprAllocationGranularity\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->sgprAllocationGranularity); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39194,6 +45858,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vgprsPerSimd\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->vgprsPerSimd); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39206,6 +45874,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minVgprAllocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->minVgprAllocation); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39218,6 +45890,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxVgprAllocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxVgprAllocation); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39230,6 +45906,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vgprAllocationGranularity\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->vgprAllocationGranularity); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -39252,6 +45932,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceMemoryOverall
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39275,6 +45959,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceMemoryOverall
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -39288,6 +45973,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceMemoryOverall
     *out += "\"type\" : \"VkMemoryOverallocationBehaviorAMD\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"overallocationBehavior\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkMemoryOverallocationBehaviorAMDJson(out, pstruct->overallocationBehavior); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -39310,6 +45999,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39333,6 +46026,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -39346,6 +46040,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxVertexAttribDivisor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxVertexAttribDivisor); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -39368,6 +46066,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkVertexInputBindingD
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"binding\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->binding); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39380,6 +46082,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkVertexInputBindingD
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"divisor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->divisor); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -39402,6 +46108,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39425,6 +46135,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -39438,6 +46149,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexBindingDivisorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->vertexBindingDivisorCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39490,6 +46205,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39513,6 +46232,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -39526,6 +46246,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexAttributeInstanceRateDivisor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->vertexAttributeInstanceRateDivisor); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39538,6 +46262,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexAttributeInstanceRateZeroDivisor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->vertexAttributeInstanceRateZeroDivisor); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -39560,6 +46288,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentFrameTokenGG
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39583,6 +46315,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentFrameTokenGG
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -39596,6 +46329,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentFrameTokenGG
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"frameToken\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->frameToken); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -39618,6 +46355,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
     *out += "\"type\" : \"VkPipelineCreationFeedbackFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreationFeedbackFlagBitsEXTJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39630,6 +46371,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"duration\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->duration); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -39652,6 +46397,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39675,6 +46424,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -39719,6 +46469,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineStageCreationFeedbackCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->pipelineStageCreationFeedbackCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39771,6 +46525,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCompu
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39794,6 +46552,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCompu
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -39807,6 +46566,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCompu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"computeDerivativeGroupQuads\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->computeDerivativeGroupQuads); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39819,6 +46582,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCompu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"computeDerivativeGroupLinear\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->computeDerivativeGroupLinear); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -39841,6 +46608,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39864,6 +46635,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -39877,6 +46649,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"taskShader\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->taskShader); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39889,6 +46665,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"meshShader\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->meshShader); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -39911,6 +46691,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39934,6 +46718,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -39947,6 +46732,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawMeshTasksCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxDrawMeshTasksCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39959,6 +46748,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTaskWorkGroupInvocations\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTaskWorkGroupInvocations); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -39992,6 +46785,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTaskTotalMemorySize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTaskTotalMemorySize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40004,6 +46801,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxTaskOutputCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxTaskOutputCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40016,6 +46817,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxMeshWorkGroupInvocations\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxMeshWorkGroupInvocations); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40049,6 +46854,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxMeshTotalMemorySize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxMeshTotalMemorySize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40061,6 +46870,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxMeshOutputVertices\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxMeshOutputVertices); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40073,6 +46886,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxMeshOutputPrimitives\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxMeshOutputPrimitives); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40085,6 +46902,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxMeshMultiviewViewCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxMeshMultiviewViewCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40097,6 +46918,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"meshOutputPerVertexGranularity\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->meshOutputPerVertexGranularity); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40109,6 +46934,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"meshOutputPerPrimitiveGranularity\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->meshOutputPerPrimitiveGranularity); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -40131,6 +46960,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrawMeshTasksIndire
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"taskCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->taskCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40143,6 +46976,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrawMeshTasksIndire
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstTask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->firstTask); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -40165,6 +47002,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40188,6 +47029,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40201,6 +47043,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fragmentShaderBarycentric\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fragmentShaderBarycentric); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -40223,6 +47069,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40246,6 +47096,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40259,6 +47110,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageFootprint\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->imageFootprint); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -40281,6 +47136,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportExc
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40304,6 +47163,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportExc
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40317,6 +47177,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportExc
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"exclusiveScissorCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->exclusiveScissorCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40369,6 +47233,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExclu
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40392,6 +47260,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExclu
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40405,6 +47274,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExclu
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"exclusiveScissor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->exclusiveScissor); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -40427,6 +47300,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyCheckpoi
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40450,6 +47327,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyCheckpoi
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40463,6 +47341,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyCheckpoi
     *out += "\"type\" : \"VkPipelineStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"checkpointExecutionStageMask\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->checkpointExecutionStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -40485,6 +47367,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCheckpointDataNV &p
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40508,6 +47394,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCheckpointDataNV &p
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40521,6 +47408,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCheckpointDataNV &p
     *out += "\"type\" : \"VkPipelineStageFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPipelineStageFlagBitsJson(out, pstruct->stage); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40544,6 +47435,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCheckpointDataNV &p
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pCheckpointMarker /* ACF */ );
         *out += "\n";
+        //TODO: Output *pCheckpointMarker
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40567,6 +47459,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40590,6 +47486,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40603,6 +47500,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderIntegerFunctions2\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderIntegerFunctions2); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -40625,6 +47526,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceValueDat
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"value32\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->value32); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40637,6 +47542,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceValueDat
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"value64\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->value64); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40649,6 +47558,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceValueDat
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"valueFloat\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->valueFloat); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40661,6 +47574,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceValueDat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"valueBool\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->valueBool); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40684,6 +47601,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceValueDat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.valueString.GetAddress() /* QZX */ );
         *out += "\n";
+        //TODO: Output *valueString
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40707,6 +47625,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceValueINT
     *out += "\"type\" : \"VkPerformanceValueTypeINTEL\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPerformanceValueTypeINTELJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40748,6 +47670,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkInitializePerforman
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40771,6 +47697,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInitializePerforman
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40795,6 +47722,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInitializePerforman
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pUserData /* ACF */ );
         *out += "\n";
+        //TODO: Output *pUserData
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40818,6 +47746,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40841,6 +47773,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40854,6 +47787,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"type\" : \"VkQueryPoolSamplingModeINTEL\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"performanceCountersSampling\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkQueryPoolSamplingModeINTELJson(out, pstruct->performanceCountersSampling); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -40876,6 +47813,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceMarkerIn
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40899,6 +47840,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceMarkerIn
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40912,6 +47854,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceMarkerIn
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"marker\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->marker); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -40934,6 +47880,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceStreamMa
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -40957,6 +47907,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceStreamMa
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -40970,6 +47921,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceStreamMa
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"marker\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->marker); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -40992,6 +47947,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceOverride
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41015,6 +47974,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceOverride
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41028,6 +47988,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceOverride
     *out += "\"type\" : \"VkPerformanceOverrideTypeINTEL\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPerformanceOverrideTypeINTELJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41040,6 +48004,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceOverride
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"enable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->enable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41052,6 +48020,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceOverride
     *out += "\"type\" : \"uint64_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"parameter\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->parameter); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -41074,6 +48046,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceConfigur
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41097,6 +48073,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceConfigur
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41110,6 +48087,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceConfigur
     *out += "\"type\" : \"VkPerformanceConfigurationTypeINTEL\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkPerformanceConfigurationTypeINTELJson(out, pstruct->type); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -41132,6 +48113,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePCIBu
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41155,6 +48140,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePCIBu
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41168,6 +48154,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePCIBu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pciDomain\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->pciDomain); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41180,6 +48170,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePCIBu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pciBus\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->pciBus); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41192,6 +48186,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePCIBu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pciDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->pciDevice); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41204,6 +48202,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePCIBu
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pciFunction\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->pciFunction); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -41226,6 +48228,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayNativeHdrSur
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41249,6 +48255,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayNativeHdrSur
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41262,6 +48269,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayNativeHdrSur
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"localDimmingSupport\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->localDimmingSupport); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -41284,6 +48295,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainDisplayNat
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41307,6 +48322,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainDisplayNat
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41320,6 +48336,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainDisplayNat
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"localDimmingEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->localDimmingEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -41342,6 +48362,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePipeSurfaceCre
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41365,6 +48389,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePipeSurfaceCre
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41378,6 +48403,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePipeSurfaceCre
     *out += "\"type\" : \"VkImagePipeSurfaceCreateFlagsFUCHSIA\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41390,6 +48419,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePipeSurfaceCre
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imagePipeHandle\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->imagePipeHandle); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -41412,6 +48445,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMetalSurfaceCreateI
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41435,6 +48472,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMetalSurfaceCreateI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41448,6 +48486,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMetalSurfaceCreateI
     *out += "\"type\" : \"VkMetalSurfaceCreateFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41471,6 +48513,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMetalSurfaceCreateI
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pLayer /* ACF */ );
         *out += "\n";
+        //TODO: Output *pLayer
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41494,6 +48537,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41517,6 +48564,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41530,6 +48578,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fragmentDensityMap\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fragmentDensityMap); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41542,6 +48594,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fragmentDensityMapDynamic\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fragmentDensityMapDynamic); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41554,6 +48610,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fragmentDensityMapNonSubsampledImages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fragmentDensityMapNonSubsampledImages); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -41576,6 +48636,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41599,6 +48663,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41650,6 +48715,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fragmentDensityInvocations\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fragmentDensityInvocations); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -41672,6 +48741,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassFragmentD
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41695,6 +48768,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassFragmentD
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41737,6 +48811,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceScala
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41760,6 +48838,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceScala
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41773,6 +48852,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceScala
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"scalarBlockLayout\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->scalarBlockLayout); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -41795,6 +48878,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41818,6 +48905,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41831,6 +48919,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"subgroupSizeControl\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->subgroupSizeControl); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41843,6 +48935,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"computeFullSubgroups\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->computeFullSubgroups); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -41865,6 +48961,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41888,6 +48988,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41901,6 +49002,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minSubgroupSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->minSubgroupSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41913,6 +49018,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxSubgroupSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxSubgroupSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41925,6 +49034,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxComputeWorkgroupSubgroups\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->maxComputeWorkgroupSubgroups); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41937,6 +49050,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"type\" : \"VkShaderStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"requiredSubgroupSizeStages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->requiredSubgroupSizeStages, EnumToStringVkShaderStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -41959,6 +49076,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -41982,6 +49103,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -41995,6 +49117,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"requiredSubgroupSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->requiredSubgroupSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -42017,6 +49143,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42040,6 +49170,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42053,6 +49184,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkShaderCorePropertiesFlagsAMD\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderCoreFeatures\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->shaderCoreFeatures, EnumToStringVkShaderCorePropertiesFlagBitsAMDJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42065,6 +49200,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"activeComputeUnitCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->activeComputeUnitCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -42087,6 +49226,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoher
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42110,6 +49253,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoher
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42123,6 +49267,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoher
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceCoherentMemory\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->deviceCoherentMemory); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -42145,6 +49293,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42168,6 +49320,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42233,6 +49386,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42256,6 +49413,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42269,6 +49427,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryPriority\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->memoryPriority); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -42291,6 +49453,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryPriorityAlloc
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42314,6 +49480,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryPriorityAlloc
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42327,6 +49494,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryPriorityAlloc
     *out += "\"type\" : \"float\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"priority\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    DoubleToStringJson(out, pstruct->priority); // PEZ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -42349,6 +49520,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDedic
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42372,6 +49547,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDedic
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42385,6 +49561,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDedic
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dedicatedAllocationImageAliasing\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->dedicatedAllocationImageAliasing); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -42407,6 +49587,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBuffe
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42430,6 +49614,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBuffe
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42443,6 +49628,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBuffe
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferDeviceAddress\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->bufferDeviceAddress); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42455,6 +49644,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBuffe
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferDeviceAddressCaptureReplay\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->bufferDeviceAddressCaptureReplay); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42467,6 +49660,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBuffe
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferDeviceAddressMultiDevice\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->bufferDeviceAddressMultiDevice); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -42489,6 +49686,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferDeviceAddress
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42512,6 +49713,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferDeviceAddress
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42525,6 +49727,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferDeviceAddress
     *out += "\"type\" : \"VkBuffer\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, pstruct_in.buffer); // PRQ
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -42547,6 +49753,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferDeviceAddress
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42570,6 +49780,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferDeviceAddress
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42583,6 +49794,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferDeviceAddress
     *out += "\"type\" : \"VkDeviceAddress\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceAddress\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->deviceAddress); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -42605,6 +49820,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageStencilUsageCr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42628,6 +49847,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageStencilUsageCr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42641,6 +49861,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageStencilUsageCr
     *out += "\"type\" : \"VkImageUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stencilUsage\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->stencilUsage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -42663,6 +49887,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42686,6 +49914,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42699,6 +49928,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"enabledValidationFeatureCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->enabledValidationFeatureCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42740,6 +49973,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"disabledValidationFeatureCount\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->disabledValidationFeatureCount); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42791,6 +50028,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42814,6 +50055,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42827,6 +50069,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"MSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->MSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42839,6 +50085,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"NSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->NSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42851,6 +50101,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"KSize\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->KSize); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42863,6 +50117,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"type\" : \"VkComponentTypeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"AType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkComponentTypeNVJson(out, pstruct->AType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42875,6 +50133,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"type\" : \"VkComponentTypeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"BType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkComponentTypeNVJson(out, pstruct->BType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42887,6 +50149,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"type\" : \"VkComponentTypeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"CType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkComponentTypeNVJson(out, pstruct->CType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42899,6 +50165,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"type\" : \"VkComponentTypeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"DType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkComponentTypeNVJson(out, pstruct->DType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42911,6 +50181,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"type\" : \"VkScopeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"scope\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkScopeNVJson(out, pstruct->scope); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -42933,6 +50207,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42956,6 +50234,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -42969,6 +50248,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"cooperativeMatrix\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->cooperativeMatrix); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -42981,6 +50264,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"cooperativeMatrixRobustBufferAccess\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->cooperativeMatrixRobustBufferAccess); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43003,6 +50290,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43026,6 +50317,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43039,6 +50331,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
     *out += "\"type\" : \"VkShaderStageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"cooperativeMatrixSupportedStages\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->cooperativeMatrixSupportedStages, EnumToStringVkShaderStageFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43061,6 +50357,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCover
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43084,6 +50384,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCover
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43097,6 +50398,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCover
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"coverageReductionMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->coverageReductionMode); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43119,6 +50424,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageRed
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43142,6 +50451,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageRed
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43155,6 +50465,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageRed
     *out += "\"type\" : \"VkPipelineCoverageReductionStateCreateFlagsNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43167,6 +50481,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageRed
     *out += "\"type\" : \"VkCoverageReductionModeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"coverageReductionMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkCoverageReductionModeNVJson(out, pstruct->coverageReductionMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43189,6 +50507,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43212,6 +50534,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43225,6 +50548,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
     *out += "\"type\" : \"VkCoverageReductionModeNV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"coverageReductionMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkCoverageReductionModeNVJson(out, pstruct->coverageReductionMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43237,6 +50564,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
     *out += "\"type\" : \"VkSampleCountFlagBits\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rasterizationSamples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkSampleCountFlagBitsJson(out, pstruct->rasterizationSamples); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43249,6 +50580,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthStencilSamples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->depthStencilSamples, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43261,6 +50596,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
     *out += "\"type\" : \"VkSampleCountFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"colorSamples\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    FlagsToStringJson(out, pstruct->colorSamples, EnumToStringVkSampleCountFlagBitsJson); // URY
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43283,6 +50622,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43306,6 +50649,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43319,6 +50663,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fragmentShaderSampleInterlock\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fragmentShaderSampleInterlock); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43331,6 +50679,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fragmentShaderPixelInterlock\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fragmentShaderPixelInterlock); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43343,6 +50695,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fragmentShaderShadingRateInterlock\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fragmentShaderShadingRateInterlock); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43365,6 +50721,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceYcbcr
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43388,6 +50748,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceYcbcr
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43401,6 +50762,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceYcbcr
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ycbcrImageArrays\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->ycbcrImageArrays); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43423,6 +50788,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43446,6 +50815,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43459,6 +50829,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
     *out += "\"type\" : \"VkFullScreenExclusiveEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fullScreenExclusive\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkFullScreenExclusiveEXTJson(out, pstruct->fullScreenExclusive); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43481,6 +50855,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43504,6 +50882,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43517,6 +50896,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fullScreenExclusiveSupported\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->fullScreenExclusiveSupported); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43539,6 +50922,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43562,6 +50949,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43586,6 +50974,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.hmonitor /* ACF */ );
         *out += "\n";
+        //TODO: Output *hmonitor
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43609,6 +50998,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkHeadlessSurfaceCrea
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43632,6 +51025,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkHeadlessSurfaceCrea
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43645,6 +51039,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkHeadlessSurfaceCrea
     *out += "\"type\" : \"VkHeadlessSurfaceCreateFlagsEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->flags); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43667,6 +51065,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43690,6 +51092,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43703,6 +51106,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rectangularLines\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->rectangularLines); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43715,6 +51122,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bresenhamLines\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->bresenhamLines); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43727,6 +51138,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"smoothLines\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->smoothLines); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43739,6 +51154,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stippledRectangularLines\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->stippledRectangularLines); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43751,6 +51170,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stippledBresenhamLines\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->stippledBresenhamLines); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43763,6 +51186,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stippledSmoothLines\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->stippledSmoothLines); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43785,6 +51212,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43808,6 +51239,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43821,6 +51253,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"lineSubPixelPrecisionBits\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->lineSubPixelPrecisionBits); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43843,6 +51279,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43866,6 +51306,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43879,6 +51320,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkLineRasterizationModeEXT\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"lineRasterizationMode\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkLineRasterizationModeEXTJson(out, pstruct->lineRasterizationMode); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43891,6 +51336,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stippledLineEnable\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->stippledLineEnable); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43903,6 +51352,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"uint32_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"lineStippleFactor\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->lineStippleFactor); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43915,6 +51368,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"type\" : \"uint16_t\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"lineStipplePattern\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    UnsignedDecimalToStringJson(out, pstruct->lineStipplePattern); // UYW
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43937,6 +51394,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceHostQ
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -43960,6 +51421,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceHostQ
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -43973,6 +51435,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceHostQ
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"hostQueryReset\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->hostQueryReset); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -43995,6 +51461,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIndex
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -44018,6 +51488,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIndex
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -44031,6 +51502,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIndex
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indexTypeUint8\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->indexTypeUint8); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -44053,6 +51528,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -44076,6 +51555,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -44089,6 +51569,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderDemoteToHelperInvocation\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->shaderDemoteToHelperInvocation); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -44111,6 +51595,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -44134,6 +51622,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -44147,6 +51636,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"texelBufferAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->texelBufferAlignment); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS
@@ -44169,6 +51662,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
     *out += "\"type\" : \"VkStructureType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sType\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -44192,6 +51689,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
         *out += "\"address\" : \"";
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* YYQ */ );
         *out += "\n";
+        //TODO: Output *pNext
     }
     indent--;
     IndentSpacesJson(out, indent);
@@ -44205,6 +51703,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"storageTexelBufferOffsetAlignmentBytes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->storageTexelBufferOffsetAlignmentBytes); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -44217,6 +51719,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"storageTexelBufferOffsetSingleTexelAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->storageTexelBufferOffsetSingleTexelAlignment); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -44229,6 +51735,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
     *out += "\"type\" : \"VkDeviceSize\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"uniformTexelBufferOffsetAlignmentBytes\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->uniformTexelBufferOffsetAlignmentBytes); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "},\n"; // UXT
@@ -44241,6 +51751,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
     *out += "\"type\" : \"VkBool32\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"uniformTexelBufferOffsetSingleTexelAlignment\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    SignedDecimalToStringJson(out, pstruct->uniformTexelBufferOffsetSingleTexelAlignment); //EQA
+    *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent);
     *out += "}\n"; // UXS

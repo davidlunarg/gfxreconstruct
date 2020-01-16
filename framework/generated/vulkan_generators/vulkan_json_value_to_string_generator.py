@@ -33,7 +33,7 @@ class ValueToString(BaseGenerator):
             rval +='nullptr';
         rval += '}'
         return rval
-                        
+
     # Generate code to convert a value to a string.
     # A value is func arg or member of a structure - a scalar, enum, flags, array, structure, array of structures,
     # or string.
@@ -55,14 +55,14 @@ class ValueToString(BaseGenerator):
             pstruct_in = ''
             isFuncArg = True
 
-        # Print type and variable/member name
+        ###### Output type and variable/member name
         self.wc('    IndentSpacesJson(out, indent);')
         self.wc('    *out += "\\"type\\" : \\"' + value.fullType + '\\",\\n";')
         self.wc('    IndentSpacesJson(out, indent);')
         self.wc('    *out += "\\"name\\" : \\"' + value.name + '\\",\\n";')
 
         # For dev/debug
-        if value.name == "pAttributes" or value.name == "pPhysicalDeviceCount" or value.name == "pPhysicalDevices":
+        if value.name == "pUserData" or value.name == "dpy":
             print('@@@')
             print('name', str(value.name))
             print('isPointer', str(value.isPointer))
@@ -73,7 +73,7 @@ class ValueToString(BaseGenerator):
             print('inStructDict', str(value.baseType in self.structDict))
             print("")
 
-        # Print address line if needed
+        ###### Output address line if needed
         addrExpression = None
         specialPtr = (value.name in
                      ["pUserData", "handle", "hwnd", "surface", "connection", "hwnd", "hinstance",
@@ -84,7 +84,6 @@ class ValueToString(BaseGenerator):
                 addrExpression = 'base_addr + offsetof(' + structName + ', ' + value.name + ') /* RKQ */'
             else:
                 addrExpression = pstruct_in + value.name + '.GetAddress() /* UYA */'
-        #TODO: What if value.name is dpy? Should we print address line?
         if value.isPointer and value.name != "dpy":
             if isFuncArg and specialPtr:
                 self.wc('    if ( !' + value.name + ') // WWW')
@@ -132,7 +131,7 @@ class ValueToString(BaseGenerator):
             self.wc('        AddrToStringJson(out, ' + addrExpression + ' );')
             self.wc('        *out += "\\n";')
 
-        # Print arrays
+        ###### Output arrays
         if value.isArray and value.name != "dpy":
             if value.isPointer:
                 if 'latexmath' in value.arrayLength:
@@ -169,7 +168,7 @@ class ValueToString(BaseGenerator):
                 #TODO: Handle other array types
             self.wc('        *out += "]\\n";')
 
-        # Print structures
+        ###### Output structures
         elif self.isStruct(value.baseType) and (value.baseType in self.structDict):
             self.wc('        IndentSpacesJson(out, indent);')
             self.wc('        *out += "\\"members\\" :\\n";')
@@ -192,8 +191,67 @@ class ValueToString(BaseGenerator):
             self.wc('        IndentSpacesJson(out, indent);')
             self.wc('        *out += "]\\n";')
 
+
+        ###### Output pointers to non-structs and non-arrays
+        elif value.isPointer:
+            self.wc('        //TODO: Output *'+value.name)
+
+        ###### Output handles
+        elif self.isHandle(value.baseType) or value.name == 'dpy':
+            self.wc('    IndentSpacesJson(out, indent);')
+            self.wc('    *out += "\\"value\\" : \\"";')
+            self.wc('    AddrToStringJson(out, ' + pstruct_in + value.name + '); // PRQ')
+            self.wc('    *out += "\\"\\n";')
+
+        ###### Output enums
+        elif self.isEnum(value.baseType):
+            self.wc('    IndentSpacesJson(out, indent);')
+            self.wc('    *out += "\\"value\\" : \\"";')
+            self.wc('    EnumToString' + value.baseType + 'Json(out, ' + pstruct + value.name + '); // ESA')
+            self.wc('    *out += "\\"\\n";')
+
+        ###### Output flags
+        elif self.isFlags(value.baseType) and (value.baseType in self.flagsNames) and value.baseType.replace('Flags', 'FlagBits') in self.enumNames:
+            self.wc('    IndentSpacesJson(out, indent);')
+            self.wc('    *out += "\\"value\\" : \\"";')
+            self.wc('    FlagsToStringJson(out, ' + pstruct + value.name + ', EnumToString' + value.baseType.replace('Flags', 'FlagBits') + 'Json); // URY')
+            self.wc('    *out += "\\"\\n";')
+
+        ###### Output functionptrs
+        elif self.isFunctionPtr(value.baseType):
+            self.wc('    IndentSpacesJson(out, indent);')
+            self.wc('    *out += "\\"value\\" : \\"";')
+            self.wc('    AddrToStringJson(out, reinterpret_cast<uint64_t>(' + pstruct + value.name + ')); // WRX')
+            self.wc('    *out += "\\"\\n";')
+
+        ###### Output nums
+        elif value.baseType in ['float', 'double']:
+            self.wc('    IndentSpacesJson(out, indent);')
+            self.wc('    *out += "\\"value\\" : \\"";')
+            self.wc('    DoubleToStringJson(out, ' + pstruct + value.name + '); // PEZ')
+            self.wc('    *out += "\\"\\n";')
+
+        ###### Output nums
+        elif value.baseType in ['int', 'int32_t', 'int64_t', 'VkDeviceSize', 'VkBool32']:
+            self.wc('    IndentSpacesJson(out, indent);')
+            self.wc('    *out += "\\"value\\" : \\"";')
+            self.wc('    SignedDecimalToStringJson(out, ' + pstruct + value.name + '); //EQA')
+            self.wc('    *out += "\\"\\n";')
+
+        ###### Output nums
+        else:     # 'unsigned int', 'uint32_t', 'uint64_t', 'size_t', and all others
+            #THIS else can't hang here if we already printed something else
+            self.wc('    IndentSpacesJson(out, indent);')
+            self.wc('    *out += "\\"value\\" : \\"";')
+            self.wc('    UnsignedDecimalToStringJson(out, ' + pstruct + value.name + '); // UYW')
+            self.wc('    *out += "\\"\\n";')
+
         if value.isPointer and value.name != "dpy":
+            # Close off not nullptr block
             self.wc('    }')
+
+
+    #}  For vi % cmd
     #===============
 
 
