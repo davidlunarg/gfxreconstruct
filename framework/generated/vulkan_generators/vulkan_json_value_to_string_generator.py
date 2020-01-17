@@ -1,7 +1,7 @@
 #!/usr/bin/python3 -i
 #
-# Copyright (c) 2019 Valve Corporation
-# Copyright (c) 2019 LunarG, Inc.
+# Copyright (c) 2019-2020 Valve Corporation
+# Copyright (c) 2019-2020 LunarG, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ class ValueToString(BaseGenerator):
     # The structName is used when value is a member of a structure. It contains the name of the "enclosing" structure type.
     #
     # This method is called from makeConsumerFuncBody in vulkan_json_consumer_body_generator.py to generate
-    # code for to display function arguments, and from vulkan_json_consumer_struct_generator.py to generate
+    # code to display function arguments, and from vulkan_json_consumer_struct_generator.py to generate
     # code to display members of structures.
     def valueToString(self, value, structName):
         #{   // For vi % cmd
@@ -63,14 +63,13 @@ class ValueToString(BaseGenerator):
 
         # For dev/debug
         if value.name == "pUserData" or value.name == "dpy":
-            print('@@@')
-            print('name', str(value.name))
-            print('isPointer', str(value.isPointer))
-            print('isArray', str(value.isArray))
-            print('baseType', str(value.baseType))
-            print('isFuncArg', str(isFuncArg))
-            print('isStruct', str(self.isStruct(value.baseType)))
-            print('inStructDict', str(value.baseType in self.structDict))
+            print('@ name', str(value.name))
+            print('@ isPointer', str(value.isPointer))
+            print('@ isArray', str(value.isArray))
+            print('@ baseType', str(value.baseType))
+            print('@ isFuncArg', str(isFuncArg))
+            print('@ isStruct', str(self.isStruct(value.baseType)))
+            print('@ inStructDict', str(value.baseType in self.structDict))
             print("")
 
         ###### Output address line if needed
@@ -134,19 +133,26 @@ class ValueToString(BaseGenerator):
         ###### Output arrays
         if value.isArray and value.name != "dpy":
             if value.isPointer:
-                if 'latexmath' in value.arrayLength:
-                    aLength = pstruct + self.parseLateXMath(value.arrayLength)
-                elif '->' in value.arrayLength:
-                    aLength = value.arrayLength.replace('->', '.GetPointer()->')
-                elif not isFuncArg and 'Count' in value.arrayLength:
-                    aLength = 'pstruct->' + value.arrayLength
-                elif value.arrayLength.startswith('p'):
-                    aLength = '*' + value.arrayLength + '.GetPointer()'
-                else:
+                if value.fullType == 'const char*':
+                    # Treat pointer to char as a string
                     if isFuncArg:
-                        aLength = value.arrayLength
+                        self.wc('    StringToQuotedStringJson(out, ' + pstruct + value.name + '.GetPointer()); // TGJ')
                     else:
+                        self.wc('    StringToQuotedStringJson(out, ' + pstruct + value.name + '); // TGK')
+                else:
+                    if 'latexmath' in value.arrayLength:
+                        aLength = pstruct + self.parseLateXMath(value.arrayLength)
+                    elif '->' in value.arrayLength:
+                        aLength = value.arrayLength.replace('->', '.GetPointer()->')
+                    elif not isFuncArg and 'Count' in value.arrayLength:
                         aLength = 'pstruct->' + value.arrayLength
+                    elif value.arrayLength.startswith('p'):
+                        aLength = '*' + value.arrayLength + '.GetPointer()'
+                    else:
+                        if isFuncArg:
+                            aLength = value.arrayLength
+                        else:
+                            aLength = 'pstruct->' + value.arrayLength
             else:
                 if 'Count' in value.arrayLength:
                     aLength = pstruct + value.arrayLength
