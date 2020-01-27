@@ -202,7 +202,7 @@ void PadStringJson(std::string* s, size_t len)
 }
 
 template <typename T>
-void ArrayToStringJson(std::string*                     out,
+void ArrayToStringJson(std::string*                 out,
                    int                              indent,
                    const int                        pointer_count,
                    const char*                      full_type_name,
@@ -217,6 +217,7 @@ void ArrayToStringJson(std::string*                     out,
     assert(vinfo.is_flags ? vinfo.enum_to_string_func != nullptr : true);
     if (array_length == 0 || array == nullptr)
     {
+        *out += " [ ]\n";
         return;
     }
     if ((pointer_count > 2 && strstr(full_type_name, "char")) || (pointer_count > 1 && !strstr(full_type_name, "char")))
@@ -234,23 +235,37 @@ void ArrayToStringJson(std::string*                     out,
     else
     {
         std::string full_type_name_str = full_type_name;
+        //@@ Check this, shouldn't we check the last char of string?
+        //@@ Also - might be a bug in the ascii dump version of this code.
         if (*full_type_name_str.rbegin() == '*')
         {
             full_type_name_str.pop_back();
         }
         *out += "\n";
+        IndentSpacesJson(out, indent);
+        *out += "[\n";
         for (uint64_t j = 0; j < array_length; j++)
         {
-            IndentSpacesJson(out, indent + 1);
-            std::string name_and_index;
-            name_and_index += array_name;
-            name_and_index += "[";
-            UnsignedDecimalToStringJson(&name_and_index, j);
-            name_and_index += "]: ";
-            PadStringJson(&name_and_index, 32);
-            *out += name_and_index;
+            indent++;
+            IndentSpacesJson(out, indent);
+            *out += "{\n";
+            indent++;
+            IndentSpacesJson(out, indent);
+            *out += "\"type\" : \"";
             *out += full_type_name_str;
-            *out += " = ";
+            *out += "\",\n";
+            IndentSpacesJson(out, indent);
+            *out += "\"name\" : \"[";
+            std::string idx_str;
+            UnsignedDecimalToStringJson(&idx_str, j);
+            *out += idx_str;
+            *out += "]\",\n";
+            IndentSpacesJson(out, indent);
+            *out += "\"address\" : \"";
+            AddrToStringJson(out, array->GetAddress() + j * sizeof(T));
+            *out += "\",\n";
+            IndentSpacesJson(out, indent);
+            *out += "\"value\" : ";
             if (strstr(full_type_name, "char"))
             {
                 StringToQuotedStringJson(
@@ -258,9 +273,11 @@ void ArrayToStringJson(std::string*                     out,
                     ((reinterpret_cast<const BasicStringArrayDecoder<char, format::PointerAttributes::kIsString>*>(
                           array))
                          ->GetPointer())[j]);
+                *out += "\n";
             }
             else
             {
+                *out += "\"";
                 if (vinfo.is_handle_or_addr)
                 {
                     ScalarValueToStringJson(out, array->GetPointer() + j, vinfo);
@@ -269,12 +286,22 @@ void ArrayToStringJson(std::string*                     out,
                 {
                     ScalarValueToStringJson(out, array->GetPointer() + j, vinfo);
                 }
+                *out += "\"\n";
             }
+            indent--;
+            IndentSpacesJson(out, indent);
             if (j < array_length - 1)
             {
-                *out += "\n";
+                *out += "},\n";
             }
+            else
+            {
+                *out += "}\n";
+            }
+            indent--;
         }
+        IndentSpacesJson(out, indent);
+        *out += "]\n";
     }
 }
 
@@ -362,12 +389,15 @@ void ArrayOfStructsToStringJson(std::string* out,
     assert(out != nullptr);
     if (array_length == 0 || array == nullptr)
     {
+        *out += "[ ]\n";
         return;
     }
     *out += "\n";
+    IndentSpacesJson(out, indent);
+    *out += "[\n";
     for (uint64_t j = 0; j < array_length; j++)
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent+1);
         std::string name_and_index;
         name_and_index += array_name;
         name_and_index += "[";
@@ -389,7 +419,7 @@ void ArrayOfStructsToStringJson(std::string* out,
         }
         else
         {
-            StructureToStringJson(out, array[j], indent + 1, base_addr + j * sizeof(T)); // YQS
+            StructureToStringJson(out, array[j], indent, base_addr + j * sizeof(T)); // YQS
         }
         if (j < array_length - 1)
         {
