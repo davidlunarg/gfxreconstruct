@@ -45,7 +45,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateInstance\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -123,10 +123,10 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pInstance.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pInstance.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pInstance.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -145,11 +145,8 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyInstance\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -209,7 +206,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkEnumeratePhysicalDevices\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -254,7 +251,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPhysicalDeviceCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -277,8 +274,8 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPhysicalDevices.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pPhysicalDevices = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "VkPhysicalDevice*", &pPhysicalDevices, "pPhysicalDevices", *pPhysicalDeviceCount.GetPointer(), vinfo_pPhysicalDevices); // AQA
     }
@@ -299,11 +296,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceFeatures\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -362,11 +356,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceFormatProperties\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -444,7 +435,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceImageFormatProperties\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -519,7 +510,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -533,7 +524,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkImageCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, flags, EnumToStringVkImageCreateFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -577,11 +568,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceProperties\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -640,11 +628,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceQueueFamilyProperties\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -684,7 +669,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pQueueFamilyPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -707,8 +692,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pQueueFamilyProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties>(out, indent, 1, "VkQueueFamilyProperties", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -728,11 +713,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceMemoryProperties\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -793,7 +775,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateDevice\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -885,10 +867,10 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDevice.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pDevice.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pDevice.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -907,11 +889,8 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyDevice\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -971,11 +950,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDeviceQueue\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -1040,10 +1016,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pQueue.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pQueue.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pQueue.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -1065,7 +1041,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkQueueSubmit\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -1121,8 +1097,8 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSubmits.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSubmitInfo>(out, indent, 1, "VkSubmitInfo", pSubmits.GetMetaStructPointer(), "pSubmits", submitCount, false, pSubmits.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -1156,7 +1132,7 @@ void VulkanJsonConsumer::Process_vkQueueWaitIdle(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkQueueWaitIdle\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -1194,7 +1170,7 @@ void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDeviceWaitIdle\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -1235,7 +1211,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkAllocateMemory\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -1327,10 +1303,10 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pMemory.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pMemory.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pMemory.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -1350,11 +1326,8 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkFreeMemory\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -1431,7 +1404,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkMapMemory\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -1547,11 +1520,8 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkUnmapMemory\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -1600,7 +1570,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkFlushMappedMemoryRanges\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -1656,8 +1626,8 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pMemoryRanges.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkMappedMemoryRange>(out, indent, 1, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -1679,7 +1649,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkInvalidateMappedMemoryRanges\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -1735,8 +1705,8 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pMemoryRanges.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkMappedMemoryRange>(out, indent, 1, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -1757,11 +1727,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDeviceMemoryCommitment\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -1833,7 +1800,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkBindBufferMemory\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -1916,7 +1883,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkBindImageMemory\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -1997,11 +1964,8 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetBufferMemoryRequirements\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -2074,11 +2038,8 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetImageMemoryRequirements\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -2152,11 +2113,8 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetImageSparseMemoryRequirements\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -2210,7 +2168,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pSparseMemoryRequirementCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -2233,8 +2191,8 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSparseMemoryRequirements.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements>(out, indent, 1, "VkSparseImageMemoryRequirements", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -2260,11 +2218,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceSparseImageFormatProperties\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -2334,7 +2289,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -2374,7 +2329,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -2397,8 +2352,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties>(out, indent, 1, "VkSparseImageFormatProperties", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -2421,7 +2376,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkQueueBindSparse\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -2477,8 +2432,8 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pBindInfo.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkBindSparseInfo>(out, indent, 1, "VkBindSparseInfo", pBindInfo.GetMetaStructPointer(), "pBindInfo", bindInfoCount, false, pBindInfo.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -2515,7 +2470,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateFence\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -2607,10 +2562,10 @@ void VulkanJsonConsumer::Process_vkCreateFence(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pFence.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pFence.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pFence.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -2630,11 +2585,8 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyFence\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -2708,7 +2660,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkResetFences\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -2764,8 +2716,8 @@ void VulkanJsonConsumer::Process_vkResetFences(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pFences.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pFences = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AQA
     }
@@ -2787,7 +2739,7 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetFenceStatus\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -2843,7 +2795,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkWaitForFences\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -2899,8 +2851,8 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pFences.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pFences = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AQA
     }
@@ -2952,7 +2904,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateSemaphore\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -3044,10 +2996,10 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSemaphore.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSemaphore.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSemaphore.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -3067,11 +3019,8 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroySemaphore\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -3146,7 +3095,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateEvent\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -3238,10 +3187,10 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pEvent.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pEvent.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pEvent.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -3261,11 +3210,8 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyEvent\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -3338,7 +3284,7 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetEventStatus\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -3391,7 +3337,7 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkSetEvent\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -3444,7 +3390,7 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkResetEvent\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -3499,7 +3445,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateQueryPool\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -3591,10 +3537,10 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pQueryPool.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pQueryPool.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pQueryPool.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -3614,11 +3560,8 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyQueryPool\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -3697,7 +3640,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetQueryPoolResults\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -3795,8 +3738,10 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pData.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "void*", &pData, "pData", dataSize, vinfo_pData); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -3824,7 +3769,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkQueryResultFlagBitsJson); // URY
+    FlagsToStringJson(out, flags, EnumToStringVkQueryResultFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -3846,7 +3791,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateBuffer\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -3938,10 +3883,10 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pBuffer.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pBuffer.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pBuffer.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -3961,11 +3906,8 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyBuffer\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -4040,7 +3982,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateBufferView\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -4132,10 +4074,10 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pView.GetAddress() /* PIO */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pView.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pView.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -4155,11 +4097,8 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyBufferView\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -4234,7 +4173,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateImage\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -4326,10 +4265,10 @@ void VulkanJsonConsumer::Process_vkCreateImage(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pImage.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pImage.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pImage.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -4349,11 +4288,8 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyImage\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -4427,11 +4363,8 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetImageSubresourceLayout\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -4531,7 +4464,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateImageView\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -4623,10 +4556,10 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pView.GetAddress() /* PIO */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pView.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pView.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -4646,11 +4579,8 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyImageView\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -4725,7 +4655,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateShaderModule\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -4817,10 +4747,10 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pShaderModule.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pShaderModule.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pShaderModule.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -4840,11 +4770,8 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyShaderModule\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -4919,7 +4846,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreatePipelineCache\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -5011,10 +4938,10 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPipelineCache.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pPipelineCache.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pPipelineCache.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -5034,11 +4961,8 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyPipelineCache\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -5113,7 +5037,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPipelineCacheData\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -5191,8 +5115,10 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pData.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -5214,7 +5140,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkMergePipelineCaches\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -5284,8 +5210,8 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSrcCaches.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pSrcCaches = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkPipelineCache*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AQA
     }
@@ -5311,7 +5237,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateGraphicsPipelines\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -5381,8 +5307,8 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCreateInfos.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkGraphicsPipelineCreateInfo>(out, indent, 1, "VkGraphicsPipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -5431,8 +5357,8 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPipelines.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
     }
@@ -5458,7 +5384,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateComputePipelines\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -5528,8 +5454,8 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCreateInfos.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkComputePipelineCreateInfo>(out, indent, 1, "VkComputePipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -5578,8 +5504,8 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPipelines.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
     }
@@ -5601,11 +5527,8 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyPipeline\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -5680,7 +5603,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreatePipelineLayout\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -5772,10 +5695,10 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPipelineLayout.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pPipelineLayout.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pPipelineLayout.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -5795,11 +5718,8 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyPipelineLayout\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -5874,7 +5794,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateSampler\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -5966,10 +5886,10 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSampler.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSampler.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSampler.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -5989,11 +5909,8 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroySampler\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -6068,7 +5985,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateDescriptorSetLayout\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -6160,10 +6077,10 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSetLayout.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSetLayout.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSetLayout.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -6183,11 +6100,8 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyDescriptorSetLayout\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -6262,7 +6176,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateDescriptorPool\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -6354,10 +6268,10 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDescriptorPool.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pDescriptorPool.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pDescriptorPool.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -6377,11 +6291,8 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyDescriptorPool\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -6455,7 +6366,7 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkResetDescriptorPool\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -6523,7 +6434,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkAllocateDescriptorSets\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -6590,8 +6501,8 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDescriptorSets.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", pAllocateInfo.GetPointer()->descriptorSetCount, vinfo_pDescriptorSets); // AQA
     }
@@ -6615,7 +6526,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkFreeDescriptorSets\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -6685,8 +6596,8 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDescriptorSets.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AQA
     }
@@ -6710,11 +6621,8 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkUpdateDescriptorSets\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -6765,8 +6673,8 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDescriptorWrites.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkWriteDescriptorSet>(out, indent, 1, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -6804,8 +6712,8 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDescriptorCopies.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkCopyDescriptorSet>(out, indent, 1, "VkCopyDescriptorSet", pDescriptorCopies.GetMetaStructPointer(), "pDescriptorCopies", descriptorCopyCount, false, pDescriptorCopies.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -6828,7 +6736,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateFramebuffer\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -6920,10 +6828,10 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pFramebuffer.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pFramebuffer.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pFramebuffer.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -6943,11 +6851,8 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyFramebuffer\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -7022,7 +6927,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateRenderPass\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -7114,10 +7019,10 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pRenderPass.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pRenderPass.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pRenderPass.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -7137,11 +7042,8 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyRenderPass\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -7214,11 +7116,8 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetRenderAreaGranularity\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -7293,7 +7192,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateCommandPool\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -7385,10 +7284,10 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCommandPool.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pCommandPool.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pCommandPool.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -7408,11 +7307,8 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyCommandPool\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -7486,7 +7382,7 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkResetCommandPool\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -7533,7 +7429,7 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkCommandPoolResetFlagBitsJson); // URY
+    FlagsToStringJson(out, flags, EnumToStringVkCommandPoolResetFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -7554,7 +7450,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkAllocateCommandBuffers\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -7621,8 +7517,8 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCommandBuffers.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", pAllocateInfo.GetPointer()->commandBufferCount, vinfo_pCommandBuffers); // AQA
     }
@@ -7645,11 +7541,8 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkFreeCommandBuffers\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -7714,8 +7607,8 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCommandBuffers.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AQA
     }
@@ -7737,7 +7630,7 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkBeginCommandBuffer\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -7800,7 +7693,7 @@ void VulkanJsonConsumer::Process_vkEndCommandBuffer(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkEndCommandBuffer\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -7839,7 +7732,7 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkResetCommandBuffer\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -7872,7 +7765,7 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkCommandBufferResetFlagBitsJson); // URY
+    FlagsToStringJson(out, flags, EnumToStringVkCommandBufferResetFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -7892,11 +7785,8 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBindPipeline\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -7959,11 +7849,8 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetViewport\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -8028,8 +7915,8 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pViewports.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkViewport>(out, indent, 1, "VkViewport", pViewports.GetMetaStructPointer(), "pViewports", viewportCount, false, pViewports.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -8051,11 +7938,8 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetScissor\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -8120,8 +8004,8 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pScissors.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkRect2D>(out, indent, 1, "VkRect2D", pScissors.GetMetaStructPointer(), "pScissors", scissorCount, false, pScissors.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -8141,11 +8025,8 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetLineWidth\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -8194,11 +8075,8 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetDepthBias\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -8273,11 +8151,8 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetBlendConstants\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -8307,8 +8182,10 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, blendConstants.GetAddress() /* UYA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_blendConstants = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "const float", &blendConstants, "blendConstants", 4, vinfo_blendConstants); // AUA
     IndentSpacesJson(out, 4);
     *out += "}\n";
     fprintf(GetFile(), "%s", outString.c_str());
@@ -8327,11 +8204,8 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetDepthBounds\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -8393,11 +8267,8 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetStencilCompareMask\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -8425,7 +8296,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     *out += "\"name\" : \"faceMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBitsJson); // URY
+    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -8459,11 +8330,8 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetStencilWriteMask\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -8491,7 +8359,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     *out += "\"name\" : \"faceMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBitsJson); // URY
+    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -8525,11 +8393,8 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetStencilReference\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -8557,7 +8422,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     *out += "\"name\" : \"faceMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBitsJson); // URY
+    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -8596,11 +8461,8 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBindDescriptorSets\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -8693,8 +8555,8 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDescriptorSets.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AQA
     }
@@ -8733,8 +8595,10 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDynamicOffsets.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pDynamicOffsets = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pDynamicOffsets, "pDynamicOffsets", dynamicOffsetCount, vinfo_pDynamicOffsets); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -8755,11 +8619,8 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBindIndexBuffer\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -8837,11 +8698,8 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBindVertexBuffers\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -8906,8 +8764,8 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pBuffers.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pBuffers = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AQA
     }
@@ -8932,8 +8790,10 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pOffsets.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pOffsets = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -8955,11 +8815,8 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDraw\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -9052,11 +8909,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDrawIndexed\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -9162,11 +9016,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDrawIndirect\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -9258,11 +9109,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDrawIndexedIndirect\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -9353,11 +9201,8 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDispatch\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -9433,11 +9278,8 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDispatchIndirect\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -9501,11 +9343,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdCopyBuffer\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -9584,8 +9423,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pRegions.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkBufferCopy>(out, indent, 1, "VkBufferCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -9610,11 +9449,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdCopyImage\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -9721,8 +9557,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pRegions.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkImageCopy>(out, indent, 1, "VkImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -9748,11 +9584,8 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBlitImage\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -9859,8 +9692,8 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pRegions.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkImageBlit>(out, indent, 1, "VkImageBlit", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -9898,11 +9731,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdCopyBufferToImage\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -9995,8 +9825,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pRegions.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkBufferImageCopy>(out, indent, 1, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -10020,11 +9850,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdCopyImageToBuffer\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -10117,8 +9944,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pRegions.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkBufferImageCopy>(out, indent, 1, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -10141,11 +9968,8 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdUpdateBuffer\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -10224,8 +10048,10 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pData.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const void*", &pData, "pData", dataSize, vinfo_pData); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -10247,11 +10073,8 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdFillBuffer\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -10344,11 +10167,8 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdClearColorImage\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -10452,8 +10272,8 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pRanges.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkImageSubresourceRange>(out, indent, 1, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -10477,11 +10297,8 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdClearDepthStencilImage\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -10585,8 +10402,8 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pRanges.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkImageSubresourceRange>(out, indent, 1, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -10609,11 +10426,8 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdClearAttachments\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -10664,8 +10478,8 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pAttachments.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkClearAttachment>(out, indent, 1, "VkClearAttachment", pAttachments.GetMetaStructPointer(), "pAttachments", attachmentCount, false, pAttachments.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -10703,8 +10517,8 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pRects.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkClearRect>(out, indent, 1, "VkClearRect", pRects.GetMetaStructPointer(), "pRects", rectCount, false, pRects.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -10729,11 +10543,8 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdResolveImage\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -10840,8 +10651,8 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pRegions.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkImageResolve>(out, indent, 1, "VkImageResolve", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -10862,11 +10673,8 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetEvent\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -10908,7 +10716,7 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     *out += "\"name\" : \"stageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, stageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    FlagsToStringJson(out, stageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -10928,11 +10736,8 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdResetEvent\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -10974,7 +10779,7 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     *out += "\"name\" : \"stageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, stageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    FlagsToStringJson(out, stageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -11002,11 +10807,8 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdWaitEvents\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -11057,8 +10859,8 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pEvents.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pEvents = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkEvent*", &pEvents, "pEvents", eventCount, vinfo_pEvents); // AQA
     }
@@ -11074,7 +10876,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"name\" : \"srcStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    FlagsToStringJson(out, srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11088,7 +10890,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"name\" : \"dstStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    FlagsToStringJson(out, dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11125,8 +10927,8 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pMemoryBarriers.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkMemoryBarrier>(out, indent, 1, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -11164,8 +10966,8 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pBufferMemoryBarriers.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkBufferMemoryBarrier>(out, indent, 1, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -11203,8 +11005,8 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pImageMemoryBarriers.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkImageMemoryBarrier>(out, indent, 1, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -11232,11 +11034,8 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdPipelineBarrier\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -11264,7 +11063,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"name\" : \"srcStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    FlagsToStringJson(out, srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11278,7 +11077,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"name\" : \"dstStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    FlagsToStringJson(out, dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11292,7 +11091,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"name\" : \"dependencyFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, dependencyFlags, EnumToStringVkDependencyFlagBitsJson); // URY
+    FlagsToStringJson(out, dependencyFlags, EnumToStringVkDependencyFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11329,8 +11128,8 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pMemoryBarriers.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkMemoryBarrier>(out, indent, 1, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -11368,8 +11167,8 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pBufferMemoryBarriers.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkBufferMemoryBarrier>(out, indent, 1, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -11407,8 +11206,8 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pImageMemoryBarriers.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkImageMemoryBarrier>(out, indent, 1, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -11430,11 +11229,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBeginQuery\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -11490,7 +11286,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkQueryControlFlagBitsJson); // URY
+    FlagsToStringJson(out, flags, EnumToStringVkQueryControlFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -11510,11 +11306,8 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdEndQuery\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -11577,11 +11370,8 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdResetQueryPool\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -11658,11 +11448,8 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdWriteTimestamp\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -11743,11 +11530,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdCopyQueryPoolResults\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -11859,7 +11643,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkQueryResultFlagBitsJson); // URY
+    FlagsToStringJson(out, flags, EnumToStringVkQueryResultFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -11882,11 +11666,8 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdPushConstants\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -11928,7 +11709,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     *out += "\"name\" : \"stageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URY
+    FlagsToStringJson(out, stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11979,8 +11760,10 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pValues.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pValues = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const void*", &pValues, "pValues", size, vinfo_pValues); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -12000,11 +11783,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBeginRenderPass\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -12076,11 +11856,8 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdNextSubpass\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -12126,11 +11903,8 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdEndRenderPass\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -12164,11 +11938,8 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdExecuteCommands\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -12219,8 +11990,8 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCommandBuffers.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AQA
     }
@@ -12244,7 +12015,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkBindBufferMemory2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -12300,8 +12071,8 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pBindInfos.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkBindBufferMemoryInfo>(out, indent, 1, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -12323,7 +12094,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkBindImageMemory2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -12379,8 +12150,8 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pBindInfos.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkBindImageMemoryInfo>(out, indent, 1, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -12403,11 +12174,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDeviceGroupPeerMemoryFeatures\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -12504,11 +12272,8 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetDeviceMask\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -12560,11 +12325,8 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDispatchBase\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -12683,7 +12445,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkEnumeratePhysicalDeviceGroups\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -12728,7 +12490,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPhysicalDeviceGroupCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -12751,8 +12513,8 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPhysicalDeviceGroupProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPhysicalDeviceGroupProperties>(out, indent, 1, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -12773,11 +12535,8 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetImageMemoryRequirements2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -12861,11 +12620,8 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetBufferMemoryRequirements2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -12950,11 +12706,8 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetImageSparseMemoryRequirements2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -13019,7 +12772,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pSparseMemoryRequirementCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13042,8 +12795,8 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSparseMemoryRequirements.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements2>(out, indent, 1, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -13063,11 +12816,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceFeatures2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -13125,11 +12875,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceProperties2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -13188,11 +12935,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceFormatProperties2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -13266,7 +13010,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceImageFormatProperties2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -13355,11 +13099,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceQueueFamilyProperties2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -13399,7 +13140,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pQueueFamilyPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13422,8 +13163,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pQueueFamilyProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties2>(out, indent, 1, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -13443,11 +13184,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceMemoryProperties2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -13507,11 +13245,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceSparseImageFormatProperties2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -13576,7 +13311,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13599,8 +13334,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties2>(out, indent, 1, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -13621,11 +13356,8 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkTrimCommandPool\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -13687,11 +13419,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDeviceQueue2\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -13753,10 +13482,10 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pQueue.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pQueue.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pQueue.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -13778,7 +13507,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateSamplerYcbcrConversion\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -13870,10 +13599,10 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pYcbcrConversion.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pYcbcrConversion.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pYcbcrConversion.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -13893,11 +13622,8 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroySamplerYcbcrConversion\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -13972,7 +13698,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateDescriptorUpdateTemplate\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -14064,10 +13790,10 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDescriptorUpdateTemplate.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pDescriptorUpdateTemplate.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pDescriptorUpdateTemplate.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -14087,11 +13813,8 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyDescriptorUpdateTemplate\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -14164,11 +13887,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceExternalBufferProperties\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -14252,11 +13972,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceExternalFenceProperties\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -14340,11 +14057,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceExternalSemaphoreProperties\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -14428,11 +14142,8 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDescriptorSetLayoutSupport\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -14517,11 +14228,8 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroySurfaceKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -14596,7 +14304,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceSurfaceSupportKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -14686,7 +14394,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceSurfaceCapabilitiesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -14766,7 +14474,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceSurfaceFormatsKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -14825,7 +14533,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pSurfaceFormatCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -14848,8 +14556,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurfaceFormats.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSurfaceFormatKHR>(out, indent, 1, "VkSurfaceFormatKHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -14872,7 +14580,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceSurfacePresentModesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -14931,7 +14639,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPresentModeCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -14954,8 +14662,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPresentModes.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHRJson};
+        ArrayToStringJson(out, indent, 0, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -14978,7 +14688,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateSwapchainKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -15070,10 +14780,10 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSwapchain.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSwapchain.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSwapchain.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -15093,11 +14803,8 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroySwapchainKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -15172,7 +14879,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetSwapchainImagesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -15231,7 +14938,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pSwapchainImageCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -15254,8 +14961,8 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSwapchainImages.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pSwapchainImages = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "VkImage*", &pSwapchainImages, "pSwapchainImages", *pSwapchainImageCount.GetPointer(), vinfo_pSwapchainImages); // AQA
     }
@@ -15281,7 +14988,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkAcquireNextImageKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -15382,7 +15089,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pImageIndex.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -15402,7 +15109,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkQueuePresentKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -15466,7 +15173,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDeviceGroupPresentCapabilitiesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -15531,7 +15238,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDeviceGroupSurfacePresentModesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -15608,7 +15315,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDevicePresentRectanglesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -15667,7 +15374,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pRectCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -15690,8 +15397,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pRects.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkRect2D>(out, indent, 1, "VkRect2D", pRects.GetMetaStructPointer(), "pRects", *pRectCount.GetPointer(), false, pRects.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -15713,7 +15420,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkAcquireNextImage2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -15783,7 +15490,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pImageIndex.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -15805,7 +15512,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceDisplayPropertiesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -15850,7 +15557,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -15873,8 +15580,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDisplayPropertiesKHR>(out, indent, 1, "VkDisplayPropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -15896,7 +15603,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceDisplayPlanePropertiesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -15941,7 +15648,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -15964,8 +15671,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDisplayPlanePropertiesKHR>(out, indent, 1, "VkDisplayPlanePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -15988,7 +15695,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDisplayPlaneSupportedDisplaysKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -16047,7 +15754,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pDisplayCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -16070,8 +15777,8 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDisplays.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pDisplays = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "VkDisplayKHR*", &pDisplays, "pDisplays", *pDisplayCount.GetPointer(), vinfo_pDisplays); // AQA
     }
@@ -16095,7 +15802,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDisplayModePropertiesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -16154,7 +15861,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -16177,8 +15884,8 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDisplayModePropertiesKHR>(out, indent, 1, "VkDisplayModePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -16202,7 +15909,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateDisplayModeKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -16308,10 +16015,10 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pMode.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pMode.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pMode.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -16333,7 +16040,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDisplayPlaneCapabilitiesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -16427,7 +16134,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateDisplayPlaneSurfaceKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -16519,10 +16226,10 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -16546,7 +16253,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateSharedSwapchainsKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -16602,8 +16309,8 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCreateInfos.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSwapchainCreateInfoKHR>(out, indent, 1, "VkSwapchainCreateInfoKHR", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", swapchainCount, false, pCreateInfos.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -16652,8 +16359,8 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSwapchains.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AQA
     }
@@ -16678,7 +16385,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateXlibSurfaceKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -16770,10 +16477,10 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -16795,7 +16502,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceXlibPresentationSupportKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkBool32\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     fprintf(GetFile(), "%u\"\n", returnValue);
@@ -16874,7 +16581,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateXcbSurfaceKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -16966,10 +16673,10 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -16991,7 +16698,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceXcbPresentationSupportKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkBool32\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     fprintf(GetFile(), "%u\"\n", returnValue);
@@ -17082,7 +16789,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateWaylandSurfaceKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -17174,10 +16881,10 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -17198,7 +16905,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceWaylandPresentationSupportKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkBool32\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     fprintf(GetFile(), "%u\"\n", returnValue);
@@ -17275,7 +16982,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateAndroidSurfaceKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -17367,10 +17074,10 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -17393,7 +17100,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateWin32SurfaceKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -17485,10 +17192,10 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -17508,7 +17215,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceWin32PresentationSupportKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkBool32\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     fprintf(GetFile(), "%u\"\n", returnValue);
@@ -17560,11 +17267,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceFeatures2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -17622,11 +17326,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceProperties2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -17685,11 +17386,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceFormatProperties2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -17763,7 +17461,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceImageFormatProperties2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -17852,11 +17550,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceQueueFamilyProperties2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -17896,7 +17591,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pQueueFamilyPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -17919,8 +17614,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pQueueFamilyProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties2>(out, indent, 1, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -17940,11 +17635,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceMemoryProperties2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -18004,11 +17696,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceSparseImageFormatProperties2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -18073,7 +17762,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -18096,8 +17785,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties2>(out, indent, 1, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -18121,11 +17810,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDeviceGroupPeerMemoryFeaturesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -18222,11 +17908,8 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetDeviceMaskKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -18278,11 +17961,8 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDispatchBaseKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -18401,11 +18081,8 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkTrimCommandPoolKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -18469,7 +18146,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkEnumeratePhysicalDeviceGroupsKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -18514,7 +18191,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPhysicalDeviceGroupCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -18537,8 +18214,8 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPhysicalDeviceGroupProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPhysicalDeviceGroupProperties>(out, indent, 1, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -18560,11 +18237,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceExternalBufferPropertiesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -18650,7 +18324,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetMemoryWin32HandleKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -18738,7 +18412,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetMemoryWin32HandlePropertiesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -18840,7 +18514,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetMemoryFdKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -18928,7 +18602,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetMemoryFdPropertiesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -19021,11 +18695,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceExternalSemaphorePropertiesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -19110,7 +18781,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkImportSemaphoreWin32HandleKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -19175,7 +18846,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetSemaphoreWin32HandleKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -19262,7 +18933,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkImportSemaphoreFdKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -19327,7 +18998,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetSemaphoreFdKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -19417,11 +19088,8 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdPushDescriptorSetKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -19514,8 +19182,8 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDescriptorWrites.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkWriteDescriptorSet>(out, indent, 1, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -19539,7 +19207,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateDescriptorUpdateTemplateKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -19631,10 +19299,10 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDescriptorUpdateTemplate.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pDescriptorUpdateTemplate.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pDescriptorUpdateTemplate.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -19654,11 +19322,8 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyDescriptorUpdateTemplateKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -19734,7 +19399,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateRenderPass2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -19826,10 +19491,10 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pRenderPass.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pRenderPass.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pRenderPass.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -19849,11 +19514,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBeginRenderPass2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -19937,11 +19599,8 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdNextSubpass2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -20024,11 +19683,8 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdEndRenderPass2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -20088,7 +19744,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetSwapchainStatusKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -20142,11 +19798,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceExternalFencePropertiesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -20231,7 +19884,7 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkImportFenceWin32HandleKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -20296,7 +19949,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetFenceWin32HandleKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -20383,7 +20036,7 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkImportFenceFdKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -20448,7 +20101,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetFenceFdKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -20536,7 +20189,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceSurfaceCapabilities2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -20627,7 +20280,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceSurfaceFormats2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -20697,7 +20350,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pSurfaceFormatCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -20720,8 +20373,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurfaceFormats.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSurfaceFormat2KHR>(out, indent, 1, "VkSurfaceFormat2KHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -20744,7 +20397,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceDisplayProperties2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -20789,7 +20442,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -20812,8 +20465,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDisplayProperties2KHR>(out, indent, 1, "VkDisplayProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -20835,7 +20488,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceDisplayPlaneProperties2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -20880,7 +20533,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -20903,8 +20556,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDisplayPlaneProperties2KHR>(out, indent, 1, "VkDisplayPlaneProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -20927,7 +20580,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDisplayModeProperties2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -20986,7 +20639,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -21009,8 +20662,8 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDisplayModeProperties2KHR>(out, indent, 1, "VkDisplayModeProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -21032,7 +20685,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDisplayPlaneCapabilities2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -21122,11 +20775,8 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetImageMemoryRequirements2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -21210,11 +20860,8 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetBufferMemoryRequirements2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -21299,11 +20946,8 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetImageSparseMemoryRequirements2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -21368,7 +21012,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pSparseMemoryRequirementCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -21391,8 +21035,8 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSparseMemoryRequirements.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements2>(out, indent, 1, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -21416,7 +21060,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateSamplerYcbcrConversionKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -21508,10 +21152,10 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pYcbcrConversion.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pYcbcrConversion.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pYcbcrConversion.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -21531,11 +21175,8 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroySamplerYcbcrConversionKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -21610,7 +21251,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkBindBufferMemory2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -21666,8 +21307,8 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pBindInfos.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkBindBufferMemoryInfo>(out, indent, 1, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -21689,7 +21330,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkBindImageMemory2KHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -21745,8 +21386,8 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pBindInfos.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkBindImageMemoryInfo>(out, indent, 1, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -21768,11 +21409,8 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDescriptorSetLayoutSupportKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -21861,11 +21499,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDrawIndirectCountKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -21987,11 +21622,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDrawIndexedIndirectCountKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -22111,7 +21743,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetSemaphoreCounterValueKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -22170,7 +21802,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pValue.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -22191,7 +21823,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkWaitSemaphoresKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -22269,7 +21901,7 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkSignalSemaphoreKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -22336,7 +21968,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPipelineExecutablePropertiesKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -22406,7 +22038,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pExecutableCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -22429,8 +22061,8 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPipelineExecutablePropertiesKHR>(out, indent, 1, "VkPipelineExecutablePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pExecutableCount.GetPointer(), false, pProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -22453,7 +22085,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPipelineExecutableStatisticsKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -22523,7 +22155,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pStatisticCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -22546,8 +22178,8 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pStatistics.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPipelineExecutableStatisticKHR>(out, indent, 1, "VkPipelineExecutableStatisticKHR", pStatistics.GetMetaStructPointer(), "pStatistics", *pStatisticCount.GetPointer(), false, pStatistics.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -22570,7 +22202,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPipelineExecutableInternalRepresentationsKHR\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -22640,7 +22272,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pInternalRepresentationCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -22663,8 +22295,8 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pInternalRepresentations.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPipelineExecutableInternalRepresentationKHR>(out, indent, 1, "VkPipelineExecutableInternalRepresentationKHR", pInternalRepresentations.GetMetaStructPointer(), "pInternalRepresentations", *pInternalRepresentationCount.GetPointer(), false, pInternalRepresentations.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -22688,7 +22320,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateDebugReportCallbackEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -22780,10 +22412,10 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCallback.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pCallback.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pCallback.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -22803,11 +22435,8 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyDebugReportCallbackEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -22885,11 +22514,8 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDebugReportMessageEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -22917,7 +22543,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkDebugReportFlagBitsEXTJson); // URY
+    FlagsToStringJson(out, flags, EnumToStringVkDebugReportFlagBitsEXTJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -23046,7 +22672,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDebugMarkerSetObjectTagEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -23110,7 +22736,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDebugMarkerSetObjectNameEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -23173,11 +22799,8 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDebugMarkerBeginEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -23234,11 +22857,8 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerEndEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDebugMarkerEndEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -23271,11 +22891,8 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDebugMarkerInsertEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -23338,11 +22955,8 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBindTransformFeedbackBuffersEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -23407,8 +23021,8 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pBuffers.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pBuffers = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AQA
     }
@@ -23433,8 +23047,10 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pOffsets.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pOffsets = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -23457,8 +23073,10 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSizes.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pSizes = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const VkDeviceSize*", &pSizes, "pSizes", bindingCount, vinfo_pSizes); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -23480,11 +23098,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBeginTransformFeedbackEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -23549,8 +23164,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCounterBuffers.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pCounterBuffers = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AQA
     }
@@ -23575,8 +23190,10 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCounterBufferOffsets.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pCounterBufferOffsets = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -23598,11 +23215,8 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdEndTransformFeedbackEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -23667,8 +23281,8 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCounterBuffers.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pCounterBuffers = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AQA
     }
@@ -23693,8 +23307,10 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCounterBufferOffsets.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pCounterBufferOffsets = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -23716,11 +23332,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBeginQueryIndexedEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -23776,7 +23389,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkQueryControlFlagBitsJson); // URY
+    FlagsToStringJson(out, flags, EnumToStringVkQueryControlFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -23811,11 +23424,8 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdEndQueryIndexedEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -23895,11 +23505,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDrawIndirectByteCountEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -24018,7 +23625,7 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetImageViewHandleNVX\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"uint32_t\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     fprintf(GetFile(), "%u\"\n", returnValue);
@@ -24086,11 +23693,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDrawIndirectCountAMD\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -24212,11 +23816,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDrawIndexedIndirectCountAMD\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -24339,7 +23940,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetShaderInfoAMD\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -24445,8 +24046,10 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pInfo.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pInfo = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "void*", &pInfo, "pInfo", *pInfoSize.GetPointer(), vinfo_pInfo); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -24469,7 +24072,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateStreamDescriptorSurfaceGGP\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -24561,10 +24164,10 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -24591,7 +24194,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceExternalImageFormatPropertiesNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -24666,7 +24269,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -24680,7 +24283,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkImageCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, flags, EnumToStringVkImageCreateFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -24694,7 +24297,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"name\" : \"externalHandleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, externalHandleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    FlagsToStringJson(out, externalHandleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -24742,7 +24345,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetMemoryWin32HandleNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -24789,7 +24392,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -24834,7 +24437,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateViSurfaceNN\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -24926,10 +24529,10 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -24949,11 +24552,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBeginConditionalRenderingEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -25010,11 +24610,8 @@ void VulkanJsonConsumer::Process_vkCmdEndConditionalRenderingEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdEndConditionalRenderingEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -25048,11 +24645,8 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdProcessCommandsNVX\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -25110,11 +24704,8 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdReserveSpaceForCommandsNVX\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -25175,7 +24766,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateIndirectCommandsLayoutNVX\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -25267,10 +24858,10 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pIndirectCommandsLayout.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pIndirectCommandsLayout.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pIndirectCommandsLayout.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -25290,11 +24881,8 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyIndirectCommandsLayoutNVX\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -25369,7 +24957,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateObjectTableNVX\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -25461,10 +25049,10 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pObjectTable.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pObjectTable.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pObjectTable.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -25484,11 +25072,8 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyObjectTableNVX\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -25564,7 +25149,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkUnregisterObjectsNVX\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -25634,8 +25219,10 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pObjectEntryTypes.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pObjectEntryTypes = {false, true, false, EnumToStringVkObjectEntryTypeNVXJson};
+        ArrayToStringJson(out, indent, 0, "const VkObjectEntryTypeNVX*", &pObjectEntryTypes, "pObjectEntryTypes", objectCount, vinfo_pObjectEntryTypes); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -25658,8 +25245,10 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pObjectIndices.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pObjectIndices = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pObjectIndices, "pObjectIndices", objectCount, vinfo_pObjectIndices); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -25679,11 +25268,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -25769,11 +25355,8 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetViewportWScalingNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -25838,8 +25421,8 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pViewportWScalings.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkViewportWScalingNV>(out, indent, 1, "VkViewportWScalingNV", pViewportWScalings.GetMetaStructPointer(), "pViewportWScalings", viewportCount, false, pViewportWScalings.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -25861,7 +25444,7 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkReleaseDisplayEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -25916,7 +25499,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkAcquireXlibDisplayEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -25981,7 +25564,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetRandROutputDisplayEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -26047,10 +25630,10 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDisplay.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pDisplay.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pDisplay.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -26072,7 +25655,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceSurfaceCapabilities2EXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -26152,7 +25735,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDisplayPowerControlEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -26232,7 +25815,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkRegisterDeviceEventEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -26324,10 +25907,10 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pFence.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pFence.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pFence.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -26350,7 +25933,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkRegisterDisplayEventEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -26456,10 +26039,10 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pFence.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pFence.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pFence.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -26481,7 +26064,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetSwapchainCounterEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -26554,7 +26137,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pCounterValue.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -26576,7 +26159,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetRefreshCycleDurationGOOGLE\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -26656,7 +26239,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPastPresentationTimingGOOGLE\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -26715,7 +26298,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPresentationTimingCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -26738,8 +26321,8 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPresentationTimings.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPastPresentationTimingGOOGLE>(out, indent, 1, "VkPastPresentationTimingGOOGLE", pPresentationTimings.GetMetaStructPointer(), "pPresentationTimings", *pPresentationTimingCount.GetPointer(), false, pPresentationTimings.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -26762,11 +26345,8 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetDiscardRectangleEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -26831,8 +26411,8 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDiscardRectangles.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkRect2D>(out, indent, 1, "VkRect2D", pDiscardRectangles.GetMetaStructPointer(), "pDiscardRectangles", discardRectangleCount, false, pDiscardRectangles.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -26855,11 +26435,8 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkSetHdrMetadataEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -26910,8 +26487,8 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSwapchains.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AQA
     }
@@ -26936,8 +26513,8 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pMetadata.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkHdrMetadataEXT>(out, indent, 1, "VkHdrMetadataEXT", pMetadata.GetMetaStructPointer(), "pMetadata", swapchainCount, false, pMetadata.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -26961,7 +26538,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateIOSSurfaceMVK\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -27053,10 +26630,10 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -27079,7 +26656,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateMacOSSurfaceMVK\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -27171,10 +26748,10 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -27195,7 +26772,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkSetDebugUtilsObjectNameEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -27259,7 +26836,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkSetDebugUtilsObjectTagEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -27322,11 +26899,8 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkQueueBeginDebugUtilsLabelEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -27383,11 +26957,8 @@ void VulkanJsonConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkQueueEndDebugUtilsLabelEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -27420,11 +26991,8 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkQueueInsertDebugUtilsLabelEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -27482,11 +27050,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBeginDebugUtilsLabelEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -27543,11 +27108,8 @@ void VulkanJsonConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdEndDebugUtilsLabelEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -27580,11 +27142,8 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdInsertDebugUtilsLabelEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -27645,7 +27204,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateDebugUtilsMessengerEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -27737,10 +27296,10 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pMessenger.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pMessenger.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pMessenger.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -27760,11 +27319,8 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyDebugUtilsMessengerEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -27838,11 +27394,8 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkSubmitDebugUtilsMessageEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -27884,7 +27437,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     *out += "\"name\" : \"messageTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, messageTypes, EnumToStringVkDebugUtilsMessageTypeFlagBitsEXTJson); // URY
+    FlagsToStringJson(out, messageTypes, EnumToStringVkDebugUtilsMessageTypeFlagBitsEXTJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -27931,7 +27484,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetAndroidHardwareBufferPropertiesANDROID\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -28018,7 +27571,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetMemoryAndroidHardwareBufferANDROID\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -28104,11 +27657,8 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetSampleLocationsEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -28167,11 +27717,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceMultisamplePropertiesEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -28246,7 +27793,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetImageDrmFormatModifierPropertiesEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -28327,7 +27874,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateValidationCacheEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -28419,10 +27966,10 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pValidationCache.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pValidationCache.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pValidationCache.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -28442,11 +27989,8 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyValidationCacheEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -28521,7 +28065,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkMergeValidationCachesEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -28591,8 +28135,8 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSrcCaches.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pSrcCaches = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkValidationCacheEXT*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AQA
     }
@@ -28616,7 +28160,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetValidationCacheDataEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -28694,8 +28238,10 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pData.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -28716,11 +28262,8 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBindShadingRateImageNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -28783,11 +28326,8 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetViewportShadingRatePaletteNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -28852,8 +28392,8 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pShadingRatePalettes.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkShadingRatePaletteNV>(out, indent, 1, "VkShadingRatePaletteNV", pShadingRatePalettes.GetMetaStructPointer(), "pShadingRatePalettes", viewportCount, false, pShadingRatePalettes.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -28875,11 +28415,8 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetCoarseSampleOrderNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -28944,8 +28481,8 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCustomSampleOrders.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkCoarseSampleOrderCustomNV>(out, indent, 1, "VkCoarseSampleOrderCustomNV", pCustomSampleOrders.GetMetaStructPointer(), "pCustomSampleOrders", customSampleOrderCount, false, pCustomSampleOrders.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -28969,7 +28506,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateAccelerationStructureNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -29061,10 +28598,10 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pAccelerationStructure.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pAccelerationStructure.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pAccelerationStructure.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -29084,11 +28621,8 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkDestroyAccelerationStructureNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -29161,11 +28695,8 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetAccelerationStructureMemoryRequirementsNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -29250,7 +28781,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkBindAccelerationStructureMemoryNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -29306,8 +28837,8 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pBindInfos.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkBindAccelerationStructureMemoryInfoNV>(out, indent, 1, "VkBindAccelerationStructureMemoryInfoNV", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -29334,11 +28865,8 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdBuildAccelerationStructureNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -29496,11 +29024,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdCopyAccelerationStructureNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -29588,11 +29113,8 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdTraceRaysNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -29826,7 +29348,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateRayTracingPipelinesNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -29896,8 +29418,8 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCreateInfos.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkRayTracingPipelineCreateInfoNV>(out, indent, 1, "VkRayTracingPipelineCreateInfoNV", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -29946,8 +29468,8 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPipelines.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
     }
@@ -29973,7 +29495,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetRayTracingShaderGroupHandlesNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -30071,8 +29593,10 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pData.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "void*", &pData, "pData", dataSize, vinfo_pData); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -30094,7 +29618,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetAccelerationStructureHandleNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -30164,8 +29688,10 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pData.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "void*", &pData, "pData", dataSize, vinfo_pData); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -30188,11 +29714,8 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdWriteAccelerationStructuresPropertiesNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -30243,8 +29766,8 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pAccelerationStructures.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pAccelerationStructures = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkAccelerationStructureNV*", &pAccelerationStructures, "pAccelerationStructures", accelerationStructureCount, vinfo_pAccelerationStructures); // AQA
     }
@@ -30309,7 +29832,7 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCompileDeferredNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -30379,7 +29902,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetMemoryHostPointerPropertiesEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -30482,11 +30005,8 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdWriteBufferMarkerAMD\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -30578,7 +30098,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceCalibrateableTimeDomainsEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -30623,7 +30143,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pTimeDomainCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -30646,8 +30166,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pTimeDomains.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pTimeDomains = {false, true, false, EnumToStringVkTimeDomainEXTJson};
+        ArrayToStringJson(out, indent, 0, "VkTimeDomainEXT*", &pTimeDomains, "pTimeDomains", *pTimeDomainCount.GetPointer(), vinfo_pTimeDomains); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -30670,7 +30192,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetCalibratedTimestampsEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -30726,8 +30248,8 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pTimestampInfos.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkCalibratedTimestampInfoEXT>(out, indent, 1, "VkCalibratedTimestampInfoEXT", pTimestampInfos.GetMetaStructPointer(), "pTimestampInfos", timestampCount, false, pTimestampInfos.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -30751,8 +30273,10 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pTimestamps.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pTimestamps = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "uint64_t*", &pTimestamps, "pTimestamps", timestampCount, vinfo_pTimestamps); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -30778,7 +30302,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pMaxDeviation.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -30799,11 +30323,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDrawMeshTasksNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -30867,11 +30388,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDrawMeshTasksIndirectNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -30965,11 +30483,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdDrawMeshTasksIndirectCountNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -31089,11 +30604,8 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetExclusiveScissorNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -31158,8 +30670,8 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pExclusiveScissors.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkRect2D>(out, indent, 1, "VkRect2D", pExclusiveScissors.GetMetaStructPointer(), "pExclusiveScissors", exclusiveScissorCount, false, pExclusiveScissors.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -31180,11 +30692,8 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetCheckpointNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -31240,11 +30749,8 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetQueueCheckpointDataNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -31284,7 +30790,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pCheckpointDataCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -31307,8 +30813,8 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCheckpointData.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkCheckpointDataNV>(out, indent, 1, "VkCheckpointDataNV", pCheckpointData.GetMetaStructPointer(), "pCheckpointData", *pCheckpointDataCount.GetPointer(), false, pCheckpointData.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -31330,7 +30836,7 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkInitializePerformanceApiINTEL\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -31392,11 +30898,8 @@ void VulkanJsonConsumer::Process_vkUninitializePerformanceApiINTEL(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkUninitializePerformanceApiINTEL\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -31430,7 +30933,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetPerformanceMarkerINTEL\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -31494,7 +30997,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetPerformanceStreamMarkerINTEL\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -31558,7 +31061,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetPerformanceOverrideINTEL\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -31623,7 +31126,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkAcquirePerformanceConfigurationINTEL\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -31690,10 +31193,10 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pConfiguration.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pConfiguration.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pConfiguration.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -31713,7 +31216,7 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkReleasePerformanceConfigurationINTEL\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -31766,7 +31269,7 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkQueueSetPerformanceConfigurationINTEL\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -31820,7 +31323,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPerformanceParameterINTEL\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -31899,11 +31402,8 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkSetLocalDimmingAMD\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -31968,7 +31468,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateImagePipeSurfaceFUCHSIA\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -32060,10 +31560,10 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -32086,7 +31586,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateMetalSurfaceEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -32178,10 +31678,10 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -32202,7 +31702,7 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetBufferDeviceAddressEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkDeviceAddress\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     fprintf(GetFile(), "0x%" PRIx64 "\"\n", returnValue);
@@ -32267,7 +31767,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceCooperativeMatrixPropertiesNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -32312,7 +31812,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -32335,8 +31835,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pProperties.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkCooperativeMatrixPropertiesNV>(out, indent, 1, "VkCooperativeMatrixPropertiesNV", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -32359,7 +31859,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -32404,7 +31904,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pCombinationCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -32427,8 +31927,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCombinations.GetAddress() /* RQA */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkFramebufferMixedSamplesCombinationNV>(out, indent, 1, "VkFramebufferMixedSamplesCombinationNV", pCombinations.GetMetaStructPointer(), "pCombinations", *pCombinationCount.GetPointer(), false, pCombinations.GetAddress());  // CRO
     }
     IndentSpacesJson(out, 4);
@@ -32452,7 +31952,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetPhysicalDeviceSurfacePresentModes2EXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -32522,7 +32022,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
         SignedDecimalToStringJson(out, *pPresentModeCount.GetPointer());
-    *out += "\"\n";
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -32545,8 +32045,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPresentModes.GetAddress() /* TWO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHRJson};
+        ArrayToStringJson(out, indent, 0, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUA
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -32566,7 +32068,7 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkAcquireFullScreenExclusiveModeEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -32619,7 +32121,7 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkReleaseFullScreenExclusiveModeEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -32673,7 +32175,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkGetDeviceGroupSurfacePresentModes2EXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -32762,7 +32264,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCreateHeadlessSurfaceEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"VkResult\",\n");
     fprintf(GetFile(), "            \"returnValue\" : \"");
     EnumToStringVkResultJson(&outString, returnValue);
@@ -32854,10 +32356,10 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSurface.GetAddress() /* QZX */ );
         *out += "\",\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"value\" : \"";
-    AddrToStringJson(out, *pSurface.GetPointer()); // URW
-    *out += "\"\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *pSurface.GetPointer()); // URY
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -32878,11 +32380,8 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkCmdSetLineStippleEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT
@@ -32946,11 +32445,8 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     uint32_t indent = 5;
     fprintf(GetFile(), "        {\n");
     fprintf(GetFile(), "            \"name\" : \"vkResetQueryPoolEXT\",\n");   // FCN
-    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 0);
+    fprintf(GetFile(), "            \"thread\" : \"Thread %ld\",\n", 13216);
     fprintf(GetFile(), "            \"returnType\" : \"void\",\n");
-    fprintf(GetFile(), "            \"returnValue\" : \"");
-    fprintf(GetFile(), "\"void\"");
-    fprintf(GetFile(), ",\n");
     fprintf(GetFile(), "            \"args\" :\n");
     fprintf(GetFile(), "            [\n");
     outString = ""; //URT

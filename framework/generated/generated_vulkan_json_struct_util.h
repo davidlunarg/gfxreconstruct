@@ -807,8 +807,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.ppEnabledLayerNames.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRG
         ScalarValueToStringStruct vinfo_ppEnabledLayerNames = {false, false, false, nullptr};
         ArrayToStringJson(out, indent, 1, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); //UQA
     }
@@ -851,8 +851,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.ppEnabledExtensionNames.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRG
         ScalarValueToStringStruct vinfo_ppEnabledExtensionNames = {false, false, false, nullptr};
         ArrayToStringJson(out, indent, 1, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); //UQA
     }
@@ -1902,7 +1902,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties &p
     *out += "\"name\" : \"linearTilingFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->linearTilingFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->linearTilingFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -1918,7 +1918,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties &p
     *out += "\"name\" : \"optimalTilingFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->optimalTilingFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->optimalTilingFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -1934,7 +1934,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties &p
     *out += "\"name\" : \"bufferFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->bufferFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->bufferFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -2077,7 +2077,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatProperti
     *out += "\"name\" : \"sampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->sampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -2959,8 +2959,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceLimits, maxComputeWorkGroupCount) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_maxComputeWorkGroupCount = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "uint32_t", &pstruct_in.maxComputeWorkGroupCount, "maxComputeWorkGroupCount", 3, vinfo_maxComputeWorkGroupCount); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -2993,8 +2995,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceLimits, maxComputeWorkGroupSize) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_maxComputeWorkGroupSize = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "uint32_t", &pstruct_in.maxComputeWorkGroupSize, "maxComputeWorkGroupSize", 3, vinfo_maxComputeWorkGroupSize); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -3139,8 +3143,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceLimits, maxViewportDimensions) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_maxViewportDimensions = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "uint32_t", &pstruct_in.maxViewportDimensions, "maxViewportDimensions", 2, vinfo_maxViewportDimensions); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -3157,8 +3163,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceLimits, viewportBoundsRange) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_viewportBoundsRange = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "float", &pstruct_in.viewportBoundsRange, "viewportBoundsRange", 2, vinfo_viewportBoundsRange); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -3413,7 +3421,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"framebufferColorSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->framebufferColorSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->framebufferColorSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3429,7 +3437,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"framebufferDepthSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->framebufferDepthSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->framebufferDepthSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3445,7 +3453,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"framebufferStencilSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->framebufferStencilSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->framebufferStencilSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3461,7 +3469,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"framebufferNoAttachmentsSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->framebufferNoAttachmentsSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->framebufferNoAttachmentsSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3493,7 +3501,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"sampledImageColorSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampledImageColorSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->sampledImageColorSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3509,7 +3517,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"sampledImageIntegerSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampledImageIntegerSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->sampledImageIntegerSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3525,7 +3533,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"sampledImageDepthSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampledImageDepthSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->sampledImageDepthSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3541,7 +3549,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"sampledImageStencilSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampledImageStencilSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->sampledImageStencilSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3557,7 +3565,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"storageImageSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->storageImageSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->storageImageSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3687,8 +3695,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceLimits, pointSizeRange) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pointSizeRange = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "float", &pstruct_in.pointSizeRange, "pointSizeRange", 2, vinfo_pointSizeRange); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -3705,8 +3715,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceLimits, lineWidthRange) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_lineWidthRange = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "float", &pstruct_in.lineWidthRange, "lineWidthRange", 2, vinfo_lineWidthRange); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -4027,8 +4039,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceProperties, deviceName) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"value\" : "; // TRH
+        ScalarValueToStringStruct vinfo_deviceName = {false, false, false, nullptr};
+        ArrayOfScalarsToStringJson<char>(out, indent, 0, "char", pstruct_in.deviceName.GetPointer(), "deviceName", VK_MAX_PHYSICAL_DEVICE_NAME_SIZE, vinfo_deviceName); // TRJ
+        *out += "\n"; // TRX
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -4045,8 +4060,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceProperties, pipelineCacheUUID) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pipelineCacheUUID = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "uint8_t", &pstruct_in.pipelineCacheUUID, "pipelineCacheUUID", VK_UUID_SIZE, vinfo_pipelineCacheUUID); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -4107,7 +4124,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyProperti
     *out += "\"name\" : \"queueFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->queueFlags, EnumToStringVkQueueFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->queueFlags, EnumToStringVkQueueFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4186,7 +4203,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryType &pstruct
     *out += "\"name\" : \"propertyFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->propertyFlags, EnumToStringVkMemoryPropertyFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->propertyFlags, EnumToStringVkMemoryPropertyFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4250,7 +4267,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryHeap &pstruct
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkMemoryHeapFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkMemoryHeapFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4300,8 +4317,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceMemoryProperties, memoryTypes) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkMemoryType>(out, indent, 0, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount, false, pstruct_in.memoryTypes->GetAddress());  // CCY
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4335,8 +4352,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceMemoryProperties, memoryHeaps) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkMemoryHeap>(out, indent, 0, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount, false, pstruct_in.memoryHeaps->GetAddress());  // CCY
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4408,7 +4425,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueCreateIn
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDeviceQueueCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDeviceQueueCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4465,8 +4482,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueCreateIn
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pQueuePriorities.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pQueuePriorities = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const float*", &pstruct_in.pQueuePriorities, "pQueuePriorities", pstruct->queueCount, vinfo_pQueuePriorities); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4579,8 +4598,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pQueueCreateInfos->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDeviceQueueCreateInfo>(out, indent, 1, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress());  // CCY
     }
     indent--;
@@ -4622,8 +4641,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.ppEnabledLayerNames.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRG
         ScalarValueToStringStruct vinfo_ppEnabledLayerNames = {false, false, false, nullptr};
         ArrayToStringJson(out, indent, 1, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); //UQA
     }
@@ -4666,8 +4685,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.ppEnabledExtensionNames.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRG
         ScalarValueToStringStruct vinfo_ppEnabledExtensionNames = {false, false, false, nullptr};
         ArrayToStringJson(out, indent, 1, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); //UQA
     }
@@ -4730,8 +4749,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExtensionProperties
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkExtensionProperties, extensionName) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"value\" : "; // TRH
+        ScalarValueToStringStruct vinfo_extensionName = {false, false, false, nullptr};
+        ArrayOfScalarsToStringJson<char>(out, indent, 0, "char", pstruct_in.extensionName.GetPointer(), "extensionName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_extensionName); // TRJ
+        *out += "\n"; // TRX
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -4780,8 +4802,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkLayerProperties &ps
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkLayerProperties, layerName) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"value\" : "; // TRH
+        ScalarValueToStringStruct vinfo_layerName = {false, false, false, nullptr};
+        ArrayOfScalarsToStringJson<char>(out, indent, 0, "char", pstruct_in.layerName.GetPointer(), "layerName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_layerName); // TRJ
+        *out += "\n"; // TRX
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -4830,8 +4855,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkLayerProperties &ps
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkLayerProperties, description) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"value\" : "; // TRH
+        ScalarValueToStringStruct vinfo_description = {false, false, false, nullptr};
+        ArrayOfScalarsToStringJson<char>(out, indent, 0, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // TRJ
+        *out += "\n"; // TRX
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "}\n"; // UXS
@@ -4927,8 +4955,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pWaitSemaphores.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pWaitSemaphores = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AQA
     }
@@ -4955,8 +4983,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pWaitDstStageMask.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pWaitDstStageMask = {false, false, true, EnumToStringVkPipelineStageFlagBitsJson};
+        ArrayToStringJson(out, indent, 0, "const VkPipelineStageFlags*", &pstruct_in.pWaitDstStageMask, "pWaitDstStageMask", pstruct->waitSemaphoreCount, vinfo_pWaitDstStageMask); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4997,8 +5027,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pCommandBuffers.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkCommandBuffer*", &pstruct_in.pCommandBuffers, "pCommandBuffers", pstruct->commandBufferCount, vinfo_pCommandBuffers); // AQA
     }
@@ -5041,8 +5071,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSignalSemaphores.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pSignalSemaphores = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AQA
     }
@@ -5332,7 +5362,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageFormatPr
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5363,7 +5393,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageFormatPr
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseImageFormatFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseImageFormatFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5554,7 +5584,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseMemoryBind &p
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseMemoryBindFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseMemoryBindFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5627,8 +5657,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseBufferMemoryB
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pBinds->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSparseMemoryBind>(out, indent, 1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress());  // CCY
     }
     indent--;
@@ -5702,8 +5732,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageOpaqueMe
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pBinds->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSparseMemoryBind>(out, indent, 1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress());  // CCY
     }
     indent--;
@@ -5736,7 +5766,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresource &p
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5941,7 +5971,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryBi
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseMemoryBindFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseMemoryBindFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6014,8 +6044,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryBi
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pBinds->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryBind>(out, indent, 1, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress());  // CCY
     }
     indent--;
@@ -6113,8 +6143,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pWaitSemaphores.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pWaitSemaphores = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AQA
     }
@@ -6157,8 +6187,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pBufferBinds->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSparseBufferMemoryBindInfo>(out, indent, 1, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress());  // CCY
     }
     indent--;
@@ -6200,8 +6230,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pImageOpaqueBinds->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSparseImageOpaqueMemoryBindInfo>(out, indent, 1, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress());  // CCY
     }
     indent--;
@@ -6243,8 +6273,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pImageBinds->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryBindInfo>(out, indent, 1, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress());  // CCY
     }
     indent--;
@@ -6286,8 +6316,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSignalSemaphores.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pSignalSemaphores = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AQA
     }
@@ -6361,7 +6391,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceCreateInfo &ps
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6625,7 +6655,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"name\" : \"pipelineStatistics\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->pipelineStatistics, EnumToStringVkQueryPipelineStatisticFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->pipelineStatistics, EnumToStringVkQueryPipelineStatisticFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6697,7 +6727,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBufferCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBufferCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6729,7 +6759,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkBufferUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkBufferUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6786,8 +6816,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pQueueFamilyIndices.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6995,7 +7027,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7122,7 +7154,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7179,8 +7211,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pQueueFamilyIndices.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7404,7 +7438,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceRan
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7540,7 +7574,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageViewCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageViewCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7690,7 +7724,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleCreateI
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkShaderModuleCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkShaderModuleCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7731,8 +7765,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleCreateI
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pCode.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pCode = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pCode, "pCode", pstruct->codeSize, vinfo_pCode); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7845,8 +7881,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCacheCreate
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pInitialData.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pInitialData = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const void*", &pstruct_in.pInitialData, "pInitialData", pstruct->initialDataSize, vinfo_pInitialData); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7967,8 +8005,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSpecializationInfo 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pMapEntries->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSpecializationMapEntry>(out, indent, 1, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress());  // CCY
     }
     indent--;
@@ -8010,8 +8048,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSpecializationInfo 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pData.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8083,7 +8123,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineShaderStageCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineShaderStageCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8427,8 +8467,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pVertexBindingDescriptions->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkVertexInputBindingDescription>(out, indent, 1, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress());  // CCY
     }
     indent--;
@@ -8470,8 +8510,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pVertexAttributeDescriptions->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkVertexInputAttributeDescription>(out, indent, 1, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress());  // CCY
     }
     indent--;
@@ -9031,8 +9071,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSta
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pViewports->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkViewport>(out, indent, 1, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress());  // CCY
     }
     indent--;
@@ -9074,8 +9114,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSta
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pScissors->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkRect2D>(out, indent, 1, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress());  // CCY
     }
     indent--;
@@ -9212,7 +9252,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"cullMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->cullMode, EnumToStringVkCullModeFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->cullMode, EnumToStringVkCullModeFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9453,8 +9493,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSampleMask.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pSampleMask = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const VkSampleMask*", &pstruct_in.pSampleMask, "pSampleMask", pstruct->rasterizationSamples, vinfo_pSampleMask); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9972,7 +10014,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"name\" : \"colorWriteMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->colorWriteMask, EnumToStringVkColorComponentFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->colorWriteMask, EnumToStringVkColorComponentFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10117,8 +10159,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAttachments->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPipelineColorBlendAttachmentState>(out, indent, 1, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress());  // CCY
     }
     indent--;
@@ -10137,8 +10179,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPipelineColorBlendStateCreateInfo, blendConstants) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_blendConstants = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "float", &pstruct_in.blendConstants, "blendConstants", 4, vinfo_blendConstants); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "}\n"; // UXS
@@ -10250,8 +10294,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDynamicStat
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDynamicStates.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pDynamicStates = {false, true, false, EnumToStringVkDynamicStateJson};
+        ArrayToStringJson(out, indent, 0, "const VkDynamicState*", &pstruct_in.pDynamicStates, "pDynamicStates", pstruct->dynamicStateCount, vinfo_pDynamicStates); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10323,7 +10369,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10364,8 +10410,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pStages->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPipelineShaderStageCreateInfo>(out, indent, 1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress());  // CCY
     }
     indent--;
@@ -10761,7 +10807,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkComputePipelineCrea
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10856,7 +10902,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPushConstantRange &
     *out += "\"name\" : \"stageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11001,8 +11047,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineLayoutCreat
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSetLayouts.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pSetLayouts = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->setLayoutCount, vinfo_pSetLayouts); // AQA
     }
@@ -11045,8 +11091,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineLayoutCreat
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pPushConstantRanges->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPushConstantRange>(out, indent, 1, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress());  // CCY
     }
     indent--;
@@ -11119,7 +11165,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSamplerCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSamplerCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11439,7 +11485,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"name\" : \"stageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11464,8 +11510,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pImmutableSamplers.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pImmutableSamplers = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkSampler*", &pstruct_in.pImmutableSamplers, "pImmutableSamplers", pstruct->descriptorCount, vinfo_pImmutableSamplers); // AQA
     }
@@ -11539,7 +11585,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDescriptorSetLayoutCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDescriptorSetLayoutCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11580,8 +11626,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pBindings->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDescriptorSetLayoutBinding>(out, indent, 1, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress());  // CCY
     }
     indent--;
@@ -11702,7 +11748,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolCreat
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDescriptorPoolCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDescriptorPoolCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11759,8 +11805,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolCreat
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pPoolSizes->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDescriptorPoolSize>(out, indent, 1, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress());  // CCY
     }
     indent--;
@@ -11874,8 +11920,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetAlloca
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSetLayouts.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pSetLayouts = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->descriptorSetCount, vinfo_pSetLayouts); // AQA
     }
@@ -12166,8 +12212,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pImageInfo->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDescriptorImageInfo>(out, indent, 1, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress());  // CCY
     }
     indent--;
@@ -12193,8 +12239,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pBufferInfo->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDescriptorBufferInfo>(out, indent, 1, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress());  // CCY
     }
     indent--;
@@ -12220,8 +12266,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pTexelBufferView.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pTexelBufferView = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkBufferView*", &pstruct_in.pTexelBufferView, "pTexelBufferView", pstruct->descriptorCount, vinfo_pTexelBufferView); // AQA
     }
@@ -12463,7 +12509,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFramebufferCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFramebufferCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12520,8 +12566,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAttachments.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pAttachments = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AQA
     }
@@ -12603,7 +12649,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkAttachmentDescriptionFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkAttachmentDescriptionFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12811,7 +12857,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSubpassDescriptionFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSubpassDescriptionFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12868,8 +12914,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pInputAttachments->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(out, indent, 1, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress());  // CCY
     }
     indent--;
@@ -12911,8 +12957,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pColorAttachments->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(out, indent, 1, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress());  // CCY
     }
     indent--;
@@ -12938,8 +12984,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pResolveAttachments->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(out, indent, 1, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress());  // CCY
     }
     indent--;
@@ -13008,8 +13054,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pPreserveAttachments.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pPreserveAttachments = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13073,7 +13121,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"name\" : \"srcStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13089,7 +13137,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"name\" : \"dstStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13105,7 +13153,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"name\" : \"srcAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13121,7 +13169,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"name\" : \"dstAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13137,7 +13185,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"name\" : \"dependencyFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dependencyFlags, EnumToStringVkDependencyFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->dependencyFlags, EnumToStringVkDependencyFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13209,7 +13257,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkRenderPassCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkRenderPassCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13250,8 +13298,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAttachments->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkAttachmentDescription>(out, indent, 1, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress());  // CCY
     }
     indent--;
@@ -13293,8 +13341,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSubpasses->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSubpassDescription>(out, indent, 1, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress());  // CCY
     }
     indent--;
@@ -13336,8 +13384,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDependencies->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSubpassDependency>(out, indent, 1, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress());  // CCY
     }
     indent--;
@@ -13410,7 +13458,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandPoolCreateIn
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkCommandPoolCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkCommandPoolCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13666,7 +13714,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"name\" : \"queryFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->queryFlags, EnumToStringVkQueryControlFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->queryFlags, EnumToStringVkQueryControlFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13682,7 +13730,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"name\" : \"pipelineStatistics\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->pipelineStatistics, EnumToStringVkQueryPipelineStatisticFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->pipelineStatistics, EnumToStringVkQueryPipelineStatisticFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13754,7 +13802,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferBeginI
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkCommandBufferUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkCommandBufferUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13877,7 +13925,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceLay
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14065,8 +14113,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageBlit &pstruct_
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkImageBlit, srcOffsets) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkOffset3D>(out, indent, 0, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2, false, pstruct_in.srcOffsets->GetAddress());  // CCY
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14099,8 +14147,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageBlit &pstruct_
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkImageBlit, dstOffsets) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkOffset3D>(out, indent, 0, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2, false, pstruct_in.dstOffsets->GetAddress());  // CCY
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14243,8 +14291,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearColorValue &ps
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkClearColorValue, float32) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -14261,8 +14308,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearColorValue &ps
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkClearColorValue, int32) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -14279,8 +14325,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearColorValue &ps
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkClearColorValue, uint32) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "}\n"; // UXS
@@ -14405,7 +14450,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearAttachment &ps
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14662,7 +14707,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryBarrier &pstr
     *out += "\"name\" : \"srcAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14678,7 +14723,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryBarrier &pstr
     *out += "\"name\" : \"dstAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14750,7 +14795,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"name\" : \"srcAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14766,7 +14811,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"name\" : \"dstAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14918,7 +14963,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"name\" : \"srcAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14934,7 +14979,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"name\" : \"dstAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15173,8 +15218,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassBeginInfo
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pClearValues->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkClearValue>(out, indent, 1, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress());  // CCY
     }
     indent--;
@@ -15503,7 +15548,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"name\" : \"supportedStages\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedStages, EnumToStringVkShaderStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->supportedStages, EnumToStringVkShaderStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15519,7 +15564,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"name\" : \"supportedOperations\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedOperations, EnumToStringVkSubgroupFeatureFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->supportedOperations, EnumToStringVkSubgroupFeatureFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16111,7 +16156,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateFlags
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkMemoryAllocateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkMemoryAllocateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16240,8 +16285,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupRenderPa
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDeviceRenderAreas->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkRect2D>(out, indent, 1, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress());  // CCY
     }
     indent--;
@@ -16411,8 +16456,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pWaitSemaphoreDeviceIndices.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pWaitSemaphoreDeviceIndices = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pWaitSemaphoreDeviceIndices, "pWaitSemaphoreDeviceIndices", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphoreDeviceIndices); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16453,8 +16500,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pCommandBufferDeviceMasks.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pCommandBufferDeviceMasks = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pCommandBufferDeviceMasks, "pCommandBufferDeviceMasks", pstruct->commandBufferCount, vinfo_pCommandBufferDeviceMasks); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16495,8 +16544,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSignalSemaphoreDeviceIndices.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pSignalSemaphoreDeviceIndices = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pSignalSemaphoreDeviceIndices, "pSignalSemaphoreDeviceIndices", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphoreDeviceIndices); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16681,8 +16732,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryDev
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDeviceIndices.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pDeviceIndices = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16779,8 +16832,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryDevi
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDeviceIndices.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pDeviceIndices = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16821,8 +16876,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryDevi
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSplitInstanceBindRegions->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkRect2D>(out, indent, 1, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress());  // CCY
     }
     indent--;
@@ -16913,8 +16968,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceGroup
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceGroupProperties, physicalDevices) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_physicalDevices = {true, false, false, nullptr};
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17027,8 +17082,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupDeviceCr
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pPhysicalDevices.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pPhysicalDevices = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkPhysicalDevice*", &pstruct_in.pPhysicalDevices, "pPhysicalDevices", pstruct->physicalDeviceCount, vinfo_pPhysicalDevices); // AQA
     }
@@ -17792,7 +17847,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17808,7 +17863,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18141,7 +18196,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18293,7 +18348,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInputAttachmentAspe
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18390,8 +18445,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassInputAtta
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAspectReferences->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkInputAttachmentAspectReference>(out, indent, 1, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress());  // CCY
     }
     indent--;
@@ -18464,7 +18519,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewUsageCreat
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18633,8 +18688,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pViewMasks.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pViewMasks = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pViewMasks, "pViewMasks", pstruct->subpassCount, vinfo_pViewMasks); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18675,8 +18732,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pViewOffsets.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pViewOffsets = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const int32_t*", &pstruct_in.pViewOffsets, "pViewOffsets", pstruct->dependencyCount, vinfo_pViewOffsets); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18717,8 +18776,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pCorrelationMasks.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pCorrelationMasks = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pCorrelationMasks, "pCorrelationMasks", pstruct->correlationMaskCount, vinfo_pCorrelationMasks); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19214,7 +19275,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueInfo2 &p
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDeviceQueueCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDeviceQueueCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20086,8 +20147,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDescriptorUpdateEntries->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDescriptorUpdateTemplateEntry>(out, indent, 1, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress());  // CCY
     }
     indent--;
@@ -20200,7 +20261,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryPrope
     *out += "\"name\" : \"externalMemoryFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->externalMemoryFeatures, EnumToStringVkExternalMemoryFeatureFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->externalMemoryFeatures, EnumToStringVkExternalMemoryFeatureFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20216,7 +20277,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryPrope
     *out += "\"name\" : \"exportFromImportedHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20232,7 +20293,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryPrope
     *out += "\"name\" : \"compatibleHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20447,7 +20508,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBufferCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBufferCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20463,7 +20524,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkBufferUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkBufferUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20624,8 +20685,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIDPro
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceIDProperties, deviceUUID) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_deviceUUID = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "uint8_t", &pstruct_in.deviceUUID, "deviceUUID", VK_UUID_SIZE, vinfo_deviceUUID); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -20642,8 +20705,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIDPro
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceIDProperties, driverUUID) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_driverUUID = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "uint8_t", &pstruct_in.driverUUID, "driverUUID", VK_UUID_SIZE, vinfo_driverUUID); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -20660,8 +20725,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIDPro
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceIDProperties, deviceLUID) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_deviceLUID = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "uint8_t", &pstruct_in.deviceLUID, "deviceLUID", VK_LUID_SIZE, vinfo_deviceLUID); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -20764,7 +20831,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20836,7 +20903,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryBuffe
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20908,7 +20975,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21052,7 +21119,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
     *out += "\"name\" : \"exportFromImportedHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21068,7 +21135,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
     *out += "\"name\" : \"compatibleHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21084,7 +21151,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
     *out += "\"name\" : \"externalFenceFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->externalFenceFeatures, EnumToStringVkExternalFenceFeatureFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->externalFenceFeatures, EnumToStringVkExternalFenceFeatureFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21156,7 +21223,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceCreateIn
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21228,7 +21295,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreCrea
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21372,7 +21439,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
     *out += "\"name\" : \"exportFromImportedHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21388,7 +21455,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
     *out += "\"name\" : \"compatibleHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21404,7 +21471,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
     *out += "\"name\" : \"externalSemaphoreFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->externalSemaphoreFeatures, EnumToStringVkExternalSemaphoreFeatureFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->externalSemaphoreFeatures, EnumToStringVkExternalSemaphoreFeatureFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21761,7 +21828,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedTransforms\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URY
+    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21793,7 +21860,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedCompositeAlpha\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedCompositeAlpha, EnumToStringVkCompositeAlphaFlagBitsKHRJson); // URY
+    FlagsToStringJson(out, pstruct->supportedCompositeAlpha, EnumToStringVkCompositeAlphaFlagBitsKHRJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21809,7 +21876,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedUsageFlags, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->supportedUsageFlags, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21929,7 +21996,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSwapchainCreateFlagBitsKHRJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSwapchainCreateFlagBitsKHRJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22040,7 +22107,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"name\" : \"imageUsage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->imageUsage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->imageUsage, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22097,8 +22164,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pQueueFamilyIndices.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22275,8 +22344,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pWaitSemaphores.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pWaitSemaphores = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AQA
     }
@@ -22319,8 +22388,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSwapchains.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkSwapchainKHR*", &pstruct_in.pSwapchains, "pSwapchains", pstruct->swapchainCount, vinfo_pSwapchains); // AQA
     }
@@ -22347,8 +22416,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pImageIndices.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pImageIndices = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pImageIndices, "pImageIndices", pstruct->swapchainCount, vinfo_pImageIndices); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22373,8 +22444,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pResults.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pResults = {false, true, false, EnumToStringVkResultJson};
+        ArrayToStringJson(out, indent, 0, "VkResult*", &pstruct_in.pResults, "pResults", pstruct->swapchainCount, vinfo_pResults); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22744,8 +22817,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentC
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkDeviceGroupPresentCapabilitiesKHR, presentMask) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_presentMask = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "uint32_t", &pstruct_in.presentMask, "presentMask", VK_MAX_DEVICE_GROUP_SIZE, vinfo_presentMask); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -22760,7 +22835,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentC
     *out += "\"name\" : \"modes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->modes, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson); // URY
+    FlagsToStringJson(out, pstruct->modes, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22857,8 +22932,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentI
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDeviceMasks.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pDeviceMasks = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pDeviceMasks, "pDeviceMasks", pstruct->swapchainCount, vinfo_pDeviceMasks); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22946,7 +23023,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSwapchai
     *out += "\"name\" : \"modes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->modes, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson); // URY
+    FlagsToStringJson(out, pstruct->modes, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23052,7 +23129,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPropertiesKH
     *out += "\"name\" : \"supportedTransforms\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URY
+    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23297,7 +23374,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneCapabil
     *out += "\"name\" : \"supportedAlpha\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedAlpha, EnumToStringVkDisplayPlaneAlphaFlagBitsKHRJson); // URY
+    FlagsToStringJson(out, pstruct->supportedAlpha, EnumToStringVkDisplayPlaneAlphaFlagBitsKHRJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25043,8 +25120,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAcquireSyncs.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pAcquireSyncs = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AQA
     }
@@ -25071,8 +25148,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAcquireKeys.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pAcquireKeys = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25097,8 +25176,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAcquireTimeouts.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pAcquireTimeouts = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pAcquireTimeouts, "pAcquireTimeouts", pstruct->acquireCount, vinfo_pAcquireTimeouts); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25139,8 +25220,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pReleaseSyncs.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pReleaseSyncs = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AQA
     }
@@ -25167,8 +25248,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pReleaseKeys.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pReleaseKeys = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25256,7 +25339,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreImportFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreImportFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25537,8 +25620,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkD3D12FenceSubmitInf
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pWaitSemaphoreValues.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pWaitSemaphoreValues = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValuesCount, vinfo_pWaitSemaphoreValues); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25579,8 +25664,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkD3D12FenceSubmitInf
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSignalSemaphoreValues.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pSignalSemaphoreValues = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValuesCount, vinfo_pSignalSemaphoreValues); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25756,7 +25843,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreFdIn
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreImportFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreImportFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26155,8 +26242,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentRegionKHR &p
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pRectangles->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkRectLayerKHR>(out, indent, 1, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress());  // CCY
     }
     indent--;
@@ -26254,8 +26341,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentRegionsKHR &
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pRegions->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPresentRegionKHR>(out, indent, 1, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress());  // CCY
     }
     indent--;
@@ -26400,7 +26487,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26416,7 +26503,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26505,8 +26592,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pViewFormats.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pViewFormats = {false, true, false, EnumToStringVkFormatJson};
+        ArrayToStringJson(out, indent, 0, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26603,8 +26692,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAttachmentImageInfos->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkFramebufferAttachmentImageInfoKHR>(out, indent, 1, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress());  // CCY
     }
     indent--;
@@ -26702,8 +26791,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassAttachmen
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAttachments.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pAttachments = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AQA
     }
@@ -26777,7 +26866,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkAttachmentDescriptionFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkAttachmentDescriptionFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27009,7 +27098,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27081,7 +27170,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSubpassDescriptionFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSubpassDescriptionFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27154,8 +27243,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pInputAttachments->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(out, indent, 1, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress());  // CCY
     }
     indent--;
@@ -27197,8 +27286,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pColorAttachments->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(out, indent, 1, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress());  // CCY
     }
     indent--;
@@ -27224,8 +27313,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pResolveAttachments->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(out, indent, 1, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress());  // CCY
     }
     indent--;
@@ -27294,8 +27383,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pPreserveAttachments.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pPreserveAttachments = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27399,7 +27490,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"name\" : \"srcStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27415,7 +27506,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"name\" : \"dstStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27431,7 +27522,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"name\" : \"srcAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27447,7 +27538,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"name\" : \"dstAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27463,7 +27554,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"name\" : \"dependencyFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dependencyFlags, EnumToStringVkDependencyFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->dependencyFlags, EnumToStringVkDependencyFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27551,7 +27642,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkRenderPassCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkRenderPassCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27592,8 +27683,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAttachments->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkAttachmentDescription2KHR>(out, indent, 1, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress());  // CCY
     }
     indent--;
@@ -27635,8 +27726,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSubpasses->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSubpassDescription2KHR>(out, indent, 1, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress());  // CCY
     }
     indent--;
@@ -27678,8 +27769,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDependencies->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSubpassDependency2KHR>(out, indent, 1, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress());  // CCY
     }
     indent--;
@@ -27721,8 +27812,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pCorrelatedViewMasks.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pCorrelatedViewMasks = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pCorrelatedViewMasks, "pCorrelatedViewMasks", pstruct->correlatedViewMaskCount, vinfo_pCorrelatedViewMasks); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27922,7 +28015,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSharedPresentSurfac
     *out += "\"name\" : \"sharedPresentSupportedUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sharedPresentSupportedUsageFlags, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->sharedPresentSupportedUsageFlags, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28010,7 +28103,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceImportFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceImportFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28370,7 +28463,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceFdInfoKH
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceImportFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceImportFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29173,8 +29266,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatListCrea
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pViewFormats.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pViewFormats = {false, true, false, EnumToStringVkFormatJson};
+        ArrayToStringJson(out, indent, 0, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29696,8 +29791,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDrive
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceDriverPropertiesKHR, driverName) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"value\" : "; // TRH
+        ScalarValueToStringStruct vinfo_driverName = {false, false, false, nullptr};
+        ArrayOfScalarsToStringJson<char>(out, indent, 0, "char", pstruct_in.driverName.GetPointer(), "driverName", VK_MAX_DRIVER_NAME_SIZE_KHR, vinfo_driverName); // TRJ
+        *out += "\n"; // TRX
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -29714,8 +29812,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDrive
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceDriverPropertiesKHR, driverInfo) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"value\" : "; // TRH
+        ScalarValueToStringStruct vinfo_driverInfo = {false, false, false, nullptr};
+        ArrayOfScalarsToStringJson<char>(out, indent, 0, "char", pstruct_in.driverInfo.GetPointer(), "driverInfo", VK_MAX_DRIVER_INFO_SIZE_KHR, vinfo_driverInfo); // TRJ
+        *out += "\n"; // TRX
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -30244,7 +30345,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"name\" : \"supportedDepthResolveModes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedDepthResolveModes, EnumToStringVkResolveModeFlagBitsKHRJson); // URY
+    FlagsToStringJson(out, pstruct->supportedDepthResolveModes, EnumToStringVkResolveModeFlagBitsKHRJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30260,7 +30361,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"name\" : \"supportedStencilResolveModes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedStencilResolveModes, EnumToStringVkResolveModeFlagBitsKHRJson); // URY
+    FlagsToStringJson(out, pstruct->supportedStencilResolveModes, EnumToStringVkResolveModeFlagBitsKHRJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30621,8 +30722,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkTimelineSemaphoreSu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pWaitSemaphoreValues.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pWaitSemaphoreValues = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValueCount, vinfo_pWaitSemaphoreValues); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30663,8 +30766,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkTimelineSemaphoreSu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSignalSemaphoreValues.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pSignalSemaphoreValues = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValueCount, vinfo_pSignalSemaphoreValues); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30736,7 +30841,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreWaitFlagBitsKHRJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreWaitFlagBitsKHRJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30777,8 +30882,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSemaphores.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pSemaphores = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkSemaphore*", &pstruct_in.pSemaphores, "pSemaphores", pstruct->semaphoreCount, vinfo_pSemaphores); // AQA
     }
@@ -30805,8 +30910,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pValues.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pValues = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint64_t*", &pstruct_in.pValues, "pValues", pstruct->semaphoreCount, vinfo_pValues); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31358,7 +31465,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableP
     *out += "\"name\" : \"stages\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stages, EnumToStringVkShaderStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->stages, EnumToStringVkShaderStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31376,8 +31483,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableP
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPipelineExecutablePropertiesKHR, name) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"value\" : "; // TRH
+        ScalarValueToStringStruct vinfo_name = {false, false, false, nullptr};
+        ArrayOfScalarsToStringJson<char>(out, indent, 0, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // TRJ
+        *out += "\n"; // TRX
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -31394,8 +31504,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableP
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPipelineExecutablePropertiesKHR, description) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"value\" : "; // TRH
+        ScalarValueToStringStruct vinfo_description = {false, false, false, nullptr};
+        ArrayOfScalarsToStringJson<char>(out, indent, 0, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // TRJ
+        *out += "\n"; // TRX
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -31652,8 +31765,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPipelineExecutableStatisticKHR, name) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"value\" : "; // TRH
+        ScalarValueToStringStruct vinfo_name = {false, false, false, nullptr};
+        ArrayOfScalarsToStringJson<char>(out, indent, 0, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // TRJ
+        *out += "\n"; // TRX
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -31670,8 +31786,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPipelineExecutableStatisticKHR, description) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"value\" : "; // TRH
+        ScalarValueToStringStruct vinfo_description = {false, false, false, nullptr};
+        ArrayOfScalarsToStringJson<char>(out, indent, 0, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // TRJ
+        *out += "\n"; // TRX
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -31775,8 +31894,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPipelineExecutableInternalRepresentationKHR, name) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"value\" : "; // TRH
+        ScalarValueToStringStruct vinfo_name = {false, false, false, nullptr};
+        ArrayOfScalarsToStringJson<char>(out, indent, 0, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // TRJ
+        *out += "\n"; // TRX
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -31793,8 +31915,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPipelineExecutableInternalRepresentationKHR, description) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"value\" : "; // TRH
+        ScalarValueToStringStruct vinfo_description = {false, false, false, nullptr};
+        ArrayOfScalarsToStringJson<char>(out, indent, 0, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // TRJ
+        *out += "\n"; // TRX
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -31850,8 +31975,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pData.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31923,7 +32050,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugReportCallback
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDebugReportFlagBitsEXTJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDebugReportFlagBitsEXTJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32296,8 +32423,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectTa
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pTag.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pTag = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const void*", &pstruct_in.pTag, "pTag", pstruct->tagSize, vinfo_pTag); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32399,8 +32528,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerMarkerIn
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkDebugMarkerMarkerInfoEXT, color) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_color = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "float", &pstruct_in.color, "color", 4, vinfo_color); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "}\n"; // UXS
@@ -33327,7 +33458,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderStatisticsInf
     *out += "\"name\" : \"shaderStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->shaderStageMask, EnumToStringVkShaderStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->shaderStageMask, EnumToStringVkShaderStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33424,8 +33555,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderStatisticsInf
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkShaderStatisticsInfoAMD, computeWorkGroupSize) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_computeWorkGroupSize = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "uint32_t", &pstruct_in.computeWorkGroupSize, "computeWorkGroupSize", 3, vinfo_computeWorkGroupSize); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "}\n"; // UXS
@@ -33631,7 +33764,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
     *out += "\"name\" : \"externalMemoryFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->externalMemoryFeatures, EnumToStringVkExternalMemoryFeatureFlagBitsNVJson); // URY
+    FlagsToStringJson(out, pstruct->externalMemoryFeatures, EnumToStringVkExternalMemoryFeatureFlagBitsNVJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33647,7 +33780,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
     *out += "\"name\" : \"exportFromImportedHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33663,7 +33796,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
     *out += "\"name\" : \"compatibleHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33735,7 +33868,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33807,7 +33940,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33879,7 +34012,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URY
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34096,8 +34229,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAcquireSyncs.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pAcquireSyncs = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AQA
     }
@@ -34124,8 +34257,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAcquireKeys.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pAcquireKeys = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34150,8 +34285,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAcquireTimeoutMilliseconds.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pAcquireTimeoutMilliseconds = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pAcquireTimeoutMilliseconds, "pAcquireTimeoutMilliseconds", pstruct->acquireCount, vinfo_pAcquireTimeoutMilliseconds); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34192,8 +34329,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pReleaseSyncs.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pReleaseSyncs = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AQA
     }
@@ -34220,8 +34357,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pReleaseKeys.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pReleaseKeys = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34318,8 +34457,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFlagsEXT 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDisabledValidationChecks.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pDisabledValidationChecks = {false, true, false, EnumToStringVkValidationCheckEXTJson};
+        ArrayToStringJson(out, indent, 0, "const VkValidationCheckEXT*", &pstruct_in.pDisabledValidationChecks, "pDisabledValidationChecks", pstruct->disabledValidationCheckCount, vinfo_pDisabledValidationChecks); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34735,7 +34876,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkConditionalRenderin
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkConditionalRenderingFlagBitsEXTJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkConditionalRenderingFlagBitsEXTJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35335,7 +35476,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkIndirectCommandsLayoutUsageFlagBitsNVXJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkIndirectCommandsLayoutUsageFlagBitsNVXJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35376,8 +35517,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pTokens->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkIndirectCommandsLayoutTokenNVX>(out, indent, 1, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress());  // CCY
     }
     indent--;
@@ -35507,8 +35648,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pIndirectCommandsTokens->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkIndirectCommandsTokenNVX>(out, indent, 1, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress());  // CCY
     }
     indent--;
@@ -35806,8 +35947,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pObjectEntryTypes.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pObjectEntryTypes = {false, true, false, EnumToStringVkObjectEntryTypeNVXJson};
+        ArrayToStringJson(out, indent, 0, "const VkObjectEntryTypeNVX*", &pstruct_in.pObjectEntryTypes, "pObjectEntryTypes", pstruct->objectCount, vinfo_pObjectEntryTypes); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35832,8 +35975,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pObjectEntryCounts.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pObjectEntryCounts = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pObjectEntryCounts, "pObjectEntryCounts", pstruct->objectCount, vinfo_pObjectEntryCounts); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35858,8 +36003,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pObjectEntryUsageFlags.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pObjectEntryUsageFlags = {false, false, true, EnumToStringVkObjectEntryUsageFlagBitsNVXJson};
+        ArrayToStringJson(out, indent, 0, "const VkObjectEntryUsageFlagsNVX*", &pstruct_in.pObjectEntryUsageFlags, "pObjectEntryUsageFlags", pstruct->objectCount, vinfo_pObjectEntryUsageFlags); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35987,7 +36134,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableEntryNVX
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36035,7 +36182,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePipeline
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36099,7 +36246,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableDescript
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36179,7 +36326,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableVertexBu
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36243,7 +36390,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableIndexBuf
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36323,7 +36470,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePushCons
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36355,7 +36502,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePushCons
     *out += "\"name\" : \"stageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36516,8 +36663,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportWSc
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pViewportWScalings->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkViewportWScalingNV>(out, indent, 1, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress());  // CCY
     }
     indent--;
@@ -36683,7 +36830,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedTransforms\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URY
+    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36715,7 +36862,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedCompositeAlpha\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedCompositeAlpha, EnumToStringVkCompositeAlphaFlagBitsKHRJson); // URY
+    FlagsToStringJson(out, pstruct->supportedCompositeAlpha, EnumToStringVkCompositeAlphaFlagBitsKHRJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36731,7 +36878,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedUsageFlags, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->supportedUsageFlags, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36747,7 +36894,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedSurfaceCounters\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedSurfaceCounters, EnumToStringVkSurfaceCounterFlagBitsEXTJson); // URY
+    FlagsToStringJson(out, pstruct->supportedSurfaceCounters, EnumToStringVkSurfaceCounterFlagBitsEXTJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37035,7 +37182,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCounterCre
     *out += "\"name\" : \"surfaceCounters\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->surfaceCounters, EnumToStringVkSurfaceCounterFlagBitsEXTJson); // URY
+    FlagsToStringJson(out, pstruct->surfaceCounters, EnumToStringVkSurfaceCounterFlagBitsEXTJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37308,8 +37455,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentTimesInfoGOO
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pTimes->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPresentTimeGOOGLE>(out, indent, 1, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress());  // CCY
     }
     indent--;
@@ -37575,8 +37722,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSwi
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pViewportSwizzles->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkViewportSwizzleNV>(out, indent, 1, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress());  // CCY
     }
     indent--;
@@ -37778,8 +37925,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDiscardRect
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDiscardRectangles->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkRect2D>(out, indent, 1, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress());  // CCY
     }
     indent--;
@@ -38925,8 +39072,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectTag
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pTag.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pTag = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const void*", &pstruct_in.pTag, "pTag", pstruct->tagSize, vinfo_pTag); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39028,8 +39177,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsLabelEXT 
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkDebugUtilsLabelEXT, color) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_color = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "float", &pstruct_in.color, "color", 4, vinfo_color); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "}\n"; // UXS
@@ -39213,8 +39364,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pQueueLabels->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDebugUtilsLabelEXT>(out, indent, 1, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress());  // CCY
     }
     indent--;
@@ -39256,8 +39407,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pCmdBufLabels->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDebugUtilsLabelEXT>(out, indent, 1, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress());  // CCY
     }
     indent--;
@@ -39299,8 +39450,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pObjects->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDebugUtilsObjectNameInfoEXT>(out, indent, 1, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress());  // CCY
     }
     indent--;
@@ -39389,7 +39540,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"name\" : \"messageSeverity\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->messageSeverity, EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXTJson); // URY
+    FlagsToStringJson(out, pstruct->messageSeverity, EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXTJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39405,7 +39556,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"name\" : \"messageType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->messageType, EnumToStringVkDebugUtilsMessageTypeFlagBitsEXTJson); // URY
+    FlagsToStringJson(out, pstruct->messageType, EnumToStringVkDebugUtilsMessageTypeFlagBitsEXTJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39709,7 +39860,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"name\" : \"formatFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->formatFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->formatFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40493,8 +40644,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetI
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pData.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40742,8 +40895,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkSampleLocationsInfo
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSampleLocations->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSampleLocationEXT>(out, indent, 1, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress());  // CCY
     }
     indent--;
@@ -40935,8 +41088,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassSampleLoc
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAttachmentInitialSampleLocations->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkAttachmentSampleLocationsEXT>(out, indent, 1, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress());  // CCY
     }
     indent--;
@@ -40978,8 +41131,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassSampleLoc
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pPostSubpassSampleLocations->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSubpassSampleLocationsEXT>(out, indent, 1, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress());  // CCY
     }
     indent--;
@@ -41139,7 +41292,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"name\" : \"sampleLocationSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampleLocationSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->sampleLocationSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41172,8 +41325,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceSampleLocationsPropertiesEXT, sampleLocationCoordinateRange) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_sampleLocationCoordinateRange = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "float", &pstruct_in.sampleLocationCoordinateRange, "sampleLocationCoordinateRange", 2, vinfo_sampleLocationCoordinateRange); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -41852,8 +42007,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageMod
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pCoverageModulationTable.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pCoverageModulationTable = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const float*", &pstruct_in.pCoverageModulationTable, "pCoverageModulationTable", pstruct->coverageModulationTableCount, vinfo_pCoverageModulationTable); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42077,7 +42234,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
     *out += "\"name\" : \"drmFormatModifierTilingFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->drmFormatModifierTilingFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->drmFormatModifierTilingFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42174,8 +42331,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDrmFormatModifierProperties->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkDrmFormatModifierPropertiesEXT>(out, indent, 1, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress());  // CCY
     }
     indent--;
@@ -42305,8 +42462,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pQueueFamilyIndices.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42403,8 +42562,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDrmFormatModifiers.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pDrmFormatModifiers = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint64_t*", &pstruct_in.pDrmFormatModifiers, "pDrmFormatModifiers", pstruct->drmFormatModifierCount, vinfo_pDrmFormatModifiers); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42517,8 +42678,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pPlaneLayouts->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkSubresourceLayout>(out, indent, 1, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress());  // CCY
     }
     indent--;
@@ -42704,8 +42865,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationCacheCrea
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pInitialData.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pInitialData = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const void*", &pstruct_in.pInitialData, "pInitialData", pstruct->initialDataSize, vinfo_pInitialData); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42874,8 +43037,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pBindingFlags.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pBindingFlags = {false, false, true, EnumToStringVkDescriptorBindingFlagBitsEXTJson};
+        ArrayToStringJson(out, indent, 0, "const VkDescriptorBindingFlagsEXT*", &pstruct_in.pBindingFlags, "pBindingFlags", pstruct->bindingCount, vinfo_pBindingFlags); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43772,8 +43937,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDescriptorCounts.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pDescriptorCounts = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pDescriptorCounts, "pDescriptorCounts", pstruct->descriptorSetCount, vinfo_pDescriptorCounts); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43902,8 +44069,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkShadingRatePaletteN
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pShadingRatePaletteEntries.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pShadingRatePaletteEntries = {false, true, false, EnumToStringVkShadingRatePaletteEntryNVJson};
+        ArrayToStringJson(out, indent, 0, "const VkShadingRatePaletteEntryNV*", &pstruct_in.pShadingRatePaletteEntries, "pShadingRatePaletteEntries", pstruct->shadingRatePaletteEntryCount, vinfo_pShadingRatePaletteEntries); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44016,8 +44185,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSha
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pShadingRatePalettes->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkShadingRatePaletteNV>(out, indent, 1, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress());  // CCY
     }
     indent--;
@@ -44362,8 +44531,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkCoarseSampleOrderCu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pSampleLocations->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkCoarseSampleLocationNV>(out, indent, 1, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress());  // CCY
     }
     indent--;
@@ -44477,8 +44646,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportCoa
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pCustomSampleOrders->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkCoarseSampleOrderCustomNV>(out, indent, 1, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress());  // CCY
     }
     indent--;
@@ -44687,7 +44856,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44728,8 +44897,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pStages->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPipelineShaderStageCreateInfo>(out, indent, 1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress());  // CCY
     }
     indent--;
@@ -44771,8 +44940,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pGroups->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkRayTracingShaderGroupCreateInfoNV>(out, indent, 1, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress());  // CCY
     }
     indent--;
@@ -45338,7 +45507,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryNV &pstruct
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkGeometryFlagBitsNVJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkGeometryFlagBitsNVJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45426,7 +45595,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBuildAccelerationStructureFlagBitsNVJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBuildAccelerationStructureFlagBitsNVJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45483,8 +45652,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pGeometries->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkGeometryNV>(out, indent, 1, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress());  // CCY
     }
     indent--;
@@ -45717,8 +45886,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindAccelerationStr
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDeviceIndices.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pDeviceIndices = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45815,8 +45986,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetA
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pAccelerationStructures.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRI
         ScalarValueToStringStruct vinfo_pAccelerationStructures = {true, false, false, nullptr};
         ArrayToStringJson(out, indent, 0, "const VkAccelerationStructureNV*", &pstruct_in.pAccelerationStructures, "pAccelerationStructures", pstruct->accelerationStructureCount, vinfo_pAccelerationStructures); // AQA
     }
@@ -46778,7 +46949,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCompilerCon
     *out += "\"name\" : \"compilerControlFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->compilerControlFlags, EnumToStringVkPipelineCompilerControlFlagBitsAMDJson); // URY
+    FlagsToStringJson(out, pstruct->compilerControlFlags, EnumToStringVkPipelineCompilerControlFlagBitsAMDJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47419,8 +47590,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pVertexBindingDivisors->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkVertexInputBindingDivisorDescriptionEXT>(out, indent, 1, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress());  // CCY
     }
     indent--;
@@ -47613,7 +47784,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreationFeedbackFlagBitsEXTJson); // URY
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreationFeedbackFlagBitsEXTJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47753,8 +47924,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkPipelineCreationFeedbackEXT>(out, indent, 1, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress());  // CCY
     }
     indent--;
@@ -48037,8 +48208,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceMeshShaderPropertiesNV, maxTaskWorkGroupSize) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_maxTaskWorkGroupSize = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "uint32_t", &pstruct_in.maxTaskWorkGroupSize, "maxTaskWorkGroupSize", 3, vinfo_maxTaskWorkGroupSize); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -48103,8 +48276,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceMeshShaderPropertiesNV, maxMeshWorkGroupSize) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_maxMeshWorkGroupSize = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "uint32_t", &pstruct_in.maxMeshWorkGroupSize, "maxMeshWorkGroupSize", 3, vinfo_maxMeshWorkGroupSize); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -48488,8 +48663,8 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportExc
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pExclusiveScissors->GetAddress() /* IIO */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRZ
         ArrayOfStructsToStringJson<Decoded_VkRect2D>(out, indent, 1, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress());  // CCY
     }
     indent--;
@@ -48634,7 +48809,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyCheckpoi
     *out += "\"name\" : \"checkpointExecutionStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->checkpointExecutionStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->checkpointExecutionStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50434,7 +50609,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"name\" : \"requiredSubgroupSizeStages\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->requiredSubgroupSizeStages, EnumToStringVkShaderStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->requiredSubgroupSizeStages, EnumToStringVkShaderStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50578,7 +50753,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"shaderCoreFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->shaderCoreFeatures, EnumToStringVkShaderCorePropertiesFlagBitsAMDJson); // URY
+    FlagsToStringJson(out, pstruct->shaderCoreFeatures, EnumToStringVkShaderCorePropertiesFlagBitsAMDJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50740,8 +50915,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceMemoryBudgetPropertiesEXT, heapBudget) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_heapBudget = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "VkDeviceSize", &pstruct_in.heapBudget, "heapBudget", VK_MAX_MEMORY_HEAPS, vinfo_heapBudget); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -50758,8 +50935,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, base_addr + offsetof(VkPhysicalDeviceMemoryBudgetPropertiesEXT, heapUsage) /* RKQ */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_heapUsage = {false, false, false, nullptr};
+        ArrayToStringJson(out, indent, -1, "VkDeviceSize", &pstruct_in.heapUsage, "heapUsage", VK_MAX_MEMORY_HEAPS, vinfo_heapUsage); // AUA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "}\n"; // UXS
@@ -51294,7 +51473,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageStencilUsageCr
     *out += "\"name\" : \"stencilUsage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stencilUsage, EnumToStringVkImageUsageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->stencilUsage, EnumToStringVkImageUsageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51391,8 +51570,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pEnabledValidationFeatures.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pEnabledValidationFeatures = {false, true, false, EnumToStringVkValidationFeatureEnableEXTJson};
+        ArrayToStringJson(out, indent, 0, "const VkValidationFeatureEnableEXT*", &pstruct_in.pEnabledValidationFeatures, "pEnabledValidationFeatures", pstruct->enabledValidationFeatureCount, vinfo_pEnabledValidationFeatures); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51433,8 +51614,10 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pstruct_in.pDisabledValidationFeatures.GetAddress() /* UTW */ );
         *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" :"; // TRF
+        IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" : "; // HPI
+        ScalarValueToStringStruct vinfo_pDisabledValidationFeatures = {false, true, false, EnumToStringVkValidationFeatureDisableEXTJson};
+        ArrayToStringJson(out, indent, 0, "const VkValidationFeatureDisableEXT*", &pstruct_in.pDisabledValidationFeatures, "pDisabledValidationFeatures", pstruct->disabledValidationFeatureCount, vinfo_pDisabledValidationFeatures); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51778,7 +51961,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
     *out += "\"name\" : \"cooperativeMatrixSupportedStages\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->cooperativeMatrixSupportedStages, EnumToStringVkShaderStageFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->cooperativeMatrixSupportedStages, EnumToStringVkShaderStageFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52042,7 +52225,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
     *out += "\"name\" : \"depthStencilSamples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->depthStencilSamples, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->depthStencilSamples, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52058,7 +52241,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
     *out += "\"name\" : \"colorSamples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->colorSamples, EnumToStringVkSampleCountFlagBitsJson); // URY
+    FlagsToStringJson(out, pstruct->colorSamples, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW

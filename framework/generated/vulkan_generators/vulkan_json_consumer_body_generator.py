@@ -131,20 +131,21 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         self.wc('    uint32_t indent = 5;')
         self.wc('    fprintf(GetFile(), "        {\\n");')
         self.wc('    fprintf(GetFile(), "            \\"name\\" : \\"' + name + '\\",\\n");   // FCN')
-        self.wc('    fprintf(GetFile(), "            \\"thread\\" : \\"Thread %ld\\",\\n", 0);')   #TODO: get thread id
+        self.wc('    fprintf(GetFile(), "            \\"thread\\" : \\"Thread %ld\\",\\n", 13216);')   #TODO: get thread id
         self.wc('    fprintf(GetFile(), "            \\"returnType\\" : \\"' + returnType + '\\",\\n");')
-        self.wc('    fprintf(GetFile(), "            \\"returnValue\\" : \\"");')
-        if returnType == 'void':
-            self.wc('    fprintf(GetFile(), "\\"void\\"");')
-        elif self.isEnum(returnType):
-            self.wc('    EnumToStringVkResultJson(&outString, returnValue);')
-            #self.wc('    fprintf(GetFile(), "%s (%" PRId32 ")", outString.c_str(), returnValue);')
-            self.wc('    fprintf(GetFile(), "%s\\"", outString.c_str());')
-        elif self.isFunctionPtr(returnType):
-            self.wc('    fprintf(GetFile(), "0x%" PRIx64 ", static_cast<uint64_t>(returnValue));\n"')
-        else:
-            self.wc('    fprintf(GetFile(), "' + format(self.getFormatString(returnType)) + '\\"\\n", returnValue);')
-        self.wc('    fprintf(GetFile(), ",\\n");')
+        if returnType != 'void':
+            #self.wc('    fprintf(GetFile(), "void\\"");')
+            #else:
+            self.wc('    fprintf(GetFile(), "            \\"returnValue\\" : \\"");')
+            if self.isEnum(returnType):
+                self.wc('    EnumToStringVkResultJson(&outString, returnValue);')
+                #self.wc('    fprintf(GetFile(), "%s (%" PRId32 ")", outString.c_str(), returnValue);')    #TODO: Remove this?
+                self.wc('    fprintf(GetFile(), "%s\\"", outString.c_str());')
+            elif self.isFunctionPtr(returnType):
+                self.wc('    fprintf(GetFile(), "0x%" PRIx64 ", static_cast<uint64_t>(returnValue));\n"')
+            else:
+                self.wc('    fprintf(GetFile(), "' + format(self.getFormatString(returnType)) + '\\"\\n", returnValue);')
+            self.wc('    fprintf(GetFile(), ",\\n");')
         self.wc('    fprintf(GetFile(), "            \\"args\\" :\\n");')
         self.wc('    fprintf(GetFile(), "            [\\n");')
 

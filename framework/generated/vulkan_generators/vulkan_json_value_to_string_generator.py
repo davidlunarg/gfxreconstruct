@@ -63,7 +63,7 @@ class ValueToString(BaseGenerator):
 
         # For dev/debug
         #print("@@@@@@@@@ VTOS")
-        if value.name == "pPhysicalDevices":
+        if value.name == "pipelineCacheUUID":
             print('@ name', str(value.name))
             print('@ isPointer', str(value.isPointer))
             print('@ isArray', str(value.isArray))
@@ -161,11 +161,9 @@ class ValueToString(BaseGenerator):
                     aLength = pstruct + value.arrayLength
                 else:
                     aLength = value.arrayLength
-            self.wc('        IndentSpacesJson(out, indent);')
-            self.wc('        *out += "\\"elements\\" :"; // TRF')
-            #self.wc('        IndentSpacesJson(out, indent);')
-            #self.wc('        *out += "[\\n"; //RSF')
+            self.wc('        IndentSpacesJson(out, indent); // URW')
             if self.isStruct(value.baseType) and (value.baseType in self.structDict):
+                self.wc('        *out += "\\"elements\\" :"; // TRZ')
                 if isFuncArg:
                     self.wc('        ArrayOfStructsToStringJson<Decoded_' + value.baseType + '>(out, indent, ' + str(value.pointerCount) + ', "' + value.baseType +
                           '", ' + value.name + '.GetMetaStructPointer(), "' + value.name +
@@ -176,14 +174,20 @@ class ValueToString(BaseGenerator):
                           '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + pstruct_in + value.name + '->GetAddress());  // CCY')
             elif value.fullType == "const char* const*":
                 # Array of strings
+                self.wc('        *out += "\\"elements\\" :"; // TRG')
                 self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
                 self.wc('        ArrayToStringJson(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &pstruct_in.' +
                         value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); //UQA')
-            elif self.isHandle(value.baseType) or value.name == 'dpy':
-                #print("@@ array isHandle")
+            elif value.fullType == "char" and value.isArray:
+                # A simple string array  @@@TODO: Might be able to handle other types of scalar arrays here
+                self.wc('        *out += "\\"value\\" : "; // TRH')
                 self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
-                #self.wc('        ArrayToStringJson(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", ' +
-                #        pstruct_in + value.name + '.GetPointer(), "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AQA')
+                self.wc('        ArrayOfScalarsToStringJson<' + value.baseType + '>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+                            '", ' + pstruct_in + value.name + '.GetPointer(), "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // TRJ')
+                self.wc('        *out += "\\n"; // TRX')
+            elif self.isHandle(value.baseType) or value.name == 'dpy':
+                self.wc('        *out += "\\"elements\\" :"; // TRI')
+                self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
                 if value.isArray and value.name != "dpy":
                     if value.isPointer:
                         print('#@ name', str(value.name))
@@ -200,15 +204,16 @@ class ValueToString(BaseGenerator):
                         self.wc('        ArrayToStringJson(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +
                                 pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AQA')
                     else:
-                        print("!!!Need to add code for", value.name)
-                #else:
-                #    self.wc('        ArrayToStringJson(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", ' +
-                #            pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AQB')
+                        print("@@1 Not handled", value.name)
+                else:
+                    print("@@2 Not handled", value.name)
+            elif self.isUnion(structName):
+                    print("@@3 Not handled (struct)", value.name)
             else:
-                print("@@ not handled:", value.name)
-                
-            #self.wc('        IndentSpacesJson(out, indent);')
-            #self.wc('        *out += "]\\n";')
+                self.wc('        *out += "\\"elements\\" : "; // HPI')
+                self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
+                self.wc('        ArrayToStringJson(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +
+                        pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AUA')
 
         ###### Output structures
         elif self.isStruct(value.baseType) and (value.baseType in self.structDict):
@@ -254,12 +259,12 @@ class ValueToString(BaseGenerator):
                 self.wc('        SignedDecimalToStringJson(out, *' + value.name + '.GetPointer());')
                 #self.wc('    SignedDecimalToStringJson(out, ' + pstruct + value.name + '); //EQA')    TODO REMOVE THIS 
                 #    addrExpression = pstruct_in + value.name + '.GetAddress() /* QZX */'
-                self.wc('    *out += "\\"\\n";')
+                self.wc('        *out += "\\"\\n";')
             elif self.isHandle(value.baseType):
-                self.wc('    IndentSpacesJson(out, indent);')
-                self.wc('    *out += "\\"value\\" : \\"";')
-                self.wc('    AddrToStringJson(out, *' + pstruct + value.name + '.GetPointer()); // URW')
-                self.wc('    *out += "\\"\\n";')
+                self.wc('        IndentSpacesJson(out, indent);')
+                self.wc('        *out += "\\"value\\" : \\"";')
+                self.wc('        AddrToStringJson(out, *' + pstruct + value.name + '.GetPointer()); // URY')
+                self.wc('        *out += "\\"\\n";')
             else:
                 # TODO: Handle all other scalar types...
                 # TODO: Handle dpy ...
@@ -286,7 +291,7 @@ class ValueToString(BaseGenerator):
             #print("@@ isFlags")
             self.wc('    IndentSpacesJson(out, indent);')
             self.wc('    *out += "\\"value\\" : \\"";')
-            self.wc('    FlagsToStringJson(out, ' + pstruct + value.name + ', EnumToString' + value.baseType.replace('Flags', 'FlagBits') + 'Json); // URY')
+            self.wc('    FlagsToStringJson(out, ' + pstruct + value.name + ', EnumToString' + value.baseType.replace('Flags', 'FlagBits') + 'Json); // URG')
             self.wc('    *out += "\\"\\n";')
 
         ###### Output functionptrs
