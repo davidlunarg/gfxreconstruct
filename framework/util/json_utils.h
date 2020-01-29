@@ -417,10 +417,11 @@ void ArrayOfStructsToStringJson(std::string* out,
         UnsignedDecimalToStringJson(&idx_str, j);
         *out += idx_str;
         *out += "]\",\n";
-        //IndentSpacesJson(out, indent);                            TODO: @@@ Put this back in?? Should be consitent
-        //*out += "\"address\" : \"";                                         on displaying addresses of array elem.
-        //AddrToStringJson(out, array->GetAddress() + j * sizeof(T));
-        //*out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"address\" : \"";
+        AddrToStringJson(out, base_addr + j * sizeof(T));
+        gfxrecon::decode::Decoded_VkWriteDescriptorSet* p = NULL;
+        *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"members\" :\n";
         StructureToStringJson(out, array[j], indent, base_addr + j * sizeof(T)); // YGS
