@@ -409,8 +409,8 @@ void ArrayOfStructsToStringJson(std::string* out,
         indent++;
         IndentSpacesJson(out, indent);
         *out += "\"type\" : \"";
-        *out += base_type_name;       // TODO: @@ Is this the correct type??
-        *out += "\",\n";
+        *out += base_type_name;                  // TODO: @@ Is this the correct type??
+        *out += (is_union ? " (Union)\",\n" : "\",\n");
         IndentSpacesJson(out, indent);
         *out += "\"name\" : \"[";
         std::string idx_str;

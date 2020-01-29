@@ -59,29 +59,23 @@ class ValueToString(BaseGenerator):
 
         ###### Output type and variable/member name
         self.wc('    IndentSpacesJson(out, indent); // ESP')
-        self.wc('    *out += "\\"type\\" : \\"' + value.fullType + '";')
+        if self.isUnion(value.fullType):
+            self.wc('    *out += "\\"type\\" : \\"' + value.fullType + ' (Union)"; // UNN')
+        else:
+            self.wc('    *out += "\\"type\\" : \\"' + value.fullType + '"; //NUN')
         if (value.isArray and not value.isPointer and ('Count' in value.arrayLength)):
             self.wc('    *out += "[";')
-            self.wc('    UnsignedDecimalToStringJson(out, ' + pstruct + value.arrayLength + ');')
+            self.wc('    UnsignedDecimalToStringJson(out, ' + pstruct + value.arrayLength + '); // IAC')
             self.wc('    *out += "]";')
         elif value.isArray and not value.isPointer:
             self.wc('    *out += "[";')
-            self.wc('    UnsignedDecimalToStringJson(out, ' + value.arrayLength + ');')
+            self.wc('    UnsignedDecimalToStringJson(out, ' + value.arrayLength + '); // IAV')
             self.wc('    *out += "]";')
         self.wc('    *out += "\\",\\n";')
-        #staticArrayLength = ''
-        #if value.isArray and not value.isPointer:
-        #    # value is a static array: append length to type
-        #    if 'Count' in value.arrayLength:
-        #        staticArrayLength = '[' + pstruct + value.arrayLength + ']'
-        #    else:
-        #        staticArrayLength = '[' + value.arrayLength + ']'
-        #self.wc('    *out += "\\"type\\" : \\"' + value.fullType + staticArrayLength + '\\",\\n";')
         self.wc('    IndentSpacesJson(out, indent);')
         self.wc('    *out += "\\"name\\" : \\"' + value.name + '\\",\\n";')
 
         # For dev/debug
-        #print("@@@@@@@@@ VTOS")
         if value.name == "currentTransform" or value.name == "supportedCompositeAlpha":
             # NOTE: currentTransform is displayed as enum, supportedCompositeAlpha is displayed as flags
             print('@ name', str(value.name))
