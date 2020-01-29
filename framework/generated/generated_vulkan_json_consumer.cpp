@@ -58,8 +58,9 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     // func arg: const VkInstanceCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkInstanceCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkInstanceCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -83,8 +84,9 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -108,8 +110,9 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     // func arg: VkInstance* pInstance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInstance\",\n";
     if (pInstance.GetPointer() == nullptr) // WWY
@@ -154,8 +157,9 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -168,8 +172,9 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -219,8 +224,9 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -233,8 +239,9 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     // func arg: uint32_t* pPhysicalDeviceCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDeviceCount\",\n";
     if (pPhysicalDeviceCount.GetPointer() == nullptr) // WWY
@@ -259,8 +266,9 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     // func arg: VkPhysicalDevice* pPhysicalDevices
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDevices\",\n";
     if (pPhysicalDevices.GetPointer() == nullptr) // WWY
@@ -305,8 +313,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -319,8 +328,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     // func arg: VkPhysicalDeviceFeatures* pFeatures
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceFeatures*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDeviceFeatures*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFeatures\",\n";
     if (pFeatures.GetPointer() == nullptr) // WWY
@@ -365,8 +375,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -379,8 +390,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     // func arg: VkFormat format
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormat\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFormat";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
@@ -393,8 +405,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     // func arg: VkFormatProperties* pFormatProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormatProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFormatProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFormatProperties\",\n";
     if (pFormatProperties.GetPointer() == nullptr) // WWY
@@ -448,8 +461,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -462,8 +476,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     // func arg: VkFormat format
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormat\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFormat";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
@@ -476,8 +491,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     // func arg: VkImageType type
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageType\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageType";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
@@ -490,8 +506,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     // func arg: VkImageTiling tiling
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageTiling\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageTiling";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tiling\",\n";
     IndentSpacesJson(out, indent);
@@ -504,8 +521,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     // func arg: VkImageUsageFlags usage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageUsageFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageUsageFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
@@ -518,8 +536,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     // func arg: VkImageCreateFlags flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageCreateFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageCreateFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -532,8 +551,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     // func arg: VkImageFormatProperties* pImageFormatProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageFormatProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageFormatProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageFormatProperties\",\n";
     if (pImageFormatProperties.GetPointer() == nullptr) // WWY
@@ -577,8 +597,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -591,8 +612,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     // func arg: VkPhysicalDeviceProperties* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDeviceProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -637,8 +659,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -651,8 +674,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     // func arg: uint32_t* pQueueFamilyPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyPropertyCount\",\n";
     if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
@@ -677,8 +701,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     // func arg: VkQueueFamilyProperties* pQueueFamilyProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueueFamilyProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueueFamilyProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyProperties\",\n";
     if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
@@ -722,8 +747,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -736,8 +762,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     // func arg: VkPhysicalDeviceMemoryProperties* pMemoryProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceMemoryProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDeviceMemoryProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryProperties\",\n";
     if (pMemoryProperties.GetPointer() == nullptr) // WWY
@@ -788,8 +815,9 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -802,8 +830,9 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     // func arg: const VkDeviceCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDeviceCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDeviceCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -827,8 +856,9 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -852,8 +882,9 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     // func arg: VkDevice* pDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDevice\",\n";
     if (pDevice.GetPointer() == nullptr) // WWY
@@ -898,8 +929,9 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -912,8 +944,9 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -959,8 +992,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -973,8 +1007,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     // func arg: uint32_t queueFamilyIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -987,8 +1022,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     // func arg: uint32_t queueIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -1001,8 +1037,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     // func arg: VkQueue* pQueue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueue*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueue\",\n";
     if (pQueue.GetPointer() == nullptr) // WWY
@@ -1054,8 +1091,9 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     // func arg: VkQueue queue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueue";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
     IndentSpacesJson(out, indent);
@@ -1068,8 +1106,9 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     // func arg: uint32_t submitCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"submitCount\",\n";
     IndentSpacesJson(out, indent);
@@ -1082,8 +1121,9 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     // func arg: const VkSubmitInfo* pSubmits
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSubmitInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSubmitInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubmits\",\n";
     if (pSubmits.GetPointer() == nullptr) // WWY
@@ -1107,8 +1147,9 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     // func arg: VkFence fence
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFence";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
     IndentSpacesJson(out, indent);
@@ -1145,8 +1186,9 @@ void VulkanJsonConsumer::Process_vkQueueWaitIdle(
     // func arg: VkQueue queue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueue";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
     IndentSpacesJson(out, indent);
@@ -1183,8 +1225,9 @@ void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -1224,8 +1267,9 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -1238,8 +1282,9 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     // func arg: const VkMemoryAllocateInfo* pAllocateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkMemoryAllocateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkMemoryAllocateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocateInfo\",\n";
     if (pAllocateInfo.GetPointer() == nullptr) // WWY
@@ -1263,8 +1308,9 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -1288,8 +1334,9 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     // func arg: VkDeviceMemory* pMemory
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceMemory*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemory\",\n";
     if (pMemory.GetPointer() == nullptr) // WWY
@@ -1335,8 +1382,9 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -1349,8 +1397,9 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     // func arg: VkDeviceMemory memory
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceMemory";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
     IndentSpacesJson(out, indent);
@@ -1363,8 +1412,9 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -1417,8 +1467,9 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -1431,8 +1482,9 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     // func arg: VkDeviceMemory memory
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceMemory";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
     IndentSpacesJson(out, indent);
@@ -1445,8 +1497,9 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     // func arg: VkDeviceSize offset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
     IndentSpacesJson(out, indent);
@@ -1459,8 +1512,9 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     // func arg: VkDeviceSize size
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
     IndentSpacesJson(out, indent);
@@ -1473,8 +1527,9 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     // func arg: VkMemoryMapFlags flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryMapFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkMemoryMapFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -1487,8 +1542,9 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     // func arg: void** ppData
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void**\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void**";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ppData\",\n";
     if (ppData.GetPointer() == nullptr) // WWY
@@ -1529,8 +1585,9 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -1543,8 +1600,9 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
     // func arg: VkDeviceMemory memory
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceMemory";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
     IndentSpacesJson(out, indent);
@@ -1583,8 +1641,9 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -1597,8 +1656,9 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     // func arg: uint32_t memoryRangeCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryRangeCount\",\n";
     IndentSpacesJson(out, indent);
@@ -1611,8 +1671,9 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     // func arg: const VkMappedMemoryRange* pMemoryRanges
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkMappedMemoryRange*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkMappedMemoryRange*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRanges\",\n";
     if (pMemoryRanges.GetPointer() == nullptr) // WWY
@@ -1662,8 +1723,9 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -1676,8 +1738,9 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     // func arg: uint32_t memoryRangeCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryRangeCount\",\n";
     IndentSpacesJson(out, indent);
@@ -1690,8 +1753,9 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     // func arg: const VkMappedMemoryRange* pMemoryRanges
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkMappedMemoryRange*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkMappedMemoryRange*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRanges\",\n";
     if (pMemoryRanges.GetPointer() == nullptr) // WWY
@@ -1736,8 +1800,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -1750,8 +1815,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     // func arg: VkDeviceMemory memory
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceMemory";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
     IndentSpacesJson(out, indent);
@@ -1764,8 +1830,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     // func arg: VkDeviceSize* pCommittedMemoryInBytes
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCommittedMemoryInBytes\",\n";
     if (pCommittedMemoryInBytes.GetPointer() == nullptr) // WWY
@@ -1813,8 +1880,9 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -1827,8 +1895,9 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -1841,8 +1910,9 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     // func arg: VkDeviceMemory memory
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceMemory";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
     IndentSpacesJson(out, indent);
@@ -1855,8 +1925,9 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     // func arg: VkDeviceSize memoryOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -1896,8 +1967,9 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -1910,8 +1982,9 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     // func arg: VkImage image
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
     IndentSpacesJson(out, indent);
@@ -1924,8 +1997,9 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     // func arg: VkDeviceMemory memory
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceMemory";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
     IndentSpacesJson(out, indent);
@@ -1938,8 +2012,9 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     // func arg: VkDeviceSize memoryOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -1973,8 +2048,9 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -1987,8 +2063,9 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -2001,8 +2078,9 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     // func arg: VkMemoryRequirements* pMemoryRequirements
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkMemoryRequirements*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
@@ -2047,8 +2125,9 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -2061,8 +2140,9 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     // func arg: VkImage image
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
     IndentSpacesJson(out, indent);
@@ -2075,8 +2155,9 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     // func arg: VkMemoryRequirements* pMemoryRequirements
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkMemoryRequirements*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
@@ -2122,8 +2203,9 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -2136,8 +2218,9 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     // func arg: VkImage image
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
     IndentSpacesJson(out, indent);
@@ -2150,8 +2233,9 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     // func arg: uint32_t* pSparseMemoryRequirementCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSparseMemoryRequirementCount\",\n";
     if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
@@ -2176,8 +2260,9 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     // func arg: VkSparseImageMemoryRequirements* pSparseMemoryRequirements
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageMemoryRequirements*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSparseImageMemoryRequirements*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSparseMemoryRequirements\",\n";
     if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
@@ -2227,8 +2312,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -2241,8 +2327,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     // func arg: VkFormat format
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormat\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFormat";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
@@ -2255,8 +2342,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     // func arg: VkImageType type
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageType\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageType";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
@@ -2269,13 +2357,14 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     // func arg: VkSampleCountFlagBits samples
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSampleCountFlagBits\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSampleCountFlagBits";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"samples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSampleCountFlagBitsJson(out, samples); // ESA
+    FlagsToStringJson(out, samples, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -2283,8 +2372,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     // func arg: VkImageUsageFlags usage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageUsageFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageUsageFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
@@ -2297,8 +2387,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     // func arg: VkImageTiling tiling
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageTiling\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageTiling";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tiling\",\n";
     IndentSpacesJson(out, indent);
@@ -2311,8 +2402,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     // func arg: uint32_t* pPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
@@ -2337,8 +2429,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     // func arg: VkSparseImageFormatProperties* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageFormatProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSparseImageFormatProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -2389,8 +2482,9 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     // func arg: VkQueue queue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueue";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
     IndentSpacesJson(out, indent);
@@ -2403,8 +2497,9 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     // func arg: uint32_t bindInfoCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindInfoCount\",\n";
     IndentSpacesJson(out, indent);
@@ -2417,8 +2512,9 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     // func arg: const VkBindSparseInfo* pBindInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBindSparseInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBindSparseInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindInfo\",\n";
     if (pBindInfo.GetPointer() == nullptr) // WWY
@@ -2442,8 +2538,9 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     // func arg: VkFence fence
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFence";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
     IndentSpacesJson(out, indent);
@@ -2483,8 +2580,9 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -2497,8 +2595,9 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     // func arg: const VkFenceCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkFenceCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkFenceCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -2522,8 +2621,9 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -2547,8 +2647,9 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     // func arg: VkFence* pFence
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFence*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFence\",\n";
     if (pFence.GetPointer() == nullptr) // WWY
@@ -2594,8 +2695,9 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -2608,8 +2710,9 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     // func arg: VkFence fence
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFence";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
     IndentSpacesJson(out, indent);
@@ -2622,8 +2725,9 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -2673,8 +2777,9 @@ void VulkanJsonConsumer::Process_vkResetFences(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -2687,8 +2792,9 @@ void VulkanJsonConsumer::Process_vkResetFences(
     // func arg: uint32_t fenceCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fenceCount\",\n";
     IndentSpacesJson(out, indent);
@@ -2701,8 +2807,9 @@ void VulkanJsonConsumer::Process_vkResetFences(
     // func arg: const VkFence* pFences
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkFence*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkFence*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFences\",\n";
     if (pFences.GetPointer() == nullptr) // WWY
@@ -2752,8 +2859,9 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -2766,8 +2874,9 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     // func arg: VkFence fence
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFence";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
     IndentSpacesJson(out, indent);
@@ -2808,8 +2917,9 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -2822,8 +2932,9 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     // func arg: uint32_t fenceCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fenceCount\",\n";
     IndentSpacesJson(out, indent);
@@ -2836,8 +2947,9 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     // func arg: const VkFence* pFences
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkFence*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkFence*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFences\",\n";
     if (pFences.GetPointer() == nullptr) // WWY
@@ -2862,8 +2974,9 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     // func arg: VkBool32 waitAll
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBool32\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBool32";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"waitAll\",\n";
     IndentSpacesJson(out, indent);
@@ -2876,8 +2989,9 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     // func arg: uint64_t timeout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint64_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timeout\",\n";
     IndentSpacesJson(out, indent);
@@ -2917,8 +3031,9 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -2931,8 +3046,9 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     // func arg: const VkSemaphoreCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSemaphoreCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSemaphoreCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -2956,8 +3072,9 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -2981,8 +3098,9 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     // func arg: VkSemaphore* pSemaphore
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphore*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSemaphore*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSemaphore\",\n";
     if (pSemaphore.GetPointer() == nullptr) // WWY
@@ -3028,8 +3146,9 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -3042,8 +3161,9 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     // func arg: VkSemaphore semaphore
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphore\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSemaphore";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphore\",\n";
     IndentSpacesJson(out, indent);
@@ -3056,8 +3176,9 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -3108,8 +3229,9 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -3122,8 +3244,9 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     // func arg: const VkEventCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkEventCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkEventCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -3147,8 +3270,9 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -3172,8 +3296,9 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     // func arg: VkEvent* pEvent
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkEvent*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkEvent*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pEvent\",\n";
     if (pEvent.GetPointer() == nullptr) // WWY
@@ -3219,8 +3344,9 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -3233,8 +3359,9 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     // func arg: VkEvent event
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkEvent\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkEvent";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"event\",\n";
     IndentSpacesJson(out, indent);
@@ -3247,8 +3374,9 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -3297,8 +3425,9 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -3311,8 +3440,9 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     // func arg: VkEvent event
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkEvent\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkEvent";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"event\",\n";
     IndentSpacesJson(out, indent);
@@ -3350,8 +3480,9 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -3364,8 +3495,9 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     // func arg: VkEvent event
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkEvent\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkEvent";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"event\",\n";
     IndentSpacesJson(out, indent);
@@ -3403,8 +3535,9 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -3417,8 +3550,9 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     // func arg: VkEvent event
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkEvent\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkEvent";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"event\",\n";
     IndentSpacesJson(out, indent);
@@ -3458,8 +3592,9 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -3472,8 +3607,9 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     // func arg: const VkQueryPoolCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkQueryPoolCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkQueryPoolCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -3497,8 +3633,9 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -3522,8 +3659,9 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     // func arg: VkQueryPool* pQueryPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryPool*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueryPool\",\n";
     if (pQueryPool.GetPointer() == nullptr) // WWY
@@ -3569,8 +3707,9 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -3583,8 +3722,9 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     // func arg: VkQueryPool queryPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
     IndentSpacesJson(out, indent);
@@ -3597,8 +3737,9 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -3653,8 +3794,9 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -3667,8 +3809,9 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     // func arg: VkQueryPool queryPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
     IndentSpacesJson(out, indent);
@@ -3681,8 +3824,9 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     // func arg: uint32_t firstQuery
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstQuery\",\n";
     IndentSpacesJson(out, indent);
@@ -3695,8 +3839,9 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     // func arg: uint32_t queryCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryCount\",\n";
     IndentSpacesJson(out, indent);
@@ -3709,8 +3854,9 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     // func arg: size_t dataSize
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"size_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"size_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dataSize\",\n";
     IndentSpacesJson(out, indent);
@@ -3723,8 +3869,9 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     // func arg: void* pData
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     if (pData.GetPointer() == nullptr) // WWY
@@ -3749,8 +3896,9 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     // func arg: VkDeviceSize stride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
     IndentSpacesJson(out, indent);
@@ -3763,8 +3911,9 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     // func arg: VkQueryResultFlags flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryResultFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryResultFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -3804,8 +3953,9 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -3818,8 +3968,9 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     // func arg: const VkBufferCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBufferCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBufferCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -3843,8 +3994,9 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -3868,8 +4020,9 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     // func arg: VkBuffer* pBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBuffer\",\n";
     if (pBuffer.GetPointer() == nullptr) // WWY
@@ -3915,8 +4068,9 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -3929,8 +4083,9 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -3943,8 +4098,9 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -3995,8 +4151,9 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -4009,8 +4166,9 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     // func arg: const VkBufferViewCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBufferViewCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBufferViewCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -4034,8 +4192,9 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -4059,8 +4218,9 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     // func arg: VkBufferView* pView
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferView*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBufferView*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pView\",\n";
     if (pView.GetPointer() == nullptr) // WWY
@@ -4106,8 +4266,9 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -4120,8 +4281,9 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     // func arg: VkBufferView bufferView
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBufferView\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBufferView";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferView\",\n";
     IndentSpacesJson(out, indent);
@@ -4134,8 +4296,9 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -4186,8 +4349,9 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -4200,8 +4364,9 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     // func arg: const VkImageCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -4225,8 +4390,9 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -4250,8 +4416,9 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     // func arg: VkImage* pImage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImage\",\n";
     if (pImage.GetPointer() == nullptr) // WWY
@@ -4297,8 +4464,9 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -4311,8 +4479,9 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     // func arg: VkImage image
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
     IndentSpacesJson(out, indent);
@@ -4325,8 +4494,9 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -4372,8 +4542,9 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -4386,8 +4557,9 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     // func arg: VkImage image
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
     IndentSpacesJson(out, indent);
@@ -4400,8 +4572,9 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     // func arg: const VkImageSubresource* pSubresource
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageSubresource*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageSubresource*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubresource\",\n";
     if (pSubresource.GetPointer() == nullptr) // WWY
@@ -4425,8 +4598,9 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     // func arg: VkSubresourceLayout* pLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubresourceLayout*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSubresourceLayout*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLayout\",\n";
     if (pLayout.GetPointer() == nullptr) // WWY
@@ -4477,8 +4651,9 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -4491,8 +4666,9 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     // func arg: const VkImageViewCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageViewCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageViewCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -4516,8 +4692,9 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -4541,8 +4718,9 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     // func arg: VkImageView* pView
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageView*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageView*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pView\",\n";
     if (pView.GetPointer() == nullptr) // WWY
@@ -4588,8 +4766,9 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -4602,8 +4781,9 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     // func arg: VkImageView imageView
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageView\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageView";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageView\",\n";
     IndentSpacesJson(out, indent);
@@ -4616,8 +4796,9 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -4668,8 +4849,9 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -4682,8 +4864,9 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     // func arg: const VkShaderModuleCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkShaderModuleCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkShaderModuleCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -4707,8 +4890,9 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -4732,8 +4916,9 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     // func arg: VkShaderModule* pShaderModule
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkShaderModule*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkShaderModule*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pShaderModule\",\n";
     if (pShaderModule.GetPointer() == nullptr) // WWY
@@ -4779,8 +4964,9 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -4793,8 +4979,9 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     // func arg: VkShaderModule shaderModule
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkShaderModule\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkShaderModule";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderModule\",\n";
     IndentSpacesJson(out, indent);
@@ -4807,8 +4994,9 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -4859,8 +5047,9 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -4873,8 +5062,9 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     // func arg: const VkPipelineCacheCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPipelineCacheCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPipelineCacheCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -4898,8 +5088,9 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -4923,8 +5114,9 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     // func arg: VkPipelineCache* pPipelineCache
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineCache*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineCache*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelineCache\",\n";
     if (pPipelineCache.GetPointer() == nullptr) // WWY
@@ -4970,8 +5162,9 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -4984,8 +5177,9 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     // func arg: VkPipelineCache pipelineCache
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineCache\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineCache";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineCache\",\n";
     IndentSpacesJson(out, indent);
@@ -4998,8 +5192,9 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -5050,8 +5245,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -5064,8 +5260,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     // func arg: VkPipelineCache pipelineCache
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineCache\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineCache";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineCache\",\n";
     IndentSpacesJson(out, indent);
@@ -5078,8 +5275,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     // func arg: size_t* pDataSize
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"size_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"size_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDataSize\",\n";
     if (pDataSize.GetPointer() == nullptr) // WWY
@@ -5100,8 +5298,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     // func arg: void* pData
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     if (pData.GetPointer() == nullptr) // WWY
@@ -5153,8 +5352,9 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -5167,8 +5367,9 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     // func arg: VkPipelineCache dstCache
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineCache\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineCache";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstCache\",\n";
     IndentSpacesJson(out, indent);
@@ -5181,8 +5382,9 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     // func arg: uint32_t srcCacheCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcCacheCount\",\n";
     IndentSpacesJson(out, indent);
@@ -5195,8 +5397,9 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     // func arg: const VkPipelineCache* pSrcCaches
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPipelineCache*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPipelineCache*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSrcCaches\",\n";
     if (pSrcCaches.GetPointer() == nullptr) // WWY
@@ -5250,8 +5453,9 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -5264,8 +5468,9 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     // func arg: VkPipelineCache pipelineCache
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineCache\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineCache";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineCache\",\n";
     IndentSpacesJson(out, indent);
@@ -5278,8 +5483,9 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     // func arg: uint32_t createInfoCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"createInfoCount\",\n";
     IndentSpacesJson(out, indent);
@@ -5292,8 +5498,9 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     // func arg: const VkGraphicsPipelineCreateInfo* pCreateInfos
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkGraphicsPipelineCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkGraphicsPipelineCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfos\",\n";
     if (pCreateInfos.GetPointer() == nullptr) // WWY
@@ -5317,8 +5524,9 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -5342,8 +5550,9 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     // func arg: VkPipeline* pPipelines
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipeline*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipeline*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelines\",\n";
     if (pPipelines.GetPointer() == nullptr) // WWY
@@ -5397,8 +5606,9 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -5411,8 +5621,9 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     // func arg: VkPipelineCache pipelineCache
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineCache\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineCache";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineCache\",\n";
     IndentSpacesJson(out, indent);
@@ -5425,8 +5636,9 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     // func arg: uint32_t createInfoCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"createInfoCount\",\n";
     IndentSpacesJson(out, indent);
@@ -5439,8 +5651,9 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     // func arg: const VkComputePipelineCreateInfo* pCreateInfos
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkComputePipelineCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkComputePipelineCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfos\",\n";
     if (pCreateInfos.GetPointer() == nullptr) // WWY
@@ -5464,8 +5677,9 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -5489,8 +5703,9 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     // func arg: VkPipeline* pPipelines
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipeline*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipeline*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelines\",\n";
     if (pPipelines.GetPointer() == nullptr) // WWY
@@ -5536,8 +5751,9 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -5550,8 +5766,9 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     // func arg: VkPipeline pipeline
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipeline\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipeline";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
     IndentSpacesJson(out, indent);
@@ -5564,8 +5781,9 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -5616,8 +5834,9 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -5630,8 +5849,9 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     // func arg: const VkPipelineLayoutCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPipelineLayoutCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPipelineLayoutCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -5655,8 +5875,9 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -5680,8 +5901,9 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     // func arg: VkPipelineLayout* pPipelineLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineLayout*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineLayout*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelineLayout\",\n";
     if (pPipelineLayout.GetPointer() == nullptr) // WWY
@@ -5727,8 +5949,9 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -5741,8 +5964,9 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     // func arg: VkPipelineLayout pipelineLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -5755,8 +5979,9 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -5807,8 +6032,9 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -5821,8 +6047,9 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     // func arg: const VkSamplerCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSamplerCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSamplerCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -5846,8 +6073,9 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -5871,8 +6099,9 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     // func arg: VkSampler* pSampler
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSampler*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSampler*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSampler\",\n";
     if (pSampler.GetPointer() == nullptr) // WWY
@@ -5918,8 +6147,9 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -5932,8 +6162,9 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     // func arg: VkSampler sampler
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSampler\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSampler";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampler\",\n";
     IndentSpacesJson(out, indent);
@@ -5946,8 +6177,9 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -5998,8 +6230,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -6012,8 +6245,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     // func arg: const VkDescriptorSetLayoutCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -6037,8 +6271,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -6062,8 +6297,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     // func arg: VkDescriptorSetLayout* pSetLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayout*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorSetLayout*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSetLayout\",\n";
     if (pSetLayout.GetPointer() == nullptr) // WWY
@@ -6109,8 +6345,9 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -6123,8 +6360,9 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     // func arg: VkDescriptorSetLayout descriptorSetLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorSetLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorSetLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -6137,8 +6375,9 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -6189,8 +6428,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -6203,8 +6443,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     // func arg: const VkDescriptorPoolCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDescriptorPoolCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDescriptorPoolCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -6228,8 +6469,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -6253,8 +6495,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     // func arg: VkDescriptorPool* pDescriptorPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorPool*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorPool*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorPool\",\n";
     if (pDescriptorPool.GetPointer() == nullptr) // WWY
@@ -6300,8 +6543,9 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -6314,8 +6558,9 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     // func arg: VkDescriptorPool descriptorPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorPool\",\n";
     IndentSpacesJson(out, indent);
@@ -6328,8 +6573,9 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -6379,8 +6625,9 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -6393,8 +6640,9 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     // func arg: VkDescriptorPool descriptorPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorPool\",\n";
     IndentSpacesJson(out, indent);
@@ -6407,8 +6655,9 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     // func arg: VkDescriptorPoolResetFlags flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorPoolResetFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorPoolResetFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -6447,8 +6696,9 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -6461,8 +6711,9 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     // func arg: const VkDescriptorSetAllocateInfo* pAllocateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDescriptorSetAllocateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDescriptorSetAllocateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocateInfo\",\n";
     if (pAllocateInfo.GetPointer() == nullptr) // WWY
@@ -6486,8 +6737,9 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     // func arg: VkDescriptorSet* pDescriptorSets
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSet*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorSet*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorSets\",\n";
     if (pDescriptorSets.GetPointer() == nullptr) // WWY
@@ -6539,8 +6791,9 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -6553,8 +6806,9 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     // func arg: VkDescriptorPool descriptorPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorPool\",\n";
     IndentSpacesJson(out, indent);
@@ -6567,8 +6821,9 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     // func arg: uint32_t descriptorSetCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorSetCount\",\n";
     IndentSpacesJson(out, indent);
@@ -6581,8 +6836,9 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     // func arg: const VkDescriptorSet* pDescriptorSets
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDescriptorSet*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDescriptorSet*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorSets\",\n";
     if (pDescriptorSets.GetPointer() == nullptr) // WWY
@@ -6630,8 +6886,9 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -6644,8 +6901,9 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     // func arg: uint32_t descriptorWriteCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorWriteCount\",\n";
     IndentSpacesJson(out, indent);
@@ -6658,8 +6916,9 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     // func arg: const VkWriteDescriptorSet* pDescriptorWrites
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkWriteDescriptorSet*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkWriteDescriptorSet*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorWrites\",\n";
     if (pDescriptorWrites.GetPointer() == nullptr) // WWY
@@ -6683,8 +6942,9 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     // func arg: uint32_t descriptorCopyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorCopyCount\",\n";
     IndentSpacesJson(out, indent);
@@ -6697,8 +6957,9 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     // func arg: const VkCopyDescriptorSet* pDescriptorCopies
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkCopyDescriptorSet*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkCopyDescriptorSet*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorCopies\",\n";
     if (pDescriptorCopies.GetPointer() == nullptr) // WWY
@@ -6749,8 +7010,9 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -6763,8 +7025,9 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     // func arg: const VkFramebufferCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkFramebufferCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkFramebufferCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -6788,8 +7051,9 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -6813,8 +7077,9 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     // func arg: VkFramebuffer* pFramebuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFramebuffer*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFramebuffer*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFramebuffer\",\n";
     if (pFramebuffer.GetPointer() == nullptr) // WWY
@@ -6860,8 +7125,9 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -6874,8 +7140,9 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     // func arg: VkFramebuffer framebuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFramebuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFramebuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"framebuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -6888,8 +7155,9 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -6940,8 +7208,9 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -6954,8 +7223,9 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     // func arg: const VkRenderPassCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkRenderPassCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkRenderPassCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -6979,8 +7249,9 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -7004,8 +7275,9 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     // func arg: VkRenderPass* pRenderPass
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRenderPass*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkRenderPass*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRenderPass\",\n";
     if (pRenderPass.GetPointer() == nullptr) // WWY
@@ -7051,8 +7323,9 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -7065,8 +7338,9 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     // func arg: VkRenderPass renderPass
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRenderPass\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkRenderPass";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"renderPass\",\n";
     IndentSpacesJson(out, indent);
@@ -7079,8 +7353,9 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -7125,8 +7400,9 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -7139,8 +7415,9 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     // func arg: VkRenderPass renderPass
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRenderPass\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkRenderPass";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"renderPass\",\n";
     IndentSpacesJson(out, indent);
@@ -7153,8 +7430,9 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     // func arg: VkExtent2D* pGranularity
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExtent2D*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExtent2D*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGranularity\",\n";
     if (pGranularity.GetPointer() == nullptr) // WWY
@@ -7205,8 +7483,9 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -7219,8 +7498,9 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     // func arg: const VkCommandPoolCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkCommandPoolCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkCommandPoolCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -7244,8 +7524,9 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -7269,8 +7550,9 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     // func arg: VkCommandPool* pCommandPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandPool*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandPool*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCommandPool\",\n";
     if (pCommandPool.GetPointer() == nullptr) // WWY
@@ -7316,8 +7598,9 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -7330,8 +7613,9 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     // func arg: VkCommandPool commandPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandPool\",\n";
     IndentSpacesJson(out, indent);
@@ -7344,8 +7628,9 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -7395,8 +7680,9 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -7409,8 +7695,9 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     // func arg: VkCommandPool commandPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandPool\",\n";
     IndentSpacesJson(out, indent);
@@ -7423,8 +7710,9 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     // func arg: VkCommandPoolResetFlags flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandPoolResetFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandPoolResetFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -7463,8 +7751,9 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -7477,8 +7766,9 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     // func arg: const VkCommandBufferAllocateInfo* pAllocateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkCommandBufferAllocateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkCommandBufferAllocateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocateInfo\",\n";
     if (pAllocateInfo.GetPointer() == nullptr) // WWY
@@ -7502,8 +7792,9 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     // func arg: VkCommandBuffer* pCommandBuffers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCommandBuffers\",\n";
     if (pCommandBuffers.GetPointer() == nullptr) // WWY
@@ -7550,8 +7841,9 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -7564,8 +7856,9 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     // func arg: VkCommandPool commandPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandPool\",\n";
     IndentSpacesJson(out, indent);
@@ -7578,8 +7871,9 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     // func arg: uint32_t commandBufferCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBufferCount\",\n";
     IndentSpacesJson(out, indent);
@@ -7592,8 +7886,9 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     // func arg: const VkCommandBuffer* pCommandBuffers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkCommandBuffer*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkCommandBuffer*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCommandBuffers\",\n";
     if (pCommandBuffers.GetPointer() == nullptr) // WWY
@@ -7643,8 +7938,9 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -7657,8 +7953,9 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     // func arg: const VkCommandBufferBeginInfo* pBeginInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkCommandBufferBeginInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkCommandBufferBeginInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBeginInfo\",\n";
     if (pBeginInfo.GetPointer() == nullptr) // WWY
@@ -7706,8 +8003,9 @@ void VulkanJsonConsumer::Process_vkEndCommandBuffer(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -7745,8 +8043,9 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -7759,8 +8058,9 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     // func arg: VkCommandBufferResetFlags flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBufferResetFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBufferResetFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -7794,8 +8094,9 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -7808,8 +8109,9 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     // func arg: VkPipelineBindPoint pipelineBindPoint
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineBindPoint\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineBindPoint";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
@@ -7822,8 +8124,9 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     // func arg: VkPipeline pipeline
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipeline\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipeline";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
     IndentSpacesJson(out, indent);
@@ -7858,8 +8161,9 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -7872,8 +8176,9 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     // func arg: uint32_t firstViewport
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstViewport\",\n";
     IndentSpacesJson(out, indent);
@@ -7886,8 +8191,9 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     // func arg: uint32_t viewportCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewportCount\",\n";
     IndentSpacesJson(out, indent);
@@ -7900,8 +8206,9 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     // func arg: const VkViewport* pViewports
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkViewport*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkViewport*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pViewports\",\n";
     if (pViewports.GetPointer() == nullptr) // WWY
@@ -7947,8 +8254,9 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -7961,8 +8269,9 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     // func arg: uint32_t firstScissor
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstScissor\",\n";
     IndentSpacesJson(out, indent);
@@ -7975,8 +8284,9 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     // func arg: uint32_t scissorCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"scissorCount\",\n";
     IndentSpacesJson(out, indent);
@@ -7989,8 +8299,9 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     // func arg: const VkRect2D* pScissors
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkRect2D*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkRect2D*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pScissors\",\n";
     if (pScissors.GetPointer() == nullptr) // WWY
@@ -8034,8 +8345,9 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8048,8 +8360,9 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
     // func arg: float lineWidth
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"float\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"float";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"lineWidth\",\n";
     IndentSpacesJson(out, indent);
@@ -8084,8 +8397,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8098,8 +8412,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     // func arg: float depthBiasConstantFactor
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"float\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"float";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBiasConstantFactor\",\n";
     IndentSpacesJson(out, indent);
@@ -8112,8 +8427,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     // func arg: float depthBiasClamp
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"float\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"float";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBiasClamp\",\n";
     IndentSpacesJson(out, indent);
@@ -8126,8 +8442,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     // func arg: float depthBiasSlopeFactor
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"float\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"float";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depthBiasSlopeFactor\",\n";
     IndentSpacesJson(out, indent);
@@ -8160,8 +8477,9 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8174,8 +8492,12 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     // func arg: const float blendConstants
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const float\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const float";
+    *out += "[";
+    UnsignedDecimalToStringJson(out, 4);
+    *out += "]";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"blendConstants\",\n";
         IndentSpacesJson(out, indent);
@@ -8213,8 +8535,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8227,8 +8550,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     // func arg: float minDepthBounds
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"float\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"float";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"minDepthBounds\",\n";
     IndentSpacesJson(out, indent);
@@ -8241,8 +8565,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     // func arg: float maxDepthBounds
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"float\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"float";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDepthBounds\",\n";
     IndentSpacesJson(out, indent);
@@ -8276,8 +8601,9 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8290,8 +8616,9 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     // func arg: VkStencilFaceFlags faceMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkStencilFaceFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkStencilFaceFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"faceMask\",\n";
     IndentSpacesJson(out, indent);
@@ -8304,8 +8631,9 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     // func arg: uint32_t compareMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"compareMask\",\n";
     IndentSpacesJson(out, indent);
@@ -8339,8 +8667,9 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8353,8 +8682,9 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     // func arg: VkStencilFaceFlags faceMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkStencilFaceFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkStencilFaceFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"faceMask\",\n";
     IndentSpacesJson(out, indent);
@@ -8367,8 +8697,9 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     // func arg: uint32_t writeMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"writeMask\",\n";
     IndentSpacesJson(out, indent);
@@ -8402,8 +8733,9 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8416,8 +8748,9 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     // func arg: VkStencilFaceFlags faceMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkStencilFaceFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkStencilFaceFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"faceMask\",\n";
     IndentSpacesJson(out, indent);
@@ -8430,8 +8763,9 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     // func arg: uint32_t reference
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"reference\",\n";
     IndentSpacesJson(out, indent);
@@ -8470,8 +8804,9 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8484,8 +8819,9 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     // func arg: VkPipelineBindPoint pipelineBindPoint
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineBindPoint\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineBindPoint";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
@@ -8498,8 +8834,9 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     // func arg: VkPipelineLayout layout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layout\",\n";
     IndentSpacesJson(out, indent);
@@ -8512,8 +8849,9 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     // func arg: uint32_t firstSet
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstSet\",\n";
     IndentSpacesJson(out, indent);
@@ -8526,8 +8864,9 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     // func arg: uint32_t descriptorSetCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorSetCount\",\n";
     IndentSpacesJson(out, indent);
@@ -8540,8 +8879,9 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     // func arg: const VkDescriptorSet* pDescriptorSets
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDescriptorSet*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDescriptorSet*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorSets\",\n";
     if (pDescriptorSets.GetPointer() == nullptr) // WWY
@@ -8566,8 +8906,9 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     // func arg: uint32_t dynamicOffsetCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dynamicOffsetCount\",\n";
     IndentSpacesJson(out, indent);
@@ -8580,8 +8921,9 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     // func arg: const uint32_t* pDynamicOffsets
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDynamicOffsets\",\n";
     if (pDynamicOffsets.GetPointer() == nullptr) // WWY
@@ -8628,8 +8970,9 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8642,8 +8985,9 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8656,8 +9000,9 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     // func arg: VkDeviceSize offset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
     IndentSpacesJson(out, indent);
@@ -8670,8 +9015,9 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     // func arg: VkIndexType indexType
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkIndexType\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkIndexType";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indexType\",\n";
     IndentSpacesJson(out, indent);
@@ -8707,8 +9053,9 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8721,8 +9068,9 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     // func arg: uint32_t firstBinding
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstBinding\",\n";
     IndentSpacesJson(out, indent);
@@ -8735,8 +9083,9 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     // func arg: uint32_t bindingCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindingCount\",\n";
     IndentSpacesJson(out, indent);
@@ -8749,8 +9098,9 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     // func arg: const VkBuffer* pBuffers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBuffer*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBuffer*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBuffers\",\n";
     if (pBuffers.GetPointer() == nullptr) // WWY
@@ -8775,8 +9125,9 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     // func arg: const VkDeviceSize* pOffsets
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDeviceSize*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDeviceSize*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pOffsets\",\n";
     if (pOffsets.GetPointer() == nullptr) // WWY
@@ -8824,8 +9175,9 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8838,8 +9190,9 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     // func arg: uint32_t vertexCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexCount\",\n";
     IndentSpacesJson(out, indent);
@@ -8852,8 +9205,9 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     // func arg: uint32_t instanceCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceCount\",\n";
     IndentSpacesJson(out, indent);
@@ -8866,8 +9220,9 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     // func arg: uint32_t firstVertex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstVertex\",\n";
     IndentSpacesJson(out, indent);
@@ -8880,8 +9235,9 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     // func arg: uint32_t firstInstance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstInstance\",\n";
     IndentSpacesJson(out, indent);
@@ -8918,8 +9274,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -8932,8 +9289,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     // func arg: uint32_t indexCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indexCount\",\n";
     IndentSpacesJson(out, indent);
@@ -8946,8 +9304,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     // func arg: uint32_t instanceCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceCount\",\n";
     IndentSpacesJson(out, indent);
@@ -8960,8 +9319,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     // func arg: uint32_t firstIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -8974,8 +9334,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     // func arg: int32_t vertexOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"int32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"int32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -8988,8 +9349,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     // func arg: uint32_t firstInstance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstInstance\",\n";
     IndentSpacesJson(out, indent);
@@ -9025,8 +9387,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9039,8 +9402,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9053,8 +9417,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     // func arg: VkDeviceSize offset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
     IndentSpacesJson(out, indent);
@@ -9067,8 +9432,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     // func arg: uint32_t drawCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drawCount\",\n";
     IndentSpacesJson(out, indent);
@@ -9081,8 +9447,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     // func arg: uint32_t stride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
     IndentSpacesJson(out, indent);
@@ -9118,8 +9485,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9132,8 +9500,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9146,8 +9515,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     // func arg: VkDeviceSize offset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
     IndentSpacesJson(out, indent);
@@ -9160,8 +9530,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     // func arg: uint32_t drawCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drawCount\",\n";
     IndentSpacesJson(out, indent);
@@ -9174,8 +9545,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     // func arg: uint32_t stride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
     IndentSpacesJson(out, indent);
@@ -9210,8 +9582,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9224,8 +9597,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     // func arg: uint32_t groupCountX
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountX\",\n";
     IndentSpacesJson(out, indent);
@@ -9238,8 +9612,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     // func arg: uint32_t groupCountY
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountY\",\n";
     IndentSpacesJson(out, indent);
@@ -9252,8 +9627,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     // func arg: uint32_t groupCountZ
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountZ\",\n";
     IndentSpacesJson(out, indent);
@@ -9287,8 +9663,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9301,8 +9678,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9315,8 +9693,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     // func arg: VkDeviceSize offset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
     IndentSpacesJson(out, indent);
@@ -9352,8 +9731,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9366,8 +9746,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     // func arg: VkBuffer srcBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9380,8 +9761,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     // func arg: VkBuffer dstBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9394,8 +9776,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     // func arg: uint32_t regionCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"regionCount\",\n";
     IndentSpacesJson(out, indent);
@@ -9408,8 +9791,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     // func arg: const VkBufferCopy* pRegions
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBufferCopy*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBufferCopy*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     if (pRegions.GetPointer() == nullptr) // WWY
@@ -9458,8 +9842,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9472,8 +9857,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     // func arg: VkImage srcImage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImage\",\n";
     IndentSpacesJson(out, indent);
@@ -9486,8 +9872,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     // func arg: VkImageLayout srcImageLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImageLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -9500,8 +9887,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     // func arg: VkImage dstImage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImage\",\n";
     IndentSpacesJson(out, indent);
@@ -9514,8 +9902,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     // func arg: VkImageLayout dstImageLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImageLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -9528,8 +9917,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     // func arg: uint32_t regionCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"regionCount\",\n";
     IndentSpacesJson(out, indent);
@@ -9542,8 +9932,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     // func arg: const VkImageCopy* pRegions
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageCopy*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageCopy*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     if (pRegions.GetPointer() == nullptr) // WWY
@@ -9593,8 +9984,9 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9607,8 +9999,9 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     // func arg: VkImage srcImage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImage\",\n";
     IndentSpacesJson(out, indent);
@@ -9621,8 +10014,9 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     // func arg: VkImageLayout srcImageLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImageLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -9635,8 +10029,9 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     // func arg: VkImage dstImage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImage\",\n";
     IndentSpacesJson(out, indent);
@@ -9649,8 +10044,9 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     // func arg: VkImageLayout dstImageLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImageLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -9663,8 +10059,9 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     // func arg: uint32_t regionCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"regionCount\",\n";
     IndentSpacesJson(out, indent);
@@ -9677,8 +10074,9 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     // func arg: const VkImageBlit* pRegions
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageBlit*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageBlit*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     if (pRegions.GetPointer() == nullptr) // WWY
@@ -9702,8 +10100,9 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     // func arg: VkFilter filter
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFilter\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFilter";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"filter\",\n";
     IndentSpacesJson(out, indent);
@@ -9740,8 +10139,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9754,8 +10154,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     // func arg: VkBuffer srcBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9768,8 +10169,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     // func arg: VkImage dstImage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImage\",\n";
     IndentSpacesJson(out, indent);
@@ -9782,8 +10184,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     // func arg: VkImageLayout dstImageLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImageLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -9796,8 +10199,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     // func arg: uint32_t regionCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"regionCount\",\n";
     IndentSpacesJson(out, indent);
@@ -9810,8 +10214,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     // func arg: const VkBufferImageCopy* pRegions
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBufferImageCopy*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBufferImageCopy*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     if (pRegions.GetPointer() == nullptr) // WWY
@@ -9859,8 +10264,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9873,8 +10279,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     // func arg: VkImage srcImage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImage\",\n";
     IndentSpacesJson(out, indent);
@@ -9887,8 +10294,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     // func arg: VkImageLayout srcImageLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImageLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -9901,8 +10309,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     // func arg: VkBuffer dstBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9915,8 +10324,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     // func arg: uint32_t regionCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"regionCount\",\n";
     IndentSpacesJson(out, indent);
@@ -9929,8 +10339,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     // func arg: const VkBufferImageCopy* pRegions
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBufferImageCopy*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBufferImageCopy*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     if (pRegions.GetPointer() == nullptr) // WWY
@@ -9977,8 +10388,9 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -9991,8 +10403,9 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     // func arg: VkBuffer dstBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -10005,8 +10418,9 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     // func arg: VkDeviceSize dstOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -10019,8 +10433,9 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     // func arg: VkDeviceSize dataSize
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dataSize\",\n";
     IndentSpacesJson(out, indent);
@@ -10033,8 +10448,9 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     // func arg: const void* pData
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     if (pData.GetPointer() == nullptr) // WWY
@@ -10082,8 +10498,9 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -10096,8 +10513,9 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     // func arg: VkBuffer dstBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -10110,8 +10528,9 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     // func arg: VkDeviceSize dstOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -10124,8 +10543,9 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     // func arg: VkDeviceSize size
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
     IndentSpacesJson(out, indent);
@@ -10138,8 +10558,9 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     // func arg: uint32_t data
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"data\",\n";
     IndentSpacesJson(out, indent);
@@ -10176,8 +10597,9 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -10190,8 +10612,9 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     // func arg: VkImage image
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
     IndentSpacesJson(out, indent);
@@ -10204,8 +10627,9 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     // func arg: VkImageLayout imageLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -10218,8 +10642,9 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     // func arg: const VkClearColorValue* pColor
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkClearColorValue*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkClearColorValue*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pColor\",\n";
     if (pColor.GetPointer() == nullptr) // WWY
@@ -10243,8 +10668,9 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     // func arg: uint32_t rangeCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rangeCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10257,8 +10683,9 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     // func arg: const VkImageSubresourceRange* pRanges
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageSubresourceRange*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageSubresourceRange*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRanges\",\n";
     if (pRanges.GetPointer() == nullptr) // WWY
@@ -10306,8 +10733,9 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -10320,8 +10748,9 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     // func arg: VkImage image
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
     IndentSpacesJson(out, indent);
@@ -10334,8 +10763,9 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     // func arg: VkImageLayout imageLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -10348,8 +10778,9 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     // func arg: const VkClearDepthStencilValue* pDepthStencil
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkClearDepthStencilValue*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkClearDepthStencilValue*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDepthStencil\",\n";
     if (pDepthStencil.GetPointer() == nullptr) // WWY
@@ -10373,8 +10804,9 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     // func arg: uint32_t rangeCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rangeCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10387,8 +10819,9 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     // func arg: const VkImageSubresourceRange* pRanges
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageSubresourceRange*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageSubresourceRange*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRanges\",\n";
     if (pRanges.GetPointer() == nullptr) // WWY
@@ -10435,8 +10868,9 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -10449,8 +10883,9 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     // func arg: uint32_t attachmentCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"attachmentCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10463,8 +10898,9 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     // func arg: const VkClearAttachment* pAttachments
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkClearAttachment*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkClearAttachment*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAttachments\",\n";
     if (pAttachments.GetPointer() == nullptr) // WWY
@@ -10488,8 +10924,9 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     // func arg: uint32_t rectCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rectCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10502,8 +10939,9 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     // func arg: const VkClearRect* pRects
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkClearRect*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkClearRect*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRects\",\n";
     if (pRects.GetPointer() == nullptr) // WWY
@@ -10552,8 +10990,9 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -10566,8 +11005,9 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     // func arg: VkImage srcImage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImage\",\n";
     IndentSpacesJson(out, indent);
@@ -10580,8 +11020,9 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     // func arg: VkImageLayout srcImageLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcImageLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -10594,8 +11035,9 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     // func arg: VkImage dstImage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImage\",\n";
     IndentSpacesJson(out, indent);
@@ -10608,8 +11050,9 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     // func arg: VkImageLayout dstImageLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstImageLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -10622,8 +11065,9 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     // func arg: uint32_t regionCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"regionCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10636,8 +11080,9 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     // func arg: const VkImageResolve* pRegions
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageResolve*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageResolve*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRegions\",\n";
     if (pRegions.GetPointer() == nullptr) // WWY
@@ -10682,8 +11127,9 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -10696,8 +11142,9 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     // func arg: VkEvent event
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkEvent\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkEvent";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"event\",\n";
     IndentSpacesJson(out, indent);
@@ -10710,8 +11157,9 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     // func arg: VkPipelineStageFlags stageMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineStageFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineStageFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stageMask\",\n";
     IndentSpacesJson(out, indent);
@@ -10745,8 +11193,9 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -10759,8 +11208,9 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     // func arg: VkEvent event
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkEvent\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkEvent";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"event\",\n";
     IndentSpacesJson(out, indent);
@@ -10773,8 +11223,9 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     // func arg: VkPipelineStageFlags stageMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineStageFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineStageFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stageMask\",\n";
     IndentSpacesJson(out, indent);
@@ -10816,8 +11267,9 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -10830,8 +11282,9 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: uint32_t eventCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"eventCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10844,8 +11297,9 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: const VkEvent* pEvents
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkEvent*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkEvent*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pEvents\",\n";
     if (pEvents.GetPointer() == nullptr) // WWY
@@ -10870,8 +11324,9 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: VkPipelineStageFlags srcStageMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineStageFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineStageFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcStageMask\",\n";
     IndentSpacesJson(out, indent);
@@ -10884,8 +11339,9 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: VkPipelineStageFlags dstStageMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineStageFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineStageFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstStageMask\",\n";
     IndentSpacesJson(out, indent);
@@ -10898,8 +11354,9 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: uint32_t memoryBarrierCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryBarrierCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10912,8 +11369,9 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: const VkMemoryBarrier* pMemoryBarriers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkMemoryBarrier*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkMemoryBarrier*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryBarriers\",\n";
     if (pMemoryBarriers.GetPointer() == nullptr) // WWY
@@ -10937,8 +11395,9 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: uint32_t bufferMemoryBarrierCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferMemoryBarrierCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10951,8 +11410,9 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: const VkBufferMemoryBarrier* pBufferMemoryBarriers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBufferMemoryBarrier*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBufferMemoryBarrier*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBufferMemoryBarriers\",\n";
     if (pBufferMemoryBarriers.GetPointer() == nullptr) // WWY
@@ -10976,8 +11436,9 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: uint32_t imageMemoryBarrierCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageMemoryBarrierCount\",\n";
     IndentSpacesJson(out, indent);
@@ -10990,8 +11451,9 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     // func arg: const VkImageMemoryBarrier* pImageMemoryBarriers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageMemoryBarrier*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageMemoryBarrier*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageMemoryBarriers\",\n";
     if (pImageMemoryBarriers.GetPointer() == nullptr) // WWY
@@ -11043,8 +11505,9 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -11057,8 +11520,9 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: VkPipelineStageFlags srcStageMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineStageFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineStageFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcStageMask\",\n";
     IndentSpacesJson(out, indent);
@@ -11071,8 +11535,9 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: VkPipelineStageFlags dstStageMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineStageFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineStageFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstStageMask\",\n";
     IndentSpacesJson(out, indent);
@@ -11085,8 +11550,9 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: VkDependencyFlags dependencyFlags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDependencyFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDependencyFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dependencyFlags\",\n";
     IndentSpacesJson(out, indent);
@@ -11099,8 +11565,9 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: uint32_t memoryBarrierCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memoryBarrierCount\",\n";
     IndentSpacesJson(out, indent);
@@ -11113,8 +11580,9 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: const VkMemoryBarrier* pMemoryBarriers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkMemoryBarrier*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkMemoryBarrier*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryBarriers\",\n";
     if (pMemoryBarriers.GetPointer() == nullptr) // WWY
@@ -11138,8 +11606,9 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: uint32_t bufferMemoryBarrierCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bufferMemoryBarrierCount\",\n";
     IndentSpacesJson(out, indent);
@@ -11152,8 +11621,9 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: const VkBufferMemoryBarrier* pBufferMemoryBarriers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBufferMemoryBarrier*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBufferMemoryBarrier*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBufferMemoryBarriers\",\n";
     if (pBufferMemoryBarriers.GetPointer() == nullptr) // WWY
@@ -11177,8 +11647,9 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: uint32_t imageMemoryBarrierCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageMemoryBarrierCount\",\n";
     IndentSpacesJson(out, indent);
@@ -11191,8 +11662,9 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     // func arg: const VkImageMemoryBarrier* pImageMemoryBarriers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageMemoryBarrier*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageMemoryBarrier*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageMemoryBarriers\",\n";
     if (pImageMemoryBarriers.GetPointer() == nullptr) // WWY
@@ -11238,8 +11710,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -11252,8 +11725,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     // func arg: VkQueryPool queryPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
     IndentSpacesJson(out, indent);
@@ -11266,8 +11740,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     // func arg: uint32_t query
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"query\",\n";
     IndentSpacesJson(out, indent);
@@ -11280,8 +11755,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     // func arg: VkQueryControlFlags flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryControlFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryControlFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -11315,8 +11791,9 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -11329,8 +11806,9 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     // func arg: VkQueryPool queryPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
     IndentSpacesJson(out, indent);
@@ -11343,8 +11821,9 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     // func arg: uint32_t query
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"query\",\n";
     IndentSpacesJson(out, indent);
@@ -11379,8 +11858,9 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -11393,8 +11873,9 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     // func arg: VkQueryPool queryPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
     IndentSpacesJson(out, indent);
@@ -11407,8 +11888,9 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     // func arg: uint32_t firstQuery
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstQuery\",\n";
     IndentSpacesJson(out, indent);
@@ -11421,8 +11903,9 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     // func arg: uint32_t queryCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryCount\",\n";
     IndentSpacesJson(out, indent);
@@ -11457,8 +11940,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -11471,13 +11955,14 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     // func arg: VkPipelineStageFlagBits pipelineStage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineStageFlagBits\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineStageFlagBits";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineStage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPipelineStageFlagBitsJson(out, pipelineStage); // ESA
+    FlagsToStringJson(out, pipelineStage, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11485,8 +11970,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     // func arg: VkQueryPool queryPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
     IndentSpacesJson(out, indent);
@@ -11499,8 +11985,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     // func arg: uint32_t query
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"query\",\n";
     IndentSpacesJson(out, indent);
@@ -11539,8 +12026,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -11553,8 +12041,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     // func arg: VkQueryPool queryPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
     IndentSpacesJson(out, indent);
@@ -11567,8 +12056,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     // func arg: uint32_t firstQuery
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstQuery\",\n";
     IndentSpacesJson(out, indent);
@@ -11581,8 +12071,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     // func arg: uint32_t queryCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryCount\",\n";
     IndentSpacesJson(out, indent);
@@ -11595,8 +12086,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     // func arg: VkBuffer dstBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -11609,8 +12101,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     // func arg: VkDeviceSize dstOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -11623,8 +12116,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     // func arg: VkDeviceSize stride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
     IndentSpacesJson(out, indent);
@@ -11637,8 +12131,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     // func arg: VkQueryResultFlags flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryResultFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryResultFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -11675,8 +12170,9 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -11689,8 +12185,9 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     // func arg: VkPipelineLayout layout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layout\",\n";
     IndentSpacesJson(out, indent);
@@ -11703,8 +12200,9 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     // func arg: VkShaderStageFlags stageFlags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkShaderStageFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkShaderStageFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stageFlags\",\n";
     IndentSpacesJson(out, indent);
@@ -11717,8 +12215,9 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     // func arg: uint32_t offset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
     IndentSpacesJson(out, indent);
@@ -11731,8 +12230,9 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     // func arg: uint32_t size
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"size\",\n";
     IndentSpacesJson(out, indent);
@@ -11745,8 +12245,9 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     // func arg: const void* pValues
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pValues\",\n";
     if (pValues.GetPointer() == nullptr) // WWY
@@ -11792,8 +12293,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -11806,8 +12308,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     // func arg: const VkRenderPassBeginInfo* pRenderPassBegin
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkRenderPassBeginInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkRenderPassBeginInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRenderPassBegin\",\n";
     if (pRenderPassBegin.GetPointer() == nullptr) // WWY
@@ -11831,8 +12334,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     // func arg: VkSubpassContents contents
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubpassContents\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSubpassContents";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"contents\",\n";
     IndentSpacesJson(out, indent);
@@ -11865,8 +12369,9 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -11879,8 +12384,9 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     // func arg: VkSubpassContents contents
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSubpassContents\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSubpassContents";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"contents\",\n";
     IndentSpacesJson(out, indent);
@@ -11912,8 +12418,9 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -11947,8 +12454,9 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -11961,8 +12469,9 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     // func arg: uint32_t commandBufferCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBufferCount\",\n";
     IndentSpacesJson(out, indent);
@@ -11975,8 +12484,9 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     // func arg: const VkCommandBuffer* pCommandBuffers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkCommandBuffer*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkCommandBuffer*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCommandBuffers\",\n";
     if (pCommandBuffers.GetPointer() == nullptr) // WWY
@@ -12028,8 +12538,9 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -12042,8 +12553,9 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     // func arg: uint32_t bindInfoCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindInfoCount\",\n";
     IndentSpacesJson(out, indent);
@@ -12056,8 +12568,9 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     // func arg: const VkBindBufferMemoryInfo* pBindInfos
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBindBufferMemoryInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBindBufferMemoryInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindInfos\",\n";
     if (pBindInfos.GetPointer() == nullptr) // WWY
@@ -12107,8 +12620,9 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -12121,8 +12635,9 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     // func arg: uint32_t bindInfoCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindInfoCount\",\n";
     IndentSpacesJson(out, indent);
@@ -12135,8 +12650,9 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     // func arg: const VkBindImageMemoryInfo* pBindInfos
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBindImageMemoryInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBindImageMemoryInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindInfos\",\n";
     if (pBindInfos.GetPointer() == nullptr) // WWY
@@ -12183,8 +12699,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -12197,8 +12714,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     // func arg: uint32_t heapIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"heapIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -12211,8 +12729,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     // func arg: uint32_t localDeviceIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"localDeviceIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -12225,8 +12744,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     // func arg: uint32_t remoteDeviceIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"remoteDeviceIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -12239,8 +12759,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     // func arg: VkPeerMemoryFeatureFlags* pPeerMemoryFeatures
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPeerMemoryFeatureFlags*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPeerMemoryFeatureFlags*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPeerMemoryFeatures\",\n";
     if (pPeerMemoryFeatures.GetPointer() == nullptr) // WWY
@@ -12281,8 +12802,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -12295,8 +12817,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
     // func arg: uint32_t deviceMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceMask\",\n";
     IndentSpacesJson(out, indent);
@@ -12334,8 +12857,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -12348,8 +12872,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     // func arg: uint32_t baseGroupX
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseGroupX\",\n";
     IndentSpacesJson(out, indent);
@@ -12362,8 +12887,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     // func arg: uint32_t baseGroupY
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseGroupY\",\n";
     IndentSpacesJson(out, indent);
@@ -12376,8 +12902,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     // func arg: uint32_t baseGroupZ
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseGroupZ\",\n";
     IndentSpacesJson(out, indent);
@@ -12390,8 +12917,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     // func arg: uint32_t groupCountX
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountX\",\n";
     IndentSpacesJson(out, indent);
@@ -12404,8 +12932,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     // func arg: uint32_t groupCountY
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountY\",\n";
     IndentSpacesJson(out, indent);
@@ -12418,8 +12947,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     // func arg: uint32_t groupCountZ
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountZ\",\n";
     IndentSpacesJson(out, indent);
@@ -12458,8 +12988,9 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -12472,8 +13003,9 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     // func arg: uint32_t* pPhysicalDeviceGroupCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDeviceGroupCount\",\n";
     if (pPhysicalDeviceGroupCount.GetPointer() == nullptr) // WWY
@@ -12498,8 +13030,9 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     // func arg: VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceGroupProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDeviceGroupProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDeviceGroupProperties\",\n";
     if (pPhysicalDeviceGroupProperties.GetPointer() == nullptr) // WWY
@@ -12544,8 +13077,9 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -12558,8 +13092,9 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     // func arg: const VkImageMemoryRequirementsInfo2* pInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageMemoryRequirementsInfo2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageMemoryRequirementsInfo2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
@@ -12583,8 +13118,9 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     // func arg: VkMemoryRequirements2* pMemoryRequirements
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkMemoryRequirements2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
@@ -12629,8 +13165,9 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -12643,8 +13180,9 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     // func arg: const VkBufferMemoryRequirementsInfo2* pInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBufferMemoryRequirementsInfo2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBufferMemoryRequirementsInfo2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
@@ -12668,8 +13206,9 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     // func arg: VkMemoryRequirements2* pMemoryRequirements
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkMemoryRequirements2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
@@ -12715,8 +13254,9 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -12729,8 +13269,9 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     // func arg: const VkImageSparseMemoryRequirementsInfo2* pInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageSparseMemoryRequirementsInfo2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageSparseMemoryRequirementsInfo2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
@@ -12754,8 +13295,9 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     // func arg: uint32_t* pSparseMemoryRequirementCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSparseMemoryRequirementCount\",\n";
     if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
@@ -12780,8 +13322,9 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     // func arg: VkSparseImageMemoryRequirements2* pSparseMemoryRequirements
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageMemoryRequirements2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSparseImageMemoryRequirements2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSparseMemoryRequirements\",\n";
     if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
@@ -12825,8 +13368,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -12839,8 +13383,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     // func arg: VkPhysicalDeviceFeatures2* pFeatures
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceFeatures2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDeviceFeatures2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFeatures\",\n";
     if (pFeatures.GetPointer() == nullptr) // WWY
@@ -12884,8 +13429,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -12898,8 +13444,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     // func arg: VkPhysicalDeviceProperties2* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceProperties2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDeviceProperties2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -12944,8 +13491,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -12958,8 +13506,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     // func arg: VkFormat format
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormat\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFormat";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
@@ -12972,8 +13521,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     // func arg: VkFormatProperties2* pFormatProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormatProperties2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFormatProperties2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFormatProperties\",\n";
     if (pFormatProperties.GetPointer() == nullptr) // WWY
@@ -13023,8 +13573,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -13037,8 +13588,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     // func arg: const VkPhysicalDeviceImageFormatInfo2* pImageFormatInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceImageFormatInfo2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceImageFormatInfo2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageFormatInfo\",\n";
     if (pImageFormatInfo.GetPointer() == nullptr) // WWY
@@ -13062,8 +13614,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     // func arg: VkImageFormatProperties2* pImageFormatProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageFormatProperties2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageFormatProperties2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageFormatProperties\",\n";
     if (pImageFormatProperties.GetPointer() == nullptr) // WWY
@@ -13108,8 +13661,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -13122,8 +13676,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     // func arg: uint32_t* pQueueFamilyPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyPropertyCount\",\n";
     if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
@@ -13148,8 +13703,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     // func arg: VkQueueFamilyProperties2* pQueueFamilyProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueueFamilyProperties2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueueFamilyProperties2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyProperties\",\n";
     if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
@@ -13193,8 +13749,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -13207,8 +13764,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     // func arg: VkPhysicalDeviceMemoryProperties2* pMemoryProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceMemoryProperties2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDeviceMemoryProperties2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryProperties\",\n";
     if (pMemoryProperties.GetPointer() == nullptr) // WWY
@@ -13254,8 +13812,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -13268,8 +13827,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: const VkPhysicalDeviceSparseImageFormatInfo2* pFormatInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceSparseImageFormatInfo2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceSparseImageFormatInfo2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFormatInfo\",\n";
     if (pFormatInfo.GetPointer() == nullptr) // WWY
@@ -13293,8 +13853,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: uint32_t* pPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
@@ -13319,8 +13880,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: VkSparseImageFormatProperties2* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageFormatProperties2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSparseImageFormatProperties2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -13365,8 +13927,9 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -13379,8 +13942,9 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     // func arg: VkCommandPool commandPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandPool\",\n";
     IndentSpacesJson(out, indent);
@@ -13393,8 +13957,9 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     // func arg: VkCommandPoolTrimFlags flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandPoolTrimFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandPoolTrimFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -13428,8 +13993,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -13442,8 +14008,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     // func arg: const VkDeviceQueueInfo2* pQueueInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDeviceQueueInfo2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDeviceQueueInfo2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueInfo\",\n";
     if (pQueueInfo.GetPointer() == nullptr) // WWY
@@ -13467,8 +14034,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     // func arg: VkQueue* pQueue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueue*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueue\",\n";
     if (pQueue.GetPointer() == nullptr) // WWY
@@ -13520,8 +14088,9 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -13534,8 +14103,9 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     // func arg: const VkSamplerYcbcrConversionCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSamplerYcbcrConversionCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSamplerYcbcrConversionCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -13559,8 +14129,9 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -13584,8 +14155,9 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     // func arg: VkSamplerYcbcrConversion* pYcbcrConversion
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSamplerYcbcrConversion*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSamplerYcbcrConversion*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pYcbcrConversion\",\n";
     if (pYcbcrConversion.GetPointer() == nullptr) // WWY
@@ -13631,8 +14203,9 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -13645,8 +14218,9 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     // func arg: VkSamplerYcbcrConversion ycbcrConversion
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSamplerYcbcrConversion\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSamplerYcbcrConversion";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ycbcrConversion\",\n";
     IndentSpacesJson(out, indent);
@@ -13659,8 +14233,9 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -13711,8 +14286,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -13725,8 +14301,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     // func arg: const VkDescriptorUpdateTemplateCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDescriptorUpdateTemplateCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDescriptorUpdateTemplateCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -13750,8 +14327,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -13775,8 +14353,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     // func arg: VkDescriptorUpdateTemplate* pDescriptorUpdateTemplate
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorUpdateTemplate*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorUpdateTemplate*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorUpdateTemplate\",\n";
     if (pDescriptorUpdateTemplate.GetPointer() == nullptr) // WWY
@@ -13822,8 +14401,9 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -13836,8 +14416,9 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     // func arg: VkDescriptorUpdateTemplate descriptorUpdateTemplate
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorUpdateTemplate\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorUpdateTemplate";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorUpdateTemplate\",\n";
     IndentSpacesJson(out, indent);
@@ -13850,8 +14431,9 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -13896,8 +14478,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -13910,8 +14493,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     // func arg: const VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceExternalBufferInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceExternalBufferInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalBufferInfo\",\n";
     if (pExternalBufferInfo.GetPointer() == nullptr) // WWY
@@ -13935,8 +14519,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     // func arg: VkExternalBufferProperties* pExternalBufferProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalBufferProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExternalBufferProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalBufferProperties\",\n";
     if (pExternalBufferProperties.GetPointer() == nullptr) // WWY
@@ -13981,8 +14566,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -13995,8 +14581,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     // func arg: const VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceExternalFenceInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceExternalFenceInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalFenceInfo\",\n";
     if (pExternalFenceInfo.GetPointer() == nullptr) // WWY
@@ -14020,8 +14607,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     // func arg: VkExternalFenceProperties* pExternalFenceProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalFenceProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExternalFenceProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalFenceProperties\",\n";
     if (pExternalFenceProperties.GetPointer() == nullptr) // WWY
@@ -14066,8 +14654,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -14080,8 +14669,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     // func arg: const VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceExternalSemaphoreInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceExternalSemaphoreInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalSemaphoreInfo\",\n";
     if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WWY
@@ -14105,8 +14695,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     // func arg: VkExternalSemaphoreProperties* pExternalSemaphoreProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalSemaphoreProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExternalSemaphoreProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalSemaphoreProperties\",\n";
     if (pExternalSemaphoreProperties.GetPointer() == nullptr) // WWY
@@ -14151,8 +14742,9 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -14165,8 +14757,9 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     // func arg: const VkDescriptorSetLayoutCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -14190,8 +14783,9 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     // func arg: VkDescriptorSetLayoutSupport* pSupport
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayoutSupport*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorSetLayoutSupport*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSupport\",\n";
     if (pSupport.GetPointer() == nullptr) // WWY
@@ -14237,8 +14831,9 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -14251,8 +14846,9 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     // func arg: VkSurfaceKHR surface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
     IndentSpacesJson(out, indent);
@@ -14265,8 +14861,9 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -14317,8 +14914,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -14331,8 +14929,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     // func arg: uint32_t queueFamilyIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -14345,8 +14944,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     // func arg: VkSurfaceKHR surface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
     IndentSpacesJson(out, indent);
@@ -14359,8 +14959,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     // func arg: VkBool32* pSupported
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBool32*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBool32*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSupported\",\n";
     if (pSupported.GetPointer() == nullptr) // WWY
@@ -14407,8 +15008,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -14421,8 +15023,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     // func arg: VkSurfaceKHR surface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
     IndentSpacesJson(out, indent);
@@ -14435,8 +15038,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     // func arg: VkSurfaceCapabilitiesKHR* pSurfaceCapabilities
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceCapabilitiesKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceCapabilitiesKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceCapabilities\",\n";
     if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
@@ -14487,8 +15091,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -14501,8 +15106,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     // func arg: VkSurfaceKHR surface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
     IndentSpacesJson(out, indent);
@@ -14515,8 +15121,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     // func arg: uint32_t* pSurfaceFormatCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceFormatCount\",\n";
     if (pSurfaceFormatCount.GetPointer() == nullptr) // WWY
@@ -14541,8 +15148,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     // func arg: VkSurfaceFormatKHR* pSurfaceFormats
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceFormatKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceFormatKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceFormats\",\n";
     if (pSurfaceFormats.GetPointer() == nullptr) // WWY
@@ -14593,8 +15201,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -14607,8 +15216,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     // func arg: VkSurfaceKHR surface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
     IndentSpacesJson(out, indent);
@@ -14621,8 +15231,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     // func arg: uint32_t* pPresentModeCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentModeCount\",\n";
     if (pPresentModeCount.GetPointer() == nullptr) // WWY
@@ -14647,8 +15258,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     // func arg: VkPresentModeKHR* pPresentModes
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPresentModeKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPresentModeKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentModes\",\n";
     if (pPresentModes.GetPointer() == nullptr) // WWY
@@ -14701,8 +15313,9 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -14715,8 +15328,9 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     // func arg: const VkSwapchainCreateInfoKHR* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSwapchainCreateInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSwapchainCreateInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -14740,8 +15354,9 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -14765,8 +15380,9 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     // func arg: VkSwapchainKHR* pSwapchain
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSwapchainKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSwapchain\",\n";
     if (pSwapchain.GetPointer() == nullptr) // WWY
@@ -14812,8 +15428,9 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -14826,8 +15443,9 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     // func arg: VkSwapchainKHR swapchain
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSwapchainKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
     IndentSpacesJson(out, indent);
@@ -14840,8 +15458,9 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -14892,8 +15511,9 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -14906,8 +15526,9 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     // func arg: VkSwapchainKHR swapchain
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSwapchainKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
     IndentSpacesJson(out, indent);
@@ -14920,8 +15541,9 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     // func arg: uint32_t* pSwapchainImageCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSwapchainImageCount\",\n";
     if (pSwapchainImageCount.GetPointer() == nullptr) // WWY
@@ -14946,8 +15568,9 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     // func arg: VkImage* pSwapchainImages
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSwapchainImages\",\n";
     if (pSwapchainImages.GetPointer() == nullptr) // WWY
@@ -15001,8 +15624,9 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -15015,8 +15639,9 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     // func arg: VkSwapchainKHR swapchain
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSwapchainKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
     IndentSpacesJson(out, indent);
@@ -15029,8 +15654,9 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     // func arg: uint64_t timeout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint64_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timeout\",\n";
     IndentSpacesJson(out, indent);
@@ -15043,8 +15669,9 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     // func arg: VkSemaphore semaphore
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphore\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSemaphore";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphore\",\n";
     IndentSpacesJson(out, indent);
@@ -15057,8 +15684,9 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     // func arg: VkFence fence
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFence";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fence\",\n";
     IndentSpacesJson(out, indent);
@@ -15071,8 +15699,9 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     // func arg: uint32_t* pImageIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageIndex\",\n";
     if (pImageIndex.GetPointer() == nullptr) // WWY
@@ -15122,8 +15751,9 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     // func arg: VkQueue queue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueue";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
     IndentSpacesJson(out, indent);
@@ -15136,8 +15766,9 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     // func arg: const VkPresentInfoKHR* pPresentInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPresentInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPresentInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentInfo\",\n";
     if (pPresentInfo.GetPointer() == nullptr) // WWY
@@ -15186,8 +15817,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -15200,8 +15832,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     // func arg: VkDeviceGroupPresentCapabilitiesKHR* pDeviceGroupPresentCapabilities
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceGroupPresentCapabilitiesKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceGroupPresentCapabilitiesKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDeviceGroupPresentCapabilities\",\n";
     if (pDeviceGroupPresentCapabilities.GetPointer() == nullptr) // WWY
@@ -15251,8 +15884,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -15265,8 +15899,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     // func arg: VkSurfaceKHR surface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
     IndentSpacesJson(out, indent);
@@ -15279,8 +15914,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     // func arg: VkDeviceGroupPresentModeFlagsKHR* pModes
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pModes\",\n";
     if (pModes.GetPointer() == nullptr) // WWY
@@ -15328,8 +15964,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -15342,8 +15979,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     // func arg: VkSurfaceKHR surface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
     IndentSpacesJson(out, indent);
@@ -15356,8 +15994,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     // func arg: uint32_t* pRectCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRectCount\",\n";
     if (pRectCount.GetPointer() == nullptr) // WWY
@@ -15382,8 +16021,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     // func arg: VkRect2D* pRects
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRect2D*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkRect2D*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRects\",\n";
     if (pRects.GetPointer() == nullptr) // WWY
@@ -15433,8 +16073,9 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -15447,8 +16088,9 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     // func arg: const VkAcquireNextImageInfoKHR* pAcquireInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAcquireNextImageInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAcquireNextImageInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAcquireInfo\",\n";
     if (pAcquireInfo.GetPointer() == nullptr) // WWY
@@ -15472,8 +16114,9 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     // func arg: uint32_t* pImageIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageIndex\",\n";
     if (pImageIndex.GetPointer() == nullptr) // WWY
@@ -15525,8 +16168,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -15539,8 +16183,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     // func arg: uint32_t* pPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
@@ -15565,8 +16210,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     // func arg: VkDisplayPropertiesKHR* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayPropertiesKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayPropertiesKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -15616,8 +16262,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -15630,8 +16277,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     // func arg: uint32_t* pPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
@@ -15656,8 +16304,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     // func arg: VkDisplayPlanePropertiesKHR* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayPlanePropertiesKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayPlanePropertiesKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -15708,8 +16357,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -15722,8 +16372,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     // func arg: uint32_t planeIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"planeIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -15736,8 +16387,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     // func arg: uint32_t* pDisplayCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplayCount\",\n";
     if (pDisplayCount.GetPointer() == nullptr) // WWY
@@ -15762,8 +16414,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     // func arg: VkDisplayKHR* pDisplays
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplays\",\n";
     if (pDisplays.GetPointer() == nullptr) // WWY
@@ -15815,8 +16468,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -15829,8 +16483,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     // func arg: VkDisplayKHR display
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
     IndentSpacesJson(out, indent);
@@ -15843,8 +16498,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     // func arg: uint32_t* pPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
@@ -15869,8 +16525,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     // func arg: VkDisplayModePropertiesKHR* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayModePropertiesKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayModePropertiesKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -15922,8 +16579,9 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -15936,8 +16594,9 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     // func arg: VkDisplayKHR display
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
     IndentSpacesJson(out, indent);
@@ -15950,8 +16609,9 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     // func arg: const VkDisplayModeCreateInfoKHR* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDisplayModeCreateInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDisplayModeCreateInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -15975,8 +16635,9 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -16000,8 +16661,9 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     // func arg: VkDisplayModeKHR* pMode
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayModeKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayModeKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMode\",\n";
     if (pMode.GetPointer() == nullptr) // WWY
@@ -16053,8 +16715,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -16067,8 +16730,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     // func arg: VkDisplayModeKHR mode
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayModeKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayModeKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mode\",\n";
     IndentSpacesJson(out, indent);
@@ -16081,8 +16745,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     // func arg: uint32_t planeIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"planeIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -16095,8 +16760,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     // func arg: VkDisplayPlaneCapabilitiesKHR* pCapabilities
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayPlaneCapabilitiesKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayPlaneCapabilitiesKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCapabilities\",\n";
     if (pCapabilities.GetPointer() == nullptr) // WWY
@@ -16147,8 +16813,9 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -16161,8 +16828,9 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     // func arg: const VkDisplaySurfaceCreateInfoKHR* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDisplaySurfaceCreateInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDisplaySurfaceCreateInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -16186,8 +16854,9 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -16211,8 +16880,9 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -16266,8 +16936,9 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -16280,8 +16951,9 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     // func arg: uint32_t swapchainCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchainCount\",\n";
     IndentSpacesJson(out, indent);
@@ -16294,8 +16966,9 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     // func arg: const VkSwapchainCreateInfoKHR* pCreateInfos
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSwapchainCreateInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSwapchainCreateInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfos\",\n";
     if (pCreateInfos.GetPointer() == nullptr) // WWY
@@ -16319,8 +16992,9 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -16344,8 +17018,9 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     // func arg: VkSwapchainKHR* pSwapchains
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSwapchainKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSwapchains\",\n";
     if (pSwapchains.GetPointer() == nullptr) // WWY
@@ -16398,8 +17073,9 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -16412,8 +17088,9 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     // func arg: const VkXlibSurfaceCreateInfoKHR* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkXlibSurfaceCreateInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkXlibSurfaceCreateInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -16437,8 +17114,9 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -16462,8 +17140,9 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -16514,8 +17193,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -16528,8 +17208,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     // func arg: uint32_t queueFamilyIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -16542,8 +17223,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     // func arg: void* dpy
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
     IndentSpacesJson(out, 4);
@@ -16552,8 +17234,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     // func arg: size_t visualID
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"size_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"size_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"visualID\",\n";
     IndentSpacesJson(out, indent);
@@ -16594,8 +17277,9 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -16608,8 +17292,9 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     // func arg: const VkXcbSurfaceCreateInfoKHR* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkXcbSurfaceCreateInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkXcbSurfaceCreateInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -16633,8 +17318,9 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -16658,8 +17344,9 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -16710,8 +17397,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -16724,8 +17412,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     // func arg: uint32_t queueFamilyIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -16738,8 +17427,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     // func arg: void* connection
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"connection\",\n";
     if ( !connection) // WWW
@@ -16760,8 +17450,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     // func arg: uint32_t visual_id
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"visual_id\",\n";
     IndentSpacesJson(out, indent);
@@ -16802,8 +17493,9 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -16816,8 +17508,9 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     // func arg: const VkWaylandSurfaceCreateInfoKHR* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkWaylandSurfaceCreateInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkWaylandSurfaceCreateInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -16841,8 +17534,9 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -16866,8 +17560,9 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -16917,8 +17612,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -16931,8 +17627,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     // func arg: uint32_t queueFamilyIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -16945,8 +17642,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     // func arg: struct void* display
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"struct void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"struct void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
     if ( !display) // WWW
@@ -16995,8 +17693,9 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -17009,8 +17708,9 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     // func arg: const VkAndroidSurfaceCreateInfoKHR* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAndroidSurfaceCreateInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAndroidSurfaceCreateInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -17034,8 +17734,9 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -17059,8 +17760,9 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -17113,8 +17815,9 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -17127,8 +17830,9 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     // func arg: const VkWin32SurfaceCreateInfoKHR* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkWin32SurfaceCreateInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkWin32SurfaceCreateInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -17152,8 +17856,9 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -17177,8 +17882,9 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -17227,8 +17933,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -17241,8 +17948,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     // func arg: uint32_t queueFamilyIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queueFamilyIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -17276,8 +17984,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -17290,8 +17999,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     // func arg: VkPhysicalDeviceFeatures2* pFeatures
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceFeatures2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDeviceFeatures2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFeatures\",\n";
     if (pFeatures.GetPointer() == nullptr) // WWY
@@ -17335,8 +18045,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -17349,8 +18060,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     // func arg: VkPhysicalDeviceProperties2* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceProperties2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDeviceProperties2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -17395,8 +18107,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -17409,8 +18122,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     // func arg: VkFormat format
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormat\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFormat";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
@@ -17423,8 +18137,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     // func arg: VkFormatProperties2* pFormatProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormatProperties2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFormatProperties2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFormatProperties\",\n";
     if (pFormatProperties.GetPointer() == nullptr) // WWY
@@ -17474,8 +18189,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -17488,8 +18204,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     // func arg: const VkPhysicalDeviceImageFormatInfo2* pImageFormatInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceImageFormatInfo2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceImageFormatInfo2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageFormatInfo\",\n";
     if (pImageFormatInfo.GetPointer() == nullptr) // WWY
@@ -17513,8 +18230,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     // func arg: VkImageFormatProperties2* pImageFormatProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageFormatProperties2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageFormatProperties2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImageFormatProperties\",\n";
     if (pImageFormatProperties.GetPointer() == nullptr) // WWY
@@ -17559,8 +18277,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -17573,8 +18292,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     // func arg: uint32_t* pQueueFamilyPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyPropertyCount\",\n";
     if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
@@ -17599,8 +18319,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     // func arg: VkQueueFamilyProperties2* pQueueFamilyProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueueFamilyProperties2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueueFamilyProperties2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pQueueFamilyProperties\",\n";
     if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
@@ -17644,8 +18365,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -17658,8 +18380,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     // func arg: VkPhysicalDeviceMemoryProperties2* pMemoryProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceMemoryProperties2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDeviceMemoryProperties2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryProperties\",\n";
     if (pMemoryProperties.GetPointer() == nullptr) // WWY
@@ -17705,8 +18428,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -17719,8 +18443,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: const VkPhysicalDeviceSparseImageFormatInfo2* pFormatInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceSparseImageFormatInfo2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceSparseImageFormatInfo2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFormatInfo\",\n";
     if (pFormatInfo.GetPointer() == nullptr) // WWY
@@ -17744,8 +18469,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: uint32_t* pPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
@@ -17770,8 +18496,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     // func arg: VkSparseImageFormatProperties2* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageFormatProperties2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSparseImageFormatProperties2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -17819,8 +18546,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -17833,8 +18561,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     // func arg: uint32_t heapIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"heapIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -17847,8 +18576,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     // func arg: uint32_t localDeviceIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"localDeviceIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -17861,8 +18591,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     // func arg: uint32_t remoteDeviceIndex
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"remoteDeviceIndex\",\n";
     IndentSpacesJson(out, indent);
@@ -17875,8 +18606,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     // func arg: VkPeerMemoryFeatureFlags* pPeerMemoryFeatures
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPeerMemoryFeatureFlags*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPeerMemoryFeatureFlags*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPeerMemoryFeatures\",\n";
     if (pPeerMemoryFeatures.GetPointer() == nullptr) // WWY
@@ -17917,8 +18649,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -17931,8 +18664,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
     // func arg: uint32_t deviceMask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"deviceMask\",\n";
     IndentSpacesJson(out, indent);
@@ -17970,8 +18704,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -17984,8 +18719,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     // func arg: uint32_t baseGroupX
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseGroupX\",\n";
     IndentSpacesJson(out, indent);
@@ -17998,8 +18734,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     // func arg: uint32_t baseGroupY
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseGroupY\",\n";
     IndentSpacesJson(out, indent);
@@ -18012,8 +18749,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     // func arg: uint32_t baseGroupZ
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"baseGroupZ\",\n";
     IndentSpacesJson(out, indent);
@@ -18026,8 +18764,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     // func arg: uint32_t groupCountX
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountX\",\n";
     IndentSpacesJson(out, indent);
@@ -18040,8 +18779,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     // func arg: uint32_t groupCountY
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountY\",\n";
     IndentSpacesJson(out, indent);
@@ -18054,8 +18794,9 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     // func arg: uint32_t groupCountZ
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCountZ\",\n";
     IndentSpacesJson(out, indent);
@@ -18090,8 +18831,9 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -18104,8 +18846,9 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     // func arg: VkCommandPool commandPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandPool\",\n";
     IndentSpacesJson(out, indent);
@@ -18118,8 +18861,9 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     // func arg: VkCommandPoolTrimFlags flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandPoolTrimFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandPoolTrimFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -18159,8 +18903,9 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -18173,8 +18918,9 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     // func arg: uint32_t* pPhysicalDeviceGroupCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDeviceGroupCount\",\n";
     if (pPhysicalDeviceGroupCount.GetPointer() == nullptr) // WWY
@@ -18199,8 +18945,9 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     // func arg: VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDeviceGroupProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDeviceGroupProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPhysicalDeviceGroupProperties\",\n";
     if (pPhysicalDeviceGroupProperties.GetPointer() == nullptr) // WWY
@@ -18246,8 +18993,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -18260,8 +19008,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     // func arg: const VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceExternalBufferInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceExternalBufferInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalBufferInfo\",\n";
     if (pExternalBufferInfo.GetPointer() == nullptr) // WWY
@@ -18285,8 +19034,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     // func arg: VkExternalBufferProperties* pExternalBufferProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalBufferProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExternalBufferProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalBufferProperties\",\n";
     if (pExternalBufferProperties.GetPointer() == nullptr) // WWY
@@ -18337,8 +19087,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -18351,8 +19102,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     // func arg: const VkMemoryGetWin32HandleInfoKHR* pGetWin32HandleInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkMemoryGetWin32HandleInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkMemoryGetWin32HandleInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGetWin32HandleInfo\",\n";
     if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
@@ -18376,8 +19128,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     // func arg: void** pHandle
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void**\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void**";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pHandle\",\n";
     if (pHandle.GetPointer() == nullptr) // WWY
@@ -18425,8 +19178,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -18439,13 +19193,14 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     // func arg: VkExternalMemoryHandleTypeFlagBits handleType
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, handleType); // ESA
+    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -18453,8 +19208,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     // func arg: void* handle
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handle\",\n";
     if ( !handle) // WWW
@@ -18475,8 +19231,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     // func arg: VkMemoryWin32HandlePropertiesKHR* pMemoryWin32HandleProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryWin32HandlePropertiesKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkMemoryWin32HandlePropertiesKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryWin32HandleProperties\",\n";
     if (pMemoryWin32HandleProperties.GetPointer() == nullptr) // WWY
@@ -18527,8 +19284,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -18541,8 +19299,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     // func arg: const VkMemoryGetFdInfoKHR* pGetFdInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkMemoryGetFdInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkMemoryGetFdInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGetFdInfo\",\n";
     if (pGetFdInfo.GetPointer() == nullptr) // WWY
@@ -18566,8 +19325,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     // func arg: int* pFd
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"int*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"int*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFd\",\n";
     if (pFd.GetPointer() == nullptr) // WWY
@@ -18615,8 +19375,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -18629,13 +19390,14 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     // func arg: VkExternalMemoryHandleTypeFlagBits handleType
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, handleType); // ESA
+    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -18643,8 +19405,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     // func arg: int fd
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"int\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"int";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"fd\",\n";
     IndentSpacesJson(out, indent);
@@ -18657,8 +19420,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     // func arg: VkMemoryFdPropertiesKHR* pMemoryFdProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryFdPropertiesKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkMemoryFdPropertiesKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryFdProperties\",\n";
     if (pMemoryFdProperties.GetPointer() == nullptr) // WWY
@@ -18704,8 +19468,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -18718,8 +19483,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     // func arg: const VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceExternalSemaphoreInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceExternalSemaphoreInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalSemaphoreInfo\",\n";
     if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WWY
@@ -18743,8 +19509,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     // func arg: VkExternalSemaphoreProperties* pExternalSemaphoreProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalSemaphoreProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExternalSemaphoreProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalSemaphoreProperties\",\n";
     if (pExternalSemaphoreProperties.GetPointer() == nullptr) // WWY
@@ -18794,8 +19561,9 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -18808,8 +19576,9 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     // func arg: const VkImportSemaphoreWin32HandleInfoKHR* pImportSemaphoreWin32HandleInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImportSemaphoreWin32HandleInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImportSemaphoreWin32HandleInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImportSemaphoreWin32HandleInfo\",\n";
     if (pImportSemaphoreWin32HandleInfo.GetPointer() == nullptr) // WWY
@@ -18859,8 +19628,9 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -18873,8 +19643,9 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     // func arg: const VkSemaphoreGetWin32HandleInfoKHR* pGetWin32HandleInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSemaphoreGetWin32HandleInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSemaphoreGetWin32HandleInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGetWin32HandleInfo\",\n";
     if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
@@ -18898,8 +19669,9 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     // func arg: void** pHandle
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void**\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void**";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pHandle\",\n";
     if (pHandle.GetPointer() == nullptr) // WWY
@@ -18946,8 +19718,9 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -18960,8 +19733,9 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     // func arg: const VkImportSemaphoreFdInfoKHR* pImportSemaphoreFdInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImportSemaphoreFdInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImportSemaphoreFdInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImportSemaphoreFdInfo\",\n";
     if (pImportSemaphoreFdInfo.GetPointer() == nullptr) // WWY
@@ -19011,8 +19785,9 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -19025,8 +19800,9 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     // func arg: const VkSemaphoreGetFdInfoKHR* pGetFdInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSemaphoreGetFdInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSemaphoreGetFdInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGetFdInfo\",\n";
     if (pGetFdInfo.GetPointer() == nullptr) // WWY
@@ -19050,8 +19826,9 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     // func arg: int* pFd
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"int*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"int*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFd\",\n";
     if (pFd.GetPointer() == nullptr) // WWY
@@ -19097,8 +19874,9 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -19111,8 +19889,9 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     // func arg: VkPipelineBindPoint pipelineBindPoint
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineBindPoint\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineBindPoint";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
@@ -19125,8 +19904,9 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     // func arg: VkPipelineLayout layout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"layout\",\n";
     IndentSpacesJson(out, indent);
@@ -19139,8 +19919,9 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     // func arg: uint32_t set
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"set\",\n";
     IndentSpacesJson(out, indent);
@@ -19153,8 +19934,9 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     // func arg: uint32_t descriptorWriteCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorWriteCount\",\n";
     IndentSpacesJson(out, indent);
@@ -19167,8 +19949,9 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     // func arg: const VkWriteDescriptorSet* pDescriptorWrites
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkWriteDescriptorSet*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkWriteDescriptorSet*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorWrites\",\n";
     if (pDescriptorWrites.GetPointer() == nullptr) // WWY
@@ -19220,8 +20003,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -19234,8 +20018,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     // func arg: const VkDescriptorUpdateTemplateCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDescriptorUpdateTemplateCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDescriptorUpdateTemplateCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -19259,8 +20044,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -19284,8 +20070,9 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     // func arg: VkDescriptorUpdateTemplate* pDescriptorUpdateTemplate
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorUpdateTemplate*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorUpdateTemplate*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDescriptorUpdateTemplate\",\n";
     if (pDescriptorUpdateTemplate.GetPointer() == nullptr) // WWY
@@ -19331,8 +20118,9 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -19345,8 +20133,9 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     // func arg: VkDescriptorUpdateTemplate descriptorUpdateTemplate
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorUpdateTemplate\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorUpdateTemplate";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"descriptorUpdateTemplate\",\n";
     IndentSpacesJson(out, indent);
@@ -19359,8 +20148,9 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -19412,8 +20202,9 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -19426,8 +20217,9 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     // func arg: const VkRenderPassCreateInfo2KHR* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkRenderPassCreateInfo2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkRenderPassCreateInfo2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -19451,8 +20243,9 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -19476,8 +20269,9 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     // func arg: VkRenderPass* pRenderPass
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRenderPass*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkRenderPass*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRenderPass\",\n";
     if (pRenderPass.GetPointer() == nullptr) // WWY
@@ -19523,8 +20317,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -19537,8 +20332,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     // func arg: const VkRenderPassBeginInfo* pRenderPassBegin
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkRenderPassBeginInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkRenderPassBeginInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pRenderPassBegin\",\n";
     if (pRenderPassBegin.GetPointer() == nullptr) // WWY
@@ -19562,8 +20358,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     // func arg: const VkSubpassBeginInfoKHR* pSubpassBeginInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSubpassBeginInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSubpassBeginInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubpassBeginInfo\",\n";
     if (pSubpassBeginInfo.GetPointer() == nullptr) // WWY
@@ -19608,8 +20405,9 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -19622,8 +20420,9 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     // func arg: const VkSubpassBeginInfoKHR* pSubpassBeginInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSubpassBeginInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSubpassBeginInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubpassBeginInfo\",\n";
     if (pSubpassBeginInfo.GetPointer() == nullptr) // WWY
@@ -19647,8 +20446,9 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     // func arg: const VkSubpassEndInfoKHR* pSubpassEndInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSubpassEndInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSubpassEndInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubpassEndInfo\",\n";
     if (pSubpassEndInfo.GetPointer() == nullptr) // WWY
@@ -19692,8 +20492,9 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -19706,8 +20507,9 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     // func arg: const VkSubpassEndInfoKHR* pSubpassEndInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSubpassEndInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSubpassEndInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSubpassEndInfo\",\n";
     if (pSubpassEndInfo.GetPointer() == nullptr) // WWY
@@ -19757,8 +20559,9 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -19771,8 +20574,9 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     // func arg: VkSwapchainKHR swapchain
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSwapchainKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
     IndentSpacesJson(out, indent);
@@ -19807,8 +20611,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -19821,8 +20626,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     // func arg: const VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceExternalFenceInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceExternalFenceInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalFenceInfo\",\n";
     if (pExternalFenceInfo.GetPointer() == nullptr) // WWY
@@ -19846,8 +20652,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     // func arg: VkExternalFenceProperties* pExternalFenceProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalFenceProperties*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExternalFenceProperties*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalFenceProperties\",\n";
     if (pExternalFenceProperties.GetPointer() == nullptr) // WWY
@@ -19897,8 +20704,9 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -19911,8 +20719,9 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     // func arg: const VkImportFenceWin32HandleInfoKHR* pImportFenceWin32HandleInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImportFenceWin32HandleInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImportFenceWin32HandleInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImportFenceWin32HandleInfo\",\n";
     if (pImportFenceWin32HandleInfo.GetPointer() == nullptr) // WWY
@@ -19962,8 +20771,9 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -19976,8 +20786,9 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     // func arg: const VkFenceGetWin32HandleInfoKHR* pGetWin32HandleInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkFenceGetWin32HandleInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkFenceGetWin32HandleInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGetWin32HandleInfo\",\n";
     if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
@@ -20001,8 +20812,9 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     // func arg: void** pHandle
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void**\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void**";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pHandle\",\n";
     if (pHandle.GetPointer() == nullptr) // WWY
@@ -20049,8 +20861,9 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -20063,8 +20876,9 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     // func arg: const VkImportFenceFdInfoKHR* pImportFenceFdInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImportFenceFdInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImportFenceFdInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pImportFenceFdInfo\",\n";
     if (pImportFenceFdInfo.GetPointer() == nullptr) // WWY
@@ -20114,8 +20928,9 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -20128,8 +20943,9 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     // func arg: const VkFenceGetFdInfoKHR* pGetFdInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkFenceGetFdInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkFenceGetFdInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pGetFdInfo\",\n";
     if (pGetFdInfo.GetPointer() == nullptr) // WWY
@@ -20153,8 +20969,9 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     // func arg: int* pFd
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"int*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"int*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFd\",\n";
     if (pFd.GetPointer() == nullptr) // WWY
@@ -20202,8 +21019,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -20216,8 +21034,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     // func arg: const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceInfo\",\n";
     if (pSurfaceInfo.GetPointer() == nullptr) // WWY
@@ -20241,8 +21060,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     // func arg: VkSurfaceCapabilities2KHR* pSurfaceCapabilities
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceCapabilities2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceCapabilities2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceCapabilities\",\n";
     if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
@@ -20293,8 +21113,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -20307,8 +21128,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     // func arg: const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceInfo\",\n";
     if (pSurfaceInfo.GetPointer() == nullptr) // WWY
@@ -20332,8 +21154,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     // func arg: uint32_t* pSurfaceFormatCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceFormatCount\",\n";
     if (pSurfaceFormatCount.GetPointer() == nullptr) // WWY
@@ -20358,8 +21181,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     // func arg: VkSurfaceFormat2KHR* pSurfaceFormats
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceFormat2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceFormat2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceFormats\",\n";
     if (pSurfaceFormats.GetPointer() == nullptr) // WWY
@@ -20410,8 +21234,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -20424,8 +21249,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     // func arg: uint32_t* pPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
@@ -20450,8 +21276,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     // func arg: VkDisplayProperties2KHR* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayProperties2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayProperties2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -20501,8 +21328,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -20515,8 +21343,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     // func arg: uint32_t* pPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
@@ -20541,8 +21370,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     // func arg: VkDisplayPlaneProperties2KHR* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayPlaneProperties2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayPlaneProperties2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -20593,8 +21423,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -20607,8 +21438,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     // func arg: VkDisplayKHR display
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
     IndentSpacesJson(out, indent);
@@ -20621,8 +21453,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     // func arg: uint32_t* pPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
@@ -20647,8 +21480,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     // func arg: VkDisplayModeProperties2KHR* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayModeProperties2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayModeProperties2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -20698,8 +21532,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -20712,8 +21547,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     // func arg: const VkDisplayPlaneInfo2KHR* pDisplayPlaneInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDisplayPlaneInfo2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDisplayPlaneInfo2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplayPlaneInfo\",\n";
     if (pDisplayPlaneInfo.GetPointer() == nullptr) // WWY
@@ -20737,8 +21573,9 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     // func arg: VkDisplayPlaneCapabilities2KHR* pCapabilities
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayPlaneCapabilities2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayPlaneCapabilities2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCapabilities\",\n";
     if (pCapabilities.GetPointer() == nullptr) // WWY
@@ -20784,8 +21621,9 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -20798,8 +21636,9 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     // func arg: const VkImageMemoryRequirementsInfo2* pInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageMemoryRequirementsInfo2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageMemoryRequirementsInfo2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
@@ -20823,8 +21662,9 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     // func arg: VkMemoryRequirements2* pMemoryRequirements
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkMemoryRequirements2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
@@ -20869,8 +21709,9 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -20883,8 +21724,9 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     // func arg: const VkBufferMemoryRequirementsInfo2* pInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBufferMemoryRequirementsInfo2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBufferMemoryRequirementsInfo2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
@@ -20908,8 +21750,9 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     // func arg: VkMemoryRequirements2* pMemoryRequirements
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkMemoryRequirements2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
@@ -20955,8 +21798,9 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -20969,8 +21813,9 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     // func arg: const VkImageSparseMemoryRequirementsInfo2* pInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageSparseMemoryRequirementsInfo2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageSparseMemoryRequirementsInfo2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
@@ -20994,8 +21839,9 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     // func arg: uint32_t* pSparseMemoryRequirementCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSparseMemoryRequirementCount\",\n";
     if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
@@ -21020,8 +21866,9 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     // func arg: VkSparseImageMemoryRequirements2* pSparseMemoryRequirements
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSparseImageMemoryRequirements2*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSparseImageMemoryRequirements2*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSparseMemoryRequirements\",\n";
     if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
@@ -21073,8 +21920,9 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -21087,8 +21935,9 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     // func arg: const VkSamplerYcbcrConversionCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSamplerYcbcrConversionCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSamplerYcbcrConversionCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -21112,8 +21961,9 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -21137,8 +21987,9 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     // func arg: VkSamplerYcbcrConversion* pYcbcrConversion
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSamplerYcbcrConversion*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSamplerYcbcrConversion*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pYcbcrConversion\",\n";
     if (pYcbcrConversion.GetPointer() == nullptr) // WWY
@@ -21184,8 +22035,9 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -21198,8 +22050,9 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     // func arg: VkSamplerYcbcrConversion ycbcrConversion
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSamplerYcbcrConversion\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSamplerYcbcrConversion";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"ycbcrConversion\",\n";
     IndentSpacesJson(out, indent);
@@ -21212,8 +22065,9 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -21264,8 +22118,9 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -21278,8 +22133,9 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     // func arg: uint32_t bindInfoCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindInfoCount\",\n";
     IndentSpacesJson(out, indent);
@@ -21292,8 +22148,9 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     // func arg: const VkBindBufferMemoryInfo* pBindInfos
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBindBufferMemoryInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBindBufferMemoryInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindInfos\",\n";
     if (pBindInfos.GetPointer() == nullptr) // WWY
@@ -21343,8 +22200,9 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -21357,8 +22215,9 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     // func arg: uint32_t bindInfoCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindInfoCount\",\n";
     IndentSpacesJson(out, indent);
@@ -21371,8 +22230,9 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     // func arg: const VkBindImageMemoryInfo* pBindInfos
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBindImageMemoryInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBindImageMemoryInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindInfos\",\n";
     if (pBindInfos.GetPointer() == nullptr) // WWY
@@ -21418,8 +22278,9 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -21432,8 +22293,9 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     // func arg: const VkDescriptorSetLayoutCreateInfo* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -21457,8 +22319,9 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     // func arg: VkDescriptorSetLayoutSupport* pSupport
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDescriptorSetLayoutSupport*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDescriptorSetLayoutSupport*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSupport\",\n";
     if (pSupport.GetPointer() == nullptr) // WWY
@@ -21508,8 +22371,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -21522,8 +22386,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -21536,8 +22401,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     // func arg: VkDeviceSize offset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
     IndentSpacesJson(out, indent);
@@ -21550,8 +22416,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     // func arg: VkBuffer countBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -21564,8 +22431,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     // func arg: VkDeviceSize countBufferOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBufferOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -21578,8 +22446,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     // func arg: uint32_t maxDrawCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawCount\",\n";
     IndentSpacesJson(out, indent);
@@ -21592,8 +22461,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     // func arg: uint32_t stride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
     IndentSpacesJson(out, indent);
@@ -21631,8 +22501,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -21645,8 +22516,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -21659,8 +22531,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     // func arg: VkDeviceSize offset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
     IndentSpacesJson(out, indent);
@@ -21673,8 +22546,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     // func arg: VkBuffer countBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -21687,8 +22561,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     // func arg: VkDeviceSize countBufferOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBufferOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -21701,8 +22576,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     // func arg: uint32_t maxDrawCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawCount\",\n";
     IndentSpacesJson(out, indent);
@@ -21715,8 +22591,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     // func arg: uint32_t stride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
     IndentSpacesJson(out, indent);
@@ -21756,8 +22633,9 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -21770,8 +22648,9 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     // func arg: VkSemaphore semaphore
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSemaphore\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSemaphore";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"semaphore\",\n";
     IndentSpacesJson(out, indent);
@@ -21784,8 +22663,9 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     // func arg: uint64_t* pValue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint64_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pValue\",\n";
     if (pValue.GetPointer() == nullptr) // WWY
@@ -21836,8 +22716,9 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -21850,8 +22731,9 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     // func arg: const VkSemaphoreWaitInfoKHR* pWaitInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSemaphoreWaitInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSemaphoreWaitInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pWaitInfo\",\n";
     if (pWaitInfo.GetPointer() == nullptr) // WWY
@@ -21875,8 +22757,9 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     // func arg: uint64_t timeout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint64_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timeout\",\n";
     IndentSpacesJson(out, indent);
@@ -21914,8 +22797,9 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -21928,8 +22812,9 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     // func arg: const VkSemaphoreSignalInfoKHR* pSignalInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSemaphoreSignalInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSemaphoreSignalInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSignalInfo\",\n";
     if (pSignalInfo.GetPointer() == nullptr) // WWY
@@ -21981,8 +22866,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -21995,8 +22881,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     // func arg: const VkPipelineInfoKHR* pPipelineInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPipelineInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPipelineInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelineInfo\",\n";
     if (pPipelineInfo.GetPointer() == nullptr) // WWY
@@ -22020,8 +22907,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     // func arg: uint32_t* pExecutableCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExecutableCount\",\n";
     if (pExecutableCount.GetPointer() == nullptr) // WWY
@@ -22046,8 +22934,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     // func arg: VkPipelineExecutablePropertiesKHR* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineExecutablePropertiesKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineExecutablePropertiesKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -22098,8 +22987,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -22112,8 +23002,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     // func arg: const VkPipelineExecutableInfoKHR* pExecutableInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPipelineExecutableInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPipelineExecutableInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExecutableInfo\",\n";
     if (pExecutableInfo.GetPointer() == nullptr) // WWY
@@ -22137,8 +23028,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     // func arg: uint32_t* pStatisticCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pStatisticCount\",\n";
     if (pStatisticCount.GetPointer() == nullptr) // WWY
@@ -22163,8 +23055,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     // func arg: VkPipelineExecutableStatisticKHR* pStatistics
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineExecutableStatisticKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineExecutableStatisticKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pStatistics\",\n";
     if (pStatistics.GetPointer() == nullptr) // WWY
@@ -22215,8 +23108,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -22229,8 +23123,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     // func arg: const VkPipelineExecutableInfoKHR* pExecutableInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPipelineExecutableInfoKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPipelineExecutableInfoKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExecutableInfo\",\n";
     if (pExecutableInfo.GetPointer() == nullptr) // WWY
@@ -22254,8 +23149,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     // func arg: uint32_t* pInternalRepresentationCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInternalRepresentationCount\",\n";
     if (pInternalRepresentationCount.GetPointer() == nullptr) // WWY
@@ -22280,8 +23176,9 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     // func arg: VkPipelineExecutableInternalRepresentationKHR* pInternalRepresentations
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineExecutableInternalRepresentationKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineExecutableInternalRepresentationKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInternalRepresentations\",\n";
     if (pInternalRepresentations.GetPointer() == nullptr) // WWY
@@ -22333,8 +23230,9 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -22347,8 +23245,9 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     // func arg: const VkDebugReportCallbackCreateInfoEXT* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugReportCallbackCreateInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugReportCallbackCreateInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -22372,8 +23271,9 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -22397,8 +23297,9 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     // func arg: VkDebugReportCallbackEXT* pCallback
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugReportCallbackEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDebugReportCallbackEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCallback\",\n";
     if (pCallback.GetPointer() == nullptr) // WWY
@@ -22444,8 +23345,9 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -22458,8 +23360,9 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     // func arg: VkDebugReportCallbackEXT callback
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugReportCallbackEXT\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDebugReportCallbackEXT";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"callback\",\n";
     IndentSpacesJson(out, indent);
@@ -22472,8 +23375,9 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -22523,8 +23427,9 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -22537,8 +23442,9 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     // func arg: VkDebugReportFlagsEXT flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugReportFlagsEXT\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDebugReportFlagsEXT";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -22551,8 +23457,9 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     // func arg: VkDebugReportObjectTypeEXT objectType
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugReportObjectTypeEXT\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDebugReportObjectTypeEXT";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectType\",\n";
     IndentSpacesJson(out, indent);
@@ -22565,8 +23472,9 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     // func arg: uint64_t object
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint64_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"object\",\n";
     IndentSpacesJson(out, indent);
@@ -22579,8 +23487,9 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     // func arg: size_t location
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"size_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"size_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"location\",\n";
     IndentSpacesJson(out, indent);
@@ -22593,8 +23502,9 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     // func arg: int32_t messageCode
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"int32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"int32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"messageCode\",\n";
     IndentSpacesJson(out, indent);
@@ -22607,8 +23517,9 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     // func arg: const char* pLayerPrefix
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const char*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const char*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLayerPrefix\",\n";
     if (pLayerPrefix.GetPointer() == nullptr) // WWY
@@ -22633,8 +23544,9 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     // func arg: const char* pMessage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const char*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const char*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMessage\",\n";
     if (pMessage.GetPointer() == nullptr) // WWY
@@ -22685,8 +23597,9 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -22699,8 +23612,9 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     // func arg: const VkDebugMarkerObjectTagInfoEXT* pTagInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugMarkerObjectTagInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugMarkerObjectTagInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTagInfo\",\n";
     if (pTagInfo.GetPointer() == nullptr) // WWY
@@ -22749,8 +23663,9 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -22763,8 +23678,9 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     // func arg: const VkDebugMarkerObjectNameInfoEXT* pNameInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugMarkerObjectNameInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugMarkerObjectNameInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNameInfo\",\n";
     if (pNameInfo.GetPointer() == nullptr) // WWY
@@ -22808,8 +23724,9 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -22822,8 +23739,9 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     // func arg: const VkDebugMarkerMarkerInfoEXT* pMarkerInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugMarkerMarkerInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugMarkerMarkerInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMarkerInfo\",\n";
     if (pMarkerInfo.GetPointer() == nullptr) // WWY
@@ -22866,8 +23784,9 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerEndEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -22900,8 +23819,9 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -22914,8 +23834,9 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     // func arg: const VkDebugMarkerMarkerInfoEXT* pMarkerInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugMarkerMarkerInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugMarkerMarkerInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMarkerInfo\",\n";
     if (pMarkerInfo.GetPointer() == nullptr) // WWY
@@ -22964,8 +23885,9 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -22978,8 +23900,9 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     // func arg: uint32_t firstBinding
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstBinding\",\n";
     IndentSpacesJson(out, indent);
@@ -22992,8 +23915,9 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     // func arg: uint32_t bindingCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindingCount\",\n";
     IndentSpacesJson(out, indent);
@@ -23006,8 +23930,9 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     // func arg: const VkBuffer* pBuffers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBuffer*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBuffer*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBuffers\",\n";
     if (pBuffers.GetPointer() == nullptr) // WWY
@@ -23032,8 +23957,9 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     // func arg: const VkDeviceSize* pOffsets
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDeviceSize*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDeviceSize*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pOffsets\",\n";
     if (pOffsets.GetPointer() == nullptr) // WWY
@@ -23058,8 +23984,9 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     // func arg: const VkDeviceSize* pSizes
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDeviceSize*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDeviceSize*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSizes\",\n";
     if (pSizes.GetPointer() == nullptr) // WWY
@@ -23107,8 +24034,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23121,8 +24049,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     // func arg: uint32_t firstCounterBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstCounterBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23135,8 +24064,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     // func arg: uint32_t counterBufferCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"counterBufferCount\",\n";
     IndentSpacesJson(out, indent);
@@ -23149,8 +24079,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     // func arg: const VkBuffer* pCounterBuffers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBuffer*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBuffer*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCounterBuffers\",\n";
     if (pCounterBuffers.GetPointer() == nullptr) // WWY
@@ -23175,8 +24106,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     // func arg: const VkDeviceSize* pCounterBufferOffsets
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDeviceSize*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDeviceSize*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCounterBufferOffsets\",\n";
     if (pCounterBufferOffsets.GetPointer() == nullptr) // WWY
@@ -23224,8 +24156,9 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23238,8 +24171,9 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     // func arg: uint32_t firstCounterBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstCounterBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23252,8 +24186,9 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     // func arg: uint32_t counterBufferCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"counterBufferCount\",\n";
     IndentSpacesJson(out, indent);
@@ -23266,8 +24201,9 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     // func arg: const VkBuffer* pCounterBuffers
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBuffer*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBuffer*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCounterBuffers\",\n";
     if (pCounterBuffers.GetPointer() == nullptr) // WWY
@@ -23292,8 +24228,9 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     // func arg: const VkDeviceSize* pCounterBufferOffsets
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDeviceSize*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDeviceSize*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCounterBufferOffsets\",\n";
     if (pCounterBufferOffsets.GetPointer() == nullptr) // WWY
@@ -23341,8 +24278,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23355,8 +24293,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     // func arg: VkQueryPool queryPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
     IndentSpacesJson(out, indent);
@@ -23369,8 +24308,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     // func arg: uint32_t query
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"query\",\n";
     IndentSpacesJson(out, indent);
@@ -23383,8 +24323,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     // func arg: VkQueryControlFlags flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryControlFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryControlFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -23397,8 +24338,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     // func arg: uint32_t index
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"index\",\n";
     IndentSpacesJson(out, indent);
@@ -23433,8 +24375,9 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23447,8 +24390,9 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     // func arg: VkQueryPool queryPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
     IndentSpacesJson(out, indent);
@@ -23461,8 +24405,9 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     // func arg: uint32_t query
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"query\",\n";
     IndentSpacesJson(out, indent);
@@ -23475,8 +24420,9 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     // func arg: uint32_t index
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"index\",\n";
     IndentSpacesJson(out, indent);
@@ -23514,8 +24460,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23528,8 +24475,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     // func arg: uint32_t instanceCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceCount\",\n";
     IndentSpacesJson(out, indent);
@@ -23542,8 +24490,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     // func arg: uint32_t firstInstance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstInstance\",\n";
     IndentSpacesJson(out, indent);
@@ -23556,8 +24505,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     // func arg: VkBuffer counterBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"counterBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23570,8 +24520,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     // func arg: VkDeviceSize counterBufferOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"counterBufferOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -23584,8 +24535,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     // func arg: uint32_t counterOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"counterOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -23598,8 +24550,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     // func arg: uint32_t vertexStride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"vertexStride\",\n";
     IndentSpacesJson(out, indent);
@@ -23637,8 +24590,9 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -23651,8 +24605,9 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     // func arg: const VkImageViewHandleInfoNVX* pInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImageViewHandleInfoNVX*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImageViewHandleInfoNVX*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
@@ -23702,8 +24657,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23716,8 +24672,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23730,8 +24687,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     // func arg: VkDeviceSize offset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
     IndentSpacesJson(out, indent);
@@ -23744,8 +24702,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     // func arg: VkBuffer countBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23758,8 +24717,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     // func arg: VkDeviceSize countBufferOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBufferOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -23772,8 +24732,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     // func arg: uint32_t maxDrawCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawCount\",\n";
     IndentSpacesJson(out, indent);
@@ -23786,8 +24747,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     // func arg: uint32_t stride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
     IndentSpacesJson(out, indent);
@@ -23825,8 +24787,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23839,8 +24802,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23853,8 +24817,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     // func arg: VkDeviceSize offset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
     IndentSpacesJson(out, indent);
@@ -23867,8 +24832,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     // func arg: VkBuffer countBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -23881,8 +24847,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     // func arg: VkDeviceSize countBufferOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBufferOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -23895,8 +24862,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     // func arg: uint32_t maxDrawCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawCount\",\n";
     IndentSpacesJson(out, indent);
@@ -23909,8 +24877,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     // func arg: uint32_t stride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
     IndentSpacesJson(out, indent);
@@ -23953,8 +24922,9 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -23967,8 +24937,9 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     // func arg: VkPipeline pipeline
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipeline\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipeline";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
     IndentSpacesJson(out, indent);
@@ -23981,13 +24952,14 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     // func arg: VkShaderStageFlagBits shaderStage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkShaderStageFlagBits\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkShaderStageFlagBits";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shaderStage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkShaderStageFlagBitsJson(out, shaderStage); // ESA
+    FlagsToStringJson(out, shaderStage, EnumToStringVkShaderStageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -23995,8 +24967,9 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     // func arg: VkShaderInfoTypeAMD infoType
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkShaderInfoTypeAMD\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkShaderInfoTypeAMD";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"infoType\",\n";
     IndentSpacesJson(out, indent);
@@ -24009,8 +24982,9 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     // func arg: size_t* pInfoSize
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"size_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"size_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfoSize\",\n";
     if (pInfoSize.GetPointer() == nullptr) // WWY
@@ -24031,8 +25005,9 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     // func arg: void* pInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
@@ -24085,8 +25060,9 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -24099,8 +25075,9 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     // func arg: const VkStreamDescriptorSurfaceCreateInfoGGP* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkStreamDescriptorSurfaceCreateInfoGGP*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkStreamDescriptorSurfaceCreateInfoGGP*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -24124,8 +25101,9 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -24149,8 +25127,9 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -24207,8 +25186,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -24221,8 +25201,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     // func arg: VkFormat format
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFormat\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFormat";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
@@ -24235,8 +25216,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     // func arg: VkImageType type
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageType\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageType";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
@@ -24249,8 +25231,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     // func arg: VkImageTiling tiling
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageTiling\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageTiling";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"tiling\",\n";
     IndentSpacesJson(out, indent);
@@ -24263,8 +25246,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     // func arg: VkImageUsageFlags usage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageUsageFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageUsageFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
@@ -24277,8 +25261,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     // func arg: VkImageCreateFlags flags
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageCreateFlags\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageCreateFlags";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
@@ -24291,8 +25276,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     // func arg: VkExternalMemoryHandleTypeFlagsNV externalHandleType
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"externalHandleType\",\n";
     IndentSpacesJson(out, indent);
@@ -24305,8 +25291,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     // func arg: VkExternalImageFormatPropertiesNV* pExternalImageFormatProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalImageFormatPropertiesNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExternalImageFormatPropertiesNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExternalImageFormatProperties\",\n";
     if (pExternalImageFormatProperties.GetPointer() == nullptr) // WWY
@@ -24358,8 +25345,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -24372,8 +25360,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     // func arg: VkDeviceMemory memory
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceMemory\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceMemory";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"memory\",\n";
     IndentSpacesJson(out, indent);
@@ -24386,8 +25375,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     // func arg: VkExternalMemoryHandleTypeFlagsNV handleType
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
@@ -24400,8 +25390,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     // func arg: void** pHandle
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void**\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void**";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pHandle\",\n";
     if (pHandle.GetPointer() == nullptr) // WWY
@@ -24450,8 +25441,9 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -24464,8 +25456,9 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     // func arg: const VkViSurfaceCreateInfoNN* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkViSurfaceCreateInfoNN*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkViSurfaceCreateInfoNN*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -24489,8 +25482,9 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -24514,8 +25508,9 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -24561,8 +25556,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -24575,8 +25571,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     // func arg: const VkConditionalRenderingBeginInfoEXT* pConditionalRenderingBegin
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkConditionalRenderingBeginInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkConditionalRenderingBeginInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pConditionalRenderingBegin\",\n";
     if (pConditionalRenderingBegin.GetPointer() == nullptr) // WWY
@@ -24619,8 +25616,9 @@ void VulkanJsonConsumer::Process_vkCmdEndConditionalRenderingEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -24654,8 +25652,9 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -24668,8 +25667,9 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     // func arg: const VkCmdProcessCommandsInfoNVX* pProcessCommandsInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkCmdProcessCommandsInfoNVX*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkCmdProcessCommandsInfoNVX*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProcessCommandsInfo\",\n";
     if (pProcessCommandsInfo.GetPointer() == nullptr) // WWY
@@ -24713,8 +25713,9 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -24727,8 +25728,9 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     // func arg: const VkCmdReserveSpaceForCommandsInfoNVX* pReserveSpaceInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkCmdReserveSpaceForCommandsInfoNVX*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkCmdReserveSpaceForCommandsInfoNVX*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pReserveSpaceInfo\",\n";
     if (pReserveSpaceInfo.GetPointer() == nullptr) // WWY
@@ -24779,8 +25781,9 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -24793,8 +25796,9 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     // func arg: const VkIndirectCommandsLayoutCreateInfoNVX* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkIndirectCommandsLayoutCreateInfoNVX*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkIndirectCommandsLayoutCreateInfoNVX*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -24818,8 +25822,9 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -24843,8 +25848,9 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     // func arg: VkIndirectCommandsLayoutNVX* pIndirectCommandsLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkIndirectCommandsLayoutNVX*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkIndirectCommandsLayoutNVX*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pIndirectCommandsLayout\",\n";
     if (pIndirectCommandsLayout.GetPointer() == nullptr) // WWY
@@ -24890,8 +25896,9 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -24904,8 +25911,9 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     // func arg: VkIndirectCommandsLayoutNVX indirectCommandsLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkIndirectCommandsLayoutNVX\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkIndirectCommandsLayoutNVX";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"indirectCommandsLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -24918,8 +25926,9 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -24970,8 +25979,9 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -24984,8 +25994,9 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     // func arg: const VkObjectTableCreateInfoNVX* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkObjectTableCreateInfoNVX*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkObjectTableCreateInfoNVX*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -25009,8 +26020,9 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -25034,8 +26046,9 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     // func arg: VkObjectTableNVX* pObjectTable
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkObjectTableNVX*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkObjectTableNVX*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pObjectTable\",\n";
     if (pObjectTable.GetPointer() == nullptr) // WWY
@@ -25081,8 +26094,9 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -25095,8 +26109,9 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     // func arg: VkObjectTableNVX objectTable
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkObjectTableNVX\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkObjectTableNVX";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectTable\",\n";
     IndentSpacesJson(out, indent);
@@ -25109,8 +26124,9 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -25162,8 +26178,9 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -25176,8 +26193,9 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     // func arg: VkObjectTableNVX objectTable
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkObjectTableNVX\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkObjectTableNVX";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectTable\",\n";
     IndentSpacesJson(out, indent);
@@ -25190,8 +26208,9 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     // func arg: uint32_t objectCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"objectCount\",\n";
     IndentSpacesJson(out, indent);
@@ -25204,8 +26223,9 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     // func arg: const VkObjectEntryTypeNVX* pObjectEntryTypes
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkObjectEntryTypeNVX*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkObjectEntryTypeNVX*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pObjectEntryTypes\",\n";
     if (pObjectEntryTypes.GetPointer() == nullptr) // WWY
@@ -25230,8 +26250,9 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     // func arg: const uint32_t* pObjectIndices
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pObjectIndices\",\n";
     if (pObjectIndices.GetPointer() == nullptr) // WWY
@@ -25277,8 +26298,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -25291,8 +26313,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     // func arg: VkDeviceGeneratedCommandsFeaturesNVX* pFeatures
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceGeneratedCommandsFeaturesNVX*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceGeneratedCommandsFeaturesNVX*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFeatures\",\n";
     if (pFeatures.GetPointer() == nullptr) // WWY
@@ -25316,8 +26339,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     // func arg: VkDeviceGeneratedCommandsLimitsNVX* pLimits
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceGeneratedCommandsLimitsNVX*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceGeneratedCommandsLimitsNVX*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLimits\",\n";
     if (pLimits.GetPointer() == nullptr) // WWY
@@ -25364,8 +26388,9 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -25378,8 +26403,9 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     // func arg: uint32_t firstViewport
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstViewport\",\n";
     IndentSpacesJson(out, indent);
@@ -25392,8 +26418,9 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     // func arg: uint32_t viewportCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewportCount\",\n";
     IndentSpacesJson(out, indent);
@@ -25406,8 +26433,9 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     // func arg: const VkViewportWScalingNV* pViewportWScalings
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkViewportWScalingNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkViewportWScalingNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pViewportWScalings\",\n";
     if (pViewportWScalings.GetPointer() == nullptr) // WWY
@@ -25457,8 +26485,9 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -25471,8 +26500,9 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     // func arg: VkDisplayKHR display
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
     IndentSpacesJson(out, indent);
@@ -25512,8 +26542,9 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -25526,8 +26557,9 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     // func arg: void* dpy
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
     IndentSpacesJson(out, 4);
@@ -25536,8 +26568,9 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     // func arg: VkDisplayKHR display
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
     IndentSpacesJson(out, indent);
@@ -25577,8 +26610,9 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -25591,8 +26625,9 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     // func arg: void* dpy
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
     IndentSpacesJson(out, 4);
@@ -25601,8 +26636,9 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     // func arg: size_t rrOutput
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"size_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"size_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"rrOutput\",\n";
     IndentSpacesJson(out, indent);
@@ -25615,8 +26651,9 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     // func arg: VkDisplayKHR* pDisplay
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplay\",\n";
     if (pDisplay.GetPointer() == nullptr) // WWY
@@ -25668,8 +26705,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -25682,8 +26720,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     // func arg: VkSurfaceKHR surface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"surface\",\n";
     IndentSpacesJson(out, indent);
@@ -25696,8 +26735,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     // func arg: VkSurfaceCapabilities2EXT* pSurfaceCapabilities
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceCapabilities2EXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceCapabilities2EXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceCapabilities\",\n";
     if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
@@ -25748,8 +26788,9 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -25762,8 +26803,9 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     // func arg: VkDisplayKHR display
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
     IndentSpacesJson(out, indent);
@@ -25776,8 +26818,9 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     // func arg: const VkDisplayPowerInfoEXT* pDisplayPowerInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDisplayPowerInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDisplayPowerInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplayPowerInfo\",\n";
     if (pDisplayPowerInfo.GetPointer() == nullptr) // WWY
@@ -25828,8 +26871,9 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -25842,8 +26886,9 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     // func arg: const VkDeviceEventInfoEXT* pDeviceEventInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDeviceEventInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDeviceEventInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDeviceEventInfo\",\n";
     if (pDeviceEventInfo.GetPointer() == nullptr) // WWY
@@ -25867,8 +26912,9 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -25892,8 +26938,9 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     // func arg: VkFence* pFence
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFence*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFence\",\n";
     if (pFence.GetPointer() == nullptr) // WWY
@@ -25946,8 +26993,9 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -25960,8 +27008,9 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     // func arg: VkDisplayKHR display
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDisplayKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDisplayKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"display\",\n";
     IndentSpacesJson(out, indent);
@@ -25974,8 +27023,9 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     // func arg: const VkDisplayEventInfoEXT* pDisplayEventInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDisplayEventInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDisplayEventInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplayEventInfo\",\n";
     if (pDisplayEventInfo.GetPointer() == nullptr) // WWY
@@ -25999,8 +27049,9 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -26024,8 +27075,9 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     // func arg: VkFence* pFence
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFence*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFence*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pFence\",\n";
     if (pFence.GetPointer() == nullptr) // WWY
@@ -26077,8 +27129,9 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -26091,8 +27144,9 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     // func arg: VkSwapchainKHR swapchain
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSwapchainKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
     IndentSpacesJson(out, indent);
@@ -26105,13 +27159,14 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     // func arg: VkSurfaceCounterFlagBitsEXT counter
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceCounterFlagBitsEXT\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceCounterFlagBitsEXT";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"counter\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSurfaceCounterFlagBitsEXTJson(out, counter); // ESA
+    FlagsToStringJson(out, counter, EnumToStringVkSurfaceCounterFlagBitsEXTJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -26119,8 +27174,9 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     // func arg: uint64_t* pCounterValue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint64_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCounterValue\",\n";
     if (pCounterValue.GetPointer() == nullptr) // WWY
@@ -26172,8 +27228,9 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -26186,8 +27243,9 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     // func arg: VkSwapchainKHR swapchain
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSwapchainKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
     IndentSpacesJson(out, indent);
@@ -26200,8 +27258,9 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     // func arg: VkRefreshCycleDurationGOOGLE* pDisplayTimingProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkRefreshCycleDurationGOOGLE*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkRefreshCycleDurationGOOGLE*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDisplayTimingProperties\",\n";
     if (pDisplayTimingProperties.GetPointer() == nullptr) // WWY
@@ -26252,8 +27311,9 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -26266,8 +27326,9 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     // func arg: VkSwapchainKHR swapchain
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSwapchainKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
     IndentSpacesJson(out, indent);
@@ -26280,8 +27341,9 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     // func arg: uint32_t* pPresentationTimingCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentationTimingCount\",\n";
     if (pPresentationTimingCount.GetPointer() == nullptr) // WWY
@@ -26306,8 +27368,9 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     // func arg: VkPastPresentationTimingGOOGLE* pPresentationTimings
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPastPresentationTimingGOOGLE*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPastPresentationTimingGOOGLE*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentationTimings\",\n";
     if (pPresentationTimings.GetPointer() == nullptr) // WWY
@@ -26354,8 +27417,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -26368,8 +27432,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     // func arg: uint32_t firstDiscardRectangle
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstDiscardRectangle\",\n";
     IndentSpacesJson(out, indent);
@@ -26382,8 +27447,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     // func arg: uint32_t discardRectangleCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"discardRectangleCount\",\n";
     IndentSpacesJson(out, indent);
@@ -26396,8 +27462,9 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     // func arg: const VkRect2D* pDiscardRectangles
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkRect2D*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkRect2D*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDiscardRectangles\",\n";
     if (pDiscardRectangles.GetPointer() == nullptr) // WWY
@@ -26444,8 +27511,9 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -26458,8 +27526,9 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     // func arg: uint32_t swapchainCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchainCount\",\n";
     IndentSpacesJson(out, indent);
@@ -26472,8 +27541,9 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     // func arg: const VkSwapchainKHR* pSwapchains
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSwapchainKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSwapchainKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSwapchains\",\n";
     if (pSwapchains.GetPointer() == nullptr) // WWY
@@ -26498,8 +27568,9 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     // func arg: const VkHdrMetadataEXT* pMetadata
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkHdrMetadataEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkHdrMetadataEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMetadata\",\n";
     if (pMetadata.GetPointer() == nullptr) // WWY
@@ -26551,8 +27622,9 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -26565,8 +27637,9 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     // func arg: const VkIOSSurfaceCreateInfoMVK* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkIOSSurfaceCreateInfoMVK*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkIOSSurfaceCreateInfoMVK*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -26590,8 +27663,9 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -26615,8 +27689,9 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -26669,8 +27744,9 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -26683,8 +27759,9 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     // func arg: const VkMacOSSurfaceCreateInfoMVK* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkMacOSSurfaceCreateInfoMVK*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkMacOSSurfaceCreateInfoMVK*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -26708,8 +27785,9 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -26733,8 +27811,9 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -26785,8 +27864,9 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -26799,8 +27879,9 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     // func arg: const VkDebugUtilsObjectNameInfoEXT* pNameInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugUtilsObjectNameInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugUtilsObjectNameInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pNameInfo\",\n";
     if (pNameInfo.GetPointer() == nullptr) // WWY
@@ -26849,8 +27930,9 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -26863,8 +27945,9 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     // func arg: const VkDebugUtilsObjectTagInfoEXT* pTagInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugUtilsObjectTagInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugUtilsObjectTagInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTagInfo\",\n";
     if (pTagInfo.GetPointer() == nullptr) // WWY
@@ -26908,8 +27991,9 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     // func arg: VkQueue queue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueue";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
     IndentSpacesJson(out, indent);
@@ -26922,8 +28006,9 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     // func arg: const VkDebugUtilsLabelEXT* pLabelInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLabelInfo\",\n";
     if (pLabelInfo.GetPointer() == nullptr) // WWY
@@ -26966,8 +28051,9 @@ void VulkanJsonConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
     // func arg: VkQueue queue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueue";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
     IndentSpacesJson(out, indent);
@@ -27000,8 +28086,9 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     // func arg: VkQueue queue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueue";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
     IndentSpacesJson(out, indent);
@@ -27014,8 +28101,9 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     // func arg: const VkDebugUtilsLabelEXT* pLabelInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLabelInfo\",\n";
     if (pLabelInfo.GetPointer() == nullptr) // WWY
@@ -27059,8 +28147,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -27073,8 +28162,9 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     // func arg: const VkDebugUtilsLabelEXT* pLabelInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLabelInfo\",\n";
     if (pLabelInfo.GetPointer() == nullptr) // WWY
@@ -27117,8 +28207,9 @@ void VulkanJsonConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -27151,8 +28242,9 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -27165,8 +28257,9 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     // func arg: const VkDebugUtilsLabelEXT* pLabelInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugUtilsLabelEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pLabelInfo\",\n";
     if (pLabelInfo.GetPointer() == nullptr) // WWY
@@ -27217,8 +28310,9 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -27231,8 +28325,9 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     // func arg: const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugUtilsMessengerCreateInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugUtilsMessengerCreateInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -27256,8 +28351,9 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -27281,8 +28377,9 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     // func arg: VkDebugUtilsMessengerEXT* pMessenger
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsMessengerEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDebugUtilsMessengerEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMessenger\",\n";
     if (pMessenger.GetPointer() == nullptr) // WWY
@@ -27328,8 +28425,9 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -27342,8 +28440,9 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     // func arg: VkDebugUtilsMessengerEXT messenger
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsMessengerEXT\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDebugUtilsMessengerEXT";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"messenger\",\n";
     IndentSpacesJson(out, indent);
@@ -27356,8 +28455,9 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -27403,8 +28503,9 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -27417,13 +28518,14 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     // func arg: VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsMessageSeverityFlagBitsEXT\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDebugUtilsMessageSeverityFlagBitsEXT";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"messageSeverity\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXTJson(out, messageSeverity); // ESA
+    FlagsToStringJson(out, messageSeverity, EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXTJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -27431,8 +28533,9 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     // func arg: VkDebugUtilsMessageTypeFlagsEXT messageTypes
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDebugUtilsMessageTypeFlagsEXT\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDebugUtilsMessageTypeFlagsEXT";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"messageTypes\",\n";
     IndentSpacesJson(out, indent);
@@ -27445,8 +28548,9 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     // func arg: const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkDebugUtilsMessengerCallbackDataEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkDebugUtilsMessengerCallbackDataEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCallbackData\",\n";
     if (pCallbackData.GetPointer() == nullptr) // WWY
@@ -27497,8 +28601,9 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -27511,8 +28616,9 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     // func arg: const struct void* buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const struct void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const struct void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     if ( !buffer) // WWW
@@ -27533,8 +28639,9 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     // func arg: VkAndroidHardwareBufferPropertiesANDROID* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAndroidHardwareBufferPropertiesANDROID*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkAndroidHardwareBufferPropertiesANDROID*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -27584,8 +28691,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -27598,8 +28706,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     // func arg: const VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkMemoryGetAndroidHardwareBufferInfoANDROID*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkMemoryGetAndroidHardwareBufferInfoANDROID*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
@@ -27623,8 +28732,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     // func arg: struct void** pBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"struct void**\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"struct void**";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBuffer\",\n";
     if (pBuffer.GetPointer() == nullptr) // WWY
@@ -27666,8 +28776,9 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -27680,8 +28791,9 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     // func arg: const VkSampleLocationsInfoEXT* pSampleLocationsInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkSampleLocationsInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkSampleLocationsInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSampleLocationsInfo\",\n";
     if (pSampleLocationsInfo.GetPointer() == nullptr) // WWY
@@ -27726,8 +28838,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -27740,13 +28853,14 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     // func arg: VkSampleCountFlagBits samples
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSampleCountFlagBits\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSampleCountFlagBits";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"samples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSampleCountFlagBitsJson(out, samples); // ESA
+    FlagsToStringJson(out, samples, EnumToStringVkSampleCountFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -27754,8 +28868,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     // func arg: VkMultisamplePropertiesEXT* pMultisampleProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMultisamplePropertiesEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkMultisamplePropertiesEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMultisampleProperties\",\n";
     if (pMultisampleProperties.GetPointer() == nullptr) // WWY
@@ -27806,8 +28921,9 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -27820,8 +28936,9 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     // func arg: VkImage image
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImage\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImage";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"image\",\n";
     IndentSpacesJson(out, indent);
@@ -27834,8 +28951,9 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     // func arg: VkImageDrmFormatModifierPropertiesEXT* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageDrmFormatModifierPropertiesEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageDrmFormatModifierPropertiesEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -27887,8 +29005,9 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -27901,8 +29020,9 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     // func arg: const VkValidationCacheCreateInfoEXT* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkValidationCacheCreateInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkValidationCacheCreateInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -27926,8 +29046,9 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -27951,8 +29072,9 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     // func arg: VkValidationCacheEXT* pValidationCache
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkValidationCacheEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkValidationCacheEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pValidationCache\",\n";
     if (pValidationCache.GetPointer() == nullptr) // WWY
@@ -27998,8 +29120,9 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -28012,8 +29135,9 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     // func arg: VkValidationCacheEXT validationCache
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkValidationCacheEXT\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkValidationCacheEXT";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"validationCache\",\n";
     IndentSpacesJson(out, indent);
@@ -28026,8 +29150,9 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -28078,8 +29203,9 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -28092,8 +29218,9 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     // func arg: VkValidationCacheEXT dstCache
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkValidationCacheEXT\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkValidationCacheEXT";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstCache\",\n";
     IndentSpacesJson(out, indent);
@@ -28106,8 +29233,9 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     // func arg: uint32_t srcCacheCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"srcCacheCount\",\n";
     IndentSpacesJson(out, indent);
@@ -28120,8 +29248,9 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     // func arg: const VkValidationCacheEXT* pSrcCaches
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkValidationCacheEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkValidationCacheEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSrcCaches\",\n";
     if (pSrcCaches.GetPointer() == nullptr) // WWY
@@ -28173,8 +29302,9 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -28187,8 +29317,9 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     // func arg: VkValidationCacheEXT validationCache
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkValidationCacheEXT\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkValidationCacheEXT";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"validationCache\",\n";
     IndentSpacesJson(out, indent);
@@ -28201,8 +29332,9 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     // func arg: size_t* pDataSize
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"size_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"size_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pDataSize\",\n";
     if (pDataSize.GetPointer() == nullptr) // WWY
@@ -28223,8 +29355,9 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     // func arg: void* pData
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     if (pData.GetPointer() == nullptr) // WWY
@@ -28271,8 +29404,9 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -28285,8 +29419,9 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     // func arg: VkImageView imageView
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageView\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageView";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageView\",\n";
     IndentSpacesJson(out, indent);
@@ -28299,8 +29434,9 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     // func arg: VkImageLayout imageLayout
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkImageLayout\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkImageLayout";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"imageLayout\",\n";
     IndentSpacesJson(out, indent);
@@ -28335,8 +29471,9 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -28349,8 +29486,9 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     // func arg: uint32_t firstViewport
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstViewport\",\n";
     IndentSpacesJson(out, indent);
@@ -28363,8 +29501,9 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     // func arg: uint32_t viewportCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"viewportCount\",\n";
     IndentSpacesJson(out, indent);
@@ -28377,8 +29516,9 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     // func arg: const VkShadingRatePaletteNV* pShadingRatePalettes
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkShadingRatePaletteNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkShadingRatePaletteNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pShadingRatePalettes\",\n";
     if (pShadingRatePalettes.GetPointer() == nullptr) // WWY
@@ -28424,8 +29564,9 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -28438,8 +29579,9 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     // func arg: VkCoarseSampleOrderTypeNV sampleOrderType
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCoarseSampleOrderTypeNV\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCoarseSampleOrderTypeNV";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"sampleOrderType\",\n";
     IndentSpacesJson(out, indent);
@@ -28452,8 +29594,9 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     // func arg: uint32_t customSampleOrderCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"customSampleOrderCount\",\n";
     IndentSpacesJson(out, indent);
@@ -28466,8 +29609,9 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     // func arg: const VkCoarseSampleOrderCustomNV* pCustomSampleOrders
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkCoarseSampleOrderCustomNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkCoarseSampleOrderCustomNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCustomSampleOrders\",\n";
     if (pCustomSampleOrders.GetPointer() == nullptr) // WWY
@@ -28519,8 +29663,9 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -28533,8 +29678,9 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     // func arg: const VkAccelerationStructureCreateInfoNV* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAccelerationStructureCreateInfoNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAccelerationStructureCreateInfoNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -28558,8 +29704,9 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -28583,8 +29730,9 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     // func arg: VkAccelerationStructureNV* pAccelerationStructure
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkAccelerationStructureNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAccelerationStructure\",\n";
     if (pAccelerationStructure.GetPointer() == nullptr) // WWY
@@ -28630,8 +29778,9 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -28644,8 +29793,9 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     // func arg: VkAccelerationStructureNV accelerationStructure
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkAccelerationStructureNV";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"accelerationStructure\",\n";
     IndentSpacesJson(out, indent);
@@ -28658,8 +29808,9 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -28704,8 +29855,9 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -28718,8 +29870,9 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     // func arg: const VkAccelerationStructureMemoryRequirementsInfoNV* pInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAccelerationStructureMemoryRequirementsInfoNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAccelerationStructureMemoryRequirementsInfoNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
@@ -28743,8 +29896,9 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     // func arg: VkMemoryRequirements2KHR* pMemoryRequirements
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryRequirements2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkMemoryRequirements2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
@@ -28794,8 +29948,9 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -28808,8 +29963,9 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     // func arg: uint32_t bindInfoCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"bindInfoCount\",\n";
     IndentSpacesJson(out, indent);
@@ -28822,8 +29978,9 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     // func arg: const VkBindAccelerationStructureMemoryInfoNV* pBindInfos
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBindAccelerationStructureMemoryInfoNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBindAccelerationStructureMemoryInfoNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pBindInfos\",\n";
     if (pBindInfos.GetPointer() == nullptr) // WWY
@@ -28874,8 +30031,9 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -28888,8 +30046,9 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     // func arg: const VkAccelerationStructureInfoNV* pInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAccelerationStructureInfoNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAccelerationStructureInfoNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
@@ -28913,8 +30072,9 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     // func arg: VkBuffer instanceData
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceData\",\n";
     IndentSpacesJson(out, indent);
@@ -28927,8 +30087,9 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     // func arg: VkDeviceSize instanceOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instanceOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -28941,8 +30102,9 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     // func arg: VkBool32 update
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBool32\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBool32";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"update\",\n";
     IndentSpacesJson(out, indent);
@@ -28955,8 +30117,9 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     // func arg: VkAccelerationStructureNV dst
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkAccelerationStructureNV";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dst\",\n";
     IndentSpacesJson(out, indent);
@@ -28969,8 +30132,9 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     // func arg: VkAccelerationStructureNV src
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkAccelerationStructureNV";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"src\",\n";
     IndentSpacesJson(out, indent);
@@ -28983,8 +30147,9 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     // func arg: VkBuffer scratch
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"scratch\",\n";
     IndentSpacesJson(out, indent);
@@ -28997,8 +30162,9 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     // func arg: VkDeviceSize scratchOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"scratchOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -29033,8 +30199,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -29047,8 +30214,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     // func arg: VkAccelerationStructureNV dst
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkAccelerationStructureNV";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dst\",\n";
     IndentSpacesJson(out, indent);
@@ -29061,8 +30229,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     // func arg: VkAccelerationStructureNV src
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkAccelerationStructureNV";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"src\",\n";
     IndentSpacesJson(out, indent);
@@ -29075,8 +30244,9 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     // func arg: VkCopyAccelerationStructureModeNV mode
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCopyAccelerationStructureModeNV\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCopyAccelerationStructureModeNV";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"mode\",\n";
     IndentSpacesJson(out, indent);
@@ -29122,8 +30292,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -29136,8 +30307,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: VkBuffer raygenShaderBindingTableBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"raygenShaderBindingTableBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -29150,8 +30322,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: VkDeviceSize raygenShaderBindingOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"raygenShaderBindingOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -29164,8 +30337,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: VkBuffer missShaderBindingTableBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"missShaderBindingTableBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -29178,8 +30352,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: VkDeviceSize missShaderBindingOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"missShaderBindingOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -29192,8 +30367,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: VkDeviceSize missShaderBindingStride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"missShaderBindingStride\",\n";
     IndentSpacesJson(out, indent);
@@ -29206,8 +30382,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: VkBuffer hitShaderBindingTableBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"hitShaderBindingTableBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -29220,8 +30397,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: VkDeviceSize hitShaderBindingOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"hitShaderBindingOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -29234,8 +30412,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: VkDeviceSize hitShaderBindingStride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"hitShaderBindingStride\",\n";
     IndentSpacesJson(out, indent);
@@ -29248,8 +30427,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: VkBuffer callableShaderBindingTableBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"callableShaderBindingTableBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -29262,8 +30442,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: VkDeviceSize callableShaderBindingOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"callableShaderBindingOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -29276,8 +30457,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: VkDeviceSize callableShaderBindingStride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"callableShaderBindingStride\",\n";
     IndentSpacesJson(out, indent);
@@ -29290,8 +30472,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: uint32_t width
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"width\",\n";
     IndentSpacesJson(out, indent);
@@ -29304,8 +30487,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: uint32_t height
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"height\",\n";
     IndentSpacesJson(out, indent);
@@ -29318,8 +30502,9 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     // func arg: uint32_t depth
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"depth\",\n";
     IndentSpacesJson(out, indent);
@@ -29361,8 +30546,9 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -29375,8 +30561,9 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     // func arg: VkPipelineCache pipelineCache
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineCache\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineCache";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineCache\",\n";
     IndentSpacesJson(out, indent);
@@ -29389,8 +30576,9 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     // func arg: uint32_t createInfoCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"createInfoCount\",\n";
     IndentSpacesJson(out, indent);
@@ -29403,8 +30591,9 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     // func arg: const VkRayTracingPipelineCreateInfoNV* pCreateInfos
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkRayTracingPipelineCreateInfoNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkRayTracingPipelineCreateInfoNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfos\",\n";
     if (pCreateInfos.GetPointer() == nullptr) // WWY
@@ -29428,8 +30617,9 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -29453,8 +30643,9 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     // func arg: VkPipeline* pPipelines
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipeline*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipeline*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPipelines\",\n";
     if (pPipelines.GetPointer() == nullptr) // WWY
@@ -29508,8 +30699,9 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -29522,8 +30714,9 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     // func arg: VkPipeline pipeline
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipeline\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipeline";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
     IndentSpacesJson(out, indent);
@@ -29536,8 +30729,9 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     // func arg: uint32_t firstGroup
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstGroup\",\n";
     IndentSpacesJson(out, indent);
@@ -29550,8 +30744,9 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     // func arg: uint32_t groupCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"groupCount\",\n";
     IndentSpacesJson(out, indent);
@@ -29564,8 +30759,9 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     // func arg: size_t dataSize
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"size_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"size_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dataSize\",\n";
     IndentSpacesJson(out, indent);
@@ -29578,8 +30774,9 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     // func arg: void* pData
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     if (pData.GetPointer() == nullptr) // WWY
@@ -29631,8 +30828,9 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -29645,8 +30843,9 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     // func arg: VkAccelerationStructureNV accelerationStructure
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkAccelerationStructureNV\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkAccelerationStructureNV";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"accelerationStructure\",\n";
     IndentSpacesJson(out, indent);
@@ -29659,8 +30858,9 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     // func arg: size_t dataSize
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"size_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"size_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dataSize\",\n";
     IndentSpacesJson(out, indent);
@@ -29673,8 +30873,9 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     // func arg: void* pData
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pData\",\n";
     if (pData.GetPointer() == nullptr) // WWY
@@ -29723,8 +30924,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -29737,8 +30939,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     // func arg: uint32_t accelerationStructureCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"accelerationStructureCount\",\n";
     IndentSpacesJson(out, indent);
@@ -29751,8 +30954,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     // func arg: const VkAccelerationStructureNV* pAccelerationStructures
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAccelerationStructureNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAccelerationStructureNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAccelerationStructures\",\n";
     if (pAccelerationStructures.GetPointer() == nullptr) // WWY
@@ -29777,8 +30981,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     // func arg: VkQueryType queryType
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryType\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryType";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryType\",\n";
     IndentSpacesJson(out, indent);
@@ -29791,8 +30996,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     // func arg: VkQueryPool queryPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
     IndentSpacesJson(out, indent);
@@ -29805,8 +31011,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     // func arg: uint32_t firstQuery
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstQuery\",\n";
     IndentSpacesJson(out, indent);
@@ -29845,8 +31052,9 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -29859,8 +31067,9 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     // func arg: VkPipeline pipeline
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipeline\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipeline";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipeline\",\n";
     IndentSpacesJson(out, indent);
@@ -29873,8 +31082,9 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     // func arg: uint32_t shader
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"shader\",\n";
     IndentSpacesJson(out, indent);
@@ -29915,8 +31125,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -29929,13 +31140,14 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     // func arg: VkExternalMemoryHandleTypeFlagBits handleType
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkExternalMemoryHandleTypeFlagBits";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkExternalMemoryHandleTypeFlagBitsJson(out, handleType); // ESA
+    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -29943,8 +31155,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     // func arg: const void* pHostPointer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pHostPointer\",\n";
     if ( !pHostPointer) // WWW
@@ -29965,8 +31178,9 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     // func arg: VkMemoryHostPointerPropertiesEXT* pMemoryHostPointerProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkMemoryHostPointerPropertiesEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkMemoryHostPointerPropertiesEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMemoryHostPointerProperties\",\n";
     if (pMemoryHostPointerProperties.GetPointer() == nullptr) // WWY
@@ -30014,8 +31228,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -30028,13 +31243,14 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     // func arg: VkPipelineStageFlagBits pipelineStage
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPipelineStageFlagBits\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPipelineStageFlagBits";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pipelineStage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPipelineStageFlagBitsJson(out, pipelineStage); // ESA
+    FlagsToStringJson(out, pipelineStage, EnumToStringVkPipelineStageFlagBitsJson); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -30042,8 +31258,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     // func arg: VkBuffer dstBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -30056,8 +31273,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     // func arg: VkDeviceSize dstOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dstOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -30070,8 +31288,9 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     // func arg: uint32_t marker
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"marker\",\n";
     IndentSpacesJson(out, indent);
@@ -30111,8 +31330,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -30125,8 +31345,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     // func arg: uint32_t* pTimeDomainCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTimeDomainCount\",\n";
     if (pTimeDomainCount.GetPointer() == nullptr) // WWY
@@ -30151,8 +31372,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     // func arg: VkTimeDomainEXT* pTimeDomains
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkTimeDomainEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkTimeDomainEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTimeDomains\",\n";
     if (pTimeDomains.GetPointer() == nullptr) // WWY
@@ -30205,8 +31427,9 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -30219,8 +31442,9 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     // func arg: uint32_t timestampCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"timestampCount\",\n";
     IndentSpacesJson(out, indent);
@@ -30233,8 +31457,9 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     // func arg: const VkCalibratedTimestampInfoEXT* pTimestampInfos
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkCalibratedTimestampInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkCalibratedTimestampInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTimestampInfos\",\n";
     if (pTimestampInfos.GetPointer() == nullptr) // WWY
@@ -30258,8 +31483,9 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     // func arg: uint64_t* pTimestamps
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint64_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pTimestamps\",\n";
     if (pTimestamps.GetPointer() == nullptr) // WWY
@@ -30284,8 +31510,9 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     // func arg: uint64_t* pMaxDeviation
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint64_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint64_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMaxDeviation\",\n";
     if (pMaxDeviation.GetPointer() == nullptr) // WWY
@@ -30332,8 +31559,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -30346,8 +31574,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     // func arg: uint32_t taskCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"taskCount\",\n";
     IndentSpacesJson(out, indent);
@@ -30360,8 +31589,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     // func arg: uint32_t firstTask
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstTask\",\n";
     IndentSpacesJson(out, indent);
@@ -30397,8 +31627,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -30411,8 +31642,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -30425,8 +31657,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     // func arg: VkDeviceSize offset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
     IndentSpacesJson(out, indent);
@@ -30439,8 +31672,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     // func arg: uint32_t drawCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"drawCount\",\n";
     IndentSpacesJson(out, indent);
@@ -30453,8 +31687,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     // func arg: uint32_t stride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
     IndentSpacesJson(out, indent);
@@ -30492,8 +31727,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -30506,8 +31742,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     // func arg: VkBuffer buffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"buffer\",\n";
     IndentSpacesJson(out, indent);
@@ -30520,8 +31757,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     // func arg: VkDeviceSize offset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"offset\",\n";
     IndentSpacesJson(out, indent);
@@ -30534,8 +31772,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     // func arg: VkBuffer countBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -30548,8 +31787,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     // func arg: VkDeviceSize countBufferOffset
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceSize\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceSize";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"countBufferOffset\",\n";
     IndentSpacesJson(out, indent);
@@ -30562,8 +31802,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     // func arg: uint32_t maxDrawCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"maxDrawCount\",\n";
     IndentSpacesJson(out, indent);
@@ -30576,8 +31817,9 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     // func arg: uint32_t stride
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"stride\",\n";
     IndentSpacesJson(out, indent);
@@ -30613,8 +31855,9 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -30627,8 +31870,9 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     // func arg: uint32_t firstExclusiveScissor
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstExclusiveScissor\",\n";
     IndentSpacesJson(out, indent);
@@ -30641,8 +31885,9 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     // func arg: uint32_t exclusiveScissorCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"exclusiveScissorCount\",\n";
     IndentSpacesJson(out, indent);
@@ -30655,8 +31900,9 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     // func arg: const VkRect2D* pExclusiveScissors
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkRect2D*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkRect2D*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pExclusiveScissors\",\n";
     if (pExclusiveScissors.GetPointer() == nullptr) // WWY
@@ -30701,8 +31947,9 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -30715,8 +31962,9 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     // func arg: const void* pCheckpointMarker
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const void*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const void*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCheckpointMarker\",\n";
     if ( !pCheckpointMarker) // WWW
@@ -30758,8 +32006,9 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     // func arg: VkQueue queue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueue";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
     IndentSpacesJson(out, indent);
@@ -30772,8 +32021,9 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     // func arg: uint32_t* pCheckpointDataCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCheckpointDataCount\",\n";
     if (pCheckpointDataCount.GetPointer() == nullptr) // WWY
@@ -30798,8 +32048,9 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     // func arg: VkCheckpointDataNV* pCheckpointData
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCheckpointDataNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCheckpointDataNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCheckpointData\",\n";
     if (pCheckpointData.GetPointer() == nullptr) // WWY
@@ -30849,8 +32100,9 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -30863,8 +32115,9 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     // func arg: const VkInitializePerformanceApiInfoINTEL* pInitializeInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkInitializePerformanceApiInfoINTEL*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkInitializePerformanceApiInfoINTEL*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInitializeInfo\",\n";
     if (pInitializeInfo.GetPointer() == nullptr) // WWY
@@ -30907,8 +32160,9 @@ void VulkanJsonConsumer::Process_vkUninitializePerformanceApiINTEL(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -30946,8 +32200,9 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -30960,8 +32215,9 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     // func arg: const VkPerformanceMarkerInfoINTEL* pMarkerInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPerformanceMarkerInfoINTEL*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPerformanceMarkerInfoINTEL*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMarkerInfo\",\n";
     if (pMarkerInfo.GetPointer() == nullptr) // WWY
@@ -31010,8 +32266,9 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -31024,8 +32281,9 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     // func arg: const VkPerformanceStreamMarkerInfoINTEL* pMarkerInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPerformanceStreamMarkerInfoINTEL*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPerformanceStreamMarkerInfoINTEL*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pMarkerInfo\",\n";
     if (pMarkerInfo.GetPointer() == nullptr) // WWY
@@ -31074,8 +32332,9 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -31088,8 +32347,9 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     // func arg: const VkPerformanceOverrideInfoINTEL* pOverrideInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPerformanceOverrideInfoINTEL*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPerformanceOverrideInfoINTEL*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pOverrideInfo\",\n";
     if (pOverrideInfo.GetPointer() == nullptr) // WWY
@@ -31139,8 +32399,9 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -31153,8 +32414,9 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     // func arg: const VkPerformanceConfigurationAcquireInfoINTEL* pAcquireInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPerformanceConfigurationAcquireInfoINTEL*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPerformanceConfigurationAcquireInfoINTEL*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAcquireInfo\",\n";
     if (pAcquireInfo.GetPointer() == nullptr) // WWY
@@ -31178,8 +32440,9 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     // func arg: VkPerformanceConfigurationINTEL* pConfiguration
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPerformanceConfigurationINTEL*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPerformanceConfigurationINTEL*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pConfiguration\",\n";
     if (pConfiguration.GetPointer() == nullptr) // WWY
@@ -31229,8 +32492,9 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -31243,8 +32507,9 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     // func arg: VkPerformanceConfigurationINTEL configuration
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPerformanceConfigurationINTEL\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPerformanceConfigurationINTEL";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"configuration\",\n";
     IndentSpacesJson(out, indent);
@@ -31282,8 +32547,9 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     // func arg: VkQueue queue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueue\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueue";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queue\",\n";
     IndentSpacesJson(out, indent);
@@ -31296,8 +32562,9 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     // func arg: VkPerformanceConfigurationINTEL configuration
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPerformanceConfigurationINTEL\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPerformanceConfigurationINTEL";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"configuration\",\n";
     IndentSpacesJson(out, indent);
@@ -31336,8 +32603,9 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -31350,8 +32618,9 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     // func arg: VkPerformanceParameterTypeINTEL parameter
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPerformanceParameterTypeINTEL\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPerformanceParameterTypeINTEL";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"parameter\",\n";
     IndentSpacesJson(out, indent);
@@ -31364,8 +32633,9 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     // func arg: VkPerformanceValueINTEL* pValue
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPerformanceValueINTEL*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPerformanceValueINTEL*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pValue\",\n";
     if (pValue.GetPointer() == nullptr) // WWY
@@ -31411,8 +32681,9 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -31425,8 +32696,9 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     // func arg: VkSwapchainKHR swapChain
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSwapchainKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapChain\",\n";
     IndentSpacesJson(out, indent);
@@ -31439,8 +32711,9 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     // func arg: VkBool32 localDimmingEnable
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkBool32\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkBool32";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"localDimmingEnable\",\n";
     IndentSpacesJson(out, indent);
@@ -31481,8 +32754,9 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -31495,8 +32769,9 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     // func arg: const VkImagePipeSurfaceCreateInfoFUCHSIA* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkImagePipeSurfaceCreateInfoFUCHSIA*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkImagePipeSurfaceCreateInfoFUCHSIA*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -31520,8 +32795,9 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -31545,8 +32821,9 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -31599,8 +32876,9 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -31613,8 +32891,9 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     // func arg: const VkMetalSurfaceCreateInfoEXT* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkMetalSurfaceCreateInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkMetalSurfaceCreateInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -31638,8 +32917,9 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -31663,8 +32943,9 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -31714,8 +32995,9 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -31728,8 +33010,9 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     // func arg: const VkBufferDeviceAddressInfoEXT* pInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkBufferDeviceAddressInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkBufferDeviceAddressInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
@@ -31780,8 +33063,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -31794,8 +33078,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     // func arg: uint32_t* pPropertyCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
@@ -31820,8 +33105,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     // func arg: VkCooperativeMatrixPropertiesNV* pProperties
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCooperativeMatrixPropertiesNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCooperativeMatrixPropertiesNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
@@ -31872,8 +33158,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -31886,8 +33173,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     // func arg: uint32_t* pCombinationCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCombinationCount\",\n";
     if (pCombinationCount.GetPointer() == nullptr) // WWY
@@ -31912,8 +33200,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     // func arg: VkFramebufferMixedSamplesCombinationNV* pCombinations
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkFramebufferMixedSamplesCombinationNV*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkFramebufferMixedSamplesCombinationNV*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCombinations\",\n";
     if (pCombinations.GetPointer() == nullptr) // WWY
@@ -31965,8 +33254,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     // func arg: VkPhysicalDevice physicalDevice
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPhysicalDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPhysicalDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"physicalDevice\",\n";
     IndentSpacesJson(out, indent);
@@ -31979,8 +33269,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     // func arg: const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceInfo\",\n";
     if (pSurfaceInfo.GetPointer() == nullptr) // WWY
@@ -32004,8 +33295,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     // func arg: uint32_t* pPresentModeCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentModeCount\",\n";
     if (pPresentModeCount.GetPointer() == nullptr) // WWY
@@ -32030,8 +33322,9 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     // func arg: VkPresentModeKHR* pPresentModes
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkPresentModeKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkPresentModeKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pPresentModes\",\n";
     if (pPresentModes.GetPointer() == nullptr) // WWY
@@ -32081,8 +33374,9 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -32095,8 +33389,9 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     // func arg: VkSwapchainKHR swapchain
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSwapchainKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
     IndentSpacesJson(out, indent);
@@ -32134,8 +33429,9 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -32148,8 +33444,9 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     // func arg: VkSwapchainKHR swapchain
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSwapchainKHR\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSwapchainKHR";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"swapchain\",\n";
     IndentSpacesJson(out, indent);
@@ -32188,8 +33485,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -32202,8 +33500,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     // func arg: const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurfaceInfo\",\n";
     if (pSurfaceInfo.GetPointer() == nullptr) // WWY
@@ -32227,8 +33526,9 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     // func arg: VkDeviceGroupPresentModeFlagsKHR* pModes
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pModes\",\n";
     if (pModes.GetPointer() == nullptr) // WWY
@@ -32277,8 +33577,9 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     // func arg: VkInstance instance
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkInstance\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkInstance";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"instance\",\n";
     IndentSpacesJson(out, indent);
@@ -32291,8 +33592,9 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     // func arg: const VkHeadlessSurfaceCreateInfoEXT* pCreateInfo
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkHeadlessSurfaceCreateInfoEXT*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkHeadlessSurfaceCreateInfoEXT*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
@@ -32316,8 +33618,9 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     // func arg: const VkAllocationCallbacks* pAllocator
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"const VkAllocationCallbacks*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"const VkAllocationCallbacks*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
@@ -32341,8 +33644,9 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     // func arg: VkSurfaceKHR* pSurface
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkSurfaceKHR*\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkSurfaceKHR*";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
@@ -32389,8 +33693,9 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     // func arg: VkCommandBuffer commandBuffer
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkCommandBuffer\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkCommandBuffer";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"commandBuffer\",\n";
     IndentSpacesJson(out, indent);
@@ -32403,8 +33708,9 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     // func arg: uint32_t lineStippleFactor
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"lineStippleFactor\",\n";
     IndentSpacesJson(out, indent);
@@ -32417,8 +33723,9 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     // func arg: uint16_t lineStipplePattern
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint16_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint16_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"lineStipplePattern\",\n";
     IndentSpacesJson(out, indent);
@@ -32454,8 +33761,9 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     // func arg: VkDevice device
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkDevice\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkDevice";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"device\",\n";
     IndentSpacesJson(out, indent);
@@ -32468,8 +33776,9 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     // func arg: VkQueryPool queryPool
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"VkQueryPool\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"VkQueryPool";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryPool\",\n";
     IndentSpacesJson(out, indent);
@@ -32482,8 +33791,9 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     // func arg: uint32_t firstQuery
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"firstQuery\",\n";
     IndentSpacesJson(out, indent);
@@ -32496,8 +33806,9 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     // func arg: uint32_t queryCount
     IndentSpacesJson(out, 4);  // UWP
     *out += "{\n";
-    IndentSpacesJson(out, indent);
-    *out += "\"type\" : \"uint32_t\",\n";
+    IndentSpacesJson(out, indent); // ESP
+    *out += "\"type\" : \"uint32_t";
+    *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"queryCount\",\n";
     IndentSpacesJson(out, indent);

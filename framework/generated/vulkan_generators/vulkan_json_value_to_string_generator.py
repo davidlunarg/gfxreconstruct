@@ -50,28 +50,50 @@ class ValueToString(BaseGenerator):
             pstruct = 'pstruct->'
             pstruct_in = 'pstruct_in.'
             isFuncArg = False
+            leadSpaces = '    '
         else:
             pstruct = ''
             pstruct_in = ''
             isFuncArg = True
+            leadSpaces = '        '
 
         ###### Output type and variable/member name
-        self.wc('    IndentSpacesJson(out, indent);')
-        self.wc('    *out += "\\"type\\" : \\"' + value.fullType + '\\",\\n";')
+        self.wc('    IndentSpacesJson(out, indent); // ESP')
+        self.wc('    *out += "\\"type\\" : \\"' + value.fullType + '";')
+        if (value.isArray and not value.isPointer and ('Count' in value.arrayLength)):
+            self.wc('    *out += "[";')
+            self.wc('    UnsignedDecimalToStringJson(out, ' + pstruct + value.arrayLength + ');')
+            self.wc('    *out += "]";')
+        elif value.isArray and not value.isPointer:
+            self.wc('    *out += "[";')
+            self.wc('    UnsignedDecimalToStringJson(out, ' + value.arrayLength + ');')
+            self.wc('    *out += "]";')
+        self.wc('    *out += "\\",\\n";')
+        #staticArrayLength = ''
+        #if value.isArray and not value.isPointer:
+        #    # value is a static array: append length to type
+        #    if 'Count' in value.arrayLength:
+        #        staticArrayLength = '[' + pstruct + value.arrayLength + ']'
+        #    else:
+        #        staticArrayLength = '[' + value.arrayLength + ']'
+        #self.wc('    *out += "\\"type\\" : \\"' + value.fullType + staticArrayLength + '\\",\\n";')
         self.wc('    IndentSpacesJson(out, indent);')
         self.wc('    *out += "\\"name\\" : \\"' + value.name + '\\",\\n";')
 
         # For dev/debug
         #print("@@@@@@@@@ VTOS")
-        if value.name == "pipelineCacheUUID":
+        if value.name == "currentTransform" or value.name == "supportedCompositeAlpha":
+            # NOTE: currentTransform is displayed as enum, supportedCompositeAlpha is displayed as flags
             print('@ name', str(value.name))
             print('@ isPointer', str(value.isPointer))
             print('@ isArray', str(value.isArray))
+            print('@ isFlags', str(self.isFlags(value.baseType)))
             print('@ baseType', str(value.baseType))
             print('@ fullType', value.fullType)
             print('@ isFuncArg', str(isFuncArg))
             print('@ isStruct', str(self.isStruct(value.baseType)))
             print('@ inStructDict', str(value.baseType in self.structDict))
+            print('@ arrayLength', value.arrayLength)
             print("")
 
         ###### Output address line if needed
@@ -127,10 +149,11 @@ class ValueToString(BaseGenerator):
                 else:
                     addrExpression = pstruct_in + value.name + '.GetAddress() /* QZX */'
         if addrExpression is not None:
-            self.wc('        IndentSpacesJson(out, indent);')
-            self.wc('        *out += "\\"address\\" : \\"";  // EAC')
-            self.wc('        AddrToStringJson(out, ' + addrExpression + ' );')
-            self.wc('        *out += "\\",\\n";')
+            #TODO: This is indented wrong sometimes when member of struct (when there is no null check)
+            self.wc(leadSpaces + 'IndentSpacesJson(out, indent);')
+            self.wc(leadSpaces + '*out += "\\"address\\" : \\"";  // EAC')
+            self.wc(leadSpaces + 'AddrToStringJson(out, ' + addrExpression + ' );')
+            self.wc(leadSpaces + '*out += "\\",\\n";')
 
         ###### Output arrays
         if value.isArray and value.name != "dpy":
@@ -161,7 +184,7 @@ class ValueToString(BaseGenerator):
                     aLength = pstruct + value.arrayLength
                 else:
                     aLength = value.arrayLength
-            self.wc('        IndentSpacesJson(out, indent); // URW')
+            self.wc(leadSpaces + 'IndentSpacesJson(out, indent); // URW')
             if self.isStruct(value.baseType) and (value.baseType in self.structDict):
                 self.wc('        *out += "\\"elements\\" :"; // TRZ')
                 if isFuncArg:
@@ -193,6 +216,7 @@ class ValueToString(BaseGenerator):
                         print('#@ name', str(value.name))
                         print('#@ isPointer', str(value.isPointer))
                         print('#@ isArray', str(value.isArray))
+                        print('#@ isFlags', str(self.isFlags(value.baseType)))
                         print('#@ baseType', str(value.baseType))
                         print('#@ fullType', value.fullType)
                         print('#@ isFuncArg', str(isFuncArg))
@@ -210,9 +234,9 @@ class ValueToString(BaseGenerator):
             elif self.isUnion(structName):
                     print("@@3 Not handled (struct)", value.name)
             else:
-                self.wc('        *out += "\\"elements\\" : "; // HPI')
-                self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
-                self.wc('        ArrayToStringJson(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +
+                self.wc(leadSpaces + '*out += "\\"elements\\" : "; // HPI')
+                self.wc(leadSpaces + 'ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
+                self.wc(leadSpaces + 'ArrayToStringJson(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +
                         pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AUA')
 
         ###### Output structures
@@ -278,20 +302,21 @@ class ValueToString(BaseGenerator):
             self.wc('    AddrToStringJson(out, ' + pstruct_in + value.name + '); // PRQ')
             self.wc('    *out += "\\"\\n";')
 
+        ###### Output flags
+        elif ((self.isFlags(value.baseType) and (value.baseType in self.flagsNames) and value.baseType.replace('Flags', 'FlagBits') in self.enumNames) or
+              'FlagBits' in value.baseType):
+            #print("@@ isFlags")
+            self.wc('    IndentSpacesJson(out, indent);')
+            self.wc('    *out += "\\"value\\" : \\"";')
+            self.wc('    FlagsToStringJson(out, ' + pstruct + value.name + ', EnumToString' + value.baseType.replace('Flags', 'FlagBits') + 'Json); // URG')
+            self.wc('    *out += "\\"\\n";')
+
         ###### Output enums
         elif self.isEnum(value.baseType):
             #print("@@ isEnum")
             self.wc('    IndentSpacesJson(out, indent);')
             self.wc('    *out += "\\"value\\" : \\"";')
             self.wc('    EnumToString' + value.baseType + 'Json(out, ' + pstruct + value.name + '); // ESA')
-            self.wc('    *out += "\\"\\n";')
-
-        ###### Output flags
-        elif self.isFlags(value.baseType) and (value.baseType in self.flagsNames) and value.baseType.replace('Flags', 'FlagBits') in self.enumNames:
-            #print("@@ isFlags")
-            self.wc('    IndentSpacesJson(out, indent);')
-            self.wc('    *out += "\\"value\\" : \\"";')
-            self.wc('    FlagsToStringJson(out, ' + pstruct + value.name + ', EnumToString' + value.baseType.replace('Flags', 'FlagBits') + 'Json); // URG')
             self.wc('    *out += "\\"\\n";')
 
         ###### Output functionptrs
@@ -338,191 +363,192 @@ class ValueToString(BaseGenerator):
 
 
     def valueToString_ORIG_DELETEMET(self, value, structName):
+        print(structName)   # Need at least one statement in func
         #{   // For vi % cmd
-        if structName != '':
-            pstruct = 'pstruct->'
-            pstruct_in = 'pstruct_in.'
-            isFuncArg = False
-        else:
-            pstruct = ''
-            pstruct_in = ''
-            isFuncArg = True
-        self.wc('    IndentSpacesJson(out, indent);')
-        self.wc('    *out += "' + (value.name + ': ').ljust(32) + '";')
-
-        if not value.isPointer and value.isArray and value.baseType != 'char':
-            # Generate code to print length of array
-            self.wc('    *out += "' + value.baseType + '[";')
-            if 'Count' in value.arrayLength:
-                self.wc('    UnsignedDecimalToStringJson(out, ' + pstruct + value.arrayLength + '); // DFW')
-            else:
-                self.wc('    *out += "' + value.arrayLength + '"; // TPK')
-            self.wc('    *out += "] = ";')
-            if not isFuncArg:
-                self.wc('    AddrToStringJson(out, base_addr + offsetof(' + structName + ', ' + value.name + ')); // IYY')
-        else:
-            self.wc('    *out += "' + value.fullType + ' = "; // TEQ')
-
-        if value.fullType == 'const char*':
-            # Treat pointer to char as a string
-            if isFuncArg:
-                self.wc('    StringToQuotedStringJson(out, ' + pstruct + value.name + '.GetPointer()); // TGH')
-            else:
-                self.wc('    StringToQuotedStringJson(out, ' + pstruct + value.name + '); // TGI')
-        elif value.isPointer and value.name != "dpy":
-            specialPtr = (value.name in ["pUserData", "handle", "hwnd", "surface", "connection", "hwnd", "hinstance", "pHostPointer", "window", "display", "pCheckpointMarker", "buffer", "hmonitor", "pLayer"])
-            if isFuncArg and specialPtr:
-                self.wc('    if ( !' + value.name + ') // WWW')
-            elif not isFuncArg and specialPtr:
-                self.wc('    if (' + pstruct + value.name + ' == nullptr) // WWX')
-            elif isFuncArg:
-                self.wc('    if (' + value.name + '.GetPointer() == nullptr) // WWY')
-            else:
-                self.wc('    if (' + pstruct + value.name + ' == nullptr) // RWZ')
-            self.wc('    {')
-            self.wc('        *out += "NULL";')
-            self.wc('    }')
-            self.wc('    else')
-            self.wc('    {')
-            if value.isArray:
-                if value.baseType != 'void':
-                    if 'latexmath' in value.arrayLength:
-                        aLength = pstruct + self.parseLateXMath(value.arrayLength)
-                    elif '->' in value.arrayLength:
-                        aLength = value.arrayLength.replace('->', '.GetPointer()->')
-                    elif not isFuncArg and 'Count' in value.arrayLength:
-                        aLength = 'pstruct->' + value.arrayLength
-                    elif value.arrayLength.startswith('p'):
-                        aLength = '*' + value.arrayLength + '.GetPointer()'
-                    else:
-                        if isFuncArg:
-                            aLength = value.arrayLength
-                        else:
-                            aLength = 'pstruct->' + value.arrayLength
-                    if value.name == 'pCode':
-                        aLength = aLength + ' / 4';    # codeSize in struct VkShaderModuleCreateInfo is not the number of elements, but in bytes
-                        self.wc('        AddrToStringJson(out, ' + pstruct_in +  value.name + '.GetAddress()); // WUX')
-                        self.wc('        if (kPrintShaderCode)')
-                        self.wc('        {')
-                        self.wc('            ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
-                        self.wc('            ArrayOfScalarsToStringJson<' + self.makeDecodedParamType(value) + '>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                                '", &pstruct_in.' + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + ');  // CCY')
-                        self.wc('        }')
-                    else:
-                        if value.baseType in self.structDict:
-                            if isFuncArg:
-                                self.wc('        AddrToStringJson(out, ' + value.name + '.GetAddress()); // WUS')
-                            else:
-                                self.wc('        AddrToStringJson(out, ' + pstruct_in +  value.name + '->GetAddress()); // WUT')
-                            if isFuncArg:
-                                self.wc('        ArrayOfStructsToStringJson<Decoded_' + value.baseType + '>(out, indent+1, ' + str(value.pointerCount) + ', "' + value.baseType +
-                                      '", ' + value.name + '.GetMetaStructPointer(), "' + value.name +
-                                      '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + value.name + '.GetAddress());  // CCO')
-                            else:
-                                self.wc('        ArrayOfStructsToStringJson<Decoded_' + value.baseType + '>(out, indent+1, ' + str(value.pointerCount) + ', "' + value.baseType +
-                                      '", ' + pstruct_in + value.name + '->GetMetaStructPointer(), "' + value.name +
-                                      '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + pstruct_in + value.name + '->GetAddress());  // CCP')
-                        else:
-                            self.wc('        AddrToStringJson(out, ' + pstruct_in + value.name + '.GetAddress()); // PAZ')
-                            if self.isFlags(value.baseType):
-                                self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
-                                self.wc('        ArrayToStringJson<' + self.makeDecodedParamType(value) + '>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                                      '", &pstruct_in.' + value.name + ', "' + value.name + '", ' + aLength + ', ' + ' vinfo_' + value.name + ');  // CCR')
-                            else:
-                                self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
-                                self.wc('        ArrayToStringJson<' + self.makeDecodedParamType(value) + '>(out, indent, ' + str(value.pointerCount) +
-                                                    ', "' + value.fullType + '", &' + pstruct_in + value.name + ', "' + value.name + '", ' +
-                                                    aLength + ', ' +
-                                                    ' vinfo_' + value.name + ');  // CXC')
-                else:
-                    # void* array:  print the address of the array
-                    self.wc('        AddrToStringJson(out, ' + pstruct_in + value.name + '.GetAddress()); // AHW')
-            elif self.isStruct(value.baseType) and (value.baseType in self.structDict):
-                if isFuncArg:
-                    self.wc('        AddrToStringJson(out, ' + value.name + '.GetAddress()); // JHI')
-                else:
-                    self.wc('        AddrToStringJson(out, ' + pstruct_in + value.name + '->GetAddress()); // JHJ')
-                if self.isUnion(value.baseType):
-                    self.wc('        *out += " (Union)";')
-                self.wc('        *out += ":";')
-                if isFuncArg:
-                    self.wc('        StructureToStringJson(out, *' + value.name + '.GetMetaStructPointer(), indent, ' +
-                                         value.name + '.GetAddress()); // GLM')
-                else:
-                    self.wc('        StructureToStringJson(out, *' + pstruct_in + value.name + '->GetMetaStructPointer(), indent, ' +
-                                         ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // GLN')
-            else:
-                if (value.baseType == "wchar_t"):
-                    self.wc('        AddrToStringJson(out, ' + pstruct_in + value.name + '.GetAddress()); // PWQ')
-                elif specialPtr or (value.name == "pView"):
-                    if specialPtr or not isFuncArg:
-                        self.wc('        AddrToStringJson(out, ' + pstruct_in + value.name + '); // PWR')
-                    else:
-                        self.wc('        AddrToStringJson(out, *(static_cast<uint64_t*>(' + value.name + '.GetPointer()))); // PWA')
-                else:
-                    self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
-                    if isFuncArg:
-                        self.wc('        ScalarValueToStringJson(out, ' + value.name + '.GetPointer(), vinfo_' + value.name +'); // PWS')
-                    else:
-                        if value.name == 'pNext':
-                            self.wc('        uint64_t pnextLocal = ' + pstruct_in + value.name + '->GetAddress(); // PNX')
-                            self.wc('        ScalarValueToStringJson(out, &pnextLocal, vinfo_' + value.name +');')
-                        else:
-                            self.wc('        ScalarValueToStringJson(out, ' + pstruct_in + value.name + '->GetPointer(), vinfo_' + value.name +'); // PWT')
-            self.wc('    }')
-        elif value.isArray:
-            if 'Count' in value.arrayLength:
-                alength = pstruct + value.arrayLength
-            else:
-                alength = value.arrayLength
-            if (value.baseType in self.structDict):
-                self.wc('    ArrayOfStructsToStringJson<Decoded_' + value.baseType + '>(out, indent+1, ' + str(value.pointerCount) + ', "' + value.baseType +
-                      '", ' + pstruct_in + value.name + '->GetMetaStructPointer(), "' + value.name +
-                      '", ' + alength + ' , ' + str(self.isUnion(value.baseType)).lower() + ', ' + pstruct_in + value.name + '->GetAddress()); // EPB')
-            else:
-                self.wc('    ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
-                if isFuncArg:
-                    self.wc('    ArrayOfScalarsToStringJson<' + value.baseType + '>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                            '", ' + value.name + '.GetPointer(), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPA')
-                else:
-                    if value.fullType == "char":
-                        self.wc('    ArrayOfScalarsToStringJson<char>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                                '", pstruct_in.' + value.name + '.GetPointer(), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPB')
-                    elif self.isUnion(structName):
-                        self.wc('    ArrayOfScalarsToStringJson<' + value.fullType + '>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                                    '", pstruct_in.decoded_value->' + value.name + ', "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPC')
-                    elif self.isHandle(value.baseType):
-                        self.wc('    ArrayToStringJson<HandlePointerDecoder<' + value.baseType + '>>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                                '", &pstruct_in.' + value.name + ', "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPD')
-                    else:
-                        self.wc('    ArrayToStringJson<PointerDecoder<' + value.baseType + '>>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                                '", &pstruct_in.' + value.name + ', "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPE')
-        elif self.isStruct(value.baseType) and (value.baseType in self.structDict):
-            # Struct that is not a pointer
-            if self.isUnion(value.baseType):
-                self.wc('    *out += "(Union):"; // RGT')
-            if self.isUnion(structName):
-                self.wc('    StructureToStringJson(out, reinterpret_cast<const Decoded_' + value.fullType + '&>(pstruct_in), indent, ' +
-                                 ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // RLN')
-            else:
-                self.wc('    StructureToStringJson(out, *' + pstruct_in + value.name + ', indent, ' +
-                                 ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // AZJ')
-        else:
-            if self.isHandle(value.baseType) or value.name == 'dpy':
-                self.wc('    AddrToStringJson(out, ' + pstruct_in + value.name + '); // PAQ')
-            elif self.isEnum(value.baseType):
-                self.wc('    EnumToString' + value.baseType + 'Json(out, ' + pstruct + value.name + '); // VSA')
-                self.wc('    *out += " (";')
-                self.wc('    UnsignedDecimalToStringJson(out, ' + pstruct + value.name + ');')
-                self.wc('    *out += ")";')
-            elif self.isFlags(value.baseType) and (value.baseType in self.flagsNames) and value.baseType.replace('Flags', 'FlagBits') in self.enumNames:
-                self.wc('    FlagsToStringJson(out, ' + pstruct + value.name + ', EnumToString' + value.baseType.replace('Flags', 'FlagBits') + 'Json); // URW')
-            elif self.isFunctionPtr(value.baseType):
-                self.wc('    AddrToStringJson(out, reinterpret_cast<uint64_t>(' + pstruct + value.name + ')); // WRX')
-            elif value.baseType in ['float', 'double']:
-                self.wc('    DoubleToStringJson(out, ' + pstruct + value.name + '); // PEZ')
-            elif value.baseType in ['int', 'int32_t', 'int64_t', 'VkDeviceSize', 'VkBool32']:
-                self.wc('    SignedDecimalToStringJson(out, ' + pstruct + value.name + '); //EQA')
-            else:     # 'unsigned int', 'uint32_t', 'uint64_t', 'size_t', and all others
-                self.wc('    UnsignedDecimalToStringJson(out, ' + pstruct + value.name + '); // UYW')
-        #}  For vi % cmd
+        #if structName != '':
+        #    pstruct = 'pstruct->'
+        #    pstruct_in = 'pstruct_in.'
+        #    isFuncArg = False
+        #else:
+        #    pstruct = ''
+        #    pstruct_in = ''
+        #    isFuncArg = True
+        #self.wc('    IndentSpacesJson(out, indent);')
+        #self.wc('    *out += "' + (value.name + ': ').ljust(32) + '";')
+        #
+        #if not value.isPointer and value.isArray and value.baseType != 'char':
+        #    # Generate code to print length of array
+        #    self.wc('    *out += "' + value.baseType + '[";')
+        #    if 'Count' in value.arrayLength:
+        #        self.wc('    UnsignedDecimalToStringJson(out, ' + pstruct + value.arrayLength + '); // DFW')
+        #    else:
+        #        self.wc('    *out += "' + value.arrayLength + '"; // TPK')
+        #    self.wc('    *out += "] = ";')
+        #    if not isFuncArg:
+        #        self.wc('    AddrToStringJson(out, base_addr + offsetof(' + structName + ', ' + value.name + ')); // IYY')
+        #else:
+        #    self.wc('    *out += "' + value.fullType + ' = "; // TEQ')
+        #
+        #if value.fullType == 'const char*':
+        #    # Treat pointer to char as a string
+        #    if isFuncArg:
+        #        self.wc('    StringToQuotedStringJson(out, ' + pstruct + value.name + '.GetPointer()); // TGH')
+        #    else:
+        #        self.wc('    StringToQuotedStringJson(out, ' + pstruct + value.name + '); // TGI')
+        #elif value.isPointer and value.name != "dpy":
+        #    specialPtr = (value.name in ["pUserData", "handle", "hwnd", "surface", "connection", "hwnd", "hinstance", "pHostPointer", "window", "display", "pCheckpointMarker", "buffer", "hmonitor", "pLayer"])
+        #    if isFuncArg and specialPtr:
+        #        self.wc('    if ( !' + value.name + ') // WWW')
+        #    elif not isFuncArg and specialPtr:
+        #        self.wc('    if (' + pstruct + value.name + ' == nullptr) // WWX')
+        #    elif isFuncArg:
+        #        self.wc('    if (' + value.name + '.GetPointer() == nullptr) // WWY')
+        #    else:
+        #        self.wc('    if (' + pstruct + value.name + ' == nullptr) // RWZ')
+        #    self.wc('    {')
+        #    self.wc('        *out += "NULL";')
+        #    self.wc('    }')
+        #    self.wc('    else')
+        #    self.wc('    {')
+        #    if value.isArray:
+        #        if value.baseType != 'void':
+        #            if 'latexmath' in value.arrayLength:
+        #                aLength = pstruct + self.parseLateXMath(value.arrayLength)
+        #            elif '->' in value.arrayLength:
+        #                aLength = value.arrayLength.replace('->', '.GetPointer()->')
+        #            elif not isFuncArg and 'Count' in value.arrayLength:
+        #                aLength = 'pstruct->' + value.arrayLength
+        #            elif value.arrayLength.startswith('p'):
+        #                aLength = '*' + value.arrayLength + '.GetPointer()'
+        #            else:
+        #                if isFuncArg:
+        #                    aLength = value.arrayLength
+        #                else:
+        #                    aLength = 'pstruct->' + value.arrayLength
+        #            if value.name == 'pCode':
+        #                aLength = aLength + ' / 4';    # codeSize in struct VkShaderModuleCreateInfo is not the number of elements, but in bytes
+        #                self.wc('        AddrToStringJson(out, ' + pstruct_in +  value.name + '.GetAddress()); // WUX')
+        #                self.wc('        if (kPrintShaderCode)')
+        #                self.wc('        {')
+        #                self.wc('            ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
+        #                self.wc('            ArrayOfScalarsToStringJson<' + self.makeDecodedParamType(value) + '>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+        #                        '", &pstruct_in.' + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + ');  // CCY')
+        #                self.wc('        }')
+        #            else:
+        #                if value.baseType in self.structDict:
+        #                    if isFuncArg:
+        #                        self.wc('        AddrToStringJson(out, ' + value.name + '.GetAddress()); // WUS')
+        #                    else:
+        #                        self.wc('        AddrToStringJson(out, ' + pstruct_in +  value.name + '->GetAddress()); // WUT')
+        #                    if isFuncArg:
+        #                        self.wc('        ArrayOfStructsToStringJson<Decoded_' + value.baseType + '>(out, indent+1, ' + str(value.pointerCount) + ', "' + value.baseType +
+        #                              '", ' + value.name + '.GetMetaStructPointer(), "' + value.name +
+        #                              '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + value.name + '.GetAddress());  // CCO')
+        #                    else:
+        #                        self.wc('        ArrayOfStructsToStringJson<Decoded_' + value.baseType + '>(out, indent+1, ' + str(value.pointerCount) + ', "' + value.baseType +
+        #                              '", ' + pstruct_in + value.name + '->GetMetaStructPointer(), "' + value.name +
+        #                              '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + pstruct_in + value.name + '->GetAddress());  // CCP')
+        #                else:
+        #                    self.wc('        AddrToStringJson(out, ' + pstruct_in + value.name + '.GetAddress()); // PAZ')
+        #                    if self.isFlags(value.baseType):
+        #                        self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
+        #                        self.wc('        ArrayToStringJson<' + self.makeDecodedParamType(value) + '>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+        #                              '", &pstruct_in.' + value.name + ', "' + value.name + '", ' + aLength + ', ' + ' vinfo_' + value.name + ');  // CCR')
+        #                    else:
+        #                        self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
+        #                        self.wc('        ArrayToStringJson<' + self.makeDecodedParamType(value) + '>(out, indent, ' + str(value.pointerCount) +
+        #                                            ', "' + value.fullType + '", &' + pstruct_in + value.name + ', "' + value.name + '", ' +
+        #                                            aLength + ', ' +
+        #                                            ' vinfo_' + value.name + ');  // CXC')
+        #        else:
+        #            # void* array:  print the address of the array
+        #            self.wc('        AddrToStringJson(out, ' + pstruct_in + value.name + '.GetAddress()); // AHW')
+        #    elif self.isStruct(value.baseType) and (value.baseType in self.structDict):
+        #        if isFuncArg:
+        #            self.wc('        AddrToStringJson(out, ' + value.name + '.GetAddress()); // JHI')
+        #        else:
+        #            self.wc('        AddrToStringJson(out, ' + pstruct_in + value.name + '->GetAddress()); // JHJ')
+        #        if self.isUnion(value.baseType):
+        #            self.wc('        *out += " (Union)";')
+        #        self.wc('        *out += ":";')
+        #        if isFuncArg:
+        #            self.wc('        StructureToStringJson(out, *' + value.name + '.GetMetaStructPointer(), indent, ' +
+        #                                 value.name + '.GetAddress()); // GLM')
+        #        else:
+        #            self.wc('        StructureToStringJson(out, *' + pstruct_in + value.name + '->GetMetaStructPointer(), indent, ' +
+        #                                 ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // GLN')
+        #    else:
+        #        if (value.baseType == "wchar_t"):
+        #            self.wc('        AddrToStringJson(out, ' + pstruct_in + value.name + '.GetAddress()); // PWQ')
+        #        elif specialPtr or (value.name == "pView"):
+        #            if specialPtr or not isFuncArg:
+        #                self.wc('        AddrToStringJson(out, ' + pstruct_in + value.name + '); // PWR')
+        #            else:
+        #                self.wc('        AddrToStringJson(out, *(static_cast<uint64_t*>(' + value.name + '.GetPointer()))); // PWA')
+        #        else:
+        #            self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
+        #            if isFuncArg:
+        #                self.wc('        ScalarValueToStringJson(out, ' + value.name + '.GetPointer(), vinfo_' + value.name +'); // PWS')
+        #            else:
+        #                if value.name == 'pNext':
+        #                    self.wc('        uint64_t pnextLocal = ' + pstruct_in + value.name + '->GetAddress(); // PNX')
+        #                    self.wc('        ScalarValueToStringJson(out, &pnextLocal, vinfo_' + value.name +');')
+        #                else:
+        #                    self.wc('        ScalarValueToStringJson(out, ' + pstruct_in + value.name + '->GetPointer(), vinfo_' + value.name +'); // PWT')
+        #    self.wc('    }')
+        #elif value.isArray:
+        #    if 'Count' in value.arrayLength:
+        #        alength = pstruct + value.arrayLength
+        #    else:
+        #        alength = value.arrayLength
+        #    if (value.baseType in self.structDict):
+        #        self.wc('    ArrayOfStructsToStringJson<Decoded_' + value.baseType + '>(out, indent+1, ' + str(value.pointerCount) + ', "' + value.baseType +
+        #              '", ' + pstruct_in + value.name + '->GetMetaStructPointer(), "' + value.name +
+        #              '", ' + alength + ' , ' + str(self.isUnion(value.baseType)).lower() + ', ' + pstruct_in + value.name + '->GetAddress()); // EPB')
+        #    else:
+        #        self.wc('    ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
+        #        if isFuncArg:
+        #            self.wc('    ArrayOfScalarsToStringJson<' + value.baseType + '>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+        #                    '", ' + value.name + '.GetPointer(), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPA')
+        #        else:
+        #            if value.fullType == "char":
+        #                self.wc('    ArrayOfScalarsToStringJson<char>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+        #                        '", pstruct_in.' + value.name + '.GetPointer(), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPB')
+        #            elif self.isUnion(structName):
+        #                self.wc('    ArrayOfScalarsToStringJson<' + value.fullType + '>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+        #                            '", pstruct_in.decoded_value->' + value.name + ', "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPC')
+        #            elif self.isHandle(value.baseType):
+        #                self.wc('    ArrayToStringJson<HandlePointerDecoder<' + value.baseType + '>>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+        #                        '", &pstruct_in.' + value.name + ', "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPD')
+        #            else:
+        #                self.wc('    ArrayToStringJson<PointerDecoder<' + value.baseType + '>>(out, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+        #                        '", &pstruct_in.' + value.name + ', "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPE')
+        #elif self.isStruct(value.baseType) and (value.baseType in self.structDict):
+        #    # Struct that is not a pointer
+        #    if self.isUnion(value.baseType):
+        #        self.wc('    *out += "(Union):"; // RGT')
+        #    if self.isUnion(structName):
+        #        self.wc('    StructureToStringJson(out, reinterpret_cast<const Decoded_' + value.fullType + '&>(pstruct_in), indent, ' +
+        #                         ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // RLN')
+        #    else:
+        #        self.wc('    StructureToStringJson(out, *' + pstruct_in + value.name + ', indent, ' +
+        #                         ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // AZJ')
+        #else:
+        #    if self.isHandle(value.baseType) or value.name == 'dpy':
+        #        self.wc('    AddrToStringJson(out, ' + pstruct_in + value.name + '); // PAQ')
+        #    elif self.isEnum(value.baseType):
+        #        self.wc('    EnumToString' + value.baseType + 'Json(out, ' + pstruct + value.name + '); // VSA')
+        #        self.wc('    *out += " (";')
+        #        self.wc('    UnsignedDecimalToStringJson(out, ' + pstruct + value.name + ');')
+        #        self.wc('    *out += ")";')
+        #    elif self.isFlags(value.baseType) and (value.baseType in self.flagsNames) and value.baseType.replace('Flags', 'FlagBits') in self.enumNames:
+        #        self.wc('    FlagsToStringJson(out, ' + pstruct + value.name + ', EnumToString' + value.baseType.replace('Flags', 'FlagBits') + 'Json); // URW')
+        #    elif self.isFunctionPtr(value.baseType):
+        #        self.wc('    AddrToStringJson(out, reinterpret_cast<uint64_t>(' + pstruct + value.name + ')); // WRX')
+        #    elif value.baseType in ['float', 'double']:
+        #        self.wc('    DoubleToStringJson(out, ' + pstruct + value.name + '); // PEZ')
+        #    elif value.baseType in ['int', 'int32_t', 'int64_t', 'VkDeviceSize', 'VkBool32']:
+        #        self.wc('    SignedDecimalToStringJson(out, ' + pstruct + value.name + '); //EQA')
+        #    else:     # 'unsigned int', 'uint32_t', 'uint64_t', 'size_t', and all others
+        #        self.wc('    UnsignedDecimalToStringJson(out, ' + pstruct + value.name + '); // UYW')
+        ##}  For vi % cmd

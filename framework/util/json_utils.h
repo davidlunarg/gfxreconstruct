@@ -388,6 +388,11 @@ void ArrayOfStructsToStringJson(std::string* out,
                             uint64_t     base_addr)
 {
     assert(out != nullptr);
+    if (pointer_count > 1)
+    {
+        fprintf(stderr, "ERROR: ArrayOfStructsToStringJson cannot handle arrays of arrays\n");
+        return;
+    }
     if (array_length == 0 || array == nullptr)
     {
         *out += "[ ]\n";
@@ -398,35 +403,39 @@ void ArrayOfStructsToStringJson(std::string* out,
     *out += "[\n";
     for (uint64_t j = 0; j < array_length; j++)
     {
-        IndentSpacesJson(out, indent+1);
-        std::string name_and_index;
-        name_and_index += array_name;
-        name_and_index += "[";
-        UnsignedDecimalToStringJson(&name_and_index, j);
-        name_and_index += "]: ";
-        PadStringJson(&name_and_index, 32);
-        *out += name_and_index;
-        *out += base_type_name;
-        *out += " = ";
-        AddrToStringJson(out, base_addr + j * sizeof(T)); // UEW
-        if (is_union)
-        {
-            *out += " (Union)";
-        }
-        *out += ":";
-        if (pointer_count > 1)
-        {
-            fprintf(stderr, "ERROR: ArrayOfStructsToStringJson cannot handle arrays of arrays\n");
-        }
-        else
-        {
-            StructureToStringJson(out, array[j], indent, base_addr + j * sizeof(T)); // YQS
-        }
+        indent++;
+        IndentSpacesJson(out, indent);
+        *out += "{\n";
+        indent++;
+        IndentSpacesJson(out, indent);
+        *out += "\"type\" : \"";
+        *out += base_type_name;       // TODO: @@ Is this the correct type??
+        *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"name\" : \"[";
+        std::string idx_str;
+        UnsignedDecimalToStringJson(&idx_str, j);
+        *out += idx_str;
+        *out += "]\",\n";
+        //IndentSpacesJson(out, indent);                            TODO: @@@ Put this back in?? Should be consitent
+        //*out += "\"address\" : \"";                                         on displaying addresses of array elem.
+        //AddrToStringJson(out, array->GetAddress() + j * sizeof(T));
+        //*out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"members\" :\n";
+        StructureToStringJson(out, array[j], indent, base_addr + j * sizeof(T)); // YGS
+        indent--;
+        IndentSpacesJson(out, indent);
+        *out += "}";
         if (j < array_length - 1)
         {
-            *out += "\n"; // AZC
+            *out += ",";
         }
+        *out += "\n";
+        indent--;
     }
+    IndentSpacesJson(out, indent);
+    *out += "]\n";
 }
 
 GFXRECON_END_NAMESPACE(decode)
