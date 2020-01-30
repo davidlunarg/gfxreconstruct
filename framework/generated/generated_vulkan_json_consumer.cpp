@@ -15791,7 +15791,24 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     fprintf(GetFile(), "%s", outString.c_str());
 
     fprintf(GetFile(), "            ]\n");
-    fprintf(GetFile(), "        },\n");
+    fprintf(GetFile(), "        }\n");
+
+    static uint32_t frameNumber = 0;
+    outString = "";
+    frameNumber++;
+    IndentSpacesJson(out, 1);
+    *out += "]\n";
+    *out += "},\n";
+    *out += "{\n";
+    IndentSpacesJson(out, 1);
+    *out += "\"frameNumber\" : \"";
+    SignedDecimalToStringJson(out, frameNumber);
+    *out += "\",\n";
+    IndentSpacesJson(out, 1);
+    *out += "\"apiCalls\" :\n";
+    IndentSpacesJson(out, 1);
+    *out += "[\n";
+    fprintf(GetFile(), "%s", outString.c_str());
 }
 
 void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(

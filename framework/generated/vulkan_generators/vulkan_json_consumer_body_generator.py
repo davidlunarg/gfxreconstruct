@@ -133,6 +133,8 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         self.wc('    std::string outString = "";')
         self.wc('    std::string *out = &outString;')
         self.wc('    uint32_t indent = 5;')
+
+        #TODO: @@@ Use IndentSpaces() for inentation below. Also for initial frameNumber:0 in some other file.
         self.wc('    fprintf(GetFile(), "        {\\n");')
         self.wc('    fprintf(GetFile(), "            \\"name\\" : \\"' + name + '\\",\\n");   // FCN')
         self.wc('    fprintf(GetFile(), "            \\"thread\\" : \\"Thread %ld\\",\\n", 13216);')   #TODO: get thread id
@@ -169,46 +171,36 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
                 self.wc('    *out += "},\\n";')
         self.wc('    fprintf(GetFile(), "%s", outString.c_str());')
 
-        # End function
+        # Close off output from function
         self.newline()
         self.wc('    fprintf(GetFile(), "            ]\\n");')
-        self.wc('    fprintf(GetFile(), "        },\\n");')     # TODO: Dont need a comma on last api call. Should move {}, to calling func??
-        self.wc('}')
+        if name == "vkQueuePresentKHR":
+            self.wc('    fprintf(GetFile(), "        }\\n");')
+        else:
+            self.wc('    fprintf(GetFile(), "        },\\n");')     # TODO: Dont need a comma on last api call of file. Need to close apiCalls, frame, and prog.
 
-        #
-        #        needcomma=0
-        #        args = ''
-        #        for value in values:
-        #            if needcomma:
-        #                args += ', '
-        #            args += value.name
-        #            needcomma = 1
-        #        self.wc('    fprintf(GetFile(), "' + name + '(' + args  + ')");')
-        #        if returnType == 'void':
-        #            self.wc('    fprintf(GetFile(), " returns void:\\n");')
-        #        else:
-        #            # The parameter name assigned to the return value by the code generator is 'returnValue'
-        #            if self.isEnum(returnType):
-        #                self.wc('    EnumToStringVkResultJson(&outString, returnValue);')
-        #                self.wc('    fprintf(GetFile(), " returns ' + returnType + ' %s (%" PRId32 "):\\n", outString.c_str(), returnValue);')
-        #            elif self.isFunctionPtr(value.baseType):
-        #                # This is encoded as a 64-bit integer containing the address of the function pointer
-        #                self.wc('    fprintf(GetFile(), " returns 0x%" PRIx64 ":\\n", static_cast<uint64_t>(returnValue));\n')
-        #            else:
-        #                self.wc('    fprintf(GetFile(), " returns {}:\\n", returnValue);'.format(self.getFormatString(returnType)))
-        #            self.wc('    outString = ""; //UYT')
-        #
-        #        for value in values:
-        #            self.newline()
-        #            self.wc('    // func arg: ' + value.fullType + ' ' + value.name)
-        #            ValueToString.valueToString(self, value, "")
-        #            self.wc('    outString += "\\n";   // HHS')
-        #
-        #        # Add an extra new line to the output at the end of a func
-        #        self.newline()
-        #        self.wc('    outString += "\\n";   // HDS')
-        #        self.wc('    fprintf(GetFile(), "%s", outString.c_str());')
-        #        self.wc('}')
+        # New frame
+        if name == "vkQueuePresentKHR":
+            self.newline()
+            self.wc('    static uint32_t frameNumber = 0;')
+            self.wc('    outString = "";')
+            self.wc('    frameNumber++;')
+            self.wc('    IndentSpacesJson(out, 1);')
+            self.wc('    *out += "]\\n";')
+            self.wc('    *out += "},\\n";')
+            self.wc('    *out += "{\\n";')
+            self.wc('    IndentSpacesJson(out, 1);')
+            self.wc('    *out += "\\"frameNumber\\" : \\"";')
+            self.wc('    SignedDecimalToStringJson(out, frameNumber);')
+            self.wc('    *out += "\\",\\n";')
+            self.wc('    IndentSpacesJson(out, 1);')
+            self.wc('    *out += "\\"apiCalls\\" :\\n";')
+            self.wc('    IndentSpacesJson(out, 1);')
+            self.wc('    *out += "[\\n";')
+            self.wc('    fprintf(GetFile(), "%s", outString.c_str());')
+
+        # Closing brace of generated function
+        self.wc('}')
 
     def getFormatString(self, type):
         if type in ['int', 'int32_t']:
