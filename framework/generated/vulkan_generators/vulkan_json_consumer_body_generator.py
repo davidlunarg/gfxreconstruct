@@ -22,6 +22,10 @@
 #   Print wchar_t* strings. It's currently stubbed out to print only the addr.
 #   Rename executable to gfxrecon2text, gfxrecon-totext, gfxrecon-to-text, gfxreconToText, or gfxrecontotext
 
+# TODO: (Specific to json)
+#    Output is not the same on consecutive runs
+#    Framenumbers, threads
+
 import os,re,sys
 from base_generator import *
 from vulkan_json_value_to_string_generator import *

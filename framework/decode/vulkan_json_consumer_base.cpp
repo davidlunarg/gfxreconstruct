@@ -42,7 +42,7 @@ bool VulkanJsonConsumerBase::Initialize(const std::string& filename)
             m_filename = filename;
             fprintf(m_file, "[\n");   // Start program
             fprintf(m_file, "{\n");   // Start frame
-			fprintf(m_file, "    \"frameNumber\" : \"0\",\n");
+			fprintf(m_file, "    \"frameNumber\" : \"0\",\n");        // TODO: Need to track frames and print frame numbers
             fprintf(m_file, "    \"apiCalls\" :\n");
             fprintf(m_file, "    [\n");
         }

@@ -15038,6 +15038,9 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearColorValue &ps
     AddrToStringJson(out, base_addr + offsetof(VkClearColorValue, float32) /* RKQ */ );
     *out += "\",\n";
     IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRP
+    ScalarValueToStringStruct vinfo_float32 = {false, false, false, nullptr};
+    ArrayOfScalarsToStringJson<float>(out, indent, -1, "float", pstruct_in.decoded_value->float32, "float32", 4, vinfo_float32); // TPA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -15059,6 +15062,9 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearColorValue &ps
     AddrToStringJson(out, base_addr + offsetof(VkClearColorValue, int32) /* RKQ */ );
     *out += "\",\n";
     IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRP
+    ScalarValueToStringStruct vinfo_int32 = {false, false, false, nullptr};
+    ArrayOfScalarsToStringJson<int32_t>(out, indent, -1, "int32_t", pstruct_in.decoded_value->int32, "int32", 4, vinfo_int32); // TPA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "},\n"; // UXT
@@ -15080,6 +15086,9 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearColorValue &ps
     AddrToStringJson(out, base_addr + offsetof(VkClearColorValue, uint32) /* RKQ */ );
     *out += "\",\n";
     IndentSpacesJson(out, indent); // URW
+        *out += "\"elements\" :"; // TRP
+    ScalarValueToStringStruct vinfo_uint32 = {false, false, false, nullptr};
+    ArrayOfScalarsToStringJson<uint32_t>(out, indent, -1, "uint32_t", pstruct_in.decoded_value->uint32, "uint32", 4, vinfo_uint32); // TPA
     indent--;
     IndentSpacesJson(out, indent); //UEW
     *out += "}\n"; // UXS

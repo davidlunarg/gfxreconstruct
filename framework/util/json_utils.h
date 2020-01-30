@@ -261,7 +261,7 @@ void ArrayToStringJson(std::string*                 out,
             UnsignedDecimalToStringJson(&idx_str, j);
             *out += idx_str;
             *out += "]\",\n";
-            IndentSpacesJson(out, indent);
+            IndentSpacesJson(out, indent);                       // @@@ TODO: CAN THIS STAY HERE?
             *out += "\"address\" : \"";
             AddrToStringJson(out, array->GetAddress() + j * sizeof(T));
             *out += "\",\n";
@@ -320,10 +320,6 @@ void ArrayOfScalarsToStringJson(std::string*                     out,
     assert((vinfo.is_handle_or_addr + vinfo.is_enum + vinfo.is_flags) <= 1);
     assert(vinfo.is_enum ? vinfo.enum_to_string_func != nullptr : true);
     assert(vinfo.is_flags ? vinfo.enum_to_string_func != nullptr : true);
-    if (array_length == 0 || array == nullptr)
-    {
-        return;
-    }
     if ((pointer_count > 2 && strstr(full_type_name, "char")) || (pointer_count > 1 && !strstr(full_type_name, "char")))
     {
         fprintf(stderr, "Error in ArrayOfScalersToStringJson: arrays of arrays not implemented\n");
@@ -335,45 +331,67 @@ void ArrayOfScalarsToStringJson(std::string*                     out,
          std::is_same<T, const char*>::value || std::is_same<T, char*>::value))
     {
         StringToQuotedStringJson(out, reinterpret_cast<const char*>(array));
+        return;
     }
-    else
+
+    std::string full_type_name_str = full_type_name;
+    if (array_length == 0 || array == nullptr)
     {
-        std::string full_type_name_str = full_type_name;
-        if (*full_type_name_str.rbegin() == '*')
+        *out += " \"[]\n";   // TODO: Should "elements" be printed by caller?
+        return;
+    }
+
+    *out += "\n";
+    IndentSpacesJson(out, indent);
+    *out += "[\n";
+
+    if (*full_type_name_str.rbegin() == '*')
+    {
+        full_type_name_str.pop_back();
+    }
+
+    for (uint64_t j = 0; j < array_length; j++)
+    {
+        indent++;
+        IndentSpacesJson(out, indent);
+        *out += "{\n";
+        indent++;
+        IndentSpacesJson(out, indent);
+        *out += "\"type\" : \"" + full_type_name_str + "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"name\" : \"[";
+        std::string idx_str;
+        UnsignedDecimalToStringJson(&idx_str, j);
+        *out += idx_str;
+        *out += "]\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : ";
+        if (strstr(full_type_name, "char"))
         {
-            full_type_name_str.pop_back();
+            StringToQuotedStringJson(
+                out,
+                ((reinterpret_cast<const BasicStringArrayDecoder<char, format::PointerAttributes::kIsString>*>(
+                      array))
+                     ->GetPointer())[j]);
+        }
+        else
+        {
+            *out += "\"";
+            ScalarValueToStringJson<T>(out, &array[j], vinfo);
+            *out += "\"\n";
+        }
+        indent--;
+        IndentSpacesJson(out, indent);
+        *out += "}";
+        if (j < array_length - 1)
+        {
+            *out += ",";
         }
         *out += "\n";
-        for (uint64_t j = 0; j < array_length; j++)
-        {
-            IndentSpacesJson(out, indent + 1);
-            std::string name_and_index;
-            name_and_index += array_name;
-            name_and_index += "[";
-            UnsignedDecimalToStringJson(&name_and_index, j);
-            name_and_index += "]: ";
-            PadStringJson(&name_and_index, 32);
-            *out += name_and_index;
-            *out += full_type_name_str;
-            *out += " = ";
-            if (strstr(full_type_name, "char"))
-            {
-                StringToQuotedStringJson(
-                    out,
-                    ((reinterpret_cast<const BasicStringArrayDecoder<char, format::PointerAttributes::kIsString>*>(
-                          array))
-                         ->GetPointer())[j]);
-            }
-            else
-            {
-                ScalarValueToStringJson<T>(out, &array[j], vinfo);
-            }
-            if (j < array_length - 1)
-            {
-                *out += "\n";
-            }
-        }
+        indent--;
     }
+    IndentSpacesJson(out, indent);
+    *out += "]\n";
 }
 
 template <typename T>
