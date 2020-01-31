@@ -19,6 +19,8 @@
 
 #include "util/platform.h"
 
+extern int kIndentSize;
+
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
@@ -42,9 +44,9 @@ bool VulkanJsonConsumerBase::Initialize(const std::string& filename)
             m_filename = filename;
             fprintf(m_file, "[\n");   // Start program
             fprintf(m_file, "{\n");   // Start frame
-			fprintf(m_file, "    \"frameNumber\" : \"0\",\n");
-            fprintf(m_file, "    \"apiCalls\" :\n");
-            fprintf(m_file, "    [\n");
+            fprintf(m_file, "%*s\"frameNumber\" : \"0\",\n", kIndentSize, "");
+            fprintf(m_file, "%*s\"apiCalls\" :\n", kIndentSize, "");
+            fprintf(m_file, "%*s[\n", kIndentSize, "");
         }
     }
 
@@ -55,10 +57,10 @@ void VulkanJsonConsumerBase::Destroy()
 {
     if (m_file != nullptr)
     {
-        fprintf(m_file, "    ]\n");  // Close program
+        fprintf(m_file, "%*s]\n", kIndentSize, "");  // Close program
         fprintf(m_file, "}\n");  // Close frame - previous item should be an api call, and it should have been closed already
         fprintf(m_file, "]\n");  // Close program
-		util::platform::FileClose(m_file);
+        util::platform::FileClose(m_file);
     }
 }
 
