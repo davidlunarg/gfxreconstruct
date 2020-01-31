@@ -134,29 +134,36 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         self.wc('    std::string *out = &outString;')
         self.wc('    uint32_t indent = 5;')
 
-        #TODO: @@@ Use IndentSpaces() for inentation below. Also for initial frameNumber:0 in some other file.
-        self.wc('    fprintf(GetFile(), "        {\\n");')
-        self.wc('    fprintf(GetFile(), "            \\"name\\" : \\"' + name + '\\",\\n");   // FCN')
-        self.wc('    fprintf(GetFile(), "            \\"thread\\" : \\"Thread %ld\\",\\n", 13216);')   #TODO: get thread id
-        self.wc('    fprintf(GetFile(), "            \\"returnType\\" : \\"' + returnType + '\\",\\n");')
+        #TODO: @@@ Use IndentSpaces() for initial frameNumber:0 in some other file.
+
+        self.wc('    IndentSpacesJson(out, 2);  // TWP')
+        self.wc('    *out += "{\\n";')
+        self.wc('    IndentSpacesJson(out, 3);  // TWP')
+        self.wc('    *out += "\\"name\\" : \\"' + name + '\\",\\n";   // FCN')
+        self.wc('    IndentSpacesJson(out, 3);  // TWP')
+        self.wc('    *out += "\\"thread\\" : \\"Thread ";');
+        self.wc('    SignedDecimalToStringJson(out, 13216);')  # TODO: get thread id
+        self.wc('    *out += "\\",\\n";');
+        self.wc('    IndentSpacesJson(out, 3);  // TWP')
+        self.wc('    *out += "\\"returnType\\" : \\"' + returnType + '\\",\\n";')
         if returnType != 'void':
-            #self.wc('    fprintf(GetFile(), "void\\"");')
-            #else:
-            self.wc('    fprintf(GetFile(), "            \\"returnValue\\" : \\"");')
+            self.wc('    IndentSpacesJson(out, 3);  // TWP')
+            self.wc('    *out += "\\"returnValue\\" : \\"";')
             if self.isEnum(returnType):
                 self.wc('    EnumToStringVkResultJson(&outString, returnValue);')
-                #self.wc('    fprintf(GetFile(), "%s (%" PRId32 ")", outString.c_str(), returnValue);')    #TODO: Remove this?
-                self.wc('    fprintf(GetFile(), "%s\\"", outString.c_str());')
             elif self.isFunctionPtr(returnType):
-                self.wc('    fprintf(GetFile(), "0x%" PRIx64 ", static_cast<uint64_t>(returnValue));\n"')
+                self.wc('    AddrToStringJson(returnValue);')
             else:
-                self.wc('    fprintf(GetFile(), "' + format(self.getFormatString(returnType)) + '\\"\\n", returnValue);')
-            self.wc('    fprintf(GetFile(), ",\\n");')
-        self.wc('    fprintf(GetFile(), "            \\"args\\" :\\n");')
-        self.wc('    fprintf(GetFile(), "            [\\n");')
+                self.wc('    char rval_str[100];')
+                self.wc('    snprintf(rval_str, sizeof(rval_str), "' + format(self.getFormatString(returnType)) + '"' + ', returnValue);')
+                self.wc('    *out += rval_str;')
+            self.wc('    *out += "\\",\\n";')
+        self.wc('    IndentSpacesJson(out, 3);  // TTP')
+        self.wc('    *out += "\\"args\\" :\\n";')
+        self.wc('    IndentSpacesJson(out, 3);')
+        self.wc('    *out += "[\\n";')
 
         # Print args
-        self.wc('    outString = ""; //URT')
         for value in values:
             self.newline()
             self.wc('    // func arg: ' + value.fullType + ' ' + value.name)
@@ -169,23 +176,24 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
                 self.wc('    *out += "}\\n";')
             else:
                 self.wc('    *out += "},\\n";')
-        self.wc('    fprintf(GetFile(), "%s", outString.c_str());')
 
-        # Close off output from function
+        # End of arg list
         self.newline()
-        self.wc('    fprintf(GetFile(), "            ]\\n");')
-        if name == "vkQueuePresentKHR":
-            self.wc('    fprintf(GetFile(), "        }\\n");')
-        else:
-            self.wc('    fprintf(GetFile(), "        },\\n");')     # TODO: Dont need a comma on last api call of file. Need to close apiCalls, frame, and prog.
+        self.wc('    IndentSpacesJson(out, 3);')
+        self.wc('    *out += "]\\n";')
 
-        # New frame
-        if name == "vkQueuePresentKHR":
+        if name != "vkQueuePresentKHR":
+            # End of function
+            self.wc('    IndentSpacesJson(out, 2);')
+            self.wc('    *out += "},\\n";')         # TODO: Dont need a comma on last api call of file. Need to close apiCalls, frame, and prog.
+        else:
+            # End of function and starting new frame
+            self.wc('    IndentSpacesJson(out, 2); // RRW')
+            self.wc('    *out += "}\\n";')
             self.newline()
             self.wc('    static uint32_t frameNumber = 0;')
-            self.wc('    outString = "";')
             self.wc('    frameNumber++;')
-            self.wc('    IndentSpacesJson(out, 1);')
+            self.wc('    IndentSpacesJson(out, 1); // RWW')
             self.wc('    *out += "]\\n";')
             self.wc('    *out += "},\\n";')
             self.wc('    *out += "{\\n";')
@@ -197,7 +205,10 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
             self.wc('    *out += "\\"apiCalls\\" :\\n";')
             self.wc('    IndentSpacesJson(out, 1);')
             self.wc('    *out += "[\\n";')
-            self.wc('    fprintf(GetFile(), "%s", outString.c_str());')
+
+        # Send the function and args to the output file
+        self.newline()
+        self.wc('    fprintf(GetFile(), "%s", outString.c_str());')
 
         # Closing brace of generated function
         self.wc('}')
