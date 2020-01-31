@@ -218,6 +218,8 @@ class ValueToString(BaseGenerator):
                 self.wc(leadSpaces + 'ArrayOfScalarsToStringJson<'+value.fullType+'>(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", ' +
                         pstruct_in + 'decoded_value->' + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // TPA')
             else:
+                if value.name == 'pCode':
+                    aLength = aLength + ' / 4'  # codeSize in VkShaderModuleCreateInfo is not the number of elements - it is in bytes
                 self.wc(leadSpaces + '*out += "\\"elements\\" : "; // HPI')
                 self.wc(leadSpaces + 'ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
                 self.wc(leadSpaces + 'ArrayToStringJson(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +

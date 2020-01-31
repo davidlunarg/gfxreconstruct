@@ -8187,7 +8187,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleCreateI
     IndentSpacesJson(out, indent); // URW
     *out += "\"elements\" : "; // HPI
     ScalarValueToStringStruct vinfo_pCode = {false, false, false, nullptr};
-    ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pCode, "pCode", pstruct->codeSize, vinfo_pCode); // AUA
+    ArrayToStringJson(out, indent, 0, "const uint32_t*", &pstruct_in.pCode, "pCode", pstruct->codeSize / 4, vinfo_pCode); // AUA
     }
     indent--;
     IndentSpacesJson(out, indent); //UEW
