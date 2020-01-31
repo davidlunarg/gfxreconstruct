@@ -23,8 +23,7 @@
 #   Rename executable to gfxrecon2text, gfxrecon-totext, gfxrecon-to-text, gfxreconToText, or gfxrecontotext
 
 # TODO: (Specific to json)
-#    Output is not the same on consecutive runs
-#    Framenumbers, threads
+#    Thread ID is not correct
 
 import os,re,sys
 from base_generator import *
