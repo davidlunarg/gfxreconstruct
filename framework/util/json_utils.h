@@ -201,7 +201,6 @@ void PadStringJson(std::string* s, size_t len)
     }
 }
 
-//TODO: @@IS THIS FUNCTION CALLED? WHAT ABOUT OTHER FUNCS IN THIS FILE?
 template <typename T>
 void ArrayToStringJson(std::string*                 out,
                    int                              indent,
@@ -261,7 +260,7 @@ void ArrayToStringJson(std::string*                 out,
             UnsignedDecimalToStringJson(&idx_str, j);
             *out += idx_str;
             *out += "]\",\n";
-            IndentSpacesJson(out, indent);                       // @@@ TODO: CAN THIS STAY HERE?
+            IndentSpacesJson(out, indent);
             *out += "\"address\" : \"";
             AddrToStringJson(out, array->GetAddress() + j * sizeof(T));
             *out += "\",\n";
@@ -337,7 +336,7 @@ void ArrayOfScalarsToStringJson(std::string*                     out,
     std::string full_type_name_str = full_type_name;
     if (array_length == 0 || array == nullptr)
     {
-        *out += " \"[]\n";   // TODO: Should "elements" be printed by caller?
+        *out += " \"[]\n";
         return;
     }
 

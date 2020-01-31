@@ -79,7 +79,7 @@ void PrintUsage(const char* exe_name)
     GFXRECON_WRITE_CONSOLE("\nOptional arguments:");
     GFXRECON_WRITE_CONSOLE("  --outfile <file>\tSet the output file name");
     GFXRECON_WRITE_CONSOLE("  --indent <N>\t\tSet the indent size for writing parameters and values");
-    GFXRECON_WRITE_CONSOLE("  --noaddr\t\tGenerate output without handles/address, use \"address\" instead");
+    GFXRECON_WRITE_CONSOLE("  --noaddr\t\tGenerate output without handles/addresses, use \"address\" instead");
     GFXRECON_WRITE_CONSOLE("  --showshader\t\tOutput the contents of shader files loaded");
     GFXRECON_WRITE_CONSOLE("  --version\t\tPrint version information and exit");
 }
