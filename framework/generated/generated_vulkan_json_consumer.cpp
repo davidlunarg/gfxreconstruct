@@ -1735,6 +1735,10 @@ void VulkanJsonConsumer::Process_vkMapMemory(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, ppData.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, *(static_cast<uint64_t*>(ppData.GetPointer()))); // PXA
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -2063,6 +2067,11 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCommittedMemoryInBytes.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pCommittedMemoryInBytes = {false, false, false, nullptr};
+        ScalarValueToStringJson(out, pCommittedMemoryInBytes.GetPointer(), vinfo_pCommittedMemoryInBytes); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -14116,6 +14125,11 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPeerMemoryFeatures.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pPeerMemoryFeatures = {false, false, true, EnumToStringVkPeerMemoryFeatureFlagBitsJson};
+        ScalarValueToStringJson(out, pPeerMemoryFeatures.GetPointer(), vinfo_pPeerMemoryFeatures); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -16566,6 +16580,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pSupported.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pSupported = {false, false, false, nullptr};
+        ScalarValueToStringJson(out, pSupported.GetPointer(), vinfo_pSupported); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -17636,6 +17655,11 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pModes.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pModes = {false, false, true, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson};
+        ScalarValueToStringJson(out, pModes.GetPointer(), vinfo_pModes); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -19057,6 +19081,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dpy); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -19295,6 +19323,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, connection /* ACF */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, connection); // PXR
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -19533,6 +19565,10 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, display /* ACF */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, display); // PXR
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -20610,6 +20646,11 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pPeerMemoryFeatures.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pPeerMemoryFeatures = {false, false, true, EnumToStringVkPeerMemoryFeatureFlagBitsJson};
+        ScalarValueToStringJson(out, pPeerMemoryFeatures.GetPointer(), vinfo_pPeerMemoryFeatures); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -21192,6 +21233,11 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pHandle.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pHandle = {false, false, false, nullptr};
+        ScalarValueToStringJson(out, pHandle.GetPointer(), vinfo_pHandle); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -21282,6 +21328,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, handle /* ACF */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, handle); // PXR
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -21409,6 +21459,11 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pFd.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pFd = {false, false, false, nullptr};
+        ScalarValueToStringJson(out, pFd.GetPointer(), vinfo_pFd); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -21793,6 +21848,11 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pHandle.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pHandle = {false, false, false, nullptr};
+        ScalarValueToStringJson(out, pHandle.GetPointer(), vinfo_pHandle); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -21970,6 +22030,11 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pFd.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pFd = {false, false, false, nullptr};
+        ScalarValueToStringJson(out, pFd.GetPointer(), vinfo_pFd); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -23066,6 +23131,11 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pHandle.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pHandle = {false, false, false, nullptr};
+        ScalarValueToStringJson(out, pHandle.GetPointer(), vinfo_pHandle); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -23243,6 +23313,11 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pFd.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pFd = {false, false, false, nullptr};
+        ScalarValueToStringJson(out, pFd.GetPointer(), vinfo_pFd); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -28101,6 +28176,11 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pHandle.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pHandle = {false, false, false, nullptr};
+        ScalarValueToStringJson(out, pHandle.GetPointer(), vinfo_pHandle); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -29397,6 +29477,10 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dpy); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -29475,6 +29559,10 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"dpy\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"value\" : \"";
+    AddrToStringJson(out, dpy); // PRQ
+    *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
 
@@ -31707,6 +31795,10 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, buffer /* ACF */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, buffer); // PXR
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -31833,6 +31925,11 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pBuffer.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pBuffer = {false, false, false, nullptr};
+        ScalarValueToStringJson(out, pBuffer.GetPointer(), vinfo_pBuffer); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -34490,6 +34587,10 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pHostPointer /* ACF */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, pHostPointer); // PXR
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -35377,6 +35478,10 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pCheckpointMarker /* ACF */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        AddrToStringJson(out, pCheckpointMarker); // PXR
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -37144,6 +37249,11 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pModes.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent);
+        *out += "\"value\" : \"";
+        ScalarValueToStringStruct vinfo_pModes = {false, false, true, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson};
+        ScalarValueToStringJson(out, pModes.GetPointer(), vinfo_pModes); // PXS
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "}\n";

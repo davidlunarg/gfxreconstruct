@@ -76,8 +76,7 @@ class ValueToString(BaseGenerator):
         self.wc('    *out += "\\"name\\" : \\"' + value.name + '\\",\\n";')
 
         # For dev/debug
-        if value.name == "pAttributes":
-            # NOTE: currentTransform is displayed as enum, supportedCompositeAlpha is displayed as flags
+        if 0 and value.name == "physicalDevices":
             print('@ name', str(value.name))
             print('@ isPointer', str(value.isPointer))
             print('@ isArray', str(value.isArray))
@@ -88,6 +87,7 @@ class ValueToString(BaseGenerator):
             print('@ isStruct', str(self.isStruct(value.baseType)))
             print('@ inStructDict', str(value.baseType in self.structDict))
             print('@ arrayLength', value.arrayLength)
+            print('@ structName', structName)
             print("")
 
         ###### Output address line if needed
@@ -208,13 +208,10 @@ class ValueToString(BaseGenerator):
                 self.wc('        *out += "\\"elements\\" :"; // TRI')
                 self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
                 if value.isArray and value.name != "dpy":
-                    if value.isPointer:
-                        self.wc('        ArrayToStringJson(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +
+                    self.wc('        ArrayToStringJson(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +
                                 pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AQA')
-                    else:
-                        print("@@1 Not handled", value.name)
                 else:
-                    print("@@2 Not handled", value.name)
+                    print("Not handled!!: ", value.name)
             elif self.isUnion(structName):
                 self.wc(leadSpaces + 'IndentSpacesJson(out, indent);')
                 self.wc(leadSpaces + '*out += "\\"elements\\" :"; // TRP')   # TODO: THIS IS SOMETIMES INDENTED WRONG
@@ -259,7 +256,7 @@ class ValueToString(BaseGenerator):
                                      ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // APJ')
 
         ###### Output pointers to non-structs and non-arrays
-        elif value.isPointer:
+        elif value.isPointer and value.name != 'dpy':
             if value.fullType == 'const char*':
                 # Treat pointer to char as a string
                 self.wc('        IndentSpacesJson(out, indent);')
@@ -283,8 +280,33 @@ class ValueToString(BaseGenerator):
                  # TODO: output contents of pNext structure
                 self.wc('    // TODO: output pNext structure";')
             else:
-                if not specialPtr:
-                    print("@@!! Need to handle", value.name)  # TODO: Address all these
+                if value.baseType == "wchar_t":
+                    self.wc('        IndentSpacesJson(out, indent);')
+                    self.wc('        *out += "\\"value\\" : \\"";')
+                    self.wc('        AddrToStringJson(out, ' + pstruct_in + value.name + '.GetAddress()); // PXQ')  # TODO: Print out string
+                    self.wc('        *out += "\\"\\n";')
+                elif specialPtr or value.name in ["pView", "ppData"]:
+                    self.wc('        IndentSpacesJson(out, indent);')
+                    self.wc('        *out += "\\"value\\" : \\"";')
+                    if specialPtr or not isFuncArg:
+                        self.wc('        AddrToStringJson(out, ' + pstruct_in + value.name + '); // PXR')
+                    else:
+                        self.wc('        AddrToStringJson(out, *(static_cast<uint64_t*>(' + value.name + '.GetPointer()))); // PXA')
+                    self.wc('        *out += "\\"\\n";')
+                else:
+                    self.wc('        IndentSpacesJson(out, indent);')
+                    self.wc('        *out += "\\"value\\" : \\"";')
+                    self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
+                    if isFuncArg:
+                        self.wc('        ScalarValueToStringJson(out, ' + value.name + '.GetPointer(), vinfo_' + value.name +'); // PXS')
+                    else:
+                        # TODO: Print pnext struct
+                        if value.name == 'pNext':
+                            self.wc('        uint64_t pnextLocal = ' + pstruct_in + value.name + '->GetAddress(); // PXX')
+                            self.wc('        ScalarValueToStringJson(out, &pnextLocal, vinfo_' + value.name +');')
+                        else:
+                            self.wc('        ScalarValueToStringJson(out, ' + pstruct_in + value.name + '->GetPointer(), vinfo_' + value.name +'); // PXT')
+                    self.wc('        *out += "\\"\\n";')
 
         ###### Output handles
         elif self.isHandle(value.baseType) or value.name == 'dpy':
