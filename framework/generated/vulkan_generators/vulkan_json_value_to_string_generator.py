@@ -76,7 +76,7 @@ class ValueToString(BaseGenerator):
         self.wc('    *out += "\\"name\\" : \\"' + value.name + '\\",\\n";')
 
         # For dev/debug
-        if value.name == "float32":
+        if value.name == "pAttributes":
             # NOTE: currentTransform is displayed as enum, supportedCompositeAlpha is displayed as flags
             print('@ name', str(value.name))
             print('@ isPointer', str(value.isPointer))
@@ -257,9 +257,6 @@ class ValueToString(BaseGenerator):
                 else:
                     self.wc('    StructureToStringJson(out, *' + pstruct_in + value.name + ', indent, ' +
                                      ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // APJ')
-            #self.wc('        IndentSpacesJson(out, indent);')
-            #self.wc('        *out += "]\\n";')
-
 
         ###### Output pointers to non-structs and non-arrays
         elif value.isPointer:
@@ -272,20 +269,22 @@ class ValueToString(BaseGenerator):
                 else:
                     self.wc('        StringToQuotedStringJson(out, ' + pstruct + value.name + '); // TLK')
                 self.wc('        *out += "\\n";')
-            elif value.baseType in ['uint', 'uint32_t', 'uint64_t']:
+            elif value.baseType in ['uint', 'uint32_t', 'uint64_t', 'size_t']:
                 self.wc('        IndentSpacesJson(out, indent); // UQA')
                 self.wc('        *out += "\\"value\\" : \\"";')
-                self.wc('        SignedDecimalToStringJson(out, *' + value.name + '.GetPointer());')
+                self.wc('        UnsignedDecimalToStringJson(out, *' + value.name + '.GetPointer());')
                 self.wc('        *out += "\\"\\n";')
             elif self.isHandle(value.baseType):
                 self.wc('        IndentSpacesJson(out, indent);')
                 self.wc('        *out += "\\"value\\" : \\"";')
                 self.wc('        AddrToStringJson(out, *' + pstruct + value.name + '.GetPointer()); // URY')
                 self.wc('        *out += "\\"\\n";')
+            elif value.name == 'pNext':
+                 # TODO: output contents of pNext structure
+                self.wc('    // TODO: output pNext structure";')
             else:
-                # TODO: Handle all other scalar types...
-                # TODO: Handle dpy ...
-                print("@@!! Need to handle", value.name)
+                if not specialPtr:
+                    print("@@!! Need to handle", value.name)  # TODO: Address all these
 
         ###### Output handles
         elif self.isHandle(value.baseType) or value.name == 'dpy':

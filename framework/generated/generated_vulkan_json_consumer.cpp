@@ -284,7 +284,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPhysicalDeviceCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPhysicalDeviceCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -769,7 +769,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pQueueFamilyPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pQueueFamilyPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -2518,7 +2518,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pSparseMemoryRequirementCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pSparseMemoryRequirementCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -2697,7 +2697,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -5868,6 +5868,10 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDataSize.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent); // UQA
+        *out += "\"value\" : \"";
+        UnsignedDecimalToStringJson(out, *pDataSize.GetPointer());
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -14388,7 +14392,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPhysicalDeviceGroupCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPhysicalDeviceGroupCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -14710,7 +14714,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pSparseMemoryRequirementCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pSparseMemoryRequirementCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -15141,7 +15145,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pQueueFamilyPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pQueueFamilyPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -15338,7 +15342,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -16746,7 +16750,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pSurfaceFormatCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pSurfaceFormatCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -16866,7 +16870,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPresentModeCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPresentModeCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -17206,7 +17210,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pSwapchainImageCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pSwapchainImageCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -17374,7 +17378,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pImageIndex.GetPointer());
+        UnsignedDecimalToStringJson(out, *pImageIndex.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -17724,7 +17728,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pRectCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pRectCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -17854,7 +17858,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pImageIndex.GetPointer());
+        UnsignedDecimalToStringJson(out, *pImageIndex.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -17933,7 +17937,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -18037,7 +18041,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -18157,7 +18161,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pDisplayCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pDisplayCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -18278,7 +18282,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -20264,7 +20268,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pQueueFamilyPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pQueueFamilyPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -20461,7 +20465,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -20960,7 +20964,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPhysicalDeviceGroupCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPhysicalDeviceGroupCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -23446,7 +23450,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pSurfaceFormatCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pSurfaceFormatCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -23551,7 +23555,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -23655,7 +23659,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -23775,7 +23779,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -24201,7 +24205,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pSparseMemoryRequirementCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pSparseMemoryRequirementCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -25105,7 +25109,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pValue.GetPointer());
+        UnsignedDecimalToStringJson(out, *pValue.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -25379,7 +25383,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pExecutableCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pExecutableCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -25510,7 +25514,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pStatisticCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pStatisticCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -25641,7 +25645,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pInternalRepresentationCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pInternalRepresentationCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -27655,6 +27659,10 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pInfoSize.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent); // UQA
+        *out += "\"value\" : \"";
+        UnsignedDecimalToStringJson(out, *pInfoSize.GetPointer());
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -30079,7 +30087,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pCounterValue.GetPointer());
+        UnsignedDecimalToStringJson(out, *pCounterValue.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -30266,7 +30274,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPresentationTimingCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPresentationTimingCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -32495,6 +32503,10 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
         *out += "\"address\" : \"";  // EAC
         AddrToStringJson(out, pDataSize.GetAddress() /* QZX */ );
         *out += "\",\n";
+        IndentSpacesJson(out, indent); // UQA
+        *out += "\"value\" : \"";
+        UnsignedDecimalToStringJson(out, *pDataSize.GetPointer());
+        *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -34690,7 +34702,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pTimeDomainCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pTimeDomainCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -34865,7 +34877,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pMaxDeviation.GetPointer());
+        UnsignedDecimalToStringJson(out, *pMaxDeviation.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -35436,7 +35448,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pCheckpointDataCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pCheckpointDataCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -36636,7 +36648,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPropertyCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -36741,7 +36753,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pCombinationCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pCombinationCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
@@ -36873,7 +36885,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
         *out += "\",\n";
         IndentSpacesJson(out, indent); // UQA
         *out += "\"value\" : \"";
-        SignedDecimalToStringJson(out, *pPresentModeCount.GetPointer());
+        UnsignedDecimalToStringJson(out, *pPresentModeCount.GetPointer());
         *out += "\"\n";
     }
     IndentSpacesJson(out, 4);
