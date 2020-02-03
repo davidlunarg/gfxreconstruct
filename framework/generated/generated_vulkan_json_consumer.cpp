@@ -34,6 +34,12 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
+// Var to keep track of when a function needs to start with a ',',
+// because we print the comma closing a function at the start of the
+// next function. We need to do this to avoid putting a comma
+// after the last function in a frame.
+static bool need_function_comma = false;
+
 void VulkanJsonConsumer::Process_vkCreateInstance(
     VkResult                                    returnValue,
     const StructPointerDecoder<Decoded_VkInstanceCreateInfo>& pCreateInfo,
@@ -43,6 +49,13 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -143,8 +156,8 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -156,6 +169,13 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -214,8 +234,8 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -229,6 +249,13 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -319,8 +346,8 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -332,6 +359,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -390,8 +424,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -404,6 +438,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -477,8 +518,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -496,6 +537,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -633,8 +681,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -646,6 +694,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -704,8 +759,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -718,6 +773,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -803,8 +865,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -816,6 +878,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -874,8 +943,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -890,6 +959,13 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -1005,8 +1081,8 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -1018,6 +1094,13 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -1076,8 +1159,8 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -1091,6 +1174,13 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -1180,8 +1270,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -1196,6 +1286,13 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -1288,8 +1385,8 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -1301,6 +1398,13 @@ void VulkanJsonConsumer::Process_vkQueueWaitIdle(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -1337,8 +1441,8 @@ void VulkanJsonConsumer::Process_vkQueueWaitIdle(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -1350,6 +1454,13 @@ void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -1386,8 +1497,8 @@ void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -1402,6 +1513,13 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -1517,8 +1635,8 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -1531,6 +1649,13 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -1604,8 +1729,8 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -1622,6 +1747,13 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -1745,8 +1877,8 @@ void VulkanJsonConsumer::Process_vkMapMemory(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -1758,6 +1890,13 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -1805,8 +1944,8 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -1820,6 +1959,13 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -1897,8 +2043,8 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -1912,6 +2058,13 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -1989,8 +2142,8 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -2003,6 +2156,13 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -2078,8 +2238,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -2094,6 +2254,13 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -2175,8 +2342,8 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -2191,6 +2358,13 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -2272,8 +2446,8 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -2286,6 +2460,13 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -2359,8 +2540,8 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -2373,6 +2554,13 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -2446,8 +2634,8 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -2461,6 +2649,13 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -2561,8 +2756,8 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -2580,6 +2775,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -2740,8 +2942,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -2756,6 +2958,13 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -2848,8 +3057,8 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -2864,6 +3073,13 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -2979,8 +3195,8 @@ void VulkanJsonConsumer::Process_vkCreateFence(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -2993,6 +3209,13 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -3066,8 +3289,8 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -3081,6 +3304,13 @@ void VulkanJsonConsumer::Process_vkResetFences(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -3159,8 +3389,8 @@ void VulkanJsonConsumer::Process_vkResetFences(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -3173,6 +3403,13 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -3224,8 +3461,8 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -3241,6 +3478,13 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -3349,8 +3593,8 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -3365,6 +3609,13 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -3480,8 +3731,8 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -3494,6 +3745,13 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -3567,8 +3825,8 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -3583,6 +3841,13 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -3698,8 +3963,8 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -3712,6 +3977,13 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -3785,8 +4057,8 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -3799,6 +4071,13 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -3850,8 +4129,8 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -3864,6 +4143,13 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -3915,8 +4201,8 @@ void VulkanJsonConsumer::Process_vkSetEvent(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -3929,6 +4215,13 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -3980,8 +4273,8 @@ void VulkanJsonConsumer::Process_vkResetEvent(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -3996,6 +4289,13 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -4111,8 +4411,8 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -4125,6 +4425,13 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -4198,8 +4505,8 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -4218,6 +4525,13 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -4371,8 +4685,8 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -4387,6 +4701,13 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -4502,8 +4823,8 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -4516,6 +4837,13 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -4589,8 +4917,8 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -4605,6 +4933,13 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -4720,8 +5055,8 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -4734,6 +5069,13 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -4807,8 +5149,8 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -4823,6 +5165,13 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -4938,8 +5287,8 @@ void VulkanJsonConsumer::Process_vkCreateImage(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -4952,6 +5301,13 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -5025,8 +5381,8 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -5040,6 +5396,13 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -5139,8 +5502,8 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -5155,6 +5518,13 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -5270,8 +5640,8 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -5284,6 +5654,13 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -5357,8 +5734,8 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -5373,6 +5750,13 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -5488,8 +5872,8 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -5502,6 +5886,13 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -5575,8 +5966,8 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -5591,6 +5982,13 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -5706,8 +6104,8 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -5720,6 +6118,13 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -5793,8 +6198,8 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -5809,6 +6214,13 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -5914,8 +6326,8 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -5930,6 +6342,13 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -6023,8 +6442,8 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -6041,6 +6460,13 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -6186,8 +6612,8 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -6204,6 +6630,13 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -6349,8 +6782,8 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -6363,6 +6796,13 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -6436,8 +6876,8 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -6452,6 +6892,13 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -6567,8 +7014,8 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -6581,6 +7028,13 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -6654,8 +7108,8 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -6670,6 +7124,13 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -6785,8 +7246,8 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -6799,6 +7260,13 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -6872,8 +7340,8 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -6888,6 +7356,13 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -7003,8 +7478,8 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -7017,6 +7492,13 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -7090,8 +7572,8 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -7106,6 +7588,13 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -7221,8 +7710,8 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -7235,6 +7724,13 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -7308,8 +7804,8 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -7323,6 +7819,13 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -7389,8 +7892,8 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -7404,6 +7907,13 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -7493,8 +8003,8 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -7509,6 +8019,13 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -7602,8 +8119,8 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -7618,6 +8135,13 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -7732,8 +8256,8 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -7748,6 +8272,13 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -7863,8 +8394,8 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -7877,6 +8408,13 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -7950,8 +8488,8 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -7966,6 +8504,13 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -8081,8 +8626,8 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -8095,6 +8640,13 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -8168,8 +8720,8 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -8182,6 +8734,13 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -8255,8 +8814,8 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -8271,6 +8830,13 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -8386,8 +8952,8 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -8400,6 +8966,13 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -8473,8 +9046,8 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -8488,6 +9061,13 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -8554,8 +9134,8 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -8569,6 +9149,13 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -8658,8 +9245,8 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -8673,6 +9260,13 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -8762,8 +9356,8 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -8776,6 +9370,13 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -8838,8 +9439,8 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -8851,6 +9452,13 @@ void VulkanJsonConsumer::Process_vkEndCommandBuffer(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -8887,8 +9495,8 @@ void VulkanJsonConsumer::Process_vkEndCommandBuffer(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -8901,6 +9509,13 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -8952,8 +9567,8 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -8966,6 +9581,13 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -9028,8 +9650,8 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -9043,6 +9665,13 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -9131,8 +9760,8 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -9146,6 +9775,13 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -9234,8 +9870,8 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -9247,6 +9883,13 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -9294,8 +9937,8 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -9309,6 +9952,13 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -9386,8 +10036,8 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -9399,6 +10049,13 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -9453,8 +10110,8 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -9467,6 +10124,13 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -9529,8 +10193,8 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -9543,6 +10207,13 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -9605,8 +10276,8 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -9619,6 +10290,13 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -9681,8 +10359,8 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -9695,6 +10373,13 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -9757,8 +10442,8 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -9776,6 +10461,13 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -9937,8 +10629,8 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -9952,6 +10644,13 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -10029,8 +10728,8 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -10045,6 +10744,13 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -10161,8 +10867,8 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -10177,6 +10883,13 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -10269,8 +10982,8 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -10286,6 +10999,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -10393,8 +11113,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -10409,6 +11129,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -10501,8 +11228,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -10517,6 +11244,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -10609,8 +11343,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -10624,6 +11358,13 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -10701,8 +11442,8 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -10715,6 +11456,13 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -10777,8 +11525,8 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -10793,6 +11541,13 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -10896,8 +11651,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -10914,6 +11669,13 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -11047,8 +11809,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -11066,6 +11828,13 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -11214,8 +11983,8 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -11231,6 +12000,13 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -11349,8 +12125,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -11366,6 +12142,13 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -11484,8 +12267,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -11500,6 +12283,13 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -11604,8 +12394,8 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -11620,6 +12410,13 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -11712,8 +12509,8 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -11729,6 +12526,13 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -11858,8 +12662,8 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -11875,6 +12679,13 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -12004,8 +12815,8 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -12020,6 +12831,13 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -12134,8 +12952,8 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -12152,6 +12970,13 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -12285,8 +13110,8 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -12299,6 +13124,13 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -12361,8 +13193,8 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -12375,6 +13207,13 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -12437,8 +13276,8 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -12459,6 +13298,13 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -12686,8 +13532,8 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -12707,6 +13553,13 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -12907,8 +13760,8 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -12922,6 +13775,13 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -12999,8 +13859,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -13013,6 +13873,13 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -13075,8 +13942,8 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -13090,6 +13957,13 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -13167,8 +14041,8 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -13182,6 +14056,13 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -13259,8 +14140,8 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -13278,6 +14159,13 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -13415,8 +14303,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -13432,6 +14320,13 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -13551,8 +14446,8 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -13565,6 +14460,13 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -13638,8 +14540,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -13651,6 +14553,13 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -13698,8 +14607,8 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -13710,6 +14619,13 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -13742,8 +14658,8 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -13756,6 +14672,13 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -13830,8 +14753,8 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -13846,6 +14769,13 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -13923,8 +14853,8 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -13938,6 +14868,13 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -14015,8 +14952,8 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -14031,6 +14968,13 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -14136,8 +15080,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -14149,6 +15093,13 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -14196,8 +15147,8 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -14214,6 +15165,13 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -14336,8 +15294,8 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -14351,6 +15309,13 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -14440,8 +15405,8 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -14454,6 +15419,13 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -14538,8 +15510,8 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -14552,6 +15524,13 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -14636,8 +15615,8 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -14651,6 +15630,13 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -14762,8 +15748,8 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -14775,6 +15761,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -14833,8 +15826,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -14846,6 +15839,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -14904,8 +15904,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -14918,6 +15918,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -14991,8 +15998,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -15006,6 +16013,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -15094,8 +16108,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -15108,6 +16122,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -15193,8 +16214,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -15206,6 +16227,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -15264,8 +16292,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -15279,6 +16307,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -15390,8 +16425,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -15404,6 +16439,13 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -15466,8 +16508,8 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -15480,6 +16522,13 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -15565,8 +16614,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -15581,6 +16630,13 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -15696,8 +16752,8 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -15710,6 +16766,13 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -15783,8 +16846,8 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -15799,6 +16862,13 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -15914,8 +16984,8 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -15928,6 +16998,13 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -16001,8 +17078,8 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -16015,6 +17092,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -16099,8 +17183,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -16113,6 +17197,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -16197,8 +17288,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -16211,6 +17302,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -16295,8 +17393,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -16309,6 +17407,13 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -16393,8 +17498,8 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -16408,6 +17513,13 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -16481,8 +17593,8 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -16497,6 +17609,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -16591,8 +17710,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -16606,6 +17725,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -16683,8 +17809,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -16699,6 +17825,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -16803,8 +17936,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -16819,6 +17952,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -16924,8 +18064,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -16941,6 +18081,13 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -17056,8 +18203,8 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -17070,6 +18217,13 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -17143,8 +18297,8 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -17159,6 +18313,13 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -17264,8 +18425,8 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -17282,6 +18443,13 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -17405,8 +18573,8 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -17419,6 +18587,13 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -17498,6 +18673,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     *out += "\"apiCalls\" :\n";
     IndentSpacesJson(out, 1);
     *out += "[\n";
+    need_function_comma = false;
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -17510,6 +18686,13 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -17572,8 +18755,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -17587,6 +18770,13 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -17666,8 +18856,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -17682,6 +18872,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -17786,8 +18983,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -17801,6 +18998,13 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -17890,8 +19094,8 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -17906,6 +19110,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -17995,8 +19206,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -18010,6 +19221,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -18099,8 +19317,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -18115,6 +19333,13 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -18220,8 +19445,8 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -18236,6 +19461,13 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -18340,8 +19572,8 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -18357,6 +19589,13 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -18487,8 +19726,8 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -18503,6 +19742,13 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -18595,8 +19841,8 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -18611,6 +19857,13 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -18726,8 +19979,8 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -18744,6 +19997,13 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -18874,8 +20134,8 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -18891,6 +20151,13 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -19006,8 +20273,8 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -19022,6 +20289,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -19105,8 +20379,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -19122,6 +20396,13 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -19237,8 +20518,8 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -19253,6 +20534,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -19348,8 +20636,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -19365,6 +20653,13 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -19480,8 +20775,8 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -19495,6 +20790,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -19575,8 +20877,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -19592,6 +20894,13 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -19707,8 +21016,8 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -19724,6 +21033,13 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -19839,8 +21155,8 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -19853,6 +21169,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -19906,8 +21229,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -19920,6 +21243,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -19978,8 +21308,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -19991,6 +21321,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -20049,8 +21386,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -20063,6 +21400,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -20136,8 +21480,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -20151,6 +21495,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -20239,8 +21590,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -20253,6 +21604,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -20338,8 +21696,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -20351,6 +21709,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -20409,8 +21774,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -20424,6 +21789,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -20535,8 +21907,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -20552,6 +21924,13 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -20657,8 +22036,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -20670,6 +22049,13 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -20717,8 +22103,8 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -20735,6 +22121,13 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -20857,8 +22250,8 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -20872,6 +22265,13 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -20934,8 +22334,8 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -20950,6 +22350,13 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -21039,8 +22446,8 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -21054,6 +22461,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -21138,8 +22552,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -21154,6 +22568,13 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -21244,8 +22665,8 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -21260,6 +22681,13 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -21364,8 +22792,8 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -21380,6 +22808,13 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -21470,8 +22905,8 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -21486,6 +22921,13 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -21578,8 +23020,8 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -21593,6 +23035,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -21677,8 +23126,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -21692,6 +23141,13 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -21754,8 +23210,8 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -21769,6 +23225,13 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -21859,8 +23322,8 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -21874,6 +23337,13 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -21936,8 +23406,8 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -21951,6 +23421,13 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -22041,8 +23518,8 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -22059,6 +23536,13 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -22177,8 +23661,8 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -22194,6 +23678,13 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -22309,8 +23800,8 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -22323,6 +23814,13 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -22396,8 +23894,8 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -22413,6 +23911,13 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -22528,8 +24033,8 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -22542,6 +24047,13 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -22626,8 +24138,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -22640,6 +24152,13 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -22724,8 +24243,8 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -22737,6 +24256,13 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -22795,8 +24321,8 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -22810,6 +24336,13 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -22861,8 +24394,8 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -22876,6 +24409,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -22960,8 +24500,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -22975,6 +24515,13 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -23037,8 +24584,8 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -23052,6 +24599,13 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -23142,8 +24696,8 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -23157,6 +24711,13 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -23219,8 +24780,8 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -23234,6 +24795,13 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -23324,8 +24892,8 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -23340,6 +24908,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -23428,8 +25003,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -23444,6 +25019,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -23559,8 +25141,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -23575,6 +25157,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -23664,8 +25253,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -23679,6 +25268,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -23768,8 +25364,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -23784,6 +25380,13 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -23888,8 +25491,8 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -23903,6 +25506,13 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -23991,8 +25601,8 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -24006,6 +25616,13 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -24090,8 +25707,8 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -24104,6 +25721,13 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -24188,8 +25812,8 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -24203,6 +25827,13 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -24314,8 +25945,8 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -24331,6 +25962,13 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -24446,8 +26084,8 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -24460,6 +26098,13 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -24533,8 +26178,8 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -24549,6 +26194,13 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -24626,8 +26278,8 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -24641,6 +26293,13 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -24718,8 +26377,8 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -24733,6 +26392,13 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -24817,8 +26483,8 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -24836,6 +26502,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -24958,8 +26631,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -24976,6 +26649,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -25098,8 +26778,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -25114,6 +26794,13 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -25192,8 +26879,8 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -25207,6 +26894,13 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -25284,8 +26978,8 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -25298,6 +26992,13 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -25360,8 +27061,8 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -25377,6 +27078,13 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -25492,8 +27200,8 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -25508,6 +27216,13 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -25623,8 +27338,8 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -25639,6 +27354,13 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -25754,8 +27476,8 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -25771,6 +27493,13 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -25886,8 +27615,8 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -25900,6 +27629,13 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -25973,8 +27709,8 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -25992,6 +27728,13 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -26153,8 +27896,8 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -26168,6 +27911,13 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -26230,8 +27980,8 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -26244,6 +27994,13 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -26306,8 +28063,8 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -26319,6 +28076,13 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -26377,8 +28141,8 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -26389,6 +28153,13 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerEndEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -26421,8 +28192,8 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerEndEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -26434,6 +28205,13 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -26492,8 +28270,8 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -26510,6 +28288,13 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -26653,8 +28438,8 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -26669,6 +28454,13 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -26785,8 +28577,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -26801,6 +28593,13 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -26917,8 +28716,8 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -26933,6 +28732,13 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -27025,8 +28831,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -27040,6 +28846,13 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -27117,8 +28930,8 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -27135,6 +28948,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -27257,8 +29077,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -27272,6 +29092,13 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -27336,8 +29163,8 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -27355,6 +29182,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -27477,8 +29311,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -27495,6 +29329,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -27617,8 +29458,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -27636,6 +29477,13 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -27771,8 +29619,8 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -27788,6 +29636,13 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -27903,8 +29758,8 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -27924,6 +29779,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -28076,8 +29938,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -28093,6 +29955,13 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -28187,8 +30056,8 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -28204,6 +30073,13 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -28319,8 +30195,8 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -28333,6 +30209,13 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -28391,8 +30274,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -28403,6 +30286,13 @@ void VulkanJsonConsumer::Process_vkCmdEndConditionalRenderingEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -28435,8 +30325,8 @@ void VulkanJsonConsumer::Process_vkCmdEndConditionalRenderingEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -28449,6 +30339,13 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -28507,8 +30404,8 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -28520,6 +30417,13 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -28578,8 +30482,8 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -28594,6 +30498,13 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -28709,8 +30620,8 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -28723,6 +30634,13 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -28796,8 +30714,8 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -28812,6 +30730,13 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -28927,8 +30852,8 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -28941,6 +30866,13 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -29014,8 +30946,8 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -29031,6 +30963,13 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -29151,8 +31090,8 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -29165,6 +31104,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -29249,8 +31195,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -29265,6 +31211,13 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -29353,8 +31306,8 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -29368,6 +31321,13 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -29419,8 +31379,8 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -29435,6 +31395,13 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -29501,8 +31468,8 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -29517,6 +31484,13 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -29610,8 +31584,8 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -29626,6 +31600,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -29703,8 +31684,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -29719,6 +31700,13 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -29796,8 +31784,8 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -29812,6 +31800,13 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -29927,8 +31922,8 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -29944,6 +31939,13 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -30074,8 +32076,8 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -30090,6 +32092,13 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -30183,8 +32192,8 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -30199,6 +32208,13 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -30276,8 +32292,8 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -30292,6 +32308,13 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -30396,8 +32419,8 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -30412,6 +32435,13 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -30500,8 +32530,8 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -30516,6 +32546,13 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -30616,8 +32653,8 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -30633,6 +32670,13 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -30748,8 +32792,8 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -30765,6 +32809,13 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -30880,8 +32931,8 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -30895,6 +32946,13 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -30957,8 +33015,8 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -30971,6 +33029,13 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -31033,8 +33098,8 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -31046,6 +33111,13 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -31104,8 +33176,8 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -31116,6 +33188,13 @@ void VulkanJsonConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -31148,8 +33227,8 @@ void VulkanJsonConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -31161,6 +33240,13 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -31219,8 +33305,8 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -31232,6 +33318,13 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -31290,8 +33383,8 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -31302,6 +33395,13 @@ void VulkanJsonConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -31334,8 +33434,8 @@ void VulkanJsonConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -31347,6 +33447,13 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -31405,8 +33512,8 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -31421,6 +33528,13 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -31536,8 +33650,8 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -31550,6 +33664,13 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -31623,8 +33744,8 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -31638,6 +33759,13 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -31726,8 +33854,8 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -31742,6 +33870,13 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -31831,8 +33966,8 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -31846,6 +33981,13 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -31936,8 +34078,8 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -31950,6 +34092,13 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -32008,8 +34157,8 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -32022,6 +34171,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -32095,8 +34251,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -32111,6 +34267,13 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -32188,8 +34351,8 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -32205,6 +34368,13 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -32320,8 +34490,8 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -32334,6 +34504,13 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -32407,8 +34584,8 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -32423,6 +34600,13 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -32516,8 +34700,8 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -32532,6 +34716,13 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -32637,8 +34828,8 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -32652,6 +34843,13 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -32714,8 +34912,8 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -32729,6 +34927,13 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -32817,8 +35022,8 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -32832,6 +35037,13 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -32920,8 +35132,8 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -32937,6 +35149,13 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -33052,8 +35271,8 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -33066,6 +35285,13 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -33139,8 +35365,8 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -33153,6 +35379,13 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -33237,8 +35470,8 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -33252,6 +35485,13 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -33329,8 +35569,8 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -33349,6 +35589,13 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -33512,8 +35759,8 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -33527,6 +35774,13 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -33604,8 +35858,8 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -33630,6 +35884,13 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -33872,8 +36133,8 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -33890,6 +36151,13 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -34035,8 +36303,8 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -34053,6 +36321,13 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -34176,8 +36451,8 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -34192,6 +36467,13 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -34285,8 +36567,8 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -34302,6 +36584,13 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -34421,8 +36710,8 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -34436,6 +36725,13 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -34502,8 +36798,8 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -34519,6 +36815,13 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -34623,8 +36926,8 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -34640,6 +36943,13 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -34732,8 +37042,8 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -34748,6 +37058,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -34838,8 +37155,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -34855,6 +37172,13 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -34986,8 +37310,8 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -35001,6 +37325,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -35063,8 +37394,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -35079,6 +37410,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -35171,8 +37509,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -35189,6 +37527,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -35311,8 +37656,8 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -35327,6 +37672,13 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -35415,8 +37767,8 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -35429,6 +37781,13 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -35488,8 +37847,8 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -35502,6 +37861,13 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -35587,8 +37953,8 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -35602,6 +37968,13 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -35664,8 +38037,8 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -35676,6 +38049,13 @@ void VulkanJsonConsumer::Process_vkUninitializePerformanceApiINTEL(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -35708,8 +38088,8 @@ void VulkanJsonConsumer::Process_vkUninitializePerformanceApiINTEL(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -35722,6 +38102,13 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -35784,8 +38171,8 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -35798,6 +38185,13 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -35860,8 +38254,8 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -35874,6 +38268,13 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -35936,8 +38337,8 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -35951,6 +38352,13 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -36040,8 +38448,8 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -36054,6 +38462,13 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -36105,8 +38520,8 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -36119,6 +38534,13 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -36170,8 +38592,8 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -36185,6 +38607,13 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -36262,8 +38691,8 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -36277,6 +38706,13 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -36339,8 +38775,8 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -36356,6 +38792,13 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -36471,8 +38914,8 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -36488,6 +38931,13 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -36603,8 +39053,8 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -36618,6 +39068,13 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -36682,8 +39139,8 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -36698,6 +39155,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -36787,8 +39251,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -36803,6 +39267,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -36892,8 +39363,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -36909,6 +39380,13 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -37025,8 +39503,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -37039,6 +39517,13 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -37090,8 +39575,8 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -37104,6 +39589,13 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -37155,8 +39647,8 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -37170,6 +39662,13 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -37260,8 +39759,8 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -37277,6 +39776,13 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -37392,8 +39898,8 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -37407,6 +39913,13 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -37469,8 +39982,8 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }
@@ -37485,6 +39998,13 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     std::string outString = "";
     std::string *out = &outString;
     uint32_t indent = 5;
+
+    if (need_function_comma)
+    {
+        *out += ",\n";
+    }
+    need_function_comma = true;
+
     IndentSpacesJson(out, 2);  // TWP
     *out += "{\n";
     IndentSpacesJson(out, 3);  // TWP
@@ -37562,8 +40082,8 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
 
     IndentSpacesJson(out, 3);
     *out += "]\n";
-    IndentSpacesJson(out, 2);
-    *out += "},\n";
+    IndentSpacesJson(out, 2); // RRW
+    *out += "}";
 
     fprintf(GetFile(), "%s", outString.c_str());
 }

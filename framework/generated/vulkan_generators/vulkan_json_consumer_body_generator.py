@@ -84,6 +84,12 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         self.newline()
         self.wc('GFXRECON_BEGIN_NAMESPACE(gfxrecon)')
         self.wc('GFXRECON_BEGIN_NAMESPACE(decode)')
+        self.newline()
+        self.wc('// Bool to keep track of when a function needs to start with a \',\'')
+        self.wc('// because we print the comma closing a function at the start of the')
+        self.wc('// next function. We need to do this to avoid putting a comma')
+        self.wc('// after the last function in a frame.')
+        self.wc('static bool need_function_comma = false;')
 
     # Method override
     def endFile(self):
@@ -132,9 +138,13 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         self.wc('    std::string outString = "";')
         self.wc('    std::string *out = &outString;')
         self.wc('    uint32_t indent = 5;')
-
-        #TODO: @@@ Use IndentSpaces() for initial frameNumber:0 in some other file.
-
+        self.newline()
+        self.wc('    if (need_function_comma)')
+        self.wc('    {')
+        self.wc('        *out += ",\\n";')
+        self.wc('    }')
+        self.wc('    need_function_comma = true;')
+        self.newline()
         self.wc('    IndentSpacesJson(out, 2);  // TWP')
         self.wc('    *out += "{\\n";')
         self.wc('    IndentSpacesJson(out, 3);  // TWP')
@@ -181,13 +191,12 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         self.wc('    IndentSpacesJson(out, 3);')
         self.wc('    *out += "]\\n";')
 
+        self.wc('    IndentSpacesJson(out, 2); // RRW')
         if name != "vkQueuePresentKHR":
             # End of function
-            self.wc('    IndentSpacesJson(out, 2);')
-            self.wc('    *out += "},\\n";')         # TODO: Dont need a comma on last api call of file. Need to close apiCalls, frame, and prog.
+            self.wc('    *out += "}";')    # Note the lack of comma/newline. They are printed on the next func call.
         else:
-            # End of function and starting new frame
-            self.wc('    IndentSpacesJson(out, 2); // RRW')
+            # End function and start new frame
             self.wc('    *out += "}\\n";')
             self.newline()
             self.wc('    static uint32_t frameNumber = 0;')
@@ -204,6 +213,7 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
             self.wc('    *out += "\\"apiCalls\\" :\\n";')
             self.wc('    IndentSpacesJson(out, 1);')
             self.wc('    *out += "[\\n";')
+            self.wc('    need_function_comma = false;')
 
         # Send the function and args to the output file
         self.newline()
