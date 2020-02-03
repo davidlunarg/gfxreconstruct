@@ -196,7 +196,7 @@ class ValueToString(BaseGenerator):
                 self.wc('        ArrayToStringJson(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &pstruct_in.' +
                         value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); //UQA')
             elif value.fullType == "char" and value.isArray:
-                # A simple string array  @@@TODO: Might be able to handle other types of scalar arrays here
+                # A simple string array
                 self.wc('        IndentSpacesJson(out, indent); // UTW')
                 self.wc('        *out += "\\"value\\" : "; // TRH')
                 self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
@@ -354,7 +354,6 @@ class ValueToString(BaseGenerator):
 
         ###### Output nums
         else:     # 'unsigned int', 'uint32_t', 'uint64_t', 'size_t', and all others
-            #TODO: THIS else can't hang here if we already printed something else
             self.wc('    IndentSpacesJson(out, indent);')
             self.wc('    *out += "\\"value\\" : \\"";')
             self.wc('    UnsignedDecimalToStringJson(out, ' + pstruct + value.name + '); // UYW')
@@ -363,6 +362,5 @@ class ValueToString(BaseGenerator):
         if value.isPointer and value.name != "dpy":
             # Close off not nullptr block
             self.wc('    }')
-
 
         #}  For vi % cmd
