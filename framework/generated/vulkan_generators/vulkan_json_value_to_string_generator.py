@@ -28,7 +28,7 @@ class ValueToString(BaseGenerator):
         rval += str(self.isEnum(member.baseType)).lower() + ', '
         rval += str(self.isFlags(member.baseType)).lower() + ', '
         if self.isEnum(member.baseType) or self.isFlags(member.baseType):
-            rval +='EnumToString' + member.baseType.replace('Flags', 'FlagBits')+'Json'
+            rval +='EnumToString' + member.baseType.replace('Flags', 'FlagBits')
         else:
             rval +='nullptr';
         rval += '}'
@@ -326,14 +326,14 @@ class ValueToString(BaseGenerator):
               'FlagBits' in value.baseType):
             self.wc('    IndentSpacesJson(out, indent);')
             self.wc('    *out += "\\"value\\" : \\"";')
-            self.wc('    FlagsToStringJson(out, ' + pstruct + value.name + ', EnumToString' + value.baseType.replace('Flags', 'FlagBits') + 'Json); // URG')
+            self.wc('    FlagsToStringJson(out, ' + pstruct + value.name + ', EnumToString' + value.baseType.replace('Flags', 'FlagBits') + '); // URG')
             self.wc('    *out += "\\"\\n";')
 
         ###### Output enums
         elif self.isEnum(value.baseType):
             self.wc('    IndentSpacesJson(out, indent);')
             self.wc('    *out += "\\"value\\" : \\"";')
-            self.wc('    EnumToString' + value.baseType + 'Json(out, ' + pstruct + value.name + '); // ESA')
+            self.wc('    EnumToString' + value.baseType + '(out, ' + pstruct + value.name + '); // ESA')
             self.wc('    *out += "\\"\\n";')
 
         ###### Output functionptrs

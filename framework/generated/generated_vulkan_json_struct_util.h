@@ -24,7 +24,7 @@
 #define  GFXRECON_GENERATED_VULKAN_JSON_STRUCT_UTIL_H
 
 #include "format/platform_types.h"
-#include "generated/generated_vulkan_json_enum_util.h"
+#include "generated/generated_vulkan_ascii_enum_util.h"
 #include "util/defines.h"
 #include "util/json_utils.h"
 #include "vulkan/vulkan.h"
@@ -540,7 +540,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &ps
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -708,7 +708,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -1985,7 +1985,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties &p
     *out += "\"name\" : \"linearTilingFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->linearTilingFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->linearTilingFeatures, EnumToStringVkFormatFeatureFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -2002,7 +2002,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties &p
     *out += "\"name\" : \"optimalTilingFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->optimalTilingFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->optimalTilingFeatures, EnumToStringVkFormatFeatureFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -2019,7 +2019,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties &p
     *out += "\"name\" : \"bufferFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->bufferFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->bufferFeatures, EnumToStringVkFormatFeatureFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -2169,7 +2169,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatProperti
     *out += "\"name\" : \"sampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->sampleCounts, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3607,7 +3607,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"framebufferColorSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->framebufferColorSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->framebufferColorSampleCounts, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3624,7 +3624,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"framebufferDepthSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->framebufferDepthSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->framebufferDepthSampleCounts, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3641,7 +3641,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"framebufferStencilSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->framebufferStencilSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->framebufferStencilSampleCounts, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3658,7 +3658,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"framebufferNoAttachmentsSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->framebufferNoAttachmentsSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->framebufferNoAttachmentsSampleCounts, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3692,7 +3692,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"sampledImageColorSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampledImageColorSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->sampledImageColorSampleCounts, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3709,7 +3709,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"sampledImageIntegerSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampledImageIntegerSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->sampledImageIntegerSampleCounts, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3726,7 +3726,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"sampledImageDepthSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampledImageDepthSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->sampledImageDepthSampleCounts, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3743,7 +3743,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"sampledImageStencilSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampledImageStencilSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->sampledImageStencilSampleCounts, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -3760,7 +3760,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLimit
     *out += "\"name\" : \"storageImageSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->storageImageSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->storageImageSampleCounts, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4248,7 +4248,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
     *out += "\"name\" : \"deviceType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPhysicalDeviceTypeJson(out, pstruct->deviceType); // ESA
+    EnumToStringVkPhysicalDeviceType(out, pstruct->deviceType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4362,7 +4362,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyProperti
     *out += "\"name\" : \"queueFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->queueFlags, EnumToStringVkQueueFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->queueFlags, EnumToStringVkQueueFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4445,7 +4445,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryType &pstruct
     *out += "\"name\" : \"propertyFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->propertyFlags, EnumToStringVkMemoryPropertyFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->propertyFlags, EnumToStringVkMemoryPropertyFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4512,7 +4512,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryHeap &pstruct
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkMemoryHeapFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkMemoryHeapFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4641,7 +4641,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueCreateIn
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4684,7 +4684,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueCreateIn
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDeviceQueueCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDeviceQueueCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4780,7 +4780,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5179,7 +5179,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5279,7 +5279,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pWaitDstStageMask = {false, false, true, EnumToStringVkPipelineStageFlagBitsJson};
+        ScalarValueToStringStruct vinfo_pWaitDstStageMask = {false, false, true, EnumToStringVkPipelineStageFlagBits};
         ArrayToStringJson(out, indent, 0, "const VkPipelineStageFlags*", &pstruct_in.pWaitDstStageMask, "pWaitDstStageMask", pstruct->waitSemaphoreCount, vinfo_pWaitDstStageMask); // AUA
     }
     indent--;
@@ -5405,7 +5405,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateInfo 
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5498,7 +5498,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMappedMemoryRange &
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5675,7 +5675,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageFormatPr
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5708,7 +5708,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageFormatPr
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseImageFormatFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseImageFormatFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5909,7 +5909,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseMemoryBind &p
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseMemoryBindFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseMemoryBindFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6098,7 +6098,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresource &p
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6314,7 +6314,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryBi
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseMemoryBindFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSparseMemoryBindFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6425,7 +6425,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6711,7 +6711,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceCreateInfo &ps
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6754,7 +6754,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceCreateInfo &ps
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6787,7 +6787,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreCreateInfo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6863,7 +6863,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkEventCreateInfo &ps
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6939,7 +6939,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6999,7 +6999,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"name\" : \"queryType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkQueryTypeJson(out, pstruct->queryType); // ESA
+    EnumToStringVkQueryType(out, pstruct->queryType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7033,7 +7033,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"name\" : \"pipelineStatistics\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->pipelineStatistics, EnumToStringVkQueryPipelineStatisticFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->pipelineStatistics, EnumToStringVkQueryPipelineStatisticFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7066,7 +7066,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7109,7 +7109,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBufferCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBufferCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7143,7 +7143,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkBufferUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkBufferUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7160,7 +7160,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
     *out += "\"name\" : \"sharingMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSharingModeJson(out, pstruct->sharingMode); // ESA
+    EnumToStringVkSharingMode(out, pstruct->sharingMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7239,7 +7239,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferViewCreateInf
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7316,7 +7316,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferViewCreateInf
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    EnumToStringVkFormat(out, pstruct->format); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7383,7 +7383,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7426,7 +7426,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7443,7 +7443,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"name\" : \"imageType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageTypeJson(out, pstruct->imageType); // ESA
+    EnumToStringVkImageType(out, pstruct->imageType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7460,7 +7460,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    EnumToStringVkFormat(out, pstruct->format); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7527,7 +7527,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"name\" : \"samples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->samples, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->samples, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7544,7 +7544,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"name\" : \"tiling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageTilingJson(out, pstruct->tiling); // ESA
+    EnumToStringVkImageTiling(out, pstruct->tiling); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7561,7 +7561,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7578,7 +7578,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"name\" : \"sharingMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSharingModeJson(out, pstruct->sharingMode); // ESA
+    EnumToStringVkSharingMode(out, pstruct->sharingMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7641,7 +7641,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
     *out += "\"name\" : \"initialLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, pstruct->initialLayout); // ESA
+    EnumToStringVkImageLayout(out, pstruct->initialLayout); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7775,7 +7775,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkComponentMapping &p
     *out += "\"name\" : \"r\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkComponentSwizzleJson(out, pstruct->r); // ESA
+    EnumToStringVkComponentSwizzle(out, pstruct->r); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7792,7 +7792,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkComponentMapping &p
     *out += "\"name\" : \"g\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkComponentSwizzleJson(out, pstruct->g); // ESA
+    EnumToStringVkComponentSwizzle(out, pstruct->g); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7809,7 +7809,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkComponentMapping &p
     *out += "\"name\" : \"b\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkComponentSwizzleJson(out, pstruct->b); // ESA
+    EnumToStringVkComponentSwizzle(out, pstruct->b); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7826,7 +7826,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkComponentMapping &p
     *out += "\"name\" : \"a\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkComponentSwizzleJson(out, pstruct->a); // ESA
+    EnumToStringVkComponentSwizzle(out, pstruct->a); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7859,7 +7859,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceRan
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7960,7 +7960,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8003,7 +8003,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageViewCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageViewCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8037,7 +8037,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
     *out += "\"name\" : \"viewType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageViewTypeJson(out, pstruct->viewType); // ESA
+    EnumToStringVkImageViewType(out, pstruct->viewType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8054,7 +8054,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    EnumToStringVkFormat(out, pstruct->format); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8119,7 +8119,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleCreateI
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8162,7 +8162,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleCreateI
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkShaderModuleCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkShaderModuleCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8244,7 +8244,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCacheCreate
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8540,7 +8540,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8583,7 +8583,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineShaderStageCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineShaderStageCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8600,7 +8600,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
     *out += "\"name\" : \"stage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stage, EnumToStringVkShaderStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->stage, EnumToStringVkShaderStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8741,7 +8741,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkVertexInputBindingD
     *out += "\"name\" : \"inputRate\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkVertexInputRateJson(out, pstruct->inputRate); // ESA
+    EnumToStringVkVertexInputRate(out, pstruct->inputRate); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8808,7 +8808,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkVertexInputAttribut
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    EnumToStringVkFormat(out, pstruct->format); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8858,7 +8858,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9024,7 +9024,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInputAssemb
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9084,7 +9084,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInputAssemb
     *out += "\"name\" : \"topology\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPrimitiveTopologyJson(out, pstruct->topology); // ESA
+    EnumToStringVkPrimitiveTopology(out, pstruct->topology); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9134,7 +9134,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9493,7 +9493,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSta
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9659,7 +9659,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9753,7 +9753,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"polygonMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPolygonModeJson(out, pstruct->polygonMode); // ESA
+    EnumToStringVkPolygonMode(out, pstruct->polygonMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9770,7 +9770,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"cullMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->cullMode, EnumToStringVkCullModeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->cullMode, EnumToStringVkCullModeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9787,7 +9787,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"frontFace\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFrontFaceJson(out, pstruct->frontFace); // ESA
+    EnumToStringVkFrontFace(out, pstruct->frontFace); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9905,7 +9905,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9965,7 +9965,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
     *out += "\"name\" : \"rasterizationSamples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->rasterizationSamples, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->rasterizationSamples, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10095,7 +10095,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkStencilOpState &pst
     *out += "\"name\" : \"failOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStencilOpJson(out, pstruct->failOp); // ESA
+    EnumToStringVkStencilOp(out, pstruct->failOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10112,7 +10112,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkStencilOpState &pst
     *out += "\"name\" : \"passOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStencilOpJson(out, pstruct->passOp); // ESA
+    EnumToStringVkStencilOp(out, pstruct->passOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10129,7 +10129,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkStencilOpState &pst
     *out += "\"name\" : \"depthFailOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStencilOpJson(out, pstruct->depthFailOp); // ESA
+    EnumToStringVkStencilOp(out, pstruct->depthFailOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10146,7 +10146,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkStencilOpState &pst
     *out += "\"name\" : \"compareOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkCompareOpJson(out, pstruct->compareOp); // ESA
+    EnumToStringVkCompareOp(out, pstruct->compareOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10230,7 +10230,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10324,7 +10324,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
     *out += "\"name\" : \"depthCompareOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkCompareOpJson(out, pstruct->depthCompareOp); // ESA
+    EnumToStringVkCompareOp(out, pstruct->depthCompareOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10474,7 +10474,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"name\" : \"srcColorBlendFactor\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkBlendFactorJson(out, pstruct->srcColorBlendFactor); // ESA
+    EnumToStringVkBlendFactor(out, pstruct->srcColorBlendFactor); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10491,7 +10491,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"name\" : \"dstColorBlendFactor\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkBlendFactorJson(out, pstruct->dstColorBlendFactor); // ESA
+    EnumToStringVkBlendFactor(out, pstruct->dstColorBlendFactor); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10508,7 +10508,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"name\" : \"colorBlendOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkBlendOpJson(out, pstruct->colorBlendOp); // ESA
+    EnumToStringVkBlendOp(out, pstruct->colorBlendOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10525,7 +10525,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"name\" : \"srcAlphaBlendFactor\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkBlendFactorJson(out, pstruct->srcAlphaBlendFactor); // ESA
+    EnumToStringVkBlendFactor(out, pstruct->srcAlphaBlendFactor); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10542,7 +10542,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"name\" : \"dstAlphaBlendFactor\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkBlendFactorJson(out, pstruct->dstAlphaBlendFactor); // ESA
+    EnumToStringVkBlendFactor(out, pstruct->dstAlphaBlendFactor); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10559,7 +10559,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"name\" : \"alphaBlendOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkBlendOpJson(out, pstruct->alphaBlendOp); // ESA
+    EnumToStringVkBlendOp(out, pstruct->alphaBlendOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10576,7 +10576,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"name\" : \"colorWriteMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->colorWriteMask, EnumToStringVkColorComponentFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->colorWriteMask, EnumToStringVkColorComponentFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10609,7 +10609,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10686,7 +10686,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
     *out += "\"name\" : \"logicOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkLogicOpJson(out, pstruct->logicOp); // ESA
+    EnumToStringVkLogicOp(out, pstruct->logicOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10788,7 +10788,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDynamicStat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10876,7 +10876,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDynamicStat
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pDynamicStates = {false, true, false, EnumToStringVkDynamicStateJson};
+        ScalarValueToStringStruct vinfo_pDynamicStates = {false, true, false, EnumToStringVkDynamicState};
         ArrayToStringJson(out, indent, 0, "const VkDynamicState*", &pstruct_in.pDynamicStates, "pDynamicStates", pstruct->dynamicStateCount, vinfo_pDynamicStates); // AUA
     }
     indent--;
@@ -10910,7 +10910,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10953,7 +10953,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11368,7 +11368,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkComputePipelineCrea
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11411,7 +11411,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkComputePipelineCrea
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11511,7 +11511,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPushConstantRange &
     *out += "\"name\" : \"stageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11578,7 +11578,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineLayoutCreat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11745,7 +11745,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11788,7 +11788,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSamplerCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSamplerCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11805,7 +11805,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"name\" : \"magFilter\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFilterJson(out, pstruct->magFilter); // ESA
+    EnumToStringVkFilter(out, pstruct->magFilter); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11822,7 +11822,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"name\" : \"minFilter\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFilterJson(out, pstruct->minFilter); // ESA
+    EnumToStringVkFilter(out, pstruct->minFilter); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11839,7 +11839,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"name\" : \"mipmapMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSamplerMipmapModeJson(out, pstruct->mipmapMode); // ESA
+    EnumToStringVkSamplerMipmapMode(out, pstruct->mipmapMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11856,7 +11856,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"name\" : \"addressModeU\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSamplerAddressModeJson(out, pstruct->addressModeU); // ESA
+    EnumToStringVkSamplerAddressMode(out, pstruct->addressModeU); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11873,7 +11873,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"name\" : \"addressModeV\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSamplerAddressModeJson(out, pstruct->addressModeV); // ESA
+    EnumToStringVkSamplerAddressMode(out, pstruct->addressModeV); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11890,7 +11890,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"name\" : \"addressModeW\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSamplerAddressModeJson(out, pstruct->addressModeW); // ESA
+    EnumToStringVkSamplerAddressMode(out, pstruct->addressModeW); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11975,7 +11975,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"name\" : \"compareOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkCompareOpJson(out, pstruct->compareOp); // ESA
+    EnumToStringVkCompareOp(out, pstruct->compareOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12026,7 +12026,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
     *out += "\"name\" : \"borderColor\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkBorderColorJson(out, pstruct->borderColor); // ESA
+    EnumToStringVkBorderColor(out, pstruct->borderColor); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12093,7 +12093,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"name\" : \"descriptorType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDescriptorTypeJson(out, pstruct->descriptorType); // ESA
+    EnumToStringVkDescriptorType(out, pstruct->descriptorType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12127,7 +12127,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"name\" : \"stageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12189,7 +12189,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12232,7 +12232,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDescriptorSetLayoutCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDescriptorSetLayoutCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12310,7 +12310,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolSize 
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDescriptorTypeJson(out, pstruct->type); // ESA
+    EnumToStringVkDescriptorType(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12360,7 +12360,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolCreat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12403,7 +12403,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolCreat
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDescriptorPoolCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDescriptorPoolCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12498,7 +12498,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetAlloca
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12654,7 +12654,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorImageInfo
     *out += "\"name\" : \"imageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, pstruct->imageLayout); // ESA
+    EnumToStringVkImageLayout(out, pstruct->imageLayout); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12754,7 +12754,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12865,7 +12865,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
     *out += "\"name\" : \"descriptorType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDescriptorTypeJson(out, pstruct->descriptorType); // ESA
+    EnumToStringVkDescriptorType(out, pstruct->descriptorType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12983,7 +12983,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCopyDescriptorSet &
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13161,7 +13161,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13204,7 +13204,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFramebufferCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFramebufferCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13351,7 +13351,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkAttachmentDescriptionFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkAttachmentDescriptionFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13368,7 +13368,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    EnumToStringVkFormat(out, pstruct->format); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13385,7 +13385,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"samples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->samples, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->samples, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13402,7 +13402,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"loadOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkAttachmentLoadOpJson(out, pstruct->loadOp); // ESA
+    EnumToStringVkAttachmentLoadOp(out, pstruct->loadOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13419,7 +13419,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"storeOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkAttachmentStoreOpJson(out, pstruct->storeOp); // ESA
+    EnumToStringVkAttachmentStoreOp(out, pstruct->storeOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13436,7 +13436,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"stencilLoadOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkAttachmentLoadOpJson(out, pstruct->stencilLoadOp); // ESA
+    EnumToStringVkAttachmentLoadOp(out, pstruct->stencilLoadOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13453,7 +13453,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"stencilStoreOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkAttachmentStoreOpJson(out, pstruct->stencilStoreOp); // ESA
+    EnumToStringVkAttachmentStoreOp(out, pstruct->stencilStoreOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13470,7 +13470,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"initialLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, pstruct->initialLayout); // ESA
+    EnumToStringVkImageLayout(out, pstruct->initialLayout); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13487,7 +13487,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"finalLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, pstruct->finalLayout); // ESA
+    EnumToStringVkImageLayout(out, pstruct->finalLayout); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13537,7 +13537,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
     *out += "\"name\" : \"layout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, pstruct->layout); // ESA
+    EnumToStringVkImageLayout(out, pstruct->layout); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13570,7 +13570,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSubpassDescriptionFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSubpassDescriptionFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13587,7 +13587,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription 
     *out += "\"name\" : \"pipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPipelineBindPointJson(out, pstruct->pipelineBindPoint); // ESA
+    EnumToStringVkPipelineBindPoint(out, pstruct->pipelineBindPoint); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13846,7 +13846,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"name\" : \"srcStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->srcStageMask, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13863,7 +13863,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"name\" : \"dstStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->dstStageMask, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13880,7 +13880,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"name\" : \"srcAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13897,7 +13897,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"name\" : \"dstAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13914,7 +13914,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency &
     *out += "\"name\" : \"dependencyFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dependencyFlags, EnumToStringVkDependencyFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->dependencyFlags, EnumToStringVkDependencyFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13947,7 +13947,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13990,7 +13990,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkRenderPassCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkRenderPassCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14158,7 +14158,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandPoolCreateIn
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14201,7 +14201,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandPoolCreateIn
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkCommandPoolCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkCommandPoolCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14251,7 +14251,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferAlloca
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14311,7 +14311,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferAlloca
     *out += "\"name\" : \"level\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkCommandBufferLevelJson(out, pstruct->level); // ESA
+    EnumToStringVkCommandBufferLevel(out, pstruct->level); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14361,7 +14361,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14472,7 +14472,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"name\" : \"queryFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->queryFlags, EnumToStringVkQueryControlFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->queryFlags, EnumToStringVkQueryControlFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14489,7 +14489,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"name\" : \"pipelineStatistics\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->pipelineStatistics, EnumToStringVkQueryPipelineStatisticFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->pipelineStatistics, EnumToStringVkQueryPipelineStatisticFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14522,7 +14522,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferBeginI
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14565,7 +14565,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferBeginI
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkCommandBufferUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkCommandBufferUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14693,7 +14693,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSubresourceLay
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15268,7 +15268,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkClearAttachment &ps
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15496,7 +15496,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryBarrier &pstr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15539,7 +15539,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryBarrier &pstr
     *out += "\"name\" : \"srcAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15556,7 +15556,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryBarrier &pstr
     *out += "\"name\" : \"dstAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15589,7 +15589,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15632,7 +15632,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"name\" : \"srcAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15649,7 +15649,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
     *out += "\"name\" : \"dstAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15767,7 +15767,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15810,7 +15810,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"name\" : \"srcAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15827,7 +15827,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"name\" : \"dstAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15844,7 +15844,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"name\" : \"oldLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, pstruct->oldLayout); // ESA
+    EnumToStringVkImageLayout(out, pstruct->oldLayout); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15861,7 +15861,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
     *out += "\"name\" : \"newLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, pstruct->newLayout); // ESA
+    EnumToStringVkImageLayout(out, pstruct->newLayout); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15961,7 +15961,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassBeginInfo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16367,7 +16367,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16427,7 +16427,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"name\" : \"supportedStages\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedStages, EnumToStringVkShaderStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->supportedStages, EnumToStringVkShaderStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16444,7 +16444,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"name\" : \"supportedOperations\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedOperations, EnumToStringVkSubgroupFeatureFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->supportedOperations, EnumToStringVkSubgroupFeatureFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16494,7 +16494,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryInf
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16604,7 +16604,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryInfo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16714,7 +16714,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice16Bit
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16841,7 +16841,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedRequ
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16934,7 +16934,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedAllo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17027,7 +17027,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateFlags
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17070,7 +17070,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateFlags
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkMemoryAllocateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkMemoryAllocateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17120,7 +17120,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupRenderPa
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17241,7 +17241,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupCommandB
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17317,7 +17317,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17514,7 +17514,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupBindSpar
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17607,7 +17607,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryDev
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17712,7 +17712,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryDevi
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17862,7 +17862,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceGroup
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17979,7 +17979,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupDeviceCr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18084,7 +18084,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryRequire
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18160,7 +18160,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryRequirem
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18236,7 +18236,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSparseMemoryRe
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18312,7 +18312,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryRequirements2
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18387,7 +18387,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryRe
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18462,7 +18462,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18537,7 +18537,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18612,7 +18612,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties2 &
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18687,7 +18687,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatProperti
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18762,7 +18762,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18805,7 +18805,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    EnumToStringVkFormat(out, pstruct->format); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18822,7 +18822,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageTypeJson(out, pstruct->type); // ESA
+    EnumToStringVkImageType(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18839,7 +18839,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"tiling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageTilingJson(out, pstruct->tiling); // ESA
+    EnumToStringVkImageTiling(out, pstruct->tiling); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18856,7 +18856,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18873,7 +18873,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18906,7 +18906,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyProperti
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18981,7 +18981,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19056,7 +19056,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageFormatPr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19131,7 +19131,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19174,7 +19174,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    EnumToStringVkFormat(out, pstruct->format); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19191,7 +19191,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageTypeJson(out, pstruct->type); // ESA
+    EnumToStringVkImageType(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19208,7 +19208,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"name\" : \"samples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->samples, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->samples, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19225,7 +19225,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19242,7 +19242,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
     *out += "\"name\" : \"tiling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageTilingJson(out, pstruct->tiling); // ESA
+    EnumToStringVkImageTiling(out, pstruct->tiling); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19275,7 +19275,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePoint
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19318,7 +19318,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePoint
     *out += "\"name\" : \"pointClippingBehavior\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPointClippingBehaviorJson(out, pstruct->pointClippingBehavior); // ESA
+    EnumToStringVkPointClippingBehavior(out, pstruct->pointClippingBehavior); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19385,7 +19385,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInputAttachmentAspe
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19418,7 +19418,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassInputAtta
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19522,7 +19522,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewUsageCreat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19565,7 +19565,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewUsageCreat
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19598,7 +19598,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19641,7 +19641,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
     *out += "\"name\" : \"domainOrigin\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkTessellationDomainOriginJson(out, pstruct->domainOrigin); // ESA
+    EnumToStringVkTessellationDomainOrigin(out, pstruct->domainOrigin); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19674,7 +19674,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19871,7 +19871,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19981,7 +19981,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20074,7 +20074,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVaria
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20167,7 +20167,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceProte
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20243,7 +20243,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceProte
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20319,7 +20319,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueInfo2 &p
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20362,7 +20362,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueInfo2 &p
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDeviceQueueCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDeviceQueueCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20429,7 +20429,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkProtectedSubmitInfo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20505,7 +20505,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20548,7 +20548,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    EnumToStringVkFormat(out, pstruct->format); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20565,7 +20565,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"name\" : \"ycbcrModel\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSamplerYcbcrModelConversionJson(out, pstruct->ycbcrModel); // ESA
+    EnumToStringVkSamplerYcbcrModelConversion(out, pstruct->ycbcrModel); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20582,7 +20582,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"name\" : \"ycbcrRange\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSamplerYcbcrRangeJson(out, pstruct->ycbcrRange); // ESA
+    EnumToStringVkSamplerYcbcrRange(out, pstruct->ycbcrRange); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20615,7 +20615,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"name\" : \"xChromaOffset\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkChromaLocationJson(out, pstruct->xChromaOffset); // ESA
+    EnumToStringVkChromaLocation(out, pstruct->xChromaOffset); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20632,7 +20632,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"name\" : \"yChromaOffset\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkChromaLocationJson(out, pstruct->yChromaOffset); // ESA
+    EnumToStringVkChromaLocation(out, pstruct->yChromaOffset); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20649,7 +20649,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"name\" : \"chromaFilter\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFilterJson(out, pstruct->chromaFilter); // ESA
+    EnumToStringVkFilter(out, pstruct->chromaFilter); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20699,7 +20699,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20775,7 +20775,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImagePlaneMemor
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20818,7 +20818,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImagePlaneMemor
     *out += "\"name\" : \"planeAspect\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->planeAspect, EnumToStringVkImageAspectFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->planeAspect, EnumToStringVkImageAspectFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20851,7 +20851,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePlaneMemoryReq
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20894,7 +20894,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePlaneMemoryReq
     *out += "\"name\" : \"planeAspect\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->planeAspect, EnumToStringVkImageAspectFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->planeAspect, EnumToStringVkImageAspectFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20927,7 +20927,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21003,7 +21003,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21130,7 +21130,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"name\" : \"descriptorType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDescriptorTypeJson(out, pstruct->descriptorType); // ESA
+    EnumToStringVkDescriptorType(out, pstruct->descriptorType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21197,7 +21197,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21302,7 +21302,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"name\" : \"templateType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDescriptorUpdateTemplateTypeJson(out, pstruct->templateType); // ESA
+    EnumToStringVkDescriptorUpdateTemplateType(out, pstruct->templateType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21336,7 +21336,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
     *out += "\"name\" : \"pipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPipelineBindPointJson(out, pstruct->pipelineBindPoint); // ESA
+    EnumToStringVkPipelineBindPoint(out, pstruct->pipelineBindPoint); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21403,7 +21403,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryPrope
     *out += "\"name\" : \"externalMemoryFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->externalMemoryFeatures, EnumToStringVkExternalMemoryFeatureFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->externalMemoryFeatures, EnumToStringVkExternalMemoryFeatureFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21420,7 +21420,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryPrope
     *out += "\"name\" : \"exportFromImportedHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21437,7 +21437,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryPrope
     *out += "\"name\" : \"compatibleHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21470,7 +21470,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21513,7 +21513,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21546,7 +21546,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21621,7 +21621,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21664,7 +21664,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBufferCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBufferCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21681,7 +21681,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkBufferUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkBufferUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21698,7 +21698,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21731,7 +21731,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalBufferPrope
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21806,7 +21806,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIDPro
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21971,7 +21971,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22014,7 +22014,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22047,7 +22047,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryBuffe
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22090,7 +22090,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryBuffe
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22123,7 +22123,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22166,7 +22166,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22199,7 +22199,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22242,7 +22242,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalFenceHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22275,7 +22275,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22318,7 +22318,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
     *out += "\"name\" : \"exportFromImportedHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalFenceHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22335,7 +22335,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
     *out += "\"name\" : \"compatibleHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalFenceHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22352,7 +22352,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
     *out += "\"name\" : \"externalFenceFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->externalFenceFeatures, EnumToStringVkExternalFenceFeatureFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->externalFenceFeatures, EnumToStringVkExternalFenceFeatureFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22385,7 +22385,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceCreateIn
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22428,7 +22428,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceCreateIn
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalFenceHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22461,7 +22461,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreCrea
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22504,7 +22504,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreCrea
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22537,7 +22537,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22580,7 +22580,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalSemaphoreHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22613,7 +22613,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22656,7 +22656,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
     *out += "\"name\" : \"exportFromImportedHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22673,7 +22673,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
     *out += "\"name\" : \"compatibleHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalSemaphoreHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22690,7 +22690,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
     *out += "\"name\" : \"externalSemaphoreFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->externalSemaphoreFeatures, EnumToStringVkExternalSemaphoreFeatureFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->externalSemaphoreFeatures, EnumToStringVkExternalSemaphoreFeatureFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22723,7 +22723,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMaint
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22816,7 +22816,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22892,7 +22892,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23067,7 +23067,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedTransforms\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23084,7 +23084,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"currentTransform\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->currentTransform, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->currentTransform, EnumToStringVkSurfaceTransformFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23101,7 +23101,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedCompositeAlpha\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedCompositeAlpha, EnumToStringVkCompositeAlphaFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->supportedCompositeAlpha, EnumToStringVkCompositeAlphaFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23118,7 +23118,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedUsageFlags, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->supportedUsageFlags, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23151,7 +23151,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFormatKHR &p
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    EnumToStringVkFormat(out, pstruct->format); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23168,7 +23168,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFormatKHR &p
     *out += "\"name\" : \"colorSpace\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkColorSpaceKHRJson(out, pstruct->colorSpace); // ESA
+    EnumToStringVkColorSpaceKHR(out, pstruct->colorSpace); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23201,7 +23201,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23244,7 +23244,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSwapchainCreateFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSwapchainCreateFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23295,7 +23295,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"name\" : \"imageFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->imageFormat); // ESA
+    EnumToStringVkFormat(out, pstruct->imageFormat); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23312,7 +23312,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"name\" : \"imageColorSpace\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkColorSpaceKHRJson(out, pstruct->imageColorSpace); // ESA
+    EnumToStringVkColorSpaceKHR(out, pstruct->imageColorSpace); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23362,7 +23362,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"name\" : \"imageUsage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->imageUsage, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->imageUsage, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23379,7 +23379,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"name\" : \"imageSharingMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSharingModeJson(out, pstruct->imageSharingMode); // ESA
+    EnumToStringVkSharingMode(out, pstruct->imageSharingMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23442,7 +23442,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"name\" : \"preTransform\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->preTransform, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->preTransform, EnumToStringVkSurfaceTransformFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23459,7 +23459,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"name\" : \"compositeAlpha\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->compositeAlpha, EnumToStringVkCompositeAlphaFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->compositeAlpha, EnumToStringVkCompositeAlphaFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23476,7 +23476,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
     *out += "\"name\" : \"presentMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPresentModeKHRJson(out, pstruct->presentMode); // ESA
+    EnumToStringVkPresentModeKHR(out, pstruct->presentMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23543,7 +23543,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23718,7 +23718,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pResults = {false, true, false, EnumToStringVkResultJson};
+        ScalarValueToStringStruct vinfo_pResults = {false, true, false, EnumToStringVkResult};
         ArrayToStringJson(out, indent, 0, "VkResult*", &pstruct_in.pResults, "pResults", pstruct->swapchainCount, vinfo_pResults); // AUA
     }
     indent--;
@@ -23752,7 +23752,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSwapchainCreat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23828,7 +23828,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemorySwap
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23921,7 +23921,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAcquireNextImageInf
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24065,7 +24065,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentC
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24132,7 +24132,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentC
     *out += "\"name\" : \"modes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->modes, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->modes, EnumToStringVkDeviceGroupPresentModeFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24165,7 +24165,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentI
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24254,7 +24254,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentI
     *out += "\"name\" : \"mode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->mode, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->mode, EnumToStringVkDeviceGroupPresentModeFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24287,7 +24287,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSwapchai
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24330,7 +24330,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSwapchai
     *out += "\"name\" : \"modes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->modes, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->modes, EnumToStringVkDeviceGroupPresentModeFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24441,7 +24441,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPropertiesKH
     *out += "\"name\" : \"supportedTransforms\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24606,7 +24606,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeCreateIn
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24698,7 +24698,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneCapabil
     *out += "\"name\" : \"supportedAlpha\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedAlpha, EnumToStringVkDisplayPlaneAlphaFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->supportedAlpha, EnumToStringVkDisplayPlaneAlphaFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24909,7 +24909,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25020,7 +25020,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
     *out += "\"name\" : \"transform\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->transform, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->transform, EnumToStringVkSurfaceTransformFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25054,7 +25054,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
     *out += "\"name\" : \"alphaMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->alphaMode, EnumToStringVkDisplayPlaneAlphaFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->alphaMode, EnumToStringVkDisplayPlaneAlphaFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25103,7 +25103,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPresentInfoK
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25211,7 +25211,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkXlibSurfaceCreateIn
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25321,7 +25321,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkXcbSurfaceCreateInf
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25443,7 +25443,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWaylandSurfaceCreat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25577,7 +25577,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidSurfaceCreat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25682,7 +25682,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32SurfaceCreateI
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25816,7 +25816,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25859,7 +25859,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25950,7 +25950,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26085,7 +26085,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryWin32HandlePr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26161,7 +26161,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetWin32Handl
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26221,7 +26221,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetWin32Handl
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26254,7 +26254,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryFdInfoK
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26297,7 +26297,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryFdInfoK
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26347,7 +26347,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryFdPropertiesK
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26423,7 +26423,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetFdInfoKHR 
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26483,7 +26483,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetFdInfoKHR 
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26516,7 +26516,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26754,7 +26754,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26814,7 +26814,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreImportFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreImportFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26831,7 +26831,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalSemaphoreHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26922,7 +26922,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreWin3
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27057,7 +27057,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkD3D12FenceSubmitInf
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27208,7 +27208,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetWin32Ha
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27268,7 +27268,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetWin32Ha
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalSemaphoreHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27301,7 +27301,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreFdIn
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27361,7 +27361,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreFdIn
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreImportFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreImportFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27378,7 +27378,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreFdIn
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalSemaphoreHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27428,7 +27428,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetFdInfoK
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27488,7 +27488,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetFdInfoK
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalSemaphoreHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalSemaphoreHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27521,7 +27521,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePushD
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27597,7 +27597,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27816,7 +27816,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentRegionsKHR &
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27920,7 +27920,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27996,7 +27996,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28039,7 +28039,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkImageCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28056,7 +28056,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->usage, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28152,7 +28152,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pViewFormats = {false, true, false, EnumToStringVkFormatJson};
+        ScalarValueToStringStruct vinfo_pViewFormats = {false, true, false, EnumToStringVkFormat};
         ArrayToStringJson(out, indent, 0, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUA
     }
     indent--;
@@ -28186,7 +28186,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28290,7 +28290,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassAttachmen
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28395,7 +28395,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28438,7 +28438,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkAttachmentDescriptionFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkAttachmentDescriptionFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28455,7 +28455,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    EnumToStringVkFormat(out, pstruct->format); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28472,7 +28472,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"samples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->samples, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->samples, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28489,7 +28489,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"loadOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkAttachmentLoadOpJson(out, pstruct->loadOp); // ESA
+    EnumToStringVkAttachmentLoadOp(out, pstruct->loadOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28506,7 +28506,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"storeOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkAttachmentStoreOpJson(out, pstruct->storeOp); // ESA
+    EnumToStringVkAttachmentStoreOp(out, pstruct->storeOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28523,7 +28523,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"stencilLoadOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkAttachmentLoadOpJson(out, pstruct->stencilLoadOp); // ESA
+    EnumToStringVkAttachmentLoadOp(out, pstruct->stencilLoadOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28540,7 +28540,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"stencilStoreOp\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkAttachmentStoreOpJson(out, pstruct->stencilStoreOp); // ESA
+    EnumToStringVkAttachmentStoreOp(out, pstruct->stencilStoreOp); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28557,7 +28557,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"initialLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, pstruct->initialLayout); // ESA
+    EnumToStringVkImageLayout(out, pstruct->initialLayout); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28574,7 +28574,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
     *out += "\"name\" : \"finalLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, pstruct->finalLayout); // ESA
+    EnumToStringVkImageLayout(out, pstruct->finalLayout); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28607,7 +28607,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28667,7 +28667,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
     *out += "\"name\" : \"layout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, pstruct->layout); // ESA
+    EnumToStringVkImageLayout(out, pstruct->layout); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28684,7 +28684,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
     *out += "\"name\" : \"aspectMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->aspectMask, EnumToStringVkImageAspectFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28717,7 +28717,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28760,7 +28760,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSubpassDescriptionFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSubpassDescriptionFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28777,7 +28777,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
     *out += "\"name\" : \"pipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPipelineBindPointJson(out, pstruct->pipelineBindPoint); // ESA
+    EnumToStringVkPipelineBindPoint(out, pstruct->pipelineBindPoint); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29019,7 +29019,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29096,7 +29096,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"name\" : \"srcStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->srcStageMask, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29113,7 +29113,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"name\" : \"dstStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->dstStageMask, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29130,7 +29130,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"name\" : \"srcAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->srcAccessMask, EnumToStringVkAccessFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29147,7 +29147,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"name\" : \"dstAccessMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->dstAccessMask, EnumToStringVkAccessFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29164,7 +29164,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
     *out += "\"name\" : \"dependencyFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->dependencyFlags, EnumToStringVkDependencyFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->dependencyFlags, EnumToStringVkDependencyFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29214,7 +29214,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29257,7 +29257,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkRenderPassCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkRenderPassCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29471,7 +29471,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassBeginInfoKHR
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29514,7 +29514,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassBeginInfoKHR
     *out += "\"name\" : \"contents\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSubpassContentsJson(out, pstruct->contents); // ESA
+    EnumToStringVkSubpassContents(out, pstruct->contents); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29547,7 +29547,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassEndInfoKHR &
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29606,7 +29606,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSharedPresentSurfac
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29649,7 +29649,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSharedPresentSurfac
     *out += "\"name\" : \"sharedPresentSupportedUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sharedPresentSupportedUsageFlags, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->sharedPresentSupportedUsageFlags, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29682,7 +29682,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29742,7 +29742,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceImportFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceImportFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29759,7 +29759,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalFenceHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29850,7 +29850,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceWin32Han
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29985,7 +29985,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetWin32Handle
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30045,7 +30045,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetWin32Handle
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalFenceHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30078,7 +30078,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceFdInfoKH
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30138,7 +30138,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceFdInfoKH
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceImportFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkFenceImportFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30155,7 +30155,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceFdInfoKH
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalFenceHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30205,7 +30205,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetFdInfoKHR &
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30265,7 +30265,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetFdInfoKHR &
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalFenceHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalFenceHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30298,7 +30298,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSurfa
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30374,7 +30374,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30449,7 +30449,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFormat2KHR &
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30524,7 +30524,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayProperties2K
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30599,7 +30599,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlanePropert
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30674,7 +30674,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeProperti
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30749,7 +30749,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneInfo2KH
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30842,7 +30842,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneCapabil
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30917,7 +30917,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatListCrea
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30988,7 +30988,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatListCrea
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pViewFormats = {false, true, false, EnumToStringVkFormatJson};
+        ScalarValueToStringStruct vinfo_pViewFormats = {false, true, false, EnumToStringVkFormat};
         ArrayToStringJson(out, indent, 0, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUA
     }
     indent--;
@@ -31022,7 +31022,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31098,7 +31098,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice8BitS
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31208,7 +31208,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31301,7 +31301,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31478,7 +31478,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDrive
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31521,7 +31521,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDrive
     *out += "\"name\" : \"driverID\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDriverIdKHRJson(out, pstruct->driverID); // ESA
+    EnumToStringVkDriverIdKHR(out, pstruct->driverID); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31620,7 +31620,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31663,7 +31663,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"name\" : \"denormBehaviorIndependence\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkShaderFloatControlsIndependenceKHRJson(out, pstruct->denormBehaviorIndependence); // ESA
+    EnumToStringVkShaderFloatControlsIndependenceKHR(out, pstruct->denormBehaviorIndependence); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31680,7 +31680,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
     *out += "\"name\" : \"roundingModeIndependence\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkShaderFloatControlsIndependenceKHRJson(out, pstruct->roundingModeIndependence); // ESA
+    EnumToStringVkShaderFloatControlsIndependenceKHR(out, pstruct->roundingModeIndependence); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31968,7 +31968,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescriptionD
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32011,7 +32011,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescriptionD
     *out += "\"name\" : \"depthResolveMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->depthResolveMode, EnumToStringVkResolveModeFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->depthResolveMode, EnumToStringVkResolveModeFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32028,7 +32028,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescriptionD
     *out += "\"name\" : \"stencilResolveMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stencilResolveMode, EnumToStringVkResolveModeFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->stencilResolveMode, EnumToStringVkResolveModeFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32089,7 +32089,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32132,7 +32132,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"name\" : \"supportedDepthResolveModes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedDepthResolveModes, EnumToStringVkResolveModeFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->supportedDepthResolveModes, EnumToStringVkResolveModeFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32149,7 +32149,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"name\" : \"supportedStencilResolveModes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedStencilResolveModes, EnumToStringVkResolveModeFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->supportedStencilResolveModes, EnumToStringVkResolveModeFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32216,7 +32216,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTimel
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32292,7 +32292,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTimel
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32368,7 +32368,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreTypeCreate
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32411,7 +32411,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreTypeCreate
     *out += "\"name\" : \"semaphoreType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSemaphoreTypeKHRJson(out, pstruct->semaphoreType); // ESA
+    EnumToStringVkSemaphoreTypeKHR(out, pstruct->semaphoreType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32461,7 +32461,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkTimelineSemaphoreSu
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32612,7 +32612,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32655,7 +32655,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreWaitFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkSemaphoreWaitFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32763,7 +32763,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreSignalInfo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32856,7 +32856,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVulka
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32966,7 +32966,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceProtectedCap
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33042,7 +33042,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceUnifo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33118,7 +33118,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePipel
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33194,7 +33194,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInfoKHR &ps
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33270,7 +33270,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableP
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33313,7 +33313,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableP
     *out += "\"name\" : \"stages\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stages, EnumToStringVkShaderStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->stages, EnumToStringVkShaderStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33413,7 +33413,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33590,7 +33590,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33683,7 +33683,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPipelineExecutableStatisticFormatKHRJson(out, pstruct->format); // ESA
+    EnumToStringVkPipelineExecutableStatisticFormatKHR(out, pstruct->format); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33732,7 +33732,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33904,7 +33904,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugReportCallback
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33947,7 +33947,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugReportCallback
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDebugReportFlagBitsEXTJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkDebugReportFlagBitsEXT); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34026,7 +34026,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34069,7 +34069,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"rasterizationOrder\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkRasterizationOrderAMDJson(out, pstruct->rasterizationOrder); // ESA
+    EnumToStringVkRasterizationOrderAMD(out, pstruct->rasterizationOrder); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34102,7 +34102,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectNa
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34145,7 +34145,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectNa
     *out += "\"name\" : \"objectType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDebugReportObjectTypeEXTJson(out, pstruct->objectType); // ESA
+    EnumToStringVkDebugReportObjectTypeEXT(out, pstruct->objectType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34224,7 +34224,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectTa
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34267,7 +34267,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectTa
     *out += "\"name\" : \"objectType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDebugReportObjectTypeEXTJson(out, pstruct->objectType); // ESA
+    EnumToStringVkDebugReportObjectTypeEXT(out, pstruct->objectType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34380,7 +34380,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerMarkerIn
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34492,7 +34492,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34568,7 +34568,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34644,7 +34644,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34737,7 +34737,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34830,7 +34830,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35059,7 +35059,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35152,7 +35152,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewHandleInfo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35212,7 +35212,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewHandleInfo
     *out += "\"name\" : \"descriptorType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDescriptorTypeJson(out, pstruct->descriptorType); // ESA
+    EnumToStringVkDescriptorType(out, pstruct->descriptorType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35262,7 +35262,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkTextureLODGatherFor
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35439,7 +35439,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderStatisticsInf
     *out += "\"name\" : \"shaderStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->shaderStageMask, EnumToStringVkShaderStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->shaderStageMask, EnumToStringVkShaderStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35580,7 +35580,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkStreamDescriptorSur
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35673,7 +35673,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCorne
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35765,7 +35765,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
     *out += "\"name\" : \"externalMemoryFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->externalMemoryFeatures, EnumToStringVkExternalMemoryFeatureFlagBitsNVJson); // URG
+    FlagsToStringJson(out, pstruct->externalMemoryFeatures, EnumToStringVkExternalMemoryFeatureFlagBitsNV); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35782,7 +35782,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
     *out += "\"name\" : \"exportFromImportedHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
+    FlagsToStringJson(out, pstruct->exportFromImportedHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNV); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35799,7 +35799,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
     *out += "\"name\" : \"compatibleHandleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
+    FlagsToStringJson(out, pstruct->compatibleHandleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNV); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35832,7 +35832,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35875,7 +35875,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNV); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35908,7 +35908,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35951,7 +35951,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
     *out += "\"name\" : \"handleTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
+    FlagsToStringJson(out, pstruct->handleTypes, EnumToStringVkExternalMemoryHandleTypeFlagBitsNV); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35984,7 +35984,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36027,7 +36027,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNV); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36089,7 +36089,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36195,7 +36195,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36433,7 +36433,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFlagsEXT 
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36504,7 +36504,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFlagsEXT 
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pDisabledValidationChecks = {false, true, false, EnumToStringVkValidationCheckEXTJson};
+        ScalarValueToStringStruct vinfo_pDisabledValidationChecks = {false, true, false, EnumToStringVkValidationCheckEXT};
         ArrayToStringJson(out, indent, 0, "const VkValidationCheckEXT*", &pstruct_in.pDisabledValidationChecks, "pDisabledValidationChecks", pstruct->disabledValidationCheckCount, vinfo_pDisabledValidationChecks); // AUA
     }
     indent--;
@@ -36538,7 +36538,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkViSurfaceCreateInfo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36643,7 +36643,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTextu
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36719,7 +36719,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewASTCDecode
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36762,7 +36762,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewASTCDecode
     *out += "\"name\" : \"decodeMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->decodeMode); // ESA
+    EnumToStringVkFormat(out, pstruct->decodeMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36795,7 +36795,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceASTCD
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36871,7 +36871,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkConditionalRenderin
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36948,7 +36948,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkConditionalRenderin
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkConditionalRenderingFlagBitsEXTJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkConditionalRenderingFlagBitsEXT); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36981,7 +36981,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCondi
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37074,7 +37074,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37150,7 +37150,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37226,7 +37226,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37370,7 +37370,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsTok
     *out += "\"name\" : \"tokenType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkIndirectCommandsTokenTypeNVXJson(out, pstruct->tokenType); // ESA
+    EnumToStringVkIndirectCommandsTokenTypeNVX(out, pstruct->tokenType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37437,7 +37437,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"name\" : \"tokenType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkIndirectCommandsTokenTypeNVXJson(out, pstruct->tokenType); // ESA
+    EnumToStringVkIndirectCommandsTokenTypeNVX(out, pstruct->tokenType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37521,7 +37521,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37564,7 +37564,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"name\" : \"pipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPipelineBindPointJson(out, pstruct->pipelineBindPoint); // ESA
+    EnumToStringVkPipelineBindPoint(out, pstruct->pipelineBindPoint); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37581,7 +37581,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkIndirectCommandsLayoutUsageFlagBitsNVXJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkIndirectCommandsLayoutUsageFlagBitsNVX); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37659,7 +37659,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37899,7 +37899,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdReserveSpaceForC
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38009,7 +38009,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38080,7 +38080,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pObjectEntryTypes = {false, true, false, EnumToStringVkObjectEntryTypeNVXJson};
+        ScalarValueToStringStruct vinfo_pObjectEntryTypes = {false, true, false, EnumToStringVkObjectEntryTypeNVX};
         ArrayToStringJson(out, indent, 0, "const VkObjectEntryTypeNVX*", &pstruct_in.pObjectEntryTypes, "pObjectEntryTypes", pstruct->objectCount, vinfo_pObjectEntryTypes); // AUA
     }
     indent--;
@@ -38138,7 +38138,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pObjectEntryUsageFlags = {false, false, true, EnumToStringVkObjectEntryUsageFlagBitsNVXJson};
+        ScalarValueToStringStruct vinfo_pObjectEntryUsageFlags = {false, false, true, EnumToStringVkObjectEntryUsageFlagBitsNVX};
         ArrayToStringJson(out, indent, 0, "const VkObjectEntryUsageFlagsNVX*", &pstruct_in.pObjectEntryUsageFlags, "pObjectEntryUsageFlags", pstruct->objectCount, vinfo_pObjectEntryUsageFlags); // AUA
     }
     indent--;
@@ -38257,7 +38257,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableEntryNVX
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkObjectEntryTypeNVXJson(out, pstruct->type); // ESA
+    EnumToStringVkObjectEntryTypeNVX(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38274,7 +38274,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableEntryNVX
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVX); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38307,7 +38307,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePipeline
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkObjectEntryTypeNVXJson(out, pstruct->type); // ESA
+    EnumToStringVkObjectEntryTypeNVX(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38324,7 +38324,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePipeline
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVX); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38374,7 +38374,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableDescript
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkObjectEntryTypeNVXJson(out, pstruct->type); // ESA
+    EnumToStringVkObjectEntryTypeNVX(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38391,7 +38391,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableDescript
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVX); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38458,7 +38458,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableVertexBu
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkObjectEntryTypeNVXJson(out, pstruct->type); // ESA
+    EnumToStringVkObjectEntryTypeNVX(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38475,7 +38475,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableVertexBu
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVX); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38525,7 +38525,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableIndexBuf
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkObjectEntryTypeNVXJson(out, pstruct->type); // ESA
+    EnumToStringVkObjectEntryTypeNVX(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38542,7 +38542,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableIndexBuf
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVX); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38576,7 +38576,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableIndexBuf
     *out += "\"name\" : \"indexType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkIndexTypeJson(out, pstruct->indexType); // ESA
+    EnumToStringVkIndexType(out, pstruct->indexType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38609,7 +38609,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePushCons
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkObjectEntryTypeNVXJson(out, pstruct->type); // ESA
+    EnumToStringVkObjectEntryTypeNVX(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38626,7 +38626,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePushCons
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVXJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkObjectEntryUsageFlagBitsNVX); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38660,7 +38660,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTablePushCons
     *out += "\"name\" : \"stageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->stageFlags, EnumToStringVkShaderStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38743,7 +38743,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportWSc
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38864,7 +38864,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39006,7 +39006,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedTransforms\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->supportedTransforms, EnumToStringVkSurfaceTransformFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39023,7 +39023,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"currentTransform\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->currentTransform, EnumToStringVkSurfaceTransformFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->currentTransform, EnumToStringVkSurfaceTransformFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39040,7 +39040,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedCompositeAlpha\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedCompositeAlpha, EnumToStringVkCompositeAlphaFlagBitsKHRJson); // URG
+    FlagsToStringJson(out, pstruct->supportedCompositeAlpha, EnumToStringVkCompositeAlphaFlagBitsKHR); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39057,7 +39057,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedUsageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedUsageFlags, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->supportedUsageFlags, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39074,7 +39074,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"supportedSurfaceCounters\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->supportedSurfaceCounters, EnumToStringVkSurfaceCounterFlagBitsEXTJson); // URG
+    FlagsToStringJson(out, pstruct->supportedSurfaceCounters, EnumToStringVkSurfaceCounterFlagBitsEXT); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39107,7 +39107,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPowerInfoEXT
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39150,7 +39150,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPowerInfoEXT
     *out += "\"name\" : \"powerState\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDisplayPowerStateEXTJson(out, pstruct->powerState); // ESA
+    EnumToStringVkDisplayPowerStateEXT(out, pstruct->powerState); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39183,7 +39183,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceEventInfoEXT 
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39226,7 +39226,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceEventInfoEXT 
     *out += "\"name\" : \"deviceEvent\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDeviceEventTypeEXTJson(out, pstruct->deviceEvent); // ESA
+    EnumToStringVkDeviceEventTypeEXT(out, pstruct->deviceEvent); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39259,7 +39259,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayEventInfoEXT
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39302,7 +39302,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayEventInfoEXT
     *out += "\"name\" : \"displayEvent\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDisplayEventTypeEXTJson(out, pstruct->displayEvent); // ESA
+    EnumToStringVkDisplayEventTypeEXT(out, pstruct->displayEvent); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39335,7 +39335,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCounterCre
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39378,7 +39378,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCounterCre
     *out += "\"name\" : \"surfaceCounters\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->surfaceCounters, EnumToStringVkSurfaceCounterFlagBitsEXTJson); // URG
+    FlagsToStringJson(out, pstruct->surfaceCounters, EnumToStringVkSurfaceCounterFlagBitsEXT); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39595,7 +39595,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentTimesInfoGOO
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39699,7 +39699,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39775,7 +39775,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewportSwizzleNV &
     *out += "\"name\" : \"x\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkViewportCoordinateSwizzleNVJson(out, pstruct->x); // ESA
+    EnumToStringVkViewportCoordinateSwizzleNV(out, pstruct->x); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39792,7 +39792,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewportSwizzleNV &
     *out += "\"name\" : \"y\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkViewportCoordinateSwizzleNVJson(out, pstruct->y); // ESA
+    EnumToStringVkViewportCoordinateSwizzleNV(out, pstruct->y); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39809,7 +39809,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewportSwizzleNV &
     *out += "\"name\" : \"z\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkViewportCoordinateSwizzleNVJson(out, pstruct->z); // ESA
+    EnumToStringVkViewportCoordinateSwizzleNV(out, pstruct->z); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39826,7 +39826,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkViewportSwizzleNV &
     *out += "\"name\" : \"w\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkViewportCoordinateSwizzleNVJson(out, pstruct->w); // ESA
+    EnumToStringVkViewportCoordinateSwizzleNV(out, pstruct->w); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39859,7 +39859,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSwi
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39980,7 +39980,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDisca
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40056,7 +40056,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDiscardRect
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40116,7 +40116,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDiscardRect
     *out += "\"name\" : \"discardRectangleMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDiscardRectangleModeEXTJson(out, pstruct->discardRectangleMode); // ESA
+    EnumToStringVkDiscardRectangleModeEXT(out, pstruct->discardRectangleMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40194,7 +40194,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40406,7 +40406,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40466,7 +40466,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"conservativeRasterizationMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkConservativeRasterizationModeEXTJson(out, pstruct->conservativeRasterizationMode); // ESA
+    EnumToStringVkConservativeRasterizationModeEXT(out, pstruct->conservativeRasterizationMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40516,7 +40516,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40592,7 +40592,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40735,7 +40735,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkHdrMetadataEXT &pst
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40926,7 +40926,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkIOSSurfaceCreateInf
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41031,7 +41031,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMacOSSurfaceCreateI
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41136,7 +41136,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectNam
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41179,7 +41179,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectNam
     *out += "\"name\" : \"objectType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkObjectTypeJson(out, pstruct->objectType); // ESA
+    EnumToStringVkObjectType(out, pstruct->objectType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41258,7 +41258,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectTag
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41301,7 +41301,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectTag
     *out += "\"name\" : \"objectType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkObjectTypeJson(out, pstruct->objectType); // ESA
+    EnumToStringVkObjectType(out, pstruct->objectType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41414,7 +41414,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsLabelEXT 
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41526,7 +41526,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41812,7 +41812,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41872,7 +41872,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"name\" : \"messageSeverity\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->messageSeverity, EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXTJson); // URG
+    FlagsToStringJson(out, pstruct->messageSeverity, EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXT); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41889,7 +41889,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
     *out += "\"name\" : \"messageType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->messageType, EnumToStringVkDebugUtilsMessageTypeFlagBitsEXTJson); // URG
+    FlagsToStringJson(out, pstruct->messageType, EnumToStringVkDebugUtilsMessageTypeFlagBitsEXT); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41968,7 +41968,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42044,7 +42044,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42137,7 +42137,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42180,7 +42180,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->format); // ESA
+    EnumToStringVkFormat(out, pstruct->format); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42214,7 +42214,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"name\" : \"formatFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->formatFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->formatFeatures, EnumToStringVkFormatFeatureFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42247,7 +42247,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"name\" : \"suggestedYcbcrModel\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSamplerYcbcrModelConversionJson(out, pstruct->suggestedYcbcrModel); // ESA
+    EnumToStringVkSamplerYcbcrModelConversion(out, pstruct->suggestedYcbcrModel); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42264,7 +42264,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"name\" : \"suggestedYcbcrRange\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSamplerYcbcrRangeJson(out, pstruct->suggestedYcbcrRange); // ESA
+    EnumToStringVkSamplerYcbcrRange(out, pstruct->suggestedYcbcrRange); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42281,7 +42281,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"name\" : \"suggestedXChromaOffset\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkChromaLocationJson(out, pstruct->suggestedXChromaOffset); // ESA
+    EnumToStringVkChromaLocation(out, pstruct->suggestedXChromaOffset); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42298,7 +42298,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
     *out += "\"name\" : \"suggestedYChromaOffset\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkChromaLocationJson(out, pstruct->suggestedYChromaOffset); // ESA
+    EnumToStringVkChromaLocation(out, pstruct->suggestedYChromaOffset); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42331,7 +42331,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportAndroidHardwa
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42419,7 +42419,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetAndroidHar
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42495,7 +42495,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFormatANDRO
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42571,7 +42571,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerReductionMod
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42614,7 +42614,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerReductionMod
     *out += "\"name\" : \"reductionMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSamplerReductionModeEXTJson(out, pstruct->reductionMode); // ESA
+    EnumToStringVkSamplerReductionModeEXT(out, pstruct->reductionMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42647,7 +42647,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42740,7 +42740,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42833,7 +42833,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42977,7 +42977,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetI
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43082,7 +43082,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolInlin
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43208,7 +43208,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSampleLocationsInfo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43251,7 +43251,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSampleLocationsInfo
     *out += "\"name\" : \"sampleLocationsPerPixel\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampleLocationsPerPixel, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->sampleLocationsPerPixel, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43443,7 +43443,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassSampleLoc
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43592,7 +43592,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineSampleLocat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43684,7 +43684,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43727,7 +43727,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
     *out += "\"name\" : \"sampleLocationSampleCounts\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->sampleLocationSampleCounts, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->sampleLocationSampleCounts, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43834,7 +43834,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMultisampleProperti
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43909,7 +43909,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43985,7 +43985,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44146,7 +44146,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44223,7 +44223,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
     *out += "\"name\" : \"blendOverlap\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkBlendOverlapEXTJson(out, pstruct->blendOverlap); // ESA
+    EnumToStringVkBlendOverlapEXT(out, pstruct->blendOverlap); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44256,7 +44256,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageToC
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44366,7 +44366,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageMod
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44426,7 +44426,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageMod
     *out += "\"name\" : \"coverageModulationMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkCoverageModulationModeNVJson(out, pstruct->coverageModulationMode); // ESA
+    EnumToStringVkCoverageModulationModeNV(out, pstruct->coverageModulationMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44522,7 +44522,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44615,7 +44615,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44725,7 +44725,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
     *out += "\"name\" : \"drmFormatModifierTilingFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->drmFormatModifierTilingFeatures, EnumToStringVkFormatFeatureFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->drmFormatModifierTilingFeatures, EnumToStringVkFormatFeatureFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44758,7 +44758,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44862,7 +44862,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44922,7 +44922,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"sharingMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSharingModeJson(out, pstruct->sharingMode); // ESA
+    EnumToStringVkSharingMode(out, pstruct->sharingMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45001,7 +45001,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45106,7 +45106,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45227,7 +45227,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45303,7 +45303,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationCacheCrea
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45425,7 +45425,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleValidat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45501,7 +45501,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45572,7 +45572,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pBindingFlags = {false, false, true, EnumToStringVkDescriptorBindingFlagBitsEXTJson};
+        ScalarValueToStringStruct vinfo_pBindingFlags = {false, false, true, EnumToStringVkDescriptorBindingFlagBitsEXT};
         ArrayToStringJson(out, indent, 0, "const VkDescriptorBindingFlagsEXT*", &pstruct_in.pBindingFlags, "pBindingFlags", pstruct->bindingCount, vinfo_pBindingFlags); // AUA
     }
     indent--;
@@ -45606,7 +45606,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -46005,7 +46005,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -46455,7 +46455,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -46560,7 +46560,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -46664,7 +46664,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkShadingRatePaletteN
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pShadingRatePaletteEntries = {false, true, false, EnumToStringVkShadingRatePaletteEntryNVJson};
+        ScalarValueToStringStruct vinfo_pShadingRatePaletteEntries = {false, true, false, EnumToStringVkShadingRatePaletteEntryNV};
         ArrayToStringJson(out, indent, 0, "const VkShadingRatePaletteEntryNV*", &pstruct_in.pShadingRatePaletteEntries, "pShadingRatePaletteEntries", pstruct->shadingRatePaletteEntryCount, vinfo_pShadingRatePaletteEntries); // AUA
     }
     indent--;
@@ -46698,7 +46698,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSha
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -46819,7 +46819,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -46912,7 +46912,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47088,7 +47088,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCoarseSampleOrderCu
     *out += "\"name\" : \"shadingRate\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkShadingRatePaletteEntryNVJson(out, pstruct->shadingRate); // ESA
+    EnumToStringVkShadingRatePaletteEntryNV(out, pstruct->shadingRate); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47183,7 +47183,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportCoa
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47226,7 +47226,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportCoa
     *out += "\"name\" : \"sampleOrderType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkCoarseSampleOrderTypeNVJson(out, pstruct->sampleOrderType); // ESA
+    EnumToStringVkCoarseSampleOrderTypeNV(out, pstruct->sampleOrderType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47304,7 +47304,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingShaderGro
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47347,7 +47347,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingShaderGro
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkRayTracingShaderGroupTypeNVJson(out, pstruct->type); // ESA
+    EnumToStringVkRayTracingShaderGroupTypeNV(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47448,7 +47448,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47491,7 +47491,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreateFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47682,7 +47682,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47793,7 +47793,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"name\" : \"vertexFormat\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, pstruct->vertexFormat); // ESA
+    EnumToStringVkFormat(out, pstruct->vertexFormat); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47861,7 +47861,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
     *out += "\"name\" : \"indexType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkIndexTypeJson(out, pstruct->indexType); // ESA
+    EnumToStringVkIndexType(out, pstruct->indexType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47928,7 +47928,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryAABBNV &pst
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48103,7 +48103,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryNV &pstruct
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48146,7 +48146,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryNV &pstruct
     *out += "\"name\" : \"geometryType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkGeometryTypeNVJson(out, pstruct->geometryType); // ESA
+    EnumToStringVkGeometryTypeNV(out, pstruct->geometryType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48179,7 +48179,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryNV &pstruct
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkGeometryFlagBitsNVJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkGeometryFlagBitsNV); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48212,7 +48212,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48255,7 +48255,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkAccelerationStructureTypeNVJson(out, pstruct->type); // ESA
+    EnumToStringVkAccelerationStructureTypeNV(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48272,7 +48272,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBuildAccelerationStructureFlagBitsNVJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkBuildAccelerationStructureFlagBitsNV); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48367,7 +48367,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48459,7 +48459,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindAccelerationStr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48615,7 +48615,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetA
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48720,7 +48720,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48763,7 +48763,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkAccelerationStructureMemoryRequirementsTypeNVJson(out, pstruct->type); // ESA
+    EnumToStringVkAccelerationStructureMemoryRequirementsTypeNV(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48813,7 +48813,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49008,7 +49008,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRepre
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49084,7 +49084,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRepresentat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49160,7 +49160,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49203,7 +49203,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
     *out += "\"name\" : \"imageViewType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageViewTypeJson(out, pstruct->imageViewType); // ESA
+    EnumToStringVkImageViewType(out, pstruct->imageViewType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49236,7 +49236,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFilterCubicImageVie
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49329,7 +49329,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueGlobalPr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49372,7 +49372,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueGlobalPr
     *out += "\"name\" : \"globalPriority\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkQueueGlobalPriorityEXTJson(out, pstruct->globalPriority); // ESA
+    EnumToStringVkQueueGlobalPriorityEXT(out, pstruct->globalPriority); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49405,7 +49405,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryHostPoi
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49448,7 +49448,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryHostPoi
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->handleType, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49510,7 +49510,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryHostPointerPr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49586,7 +49586,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49662,7 +49662,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCompilerCon
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49705,7 +49705,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCompilerCon
     *out += "\"name\" : \"compilerControlFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->compilerControlFlags, EnumToStringVkPipelineCompilerControlFlagBitsAMDJson); // URG
+    FlagsToStringJson(out, pstruct->compilerControlFlags, EnumToStringVkPipelineCompilerControlFlagBitsAMD); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49738,7 +49738,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCalibratedTimestamp
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49781,7 +49781,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCalibratedTimestamp
     *out += "\"name\" : \"timeDomain\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkTimeDomainEXTJson(out, pstruct->timeDomain); // ESA
+    EnumToStringVkTimeDomainEXT(out, pstruct->timeDomain); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49814,7 +49814,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50111,7 +50111,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceMemoryOverall
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50154,7 +50154,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceMemoryOverall
     *out += "\"name\" : \"overallocationBehavior\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkMemoryOverallocationBehaviorAMDJson(out, pstruct->overallocationBehavior); // ESA
+    EnumToStringVkMemoryOverallocationBehaviorAMD(out, pstruct->overallocationBehavior); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50187,7 +50187,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50313,7 +50313,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50417,7 +50417,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50510,7 +50510,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentFrameTokenGG
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50586,7 +50586,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreationFeedbackFlagBitsEXTJson); // URG
+    FlagsToStringJson(out, pstruct->flags, EnumToStringVkPipelineCreationFeedbackFlagBitsEXT); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50636,7 +50636,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50768,7 +50768,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCompu
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50861,7 +50861,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50954,7 +50954,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51298,7 +51298,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51374,7 +51374,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51450,7 +51450,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportExc
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51554,7 +51554,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExclu
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51630,7 +51630,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyCheckpoi
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51673,7 +51673,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyCheckpoi
     *out += "\"name\" : \"checkpointExecutionStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->checkpointExecutionStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->checkpointExecutionStageMask, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51706,7 +51706,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCheckpointDataNV &p
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51749,7 +51749,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCheckpointDataNV &p
     *out += "\"name\" : \"stage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stage, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->stage, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51811,7 +51811,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52000,7 +52000,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceValueINT
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPerformanceValueTypeINTELJson(out, pstruct->type); // ESA
+    EnumToStringVkPerformanceValueTypeINTEL(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52049,7 +52049,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkInitializePerforman
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52137,7 +52137,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52180,7 +52180,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
     *out += "\"name\" : \"performanceCountersSampling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkQueryPoolSamplingModeINTELJson(out, pstruct->performanceCountersSampling); // ESA
+    EnumToStringVkQueryPoolSamplingModeINTEL(out, pstruct->performanceCountersSampling); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52213,7 +52213,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceMarkerIn
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52289,7 +52289,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceStreamMa
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52365,7 +52365,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceOverride
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52408,7 +52408,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceOverride
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPerformanceOverrideTypeINTELJson(out, pstruct->type); // ESA
+    EnumToStringVkPerformanceOverrideTypeINTEL(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52475,7 +52475,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceConfigur
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52518,7 +52518,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceConfigur
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPerformanceConfigurationTypeINTELJson(out, pstruct->type); // ESA
+    EnumToStringVkPerformanceConfigurationTypeINTEL(out, pstruct->type); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52551,7 +52551,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePCIBu
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52678,7 +52678,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayNativeHdrSur
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52754,7 +52754,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainDisplayNat
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52830,7 +52830,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePipeSurfaceCre
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52923,7 +52923,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMetalSurfaceCreateI
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53028,7 +53028,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53138,7 +53138,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53246,7 +53246,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassFragmentD
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53321,7 +53321,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceScala
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53397,7 +53397,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53490,7 +53490,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53584,7 +53584,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
     *out += "\"name\" : \"requiredSubgroupSizeStages\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->requiredSubgroupSizeStages, EnumToStringVkShaderStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->requiredSubgroupSizeStages, EnumToStringVkShaderStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53617,7 +53617,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53693,7 +53693,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53736,7 +53736,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"shaderCoreFeatures\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->shaderCoreFeatures, EnumToStringVkShaderCorePropertiesFlagBitsAMDJson); // URG
+    FlagsToStringJson(out, pstruct->shaderCoreFeatures, EnumToStringVkShaderCorePropertiesFlagBitsAMD); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53786,7 +53786,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoher
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53862,7 +53862,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53969,7 +53969,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54045,7 +54045,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryPriorityAlloc
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54121,7 +54121,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDedic
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54197,7 +54197,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBuffe
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54307,7 +54307,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferDeviceAddress
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54383,7 +54383,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferDeviceAddress
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54459,7 +54459,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageStencilUsageCr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54502,7 +54502,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageStencilUsageCr
     *out += "\"name\" : \"stencilUsage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->stencilUsage, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->stencilUsage, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54535,7 +54535,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54606,7 +54606,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pEnabledValidationFeatures = {false, true, false, EnumToStringVkValidationFeatureEnableEXTJson};
+        ScalarValueToStringStruct vinfo_pEnabledValidationFeatures = {false, true, false, EnumToStringVkValidationFeatureEnableEXT};
         ArrayToStringJson(out, indent, 0, "const VkValidationFeatureEnableEXT*", &pstruct_in.pEnabledValidationFeatures, "pEnabledValidationFeatures", pstruct->enabledValidationFeatureCount, vinfo_pEnabledValidationFeatures); // AUA
     }
     indent--;
@@ -54652,7 +54652,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pDisabledValidationFeatures = {false, true, false, EnumToStringVkValidationFeatureDisableEXTJson};
+        ScalarValueToStringStruct vinfo_pDisabledValidationFeatures = {false, true, false, EnumToStringVkValidationFeatureDisableEXT};
         ArrayToStringJson(out, indent, 0, "const VkValidationFeatureDisableEXT*", &pstruct_in.pDisabledValidationFeatures, "pDisabledValidationFeatures", pstruct->disabledValidationFeatureCount, vinfo_pDisabledValidationFeatures); // AUA
     }
     indent--;
@@ -54686,7 +54686,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54780,7 +54780,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"name\" : \"AType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkComponentTypeNVJson(out, pstruct->AType); // ESA
+    EnumToStringVkComponentTypeNV(out, pstruct->AType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54797,7 +54797,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"name\" : \"BType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkComponentTypeNVJson(out, pstruct->BType); // ESA
+    EnumToStringVkComponentTypeNV(out, pstruct->BType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54814,7 +54814,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"name\" : \"CType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkComponentTypeNVJson(out, pstruct->CType); // ESA
+    EnumToStringVkComponentTypeNV(out, pstruct->CType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54831,7 +54831,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"name\" : \"DType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkComponentTypeNVJson(out, pstruct->DType); // ESA
+    EnumToStringVkComponentTypeNV(out, pstruct->DType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54848,7 +54848,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
     *out += "\"name\" : \"scope\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkScopeNVJson(out, pstruct->scope); // ESA
+    EnumToStringVkScopeNV(out, pstruct->scope); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54881,7 +54881,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54974,7 +54974,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55017,7 +55017,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
     *out += "\"name\" : \"cooperativeMatrixSupportedStages\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->cooperativeMatrixSupportedStages, EnumToStringVkShaderStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->cooperativeMatrixSupportedStages, EnumToStringVkShaderStageFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55050,7 +55050,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCover
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55126,7 +55126,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageRed
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55186,7 +55186,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageRed
     *out += "\"name\" : \"coverageReductionMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkCoverageReductionModeNVJson(out, pstruct->coverageReductionMode); // ESA
+    EnumToStringVkCoverageReductionModeNV(out, pstruct->coverageReductionMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55219,7 +55219,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55262,7 +55262,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
     *out += "\"name\" : \"coverageReductionMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkCoverageReductionModeNVJson(out, pstruct->coverageReductionMode); // ESA
+    EnumToStringVkCoverageReductionModeNV(out, pstruct->coverageReductionMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55279,7 +55279,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
     *out += "\"name\" : \"rasterizationSamples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->rasterizationSamples, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->rasterizationSamples, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55296,7 +55296,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
     *out += "\"name\" : \"depthStencilSamples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->depthStencilSamples, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->depthStencilSamples, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55313,7 +55313,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
     *out += "\"name\" : \"colorSamples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pstruct->colorSamples, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, pstruct->colorSamples, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55346,7 +55346,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55456,7 +55456,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceYcbcr
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55532,7 +55532,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55575,7 +55575,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
     *out += "\"name\" : \"fullScreenExclusive\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFullScreenExclusiveEXTJson(out, pstruct->fullScreenExclusive); // ESA
+    EnumToStringVkFullScreenExclusiveEXT(out, pstruct->fullScreenExclusive); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55608,7 +55608,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55684,7 +55684,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55772,7 +55772,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkHeadlessSurfaceCrea
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55848,7 +55848,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56009,7 +56009,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56085,7 +56085,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56128,7 +56128,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
     *out += "\"name\" : \"lineRasterizationMode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkLineRasterizationModeEXTJson(out, pstruct->lineRasterizationMode); // ESA
+    EnumToStringVkLineRasterizationModeEXT(out, pstruct->lineRasterizationMode); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56212,7 +56212,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceHostQ
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56288,7 +56288,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIndex
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56364,7 +56364,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56440,7 +56440,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56516,7 +56516,7 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
     *out += "\"name\" : \"sType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkStructureTypeJson(out, pstruct->sType); // ESA
+    EnumToStringVkStructureType(out, pstruct->sType); // ESA
     *out += "\"\n";
     indent--;
     IndentSpacesJson(out, indent); //UEW
