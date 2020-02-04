@@ -20,7 +20,7 @@ import os,re,sys
 from collections import OrderedDict
 from base_generator import *
 
-class VulkanAsciiEnumGeneratorOptions(BaseGeneratorOptions):
+class VulkanAsciiEnumGeneratorOptionsH(BaseGeneratorOptions):
     """Options for generating enum to ascii utilities"""
     def __init__(self,
                  blacklists = None,         # Path to JSON file listing apicalls and structs to ignore.
@@ -34,9 +34,9 @@ class VulkanAsciiEnumGeneratorOptions(BaseGeneratorOptions):
                                       filename, directory, prefixText,
                                       protectFile, protectFeature)
 
-# VulkanAsciiEnumBodyGenerator - subclass of BaseGenerator.
-# Generates C++ funcs for converting Vulkan enum values to ascii.
-class VulkanAsciiEnumGenerator(BaseGenerator):
+# VulkanAsciiEnumBodyGeneratorH - subclass of BaseGenerator.
+# Generates header file for C++ funcs for converting Vulkan enum values to ascii.
+class VulkanAsciiEnumGeneratorH(BaseGenerator):
     def __init__(self,
                  errFile = sys.stderr,
                  warnFile = sys.stderr,
@@ -55,52 +55,28 @@ class VulkanAsciiEnumGenerator(BaseGenerator):
 
     def beginFile(self, genOpts):
         BaseGenerator.beginFile(self, genOpts)
+
+        self.wc('#include "util/defines.h"')
         self.wc('#include "vulkan/vulkan.h"')
+        self.wc('#include <inttypes.h>')
         self.wc('#include <string>')
+        self.newline()
+
         self.newline()
         self.wc('GFXRECON_BEGIN_NAMESPACE(gfxrecon)')
         self.wc('GFXRECON_BEGIN_NAMESPACE(decode)')
 
     def endFile(self):
-        # Generate functions to convert enum values to strings
+        # Generate functions headers to convert enum values to strings
+        self.newline()
         for enumName in self.enumListNoAliases:
             if enumName in self.enumList:
-                self.newline()
-                self.wc('void EnumToString' + enumName + '(std::string* out, uint32_t enum_uint32)')
-                self.wc('{')
-                self.wc('    ' + enumName + ' e = static_cast<' + enumName + '>(enum_uint32);')
-                self.wc('    assert(out != nullptr); // RYZ')
-                # Use list e to eliminate duplicates and make sure we don't use aliases
-                e = list()
-                for enumValue in self.enumList[enumName]:
-                    enumString=str(enumValue.attrib.get('name'));
-                    isAlias = str(enumValue.attrib.get('alias'))
-                    supported = str(enumValue.attrib.get('supported'))
-                    if (not enumString in e) and isAlias == 'None' and supported != 'disabled':
-                        e.append(enumString);
-                if len(e) > 0:
-                    self.wc('    switch (e)')
-                    self.wc('    {')
-                    # Add a case for each enum
-                    for enumValue in e:
-                        self.wc('        case ' + enumValue + ':')
-                        self.wc('            *out += "' + enumValue + '";')
-                        self.wc('            return;')
-                    self.wc('        default:')
-                    self.wc('            *out += "UNKNOWN";')
-                    self.wc('            return;')
-                    self.wc('    }')
-                else:
-                    self.wc('    *out += "UNKNOWN";')
-            self.wc('}')
+                self.wc('void EnumToString' + enumName + '(std::string* out, uint32_t enum_uint32);')
 
         # Generate functions to convert aliased enum types to string
+        self.newline()
         for enumName in self.enumListAliases:
-            self.wc('\nvoid EnumToString' + enumName + '(std::string* out, ' + enumName + ' e)')
-            self.wc('{')
-            self.wc('    assert(out != nullptr); // JJJ')
-            self.wc('    EnumToString' + self.enumListAliases[enumName] + '(out, e);')
-            self.wc('}')
+            self.wc('void EnumToString' + enumName + '(std::string* out, ' + enumName + ' e);')
 
         self.newline()
         self.wc('GFXRECON_END_NAMESPACE(decode)')

@@ -30,9 +30,9 @@ from vulkan_struct_decoders_forward_generator import VulkanStructDecodersForward
 from vulkan_struct_decoders_header_generator import VulkanStructDecodersHeaderGenerator,VulkanStructDecodersHeaderGeneratorOptions
 from decode_pnext_struct_generator import DecodePNextStructGenerator,DecodePNextStructGeneratorOptions
 
-# Enum to ascii/json utility files
-from vulkan_ascii_enum_generator import VulkanAsciiEnumGenerator,VulkanAsciiEnumGeneratorOptions
-from vulkan_json_enum_generator import VulkanJsonEnumGenerator,VulkanJsonEnumGeneratorOptions
+# Enum to ascii utility
+from vulkan_ascii_enum_generator_h import VulkanAsciiEnumGeneratorH,VulkanAsciiEnumGeneratorOptionsH
+from vulkan_ascii_enum_generator_cpp import VulkanAsciiEnumGeneratorCpp,VulkanAsciiEnumGeneratorOptionsCpp
 
 # Structure to ascii/json utility files
 from vulkan_ascii_struct_generator import VulkanAsciiStructGenerator,VulkanAsciiStructGeneratorOptions
@@ -234,14 +234,26 @@ def makeGenOpts(args):
     ]
 
     genOpts['generated_vulkan_ascii_enum_util.h'] = [
-        VulkanAsciiEnumGenerator,
-        VulkanAsciiEnumGeneratorOptions(
+        VulkanAsciiEnumGeneratorH,
+        VulkanAsciiEnumGeneratorOptionsH(
         filename          = 'generated_vulkan_ascii_enum_util.h',
         directory         = directory,
         blacklists        = blacklists,
         platformTypes     = platformTypes,
         prefixText        = prefixStrings + vkPrefixStrings,
         protectFile       = True,
+        protectFeature    = False)
+    ]
+
+    genOpts['generated_vulkan_ascii_enum_util.cpp'] = [
+        VulkanAsciiEnumGeneratorCpp,
+        VulkanAsciiEnumGeneratorOptionsCpp(
+        filename          = 'generated_vulkan_ascii_enum_util.cpp',
+        directory         = directory,
+        blacklists        = blacklists,
+        platformTypes     = platformTypes,
+        prefixText        = prefixStrings + vkPrefixStrings,
+        protectFile       = False,
         protectFeature    = False)
     ]
 
@@ -264,18 +276,6 @@ def makeGenOpts(args):
         VulkanJsonStructGenerator,
         VulkanJsonStructGeneratorOptions(
         filename          = 'generated_vulkan_json_struct_util.h',
-        directory         = directory,
-        blacklists        = blacklists,
-        platformTypes     = platformTypes,
-        prefixText        = prefixStrings + vkPrefixStrings,
-        protectFile       = True,
-        protectFeature    = False)
-    ]
-
-    genOpts['generated_vulkan_json_enum_util.h'] = [
-        VulkanJsonEnumGenerator,
-        VulkanJsonEnumGeneratorOptions(
-        filename          = 'generated_vulkan_json_enum_util.h',
         directory         = directory,
         blacklists        = blacklists,
         platformTypes     = platformTypes,

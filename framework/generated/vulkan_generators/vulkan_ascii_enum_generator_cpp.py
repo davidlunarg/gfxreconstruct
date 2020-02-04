@@ -20,8 +20,8 @@ import os,re,sys
 from collections import OrderedDict
 from base_generator import *
 
-class VulkanJsonEnumGeneratorOptions(BaseGeneratorOptions):
-    """Options for generating enum to json utilities"""
+class VulkanAsciiEnumGeneratorOptionsCpp(BaseGeneratorOptions):
+    """Options for generating enum to ascii utilities"""
     def __init__(self,
                  blacklists = None,         # Path to JSON file listing apicalls and structs to ignore.
                  platformTypes = None,      # Path to JSON file listing platform (WIN32, X11, etc.) defined types.
@@ -34,9 +34,9 @@ class VulkanJsonEnumGeneratorOptions(BaseGeneratorOptions):
                                       filename, directory, prefixText,
                                       protectFile, protectFeature)
 
-# VulkanJsonEnumBodyGenerator - subclass of BaseGenerator.
-# Generates C++ funcs for converting Vulkan enum values to json.    TODO: Maybe not needed?? Can share json/asc ii code????
-class VulkanJsonEnumGenerator(BaseGenerator):
+# VulkanAsciiEnumBodyGeneratorCpp - subclass of BaseGenerator.
+# Generates C++ funcs for converting Vulkan enum values to ascii.
+class VulkanAsciiEnumGeneratorCpp(BaseGenerator):
     def __init__(self,
                  errFile = sys.stderr,
                  warnFile = sys.stderr,
@@ -55,7 +55,10 @@ class VulkanJsonEnumGenerator(BaseGenerator):
 
     def beginFile(self, genOpts):
         BaseGenerator.beginFile(self, genOpts)
+        self.wc('#include "generated/generated_vulkan_ascii_enum_util.h"')
+        self.wc('#include "util/defines.h"')
         self.wc('#include "vulkan/vulkan.h"')
+        self.wc('#include <cassert>')
         self.wc('#include <string>')
         self.newline()
         self.wc('GFXRECON_BEGIN_NAMESPACE(gfxrecon)')
@@ -66,10 +69,10 @@ class VulkanJsonEnumGenerator(BaseGenerator):
         for enumName in self.enumListNoAliases:
             if enumName in self.enumList:
                 self.newline()
-                self.wc('void EnumToString' + enumName + 'Json(std::string* out, uint32_t enum_uint32)')   # TODO: May be able to share these with toascii??
+                self.wc('void EnumToString' + enumName + '(std::string* out, uint32_t enum_uint32)')
                 self.wc('{')
                 self.wc('    ' + enumName + ' e = static_cast<' + enumName + '>(enum_uint32);')
-                self.wc('    assert(out != nullptr); // RYZ')
+                self.wc('    assert(out != nullptr);')
                 # Use list e to eliminate duplicates and make sure we don't use aliases
                 e = list()
                 for enumValue in self.enumList[enumName]:
@@ -96,10 +99,10 @@ class VulkanJsonEnumGenerator(BaseGenerator):
 
         # Generate functions to convert aliased enum types to string
         for enumName in self.enumListAliases:
-            self.wc('\nvoid EnumToString' + enumName + 'Json(std::string* out, ' + enumName + ' e)')
+            self.wc('\nvoid EnumToString' + enumName + '(std::string* out, ' + enumName + ' e)')
             self.wc('{')
-            self.wc('    assert(out != nullptr); // JJJ')
-            self.wc('    EnumToString' + self.enumListAliases[enumName] + 'Json(out, e);')
+            self.wc('    assert(out != nullptr);')
+            self.wc('    EnumToString' + self.enumListAliases[enumName] + '(out, e);')
             self.wc('}')
 
         self.newline()
