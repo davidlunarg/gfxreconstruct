@@ -34,7 +34,7 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
-// Var to keep track of when a function needs to start with a ',',
+// Bool to keep track of when a function needs to start with a ','
 // because we print the comma closing a function at the start of the
 // next function. We need to do this to avoid putting a comma
 // after the last function in a frame.
@@ -85,7 +85,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -111,7 +111,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -137,7 +137,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     *out += "\"name\" : \"pInstance\",\n";
     if (pInstance.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -216,7 +216,7 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -300,7 +300,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     *out += "\"name\" : \"pPhysicalDeviceCount\",\n";
     if (pPhysicalDeviceCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -327,7 +327,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     *out += "\"name\" : \"pPhysicalDevices\",\n";
     if (pPhysicalDevices.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -406,7 +406,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     *out += "\"name\" : \"pFeatures\",\n";
     if (pFeatures.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -500,7 +500,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     *out += "\"name\" : \"pFormatProperties\",\n";
     if (pFormatProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -663,7 +663,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"name\" : \"pImageFormatProperties\",\n";
     if (pImageFormatProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -741,7 +741,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -820,7 +820,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     *out += "\"name\" : \"pQueueFamilyPropertyCount\",\n";
     if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -847,7 +847,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     *out += "\"name\" : \"pQueueFamilyProperties\",\n";
     if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -925,7 +925,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     *out += "\"name\" : \"pMemoryProperties\",\n";
     if (pMemoryProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -1010,7 +1010,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -1036,7 +1036,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -1062,7 +1062,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     *out += "\"name\" : \"pDevice\",\n";
     if (pDevice.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -1141,7 +1141,7 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -1251,7 +1251,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     *out += "\"name\" : \"pQueue\",\n";
     if (pQueue.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -1352,7 +1352,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     *out += "\"name\" : \"pSubmits\",\n";
     if (pSubmits.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -1564,7 +1564,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     *out += "\"name\" : \"pAllocateInfo\",\n";
     if (pAllocateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -1590,7 +1590,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -1616,7 +1616,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     *out += "\"name\" : \"pMemory\",\n";
     if (pMemory.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -1711,7 +1711,7 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -1858,7 +1858,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     *out += "\"name\" : \"ppData\",\n";
     if (ppData.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -2025,7 +2025,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     *out += "\"name\" : \"pMemoryRanges\",\n";
     if (pMemoryRanges.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -2124,7 +2124,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     *out += "\"name\" : \"pMemoryRanges\",\n";
     if (pMemoryRanges.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -2218,7 +2218,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     *out += "\"name\" : \"pCommittedMemoryInBytes\",\n";
     if (pCommittedMemoryInBytes.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -2522,7 +2522,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -2616,7 +2616,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -2711,7 +2711,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     *out += "\"name\" : \"pSparseMemoryRequirementCount\",\n";
     if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -2738,7 +2738,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     *out += "\"name\" : \"pSparseMemoryRequirements\",\n";
     if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -2897,7 +2897,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -2924,7 +2924,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3024,7 +3024,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     *out += "\"name\" : \"pBindInfo\",\n";
     if (pBindInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3124,7 +3124,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3150,7 +3150,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3176,7 +3176,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     *out += "\"name\" : \"pFence\",\n";
     if (pFence.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3271,7 +3271,7 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3370,7 +3370,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     *out += "\"name\" : \"pFences\",\n";
     if (pFences.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3544,7 +3544,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     *out += "\"name\" : \"pFences\",\n";
     if (pFences.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3660,7 +3660,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3686,7 +3686,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3712,7 +3712,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     *out += "\"name\" : \"pSemaphore\",\n";
     if (pSemaphore.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3807,7 +3807,7 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3892,7 +3892,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3918,7 +3918,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -3944,7 +3944,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     *out += "\"name\" : \"pEvent\",\n";
     if (pEvent.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -4039,7 +4039,7 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -4340,7 +4340,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -4366,7 +4366,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -4392,7 +4392,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     *out += "\"name\" : \"pQueryPool\",\n";
     if (pQueryPool.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -4487,7 +4487,7 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -4636,7 +4636,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     *out += "\"name\" : \"pData\",\n";
     if (pData.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -4752,7 +4752,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -4778,7 +4778,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -4804,7 +4804,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     *out += "\"name\" : \"pBuffer\",\n";
     if (pBuffer.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -4899,7 +4899,7 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -4984,7 +4984,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5010,7 +5010,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5036,7 +5036,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     *out += "\"name\" : \"pView\",\n";
     if (pView.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5131,7 +5131,7 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5216,7 +5216,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5242,7 +5242,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5268,7 +5268,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     *out += "\"name\" : \"pImage\",\n";
     if (pImage.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5363,7 +5363,7 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5458,7 +5458,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     *out += "\"name\" : \"pSubresource\",\n";
     if (pSubresource.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5484,7 +5484,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     *out += "\"name\" : \"pLayout\",\n";
     if (pLayout.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5569,7 +5569,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5595,7 +5595,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5621,7 +5621,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     *out += "\"name\" : \"pView\",\n";
     if (pView.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5716,7 +5716,7 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5801,7 +5801,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5827,7 +5827,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5853,7 +5853,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     *out += "\"name\" : \"pShaderModule\",\n";
     if (pShaderModule.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -5948,7 +5948,7 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6033,7 +6033,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6059,7 +6059,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6085,7 +6085,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     *out += "\"name\" : \"pPipelineCache\",\n";
     if (pPipelineCache.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6180,7 +6180,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6280,7 +6280,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     *out += "\"name\" : \"pDataSize\",\n";
     if (pDataSize.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6307,7 +6307,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     *out += "\"name\" : \"pData\",\n";
     if (pData.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6423,7 +6423,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     *out += "\"name\" : \"pSrcCaches\",\n";
     if (pSrcCaches.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6541,7 +6541,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     *out += "\"name\" : \"pCreateInfos\",\n";
     if (pCreateInfos.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6567,7 +6567,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6593,7 +6593,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     *out += "\"name\" : \"pPipelines\",\n";
     if (pPipelines.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6711,7 +6711,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     *out += "\"name\" : \"pCreateInfos\",\n";
     if (pCreateInfos.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6737,7 +6737,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6763,7 +6763,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     *out += "\"name\" : \"pPipelines\",\n";
     if (pPipelines.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6858,7 +6858,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6943,7 +6943,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6969,7 +6969,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -6995,7 +6995,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     *out += "\"name\" : \"pPipelineLayout\",\n";
     if (pPipelineLayout.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7090,7 +7090,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7175,7 +7175,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7201,7 +7201,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7227,7 +7227,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     *out += "\"name\" : \"pSampler\",\n";
     if (pSampler.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7322,7 +7322,7 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7407,7 +7407,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7433,7 +7433,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7459,7 +7459,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     *out += "\"name\" : \"pSetLayout\",\n";
     if (pSetLayout.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7554,7 +7554,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7639,7 +7639,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7665,7 +7665,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7691,7 +7691,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     *out += "\"name\" : \"pDescriptorPool\",\n";
     if (pDescriptorPool.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7786,7 +7786,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7958,7 +7958,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     *out += "\"name\" : \"pAllocateInfo\",\n";
     if (pAllocateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -7984,7 +7984,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     *out += "\"name\" : \"pDescriptorSets\",\n";
     if (pDescriptorSets.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8100,7 +8100,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     *out += "\"name\" : \"pDescriptorSets\",\n";
     if (pDescriptorSets.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8197,7 +8197,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     *out += "\"name\" : \"pDescriptorWrites\",\n";
     if (pDescriptorWrites.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8238,7 +8238,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     *out += "\"name\" : \"pDescriptorCopies\",\n";
     if (pDescriptorCopies.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8323,7 +8323,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8349,7 +8349,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8375,7 +8375,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     *out += "\"name\" : \"pFramebuffer\",\n";
     if (pFramebuffer.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8470,7 +8470,7 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8555,7 +8555,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8581,7 +8581,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8607,7 +8607,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     *out += "\"name\" : \"pRenderPass\",\n";
     if (pRenderPass.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8702,7 +8702,7 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8796,7 +8796,7 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     *out += "\"name\" : \"pGranularity\",\n";
     if (pGranularity.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8881,7 +8881,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8907,7 +8907,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -8933,7 +8933,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     *out += "\"name\" : \"pCommandPool\",\n";
     if (pCommandPool.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -9028,7 +9028,7 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -9200,7 +9200,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     *out += "\"name\" : \"pAllocateInfo\",\n";
     if (pAllocateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -9226,7 +9226,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     *out += "\"name\" : \"pCommandBuffers\",\n";
     if (pCommandBuffers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -9337,7 +9337,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     *out += "\"name\" : \"pCommandBuffers\",\n";
     if (pCommandBuffers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -9421,7 +9421,7 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     *out += "\"name\" : \"pBeginInfo\",\n";
     if (pBeginInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -9742,7 +9742,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     *out += "\"name\" : \"pViewports\",\n";
     if (pViewports.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -9852,7 +9852,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     *out += "\"name\" : \"pScissors\",\n";
     if (pScissors.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -10097,14 +10097,14 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     *out += "\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"name\" : \"blendConstants\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"address\" : \"";  // EAC
-        AddrToStringJson(out, blendConstants.GetAddress() /* UYA */ );
-        *out += "\",\n";
-        IndentSpacesJson(out, indent);
-        *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_blendConstants = {false, false, false, nullptr};
-        ArrayToStringJson(out, indent, -1, "const float", &blendConstants, "blendConstants", 4, vinfo_blendConstants); // AUA
+    IndentSpacesJson(out, indent);
+    *out += "\"address\" : \"";  // EAC
+    AddrToStringJson(out, blendConstants.GetAddress() /* UYA */ );
+    *out += "\",\n";
+    IndentSpacesJson(out, indent);
+    *out += "\"elements\" : ";
+    ScalarValueToStringStruct vinfo_blendConstants = {false, false, false, nullptr};
+    ArrayToStringJson(out, indent, -1, "const float", &blendConstants, "blendConstants", 4, vinfo_blendConstants); // AUA
     IndentSpacesJson(out, 4);
     *out += "}\n";
 
@@ -10568,7 +10568,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     *out += "\"name\" : \"pDescriptorSets\",\n";
     if (pDescriptorSets.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -10610,7 +10610,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     *out += "\"name\" : \"pDynamicOffsets\",\n";
     if (pDynamicOffsets.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -10821,7 +10821,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     *out += "\"name\" : \"pBuffers\",\n";
     if (pBuffers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -10848,7 +10848,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     *out += "\"name\" : \"pOffsets\",\n";
     if (pOffsets.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -11633,7 +11633,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     *out += "\"name\" : \"pRegions\",\n";
     if (pRegions.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -11791,7 +11791,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     *out += "\"name\" : \"pRegions\",\n";
     if (pRegions.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -11950,7 +11950,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     *out += "\"name\" : \"pRegions\",\n";
     if (pRegions.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -12107,7 +12107,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     *out += "\"name\" : \"pRegions\",\n";
     if (pRegions.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -12249,7 +12249,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     *out += "\"name\" : \"pRegions\",\n";
     if (pRegions.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -12375,7 +12375,7 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     *out += "\"name\" : \"pData\",\n";
     if (pData.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -12603,7 +12603,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     *out += "\"name\" : \"pColor\",\n";
     if (pColor.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -12644,7 +12644,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     *out += "\"name\" : \"pRanges\",\n";
     if (pRanges.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -12756,7 +12756,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     *out += "\"name\" : \"pDepthStencil\",\n";
     if (pDepthStencil.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -12797,7 +12797,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     *out += "\"name\" : \"pRanges\",\n";
     if (pRanges.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -12893,7 +12893,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     *out += "\"name\" : \"pAttachments\",\n";
     if (pAttachments.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -12934,7 +12934,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     *out += "\"name\" : \"pRects\",\n";
     if (pRects.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -13092,7 +13092,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     *out += "\"name\" : \"pRegions\",\n";
     if (pRegions.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -13360,7 +13360,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"name\" : \"pEvents\",\n";
     if (pEvents.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -13432,7 +13432,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"name\" : \"pMemoryBarriers\",\n";
     if (pMemoryBarriers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -13473,7 +13473,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"name\" : \"pBufferMemoryBarriers\",\n";
     if (pBufferMemoryBarriers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -13514,7 +13514,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"name\" : \"pImageMemoryBarriers\",\n";
     if (pImageMemoryBarriers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -13660,7 +13660,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"name\" : \"pMemoryBarriers\",\n";
     if (pMemoryBarriers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -13701,7 +13701,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"name\" : \"pBufferMemoryBarriers\",\n";
     if (pBufferMemoryBarriers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -13742,7 +13742,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"name\" : \"pImageMemoryBarriers\",\n";
     if (pImageMemoryBarriers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -14427,7 +14427,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     *out += "\"name\" : \"pValues\",\n";
     if (pValues.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -14507,7 +14507,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     *out += "\"name\" : \"pRenderPassBegin\",\n";
     if (pRenderPassBegin.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -14734,7 +14734,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     *out += "\"name\" : \"pCommandBuffers\",\n";
     if (pCommandBuffers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -14835,7 +14835,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     *out += "\"name\" : \"pBindInfos\",\n";
     if (pBindInfos.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -14934,7 +14934,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     *out += "\"name\" : \"pBindInfos\",\n";
     if (pBindInfos.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15060,7 +15060,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     *out += "\"name\" : \"pPeerMemoryFeatures\",\n";
     if (pPeerMemoryFeatures.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15360,7 +15360,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     *out += "\"name\" : \"pPhysicalDeviceGroupCount\",\n";
     if (pPhysicalDeviceGroupCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15387,7 +15387,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     *out += "\"name\" : \"pPhysicalDeviceGroupProperties\",\n";
     if (pPhysicalDeviceGroupProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15466,7 +15466,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15492,7 +15492,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15571,7 +15571,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15597,7 +15597,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15677,7 +15677,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15703,7 +15703,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     *out += "\"name\" : \"pSparseMemoryRequirementCount\",\n";
     if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15730,7 +15730,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     *out += "\"name\" : \"pSparseMemoryRequirements\",\n";
     if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15808,7 +15808,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     *out += "\"name\" : \"pFeatures\",\n";
     if (pFeatures.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15886,7 +15886,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -15980,7 +15980,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     *out += "\"name\" : \"pFormatProperties\",\n";
     if (pFormatProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16064,7 +16064,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     *out += "\"name\" : \"pImageFormatInfo\",\n";
     if (pImageFormatInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16090,7 +16090,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     *out += "\"name\" : \"pImageFormatProperties\",\n";
     if (pImageFormatProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16169,7 +16169,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     *out += "\"name\" : \"pQueueFamilyPropertyCount\",\n";
     if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16196,7 +16196,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     *out += "\"name\" : \"pQueueFamilyProperties\",\n";
     if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16274,7 +16274,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     *out += "\"name\" : \"pMemoryProperties\",\n";
     if (pMemoryProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16354,7 +16354,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     *out += "\"name\" : \"pFormatInfo\",\n";
     if (pFormatInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16380,7 +16380,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16407,7 +16407,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16569,7 +16569,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     *out += "\"name\" : \"pQueueInfo\",\n";
     if (pQueueInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16595,7 +16595,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     *out += "\"name\" : \"pQueue\",\n";
     if (pQueue.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16681,7 +16681,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16707,7 +16707,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16733,7 +16733,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     *out += "\"name\" : \"pYcbcrConversion\",\n";
     if (pYcbcrConversion.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16828,7 +16828,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16913,7 +16913,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16939,7 +16939,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -16965,7 +16965,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     *out += "\"name\" : \"pDescriptorUpdateTemplate\",\n";
     if (pDescriptorUpdateTemplate.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17060,7 +17060,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17139,7 +17139,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     *out += "\"name\" : \"pExternalBufferInfo\",\n";
     if (pExternalBufferInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17165,7 +17165,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     *out += "\"name\" : \"pExternalBufferProperties\",\n";
     if (pExternalBufferProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17244,7 +17244,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     *out += "\"name\" : \"pExternalFenceInfo\",\n";
     if (pExternalFenceInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17270,7 +17270,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     *out += "\"name\" : \"pExternalFenceProperties\",\n";
     if (pExternalFenceProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17349,7 +17349,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     *out += "\"name\" : \"pExternalSemaphoreInfo\",\n";
     if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17375,7 +17375,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     *out += "\"name\" : \"pExternalSemaphoreProperties\",\n";
     if (pExternalSemaphoreProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17454,7 +17454,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17480,7 +17480,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     *out += "\"name\" : \"pSupport\",\n";
     if (pSupport.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17575,7 +17575,7 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17690,7 +17690,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     *out += "\"name\" : \"pSupported\",\n";
     if (pSupported.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17791,7 +17791,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     *out += "\"name\" : \"pSurfaceCapabilities\",\n";
     if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17891,7 +17891,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     *out += "\"name\" : \"pSurfaceFormatCount\",\n";
     if (pSurfaceFormatCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -17918,7 +17918,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     *out += "\"name\" : \"pSurfaceFormats\",\n";
     if (pSurfaceFormats.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18018,7 +18018,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     *out += "\"name\" : \"pPresentModeCount\",\n";
     if (pPresentModeCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18045,7 +18045,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     *out += "\"name\" : \"pPresentModes\",\n";
     if (pPresentModes.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18132,7 +18132,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18158,7 +18158,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18184,7 +18184,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     *out += "\"name\" : \"pSwapchain\",\n";
     if (pSwapchain.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18279,7 +18279,7 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18379,7 +18379,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     *out += "\"name\" : \"pSwapchainImageCount\",\n";
     if (pSwapchainImageCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18406,7 +18406,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     *out += "\"name\" : \"pSwapchainImages\",\n";
     if (pSwapchainImages.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18554,7 +18554,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     *out += "\"name\" : \"pImageIndex\",\n";
     if (pImageIndex.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18638,7 +18638,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     *out += "\"name\" : \"pPresentInfo\",\n";
     if (pPresentInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18737,7 +18737,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     *out += "\"name\" : \"pDeviceGroupPresentCapabilities\",\n";
     if (pDeviceGroupPresentCapabilities.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18836,7 +18836,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     *out += "\"name\" : \"pModes\",\n";
     if (pModes.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18938,7 +18938,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     *out += "\"name\" : \"pRectCount\",\n";
     if (pRectCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -18965,7 +18965,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     *out += "\"name\" : \"pRects\",\n";
     if (pRects.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19049,7 +19049,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     *out += "\"name\" : \"pAcquireInfo\",\n";
     if (pAcquireInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19075,7 +19075,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     *out += "\"name\" : \"pImageIndex\",\n";
     if (pImageIndex.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19161,7 +19161,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19188,7 +19188,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19272,7 +19272,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19299,7 +19299,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19399,7 +19399,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     *out += "\"name\" : \"pDisplayCount\",\n";
     if (pDisplayCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19426,7 +19426,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     *out += "\"name\" : \"pDisplays\",\n";
     if (pDisplays.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19527,7 +19527,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19554,7 +19554,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19655,7 +19655,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19681,7 +19681,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19707,7 +19707,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     *out += "\"name\" : \"pMode\",\n";
     if (pMode.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19823,7 +19823,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     *out += "\"name\" : \"pCapabilities\",\n";
     if (pCapabilities.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19908,7 +19908,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19934,7 +19934,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -19960,7 +19960,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20063,7 +20063,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     *out += "\"name\" : \"pCreateInfos\",\n";
     if (pCreateInfos.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20089,7 +20089,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20115,7 +20115,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     *out += "\"name\" : \"pSwapchains\",\n";
     if (pSwapchains.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20202,7 +20202,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20228,7 +20228,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20254,7 +20254,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20447,7 +20447,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20473,7 +20473,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20499,7 +20499,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20602,7 +20602,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     *out += "\"name\" : \"connection\",\n";
     if ( !connection) // WWW
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20704,7 +20704,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20730,7 +20730,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20756,7 +20756,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20858,7 +20858,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     *out += "\"name\" : \"display\",\n";
     if ( !display) // WWW
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20945,7 +20945,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20971,7 +20971,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -20997,7 +20997,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21084,7 +21084,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21110,7 +21110,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21136,7 +21136,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21290,7 +21290,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     *out += "\"name\" : \"pFeatures\",\n";
     if (pFeatures.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21368,7 +21368,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21462,7 +21462,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     *out += "\"name\" : \"pFormatProperties\",\n";
     if (pFormatProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21546,7 +21546,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     *out += "\"name\" : \"pImageFormatInfo\",\n";
     if (pImageFormatInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21572,7 +21572,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     *out += "\"name\" : \"pImageFormatProperties\",\n";
     if (pImageFormatProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21651,7 +21651,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     *out += "\"name\" : \"pQueueFamilyPropertyCount\",\n";
     if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21678,7 +21678,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     *out += "\"name\" : \"pQueueFamilyProperties\",\n";
     if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21756,7 +21756,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     *out += "\"name\" : \"pMemoryProperties\",\n";
     if (pMemoryProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21836,7 +21836,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     *out += "\"name\" : \"pFormatInfo\",\n";
     if (pFormatInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21862,7 +21862,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -21889,7 +21889,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -22016,7 +22016,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     *out += "\"name\" : \"pPeerMemoryFeatures\",\n";
     if (pPeerMemoryFeatures.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -22401,7 +22401,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     *out += "\"name\" : \"pPhysicalDeviceGroupCount\",\n";
     if (pPhysicalDeviceGroupCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -22428,7 +22428,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     *out += "\"name\" : \"pPhysicalDeviceGroupProperties\",\n";
     if (pPhysicalDeviceGroupProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -22508,7 +22508,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     *out += "\"name\" : \"pExternalBufferInfo\",\n";
     if (pExternalBufferInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -22534,7 +22534,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     *out += "\"name\" : \"pExternalBufferProperties\",\n";
     if (pExternalBufferProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -22619,7 +22619,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     *out += "\"name\" : \"pGetWin32HandleInfo\",\n";
     if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -22645,7 +22645,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     *out += "\"name\" : \"pHandle\",\n";
     if (pHandle.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -22747,7 +22747,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     *out += "\"name\" : \"handle\",\n";
     if ( !handle) // WWW
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -22774,7 +22774,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     *out += "\"name\" : \"pMemoryWin32HandleProperties\",\n";
     if (pMemoryWin32HandleProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -22859,7 +22859,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     *out += "\"name\" : \"pGetFdInfo\",\n";
     if (pGetFdInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -22885,7 +22885,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     *out += "\"name\" : \"pFd\",\n";
     if (pFd.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23002,7 +23002,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     *out += "\"name\" : \"pMemoryFdProperties\",\n";
     if (pMemoryFdProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23082,7 +23082,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     *out += "\"name\" : \"pExternalSemaphoreInfo\",\n";
     if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23108,7 +23108,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     *out += "\"name\" : \"pExternalSemaphoreProperties\",\n";
     if (pExternalSemaphoreProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23192,7 +23192,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     *out += "\"name\" : \"pImportSemaphoreWin32HandleInfo\",\n";
     if (pImportSemaphoreWin32HandleInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23276,7 +23276,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     *out += "\"name\" : \"pGetWin32HandleInfo\",\n";
     if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23302,7 +23302,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     *out += "\"name\" : \"pHandle\",\n";
     if (pHandle.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23388,7 +23388,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     *out += "\"name\" : \"pImportSemaphoreFdInfo\",\n";
     if (pImportSemaphoreFdInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23472,7 +23472,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     *out += "\"name\" : \"pGetFdInfo\",\n";
     if (pGetFdInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23498,7 +23498,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     *out += "\"name\" : \"pFd\",\n";
     if (pFd.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23643,7 +23643,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     *out += "\"name\" : \"pDescriptorWrites\",\n";
     if (pDescriptorWrites.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23729,7 +23729,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23755,7 +23755,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23781,7 +23781,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     *out += "\"name\" : \"pDescriptorUpdateTemplate\",\n";
     if (pDescriptorUpdateTemplate.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23876,7 +23876,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23962,7 +23962,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -23988,7 +23988,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24014,7 +24014,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     *out += "\"name\" : \"pRenderPass\",\n";
     if (pRenderPass.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24094,7 +24094,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     *out += "\"name\" : \"pRenderPassBegin\",\n";
     if (pRenderPassBegin.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24120,7 +24120,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     *out += "\"name\" : \"pSubpassBeginInfo\",\n";
     if (pSubpassBeginInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24199,7 +24199,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     *out += "\"name\" : \"pSubpassBeginInfo\",\n";
     if (pSubpassBeginInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24225,7 +24225,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     *out += "\"name\" : \"pSubpassEndInfo\",\n";
     if (pSubpassEndInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24303,7 +24303,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     *out += "\"name\" : \"pSubpassEndInfo\",\n";
     if (pSubpassEndInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24456,7 +24456,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     *out += "\"name\" : \"pExternalFenceInfo\",\n";
     if (pExternalFenceInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24482,7 +24482,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     *out += "\"name\" : \"pExternalFenceProperties\",\n";
     if (pExternalFenceProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24566,7 +24566,7 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     *out += "\"name\" : \"pImportFenceWin32HandleInfo\",\n";
     if (pImportFenceWin32HandleInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24650,7 +24650,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     *out += "\"name\" : \"pGetWin32HandleInfo\",\n";
     if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24676,7 +24676,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     *out += "\"name\" : \"pHandle\",\n";
     if (pHandle.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24762,7 +24762,7 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     *out += "\"name\" : \"pImportFenceFdInfo\",\n";
     if (pImportFenceFdInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24846,7 +24846,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     *out += "\"name\" : \"pGetFdInfo\",\n";
     if (pGetFdInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24872,7 +24872,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     *out += "\"name\" : \"pFd\",\n";
     if (pFd.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24959,7 +24959,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     *out += "\"name\" : \"pSurfaceInfo\",\n";
     if (pSurfaceInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -24985,7 +24985,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     *out += "\"name\" : \"pSurfaceCapabilities\",\n";
     if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25070,7 +25070,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     *out += "\"name\" : \"pSurfaceInfo\",\n";
     if (pSurfaceInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25096,7 +25096,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     *out += "\"name\" : \"pSurfaceFormatCount\",\n";
     if (pSurfaceFormatCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25123,7 +25123,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     *out += "\"name\" : \"pSurfaceFormats\",\n";
     if (pSurfaceFormats.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25208,7 +25208,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25235,7 +25235,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25319,7 +25319,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25346,7 +25346,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25446,7 +25446,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25473,7 +25473,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25557,7 +25557,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     *out += "\"name\" : \"pDisplayPlaneInfo\",\n";
     if (pDisplayPlaneInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25583,7 +25583,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     *out += "\"name\" : \"pCapabilities\",\n";
     if (pCapabilities.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25663,7 +25663,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25689,7 +25689,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25768,7 +25768,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25794,7 +25794,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25874,7 +25874,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25900,7 +25900,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     *out += "\"name\" : \"pSparseMemoryRequirementCount\",\n";
     if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -25927,7 +25927,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     *out += "\"name\" : \"pSparseMemoryRequirements\",\n";
     if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -26013,7 +26013,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -26039,7 +26039,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -26065,7 +26065,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     *out += "\"name\" : \"pYcbcrConversion\",\n";
     if (pYcbcrConversion.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -26160,7 +26160,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -26260,7 +26260,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     *out += "\"name\" : \"pBindInfos\",\n";
     if (pBindInfos.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -26359,7 +26359,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     *out += "\"name\" : \"pBindInfos\",\n";
     if (pBindInfos.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -26439,7 +26439,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -26465,7 +26465,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     *out += "\"name\" : \"pSupport\",\n";
     if (pSupport.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -26860,7 +26860,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     *out += "\"name\" : \"pValue\",\n";
     if (pValue.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -26945,7 +26945,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     *out += "\"name\" : \"pWaitInfo\",\n";
     if (pWaitInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27043,7 +27043,7 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     *out += "\"name\" : \"pSignalInfo\",\n";
     if (pSignalInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27129,7 +27129,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     *out += "\"name\" : \"pPipelineInfo\",\n";
     if (pPipelineInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27155,7 +27155,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     *out += "\"name\" : \"pExecutableCount\",\n";
     if (pExecutableCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27182,7 +27182,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27267,7 +27267,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     *out += "\"name\" : \"pExecutableInfo\",\n";
     if (pExecutableInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27293,7 +27293,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     *out += "\"name\" : \"pStatisticCount\",\n";
     if (pStatisticCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27320,7 +27320,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     *out += "\"name\" : \"pStatistics\",\n";
     if (pStatistics.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27405,7 +27405,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     *out += "\"name\" : \"pExecutableInfo\",\n";
     if (pExecutableInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27431,7 +27431,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     *out += "\"name\" : \"pInternalRepresentationCount\",\n";
     if (pInternalRepresentationCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27458,7 +27458,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     *out += "\"name\" : \"pInternalRepresentations\",\n";
     if (pInternalRepresentations.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27544,7 +27544,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27570,7 +27570,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27596,7 +27596,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     *out += "\"name\" : \"pCallback\",\n";
     if (pCallback.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27691,7 +27691,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27850,7 +27850,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     *out += "\"name\" : \"pLayerPrefix\",\n";
     if (pLayerPrefix.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27877,7 +27877,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     *out += "\"name\" : \"pMessage\",\n";
     if (pMessage.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -27962,7 +27962,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     *out += "\"name\" : \"pTagInfo\",\n";
     if (pTagInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -28045,7 +28045,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     *out += "\"name\" : \"pNameInfo\",\n";
     if (pNameInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -28123,7 +28123,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     *out += "\"name\" : \"pMarkerInfo\",\n";
     if (pMarkerInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -28252,7 +28252,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     *out += "\"name\" : \"pMarkerInfo\",\n";
     if (pMarkerInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -28365,7 +28365,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     *out += "\"name\" : \"pBuffers\",\n";
     if (pBuffers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -28392,7 +28392,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     *out += "\"name\" : \"pOffsets\",\n";
     if (pOffsets.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -28419,7 +28419,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     *out += "\"name\" : \"pSizes\",\n";
     if (pSizes.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -28531,7 +28531,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     *out += "\"name\" : \"pCounterBuffers\",\n";
     if (pCounterBuffers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -28558,7 +28558,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     *out += "\"name\" : \"pCounterBufferOffsets\",\n";
     if (pCounterBufferOffsets.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -28670,7 +28670,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     *out += "\"name\" : \"pCounterBuffers\",\n";
     if (pCounterBuffers.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -28697,7 +28697,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     *out += "\"name\" : \"pCounterBufferOffsets\",\n";
     if (pCounterBufferOffsets.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -29145,7 +29145,7 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -29573,7 +29573,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     *out += "\"name\" : \"pInfoSize\",\n";
     if (pInfoSize.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -29600,7 +29600,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -29687,7 +29687,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -29713,7 +29713,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -29739,7 +29739,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -29920,7 +29920,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"name\" : \"pExternalImageFormatProperties\",\n";
     if (pExternalImageFormatProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30036,7 +30036,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     *out += "\"name\" : \"pHandle\",\n";
     if (pHandle.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30124,7 +30124,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30150,7 +30150,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30176,7 +30176,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30256,7 +30256,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     *out += "\"name\" : \"pConditionalRenderingBegin\",\n";
     if (pConditionalRenderingBegin.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30386,7 +30386,7 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     *out += "\"name\" : \"pProcessCommandsInfo\",\n";
     if (pProcessCommandsInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30464,7 +30464,7 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     *out += "\"name\" : \"pReserveSpaceInfo\",\n";
     if (pReserveSpaceInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30549,7 +30549,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30575,7 +30575,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30601,7 +30601,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     *out += "\"name\" : \"pIndirectCommandsLayout\",\n";
     if (pIndirectCommandsLayout.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30696,7 +30696,7 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30781,7 +30781,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30807,7 +30807,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30833,7 +30833,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     *out += "\"name\" : \"pObjectTable\",\n";
     if (pObjectTable.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -30928,7 +30928,7 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -31044,7 +31044,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     *out += "\"name\" : \"pObjectEntryTypes\",\n";
     if (pObjectEntryTypes.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -31071,7 +31071,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     *out += "\"name\" : \"pObjectIndices\",\n";
     if (pObjectIndices.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -31151,7 +31151,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     *out += "\"name\" : \"pFeatures\",\n";
     if (pFeatures.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -31177,7 +31177,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     *out += "\"name\" : \"pLimits\",\n";
     if (pLimits.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -31288,7 +31288,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     *out += "\"name\" : \"pViewportWScalings\",\n";
     if (pViewportWScalings.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -31565,7 +31565,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     *out += "\"name\" : \"pDisplay\",\n";
     if (pDisplay.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -31666,7 +31666,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     *out += "\"name\" : \"pSurfaceCapabilities\",\n";
     if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -31766,7 +31766,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     *out += "\"name\" : \"pDisplayPowerInfo\",\n";
     if (pDisplayPowerInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -31851,7 +31851,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     *out += "\"name\" : \"pDeviceEventInfo\",\n";
     if (pDeviceEventInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -31877,7 +31877,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -31903,7 +31903,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     *out += "\"name\" : \"pFence\",\n";
     if (pFence.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32005,7 +32005,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     *out += "\"name\" : \"pDisplayEventInfo\",\n";
     if (pDisplayEventInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32031,7 +32031,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32057,7 +32057,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     *out += "\"name\" : \"pFence\",\n";
     if (pFence.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32173,7 +32173,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     *out += "\"name\" : \"pCounterValue\",\n";
     if (pCounterValue.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32274,7 +32274,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     *out += "\"name\" : \"pDisplayTimingProperties\",\n";
     if (pDisplayTimingProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32374,7 +32374,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     *out += "\"name\" : \"pPresentationTimingCount\",\n";
     if (pPresentationTimingCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32401,7 +32401,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     *out += "\"name\" : \"pPresentationTimings\",\n";
     if (pPresentationTimings.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32512,7 +32512,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     *out += "\"name\" : \"pDiscardRectangles\",\n";
     if (pDiscardRectangles.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32608,7 +32608,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     *out += "\"name\" : \"pSwapchains\",\n";
     if (pSwapchains.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32635,7 +32635,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     *out += "\"name\" : \"pMetadata\",\n";
     if (pMetadata.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32721,7 +32721,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32747,7 +32747,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32773,7 +32773,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32860,7 +32860,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32886,7 +32886,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32912,7 +32912,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -32997,7 +32997,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     *out += "\"name\" : \"pNameInfo\",\n";
     if (pNameInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -33080,7 +33080,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     *out += "\"name\" : \"pTagInfo\",\n";
     if (pTagInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -33158,7 +33158,7 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     *out += "\"name\" : \"pLabelInfo\",\n";
     if (pLabelInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -33287,7 +33287,7 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     *out += "\"name\" : \"pLabelInfo\",\n";
     if (pLabelInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -33365,7 +33365,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     *out += "\"name\" : \"pLabelInfo\",\n";
     if (pLabelInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -33494,7 +33494,7 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     *out += "\"name\" : \"pLabelInfo\",\n";
     if (pLabelInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -33579,7 +33579,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -33605,7 +33605,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -33631,7 +33631,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     *out += "\"name\" : \"pMessenger\",\n";
     if (pMessenger.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -33726,7 +33726,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -33836,7 +33836,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     *out += "\"name\" : \"pCallbackData\",\n";
     if (pCallbackData.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -33921,7 +33921,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     *out += "\"name\" : \"buffer\",\n";
     if ( !buffer) // WWW
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -33948,7 +33948,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -34032,7 +34032,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -34058,7 +34058,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     *out += "\"name\" : \"pBuffer\",\n";
     if (pBuffer.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -34139,7 +34139,7 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     *out += "\"name\" : \"pSampleLocationsInfo\",\n";
     if (pSampleLocationsInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -34233,7 +34233,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     *out += "\"name\" : \"pMultisampleProperties\",\n";
     if (pMultisampleProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -34333,7 +34333,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -34419,7 +34419,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -34445,7 +34445,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -34471,7 +34471,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     *out += "\"name\" : \"pValidationCache\",\n";
     if (pValidationCache.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -34566,7 +34566,7 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -34681,7 +34681,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     *out += "\"name\" : \"pSrcCaches\",\n";
     if (pSrcCaches.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -34782,7 +34782,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     *out += "\"name\" : \"pDataSize\",\n";
     if (pDataSize.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -34809,7 +34809,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     *out += "\"name\" : \"pData\",\n";
     if (pData.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -35004,7 +35004,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     *out += "\"name\" : \"pShadingRatePalettes\",\n";
     if (pShadingRatePalettes.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -35114,7 +35114,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     *out += "\"name\" : \"pCustomSampleOrders\",\n";
     if (pCustomSampleOrders.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -35200,7 +35200,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -35226,7 +35226,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -35252,7 +35252,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     *out += "\"name\" : \"pAccelerationStructure\",\n";
     if (pAccelerationStructure.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -35347,7 +35347,7 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -35426,7 +35426,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -35452,7 +35452,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     *out += "\"name\" : \"pMemoryRequirements\",\n";
     if (pMemoryRequirements.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -35551,7 +35551,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     *out += "\"name\" : \"pBindInfos\",\n";
     if (pBindInfos.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -35636,7 +35636,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -36232,7 +36232,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     *out += "\"name\" : \"pCreateInfos\",\n";
     if (pCreateInfos.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -36258,7 +36258,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -36284,7 +36284,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     *out += "\"name\" : \"pPipelines\",\n";
     if (pPipelines.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -36432,7 +36432,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     *out += "\"name\" : \"pData\",\n";
     if (pData.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -36548,7 +36548,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     *out += "\"name\" : \"pData\",\n";
     if (pData.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -36646,7 +36646,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     *out += "\"name\" : \"pAccelerationStructures\",\n";
     if (pAccelerationStructures.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -36881,7 +36881,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     *out += "\"name\" : \"pHostPointer\",\n";
     if ( !pHostPointer) // WWW
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -36908,7 +36908,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     *out += "\"name\" : \"pMemoryHostPointerProperties\",\n";
     if (pMemoryHostPointerProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -37109,7 +37109,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     *out += "\"name\" : \"pTimeDomainCount\",\n";
     if (pTimeDomainCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -37136,7 +37136,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     *out += "\"name\" : \"pTimeDomains\",\n";
     if (pTimeDomains.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -37238,7 +37238,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     *out += "\"name\" : \"pTimestampInfos\",\n";
     if (pTimestampInfos.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -37264,7 +37264,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     *out += "\"name\" : \"pTimestamps\",\n";
     if (pTimestamps.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -37291,7 +37291,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     *out += "\"name\" : \"pMaxDeviation\",\n";
     if (pMaxDeviation.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -37749,7 +37749,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     *out += "\"name\" : \"pExclusiveScissors\",\n";
     if (pExclusiveScissors.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -37828,7 +37828,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     *out += "\"name\" : \"pCheckpointMarker\",\n";
     if ( !pCheckpointMarker) // WWW
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -37908,7 +37908,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     *out += "\"name\" : \"pCheckpointDataCount\",\n";
     if (pCheckpointDataCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -37935,7 +37935,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     *out += "\"name\" : \"pCheckpointData\",\n";
     if (pCheckpointData.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -38019,7 +38019,7 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     *out += "\"name\" : \"pInitializeInfo\",\n";
     if (pInitializeInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -38153,7 +38153,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     *out += "\"name\" : \"pMarkerInfo\",\n";
     if (pMarkerInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -38236,7 +38236,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     *out += "\"name\" : \"pMarkerInfo\",\n";
     if (pMarkerInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -38319,7 +38319,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     *out += "\"name\" : \"pOverrideInfo\",\n";
     if (pOverrideInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -38403,7 +38403,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     *out += "\"name\" : \"pAcquireInfo\",\n";
     if (pAcquireInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -38429,7 +38429,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     *out += "\"name\" : \"pConfiguration\",\n";
     if (pConfiguration.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -38673,7 +38673,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     *out += "\"name\" : \"pValue\",\n";
     if (pValue.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -38843,7 +38843,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -38869,7 +38869,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -38895,7 +38895,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -38982,7 +38982,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39008,7 +39008,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39034,7 +39034,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39121,7 +39121,7 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     *out += "\"name\" : \"pInfo\",\n";
     if (pInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39206,7 +39206,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     *out += "\"name\" : \"pPropertyCount\",\n";
     if (pPropertyCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39233,7 +39233,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     *out += "\"name\" : \"pProperties\",\n";
     if (pProperties.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39318,7 +39318,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     *out += "\"name\" : \"pCombinationCount\",\n";
     if (pCombinationCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39345,7 +39345,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     *out += "\"name\" : \"pCombinations\",\n";
     if (pCombinations.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39431,7 +39431,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     *out += "\"name\" : \"pSurfaceInfo\",\n";
     if (pSurfaceInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39457,7 +39457,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     *out += "\"name\" : \"pPresentModeCount\",\n";
     if (pPresentModeCount.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39484,7 +39484,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     *out += "\"name\" : \"pPresentModes\",\n";
     if (pPresentModes.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39713,7 +39713,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     *out += "\"name\" : \"pSurfaceInfo\",\n";
     if (pSurfaceInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39739,7 +39739,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     *out += "\"name\" : \"pModes\",\n";
     if (pModes.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39827,7 +39827,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     *out += "\"name\" : \"pCreateInfo\",\n";
     if (pCreateInfo.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39853,7 +39853,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     *out += "\"name\" : \"pAllocator\",\n";
     if (pAllocator.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
@@ -39879,7 +39879,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     *out += "\"name\" : \"pSurface\",\n";
     if (pSurface.GetPointer() == nullptr) // WWY
     {
-        IndentSpacesJson(out, indent);
+        IndentSpacesJson(out, indent); // RGV
         *out += "\"address\" : \"NULL\"\n";
     }
     else
