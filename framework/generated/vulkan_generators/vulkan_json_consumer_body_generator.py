@@ -72,7 +72,7 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
     def beginFile(self, genOpts):
         BaseGenerator.beginFile(self, genOpts)
         self.wc('#include "generated/generated_vulkan_json_consumer.h"')
-        self.wc('#include "generated/generated_vulkan_json_enum_util.h"')
+        self.wc('#include "generated/generated_vulkan_ascii_enum_util.h"')
         self.wc('#include "generated/generated_vulkan_json_struct_util.h"')
         self.wc('#include "format/platform_types.h"')
         self.wc('#include "util/defines.h"')
@@ -159,7 +159,7 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
             self.wc('    IndentSpacesJson(out, 3);  // TWP')
             self.wc('    *out += "\\"returnValue\\" : \\"";')
             if self.isEnum(returnType):
-                self.wc('    EnumToStringVkResultJson(&outString, returnValue);')
+                self.wc('    EnumToStringVkResult(&outString, returnValue);')
             elif self.isFunctionPtr(returnType):
                 self.wc('    AddrToStringJson(returnValue);')
             else:

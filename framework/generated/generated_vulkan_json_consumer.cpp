@@ -21,7 +21,7 @@
 */
 
 #include "generated/generated_vulkan_json_consumer.h"
-#include "generated/generated_vulkan_json_enum_util.h"
+#include "generated/generated_vulkan_ascii_enum_util.h"
 #include "generated/generated_vulkan_json_struct_util.h"
 #include "format/platform_types.h"
 #include "util/defines.h"
@@ -68,7 +68,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -268,7 +268,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -485,7 +485,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, format); // ESA
+    EnumToStringVkFormat(out, format); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -556,7 +556,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -588,7 +588,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, format); // ESA
+    EnumToStringVkFormat(out, format); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -603,7 +603,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageTypeJson(out, type); // ESA
+    EnumToStringVkImageType(out, type); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -618,7 +618,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"name\" : \"tiling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageTilingJson(out, tiling); // ESA
+    EnumToStringVkImageTiling(out, tiling); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -633,7 +633,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -648,7 +648,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkImageCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, flags, EnumToStringVkImageCreateFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -978,7 +978,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -1305,7 +1305,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -1417,7 +1417,7 @@ void VulkanJsonConsumer::Process_vkQueueWaitIdle(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -1473,7 +1473,7 @@ void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -1532,7 +1532,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -1766,7 +1766,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -1978,7 +1978,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -2077,7 +2077,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -2273,7 +2273,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -2377,7 +2377,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -2822,7 +2822,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, format); // ESA
+    EnumToStringVkFormat(out, format); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -2837,7 +2837,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageTypeJson(out, type); // ESA
+    EnumToStringVkImageType(out, type); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -2852,7 +2852,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"name\" : \"samples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, samples, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, samples, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -2867,7 +2867,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -2882,7 +2882,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"name\" : \"tiling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageTilingJson(out, tiling); // ESA
+    EnumToStringVkImageTiling(out, tiling); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -2977,7 +2977,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -3092,7 +3092,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -3323,7 +3323,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -3422,7 +3422,7 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -3497,7 +3497,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -3628,7 +3628,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -3860,7 +3860,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -4090,7 +4090,7 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -4162,7 +4162,7 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -4234,7 +4234,7 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -4308,7 +4308,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -4544,7 +4544,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -4678,7 +4678,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkQueryResultFlagBitsJson); // URG
+    FlagsToStringJson(out, flags, EnumToStringVkQueryResultFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -4720,7 +4720,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -4952,7 +4952,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -5184,7 +5184,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -5537,7 +5537,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -5769,7 +5769,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -6001,7 +6001,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -6233,7 +6233,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -6361,7 +6361,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -6479,7 +6479,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -6649,7 +6649,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -6911,7 +6911,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -7143,7 +7143,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -7375,7 +7375,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -7607,7 +7607,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -7838,7 +7838,7 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -7926,7 +7926,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -8038,7 +8038,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -8291,7 +8291,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -8523,7 +8523,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -8849,7 +8849,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -9080,7 +9080,7 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -9127,7 +9127,7 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkCommandPoolResetFlagBitsJson); // URG
+    FlagsToStringJson(out, flags, EnumToStringVkCommandPoolResetFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -9168,7 +9168,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -9389,7 +9389,7 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -9471,7 +9471,7 @@ void VulkanJsonConsumer::Process_vkEndCommandBuffer(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -9528,7 +9528,7 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -9560,7 +9560,7 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkCommandBufferResetFlagBitsJson); // URG
+    FlagsToStringJson(out, flags, EnumToStringVkCommandBufferResetFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -9628,7 +9628,7 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     *out += "\"name\" : \"pipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPipelineBindPointJson(out, pipelineBindPoint); // ESA
+    EnumToStringVkPipelineBindPoint(out, pipelineBindPoint); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -10254,7 +10254,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     *out += "\"name\" : \"faceMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBitsJson); // URG
+    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -10337,7 +10337,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     *out += "\"name\" : \"faceMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBitsJson); // URG
+    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -10420,7 +10420,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     *out += "\"name\" : \"faceMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBitsJson); // URG
+    FlagsToStringJson(out, faceMask, EnumToStringVkStencilFaceFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -10508,7 +10508,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     *out += "\"name\" : \"pipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPipelineBindPointJson(out, pipelineBindPoint); // ESA
+    EnumToStringVkPipelineBindPoint(out, pipelineBindPoint); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -10721,7 +10721,7 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     *out += "\"name\" : \"indexType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkIndexTypeJson(out, indexType); // ESA
+    EnumToStringVkIndexType(out, indexType); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -11731,7 +11731,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     *out += "\"name\" : \"srcImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, srcImageLayout); // ESA
+    EnumToStringVkImageLayout(out, srcImageLayout); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11761,7 +11761,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     *out += "\"name\" : \"dstImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, dstImageLayout); // ESA
+    EnumToStringVkImageLayout(out, dstImageLayout); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11890,7 +11890,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     *out += "\"name\" : \"srcImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, srcImageLayout); // ESA
+    EnumToStringVkImageLayout(out, srcImageLayout); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11920,7 +11920,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     *out += "\"name\" : \"dstImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, dstImageLayout); // ESA
+    EnumToStringVkImageLayout(out, dstImageLayout); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -11976,7 +11976,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     *out += "\"name\" : \"filter\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFilterJson(out, filter); // ESA
+    EnumToStringVkFilter(out, filter); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -12077,7 +12077,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     *out += "\"name\" : \"dstImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, dstImageLayout); // ESA
+    EnumToStringVkImageLayout(out, dstImageLayout); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -12204,7 +12204,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     *out += "\"name\" : \"srcImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, srcImageLayout); // ESA
+    EnumToStringVkImageLayout(out, srcImageLayout); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -12588,7 +12588,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     *out += "\"name\" : \"imageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, imageLayout); // ESA
+    EnumToStringVkImageLayout(out, imageLayout); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -12741,7 +12741,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     *out += "\"name\" : \"imageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, imageLayout); // ESA
+    EnumToStringVkImageLayout(out, imageLayout); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13032,7 +13032,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     *out += "\"name\" : \"srcImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, srcImageLayout); // ESA
+    EnumToStringVkImageLayout(out, srcImageLayout); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13062,7 +13062,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     *out += "\"name\" : \"dstImageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, dstImageLayout); // ESA
+    EnumToStringVkImageLayout(out, dstImageLayout); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13186,7 +13186,7 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     *out += "\"name\" : \"stageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, stageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, stageMask, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -13269,7 +13269,7 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     *out += "\"name\" : \"stageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, stageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, stageMask, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -13387,7 +13387,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"name\" : \"srcStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, srcStageMask, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13402,7 +13402,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"name\" : \"dstStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, dstStageMask, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13600,7 +13600,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"name\" : \"srcStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, srcStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, srcStageMask, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13615,7 +13615,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"name\" : \"dstStageMask\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, dstStageMask, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, dstStageMask, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13630,7 +13630,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"name\" : \"dependencyFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, dependencyFlags, EnumToStringVkDependencyFlagBitsJson); // URG
+    FlagsToStringJson(out, dependencyFlags, EnumToStringVkDependencyFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -13852,7 +13852,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkQueryControlFlagBitsJson); // URG
+    FlagsToStringJson(out, flags, EnumToStringVkQueryControlFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -14103,7 +14103,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     *out += "\"name\" : \"pipelineStage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pipelineStage, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pipelineStage, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -14296,7 +14296,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkQueryResultFlagBitsJson); // URG
+    FlagsToStringJson(out, flags, EnumToStringVkQueryResultFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -14382,7 +14382,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     *out += "\"name\" : \"stageFlags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, stageFlags, EnumToStringVkShaderStageFlagBitsJson); // URG
+    FlagsToStringJson(out, stageFlags, EnumToStringVkShaderStageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -14533,7 +14533,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     *out += "\"name\" : \"contents\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSubpassContentsJson(out, contents); // ESA
+    EnumToStringVkSubpassContents(out, contents); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -14600,7 +14600,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     *out += "\"name\" : \"contents\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkSubpassContentsJson(out, contents); // ESA
+    EnumToStringVkSubpassContents(out, contents); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -14788,7 +14788,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -14887,7 +14887,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -15071,7 +15071,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"value\" : \"";
-        ScalarValueToStringStruct vinfo_pPeerMemoryFeatures = {false, false, true, EnumToStringVkPeerMemoryFeatureFlagBitsJson};
+        ScalarValueToStringStruct vinfo_pPeerMemoryFeatures = {false, false, true, EnumToStringVkPeerMemoryFeatureFlagBits};
         ScalarValueToStringJson(out, pPeerMemoryFeatures.GetPointer(), vinfo_pPeerMemoryFeatures); // PXS
         *out += "\"\n";
     }
@@ -15328,7 +15328,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -15965,7 +15965,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, format); // ESA
+    EnumToStringVkFormat(out, format); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -16032,7 +16032,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -16649,7 +16649,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -16881,7 +16881,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -17628,7 +17628,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -17744,7 +17744,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -17844,7 +17844,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -17971,7 +17971,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -18056,7 +18056,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHRJson};
+        ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHR};
         ArrayToStringJson(out, indent, 0, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUA
     }
     IndentSpacesJson(out, 4);
@@ -18100,7 +18100,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -18332,7 +18332,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -18462,7 +18462,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -18606,7 +18606,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -18705,7 +18705,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -18789,7 +18789,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -18847,7 +18847,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"value\" : \"";
-        ScalarValueToStringStruct vinfo_pModes = {false, false, true, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson};
+        ScalarValueToStringStruct vinfo_pModes = {false, false, true, EnumToStringVkDeviceGroupPresentModeFlagBitsKHR};
         ScalarValueToStringJson(out, pModes.GetPointer(), vinfo_pModes); // PXS
         *out += "\"\n";
     }
@@ -18891,7 +18891,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -19017,7 +19017,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -19129,7 +19129,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -19240,7 +19240,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -19352,7 +19352,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -19480,7 +19480,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -19608,7 +19608,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -19761,7 +19761,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -19876,7 +19876,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -20016,7 +20016,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -20170,7 +20170,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -20415,7 +20415,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -20672,7 +20672,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -20913,7 +20913,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -21052,7 +21052,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -21447,7 +21447,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, format); // ESA
+    EnumToStringVkFormat(out, format); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -21514,7 +21514,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -22027,7 +22027,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"value\" : \"";
-        ScalarValueToStringStruct vinfo_pPeerMemoryFeatures = {false, false, true, EnumToStringVkPeerMemoryFeatureFlagBitsJson};
+        ScalarValueToStringStruct vinfo_pPeerMemoryFeatures = {false, false, true, EnumToStringVkPeerMemoryFeatureFlagBits};
         ScalarValueToStringJson(out, pPeerMemoryFeatures.GetPointer(), vinfo_pPeerMemoryFeatures); // PXS
         *out += "\"\n";
     }
@@ -22369,7 +22369,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -22587,7 +22587,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -22700,7 +22700,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -22732,7 +22732,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -22827,7 +22827,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -22940,7 +22940,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -22972,7 +22972,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -23160,7 +23160,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -23244,7 +23244,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -23356,7 +23356,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -23440,7 +23440,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -23583,7 +23583,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     *out += "\"name\" : \"pipelineBindPoint\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPipelineBindPointJson(out, pipelineBindPoint); // ESA
+    EnumToStringVkPipelineBindPoint(out, pipelineBindPoint); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -23697,7 +23697,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -23930,7 +23930,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -24355,7 +24355,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -24534,7 +24534,7 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -24618,7 +24618,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -24730,7 +24730,7 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -24814,7 +24814,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -24927,7 +24927,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -25038,7 +25038,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -25176,7 +25176,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -25287,7 +25287,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -25399,7 +25399,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -25525,7 +25525,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -25981,7 +25981,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -26213,7 +26213,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -26312,7 +26312,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -26813,7 +26813,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -26913,7 +26913,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -27011,7 +27011,7 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -27097,7 +27097,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -27235,7 +27235,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -27373,7 +27373,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -27512,7 +27512,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -27775,7 +27775,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkDebugReportFlagBitsEXTJson); // URG
+    FlagsToStringJson(out, flags, EnumToStringVkDebugReportFlagBitsEXT); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -27790,7 +27790,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     *out += "\"name\" : \"objectType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkDebugReportObjectTypeEXTJson(out, objectType); // ESA
+    EnumToStringVkDebugReportObjectTypeEXT(out, objectType); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -27930,7 +27930,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -28013,7 +28013,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -28809,7 +28809,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkQueryControlFlagBitsJson); // URG
+    FlagsToStringJson(out, flags, EnumToStringVkQueryControlFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -29496,7 +29496,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -29543,7 +29543,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     *out += "\"name\" : \"shaderStage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, shaderStage, EnumToStringVkShaderStageFlagBitsJson); // URG
+    FlagsToStringJson(out, shaderStage, EnumToStringVkShaderStageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -29558,7 +29558,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     *out += "\"name\" : \"infoType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkShaderInfoTypeAMDJson(out, infoType); // ESA
+    EnumToStringVkShaderInfoTypeAMD(out, infoType); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -29655,7 +29655,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -29798,7 +29798,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -29830,7 +29830,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"name\" : \"format\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkFormatJson(out, format); // ESA
+    EnumToStringVkFormat(out, format); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -29845,7 +29845,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"name\" : \"type\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageTypeJson(out, type); // ESA
+    EnumToStringVkImageType(out, type); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -29860,7 +29860,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"name\" : \"tiling\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageTilingJson(out, tiling); // ESA
+    EnumToStringVkImageTiling(out, tiling); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -29875,7 +29875,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"name\" : \"usage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBitsJson); // URG
+    FlagsToStringJson(out, usage, EnumToStringVkImageUsageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -29890,7 +29890,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"name\" : \"flags\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, flags, EnumToStringVkImageCreateFlagBitsJson); // URG
+    FlagsToStringJson(out, flags, EnumToStringVkImageCreateFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -29905,7 +29905,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"name\" : \"externalHandleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, externalHandleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
+    FlagsToStringJson(out, externalHandleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNV); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -29974,7 +29974,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -30021,7 +30021,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNVJson); // URG
+    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsNV); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -30092,7 +30092,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -30517,7 +30517,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -30749,7 +30749,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -30982,7 +30982,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -31055,7 +31055,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pObjectEntryTypes = {false, true, false, EnumToStringVkObjectEntryTypeNVXJson};
+        ScalarValueToStringStruct vinfo_pObjectEntryTypes = {false, true, false, EnumToStringVkObjectEntryTypeNVX};
         ArrayToStringJson(out, indent, 0, "const VkObjectEntryTypeNVX*", &pObjectEntryTypes, "pObjectEntryTypes", objectCount, vinfo_pObjectEntryTypes); // AUA
     }
     IndentSpacesJson(out, 4);
@@ -31340,7 +31340,7 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -31414,7 +31414,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -31503,7 +31503,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -31619,7 +31619,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -31719,7 +31719,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -31819,7 +31819,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -31958,7 +31958,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -32111,7 +32111,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -32158,7 +32158,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     *out += "\"name\" : \"counter\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, counter, EnumToStringVkSurfaceCounterFlagBitsEXTJson); // URG
+    FlagsToStringJson(out, counter, EnumToStringVkSurfaceCounterFlagBitsEXT); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -32227,7 +32227,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -32327,7 +32327,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -32689,7 +32689,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -32828,7 +32828,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -32965,7 +32965,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -33048,7 +33048,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -33547,7 +33547,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -33806,7 +33806,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     *out += "\"name\" : \"messageSeverity\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, messageSeverity, EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXTJson); // URG
+    FlagsToStringJson(out, messageSeverity, EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXT); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -33821,7 +33821,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     *out += "\"name\" : \"messageTypes\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, messageTypes, EnumToStringVkDebugUtilsMessageTypeFlagBitsEXTJson); // URG
+    FlagsToStringJson(out, messageTypes, EnumToStringVkDebugUtilsMessageTypeFlagBitsEXT); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -33889,7 +33889,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -34000,7 +34000,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -34218,7 +34218,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     *out += "\"name\" : \"samples\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, samples, EnumToStringVkSampleCountFlagBitsJson); // URG
+    FlagsToStringJson(out, samples, EnumToStringVkSampleCountFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -34286,7 +34286,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -34387,7 +34387,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -34619,7 +34619,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -34735,7 +34735,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -34905,7 +34905,7 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     *out += "\"name\" : \"imageLayout\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkImageLayoutJson(out, imageLayout); // ESA
+    EnumToStringVkImageLayout(out, imageLayout); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -35084,7 +35084,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     *out += "\"name\" : \"sampleOrderType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkCoarseSampleOrderTypeNVJson(out, sampleOrderType); // ESA
+    EnumToStringVkCoarseSampleOrderTypeNV(out, sampleOrderType); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -35168,7 +35168,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -35504,7 +35504,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -35851,7 +35851,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     *out += "\"name\" : \"mode\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkCopyAccelerationStructureModeNVJson(out, mode); // ESA
+    EnumToStringVkCopyAccelerationStructureModeNV(out, mode); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "}\n";
@@ -36170,7 +36170,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -36340,7 +36340,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -36486,7 +36486,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -36673,7 +36673,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     *out += "\"name\" : \"queryType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkQueryTypeJson(out, queryType); // ESA
+    EnumToStringVkQueryType(out, queryType); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -36744,7 +36744,7 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -36834,7 +36834,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -36866,7 +36866,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     *out += "\"name\" : \"handleType\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBitsJson); // URG
+    FlagsToStringJson(out, handleType, EnumToStringVkExternalMemoryHandleTypeFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -36990,7 +36990,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     *out += "\"name\" : \"pipelineStage\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    FlagsToStringJson(out, pipelineStage, EnumToStringVkPipelineStageFlagBitsJson); // URG
+    FlagsToStringJson(out, pipelineStage, EnumToStringVkPipelineStageFlagBits); // URG
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -37077,7 +37077,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -37147,7 +37147,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pTimeDomains = {false, true, false, EnumToStringVkTimeDomainEXTJson};
+        ScalarValueToStringStruct vinfo_pTimeDomains = {false, true, false, EnumToStringVkTimeDomainEXT};
         ArrayToStringJson(out, indent, 0, "VkTimeDomainEXT*", &pTimeDomains, "pTimeDomains", *pTimeDomainCount.GetPointer(), vinfo_pTimeDomains); // AUA
     }
     IndentSpacesJson(out, 4);
@@ -37191,7 +37191,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -37987,7 +37987,7 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -38121,7 +38121,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -38204,7 +38204,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -38287,7 +38287,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -38371,7 +38371,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -38481,7 +38481,7 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -38553,7 +38553,7 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -38626,7 +38626,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -38658,7 +38658,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     *out += "\"name\" : \"parameter\",\n";
     IndentSpacesJson(out, indent);
     *out += "\"value\" : \"";
-    EnumToStringVkPerformanceParameterTypeINTELJson(out, parameter); // ESA
+    EnumToStringVkPerformanceParameterTypeINTEL(out, parameter); // ESA
     *out += "\"\n";
     IndentSpacesJson(out, 4);
     *out += "},\n";
@@ -38811,7 +38811,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -38950,7 +38950,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -39174,7 +39174,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -39286,7 +39286,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -39399,7 +39399,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -39495,7 +39495,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"elements\" : ";
-        ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHRJson};
+        ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHR};
         ArrayToStringJson(out, indent, 0, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUA
     }
     IndentSpacesJson(out, 4);
@@ -39536,7 +39536,7 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -39608,7 +39608,7 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -39681,7 +39681,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
@@ -39750,7 +39750,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
         *out += "\",\n";
         IndentSpacesJson(out, indent);
         *out += "\"value\" : \"";
-        ScalarValueToStringStruct vinfo_pModes = {false, false, true, EnumToStringVkDeviceGroupPresentModeFlagBitsKHRJson};
+        ScalarValueToStringStruct vinfo_pModes = {false, false, true, EnumToStringVkDeviceGroupPresentModeFlagBitsKHR};
         ScalarValueToStringJson(out, pModes.GetPointer(), vinfo_pModes); // PXS
         *out += "\"\n";
     }
@@ -39795,7 +39795,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     *out += "\"returnType\" : \"VkResult\",\n";
     IndentSpacesJson(out, 3);  // TWP
     *out += "\"returnValue\" : \"";
-    EnumToStringVkResultJson(&outString, returnValue);
+    EnumToStringVkResult(&outString, returnValue);
     *out += "\",\n";
     IndentSpacesJson(out, 3);  // TTP
     *out += "\"args\" :\n";
