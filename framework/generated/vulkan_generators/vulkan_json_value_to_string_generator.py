@@ -241,7 +241,7 @@ class ValueToString(BaseGenerator):
                                      ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // RQN')
                 else:
                     self.wc('    StructureToStringJson(out, *' + pstruct_in + value.name + ', indent, ' +
-                                     ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // APJ')   #TODO: Code lead to this sometimes had indent wrong
+                                     ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // APJ')
 
         ###### Output pointers to non-structs and non-arrays
         elif value.isPointer and value.name != 'dpy':
@@ -265,8 +265,11 @@ class ValueToString(BaseGenerator):
                 self.wc(leadSpaces + 'AddrToStringJson(out, *' + pstruct + value.name + '.GetPointer()); // URY')
                 self.wc(leadSpaces + '*out += "\\"\\n";')
             elif value.name == 'pNext':
-                 # TODO: output contents of pNext structure
-                self.wc(leadSpaces + '// TODO: output pNext structure";')
+                self.wc(leadSpaces + 'void *pNext_base_addr = reinterpret_cast<void *>(' + pstruct_in + value.name + '->GetAddress()); // PVX')
+                self.wc(leadSpaces + 'if (pNext_base_addr)')
+                self.wc(leadSpaces + '{')
+                self.wc(leadSpaces + '    PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX')
+                self.wc(leadSpaces + '}')
             else:
                 if value.baseType == "wchar_t":
                     self.wc(leadSpaces + 'IndentSpacesJson(out, indent);')
@@ -288,12 +291,7 @@ class ValueToString(BaseGenerator):
                     if isFuncArg:
                         self.wc(leadSpaces + 'ScalarValueToStringJson(out, ' + value.name + '.GetPointer(), vinfo_' + value.name +'); // PXS')
                     else:
-                        # TODO: Print pnext struct
-                        if value.name == 'pNext':
-                            self.wc(leadSpaces + 'uint64_t pnextLocal = ' + pstruct_in + value.name + '->GetAddress(); // PXX')
-                            self.wc(leadSpaces + 'ScalarValueToStringJson(out, &pnextLocal, vinfo_' + value.name +');')
-                        else:
-                            self.wc(leadSpaces + 'ScalarValueToStringJson(out, ' + pstruct_in + value.name + '->GetPointer(), vinfo_' + value.name +'); // PXT')
+                        self.wc(leadSpaces + 'ScalarValueToStringJson(out, ' + pstruct_in + value.name + '->GetPointer(), vinfo_' + value.name +'); // PXT')
                     self.wc(leadSpaces + '*out += "\\"\\n";')
 
         ###### Output handles
