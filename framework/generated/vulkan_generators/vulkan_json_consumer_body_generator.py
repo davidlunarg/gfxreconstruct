@@ -145,18 +145,18 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         self.wc('    }')
         self.wc('    need_function_comma = true;')
         self.newline()
-        self.wc('    IndentSpacesJson(out, 2);  // TWP')
+        self.wc('    IndentSpacesJson(out, 2); // TWP')
         self.wc('    *out += "{\\n";')
-        self.wc('    IndentSpacesJson(out, 3);  // TWP')
-        self.wc('    *out += "\\"name\\" : \\"' + name + '\\",\\n";   // FCN')
-        self.wc('    IndentSpacesJson(out, 3);  // TWP')
+        self.wc('    IndentSpacesJson(out, 3); // TRP')
+        self.wc('    *out += "\\"name\\" : \\"' + name + '\\",\\n"; // FCN')
+        self.wc('    IndentSpacesJson(out, 3); // TNP')
         self.wc('    *out += "\\"thread\\" : \\"Thread ";');
         self.wc('    SignedDecimalToStringJson(out, 13216);')  # TODO: get thread id
         self.wc('    *out += "\\",\\n";');
-        self.wc('    IndentSpacesJson(out, 3);  // TWP')
+        self.wc('    IndentSpacesJson(out, 3); // TLP')
         self.wc('    *out += "\\"returnType\\" : \\"' + returnType + '\\",\\n";')
         if returnType != 'void':
-            self.wc('    IndentSpacesJson(out, 3);  // TWP')
+            self.wc('    IndentSpacesJson(out, 3); // TKP')
             self.wc('    *out += "\\"returnValue\\" : \\"";')
             if self.isEnum(returnType):
                 self.wc('    EnumToStringVkResult(&outString, returnValue);')
@@ -167,7 +167,7 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
                 self.wc('    snprintf(rval_str, sizeof(rval_str), "' + format(self.getFormatString(returnType)) + '"' + ', returnValue);')
                 self.wc('    *out += rval_str;')
             self.wc('    *out += "\\",\\n";')
-        self.wc('    IndentSpacesJson(out, 3);  // TTP')
+        self.wc('    IndentSpacesJson(out, 3); // TTP')
         self.wc('    *out += "\\"args\\" :\\n";')
         self.wc('    IndentSpacesJson(out, 3);')
         self.wc('    *out += "[\\n";')
@@ -176,7 +176,7 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         for value in values:
             self.newline()
             self.wc('    // func arg: ' + value.fullType + ' ' + value.name)
-            self.wc('    IndentSpacesJson(out, 4);  // UWP')
+            self.wc('    IndentSpacesJson(out, 4); // UWP')
             self.wc('    *out += "{\\n";')
             ValueToString.valueToString(self, value, "")
             self.wc('    IndentSpacesJson(out, 4);')
