@@ -44,7 +44,7 @@ class ValueToString(BaseGenerator):
     # code to display function arguments, and from vulkan_json_consumer_struct_generator.py to generate
     # code to display members of structures.
     def valueToString(self, value, structName):
-        #{   // For vi % cmd
+        #{  For vi % cmd
 
         if structName != '':
             pstruct = 'pstruct->'
@@ -56,8 +56,6 @@ class ValueToString(BaseGenerator):
             isFuncArg = True
 
         # Code is indented 8 spaces when printing a pointer.
-        # However, code for string pointers is indented 4 spaces.
-        #if value.isPointer and value.fullType != 'const char*':
         if value.isPointer:
             leadSpaces = '        '
         else:
@@ -102,13 +100,12 @@ class ValueToString(BaseGenerator):
         specialPtr = (value.name in
                      ["pUserData", "handle", "hwnd", "surface", "connection", "hwnd", "hinstance",
                       "pHostPointer", "window", "display", "pCheckpointMarker", "buffer", "hmonitor", "pLayer"])
-        #TODO: Simplify this...
         if not value.isPointer and value.isArray:
             if not isFuncArg:
                 addrExpression = 'base_addr + offsetof(' + structName + ', ' + value.name + ') /* RKQ */'
             else:
                 addrExpression = pstruct_in + value.name + '.GetAddress() /* UYA */'
-        if value.isPointer and value.name != "dpy":
+        elif value.isPointer and value.name != "dpy":
             if isFuncArg and specialPtr:
                 self.wc('    if ( !' + value.name + ') // WWW')
             elif not isFuncArg and specialPtr:
@@ -122,36 +119,21 @@ class ValueToString(BaseGenerator):
             self.wc('        *out += "\\"address\\" : \\"NULL\\"\\n";')
             self.wc('    }')
             self.wc('    else')
-            self.wc('    {')
-            if value.isArray:
-                if value.baseType in self.structDict:
-                    if isFuncArg:
-                        addrExpression = pstruct_in + value.name + '.GetAddress() /* RQA */'
-                    else:
-                        addrExpression = pstruct_in + value.name + '->GetAddress() /* IIO */'
-                else:
-                    if isFuncArg:
-                        addrExpression = pstruct_in + value.name + '.GetAddress() /* TWO */'
-                    else:
-                        addrExpression = pstruct_in + value.name + '.GetAddress() /* UTW */'
-            elif self.isStruct(value.baseType):
-                if isFuncArg:
-                    addrExpression = pstruct_in + value.name + '.GetAddress() /* UYR */'
-                else:
+            self.wc('    { // JHD')
+            if specialPtr:
+                 addrExpression = pstruct_in + value.name + ' /* ACF */'
+            elif isFuncArg or (not isFuncArg and value.isArray and not (value.baseType in self.structDict)):
+                addrExpression = pstruct_in + value.name + '.GetAddress() /* RQA */'
+            else:
+                if value.isArray or self.isStruct(value.baseType) or value.name == 'pNext':
                     addrExpression = pstruct_in + value.name + '->GetAddress() /* KWO */'
-            elif specialPtr or (value.name == "pView"):
-                if specialPtr or not isFuncArg:
+                elif (value.name == "pView"):
                     addrExpression = pstruct_in + value.name + ' /* ACF */'
                 else:
-                    addrExpression = pstruct_in + value.name + '.GetAddress() /* PIO */'
-            else:
-                if value.name == 'pNext':
-                    addrExpression = pstruct_in + value.name + '->GetAddress() /* YYQ */'
-                else:
-                    addrExpression = pstruct_in + value.name + '.GetAddress() /* QZX */'
+                    addrExpression = pstruct_in + value.name + '.GetAddress() /* QZR */'
         if addrExpression is not None:
             self.wc(leadSpaces + 'IndentSpacesJson(out, indent);')
-            self.wc(leadSpaces + '*out += "\\"address\\" : \\"";  // EAC')
+            self.wc(leadSpaces + '*out += "\\"address\\" : \\""; // EAC')
             self.wc(leadSpaces + 'AddrToStringJson(out, ' + addrExpression + ' );')
             self.wc(leadSpaces + '*out += "\\",\\n";')
 
@@ -189,11 +171,11 @@ class ValueToString(BaseGenerator):
                 if isFuncArg:
                     self.wc(leadSpaces + 'ArrayOfStructsToStringJson<Decoded_' + value.baseType + '>(out, indent, ' + str(value.pointerCount) + ', "' + value.baseType +
                           '", ' + value.name + '.GetMetaStructPointer(), "' + value.name +
-                          '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + value.name + '.GetAddress());  // CRO')
+                          '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + value.name + '.GetAddress()); // CRO')
                 else:
                     self.wc(leadSpaces + 'ArrayOfStructsToStringJson<Decoded_' + value.baseType + '>(out, indent, ' + str(value.pointerCount) + ', "' + value.baseType +
                           '", ' + pstruct_in + value.name + '->GetMetaStructPointer(), "' + value.name +
-                          '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + pstruct_in + value.name + '->GetAddress());  // CCY')
+                          '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + pstruct_in + value.name + '->GetAddress()); // CCY')
             elif value.fullType == "const char* const*":
                 # Array of strings
                 self.wc(leadSpaces + 'IndentSpacesJson(out, indent);')
@@ -220,7 +202,7 @@ class ValueToString(BaseGenerator):
                     print("Not handled!!: ", value.name)
             elif self.isUnion(structName):
                 self.wc('    IndentSpacesJson(out, indent);')
-                self.wc('    *out += "\\"elements\\" :"; // TRP')   # TODO: THIS IS SOMETIMES INDENTED WRONG
+                self.wc('    *out += "\\"elements\\" :"; // TRP')
                 self.wc('    ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
                 self.wc('    ArrayOfScalarsToStringJson<'+value.fullType+'>(out, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", ' +
                         pstruct_in + 'decoded_value->' + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // TPA')
@@ -367,6 +349,6 @@ class ValueToString(BaseGenerator):
 
         if value.isPointer and value.name != "dpy":
             # Close off not nullptr block
-            self.wc('    }')
+            self.wc('    } // HWR')
 
         #}  For vi % cmd
