@@ -44,6 +44,7 @@ class VulkanJsonStructGenerator(BaseGenerator):
                  warnFile = sys.stderr,
                  diagFile = sys.stdout):
         self.structDict = dict()               # Dictionary of all structures, accumulated across all features
+        self.pNextStructs = dict()             # Dictionary of all structs that might be in a pNext struct
         self.unionList = set()                 # List of unions. This is a subset of structDict.
         BaseGenerator.__init__(self,
                                processCmds=True, processStructs=True, featureBreak=True,
@@ -98,12 +99,35 @@ class VulkanJsonStructGenerator(BaseGenerator):
                 self.unionList.add(name)
             if ((category == 'struct' or category == 'union') and name !="VkBaseOutStructure" and name != "VkBaseInStructure"):
                 self.structDict[name] = self.makeValueInfo(typeinfo.elem.findall('.//member'))
+                print("Struct:", name)
+                if typeinfo.elem.get('structextends'):
+                    sType = self.makeStructureTypeEnum(typeinfo, name)
+                    if sType:
+                        self.pNextStructs[name] = sType
 
     def endFile(self):
         # Generate forward references to struct functions
         for structName in self.structDict:
             if structName != 'VkBaseInStructure' and structName != 'VkBaseOutStructure':
                 self.wc('void StructureToStringJson(std::string* out, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr);')
+        self.newline()
+
+        # Generate PnextStructToString function
+        # PnextStructToString will accept a pNext structure, examine the sType, and call the appropriate StructureToString function
+        self.wc('void PnextStructToStringJson(std::string* out, int indent, void *pNextStruct, uint64_t base_addr)')
+        self.wc('{')
+        self.wc('    assert(out != nullptr);')
+        self.wc('    switch (static_cast<Decoded_VkApplicationInfo*>(pNextStruct)->decoded_value->sType)')
+        self.wc('    {')
+        for structName in self.pNextStructs:
+                self.wc('        case ' + self.pNextStructs[structName] + ':')
+                self.wc('            StructureToStringJson(out, *(reinterpret_cast<const Decoded_' + structName + '*>(pNextStruct)) , indent, base_addr);');
+                self.wc('            break;')
+        self.wc('        default:')
+        self.wc('            *out += "\\\"Unknown pNext structure\\\"";')
+        self.wc('            break;')
+        self.wc('    }')
+        self.wc('}')
         self.newline()
 
         # Generate functions to print structures

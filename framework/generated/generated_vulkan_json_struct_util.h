@@ -517,6 +517,635 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
 void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT &pstruct_in, int indent, uint64_t base_addr);
 void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT &pstruct_in, int indent, uint64_t base_addr);
 
+void PnextStructToStringJson(std::string* out, int indent, void *pNextStruct, uint64_t base_addr)
+{
+    assert(out != nullptr);
+    switch (static_cast<Decoded_VkApplicationInfo*>(pNextStruct)->decoded_value->sType)
+    {
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSubgroupProperties*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDevice16BitStorageFeatures*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkMemoryDedicatedRequirements*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkMemoryDedicatedAllocateInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkMemoryAllocateFlagsInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDeviceGroupRenderPassBeginInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDeviceGroupCommandBufferBeginInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDeviceGroupSubmitInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDeviceGroupBindSparseInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkBindBufferMemoryDeviceGroupInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkBindImageMemoryDeviceGroupInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDeviceGroupDeviceCreateInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFeatures2*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDevicePointClippingProperties*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkRenderPassInputAttachmentAspectCreateInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImageViewUsageCreateInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineTessellationDomainOriginStateCreateInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkRenderPassMultiviewCreateInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMultiviewFeatures*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMultiviewProperties*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceVariablePointersFeatures*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceProtectedMemoryFeatures*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceProtectedMemoryProperties*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkProtectedSubmitInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSamplerYcbcrConversionInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkBindImagePlaneMemoryInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImagePlaneMemoryRequirementsInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSamplerYcbcrConversionFeatures*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSamplerYcbcrConversionImageFormatProperties*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceExternalImageFormatInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExternalImageFormatProperties*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceIDProperties*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExternalMemoryImageCreateInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExternalMemoryBufferCreateInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExportMemoryAllocateInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExportFenceCreateInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExportSemaphoreCreateInfo*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMaintenance3Properties*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderDrawParametersFeatures*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImageSwapchainCreateInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkBindImageMemorySwapchainInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDeviceGroupPresentInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDeviceGroupSwapchainCreateInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDisplayPresentInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImportMemoryWin32HandleInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExportMemoryWin32HandleInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImportMemoryFdInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkWin32KeyedMutexAcquireReleaseInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExportSemaphoreWin32HandleInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkD3D12FenceSubmitInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDevicePushDescriptorPropertiesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderFloat16Int8FeaturesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPresentRegionsKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceImagelessFramebufferFeaturesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkFramebufferAttachmentsCreateInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkRenderPassAttachmentBeginInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSharedPresentSurfaceCapabilitiesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExportFenceWin32HandleInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImageFormatListCreateInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDevice8BitStorageFeaturesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderAtomicInt64FeaturesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CLOCK_FEATURES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderClockFeaturesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDriverPropertiesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFloatControlsPropertiesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSubpassDescriptionDepthStencilResolveKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDepthStencilResolvePropertiesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_FEATURES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTimelineSemaphoreFeaturesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTimelineSemaphorePropertiesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SEMAPHORE_TYPE_CREATE_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSemaphoreTypeCreateInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkTimelineSemaphoreSubmitInfoKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSurfaceProtectedCapabilitiesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_EXECUTABLE_PROPERTIES_FEATURES_KHR:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDebugReportCallbackCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineRasterizationStateRasterizationOrderAMD*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDedicatedAllocationImageCreateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDedicatedAllocationBufferCreateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDedicatedAllocationMemoryAllocateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTransformFeedbackFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTransformFeedbackPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineRasterizationStateStreamCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkTextureLODGatherFormatPropertiesAMD*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCornerSampledImageFeaturesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExternalMemoryImageCreateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExportMemoryAllocateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImportMemoryWin32HandleInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExportMemoryWin32HandleInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkWin32KeyedMutexAcquireReleaseInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkValidationFlagsEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImageViewASTCDecodeModeEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceASTCDecodeFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceConditionalRenderingFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkCommandBufferInheritanceConditionalRenderingInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineViewportWScalingStateCreateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSwapchainCounterCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPresentTimesInfoGOOGLE*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineViewportSwizzleStateCreateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDiscardRectanglePropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineDiscardRectangleStateCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceConservativeRasterizationPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineRasterizationConservativeStateCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDepthClipEnableFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineRasterizationDepthClipStateCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDebugUtilsMessengerCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkAndroidHardwareBufferUsageANDROID*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkAndroidHardwareBufferFormatPropertiesANDROID*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImportAndroidHardwareBufferInfoANDROID*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkExternalFormatANDROID*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSamplerReductionModeCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceInlineUniformBlockFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceInlineUniformBlockPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkWriteDescriptorSetInlineUniformBlockEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDescriptorPoolInlineUniformBlockCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSampleLocationsInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkRenderPassSampleLocationsBeginInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineSampleLocationsStateCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSampleLocationsPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineColorBlendAdvancedStateCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineCoverageToColorStateCreateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineCoverageModulationStateCreateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderSMBuiltinsPropertiesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_FEATURES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderSMBuiltinsFeaturesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDrmFormatModifierPropertiesListEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceImageDrmFormatModifierInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImageDrmFormatModifierListCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImageDrmFormatModifierExplicitCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkShaderModuleValidationCacheCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDescriptorSetLayoutBindingFlagsCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDescriptorIndexingFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDescriptorIndexingPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDescriptorSetVariableDescriptorCountAllocateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDescriptorSetVariableDescriptorCountLayoutSupportEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineViewportShadingRateImageStateCreateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShadingRateImageFeaturesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShadingRateImagePropertiesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineViewportCoarseSampleOrderStateCreateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkWriteDescriptorSetAccelerationStructureNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceRayTracingPropertiesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineRepresentativeFragmentTestStateCreateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceImageViewImageFormatInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkFilterCubicImageViewImageFormatPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDeviceQueueGlobalPriorityCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImportMemoryHostPointerInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceExternalMemoryHostPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineCompilerControlCreateInfoAMD*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderCorePropertiesAMD*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDeviceMemoryOverallocationCreateInfoAMD*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineVertexInputDivisorStateCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPresentFrameTokenGGP*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineCreationFeedbackCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMeshShaderFeaturesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMeshShaderPropertiesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderImageFootprintFeaturesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineViewportExclusiveScissorStateCreateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceExclusiveScissorFeaturesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkQueueFamilyCheckpointPropertiesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDevicePCIBusInfoPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkDisplayNativeHdrSurfaceCapabilitiesAMD*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSwapchainDisplayNativeHdrCreateInfoAMD*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFragmentDensityMapFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFragmentDensityMapPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkRenderPassFragmentDensityMapCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSubgroupSizeControlFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceSubgroupSizeControlPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderCoreProperties2AMD*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCoherentMemoryFeaturesAMD*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMemoryBudgetPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceMemoryPriorityFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkMemoryPriorityAllocateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceBufferDeviceAddressFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkBufferDeviceAddressCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkImageStencilUsageCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkValidationFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCooperativeMatrixFeaturesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCooperativeMatrixPropertiesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COVERAGE_REDUCTION_MODE_FEATURES_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceCoverageReductionModeFeaturesNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineCoverageReductionStateCreateInfoNV*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_IMAGE_ARRAYS_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceYcbcrImageArraysFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSurfaceFullScreenExclusiveInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSurfaceCapabilitiesFullScreenExclusiveEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkSurfaceFullScreenExclusiveWin32InfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceLineRasterizationFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceLineRasterizationPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPipelineRasterizationLineStateCreateInfoEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceHostQueryResetFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceIndexTypeUint8FeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES_EXT:
+            StructureToStringJson(out, *(reinterpret_cast<const Decoded_VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT*>(pNextStruct)) , indent, base_addr);
+            break;
+        default:
+            *out += "\"Unknown pNext structure\"";
+            break;
+    }
+}
+
 void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &pstruct_in, int indent, uint64_t base_addr)
 {
     const VkApplicationInfo *pstruct = (const VkApplicationInfo *)pstruct_in.decoded_value; // BTB
@@ -566,7 +1195,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkApplicationInfo &ps
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -734,7 +1367,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkInstanceCreateInfo 
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4667,7 +5304,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueCreateIn
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -4806,7 +5447,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceCreateInfo &p
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5205,7 +5850,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubmitInfo &pstruct
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5431,7 +6080,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateInfo 
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -5524,7 +6177,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMappedMemoryRange &
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6451,7 +7108,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindSparseInfo &pst
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6737,7 +7398,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceCreateInfo &ps
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6813,7 +7478,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreCreateInfo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6889,7 +7558,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkEventCreateInfo &ps
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -6965,7 +7638,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7092,7 +7769,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferCreateInfo &p
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7265,7 +7946,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferViewCreateInf
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7409,7 +8094,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageCreateInfo &ps
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -7986,7 +8675,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewCreateInfo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8145,7 +8838,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleCreateI
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8270,7 +8967,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCacheCreate
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8566,7 +9267,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -8884,7 +9589,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9050,7 +9759,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInputAssemb
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9160,7 +9873,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9519,7 +10236,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSta
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9685,7 +10406,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -9931,7 +10656,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineMultisample
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10256,7 +10985,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDepthStenci
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10635,7 +11368,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendS
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10814,7 +11551,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDynamicStat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -10936,7 +11677,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkGraphicsPipelineCre
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11394,7 +12139,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkComputePipelineCrea
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11604,7 +12353,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineLayoutCreat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -11771,7 +12524,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerCreateInfo &
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12215,7 +12972,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12386,7 +13147,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolCreat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12524,7 +13289,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetAlloca
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -12780,7 +13549,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSet 
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13009,7 +13782,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkCopyDescriptorSet &
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13187,7 +13964,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferCreateIn
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -13973,7 +14754,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14184,7 +14969,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandPoolCreateIn
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14277,7 +15066,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferAlloca
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14387,7 +15180,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -14548,7 +15345,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferBeginI
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15522,7 +16323,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryBarrier &pstr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15615,7 +16420,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryBarrier
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15793,7 +16602,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryBarrier 
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -15987,7 +16800,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassBeginInfo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16393,7 +17210,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16520,7 +17341,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryInf
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16630,7 +17455,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryInfo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16740,7 +17569,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice16Bit
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16867,7 +17700,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedRequ
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -16960,7 +17797,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryDedicatedAllo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17053,7 +17894,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryAllocateFlags
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17146,7 +17991,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupRenderPa
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17267,7 +18116,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupCommandB
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17343,7 +18196,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSubmitIn
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17540,7 +18397,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupBindSpar
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17633,7 +18494,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindBufferMemoryDev
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17738,7 +18603,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemoryDevi
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -17888,7 +18757,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceGroup
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18005,7 +18878,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupDeviceCr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18110,7 +18987,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferMemoryRequire
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18186,7 +19067,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageMemoryRequirem
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18262,7 +19147,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSparseMemoryRe
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18338,7 +19227,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryRequirements2
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18413,7 +19306,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageMemoryRe
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18488,7 +19385,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFeatu
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18563,7 +19464,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePrope
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18638,7 +19543,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkFormatProperties2 &
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18713,7 +19622,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatProperti
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18788,7 +19701,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -18932,7 +19849,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyProperti
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19007,7 +19928,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19082,7 +20007,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSparseImageFormatPr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19157,7 +20086,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSpars
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19301,7 +20234,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePoint
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19444,7 +20381,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassInputAtta
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19548,7 +20489,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewUsageCreat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19624,7 +20569,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineTessellatio
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19700,7 +20649,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassMultiview
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -19897,7 +20850,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20007,7 +20964,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20100,7 +21061,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVaria
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20193,7 +21158,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceProte
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20269,7 +21238,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceProte
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20345,7 +21318,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueInfo2 &p
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20455,7 +21432,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkProtectedSubmitInfo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20531,7 +21512,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20725,7 +21710,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20801,7 +21790,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImagePlaneMemor
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20877,7 +21870,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePlaneMemoryReq
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -20953,7 +21950,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21029,7 +22030,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerYcbcrConvers
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21223,7 +22228,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorUpdateTem
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21496,7 +22505,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21572,7 +22585,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalImageFormat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21647,7 +22664,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21757,7 +22778,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalBufferPrope
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21832,7 +22857,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIDPro
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -21997,7 +23026,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22073,7 +23106,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryBuffe
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22149,7 +23186,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22225,7 +23266,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22301,7 +23346,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFenceProper
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22411,7 +23460,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceCreateIn
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22487,7 +23540,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreCrea
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22563,7 +23620,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22639,7 +23700,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalSemaphorePr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22749,7 +23814,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMaint
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22842,7 +23911,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -22918,7 +23991,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23227,7 +24304,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCreateInfo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23569,7 +24650,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentInfoKHR &pst
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23778,7 +24863,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageSwapchainCreat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23854,7 +24943,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindImageMemorySwap
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -23947,7 +25040,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkAcquireNextImageInf
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24091,7 +25188,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentC
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24191,7 +25292,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupPresentI
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24313,7 +25418,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGroupSwapchai
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24632,7 +25741,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeCreateIn
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -24935,7 +26048,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplaySurfaceCreat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25129,7 +26246,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPresentInfoK
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25237,7 +26358,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkXlibSurfaceCreateIn
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25347,7 +26472,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkXcbSurfaceCreateInf
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25469,7 +26598,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkWaylandSurfaceCreat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25603,7 +26736,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidSurfaceCreat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25708,7 +26845,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32SurfaceCreateI
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25842,7 +26983,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -25976,7 +27121,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26111,7 +27260,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryWin32HandlePr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26187,7 +27340,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetWin32Handl
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26280,7 +27437,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryFdInfoK
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26373,7 +27534,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryFdPropertiesK
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26449,7 +27614,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetFdInfoKHR 
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26542,7 +27711,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26780,7 +27953,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreWin3
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -26948,7 +28125,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportSemaphoreWin3
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27083,7 +28264,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkD3D12FenceSubmitInf
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27234,7 +28419,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetWin32Ha
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27327,7 +28516,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportSemaphoreFdIn
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27454,7 +28647,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreGetFdInfoK
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27547,7 +28744,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePushD
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27623,7 +28824,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27842,7 +29047,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentRegionsKHR &
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -27946,7 +29155,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28022,7 +29235,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28212,7 +29429,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferAttachme
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28316,7 +29537,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassAttachmen
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28421,7 +29646,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentDescripti
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28633,7 +29862,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkAttachmentReference
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -28743,7 +29976,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescription2
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29045,7 +30282,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDependency2K
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29240,7 +30481,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassCreateInf
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29497,7 +30742,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassBeginInfoKHR
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29573,7 +30822,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassEndInfoKHR &
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29632,7 +30885,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSharedPresentSurfac
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29708,7 +30965,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceWin32Han
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -29876,7 +31137,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportFenceWin32Han
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30011,7 +31276,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetWin32Handle
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30104,7 +31373,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportFenceFdInfoKH
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30231,7 +31504,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkFenceGetFdInfoKHR &
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30324,7 +31601,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSurfa
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30400,7 +31681,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30475,7 +31760,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFormat2KHR &
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30550,7 +31839,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayProperties2K
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30625,7 +31918,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlanePropert
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30700,7 +31997,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayModeProperti
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30775,7 +32076,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneInfo2KH
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30868,7 +32173,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPlaneCapabil
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -30943,7 +32252,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageFormatListCrea
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31048,7 +32361,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31124,7 +32441,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevice8BitS
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31234,7 +32555,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31327,7 +32652,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31504,7 +32833,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDrive
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31646,7 +32979,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFloat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -31994,7 +33331,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSubpassDescriptionD
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32115,7 +33456,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32242,7 +33587,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTimel
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32318,7 +33667,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTimel
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32394,7 +33747,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreTypeCreate
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32487,7 +33844,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkTimelineSemaphoreSu
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32638,7 +33999,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreWaitInfoKH
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32789,7 +34154,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSemaphoreSignalInfo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32882,7 +34251,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVulka
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -32992,7 +34365,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceProtectedCap
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33068,7 +34445,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceUnifo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33144,7 +34525,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePipel
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33220,7 +34605,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineInfoKHR &ps
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33296,7 +34685,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableP
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33439,7 +34832,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33616,7 +35013,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableS
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33758,7 +35159,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineExecutableI
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -33930,7 +35335,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugReportCallback
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34052,7 +35461,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34128,7 +35541,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectNa
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34250,7 +35667,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerObjectTa
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34406,7 +35827,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugMarkerMarkerIn
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34518,7 +35943,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34594,7 +36023,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34670,7 +36103,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDedicatedAllocation
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34763,7 +36200,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -34856,7 +36297,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTrans
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35085,7 +36530,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35178,7 +36627,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewHandleInfo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35288,7 +36741,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkTextureLODGatherFor
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35606,7 +37063,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkStreamDescriptorSur
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35699,7 +37160,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCorne
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35858,7 +37323,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalMemoryImage
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -35934,7 +37403,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryAllocat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36010,7 +37483,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryWin32Ha
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36115,7 +37592,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExportMemoryWin32Ha
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36221,7 +37702,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkWin32KeyedMutexAcqu
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36459,7 +37944,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFlagsEXT 
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36564,7 +38053,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkViSurfaceCreateInfo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36669,7 +38162,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTextu
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36745,7 +38242,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageViewASTCDecode
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36821,7 +38322,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceASTCD
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -36897,7 +38402,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkConditionalRenderin
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37007,7 +38516,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCondi
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37100,7 +38613,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkCommandBufferInheri
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37176,7 +38693,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37252,7 +38773,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceGeneratedComm
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37547,7 +39072,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkIndirectCommandsLay
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37685,7 +39214,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdProcessCommandsI
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -37925,7 +39458,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkCmdReserveSpaceForC
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38035,7 +39572,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkObjectTableCreateIn
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38769,7 +40310,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportWSc
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -38890,7 +40435,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39133,7 +40682,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayPowerInfoEXT
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39209,7 +40762,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceEventInfoEXT 
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39285,7 +40842,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayEventInfoEXT
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39361,7 +40922,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainCounterCre
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39621,7 +41186,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentTimesInfoGOO
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39725,7 +41294,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMulti
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -39885,7 +41458,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSwi
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40006,7 +41583,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDisca
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40082,7 +41663,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineDiscardRect
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40220,7 +41805,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceConse
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40432,7 +42021,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40542,7 +42135,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDepth
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40618,7 +42215,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40761,7 +42362,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkHdrMetadataEXT &pst
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -40952,7 +42557,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkIOSSurfaceCreateInf
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41057,7 +42666,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMacOSSurfaceCreateI
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41162,7 +42775,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectNam
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41284,7 +42901,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsObjectTag
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41440,7 +43061,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsLabelEXT 
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41552,7 +43177,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41838,7 +43467,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDebugUtilsMessenger
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -41994,7 +43627,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42070,7 +43707,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42163,7 +43804,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkAndroidHardwareBuff
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42357,7 +44002,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportAndroidHardwa
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42445,7 +44094,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryGetAndroidHar
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42521,7 +44174,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkExternalFormatANDRO
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42597,7 +44254,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSamplerReductionMod
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42673,7 +44334,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42766,7 +44431,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -42859,7 +44528,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceInlin
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43003,7 +44676,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetI
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43108,7 +44785,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorPoolInlin
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43234,7 +44915,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSampleLocationsInfo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43469,7 +45154,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassSampleLoc
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43618,7 +45307,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineSampleLocat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43710,7 +45403,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSampl
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43860,7 +45557,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMultisampleProperti
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -43935,7 +45636,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44011,7 +45716,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBlend
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44172,7 +45881,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineColorBlendA
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44282,7 +45995,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageToC
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44392,7 +46109,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageMod
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44548,7 +46269,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44641,7 +46366,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44784,7 +46513,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDrmFormatModifierPr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -44888,7 +46621,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45027,7 +46764,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45132,7 +46873,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45253,7 +46998,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageDrmFormatModif
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45329,7 +47078,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationCacheCrea
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45451,7 +47204,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkShaderModuleValidat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45527,7 +47284,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetLayout
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -45632,7 +47393,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -46031,7 +47796,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDescr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -46481,7 +48250,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -46586,7 +48359,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDescriptorSetVariab
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -46724,7 +48501,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportSha
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -46845,7 +48626,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -46938,7 +48723,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShadi
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47209,7 +48998,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportCoa
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47330,7 +49123,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingShaderGro
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47474,7 +49271,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkRayTracingPipelineC
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47708,7 +49509,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryTrianglesNV
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -47954,7 +49759,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryAABBNV &pst
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48129,7 +49938,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkGeometryNV &pstruct
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48238,7 +50051,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48393,7 +50210,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48485,7 +50306,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBindAccelerationStr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48641,7 +50466,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkWriteDescriptorSetA
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48746,7 +50575,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkAccelerationStructu
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -48839,7 +50672,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRayTr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49034,7 +50871,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceRepre
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49110,7 +50951,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRepresentat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49186,7 +51031,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceImage
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49262,7 +51111,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkFilterCubicImageVie
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49355,7 +51208,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceQueueGlobalPr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49431,7 +51288,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImportMemoryHostPoi
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49536,7 +51397,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryHostPointerPr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49612,7 +51477,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExter
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49688,7 +51557,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCompilerCon
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49764,7 +51637,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkCalibratedTimestamp
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -49840,7 +51717,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50137,7 +52018,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDeviceMemoryOverall
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50213,7 +52098,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50339,7 +52228,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineVertexInput
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50443,7 +52336,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceVerte
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50536,7 +52433,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPresentFrameTokenGG
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50662,7 +52563,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCreationFee
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50794,7 +52699,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCompu
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50887,7 +52796,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -50980,7 +52893,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMeshS
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51324,7 +53241,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51400,7 +53321,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51476,7 +53401,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineViewportExc
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51580,7 +53509,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceExclu
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51656,7 +53589,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueueFamilyCheckpoi
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51732,7 +53669,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkCheckpointDataNV &p
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -51837,7 +53778,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52075,7 +54020,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkInitializePerforman
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52163,7 +54112,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkQueryPoolCreateInfo
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52239,7 +54192,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceMarkerIn
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52315,7 +54272,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceStreamMa
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52391,7 +54352,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceOverride
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52501,7 +54466,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPerformanceConfigur
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52577,7 +54546,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDevicePCIBu
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52704,7 +54677,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkDisplayNativeHdrSur
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52780,7 +54757,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSwapchainDisplayNat
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52856,7 +54837,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImagePipeSurfaceCre
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -52949,7 +54934,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMetalSurfaceCreateI
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53054,7 +55043,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53164,7 +55157,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53272,7 +55269,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkRenderPassFragmentD
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53347,7 +55348,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceScala
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53423,7 +55428,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53516,7 +55525,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceSubgr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53643,7 +55656,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineShaderStage
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53719,7 +55736,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53812,7 +55833,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoher
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53888,7 +55913,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -53995,7 +56024,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceMemor
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54071,7 +56104,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkMemoryPriorityAlloc
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54147,7 +56184,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceDedic
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54223,7 +56264,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceBuffe
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54333,7 +56378,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferDeviceAddress
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54409,7 +56458,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkBufferDeviceAddress
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54485,7 +56538,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkImageStencilUsageCr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54561,7 +56618,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkValidationFeaturesE
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54712,7 +56773,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkCooperativeMatrixPr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -54907,7 +56972,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55000,7 +57069,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCoope
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55076,7 +57149,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceCover
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55152,7 +57229,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineCoverageRed
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55245,7 +57326,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkFramebufferMixedSam
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55372,7 +57457,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceFragm
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55482,7 +57571,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceYcbcr
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55558,7 +57651,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55634,7 +57731,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceCapabilities
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55710,7 +57811,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkSurfaceFullScreenEx
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55798,7 +57903,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkHeadlessSurfaceCrea
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -55874,7 +57983,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56035,7 +58148,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceLineR
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56111,7 +58228,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPipelineRasterizati
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56238,7 +58359,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceHostQ
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56314,7 +58439,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceIndex
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56390,7 +58519,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceShade
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56466,7 +58599,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
@@ -56542,7 +58679,11 @@ void StructureToStringJson(std::string* out, const Decoded_VkPhysicalDeviceTexel
         *out += "\"address\" : \""; // EAC
         AddrToStringJson(out, pstruct_in.pNext->GetAddress() /* KWO */ );
         *out += "\",\n";
-        // TODO: output pNext structure";
+        void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
+        if (pNext_base_addr)
+        {
+            PnextStructToStringJson(out, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX
+        }
     } // HWR
     indent--;
     IndentSpacesJson(out, indent); //UEW
