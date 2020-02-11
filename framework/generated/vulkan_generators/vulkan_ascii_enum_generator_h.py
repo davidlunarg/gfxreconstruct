@@ -71,12 +71,12 @@ class VulkanAsciiEnumGeneratorH(BaseGenerator):
         self.newline()
         for enumName in self.enumListNoAliases:
             if enumName in self.enumList:
-                self.wc('void EnumToString' + enumName + '(std::string* out, uint32_t enum_uint32);')
+                self.wc('void EnumToString' + enumName + '(FILE *outputFile, uint32_t enum_uint32);')
 
         # Generate functions to convert aliased enum types to string
         self.newline()
         for enumName in self.enumListAliases:
-            self.wc('void EnumToString' + enumName + '(std::string* out, ' + enumName + ' e);')
+            self.wc('void EnumToString' + enumName + '(FILE *outputFile, ' + enumName + ' e);')
 
         self.newline()
         self.wc('GFXRECON_END_NAMESPACE(decode)')
