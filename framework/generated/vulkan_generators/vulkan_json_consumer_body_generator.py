@@ -16,14 +16,9 @@
 # limitations under the License.
 #
 # TODO:
-#   Traverse and print pNext structures
 #   Display thread information
-#   Print pValues data in vkCmdPushConstants
 #   Print wchar_t* strings. It's currently stubbed out to print only the addr.
 #   Rename executable to gfxrecon2text, gfxrecon-totext, gfxrecon-to-text, gfxreconToText, or gfxrecontotext
-
-# TODO: (Specific to json)
-#    Thread ID is not correct
 
 import os,re,sys
 from base_generator import *
@@ -151,7 +146,7 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         self.wc('    *out += "\\"name\\" : \\"' + name + '\\",\\n"; // FCN')
         self.wc('    IndentSpacesJson(out, 3); // TNP')
         self.wc('    *out += "\\"thread\\" : \\"Thread ";');
-        self.wc('    SignedDecimalToStringJson(out, 13216);')  # TODO: get thread id
+        self.wc('    SignedDecimalToStringJson(out, 0);')  # TODO: get thread id
         self.wc('    *out += "\\",\\n";');
         self.wc('    IndentSpacesJson(out, 3); // TLP')
         self.wc('    *out += "\\"returnType\\" : \\"' + returnType + '\\",\\n";')
