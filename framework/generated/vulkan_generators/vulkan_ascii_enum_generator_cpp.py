@@ -69,10 +69,10 @@ class VulkanAsciiEnumGeneratorCpp(BaseGenerator):
         for enumName in self.enumListNoAliases:
             if enumName in self.enumList:
                 self.newline()
-                self.wc('void EnumToString' + enumName + '(std::string* out, uint32_t enum_uint32)')
+                self.wc('void EnumToString' + enumName + '(FILE* outputFile, uint32_t enum_uint32)')
                 self.wc('{')
                 self.wc('    ' + enumName + ' e = static_cast<' + enumName + '>(enum_uint32);')
-                self.wc('    assert(out != nullptr);')
+                self.wc('    assert(outputFile != nullptr);')
                 # Use list e to eliminate duplicates and make sure we don't use aliases
                 e = list()
                 for enumValue in self.enumList[enumName]:
@@ -87,22 +87,22 @@ class VulkanAsciiEnumGeneratorCpp(BaseGenerator):
                     # Add a case for each enum
                     for enumValue in e:
                         self.wc('        case ' + enumValue + ':')
-                        self.wc('            *out += "' + enumValue + '";')
+                        self.wc('            OutputString(JsonoutputFile, "' + enumValue + '");')
                         self.wc('            return;')
                     self.wc('        default:')
-                    self.wc('            *out += "UNKNOWN";')
+                    self.wc('            OutputString(JsonoutputFile, "UNKNOWN");')
                     self.wc('            return;')
                     self.wc('    }')
                 else:
-                    self.wc('    *out += "UNKNOWN";')
+                    self.wc('    OutputString(JsonoutputFile, "UNKNOWN");')
             self.wc('}')
 
         # Generate functions to convert aliased enum types to string
         for enumName in self.enumListAliases:
-            self.wc('\nvoid EnumToString' + enumName + '(std::string* out, ' + enumName + ' e)')
+            self.wc('\nvoid EnumToString' + enumName + '(FILE *outputFile, ' + enumName + ' e)')
             self.wc('{')
-            self.wc('    assert(out != nullptr);')
-            self.wc('    EnumToString' + self.enumListAliases[enumName] + '(out, e);')
+            self.wc('    assert(outputFile != nullptr);')
+            self.wc('    EnumToString' + self.enumListAliases[enumName] + '(outputFile, e);')
             self.wc('}')
 
         self.newline()
