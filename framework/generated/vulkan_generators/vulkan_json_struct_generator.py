@@ -109,22 +109,87 @@ class VulkanJsonStructGenerator(BaseGenerator):
         # Generate forward references to struct functions
         for structName in self.structDict:
             if structName != 'VkBaseInStructure' and structName != 'VkBaseOutStructure':
-                self.wc('void StructureToStringJson(std::string* out, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr);')
+                self.wc('void StructureToStringJson(FILE* outputFile, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr);')
         self.newline()
+
+        # Generate ArrayOfStructsToString
+        self.wc('template <typename T>')
+        self.wc('void ArrayOfStructsToStringJson(FILE*    outputFile,')
+        self.wc('                            int          indent,')
+        self.wc('                            const int    pointer_count,')
+        self.wc('                            const char*  base_type_name,')
+        self.wc('                            T*           array,')
+        self.wc('                            const char*  array_name,')
+        self.wc('                            const size_t array_length,')
+        self.wc('                            bool         is_union,')
+        self.wc('                            uint64_t     base_addr)')
+        self.wc('{')
+        self.wc('    assert(outputFile != nullptr);')
+        self.wc('    if (pointer_count > 1)')
+        self.wc('    {')
+        self.wc('        fprintf(stderr, "ERROR: ArrayOfStructsToStringJson cannot handle arrays of arrays\\n");')
+        self.wc('        return;')
+        self.wc('    }')
+        self.wc('    if (array_length == 0 || array == nullptr)')
+        self.wc('    {')
+        self.wc('        OutputStringJson(outputFile, "[ ]\\n");')
+        self.wc('        return;')
+        self.wc('    }')
+        self.wc('    OutputStringJson(outputFile, "\\n");')
+        self.wc('    IndentSpacesJson(outputFile, indent);')
+        self.wc('    OutputStringJson(outputFile, "[\\n");')
+        self.wc('    for (uint64_t j = 0; j < array_length; j++)')
+        self.wc('    {')
+        self.wc('        indent++;')
+        self.wc('        IndentSpacesJson(outputFile, indent);')
+        self.wc('        OutputStringJson(outputFile, "{\\n");')
+        self.wc('        indent++;')
+        self.wc('        IndentSpacesJson(outputFile, indent);')
+        self.wc('        OutputStringJson(outputFile, "\\"type\\" : \\"");')
+        self.wc('        OutputStringJson(outputFile, base_type_name);')
+        self.wc('        OutputStringJson(outputFile, (is_union ? " (Union)\\",\\n" : "\\",\\n"));')
+        self.wc('        IndentSpacesJson(outputFile, indent);')
+        self.wc('        OutputStringJson(outputFile, "\\"name\\" : \\"[");')
+        self.wc('        std::string idx_str;')
+        self.wc('        fprintf(outputFile, "%" PRIu64, j);')
+        self.wc('        OutputStringJson(outputFile, idx_str);')
+        self.wc('        OutputStringJson(outputFile, "]\\",\\n");')
+        self.wc('        IndentSpacesJson(outputFile, indent);')
+        self.wc('        OutputStringJson(outputFile, "\\"address\\" : \\"");')
+        self.wc('        AddrToStringJson(outputFile, base_addr + j * sizeof(T));')
+        self.wc('        gfxrecon::decode::Decoded_VkWriteDescriptorSet* p = NULL;')
+        self.wc('        OutputStringJson(outputFile, "\\",\\n");')
+        self.wc('        IndentSpacesJson(outputFile, indent);')
+        self.wc('        OutputStringJson(outputFile, "\\"members\\" :\\n");')
+        self.wc('        StructureToStringJson(outputFile, array[j], indent, base_addr + j * sizeof(T)); // YGS')
+        self.wc('        indent--;')
+        self.wc('        IndentSpacesJson(outputFile, indent);')
+        self.wc('        OutputStringJson(outputFile, "}");')
+        self.wc('        if (j < array_length - 1)')
+        self.wc('        {')
+        self.wc('            OutputStringJson(outputFile, ",");')
+        self.wc('        }')
+        self.wc('        OutputStringJson(outputFile, "\\n");')
+        self.wc('        indent--;')
+        self.wc('    }')
+        self.wc('    IndentSpacesJson(outputFile, indent);')
+        self.wc('    OutputStringJson(outputFile, "]\\n");')
+        self.wc('}')
+
 
         # Generate PnextStructToString function
         # PnextStructToString will accept a pNext structure, examine the sType, and call the appropriate StructureToString function
-        self.wc('void PnextStructToStringJson(std::string* out, int indent, void *pNextStruct, uint64_t base_addr)')
+        self.wc('void PnextStructToStringJson(FILE* outputFile, int indent, void *pNextStruct, uint64_t base_addr)')
         self.wc('{')
-        self.wc('    assert(out != nullptr);')
+        self.wc('    assert(outputFile != nullptr);')
         self.wc('    switch (static_cast<Decoded_VkApplicationInfo*>(pNextStruct)->decoded_value->sType)')
         self.wc('    {')
         for structName in self.pNextStructs:
                 self.wc('        case ' + self.pNextStructs[structName] + ':')
-                self.wc('            StructureToStringJson(out, *(reinterpret_cast<const Decoded_' + structName + '*>(pNextStruct)) , indent, base_addr);');
+                self.wc('            StructureToStringJson(outputFile, *(reinterpret_cast<const Decoded_' + structName + '*>(pNextStruct)) , indent, base_addr);');
                 self.wc('            break;')
         self.wc('        default:')
-        self.wc('            *out += "\\\"Unknown pNext structure\\\"";')
+        self.wc('            OutputStringJson(outputFile, "\\\"Unknown pNext structure\\\"");')
         self.wc('            break;')
         self.wc('    }')
         self.wc('}')
@@ -134,34 +199,34 @@ class VulkanJsonStructGenerator(BaseGenerator):
         for structName in self.structDict:
             if structName == 'VkBaseInStructure' or structName == 'VkBaseOutStructure':
                 continue
-            self.wc('void StructureToStringJson(std::string* out, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr)')
+            self.wc('void StructureToStringJson(FILE* outputFile, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr)')
             self.wc('{')
             self.wc('    const ' + structName + ' *pstruct = (const ' + structName + ' *)pstruct_in.decoded_value; // BTB')
-            self.wc('    assert(out != nullptr);')
+            self.wc('    assert(outputFile != nullptr);')
             self.wc('    if (pstruct == nullptr)')
             self.wc('    {')
             self.wc('        return;')
             self.wc('    }')
-            self.wc('    IndentSpacesJson(out, indent);')
-            self.wc('    *out += "[\\n"; // PXS');
+            self.wc('    IndentSpacesJson(outputFile, indent);')
+            self.wc('    OutputStringJson(outputFile, "[\\n"); // PXS');
             self.wc('    indent++;')
             sMembersList = list(self.structDict[structName])
             for member in sMembersList:
                 self.newline()
                 self.wc('    // struct member: ' + member.fullType + ' ' + member.name)
-                self.wc('    IndentSpacesJson(out, indent);')
-                self.wc('    *out += "{\\n"; // UXR');
+                self.wc('    IndentSpacesJson(outputFile, indent);')
+                self.wc('    OutputStringJson(outputFile, "{\\n"); // UXR');
                 self.wc('    indent++;')
                 ValueToString.valueToString(self, member, structName)
                 self.wc('    indent--;')
-                self.wc('    IndentSpacesJson(out, indent); //UEW')
+                self.wc('    IndentSpacesJson(outputFile, indent); //UEW')
                 if member == sMembersList[-1]:
-                    self.wc('    *out += "}\\n"; // UXS');
+                    self.wc('    OutputStringJson(outputFile, "}\\n"); // UXS');
                 else:
-                    self.wc('    *out += "},\\n"; // UXT');
+                    self.wc('    OutputStringJson(outputFile, "},\\n"); // UXT');
             self.wc('    indent--;')
-            self.wc('    IndentSpacesJson(out, indent);')
-            self.wc('    *out += "]\\n"; // XXS');
+            self.wc('    IndentSpacesJson(outputFile, indent);')
+            self.wc('    OutputStringJson(outputFile, "]\\n"); // XXS');
             self.wc('}')
             self.newline()
 
