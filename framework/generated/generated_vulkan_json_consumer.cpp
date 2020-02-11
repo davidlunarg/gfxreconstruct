@@ -62,7 +62,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     *out += "\"name\" : \"vkCreateInstance\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -182,7 +182,7 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     *out += "\"name\" : \"vkDestroyInstance\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -262,7 +262,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     *out += "\"name\" : \"vkEnumeratePhysicalDevices\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -372,7 +372,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     *out += "\"name\" : \"vkGetPhysicalDeviceFeatures\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -451,7 +451,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     *out += "\"name\" : \"vkGetPhysicalDeviceFormatProperties\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -550,7 +550,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     *out += "\"name\" : \"vkGetPhysicalDeviceImageFormatProperties\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -707,7 +707,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     *out += "\"name\" : \"vkGetPhysicalDeviceProperties\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -786,7 +786,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     *out += "\"name\" : \"vkGetPhysicalDeviceQueueFamilyProperties\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -891,7 +891,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     *out += "\"name\" : \"vkGetPhysicalDeviceMemoryProperties\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -972,7 +972,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     *out += "\"name\" : \"vkCreateDevice\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -1107,7 +1107,7 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     *out += "\"name\" : \"vkDestroyDevice\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -1187,7 +1187,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     *out += "\"name\" : \"vkGetDeviceQueue\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -1299,7 +1299,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     *out += "\"name\" : \"vkQueueSubmit\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -1411,7 +1411,7 @@ void VulkanJsonConsumer::Process_vkQueueWaitIdle(
     *out += "\"name\" : \"vkQueueWaitIdle\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -1467,7 +1467,7 @@ void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
     *out += "\"name\" : \"vkDeviceWaitIdle\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -1526,7 +1526,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     *out += "\"name\" : \"vkAllocateMemory\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -1662,7 +1662,7 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     *out += "\"name\" : \"vkFreeMemory\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -1760,7 +1760,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     *out += "\"name\" : \"vkMapMemory\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -1903,7 +1903,7 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
     *out += "\"name\" : \"vkUnmapMemory\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -1972,7 +1972,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     *out += "\"name\" : \"vkFlushMappedMemoryRanges\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -2071,7 +2071,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     *out += "\"name\" : \"vkInvalidateMappedMemoryRanges\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -2169,7 +2169,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     *out += "\"name\" : \"vkGetDeviceMemoryCommitment\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -2267,7 +2267,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     *out += "\"name\" : \"vkBindBufferMemory\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -2371,7 +2371,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     *out += "\"name\" : \"vkBindImageMemory\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -2473,7 +2473,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     *out += "\"name\" : \"vkGetBufferMemoryRequirements\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -2567,7 +2567,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     *out += "\"name\" : \"vkGetImageMemoryRequirements\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -2662,7 +2662,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     *out += "\"name\" : \"vkGetImageSparseMemoryRequirements\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -2788,7 +2788,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     *out += "\"name\" : \"vkGetPhysicalDeviceSparseImageFormatProperties\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -2971,7 +2971,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     *out += "\"name\" : \"vkQueueBindSparse\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -3086,7 +3086,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     *out += "\"name\" : \"vkCreateFence\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -3222,7 +3222,7 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     *out += "\"name\" : \"vkDestroyFence\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -3317,7 +3317,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     *out += "\"name\" : \"vkResetFences\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -3416,7 +3416,7 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     *out += "\"name\" : \"vkGetFenceStatus\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -3491,7 +3491,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     *out += "\"name\" : \"vkWaitForFences\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -3622,7 +3622,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     *out += "\"name\" : \"vkCreateSemaphore\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -3758,7 +3758,7 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     *out += "\"name\" : \"vkDestroySemaphore\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -3854,7 +3854,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     *out += "\"name\" : \"vkCreateEvent\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -3990,7 +3990,7 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     *out += "\"name\" : \"vkDestroyEvent\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -4084,7 +4084,7 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     *out += "\"name\" : \"vkGetEventStatus\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -4156,7 +4156,7 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     *out += "\"name\" : \"vkSetEvent\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -4228,7 +4228,7 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     *out += "\"name\" : \"vkResetEvent\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -4302,7 +4302,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     *out += "\"name\" : \"vkCreateQueryPool\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -4438,7 +4438,7 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     *out += "\"name\" : \"vkDestroyQueryPool\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -4538,7 +4538,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     *out += "\"name\" : \"vkGetQueryPoolResults\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -4714,7 +4714,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     *out += "\"name\" : \"vkCreateBuffer\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -4850,7 +4850,7 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     *out += "\"name\" : \"vkDestroyBuffer\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -4946,7 +4946,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     *out += "\"name\" : \"vkCreateBufferView\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -5082,7 +5082,7 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     *out += "\"name\" : \"vkDestroyBufferView\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -5178,7 +5178,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     *out += "\"name\" : \"vkCreateImage\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -5314,7 +5314,7 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     *out += "\"name\" : \"vkDestroyImage\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -5409,7 +5409,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     *out += "\"name\" : \"vkGetImageSubresourceLayout\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -5531,7 +5531,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     *out += "\"name\" : \"vkCreateImageView\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -5667,7 +5667,7 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     *out += "\"name\" : \"vkDestroyImageView\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -5763,7 +5763,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     *out += "\"name\" : \"vkCreateShaderModule\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -5899,7 +5899,7 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     *out += "\"name\" : \"vkDestroyShaderModule\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -5995,7 +5995,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     *out += "\"name\" : \"vkCreatePipelineCache\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -6131,7 +6131,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     *out += "\"name\" : \"vkDestroyPipelineCache\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -6227,7 +6227,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     *out += "\"name\" : \"vkGetPipelineCacheData\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -6355,7 +6355,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     *out += "\"name\" : \"vkMergePipelineCaches\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -6473,7 +6473,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     *out += "\"name\" : \"vkCreateGraphicsPipelines\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -6643,7 +6643,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     *out += "\"name\" : \"vkCreateComputePipelines\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -6809,7 +6809,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     *out += "\"name\" : \"vkDestroyPipeline\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -6905,7 +6905,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     *out += "\"name\" : \"vkCreatePipelineLayout\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -7041,7 +7041,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     *out += "\"name\" : \"vkDestroyPipelineLayout\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -7137,7 +7137,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     *out += "\"name\" : \"vkCreateSampler\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -7273,7 +7273,7 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     *out += "\"name\" : \"vkDestroySampler\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -7369,7 +7369,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     *out += "\"name\" : \"vkCreateDescriptorSetLayout\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -7505,7 +7505,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     *out += "\"name\" : \"vkDestroyDescriptorSetLayout\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -7601,7 +7601,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     *out += "\"name\" : \"vkCreateDescriptorPool\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -7737,7 +7737,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     *out += "\"name\" : \"vkDestroyDescriptorPool\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -7832,7 +7832,7 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     *out += "\"name\" : \"vkResetDescriptorPool\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -7920,7 +7920,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     *out += "\"name\" : \"vkAllocateDescriptorSets\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -8032,7 +8032,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     *out += "\"name\" : \"vkFreeDescriptorSets\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -8148,7 +8148,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     *out += "\"name\" : \"vkUpdateDescriptorSets\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -8285,7 +8285,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     *out += "\"name\" : \"vkCreateFramebuffer\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -8421,7 +8421,7 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     *out += "\"name\" : \"vkDestroyFramebuffer\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -8517,7 +8517,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     *out += "\"name\" : \"vkCreateRenderPass\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -8653,7 +8653,7 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     *out += "\"name\" : \"vkDestroyRenderPass\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -8747,7 +8747,7 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     *out += "\"name\" : \"vkGetRenderAreaGranularity\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -8843,7 +8843,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     *out += "\"name\" : \"vkCreateCommandPool\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -8979,7 +8979,7 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     *out += "\"name\" : \"vkDestroyCommandPool\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -9074,7 +9074,7 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     *out += "\"name\" : \"vkResetCommandPool\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -9162,7 +9162,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     *out += "\"name\" : \"vkAllocateCommandBuffers\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -9273,7 +9273,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     *out += "\"name\" : \"vkFreeCommandBuffers\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -9383,7 +9383,7 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     *out += "\"name\" : \"vkBeginCommandBuffer\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -9465,7 +9465,7 @@ void VulkanJsonConsumer::Process_vkEndCommandBuffer(
     *out += "\"name\" : \"vkEndCommandBuffer\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -9522,7 +9522,7 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     *out += "\"name\" : \"vkResetCommandBuffer\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -9594,7 +9594,7 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     *out += "\"name\" : \"vkCmdBindPipeline\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -9678,7 +9678,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     *out += "\"name\" : \"vkCmdSetViewport\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -9788,7 +9788,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     *out += "\"name\" : \"vkCmdSetScissor\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -9896,7 +9896,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
     *out += "\"name\" : \"vkCmdSetLineWidth\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -9965,7 +9965,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     *out += "\"name\" : \"vkCmdSetDepthBias\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -10062,7 +10062,7 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     *out += "\"name\" : \"vkCmdSetBlendConstants\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -10137,7 +10137,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     *out += "\"name\" : \"vkCmdSetDepthBounds\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -10220,7 +10220,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     *out += "\"name\" : \"vkCmdSetStencilCompareMask\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -10303,7 +10303,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     *out += "\"name\" : \"vkCmdSetStencilWriteMask\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -10386,7 +10386,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     *out += "\"name\" : \"vkCmdSetStencilReference\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -10474,7 +10474,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     *out += "\"name\" : \"vkCmdBindDescriptorSets\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -10657,7 +10657,7 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     *out += "\"name\" : \"vkCmdBindIndexBuffer\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -10757,7 +10757,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     *out += "\"name\" : \"vkCmdBindVertexBuffers\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -10896,7 +10896,7 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     *out += "\"name\" : \"vkCmdDraw\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -11012,7 +11012,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     *out += "\"name\" : \"vkCmdDrawIndexed\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -11142,7 +11142,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     *out += "\"name\" : \"vkCmdDrawIndirect\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -11257,7 +11257,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     *out += "\"name\" : \"vkCmdDrawIndexedIndirect\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -11371,7 +11371,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     *out += "\"name\" : \"vkCmdDispatch\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -11469,7 +11469,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     *out += "\"name\" : \"vkCmdDispatchIndirect\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -11554,7 +11554,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     *out += "\"name\" : \"vkCmdCopyBuffer\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -11682,7 +11682,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     *out += "\"name\" : \"vkCmdCopyImage\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -11841,7 +11841,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     *out += "\"name\" : \"vkCmdBlitImage\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -12013,7 +12013,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     *out += "\"name\" : \"vkCmdCopyBufferToImage\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -12155,7 +12155,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     *out += "\"name\" : \"vkCmdCopyImageToBuffer\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -12296,7 +12296,7 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     *out += "\"name\" : \"vkCmdUpdateBuffer\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -12423,7 +12423,7 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     *out += "\"name\" : \"vkCmdFillBuffer\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -12539,7 +12539,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     *out += "\"name\" : \"vkCmdClearColorImage\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -12692,7 +12692,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     *out += "\"name\" : \"vkCmdClearDepthStencilImage\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -12844,7 +12844,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     *out += "\"name\" : \"vkCmdClearAttachments\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -12983,7 +12983,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     *out += "\"name\" : \"vkCmdResolveImage\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -13137,7 +13137,7 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     *out += "\"name\" : \"vkCmdSetEvent\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -13220,7 +13220,7 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     *out += "\"name\" : \"vkCmdResetEvent\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -13311,7 +13311,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     *out += "\"name\" : \"vkCmdWaitEvents\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -13566,7 +13566,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     *out += "\"name\" : \"vkCmdPipelineBarrier\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -13788,7 +13788,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     *out += "\"name\" : \"vkCmdBeginQuery\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -13886,7 +13886,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     *out += "\"name\" : \"vkCmdEndQuery\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -13970,7 +13970,7 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     *out += "\"name\" : \"vkCmdResetQueryPool\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -14069,7 +14069,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     *out += "\"name\" : \"vkCmdWriteTimestamp\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -14172,7 +14172,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     *out += "\"name\" : \"vkCmdCopyQueryPoolResults\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -14333,7 +14333,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     *out += "\"name\" : \"vkCmdPushConstants\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -14473,7 +14473,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     *out += "\"name\" : \"vkCmdBeginRenderPass\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -14566,7 +14566,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     *out += "\"name\" : \"vkCmdNextSubpass\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -14632,7 +14632,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass(
     *out += "\"name\" : \"vkCmdEndRenderPass\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -14685,7 +14685,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     *out += "\"name\" : \"vkCmdExecuteCommands\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -14782,7 +14782,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     *out += "\"name\" : \"vkBindBufferMemory2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -14881,7 +14881,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     *out += "\"name\" : \"vkBindImageMemory2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -14981,7 +14981,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     *out += "\"name\" : \"vkGetDeviceGroupPeerMemoryFeatures\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -15106,7 +15106,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
     *out += "\"name\" : \"vkCmdSetDeviceMask\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -15178,7 +15178,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     *out += "\"name\" : \"vkCmdDispatchBase\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -15322,7 +15322,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     *out += "\"name\" : \"vkEnumeratePhysicalDeviceGroups\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -15432,7 +15432,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     *out += "\"name\" : \"vkGetImageMemoryRequirements2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -15537,7 +15537,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     *out += "\"name\" : \"vkGetBufferMemoryRequirements2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -15643,7 +15643,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     *out += "\"name\" : \"vkGetImageSparseMemoryRequirements2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -15774,7 +15774,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     *out += "\"name\" : \"vkGetPhysicalDeviceFeatures2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -15852,7 +15852,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     *out += "\"name\" : \"vkGetPhysicalDeviceProperties2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -15931,7 +15931,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     *out += "\"name\" : \"vkGetPhysicalDeviceFormatProperties2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -16026,7 +16026,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     *out += "\"name\" : \"vkGetPhysicalDeviceImageFormatProperties2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -16135,7 +16135,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     *out += "\"name\" : \"vkGetPhysicalDeviceQueueFamilyProperties2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -16240,7 +16240,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     *out += "\"name\" : \"vkGetPhysicalDeviceMemoryProperties2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -16320,7 +16320,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     *out += "\"name\" : \"vkGetPhysicalDeviceSparseImageFormatProperties2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -16452,7 +16452,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     *out += "\"name\" : \"vkTrimCommandPool\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -16535,7 +16535,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     *out += "\"name\" : \"vkGetDeviceQueue2\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -16643,7 +16643,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     *out += "\"name\" : \"vkCreateSamplerYcbcrConversion\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -16779,7 +16779,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     *out += "\"name\" : \"vkDestroySamplerYcbcrConversion\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -16875,7 +16875,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     *out += "\"name\" : \"vkCreateDescriptorUpdateTemplate\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -17011,7 +17011,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     *out += "\"name\" : \"vkDestroyDescriptorUpdateTemplate\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -17105,7 +17105,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     *out += "\"name\" : \"vkGetPhysicalDeviceExternalBufferProperties\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -17210,7 +17210,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     *out += "\"name\" : \"vkGetPhysicalDeviceExternalFenceProperties\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -17315,7 +17315,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     *out += "\"name\" : \"vkGetPhysicalDeviceExternalSemaphoreProperties\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -17420,7 +17420,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     *out += "\"name\" : \"vkGetDescriptorSetLayoutSupport\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -17526,7 +17526,7 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     *out += "\"name\" : \"vkDestroySurfaceKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -17622,7 +17622,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceSurfaceSupportKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -17738,7 +17738,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceSurfaceCapabilitiesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -17838,7 +17838,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceSurfaceFormatsKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -17965,7 +17965,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceSurfacePresentModesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -18094,7 +18094,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     *out += "\"name\" : \"vkCreateSwapchainKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -18230,7 +18230,7 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     *out += "\"name\" : \"vkDestroySwapchainKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -18326,7 +18326,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     *out += "\"name\" : \"vkGetSwapchainImagesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -18456,7 +18456,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     *out += "\"name\" : \"vkAcquireNextImageKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -18600,7 +18600,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     *out += "\"name\" : \"vkQueuePresentKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -18699,7 +18699,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     *out += "\"name\" : \"vkGetDeviceGroupPresentCapabilitiesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -18783,7 +18783,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     *out += "\"name\" : \"vkGetDeviceGroupSurfacePresentModesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -18885,7 +18885,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     *out += "\"name\" : \"vkGetPhysicalDevicePresentRectanglesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -19011,7 +19011,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     *out += "\"name\" : \"vkAcquireNextImage2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -19123,7 +19123,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceDisplayPropertiesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -19234,7 +19234,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceDisplayPlanePropertiesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -19346,7 +19346,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     *out += "\"name\" : \"vkGetDisplayPlaneSupportedDisplaysKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -19474,7 +19474,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     *out += "\"name\" : \"vkGetDisplayModePropertiesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -19602,7 +19602,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     *out += "\"name\" : \"vkCreateDisplayModeKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -19755,7 +19755,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     *out += "\"name\" : \"vkGetDisplayPlaneCapabilitiesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -19870,7 +19870,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     *out += "\"name\" : \"vkCreateDisplayPlaneSurfaceKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -20010,7 +20010,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     *out += "\"name\" : \"vkCreateSharedSwapchainsKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -20164,7 +20164,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     *out += "\"name\" : \"vkCreateXlibSurfaceKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -20302,7 +20302,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceXlibPresentationSupportKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkBool32\",\n";
@@ -20409,7 +20409,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     *out += "\"name\" : \"vkCreateXcbSurfaceKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -20547,7 +20547,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceXcbPresentationSupportKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkBool32\",\n";
@@ -20666,7 +20666,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     *out += "\"name\" : \"vkCreateWaylandSurfaceKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -20803,7 +20803,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     *out += "\"name\" : \"vkGetPhysicalDeviceWaylandPresentationSupportKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkBool32\",\n";
@@ -20907,7 +20907,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     *out += "\"name\" : \"vkCreateAndroidSurfaceKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -21046,7 +21046,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     *out += "\"name\" : \"vkCreateWin32SurfaceKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -21182,7 +21182,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceWin32PresentationSupportKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkBool32\",\n";
@@ -21256,7 +21256,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceFeatures2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -21334,7 +21334,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceProperties2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -21413,7 +21413,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceFormatProperties2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -21508,7 +21508,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceImageFormatProperties2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -21617,7 +21617,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceQueueFamilyProperties2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -21722,7 +21722,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceMemoryProperties2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -21802,7 +21802,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     *out += "\"name\" : \"vkGetPhysicalDeviceSparseImageFormatProperties2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -21937,7 +21937,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     *out += "\"name\" : \"vkGetDeviceGroupPeerMemoryFeaturesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -22062,7 +22062,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
     *out += "\"name\" : \"vkCmdSetDeviceMaskKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -22134,7 +22134,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     *out += "\"name\" : \"vkCmdDispatchBaseKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -22278,7 +22278,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     *out += "\"name\" : \"vkTrimCommandPoolKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -22363,7 +22363,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     *out += "\"name\" : \"vkEnumeratePhysicalDeviceGroupsKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -22474,7 +22474,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceExternalBufferPropertiesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -22581,7 +22581,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     *out += "\"name\" : \"vkGetMemoryWin32HandleKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -22694,7 +22694,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     *out += "\"name\" : \"vkGetMemoryWin32HandlePropertiesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -22821,7 +22821,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     *out += "\"name\" : \"vkGetMemoryFdKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -22934,7 +22934,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     *out += "\"name\" : \"vkGetMemoryFdPropertiesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -23048,7 +23048,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     *out += "\"name\" : \"vkGetPhysicalDeviceExternalSemaphorePropertiesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -23154,7 +23154,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     *out += "\"name\" : \"vkImportSemaphoreWin32HandleKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -23238,7 +23238,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     *out += "\"name\" : \"vkGetSemaphoreWin32HandleKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -23350,7 +23350,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     *out += "\"name\" : \"vkImportSemaphoreFdKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -23434,7 +23434,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     *out += "\"name\" : \"vkGetSemaphoreFdKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -23549,7 +23549,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     *out += "\"name\" : \"vkCmdPushDescriptorSetKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -23691,7 +23691,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     *out += "\"name\" : \"vkCreateDescriptorUpdateTemplateKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -23827,7 +23827,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     *out += "\"name\" : \"vkDestroyDescriptorUpdateTemplateKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -23924,7 +23924,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     *out += "\"name\" : \"vkCreateRenderPass2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -24060,7 +24060,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     *out += "\"name\" : \"vkCmdBeginRenderPass2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -24165,7 +24165,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     *out += "\"name\" : \"vkCmdNextSubpass2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -24269,7 +24269,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     *out += "\"name\" : \"vkCmdEndRenderPass2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -24349,7 +24349,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     *out += "\"name\" : \"vkGetSwapchainStatusKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -24422,7 +24422,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceExternalFencePropertiesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -24528,7 +24528,7 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     *out += "\"name\" : \"vkImportFenceWin32HandleKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -24612,7 +24612,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     *out += "\"name\" : \"vkGetFenceWin32HandleKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -24724,7 +24724,7 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     *out += "\"name\" : \"vkImportFenceFdKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -24808,7 +24808,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     *out += "\"name\" : \"vkGetFenceFdKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -24921,7 +24921,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceSurfaceCapabilities2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -25032,7 +25032,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceSurfaceFormats2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -25170,7 +25170,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceDisplayProperties2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -25281,7 +25281,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     *out += "\"name\" : \"vkGetPhysicalDeviceDisplayPlaneProperties2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -25393,7 +25393,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     *out += "\"name\" : \"vkGetDisplayModeProperties2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -25519,7 +25519,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     *out += "\"name\" : \"vkGetDisplayPlaneCapabilities2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -25629,7 +25629,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     *out += "\"name\" : \"vkGetImageMemoryRequirements2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -25734,7 +25734,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     *out += "\"name\" : \"vkGetBufferMemoryRequirements2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -25840,7 +25840,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     *out += "\"name\" : \"vkGetImageSparseMemoryRequirements2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -25975,7 +25975,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     *out += "\"name\" : \"vkCreateSamplerYcbcrConversionKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -26111,7 +26111,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     *out += "\"name\" : \"vkDestroySamplerYcbcrConversionKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -26207,7 +26207,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     *out += "\"name\" : \"vkBindBufferMemory2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -26306,7 +26306,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     *out += "\"name\" : \"vkBindImageMemory2KHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -26405,7 +26405,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     *out += "\"name\" : \"vkGetDescriptorSetLayoutSupportKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -26515,7 +26515,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     *out += "\"name\" : \"vkCmdDrawIndirectCountKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -26662,7 +26662,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     *out += "\"name\" : \"vkCmdDrawIndexedIndirectCountKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -26807,7 +26807,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     *out += "\"name\" : \"vkGetSemaphoreCounterValueKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -26907,7 +26907,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     *out += "\"name\" : \"vkWaitSemaphoresKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -27005,7 +27005,7 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     *out += "\"name\" : \"vkSignalSemaphoreKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -27091,7 +27091,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     *out += "\"name\" : \"vkGetPipelineExecutablePropertiesKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -27229,7 +27229,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     *out += "\"name\" : \"vkGetPipelineExecutableStatisticsKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -27367,7 +27367,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     *out += "\"name\" : \"vkGetPipelineExecutableInternalRepresentationsKHR\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -27506,7 +27506,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     *out += "\"name\" : \"vkCreateDebugReportCallbackEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -27642,7 +27642,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     *out += "\"name\" : \"vkDestroyDebugReportCallbackEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -27741,7 +27741,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     *out += "\"name\" : \"vkDebugReportMessageEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -27924,7 +27924,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     *out += "\"name\" : \"vkDebugMarkerSetObjectTagEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -28007,7 +28007,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     *out += "\"name\" : \"vkDebugMarkerSetObjectNameEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -28089,7 +28089,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     *out += "\"name\" : \"vkCmdDebugMarkerBeginEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -28166,7 +28166,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerEndEXT(
     *out += "\"name\" : \"vkCmdDebugMarkerEndEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -28218,7 +28218,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     *out += "\"name\" : \"vkCmdDebugMarkerInsertEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -28301,7 +28301,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     *out += "\"name\" : \"vkCmdBindTransformFeedbackBuffersEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -28467,7 +28467,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     *out += "\"name\" : \"vkCmdBeginTransformFeedbackEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -28606,7 +28606,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     *out += "\"name\" : \"vkCmdEndTransformFeedbackEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -28745,7 +28745,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     *out += "\"name\" : \"vkCmdBeginQueryIndexedEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -28859,7 +28859,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     *out += "\"name\" : \"vkCmdEndQueryIndexedEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -28961,7 +28961,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     *out += "\"name\" : \"vkCmdDrawIndirectByteCountEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -29105,7 +29105,7 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     *out += "\"name\" : \"vkGetImageViewHandleNVX\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"uint32_t\",\n";
@@ -29195,7 +29195,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     *out += "\"name\" : \"vkCmdDrawIndirectCountAMD\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -29342,7 +29342,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     *out += "\"name\" : \"vkCmdDrawIndexedIndirectCountAMD\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -29490,7 +29490,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     *out += "\"name\" : \"vkGetShaderInfoAMD\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -29649,7 +29649,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     *out += "\"name\" : \"vkCreateStreamDescriptorSurfaceGGP\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -29792,7 +29792,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     *out += "\"name\" : \"vkGetPhysicalDeviceExternalImageFormatPropertiesNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -29968,7 +29968,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     *out += "\"name\" : \"vkGetMemoryWin32HandleNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -30086,7 +30086,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     *out += "\"name\" : \"vkCreateViSurfaceNN\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -30222,7 +30222,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     *out += "\"name\" : \"vkCmdBeginConditionalRenderingEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -30299,7 +30299,7 @@ void VulkanJsonConsumer::Process_vkCmdEndConditionalRenderingEXT(
     *out += "\"name\" : \"vkCmdEndConditionalRenderingEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -30352,7 +30352,7 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     *out += "\"name\" : \"vkCmdProcessCommandsNVX\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -30430,7 +30430,7 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     *out += "\"name\" : \"vkCmdReserveSpaceForCommandsNVX\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -30511,7 +30511,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     *out += "\"name\" : \"vkCreateIndirectCommandsLayoutNVX\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -30647,7 +30647,7 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     *out += "\"name\" : \"vkDestroyIndirectCommandsLayoutNVX\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -30743,7 +30743,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     *out += "\"name\" : \"vkCreateObjectTableNVX\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -30879,7 +30879,7 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     *out += "\"name\" : \"vkDestroyObjectTableNVX\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -30976,7 +30976,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     *out += "\"name\" : \"vkUnregisterObjectsNVX\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -31117,7 +31117,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     *out += "\"name\" : \"vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -31224,7 +31224,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     *out += "\"name\" : \"vkCmdSetViewportWScalingNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -31334,7 +31334,7 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     *out += "\"name\" : \"vkReleaseDisplayEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -31408,7 +31408,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     *out += "\"name\" : \"vkAcquireXlibDisplayEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -31497,7 +31497,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     *out += "\"name\" : \"vkGetRandROutputDisplayEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -31613,7 +31613,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     *out += "\"name\" : \"vkGetPhysicalDeviceSurfaceCapabilities2EXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -31713,7 +31713,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     *out += "\"name\" : \"vkDisplayPowerControlEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -31813,7 +31813,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     *out += "\"name\" : \"vkRegisterDeviceEventEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -31952,7 +31952,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     *out += "\"name\" : \"vkRegisterDisplayEventEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -32105,7 +32105,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     *out += "\"name\" : \"vkGetSwapchainCounterEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -32221,7 +32221,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     *out += "\"name\" : \"vkGetRefreshCycleDurationGOOGLE\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -32321,7 +32321,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     *out += "\"name\" : \"vkGetPastPresentationTimingGOOGLE\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -32448,7 +32448,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     *out += "\"name\" : \"vkCmdSetDiscardRectangleEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -32559,7 +32559,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     *out += "\"name\" : \"vkSetHdrMetadataEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -32683,7 +32683,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     *out += "\"name\" : \"vkCreateIOSSurfaceMVK\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -32822,7 +32822,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     *out += "\"name\" : \"vkCreateMacOSSurfaceMVK\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -32959,7 +32959,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     *out += "\"name\" : \"vkSetDebugUtilsObjectNameEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -33042,7 +33042,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     *out += "\"name\" : \"vkSetDebugUtilsObjectTagEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -33124,7 +33124,7 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     *out += "\"name\" : \"vkQueueBeginDebugUtilsLabelEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -33201,7 +33201,7 @@ void VulkanJsonConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
     *out += "\"name\" : \"vkQueueEndDebugUtilsLabelEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -33253,7 +33253,7 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     *out += "\"name\" : \"vkQueueInsertDebugUtilsLabelEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -33331,7 +33331,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     *out += "\"name\" : \"vkCmdBeginDebugUtilsLabelEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -33408,7 +33408,7 @@ void VulkanJsonConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
     *out += "\"name\" : \"vkCmdEndDebugUtilsLabelEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -33460,7 +33460,7 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     *out += "\"name\" : \"vkCmdInsertDebugUtilsLabelEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -33541,7 +33541,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     *out += "\"name\" : \"vkCreateDebugUtilsMessengerEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -33677,7 +33677,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     *out += "\"name\" : \"vkDestroyDebugUtilsMessengerEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -33772,7 +33772,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     *out += "\"name\" : \"vkSubmitDebugUtilsMessageEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -33883,7 +33883,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     *out += "\"name\" : \"vkGetAndroidHardwareBufferPropertiesANDROID\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -33994,7 +33994,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     *out += "\"name\" : \"vkGetMemoryAndroidHardwareBufferANDROID\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -34105,7 +34105,7 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     *out += "\"name\" : \"vkCmdSetSampleLocationsEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -34184,7 +34184,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     *out += "\"name\" : \"vkGetPhysicalDeviceMultisamplePropertiesEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -34280,7 +34280,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     *out += "\"name\" : \"vkGetImageDrmFormatModifierPropertiesEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -34381,7 +34381,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     *out += "\"name\" : \"vkCreateValidationCacheEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -34517,7 +34517,7 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     *out += "\"name\" : \"vkDestroyValidationCacheEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -34613,7 +34613,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     *out += "\"name\" : \"vkMergeValidationCachesEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -34729,7 +34729,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     *out += "\"name\" : \"vkGetValidationCacheDataEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -34856,7 +34856,7 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     *out += "\"name\" : \"vkCmdBindShadingRateImageNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -34940,7 +34940,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     *out += "\"name\" : \"vkCmdSetViewportShadingRatePaletteNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -35050,7 +35050,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     *out += "\"name\" : \"vkCmdSetCoarseSampleOrderNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -35162,7 +35162,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     *out += "\"name\" : \"vkCreateAccelerationStructureNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -35298,7 +35298,7 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     *out += "\"name\" : \"vkDestroyAccelerationStructureNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -35392,7 +35392,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     *out += "\"name\" : \"vkGetAccelerationStructureMemoryRequirementsNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -35498,7 +35498,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     *out += "\"name\" : \"vkBindAccelerationStructureMemoryNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -35602,7 +35602,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     *out += "\"name\" : \"vkCmdBuildAccelerationStructureNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -35787,7 +35787,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     *out += "\"name\" : \"vkCmdCopyAccelerationStructureNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -35897,7 +35897,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     *out += "\"name\" : \"vkCmdTraceRaysNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -36164,7 +36164,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     *out += "\"name\" : \"vkCreateRayTracingPipelinesNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -36334,7 +36334,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     *out += "\"name\" : \"vkGetRayTracingShaderGroupHandlesNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -36480,7 +36480,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     *out += "\"name\" : \"vkGetAccelerationStructureHandleNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -36597,7 +36597,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     *out += "\"name\" : \"vkCmdWriteAccelerationStructuresPropertiesNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -36738,7 +36738,7 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     *out += "\"name\" : \"vkCompileDeferredNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -36828,7 +36828,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     *out += "\"name\" : \"vkGetMemoryHostPointerPropertiesEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -36956,7 +36956,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     *out += "\"name\" : \"vkCmdWriteBufferMarkerAMD\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -37071,7 +37071,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     *out += "\"name\" : \"vkGetPhysicalDeviceCalibrateableTimeDomainsEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -37185,7 +37185,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     *out += "\"name\" : \"vkGetCalibratedTimestampsEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -37338,7 +37338,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     *out += "\"name\" : \"vkCmdDrawMeshTasksNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -37423,7 +37423,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     *out += "\"name\" : \"vkCmdDrawMeshTasksIndirectNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -37540,7 +37540,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     *out += "\"name\" : \"vkCmdDrawMeshTasksIndirectCountNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -37685,7 +37685,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     *out += "\"name\" : \"vkCmdSetExclusiveScissorNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -37794,7 +37794,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     *out += "\"name\" : \"vkCmdSetCheckpointNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -37874,7 +37874,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     *out += "\"name\" : \"vkGetQueueCheckpointDataNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -37981,7 +37981,7 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     *out += "\"name\" : \"vkInitializePerformanceApiINTEL\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -38062,7 +38062,7 @@ void VulkanJsonConsumer::Process_vkUninitializePerformanceApiINTEL(
     *out += "\"name\" : \"vkUninitializePerformanceApiINTEL\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -38115,7 +38115,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     *out += "\"name\" : \"vkCmdSetPerformanceMarkerINTEL\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -38198,7 +38198,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     *out += "\"name\" : \"vkCmdSetPerformanceStreamMarkerINTEL\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -38281,7 +38281,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     *out += "\"name\" : \"vkCmdSetPerformanceOverrideINTEL\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -38365,7 +38365,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     *out += "\"name\" : \"vkAcquirePerformanceConfigurationINTEL\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -38475,7 +38475,7 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     *out += "\"name\" : \"vkReleasePerformanceConfigurationINTEL\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -38547,7 +38547,7 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     *out += "\"name\" : \"vkQueueSetPerformanceConfigurationINTEL\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -38620,7 +38620,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     *out += "\"name\" : \"vkGetPerformanceParameterINTEL\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -38719,7 +38719,7 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     *out += "\"name\" : \"vkSetLocalDimmingAMD\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -38805,7 +38805,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     *out += "\"name\" : \"vkCreateImagePipeSurfaceFUCHSIA\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -38944,7 +38944,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     *out += "\"name\" : \"vkCreateMetalSurfaceEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -39081,7 +39081,7 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     *out += "\"name\" : \"vkGetBufferDeviceAddressEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkDeviceAddress\",\n";
@@ -39168,7 +39168,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     *out += "\"name\" : \"vkGetPhysicalDeviceCooperativeMatrixPropertiesNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -39280,7 +39280,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     *out += "\"name\" : \"vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -39393,7 +39393,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     *out += "\"name\" : \"vkGetPhysicalDeviceSurfacePresentModes2EXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -39530,7 +39530,7 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     *out += "\"name\" : \"vkAcquireFullScreenExclusiveModeEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -39602,7 +39602,7 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     *out += "\"name\" : \"vkReleaseFullScreenExclusiveModeEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -39675,7 +39675,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     *out += "\"name\" : \"vkGetDeviceGroupSurfacePresentModes2EXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -39789,7 +39789,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     *out += "\"name\" : \"vkCreateHeadlessSurfaceEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"VkResult\",\n";
@@ -39926,7 +39926,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     *out += "\"name\" : \"vkCmdSetLineStippleEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
@@ -40011,7 +40011,7 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     *out += "\"name\" : \"vkResetQueryPoolEXT\",\n"; // FCN
     IndentSpacesJson(out, 3); // TNP
     *out += "\"thread\" : \"Thread ";
-    SignedDecimalToStringJson(out, 13216);
+    SignedDecimalToStringJson(out, 0);
     *out += "\",\n";
     IndentSpacesJson(out, 3); // TLP
     *out += "\"returnType\" : \"void\",\n";
