@@ -20,6 +20,7 @@
 **
 */
 
+#include "format/platform_types.h"
 #include "generated/generated_vulkan_ascii_enum_util.h"
 #include "util/defines.h"
 #include "vulkan/vulkan.h"
@@ -6480,97 +6481,97 @@ void EnumToStringVkLineRasterizationModeEXT(FILE* outputFile, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkPeerMemoryFeatureFlagBitsKHR(FILE *outputFile, VkPeerMemoryFeatureFlagBitsKHR e)
+void EnumToStringVkPeerMemoryFeatureFlagBitsKHR(FILE* outputFile, VkPeerMemoryFeatureFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkPeerMemoryFeatureFlagBits(outputFile, e);
 }
 
-void EnumToStringVkMemoryAllocateFlagBitsKHR(FILE *outputFile, VkMemoryAllocateFlagBitsKHR e)
+void EnumToStringVkMemoryAllocateFlagBitsKHR(FILE* outputFile, VkMemoryAllocateFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkMemoryAllocateFlagBits(outputFile, e);
 }
 
-void EnumToStringVkExternalMemoryHandleTypeFlagBitsKHR(FILE *outputFile, VkExternalMemoryHandleTypeFlagBitsKHR e)
+void EnumToStringVkExternalMemoryHandleTypeFlagBitsKHR(FILE* outputFile, VkExternalMemoryHandleTypeFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkExternalMemoryHandleTypeFlagBits(outputFile, e);
 }
 
-void EnumToStringVkExternalMemoryFeatureFlagBitsKHR(FILE *outputFile, VkExternalMemoryFeatureFlagBitsKHR e)
+void EnumToStringVkExternalMemoryFeatureFlagBitsKHR(FILE* outputFile, VkExternalMemoryFeatureFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkExternalMemoryFeatureFlagBits(outputFile, e);
 }
 
-void EnumToStringVkExternalSemaphoreHandleTypeFlagBitsKHR(FILE *outputFile, VkExternalSemaphoreHandleTypeFlagBitsKHR e)
+void EnumToStringVkExternalSemaphoreHandleTypeFlagBitsKHR(FILE* outputFile, VkExternalSemaphoreHandleTypeFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkExternalSemaphoreHandleTypeFlagBits(outputFile, e);
 }
 
-void EnumToStringVkExternalSemaphoreFeatureFlagBitsKHR(FILE *outputFile, VkExternalSemaphoreFeatureFlagBitsKHR e)
+void EnumToStringVkExternalSemaphoreFeatureFlagBitsKHR(FILE* outputFile, VkExternalSemaphoreFeatureFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkExternalSemaphoreFeatureFlagBits(outputFile, e);
 }
 
-void EnumToStringVkSemaphoreImportFlagBitsKHR(FILE *outputFile, VkSemaphoreImportFlagBitsKHR e)
+void EnumToStringVkSemaphoreImportFlagBitsKHR(FILE* outputFile, VkSemaphoreImportFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkSemaphoreImportFlagBits(outputFile, e);
 }
 
-void EnumToStringVkDescriptorUpdateTemplateTypeKHR(FILE *outputFile, VkDescriptorUpdateTemplateTypeKHR e)
+void EnumToStringVkDescriptorUpdateTemplateTypeKHR(FILE* outputFile, VkDescriptorUpdateTemplateTypeKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkDescriptorUpdateTemplateType(outputFile, e);
 }
 
-void EnumToStringVkExternalFenceHandleTypeFlagBitsKHR(FILE *outputFile, VkExternalFenceHandleTypeFlagBitsKHR e)
+void EnumToStringVkExternalFenceHandleTypeFlagBitsKHR(FILE* outputFile, VkExternalFenceHandleTypeFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkExternalFenceHandleTypeFlagBits(outputFile, e);
 }
 
-void EnumToStringVkExternalFenceFeatureFlagBitsKHR(FILE *outputFile, VkExternalFenceFeatureFlagBitsKHR e)
+void EnumToStringVkExternalFenceFeatureFlagBitsKHR(FILE* outputFile, VkExternalFenceFeatureFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkExternalFenceFeatureFlagBits(outputFile, e);
 }
 
-void EnumToStringVkFenceImportFlagBitsKHR(FILE *outputFile, VkFenceImportFlagBitsKHR e)
+void EnumToStringVkFenceImportFlagBitsKHR(FILE* outputFile, VkFenceImportFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkFenceImportFlagBits(outputFile, e);
 }
 
-void EnumToStringVkPointClippingBehaviorKHR(FILE *outputFile, VkPointClippingBehaviorKHR e)
+void EnumToStringVkPointClippingBehaviorKHR(FILE* outputFile, VkPointClippingBehaviorKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkPointClippingBehavior(outputFile, e);
 }
 
-void EnumToStringVkTessellationDomainOriginKHR(FILE *outputFile, VkTessellationDomainOriginKHR e)
+void EnumToStringVkTessellationDomainOriginKHR(FILE* outputFile, VkTessellationDomainOriginKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkTessellationDomainOrigin(outputFile, e);
 }
 
-void EnumToStringVkSamplerYcbcrModelConversionKHR(FILE *outputFile, VkSamplerYcbcrModelConversionKHR e)
+void EnumToStringVkSamplerYcbcrModelConversionKHR(FILE* outputFile, VkSamplerYcbcrModelConversionKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkSamplerYcbcrModelConversion(outputFile, e);
 }
 
-void EnumToStringVkSamplerYcbcrRangeKHR(FILE *outputFile, VkSamplerYcbcrRangeKHR e)
+void EnumToStringVkSamplerYcbcrRangeKHR(FILE* outputFile, VkSamplerYcbcrRangeKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkSamplerYcbcrRange(outputFile, e);
 }
 
-void EnumToStringVkChromaLocationKHR(FILE *outputFile, VkChromaLocationKHR e)
+void EnumToStringVkChromaLocationKHR(FILE* outputFile, VkChromaLocationKHR e)
 {
     assert(outputFile != nullptr);
     EnumToStringVkChromaLocation(outputFile, e);

@@ -17,8 +17,7 @@
 #
 # TODO:
 #   Display thread information
-#   Rename executable to gfxrecon2text, gfxrecon-totext, gfxrecon-to-text, gfxreconToText, or gfxrecontotext
-#   Consistent use of FILE* and FILE * in arg lists
+#   Rename executable to gfxrecon-convert
 
 import os,re,sys
 from base_generator import *
@@ -131,7 +130,7 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         # Begin function
         self.wc('{')
         self.wc('    uint32_t indent = 5;')
-        self.wc('    FILE *outputFile = GetFile();')
+        self.wc('    FILE* outputFile = GetFile();')
         self.newline()
         self.wc('    if (need_function_comma)')
         self.wc('    {')
@@ -172,7 +171,7 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
             self.wc('    // func arg: ' + value.fullType + ' ' + value.name)
             self.wc('    IndentSpacesJson(outputFile, 4); // UWP')
             self.wc('    OutputStringJson(outputFile, "{\\n");')
-            ValueToString.valueToString(self, value, "")
+            ValueToString.valueToString(self, value, name, "")
             self.wc('    IndentSpacesJson(outputFile, 4);')
             if value == values[-1]:
                 # Don't put a comma after the last arg

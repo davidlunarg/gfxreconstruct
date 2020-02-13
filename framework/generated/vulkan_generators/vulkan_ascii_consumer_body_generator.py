@@ -16,11 +16,9 @@
 # limitations under the License.
 #
 # TODO:
-#   Traverse and print pNext structures
-#   Display thread information
-#   Print pValues data in vkCmdPushConstants
-#   Print wchar_t* strings. It's currently stubbed out to print only the addr.
-#   Rename gfxrecon-convert
+#    Display thread information
+#    Rename executable to gfxrecon-convert
+#    Check use of pointerCount, in both ascii and json
 
 import os,re,sys
 from base_generator import *
@@ -127,7 +125,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         # Begin function
         self.wc('{')
         self.wc('    uint32_t indent = 1;')
-        self.wc('    FILE *outputFile = GetFile();')
+        self.wc('    FILE* outputFile = GetFile();')
         needcomma=0
         args = ''
         for value in values:
@@ -153,7 +151,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         for value in values:
             self.newline()
             self.wc('    // func arg: ' + value.fullType + ' ' + value.name)
-            ValueToString.valueToString(self, value, "")
+            ValueToString.valueToString(self, value, name, "")
             self.wc('    OutputString(outputFile, "\\n"); // HHS')
 
         # Add an extra new line to the output at the end of a func

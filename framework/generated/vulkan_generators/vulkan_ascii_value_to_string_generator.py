@@ -38,13 +38,15 @@ class ValueToString(BaseGenerator):
     # A value is func arg or member of a structure - a scalar, enum, flags, array, structure, array of structures,
     # or string.
     #
-    # The structName is used when value is a member of a structure. It contains the name of the "enclosing" structure type.
+    # structName is used when value is a member of a structure. It contains the name of the "enclosing" structure type.
+    #
+    # funcName is used when value is a function argument. It contains the name of the function.
     #
     # This method is called from makeConsumerFuncBody in vulkan_ascii_consumer_body_generator.py to generate
     # code for to display function arguments, and from vulkan_ascii_consumer_struct_generator.py to generate
     # code to display members of structures.
-    def valueToString(self, value, structName):
-        #{   // For vi % cmd
+    def valueToString(self, value, funcName, structName):
+        #{   For vi % cmd
         if structName != '':
             pstruct = 'pstruct->'
             pstruct_in = 'pstruct_in.'
@@ -54,21 +56,21 @@ class ValueToString(BaseGenerator):
             pstruct_in = ''
             isFuncArg = True
         self.wc('    IndentSpaces(outputFile, indent);')
-        self.wc('    OutputString(outputFile, "' + (value.name + ': ').ljust(32) + '"); //HRW')
+        self.wc('    OutputString(outputFile, "' + (value.name + ': ').ljust(32) + '"); // HRW')
 
         if not value.isPointer and value.isArray and value.baseType != 'char':
             # Generate code to print length of array
-            self.wc('    OutputString(outputFile, "' + value.baseType + '"); //JUQ')
+            self.wc('    OutputString(outputFile, "' + value.baseType + '"); // JUQ')
             self.wc('    OutputString(outputFile, "[");')
             if 'Count' in value.arrayLength:
                 self.wc('    UnsignedDecimalToString(outputFile, ' + pstruct + value.arrayLength + '); // DFW')
             else:
-                self.wc('    OutputString(outputFile, "' + value.arrayLength + '"); //DFX')
+                self.wc('    OutputString(outputFile, "' + value.arrayLength + '"); // DFX')
             self.wc('    OutputString(outputFile, "] = ");')
             if not isFuncArg:
                 self.wc('    AddrToString(outputFile, base_addr + offsetof(' + structName + ', ' + value.name + ')); // IYY')
         else:
-            self.wc('    OutputString(outputFile, "' + value.fullType + ' = "); //TEQ')
+            self.wc('    OutputString(outputFile, "' + value.fullType + ' = "); // TEQ')
 
         if value.fullType == 'const char*':
             # Treat pointer to char as a string
@@ -92,28 +94,28 @@ class ValueToString(BaseGenerator):
             self.wc('    else')
             self.wc('    {')
             if value.isArray:
-                if value.baseType != 'void':
-                    if 'latexmath' in value.arrayLength:
-                        aLength = pstruct + self.parseLateXMath(value.arrayLength)
-                    elif '->' in value.arrayLength:
-                        aLength = value.arrayLength.replace('->', '.GetPointer()->')
-                    elif not isFuncArg and 'Count' in value.arrayLength:
-                        aLength = 'pstruct->' + value.arrayLength
-                    elif value.arrayLength.startswith('p'):
-                        aLength = '*' + value.arrayLength + '.GetPointer()'
+                if 'latexmath' in value.arrayLength:
+                    aLength = pstruct + self.parseLateXMath(value.arrayLength)
+                elif '->' in value.arrayLength:
+                    aLength = value.arrayLength.replace('->', '.GetPointer()->')
+                elif not isFuncArg and 'Count' in value.arrayLength:
+                    aLength = 'pstruct->' + value.arrayLength
+                elif value.arrayLength.startswith('p'):
+                    aLength = '*' + value.arrayLength + '.GetPointer()'
+                else:
+                    if isFuncArg:
+                        aLength = value.arrayLength
                     else:
-                        if isFuncArg:
-                            aLength = value.arrayLength
-                        else:
-                            aLength = 'pstruct->' + value.arrayLength
+                        aLength = 'pstruct->' + value.arrayLength
+                if value.baseType != 'void':
                     if value.name == 'pCode':
                         aLength = aLength + ' / 4';    # codeSize in struct VkShaderModuleCreateInfo is not the number of elements, but in bytes
                         self.wc('        AddrToString(outputFile, ' + pstruct_in +  value.name + '.GetAddress()); // WUX')
                         self.wc('        if (kPrintShaderCode)')
                         self.wc('        {')
                         self.wc('            ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
-                        self.wc('            ArrayOfScalarsToString<' + self.makeDecodedParamType(value) + '>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                                '", &pstruct_in.' + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + ');  // CCY')
+                        self.wc('            ArrayToString<' + self.makeDecodedParamType(value) + '>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+                                '", &pstruct_in.' + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + ');  // CUK')
                         self.wc('        }')
                     else:
                         if value.baseType in self.structDict:
@@ -133,27 +135,25 @@ class ValueToString(BaseGenerator):
                             self.wc('        AddrToString(outputFile, ' + pstruct_in + value.name + '.GetAddress()); // PAZ')
                             if self.isFlags(value.baseType):
                                 self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
-                                #self.wc('        ArrayToString<' + self.makeDecodedParamType(value) + '>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                                #      '", &pstruct_in.' + value.name + ', "' + value.name +
-                                #      '", ' + aLength + ', ' +
-                                #      ' vinfo_' + value.name + ');  // CCR')
-                                self.wc('        ArrayToString<' + value.fullType + '>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                                      '", reinterpret_cast<' + value.fullType + '>(' + pstruct_in + value.name + '.GetPointer()), "' + value.name +
-                                      '", ' + aLength + ', ' +
-                                      ' vinfo_' + value.name + ');  // CCR')
+                                self.wc('        ArrayToString(outputFile, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +
+                                        pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AUB')
                             else:
                                 self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
-                                #self.wc('        ArrayToString<' + self.makeDecodedParamType(value) + '>(outputFile, indent, ' + str(value.pointerCount) +
-                                #                    ', "' + value.fullType + '", &' + pstruct_in + value.name +', "' + value.name + '", ' +
-                                #                    aLength + ', ' +
-                                #                    ' vinfo_' + value.name + ');  // CXC')
-                                self.wc('        ArrayToString<' + value.fullType + '>(outputFile, indent, ' + str(value.pointerCount) +
-                                                    ', "' + value.fullType + '", reinterpret_cast<' + value.fullType + '>(' + pstruct_in + value.name + '.GetPointer()), "' + value.name + '", ' +
-                                                    aLength + ', ' +
-                                                    ' vinfo_' + value.name + ');  // CXC')
+                                self.wc('        ArrayToString(outputFile, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +
+                                        pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AUC')
                 else:
                     # void* array:  print the address of the array
                     self.wc('        AddrToString(outputFile, ' + pstruct_in + value.name + '.GetAddress()); // AHW')
+                    if self.isFlags(value.baseType):
+                        self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
+                        self.wc('        ArrayToString(outputFile, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +
+                                pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // RUB')
+                    else:
+                        if funcName != "vkCmdUpdateBuffer":
+                            # We don't print the pData buffer for vkCmdUpdateBuffer. It is likely to be large.
+                            self.wc('        ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
+                            self.wc('        ArrayToString(outputFile, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +
+                                    pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // PRC')
             elif self.isStruct(value.baseType) and (value.baseType in self.structDict):
                 if isFuncArg:
                     self.wc('        AddrToString(outputFile, ' + value.name + '.GetAddress()); // JHI')
@@ -185,11 +185,11 @@ class ValueToString(BaseGenerator):
                         self.wc('        ScalarValueToString(outputFile, ' + value.name + '.GetPointer(), vinfo_' + value.name +'); // PWS')
                     else:
                         if value.name == 'pNext':
-                            self.wc('        void *pNextLocal = reinterpret_cast<void *>(' + pstruct_in + value.name + '->GetAddress()); // PNX')
-                            self.wc('        ScalarValueToString(outputFile, &pNextLocal, vinfo_' + value.name +');')
-                            self.wc('        if (pNextLocal)')
+                            self.wc('        void *pNext_base_addr = reinterpret_cast<void *>(' + pstruct_in + value.name + '->GetAddress()); // PNX')
+                            self.wc('        ScalarValueToString(outputFile, &pNext_base_addr, vinfo_' + value.name +');')
+                            self.wc('        if (pNext_base_addr)')
                             self.wc('        {')
-                            self.wc('            PnextStructToString(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer())); //POX ')
+                            self.wc('            PnextStructToString(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX')
                             self.wc('        }')
                         else:
                             self.wc('        ScalarValueToString(outputFile, ' + pstruct_in + value.name + '->GetPointer(), vinfo_' + value.name +'); // PWT')
@@ -206,11 +206,21 @@ class ValueToString(BaseGenerator):
             else:
                 self.wc('    ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
                 if isFuncArg:
-                    self.wc('    ArrayToString<' + value.baseType + '*>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                            '", ' + value.name + '.GetPointer(), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPA1')
+                    self.wc('    ArrayOfScalarsToString<' + value.baseType + '>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+                            '", ' + value.name + '.GetPointer(), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPA')
                 else:
-                    self.wc('    ArrayToString<' + value.baseType + '*>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
-                            '", const_cast<' + value.baseType + '*>(' + pstruct + value.name + '), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPA2')
+                    if value.fullType == "char":
+                        self.wc('    ArrayOfScalarsToString<char>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+                                '", pstruct_in.' + value.name + '.GetPointer(), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPB')
+                    elif self.isUnion(structName):
+                        self.wc('    ArrayOfScalarsToString<' + value.fullType + '>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+                                    '", pstruct_in.decoded_value->' + value.name + ', "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPC')
+                    elif self.isHandle(value.baseType):
+                        self.wc('    ArrayToString<HandlePointerDecoder<' + value.baseType + '>>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+                                '", &pstruct_in.' + value.name + ', "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPD')
+                    else:
+                        self.wc('    ArrayToString<PointerDecoder<' + value.baseType + '>>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType +
+                                '", &pstruct_in.' + value.name + ', "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPE')
         elif self.isStruct(value.baseType) and (value.baseType in self.structDict):
             # Struct that is not a pointer
             if self.isUnion(value.baseType):
@@ -236,7 +246,7 @@ class ValueToString(BaseGenerator):
             elif value.baseType in ['float', 'double']:
                 self.wc('    DoubleToString(outputFile, ' + pstruct + value.name + '); // PEZ')
             elif value.baseType in ['int', 'int32_t', 'int64_t', 'VkDeviceSize', 'VkBool32']:
-                self.wc('    SignedDecimalToString(outputFile, ' + pstruct + value.name + '); //EQA')
+                self.wc('    SignedDecimalToString(outputFile, ' + pstruct + value.name + '); // EQA')
             else:     # 'unsigned int', 'uint32_t', 'uint64_t', 'size_t', and all others
                 self.wc('    UnsignedDecimalToString(outputFile, ' + pstruct + value.name + '); // UYW')
         #}  For vi % cmd

@@ -163,14 +163,14 @@ class VulkanAsciiStructGenerator(BaseGenerator):
 
         # Generate PnextStructToString function
         # PnextStructToString will accept a pNext structure, examine the sType, and call the appropriate StructureToString function
-        self.wc('void PnextStructToString(FILE* outputFile, int indent, void *pNext)')
+        self.wc('void PnextStructToString(FILE* outputFile, int indent, void* pNext_struct, uint64_t base_addr)')
         self.wc('{')
         self.wc('    assert(outputFile != nullptr);')
-        self.wc('    switch (static_cast<Decoded_VkApplicationInfo*>(pNext)->decoded_value->sType)')
+        self.wc('    switch (static_cast<Decoded_VkApplicationInfo*>(pNext_struct)->decoded_value->sType)')
         self.wc('    {')
         for structName in self.pNextStructs:
             self.wc('        case ' + self.pNextStructs[structName] + ':')
-            self.wc('            StructureToString(outputFile, *(reinterpret_cast<const Decoded_' + structName + '*>(pNext)) , indent, reinterpret_cast<uint64_t>(pNext));');
+            self.wc('            StructureToString(outputFile, *(reinterpret_cast<const Decoded_' + structName + '*>(pNext_struct)) , indent, base_addr);');
             self.wc('            break;')
         self.wc('        default:')
         self.wc('            OutputString(outputFile, "Unknown pNext struct");')
@@ -195,7 +195,7 @@ class VulkanAsciiStructGenerator(BaseGenerator):
             for member in sMembersList:
                 self.newline()
                 self.wc('    // struct member: ' + member.fullType + ' ' + member.name)
-                ValueToString.valueToString(self, member, structName)
+                ValueToString.valueToString(self, member, "", structName)
                 if member != sMembersList[-1]:
                     self.wc('    OutputString(outputFile, "\\n"); // GDS');
             self.wc('}')
