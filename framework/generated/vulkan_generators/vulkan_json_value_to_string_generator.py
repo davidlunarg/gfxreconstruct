@@ -38,12 +38,14 @@ class ValueToString(BaseGenerator):
     # A value is func arg or member of a structure - a scalar, enum, flags, array, structure, array of structures,
     # or string.
     #
-    # The structName is used when value is a member of a structure. It contains the name of the "enclosing" structure type.
+    # structName is used when value is a member of a structure. It contains the name of the "enclosing" structure type.
+    #
+    # funcName is used when value is a function argument. It contains the name of the function.
     #
     # This method is called from makeConsumerFuncBody in vulkan_json_consumer_body_generator.py to generate
     # code to display function arguments, and from vulkan_json_consumer_struct_generator.py to generate
     # code to display members of structures.
-    def valueToString(self, value, structName):
+    def valueToString(self, value, funcName, structName):
         #{  For vi % cmd
 
         if structName != '':
@@ -66,7 +68,7 @@ class ValueToString(BaseGenerator):
         if self.isUnion(value.fullType):
             self.wc('    OutputStringJson(outputFile, "\\"type\\" : \\"' + value.fullType + ' (Union)"); // UNN')
         else:
-            self.wc('    OutputStringJson(outputFile, "\\"type\\" : \\"' + value.fullType + '"); //NUN')
+            self.wc('    OutputStringJson(outputFile, "\\"type\\" : \\"' + value.fullType + '"); // NUN')
         if (value.isArray and not value.isPointer and ('Count' in value.arrayLength)):
             self.wc('    OutputStringJson(outputFile, "[");')
             self.wc('    UnsignedDecimalToStringJson(outputFile, ' + pstruct + value.arrayLength + '); // IAC')
@@ -182,7 +184,7 @@ class ValueToString(BaseGenerator):
                 self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"elements\\" :"); // TRG')
                 self.wc(leadSpaces + 'ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
                 self.wc(leadSpaces + 'ArrayToStringJson(outputFile, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &pstruct_in.' +
-                        value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); //UQA')
+                        value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // UQA')
             elif value.fullType == "char" and value.isArray:
                 # A simple string array
                 self.wc(leadSpaces + 'IndentSpacesJson(outputFile, indent); // UTW')
@@ -204,7 +206,7 @@ class ValueToString(BaseGenerator):
                 self.wc('    IndentSpacesJson(outputFile, indent);')
                 self.wc('    OutputStringJson(outputFile, "\\"elements\\" :"); // TRP')
                 self.wc('    ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
-                self.wc('    ArrayOfScalarsToStringJson<'+value.fullType+'>(outputFile, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", ' +
+                self.wc('    ArrayOfScalarsToStringJson<'+value.fullType+'>(outputFile, indent, ' + str(value.pointerCount) + ', "' + value.fullType + '", ' +
                         pstruct_in + 'decoded_value->' + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // TPA')
             else:
                 if value.name == 'pCode':
@@ -218,11 +220,13 @@ class ValueToString(BaseGenerator):
                             pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AUX')
                     self.wc(leadSpaces + '}')
                 else:
-                    self.wc(leadSpaces + 'IndentSpacesJson(outputFile, indent);')
-                    self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"elements\\" : ");')
-                    self.wc(leadSpaces + 'ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
-                    self.wc(leadSpaces + 'ArrayToStringJson(outputFile, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +
-                            pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AUA')
+                    if funcName != "vkCmdUpdateBuffer":
+                        # We don't print the pData buffer for vmCmdUpdateBuffer because it is likely to be large.
+                        self.wc(leadSpaces + 'IndentSpacesJson(outputFile, indent);')
+                        self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"elements\\" : ");')
+                        self.wc(leadSpaces + 'ScalarValueToStringStruct vinfo_' + value.name + ' = ' + ValueToString.setVinfo(self, value) + ';')
+                        self.wc(leadSpaces + 'ArrayToStringJson(outputFile, indent, ' + str(value.pointerCount-1) + ', "' + value.fullType + '", &' +
+                                pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AUA')
 
         ###### Output structures
         elif self.isStruct(value.baseType) and (value.baseType in self.structDict):
@@ -268,14 +272,14 @@ class ValueToString(BaseGenerator):
                 self.wc(leadSpaces + 'void *pNext_base_addr = reinterpret_cast<void *>(' + pstruct_in + value.name + '->GetAddress()); // PVX')
                 self.wc(leadSpaces + 'if (pNext_base_addr)')
                 self.wc(leadSpaces + '{')
-                self.wc(leadSpaces + '    PnextStructToStringJson(outputFile, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); //PPX')
+                self.wc(leadSpaces + '    PnextStructToStringJson(outputFile, indent, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX')
                 self.wc(leadSpaces + '}')
             else:
                 if value.baseType == "wchar_t":
                     self.wc(leadSpaces + 'IndentSpacesJson(outputFile, indent);')
-                    self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : \\"");')
-                    self.wc(leadSpaces + 'AddrToStringJson(outputFile, ' + pstruct_in + value.name + '.GetAddress()); // PXQ')  # TODO: Print out string
-                    self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"\\n");')
+                    self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : ");')
+                    self.wc(leadSpaces + 'WideStringToQuotedStringJson(outputFile, pstruct->' + value.name + '); // PXQ')
+                    self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\n");')
                 elif specialPtr or value.name in ["pView", "ppData"]:
                     self.wc(leadSpaces + 'IndentSpacesJson(outputFile, indent);')
                     self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : \\"");')
@@ -335,7 +339,7 @@ class ValueToString(BaseGenerator):
         elif value.baseType in ['int', 'int32_t', 'int64_t', 'VkDeviceSize', 'VkBool32']:
             self.wc('    IndentSpacesJson(outputFile, indent);')
             self.wc('    OutputStringJson(outputFile, "\\"value\\" : \\"");')
-            self.wc('    SignedDecimalToStringJson(outputFile, ' + pstruct + value.name + '); //EQA')
+            self.wc('    SignedDecimalToStringJson(outputFile, ' + pstruct + value.name + '); // EQA')
             self.wc('    OutputStringJson(outputFile, "\\"\\n");')
 
         ###### Output nums
