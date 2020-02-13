@@ -55,6 +55,7 @@ class VulkanAsciiEnumGeneratorCpp(BaseGenerator):
 
     def beginFile(self, genOpts):
         BaseGenerator.beginFile(self, genOpts)
+        self.wc('#include "format/platform_types.h"')
         self.wc('#include "generated/generated_vulkan_ascii_enum_util.h"')
         self.wc('#include "util/defines.h"')
         self.wc('#include "vulkan/vulkan.h"')
@@ -99,7 +100,7 @@ class VulkanAsciiEnumGeneratorCpp(BaseGenerator):
 
         # Generate functions to convert aliased enum types to string
         for enumName in self.enumListAliases:
-            self.wc('\nvoid EnumToString' + enumName + '(FILE *outputFile, ' + enumName + ' e)')
+            self.wc('\nvoid EnumToString' + enumName + '(FILE* outputFile, ' + enumName + ' e)')
             self.wc('{')
             self.wc('    assert(outputFile != nullptr);')
             self.wc('    EnumToString' + self.enumListAliases[enumName] + '(outputFile, e);')

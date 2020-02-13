@@ -40,7 +40,7 @@ extern bool kPrintShaderCode;
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
-typedef std::function<void(FILE *, uint32_t)> EnumToStringFuncPtr;
+typedef std::function<void(FILE*, uint32_t)> EnumToStringFuncPtr;
 
 typedef struct ScalarValueToStringStruct {
    bool is_handle_or_addr;
@@ -126,7 +126,7 @@ void FlagsToString(FILE* outputFile, VkFlags flags, EnumToStringFuncPtr enum_to_
 }
 
 template <typename T>
-void ScalarValueToString(FILE* outputFile, T value, const ScalarValueToStringStruct &vinfo)
+void ScalarValueToString(FILE* outputFile, const T* value, const ScalarValueToStringStruct &vinfo)
 {
     assert(outputFile != nullptr);
     assert((vinfo.is_handle_or_addr + vinfo.is_enum  + vinfo.is_flags) <= 1);
@@ -134,18 +134,15 @@ void ScalarValueToString(FILE* outputFile, T value, const ScalarValueToStringStr
     assert(vinfo.is_flags ? vinfo.enum_to_string_func != nullptr : true);
     if (vinfo.is_handle_or_addr)
     {
-        uint64_t v = *((uint64_t*)value);
-        AddrToString(outputFile, v);
+        AddrToString(outputFile, *(reinterpret_cast<const uint64_t*>(value)));
     }
     else if (vinfo.is_flags)
     {
-        uint32_t v = *((uint32_t*)value);      //TODO : THIS IS A C Cast
-        FlagsToString(outputFile, v, vinfo.enum_to_string_func);
+        FlagsToString(outputFile, *(reinterpret_cast<const uint32_t*>(value)), vinfo.enum_to_string_func);
     }
     else if (vinfo.is_enum)
     {
-        uint32_t v = *((uint32_t*)value);        //TODO : THIS IS A C Cast
-        vinfo.enum_to_string_func(outputFile, v);
+        vinfo.enum_to_string_func(outputFile, *(reinterpret_cast<const uint32_t*>(value)));
     }
     else if (std::is_same<T, float>::value)
     {
@@ -153,7 +150,7 @@ void ScalarValueToString(FILE* outputFile, T value, const ScalarValueToStringStr
     }
     else if (std::is_same<T, double>::value)
     {
-        DoubleToString(outputFile, *(reinterpret_cast<const double*>(value))); //??
+        DoubleToString(outputFile, *(reinterpret_cast<const double*>(value)));
     }
     else if (std::is_same<T, int32_t>::value)
     {
@@ -207,7 +204,7 @@ void StringToQuotedString(FILE* outputFile, const char* s)
     OutputString(outputFile, out);
 }
 
-void WideStringToQuotedString(FILE *outputFile, const wchar_t* s)
+void WideStringToQuotedString(FILE* outputFile, const wchar_t* s)
 {
     assert(outputFile != nullptr);
     if (s != nullptr)
@@ -223,14 +220,14 @@ void WideStringToQuotedString(FILE *outputFile, const wchar_t* s)
 }
 
 template <typename T>
-void ArrayToString(FILE*                           outputFile,
-                   int                             indent,
-                   const int                       pointer_count,
-                   const char*                     full_type_name,
-                   const T                         array,
-                   const char*                     array_name,
-                   const size_t                    array_length,
-                   const ScalarValueToStringStruct &vinfo)
+void ArrayToString(FILE*                            outputFile,
+                   int                              indent,
+                   const int                        pointer_count,
+                   const char*                      full_type_name,
+                   const T*                         array,
+                   const char*                      array_name,
+                   const size_t                     array_length,
+                   const ScalarValueToStringStruct& vinfo)
 {
     assert(outputFile != nullptr);
     assert((vinfo.is_handle_or_addr + vinfo.is_enum  + vinfo.is_flags) <= 1);
@@ -257,6 +254,7 @@ void ArrayToString(FILE*                           outputFile,
         std::string full_type_name_str = full_type_name;
         if (*full_type_name_str.rbegin() == '*')
         {
+            // Remove trailing '*' from full_type_name_str
             full_type_name_str.pop_back();
         }
         OutputString(outputFile, "\n");
@@ -268,16 +266,17 @@ void ArrayToString(FILE*                           outputFile,
             fprintf(outputFile, "%-32s", tmp_string);
             OutputString(outputFile, full_type_name_str);
             OutputString(outputFile, " = ");
-            if (pointer_count > 1)
+            if (strstr(full_type_name, "char"))
             {
-                if (vinfo.is_handle_or_addr)
-                {
-                    StringToQuotedString(outputFile, ((const char**)array)[j]);     //TODO: C Cast
-                }
-                else
-                {
-                    ScalarValueToString<T>(outputFile, &array[j], vinfo);
-                }
+                StringToQuotedString(
+                    outputFile,
+                    ((reinterpret_cast<const BasicStringArrayDecoder<char, format::PointerAttributes::kIsString>*>(
+                          array))
+                         ->GetPointer())[j]);
+            }
+			else
+            {
+                ScalarValueToString(outputFile, array->GetPointer() + j, vinfo);
             }
             if (j < array_length - 1)
             {
@@ -331,7 +330,7 @@ void ArrayOfScalarsToString(FILE*                            outputFile,
             std::string name_and_index;
             name_and_index += array_name;
             name_and_index += "[";
-            UnsignedDecimalToString(outputFile, j);
+            name_and_index += std::to_string(j);
             name_and_index += "]: ";
             PadString(&name_and_index, 32);
             OutputString(outputFile, name_and_index);

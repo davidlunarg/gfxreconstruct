@@ -177,14 +177,14 @@ class VulkanJsonStructGenerator(BaseGenerator):
 
         # Generate PnextStructToStringJson function
         # PnextStructToStringJson will accept a pNext structure, examine the sType, and call the appropriate StructureToString function
-        self.wc('void PnextStructToStringJson(FILE* outputFile, int indent, void *pNextStruct, uint64_t base_addr)')
+        self.wc('void PnextStructToStringJson(FILE* outputFile, int indent, void* pNext_struct, uint64_t base_addr)')
         self.wc('{')
         self.wc('    assert(outputFile != nullptr);')
-        self.wc('    switch (static_cast<Decoded_VkApplicationInfo*>(pNextStruct)->decoded_value->sType)')
+        self.wc('    switch (static_cast<Decoded_VkApplicationInfo*>(pNext_struct)->decoded_value->sType)')
         self.wc('    {')
         for structName in self.pNextStructs:
                 self.wc('        case ' + self.pNextStructs[structName] + ':')
-                self.wc('            StructureToStringJson(outputFile, *(reinterpret_cast<const Decoded_' + structName + '*>(pNextStruct)) , indent, base_addr);');
+                self.wc('            StructureToStringJson(outputFile, *(reinterpret_cast<const Decoded_' + structName + '*>(pNext_struct)) , indent, base_addr);');
                 self.wc('            break;')
         self.wc('        default:')
         self.wc('            OutputStringJson(outputFile, "\\\"Unknown pNext structure\\\"");')
@@ -215,9 +215,9 @@ class VulkanJsonStructGenerator(BaseGenerator):
                 self.wc('    IndentSpacesJson(outputFile, indent);')
                 self.wc('    OutputStringJson(outputFile, "{\\n"); // UXR');
                 self.wc('    indent++;')
-                ValueToString.valueToString(self, member, structName)
+                ValueToString.valueToString(self, member, "", structName)
                 self.wc('    indent--;')
-                self.wc('    IndentSpacesJson(outputFile, indent); //UEW')
+                self.wc('    IndentSpacesJson(outputFile, indent); // UEW')
                 if member == sMembersList[-1]:
                     self.wc('    OutputStringJson(outputFile, "}\\n"); // UXS');
                 else:

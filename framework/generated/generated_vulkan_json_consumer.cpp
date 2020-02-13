@@ -47,7 +47,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     const HandlePointerDecoder<VkInstance>&     pInstance)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -78,7 +78,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkInstanceCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkInstanceCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -104,7 +104,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -130,7 +130,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInstance\",\n");
@@ -165,7 +165,7 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -192,7 +192,7 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -207,7 +207,7 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -243,7 +243,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     const HandlePointerDecoder<VkPhysicalDevice>& pPhysicalDevices)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -274,7 +274,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -289,7 +289,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPhysicalDeviceCount\",\n");
@@ -316,7 +316,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPhysicalDevices\",\n");
@@ -351,7 +351,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     const StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures>& pFeatures)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -378,7 +378,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -393,7 +393,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceFeatures*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceFeatures*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFeatures\",\n");
@@ -428,7 +428,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     const StructPointerDecoder<Decoded_VkFormatProperties>& pFormatProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -455,7 +455,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -470,7 +470,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFormat"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFormat"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"format\",\n");
@@ -485,7 +485,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFormatProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFormatProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFormatProperties\",\n");
@@ -525,7 +525,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     const StructPointerDecoder<Decoded_VkImageFormatProperties>& pImageFormatProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -556,7 +556,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -571,7 +571,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFormat"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFormat"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"format\",\n");
@@ -586,7 +586,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageType"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageType"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"type\",\n");
@@ -601,7 +601,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageTiling"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageTiling"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"tiling\",\n");
@@ -616,7 +616,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageUsageFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageUsageFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"usage\",\n");
@@ -631,7 +631,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageCreateFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageCreateFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -646,7 +646,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageFormatProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageFormatProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageFormatProperties\",\n");
@@ -680,7 +680,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     const StructPointerDecoder<Decoded_VkPhysicalDeviceProperties>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -707,7 +707,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -722,7 +722,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -757,7 +757,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     const StructPointerDecoder<Decoded_VkQueueFamilyProperties>& pQueueFamilyProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -784,7 +784,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -799,7 +799,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueFamilyPropertyCount\",\n");
@@ -826,7 +826,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueueFamilyProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueueFamilyProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueFamilyProperties\",\n");
@@ -860,7 +860,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     const StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties>& pMemoryProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -887,7 +887,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -902,7 +902,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceMemoryProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceMemoryProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryProperties\",\n");
@@ -939,7 +939,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     const HandlePointerDecoder<VkDevice>&       pDevice)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -970,7 +970,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -985,7 +985,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -1011,7 +1011,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -1037,7 +1037,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDevice\",\n");
@@ -1072,7 +1072,7 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -1099,7 +1099,7 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -1114,7 +1114,7 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -1150,7 +1150,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     const HandlePointerDecoder<VkQueue>&        pQueue)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -1177,7 +1177,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -1192,7 +1192,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queueFamilyIndex\",\n");
@@ -1207,7 +1207,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queueIndex\",\n");
@@ -1222,7 +1222,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueue*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueue*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueue\",\n");
@@ -1260,7 +1260,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     format::HandleId                            fence)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -1291,7 +1291,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queue\",\n");
@@ -1306,7 +1306,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"submitCount\",\n");
@@ -1321,7 +1321,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSubmitInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSubmitInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSubmits\",\n");
@@ -1347,7 +1347,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFence"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFence"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"fence\",\n");
@@ -1370,7 +1370,7 @@ void VulkanJsonConsumer::Process_vkQueueWaitIdle(
     format::HandleId                            queue)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -1401,7 +1401,7 @@ void VulkanJsonConsumer::Process_vkQueueWaitIdle(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queue\",\n");
@@ -1424,7 +1424,7 @@ void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
     format::HandleId                            device)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -1455,7 +1455,7 @@ void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -1481,7 +1481,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     const HandlePointerDecoder<VkDeviceMemory>& pMemory)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -1512,7 +1512,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -1527,7 +1527,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkMemoryAllocateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkMemoryAllocateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocateInfo\",\n");
@@ -1553,7 +1553,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -1579,7 +1579,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemory\",\n");
@@ -1615,7 +1615,7 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -1642,7 +1642,7 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -1657,7 +1657,7 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memory\",\n");
@@ -1672,7 +1672,7 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -1711,7 +1711,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     const PointerDecoder<uint64_t>&             ppData)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -1742,7 +1742,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -1757,7 +1757,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memory\",\n");
@@ -1772,13 +1772,13 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, offset); //EQA
+    SignedDecimalToStringJson(outputFile, offset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -1787,13 +1787,13 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"size\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, size); //EQA
+    SignedDecimalToStringJson(outputFile, size); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -1802,7 +1802,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkMemoryMapFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkMemoryMapFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -1817,7 +1817,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void**"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void**"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"ppData\",\n");
@@ -1852,7 +1852,7 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
     format::HandleId                            memory)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -1879,7 +1879,7 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -1894,7 +1894,7 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memory\",\n");
@@ -1919,7 +1919,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     const StructPointerDecoder<Decoded_VkMappedMemoryRange>& pMemoryRanges)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -1950,7 +1950,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -1965,7 +1965,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memoryRangeCount\",\n");
@@ -1980,7 +1980,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkMappedMemoryRange*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkMappedMemoryRange*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRanges\",\n");
@@ -2016,7 +2016,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     const StructPointerDecoder<Decoded_VkMappedMemoryRange>& pMemoryRanges)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -2047,7 +2047,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -2062,7 +2062,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memoryRangeCount\",\n");
@@ -2077,7 +2077,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkMappedMemoryRange*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkMappedMemoryRange*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRanges\",\n");
@@ -2112,7 +2112,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     const PointerDecoder<VkDeviceSize>&         pCommittedMemoryInBytes)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -2139,7 +2139,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -2154,7 +2154,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memory\",\n");
@@ -2169,7 +2169,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCommittedMemoryInBytes\",\n");
@@ -2208,7 +2208,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     VkDeviceSize                                memoryOffset)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -2239,7 +2239,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -2254,7 +2254,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -2269,7 +2269,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memory\",\n");
@@ -2284,13 +2284,13 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memoryOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, memoryOffset); //EQA
+    SignedDecimalToStringJson(outputFile, memoryOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2310,7 +2310,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     VkDeviceSize                                memoryOffset)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -2341,7 +2341,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -2356,7 +2356,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"image\",\n");
@@ -2371,7 +2371,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memory\",\n");
@@ -2386,13 +2386,13 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memoryOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, memoryOffset); //EQA
+    SignedDecimalToStringJson(outputFile, memoryOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2410,7 +2410,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     const StructPointerDecoder<Decoded_VkMemoryRequirements>& pMemoryRequirements)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -2437,7 +2437,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -2452,7 +2452,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -2467,7 +2467,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
@@ -2502,7 +2502,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     const StructPointerDecoder<Decoded_VkMemoryRequirements>& pMemoryRequirements)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -2529,7 +2529,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -2544,7 +2544,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"image\",\n");
@@ -2559,7 +2559,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
@@ -2595,7 +2595,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     const StructPointerDecoder<Decoded_VkSparseImageMemoryRequirements>& pSparseMemoryRequirements)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -2622,7 +2622,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -2637,7 +2637,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"image\",\n");
@@ -2652,7 +2652,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSparseMemoryRequirementCount\",\n");
@@ -2679,7 +2679,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSparseImageMemoryRequirements*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSparseImageMemoryRequirements*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSparseMemoryRequirements\",\n");
@@ -2719,7 +2719,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     const StructPointerDecoder<Decoded_VkSparseImageFormatProperties>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -2746,7 +2746,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -2761,7 +2761,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFormat"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFormat"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"format\",\n");
@@ -2776,7 +2776,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageType"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageType"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"type\",\n");
@@ -2791,7 +2791,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSampleCountFlagBits"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSampleCountFlagBits"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"samples\",\n");
@@ -2806,7 +2806,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageUsageFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageUsageFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"usage\",\n");
@@ -2821,7 +2821,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageTiling"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageTiling"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"tiling\",\n");
@@ -2836,7 +2836,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
@@ -2863,7 +2863,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSparseImageFormatProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSparseImageFormatProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -2900,7 +2900,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     format::HandleId                            fence)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -2931,7 +2931,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queue\",\n");
@@ -2946,7 +2946,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"bindInfoCount\",\n");
@@ -2961,7 +2961,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBindSparseInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBindSparseInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBindInfo\",\n");
@@ -2987,7 +2987,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFence"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFence"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"fence\",\n");
@@ -3013,7 +3013,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     const HandlePointerDecoder<VkFence>&        pFence)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -3044,7 +3044,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -3059,7 +3059,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkFenceCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkFenceCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -3085,7 +3085,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -3111,7 +3111,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFence*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFence*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFence\",\n");
@@ -3147,7 +3147,7 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -3174,7 +3174,7 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -3189,7 +3189,7 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFence"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFence"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"fence\",\n");
@@ -3204,7 +3204,7 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -3240,7 +3240,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     const HandlePointerDecoder<VkFence>&        pFences)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -3271,7 +3271,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -3286,7 +3286,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"fenceCount\",\n");
@@ -3301,7 +3301,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkFence*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkFence*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFences\",\n");
@@ -3337,7 +3337,7 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     format::HandleId                            fence)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -3368,7 +3368,7 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -3383,7 +3383,7 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFence"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFence"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"fence\",\n");
@@ -3410,7 +3410,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     uint64_t                                    timeout)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -3441,7 +3441,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -3456,7 +3456,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"fenceCount\",\n");
@@ -3471,7 +3471,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkFence*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkFence*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFences\",\n");
@@ -3498,13 +3498,13 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBool32"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBool32"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"waitAll\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, waitAll); //EQA
+    SignedDecimalToStringJson(outputFile, waitAll); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -3513,7 +3513,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint64_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint64_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"timeout\",\n");
@@ -3539,7 +3539,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     const HandlePointerDecoder<VkSemaphore>&    pSemaphore)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -3570,7 +3570,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -3585,7 +3585,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSemaphoreCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSemaphoreCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -3611,7 +3611,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -3637,7 +3637,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSemaphore*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSemaphore*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSemaphore\",\n");
@@ -3673,7 +3673,7 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -3700,7 +3700,7 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -3715,7 +3715,7 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSemaphore"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSemaphore"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"semaphore\",\n");
@@ -3730,7 +3730,7 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -3767,7 +3767,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     const HandlePointerDecoder<VkEvent>&        pEvent)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -3798,7 +3798,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -3813,7 +3813,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkEventCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkEventCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -3839,7 +3839,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -3865,7 +3865,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkEvent*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkEvent*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pEvent\",\n");
@@ -3901,7 +3901,7 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -3928,7 +3928,7 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -3943,7 +3943,7 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkEvent"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkEvent"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"event\",\n");
@@ -3958,7 +3958,7 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -3993,7 +3993,7 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     format::HandleId                            event)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -4024,7 +4024,7 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -4039,7 +4039,7 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkEvent"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkEvent"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"event\",\n");
@@ -4063,7 +4063,7 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     format::HandleId                            event)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -4094,7 +4094,7 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -4109,7 +4109,7 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkEvent"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkEvent"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"event\",\n");
@@ -4133,7 +4133,7 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     format::HandleId                            event)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -4164,7 +4164,7 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -4179,7 +4179,7 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkEvent"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkEvent"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"event\",\n");
@@ -4205,7 +4205,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     const HandlePointerDecoder<VkQueryPool>&    pQueryPool)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -4236,7 +4236,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -4251,7 +4251,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkQueryPoolCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkQueryPoolCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -4277,7 +4277,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -4303,7 +4303,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueryPool\",\n");
@@ -4339,7 +4339,7 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -4366,7 +4366,7 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -4381,7 +4381,7 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryPool\",\n");
@@ -4396,7 +4396,7 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -4437,7 +4437,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     VkQueryResultFlags                          flags)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -4468,7 +4468,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -4483,7 +4483,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryPool\",\n");
@@ -4498,7 +4498,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstQuery\",\n");
@@ -4513,7 +4513,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryCount\",\n");
@@ -4528,7 +4528,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"size_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"size_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dataSize\",\n");
@@ -4543,7 +4543,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pData\",\n");
@@ -4570,13 +4570,13 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stride\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, stride); //EQA
+    SignedDecimalToStringJson(outputFile, stride); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -4585,7 +4585,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryResultFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryResultFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -4611,7 +4611,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     const HandlePointerDecoder<VkBuffer>&       pBuffer)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -4642,7 +4642,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -4657,7 +4657,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBufferCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBufferCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -4683,7 +4683,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -4709,7 +4709,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBuffer\",\n");
@@ -4745,7 +4745,7 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -4772,7 +4772,7 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -4787,7 +4787,7 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -4802,7 +4802,7 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -4839,7 +4839,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     const HandlePointerDecoder<VkBufferView>&   pView)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -4870,7 +4870,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -4885,7 +4885,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBufferViewCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBufferViewCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -4911,7 +4911,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -4937,7 +4937,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBufferView*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBufferView*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pView\",\n");
@@ -4973,7 +4973,7 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -5000,7 +5000,7 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -5015,7 +5015,7 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBufferView"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBufferView"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"bufferView\",\n");
@@ -5030,7 +5030,7 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -5067,7 +5067,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     const HandlePointerDecoder<VkImage>&        pImage)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -5098,7 +5098,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -5113,7 +5113,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -5139,7 +5139,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -5165,7 +5165,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImage\",\n");
@@ -5201,7 +5201,7 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -5228,7 +5228,7 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -5243,7 +5243,7 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"image\",\n");
@@ -5258,7 +5258,7 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -5294,7 +5294,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     const StructPointerDecoder<Decoded_VkSubresourceLayout>& pLayout)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -5321,7 +5321,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -5336,7 +5336,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"image\",\n");
@@ -5351,7 +5351,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageSubresource*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageSubresource*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSubresource\",\n");
@@ -5377,7 +5377,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSubresourceLayout*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSubresourceLayout*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLayout\",\n");
@@ -5414,7 +5414,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     const HandlePointerDecoder<VkImageView>&    pView)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -5445,7 +5445,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -5460,7 +5460,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageViewCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageViewCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -5486,7 +5486,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -5512,7 +5512,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageView*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageView*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pView\",\n");
@@ -5548,7 +5548,7 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -5575,7 +5575,7 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -5590,7 +5590,7 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageView"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageView"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageView\",\n");
@@ -5605,7 +5605,7 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -5642,7 +5642,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     const HandlePointerDecoder<VkShaderModule>& pShaderModule)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -5673,7 +5673,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -5688,7 +5688,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkShaderModuleCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkShaderModuleCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -5714,7 +5714,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -5740,7 +5740,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkShaderModule*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkShaderModule*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pShaderModule\",\n");
@@ -5776,7 +5776,7 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -5803,7 +5803,7 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -5818,7 +5818,7 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkShaderModule"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkShaderModule"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"shaderModule\",\n");
@@ -5833,7 +5833,7 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -5870,7 +5870,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     const HandlePointerDecoder<VkPipelineCache>& pPipelineCache)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -5901,7 +5901,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -5916,7 +5916,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPipelineCacheCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPipelineCacheCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -5942,7 +5942,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -5968,7 +5968,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPipelineCache\",\n");
@@ -6004,7 +6004,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -6031,7 +6031,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -6046,7 +6046,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipelineCache\",\n");
@@ -6061,7 +6061,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -6098,7 +6098,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     const PointerDecoder<uint8_t>&              pData)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -6129,7 +6129,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -6144,7 +6144,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipelineCache\",\n");
@@ -6159,7 +6159,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"size_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"size_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDataSize\",\n");
@@ -6186,7 +6186,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pData\",\n");
@@ -6224,7 +6224,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     const HandlePointerDecoder<VkPipelineCache>& pSrcCaches)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -6255,7 +6255,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -6270,7 +6270,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstCache\",\n");
@@ -6285,7 +6285,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcCacheCount\",\n");
@@ -6300,7 +6300,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPipelineCache*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPipelineCache*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSrcCaches\",\n");
@@ -6340,7 +6340,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     const HandlePointerDecoder<VkPipeline>&     pPipelines)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -6371,7 +6371,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -6386,7 +6386,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipelineCache\",\n");
@@ -6401,7 +6401,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"createInfoCount\",\n");
@@ -6416,7 +6416,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkGraphicsPipelineCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkGraphicsPipelineCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfos\",\n");
@@ -6442,7 +6442,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -6468,7 +6468,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipeline*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipeline*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPipelines\",\n");
@@ -6508,7 +6508,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     const HandlePointerDecoder<VkPipeline>&     pPipelines)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -6539,7 +6539,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -6554,7 +6554,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipelineCache\",\n");
@@ -6569,7 +6569,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"createInfoCount\",\n");
@@ -6584,7 +6584,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkComputePipelineCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkComputePipelineCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfos\",\n");
@@ -6610,7 +6610,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -6636,7 +6636,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipeline*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipeline*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPipelines\",\n");
@@ -6672,7 +6672,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -6699,7 +6699,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -6714,7 +6714,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipeline"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipeline"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipeline\",\n");
@@ -6729,7 +6729,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -6766,7 +6766,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     const HandlePointerDecoder<VkPipelineLayout>& pPipelineLayout)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -6797,7 +6797,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -6812,7 +6812,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPipelineLayoutCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPipelineLayoutCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -6838,7 +6838,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -6864,7 +6864,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineLayout*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineLayout*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPipelineLayout\",\n");
@@ -6900,7 +6900,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -6927,7 +6927,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -6942,7 +6942,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipelineLayout\",\n");
@@ -6957,7 +6957,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -6994,7 +6994,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     const HandlePointerDecoder<VkSampler>&      pSampler)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -7025,7 +7025,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -7040,7 +7040,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSamplerCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSamplerCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -7066,7 +7066,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -7092,7 +7092,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSampler*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSampler*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSampler\",\n");
@@ -7128,7 +7128,7 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -7155,7 +7155,7 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -7170,7 +7170,7 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSampler"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSampler"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"sampler\",\n");
@@ -7185,7 +7185,7 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -7222,7 +7222,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     const HandlePointerDecoder<VkDescriptorSetLayout>& pSetLayout)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -7253,7 +7253,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -7268,7 +7268,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -7294,7 +7294,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -7320,7 +7320,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorSetLayout*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorSetLayout*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSetLayout\",\n");
@@ -7356,7 +7356,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -7383,7 +7383,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -7398,7 +7398,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorSetLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorSetLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"descriptorSetLayout\",\n");
@@ -7413,7 +7413,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -7450,7 +7450,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     const HandlePointerDecoder<VkDescriptorPool>& pDescriptorPool)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -7481,7 +7481,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -7496,7 +7496,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorPoolCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorPoolCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -7522,7 +7522,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -7548,7 +7548,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorPool*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorPool*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorPool\",\n");
@@ -7584,7 +7584,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -7611,7 +7611,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -7626,7 +7626,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"descriptorPool\",\n");
@@ -7641,7 +7641,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -7677,7 +7677,7 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     VkDescriptorPoolResetFlags                  flags)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -7708,7 +7708,7 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -7723,7 +7723,7 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"descriptorPool\",\n");
@@ -7738,7 +7738,7 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorPoolResetFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorPoolResetFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -7763,7 +7763,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     const HandlePointerDecoder<VkDescriptorSet>& pDescriptorSets)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -7794,7 +7794,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -7809,7 +7809,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorSetAllocateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorSetAllocateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocateInfo\",\n");
@@ -7835,7 +7835,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorSet*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorSet*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorSets\",\n");
@@ -7873,7 +7873,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     const HandlePointerDecoder<VkDescriptorSet>& pDescriptorSets)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -7904,7 +7904,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -7919,7 +7919,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"descriptorPool\",\n");
@@ -7934,7 +7934,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"descriptorSetCount\",\n");
@@ -7949,7 +7949,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorSet*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorSet*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorSets\",\n");
@@ -7987,7 +7987,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     const StructPointerDecoder<Decoded_VkCopyDescriptorSet>& pDescriptorCopies)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -8014,7 +8014,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -8029,7 +8029,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"descriptorWriteCount\",\n");
@@ -8044,7 +8044,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkWriteDescriptorSet*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkWriteDescriptorSet*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorWrites\",\n");
@@ -8070,7 +8070,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"descriptorCopyCount\",\n");
@@ -8085,7 +8085,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkCopyDescriptorSet*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkCopyDescriptorSet*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorCopies\",\n");
@@ -8122,7 +8122,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     const HandlePointerDecoder<VkFramebuffer>&  pFramebuffer)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -8153,7 +8153,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -8168,7 +8168,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkFramebufferCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkFramebufferCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -8194,7 +8194,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -8220,7 +8220,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFramebuffer*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFramebuffer*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFramebuffer\",\n");
@@ -8256,7 +8256,7 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -8283,7 +8283,7 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -8298,7 +8298,7 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFramebuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFramebuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"framebuffer\",\n");
@@ -8313,7 +8313,7 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -8350,7 +8350,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     const HandlePointerDecoder<VkRenderPass>&   pRenderPass)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -8381,7 +8381,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -8396,7 +8396,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkRenderPassCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkRenderPassCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -8422,7 +8422,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -8448,7 +8448,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkRenderPass*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkRenderPass*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRenderPass\",\n");
@@ -8484,7 +8484,7 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -8511,7 +8511,7 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -8526,7 +8526,7 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkRenderPass"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkRenderPass"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"renderPass\",\n");
@@ -8541,7 +8541,7 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -8576,7 +8576,7 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     const StructPointerDecoder<Decoded_VkExtent2D>& pGranularity)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -8603,7 +8603,7 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -8618,7 +8618,7 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkRenderPass"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkRenderPass"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"renderPass\",\n");
@@ -8633,7 +8633,7 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExtent2D*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExtent2D*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGranularity\",\n");
@@ -8670,7 +8670,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     const HandlePointerDecoder<VkCommandPool>&  pCommandPool)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -8701,7 +8701,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -8716,7 +8716,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkCommandPoolCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkCommandPoolCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -8742,7 +8742,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -8768,7 +8768,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandPool*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandPool*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCommandPool\",\n");
@@ -8804,7 +8804,7 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -8831,7 +8831,7 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -8846,7 +8846,7 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandPool\",\n");
@@ -8861,7 +8861,7 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -8897,7 +8897,7 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     VkCommandPoolResetFlags                     flags)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -8928,7 +8928,7 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -8943,7 +8943,7 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandPool\",\n");
@@ -8958,7 +8958,7 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandPoolResetFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandPoolResetFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -8983,7 +8983,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     const HandlePointerDecoder<VkCommandBuffer>& pCommandBuffers)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -9014,7 +9014,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -9029,7 +9029,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkCommandBufferAllocateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkCommandBufferAllocateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocateInfo\",\n");
@@ -9055,7 +9055,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCommandBuffers\",\n");
@@ -9092,7 +9092,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     const HandlePointerDecoder<VkCommandBuffer>& pCommandBuffers)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -9119,7 +9119,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -9134,7 +9134,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandPool\",\n");
@@ -9149,7 +9149,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBufferCount\",\n");
@@ -9164,7 +9164,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkCommandBuffer*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkCommandBuffer*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCommandBuffers\",\n");
@@ -9200,7 +9200,7 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     const StructPointerDecoder<Decoded_VkCommandBufferBeginInfo>& pBeginInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -9231,7 +9231,7 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -9246,7 +9246,7 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkCommandBufferBeginInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkCommandBufferBeginInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBeginInfo\",\n");
@@ -9280,7 +9280,7 @@ void VulkanJsonConsumer::Process_vkEndCommandBuffer(
     format::HandleId                            commandBuffer)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -9311,7 +9311,7 @@ void VulkanJsonConsumer::Process_vkEndCommandBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -9335,7 +9335,7 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     VkCommandBufferResetFlags                   flags)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -9366,7 +9366,7 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -9381,7 +9381,7 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBufferResetFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBufferResetFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -9405,7 +9405,7 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     format::HandleId                            pipeline)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -9432,7 +9432,7 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -9447,7 +9447,7 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineBindPoint"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineBindPoint"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipelineBindPoint\",\n");
@@ -9462,7 +9462,7 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipeline"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipeline"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipeline\",\n");
@@ -9487,7 +9487,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     const StructPointerDecoder<Decoded_VkViewport>& pViewports)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -9514,7 +9514,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -9529,7 +9529,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstViewport\",\n");
@@ -9544,7 +9544,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"viewportCount\",\n");
@@ -9559,7 +9559,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkViewport*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkViewport*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pViewports\",\n");
@@ -9595,7 +9595,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     const StructPointerDecoder<Decoded_VkRect2D>& pScissors)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -9622,7 +9622,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -9637,7 +9637,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstScissor\",\n");
@@ -9652,7 +9652,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"scissorCount\",\n");
@@ -9667,7 +9667,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkRect2D*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkRect2D*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pScissors\",\n");
@@ -9701,7 +9701,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
     float                                       lineWidth)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -9728,7 +9728,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -9743,7 +9743,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"float"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"float"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"lineWidth\",\n");
@@ -9768,7 +9768,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     float                                       depthBiasSlopeFactor)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -9795,7 +9795,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -9810,7 +9810,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"float"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"float"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"depthBiasConstantFactor\",\n");
@@ -9825,7 +9825,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"float"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"float"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"depthBiasClamp\",\n");
@@ -9840,7 +9840,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"float"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"float"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"depthBiasSlopeFactor\",\n");
@@ -9863,7 +9863,7 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     const PointerDecoder<float>&                blendConstants)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -9890,7 +9890,7 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -9905,7 +9905,7 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const float"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const float"); // NUN
     OutputStringJson(outputFile, "[");
     UnsignedDecimalToStringJson(outputFile, 4); // IAV
     OutputStringJson(outputFile, "]");
@@ -9936,7 +9936,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     float                                       maxDepthBounds)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -9963,7 +9963,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -9978,7 +9978,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"float"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"float"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"minDepthBounds\",\n");
@@ -9993,7 +9993,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"float"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"float"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxDepthBounds\",\n");
@@ -10017,7 +10017,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     uint32_t                                    compareMask)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -10044,7 +10044,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -10059,7 +10059,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkStencilFaceFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkStencilFaceFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"faceMask\",\n");
@@ -10074,7 +10074,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"compareMask\",\n");
@@ -10098,7 +10098,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     uint32_t                                    writeMask)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -10125,7 +10125,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -10140,7 +10140,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkStencilFaceFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkStencilFaceFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"faceMask\",\n");
@@ -10155,7 +10155,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"writeMask\",\n");
@@ -10179,7 +10179,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     uint32_t                                    reference)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -10206,7 +10206,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -10221,7 +10221,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkStencilFaceFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkStencilFaceFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"faceMask\",\n");
@@ -10236,7 +10236,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"reference\",\n");
@@ -10265,7 +10265,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     const PointerDecoder<uint32_t>&             pDynamicOffsets)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -10292,7 +10292,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -10307,7 +10307,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineBindPoint"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineBindPoint"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipelineBindPoint\",\n");
@@ -10322,7 +10322,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"layout\",\n");
@@ -10337,7 +10337,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstSet\",\n");
@@ -10352,7 +10352,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"descriptorSetCount\",\n");
@@ -10367,7 +10367,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorSet*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorSet*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorSets\",\n");
@@ -10394,7 +10394,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dynamicOffsetCount\",\n");
@@ -10409,7 +10409,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDynamicOffsets\",\n");
@@ -10446,7 +10446,7 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     VkIndexType                                 indexType)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -10473,7 +10473,7 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -10488,7 +10488,7 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -10503,13 +10503,13 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, offset); //EQA
+    SignedDecimalToStringJson(outputFile, offset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -10518,7 +10518,7 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkIndexType"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkIndexType"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"indexType\",\n");
@@ -10544,7 +10544,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     const PointerDecoder<VkDeviceSize>&         pOffsets)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -10571,7 +10571,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -10586,7 +10586,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstBinding\",\n");
@@ -10601,7 +10601,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"bindingCount\",\n");
@@ -10616,7 +10616,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBuffer*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBuffer*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBuffers\",\n");
@@ -10643,7 +10643,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceSize*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceSize*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pOffsets\",\n");
@@ -10681,7 +10681,7 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     uint32_t                                    firstInstance)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -10708,7 +10708,7 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -10723,7 +10723,7 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"vertexCount\",\n");
@@ -10738,7 +10738,7 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instanceCount\",\n");
@@ -10753,7 +10753,7 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstVertex\",\n");
@@ -10768,7 +10768,7 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstInstance\",\n");
@@ -10795,7 +10795,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     uint32_t                                    firstInstance)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -10822,7 +10822,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -10837,7 +10837,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"indexCount\",\n");
@@ -10852,7 +10852,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instanceCount\",\n");
@@ -10867,7 +10867,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstIndex\",\n");
@@ -10882,13 +10882,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"int32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"int32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"vertexOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, vertexOffset); //EQA
+    SignedDecimalToStringJson(outputFile, vertexOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -10897,7 +10897,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstInstance\",\n");
@@ -10923,7 +10923,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     uint32_t                                    stride)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -10950,7 +10950,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -10965,7 +10965,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -10980,13 +10980,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, offset); //EQA
+    SignedDecimalToStringJson(outputFile, offset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -10995,7 +10995,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"drawCount\",\n");
@@ -11010,7 +11010,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stride\",\n");
@@ -11036,7 +11036,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     uint32_t                                    stride)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -11063,7 +11063,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -11078,7 +11078,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -11093,13 +11093,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, offset); //EQA
+    SignedDecimalToStringJson(outputFile, offset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -11108,7 +11108,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"drawCount\",\n");
@@ -11123,7 +11123,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stride\",\n");
@@ -11148,7 +11148,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     uint32_t                                    groupCountZ)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -11175,7 +11175,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -11190,7 +11190,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"groupCountX\",\n");
@@ -11205,7 +11205,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"groupCountY\",\n");
@@ -11220,7 +11220,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"groupCountZ\",\n");
@@ -11244,7 +11244,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     VkDeviceSize                                offset)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -11271,7 +11271,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -11286,7 +11286,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -11301,13 +11301,13 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, offset); //EQA
+    SignedDecimalToStringJson(outputFile, offset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -11327,7 +11327,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     const StructPointerDecoder<Decoded_VkBufferCopy>& pRegions)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -11354,7 +11354,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -11369,7 +11369,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcBuffer\",\n");
@@ -11384,7 +11384,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstBuffer\",\n");
@@ -11399,7 +11399,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"regionCount\",\n");
@@ -11414,7 +11414,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBufferCopy*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBufferCopy*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRegions\",\n");
@@ -11453,7 +11453,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     const StructPointerDecoder<Decoded_VkImageCopy>& pRegions)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -11480,7 +11480,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -11495,7 +11495,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcImage\",\n");
@@ -11510,7 +11510,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcImageLayout\",\n");
@@ -11525,7 +11525,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstImage\",\n");
@@ -11540,7 +11540,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstImageLayout\",\n");
@@ -11555,7 +11555,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"regionCount\",\n");
@@ -11570,7 +11570,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageCopy*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageCopy*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRegions\",\n");
@@ -11610,7 +11610,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     VkFilter                                    filter)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -11637,7 +11637,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -11652,7 +11652,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcImage\",\n");
@@ -11667,7 +11667,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcImageLayout\",\n");
@@ -11682,7 +11682,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstImage\",\n");
@@ -11697,7 +11697,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstImageLayout\",\n");
@@ -11712,7 +11712,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"regionCount\",\n");
@@ -11727,7 +11727,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageBlit*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageBlit*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRegions\",\n");
@@ -11753,7 +11753,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFilter"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFilter"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"filter\",\n");
@@ -11780,7 +11780,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     const StructPointerDecoder<Decoded_VkBufferImageCopy>& pRegions)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -11807,7 +11807,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -11822,7 +11822,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcBuffer\",\n");
@@ -11837,7 +11837,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstImage\",\n");
@@ -11852,7 +11852,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstImageLayout\",\n");
@@ -11867,7 +11867,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"regionCount\",\n");
@@ -11882,7 +11882,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBufferImageCopy*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBufferImageCopy*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRegions\",\n");
@@ -11920,7 +11920,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     const StructPointerDecoder<Decoded_VkBufferImageCopy>& pRegions)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -11947,7 +11947,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -11962,7 +11962,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcImage\",\n");
@@ -11977,7 +11977,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcImageLayout\",\n");
@@ -11992,7 +11992,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstBuffer\",\n");
@@ -12007,7 +12007,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"regionCount\",\n");
@@ -12022,7 +12022,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBufferImageCopy*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBufferImageCopy*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRegions\",\n");
@@ -12059,7 +12059,7 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     const PointerDecoder<uint8_t>&              pData)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -12086,7 +12086,7 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -12101,7 +12101,7 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstBuffer\",\n");
@@ -12116,13 +12116,13 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, dstOffset); //EQA
+    SignedDecimalToStringJson(outputFile, dstOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -12131,13 +12131,13 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dataSize\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, dataSize); //EQA
+    SignedDecimalToStringJson(outputFile, dataSize); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -12146,7 +12146,7 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pData\",\n");
@@ -12161,10 +12161,6 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
         AddrToStringJson(outputFile, pData.GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
-        ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const void*", &pData, "pData", dataSize, vinfo_pData); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12184,7 +12180,7 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     uint32_t                                    data)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -12211,7 +12207,7 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -12226,7 +12222,7 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstBuffer\",\n");
@@ -12241,13 +12237,13 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, dstOffset); //EQA
+    SignedDecimalToStringJson(outputFile, dstOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -12256,13 +12252,13 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"size\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, size); //EQA
+    SignedDecimalToStringJson(outputFile, size); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -12271,7 +12267,7 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"data\",\n");
@@ -12298,7 +12294,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     const StructPointerDecoder<Decoded_VkImageSubresourceRange>& pRanges)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -12325,7 +12321,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -12340,7 +12336,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"image\",\n");
@@ -12355,7 +12351,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageLayout\",\n");
@@ -12370,7 +12366,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkClearColorValue*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkClearColorValue*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pColor\",\n");
@@ -12396,7 +12392,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"rangeCount\",\n");
@@ -12411,7 +12407,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageSubresourceRange*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageSubresourceRange*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRanges\",\n");
@@ -12449,7 +12445,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     const StructPointerDecoder<Decoded_VkImageSubresourceRange>& pRanges)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -12476,7 +12472,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -12491,7 +12487,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"image\",\n");
@@ -12506,7 +12502,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageLayout\",\n");
@@ -12521,7 +12517,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkClearDepthStencilValue*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkClearDepthStencilValue*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDepthStencil\",\n");
@@ -12547,7 +12543,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"rangeCount\",\n");
@@ -12562,7 +12558,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageSubresourceRange*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageSubresourceRange*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRanges\",\n");
@@ -12599,7 +12595,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     const StructPointerDecoder<Decoded_VkClearRect>& pRects)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -12626,7 +12622,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -12641,7 +12637,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"attachmentCount\",\n");
@@ -12656,7 +12652,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkClearAttachment*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkClearAttachment*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAttachments\",\n");
@@ -12682,7 +12678,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"rectCount\",\n");
@@ -12697,7 +12693,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkClearRect*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkClearRect*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRects\",\n");
@@ -12736,7 +12732,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     const StructPointerDecoder<Decoded_VkImageResolve>& pRegions)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -12763,7 +12759,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -12778,7 +12774,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcImage\",\n");
@@ -12793,7 +12789,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcImageLayout\",\n");
@@ -12808,7 +12804,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstImage\",\n");
@@ -12823,7 +12819,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstImageLayout\",\n");
@@ -12838,7 +12834,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"regionCount\",\n");
@@ -12853,7 +12849,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageResolve*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageResolve*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRegions\",\n");
@@ -12888,7 +12884,7 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     VkPipelineStageFlags                        stageMask)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -12915,7 +12911,7 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -12930,7 +12926,7 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkEvent"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkEvent"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"event\",\n");
@@ -12945,7 +12941,7 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stageMask\",\n");
@@ -12969,7 +12965,7 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     VkPipelineStageFlags                        stageMask)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -12996,7 +12992,7 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -13011,7 +13007,7 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkEvent"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkEvent"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"event\",\n");
@@ -13026,7 +13022,7 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stageMask\",\n");
@@ -13058,7 +13054,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     const StructPointerDecoder<Decoded_VkImageMemoryBarrier>& pImageMemoryBarriers)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -13085,7 +13081,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -13100,7 +13096,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"eventCount\",\n");
@@ -13115,7 +13111,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkEvent*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkEvent*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pEvents\",\n");
@@ -13142,7 +13138,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcStageMask\",\n");
@@ -13157,7 +13153,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstStageMask\",\n");
@@ -13172,7 +13168,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memoryBarrierCount\",\n");
@@ -13187,7 +13183,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkMemoryBarrier*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkMemoryBarrier*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryBarriers\",\n");
@@ -13213,7 +13209,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"bufferMemoryBarrierCount\",\n");
@@ -13228,7 +13224,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBufferMemoryBarrier*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBufferMemoryBarrier*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBufferMemoryBarriers\",\n");
@@ -13254,7 +13250,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageMemoryBarrierCount\",\n");
@@ -13269,7 +13265,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageMemoryBarrier*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageMemoryBarrier*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageMemoryBarriers\",\n");
@@ -13311,7 +13307,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     const StructPointerDecoder<Decoded_VkImageMemoryBarrier>& pImageMemoryBarriers)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -13338,7 +13334,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -13353,7 +13349,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcStageMask\",\n");
@@ -13368,7 +13364,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstStageMask\",\n");
@@ -13383,7 +13379,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDependencyFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDependencyFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dependencyFlags\",\n");
@@ -13398,7 +13394,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memoryBarrierCount\",\n");
@@ -13413,7 +13409,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkMemoryBarrier*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkMemoryBarrier*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryBarriers\",\n");
@@ -13439,7 +13435,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"bufferMemoryBarrierCount\",\n");
@@ -13454,7 +13450,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBufferMemoryBarrier*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBufferMemoryBarrier*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBufferMemoryBarriers\",\n");
@@ -13480,7 +13476,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageMemoryBarrierCount\",\n");
@@ -13495,7 +13491,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageMemoryBarrier*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageMemoryBarrier*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageMemoryBarriers\",\n");
@@ -13531,7 +13527,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     VkQueryControlFlags                         flags)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -13558,7 +13554,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -13573,7 +13569,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryPool\",\n");
@@ -13588,7 +13584,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"query\",\n");
@@ -13603,7 +13599,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryControlFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryControlFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -13627,7 +13623,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     uint32_t                                    query)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -13654,7 +13650,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -13669,7 +13665,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryPool\",\n");
@@ -13684,7 +13680,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"query\",\n");
@@ -13709,7 +13705,7 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     uint32_t                                    queryCount)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -13736,7 +13732,7 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -13751,7 +13747,7 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryPool\",\n");
@@ -13766,7 +13762,7 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstQuery\",\n");
@@ -13781,7 +13777,7 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryCount\",\n");
@@ -13806,7 +13802,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     uint32_t                                    query)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -13833,7 +13829,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -13848,7 +13844,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlagBits"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlagBits"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipelineStage\",\n");
@@ -13863,7 +13859,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryPool\",\n");
@@ -13878,7 +13874,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"query\",\n");
@@ -13907,7 +13903,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     VkQueryResultFlags                          flags)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -13934,7 +13930,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -13949,7 +13945,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryPool\",\n");
@@ -13964,7 +13960,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstQuery\",\n");
@@ -13979,7 +13975,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryCount\",\n");
@@ -13994,7 +13990,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstBuffer\",\n");
@@ -14009,13 +14005,13 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, dstOffset); //EQA
+    SignedDecimalToStringJson(outputFile, dstOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -14024,13 +14020,13 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stride\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, stride); //EQA
+    SignedDecimalToStringJson(outputFile, stride); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -14039,7 +14035,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryResultFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryResultFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -14066,7 +14062,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     const PointerDecoder<uint8_t>&              pValues)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -14093,7 +14089,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -14108,7 +14104,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"layout\",\n");
@@ -14123,7 +14119,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkShaderStageFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkShaderStageFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stageFlags\",\n");
@@ -14138,7 +14134,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
@@ -14153,7 +14149,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"size\",\n");
@@ -14168,7 +14164,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pValues\",\n");
@@ -14204,7 +14200,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     VkSubpassContents                           contents)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -14231,7 +14227,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -14246,7 +14242,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkRenderPassBeginInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkRenderPassBeginInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRenderPassBegin\",\n");
@@ -14272,7 +14268,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSubpassContents"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSubpassContents"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"contents\",\n");
@@ -14295,7 +14291,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     VkSubpassContents                           contents)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -14322,7 +14318,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -14337,7 +14333,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSubpassContents"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSubpassContents"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"contents\",\n");
@@ -14359,7 +14355,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass(
     format::HandleId                            commandBuffer)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -14386,7 +14382,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -14410,7 +14406,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     const HandlePointerDecoder<VkCommandBuffer>& pCommandBuffers)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -14437,7 +14433,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -14452,7 +14448,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBufferCount\",\n");
@@ -14467,7 +14463,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkCommandBuffer*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkCommandBuffer*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCommandBuffers\",\n");
@@ -14505,7 +14501,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     const StructPointerDecoder<Decoded_VkBindBufferMemoryInfo>& pBindInfos)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -14536,7 +14532,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -14551,7 +14547,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"bindInfoCount\",\n");
@@ -14566,7 +14562,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBindBufferMemoryInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBindBufferMemoryInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBindInfos\",\n");
@@ -14602,7 +14598,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     const StructPointerDecoder<Decoded_VkBindImageMemoryInfo>& pBindInfos)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -14633,7 +14629,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -14648,7 +14644,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"bindInfoCount\",\n");
@@ -14663,7 +14659,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBindImageMemoryInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBindImageMemoryInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBindInfos\",\n");
@@ -14700,7 +14696,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     const PointerDecoder<VkPeerMemoryFeatureFlags>& pPeerMemoryFeatures)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -14727,7 +14723,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -14742,7 +14738,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"heapIndex\",\n");
@@ -14757,7 +14753,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"localDeviceIndex\",\n");
@@ -14772,7 +14768,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"remoteDeviceIndex\",\n");
@@ -14787,7 +14783,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPeerMemoryFeatureFlags*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPeerMemoryFeatureFlags*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPeerMemoryFeatures\",\n");
@@ -14823,7 +14819,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
     uint32_t                                    deviceMask)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -14850,7 +14846,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -14865,7 +14861,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"deviceMask\",\n");
@@ -14893,7 +14889,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     uint32_t                                    groupCountZ)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -14920,7 +14916,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -14935,7 +14931,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"baseGroupX\",\n");
@@ -14950,7 +14946,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"baseGroupY\",\n");
@@ -14965,7 +14961,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"baseGroupZ\",\n");
@@ -14980,7 +14976,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"groupCountX\",\n");
@@ -14995,7 +14991,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"groupCountY\",\n");
@@ -15010,7 +15006,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"groupCountZ\",\n");
@@ -15035,7 +15031,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     const StructPointerDecoder<Decoded_VkPhysicalDeviceGroupProperties>& pPhysicalDeviceGroupProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -15066,7 +15062,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -15081,7 +15077,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPhysicalDeviceGroupCount\",\n");
@@ -15108,7 +15104,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceGroupProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceGroupProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPhysicalDeviceGroupProperties\",\n");
@@ -15143,7 +15139,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     const StructPointerDecoder<Decoded_VkMemoryRequirements2>& pMemoryRequirements)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -15170,7 +15166,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -15185,7 +15181,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageMemoryRequirementsInfo2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageMemoryRequirementsInfo2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
@@ -15211,7 +15207,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
@@ -15246,7 +15242,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     const StructPointerDecoder<Decoded_VkMemoryRequirements2>& pMemoryRequirements)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -15273,7 +15269,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -15288,7 +15284,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBufferMemoryRequirementsInfo2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBufferMemoryRequirementsInfo2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
@@ -15314,7 +15310,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
@@ -15350,7 +15346,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     const StructPointerDecoder<Decoded_VkSparseImageMemoryRequirements2>& pSparseMemoryRequirements)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -15377,7 +15373,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -15392,7 +15388,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageSparseMemoryRequirementsInfo2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageSparseMemoryRequirementsInfo2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
@@ -15418,7 +15414,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSparseMemoryRequirementCount\",\n");
@@ -15445,7 +15441,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSparseImageMemoryRequirements2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSparseImageMemoryRequirements2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSparseMemoryRequirements\",\n");
@@ -15479,7 +15475,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     const StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures2>& pFeatures)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -15506,7 +15502,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -15521,7 +15517,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceFeatures2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceFeatures2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFeatures\",\n");
@@ -15555,7 +15551,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     const StructPointerDecoder<Decoded_VkPhysicalDeviceProperties2>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -15582,7 +15578,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -15597,7 +15593,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceProperties2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceProperties2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -15632,7 +15628,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     const StructPointerDecoder<Decoded_VkFormatProperties2>& pFormatProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -15659,7 +15655,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -15674,7 +15670,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFormat"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFormat"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"format\",\n");
@@ -15689,7 +15685,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFormatProperties2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFormatProperties2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFormatProperties\",\n");
@@ -15725,7 +15721,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     const StructPointerDecoder<Decoded_VkImageFormatProperties2>& pImageFormatProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -15756,7 +15752,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -15771,7 +15767,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceImageFormatInfo2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceImageFormatInfo2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageFormatInfo\",\n");
@@ -15797,7 +15793,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageFormatProperties2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageFormatProperties2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageFormatProperties\",\n");
@@ -15832,7 +15828,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     const StructPointerDecoder<Decoded_VkQueueFamilyProperties2>& pQueueFamilyProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -15859,7 +15855,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -15874,7 +15870,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueFamilyPropertyCount\",\n");
@@ -15901,7 +15897,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueueFamilyProperties2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueueFamilyProperties2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueFamilyProperties\",\n");
@@ -15935,7 +15931,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     const StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties2>& pMemoryProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -15962,7 +15958,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -15977,7 +15973,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceMemoryProperties2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceMemoryProperties2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryProperties\",\n");
@@ -16013,7 +16009,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     const StructPointerDecoder<Decoded_VkSparseImageFormatProperties2>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -16040,7 +16036,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -16055,7 +16051,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceSparseImageFormatInfo2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceSparseImageFormatInfo2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFormatInfo\",\n");
@@ -16081,7 +16077,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
@@ -16108,7 +16104,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSparseImageFormatProperties2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSparseImageFormatProperties2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -16143,7 +16139,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     VkCommandPoolTrimFlags                      flags)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -16170,7 +16166,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -16185,7 +16181,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandPool\",\n");
@@ -16200,7 +16196,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandPoolTrimFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandPoolTrimFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -16224,7 +16220,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     const HandlePointerDecoder<VkQueue>&        pQueue)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -16251,7 +16247,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -16266,7 +16262,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceQueueInfo2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceQueueInfo2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueInfo\",\n");
@@ -16292,7 +16288,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueue*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueue*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueue\",\n");
@@ -16330,7 +16326,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     const HandlePointerDecoder<VkSamplerYcbcrConversion>& pYcbcrConversion)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -16361,7 +16357,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -16376,7 +16372,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSamplerYcbcrConversionCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSamplerYcbcrConversionCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -16402,7 +16398,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -16428,7 +16424,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSamplerYcbcrConversion*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSamplerYcbcrConversion*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pYcbcrConversion\",\n");
@@ -16464,7 +16460,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -16491,7 +16487,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -16506,7 +16502,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSamplerYcbcrConversion"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSamplerYcbcrConversion"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"ycbcrConversion\",\n");
@@ -16521,7 +16517,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -16558,7 +16554,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     const HandlePointerDecoder<VkDescriptorUpdateTemplate>& pDescriptorUpdateTemplate)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -16589,7 +16585,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -16604,7 +16600,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorUpdateTemplateCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorUpdateTemplateCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -16630,7 +16626,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -16656,7 +16652,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorUpdateTemplate*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorUpdateTemplate*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorUpdateTemplate\",\n");
@@ -16692,7 +16688,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -16719,7 +16715,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -16734,7 +16730,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorUpdateTemplate"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorUpdateTemplate"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"descriptorUpdateTemplate\",\n");
@@ -16749,7 +16745,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -16784,7 +16780,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     const StructPointerDecoder<Decoded_VkExternalBufferProperties>& pExternalBufferProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -16811,7 +16807,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -16826,7 +16822,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceExternalBufferInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceExternalBufferInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalBufferInfo\",\n");
@@ -16852,7 +16848,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExternalBufferProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExternalBufferProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalBufferProperties\",\n");
@@ -16887,7 +16883,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     const StructPointerDecoder<Decoded_VkExternalFenceProperties>& pExternalFenceProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -16914,7 +16910,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -16929,7 +16925,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceExternalFenceInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceExternalFenceInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalFenceInfo\",\n");
@@ -16955,7 +16951,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExternalFenceProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExternalFenceProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalFenceProperties\",\n");
@@ -16990,7 +16986,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     const StructPointerDecoder<Decoded_VkExternalSemaphoreProperties>& pExternalSemaphoreProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -17017,7 +17013,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -17032,7 +17028,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceExternalSemaphoreInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceExternalSemaphoreInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalSemaphoreInfo\",\n");
@@ -17058,7 +17054,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExternalSemaphoreProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExternalSemaphoreProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalSemaphoreProperties\",\n");
@@ -17093,7 +17089,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     const StructPointerDecoder<Decoded_VkDescriptorSetLayoutSupport>& pSupport)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -17120,7 +17116,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -17135,7 +17131,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -17161,7 +17157,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorSetLayoutSupport*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorSetLayoutSupport*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSupport\",\n");
@@ -17197,7 +17193,7 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -17224,7 +17220,7 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -17239,7 +17235,7 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"surface\",\n");
@@ -17254,7 +17250,7 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -17291,7 +17287,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     const PointerDecoder<VkBool32>&             pSupported)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -17322,7 +17318,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -17337,7 +17333,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queueFamilyIndex\",\n");
@@ -17352,7 +17348,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"surface\",\n");
@@ -17367,7 +17363,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBool32*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBool32*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSupported\",\n");
@@ -17405,7 +17401,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     const StructPointerDecoder<Decoded_VkSurfaceCapabilitiesKHR>& pSurfaceCapabilities)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -17436,7 +17432,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -17451,7 +17447,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"surface\",\n");
@@ -17466,7 +17462,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceCapabilitiesKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceCapabilitiesKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceCapabilities\",\n");
@@ -17503,7 +17499,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     const StructPointerDecoder<Decoded_VkSurfaceFormatKHR>& pSurfaceFormats)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -17534,7 +17530,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -17549,7 +17545,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"surface\",\n");
@@ -17564,7 +17560,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceFormatCount\",\n");
@@ -17591,7 +17587,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceFormatKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceFormatKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceFormats\",\n");
@@ -17628,7 +17624,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     const PointerDecoder<VkPresentModeKHR>&     pPresentModes)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -17659,7 +17655,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -17674,7 +17670,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"surface\",\n");
@@ -17689,7 +17685,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentModeCount\",\n");
@@ -17716,7 +17712,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPresentModeKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPresentModeKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentModes\",\n");
@@ -17755,7 +17751,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     const HandlePointerDecoder<VkSwapchainKHR>& pSwapchain)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -17786,7 +17782,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -17801,7 +17797,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSwapchainCreateInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSwapchainCreateInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -17827,7 +17823,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -17853,7 +17849,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSwapchain\",\n");
@@ -17889,7 +17885,7 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -17916,7 +17912,7 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -17931,7 +17927,7 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"swapchain\",\n");
@@ -17946,7 +17942,7 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -17983,7 +17979,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     const HandlePointerDecoder<VkImage>&        pSwapchainImages)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -18014,7 +18010,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -18029,7 +18025,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"swapchain\",\n");
@@ -18044,7 +18040,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSwapchainImageCount\",\n");
@@ -18071,7 +18067,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSwapchainImages\",\n");
@@ -18111,7 +18107,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     const PointerDecoder<uint32_t>&             pImageIndex)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -18142,7 +18138,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -18157,7 +18153,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"swapchain\",\n");
@@ -18172,7 +18168,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint64_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint64_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"timeout\",\n");
@@ -18187,7 +18183,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSemaphore"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSemaphore"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"semaphore\",\n");
@@ -18202,7 +18198,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFence"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFence"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"fence\",\n");
@@ -18217,7 +18213,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageIndex\",\n");
@@ -18253,7 +18249,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     const StructPointerDecoder<Decoded_VkPresentInfoKHR>& pPresentInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -18284,7 +18280,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queue\",\n");
@@ -18299,7 +18295,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPresentInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPresentInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentInfo\",\n");
@@ -18350,7 +18346,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     const StructPointerDecoder<Decoded_VkDeviceGroupPresentCapabilitiesKHR>& pDeviceGroupPresentCapabilities)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -18381,7 +18377,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -18396,7 +18392,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceGroupPresentCapabilitiesKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceGroupPresentCapabilitiesKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDeviceGroupPresentCapabilities\",\n");
@@ -18432,7 +18428,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     const PointerDecoder<VkDeviceGroupPresentModeFlagsKHR>& pModes)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -18463,7 +18459,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -18478,7 +18474,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"surface\",\n");
@@ -18493,7 +18489,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pModes\",\n");
@@ -18532,7 +18528,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     const StructPointerDecoder<Decoded_VkRect2D>& pRects)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -18563,7 +18559,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -18578,7 +18574,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"surface\",\n");
@@ -18593,7 +18589,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRectCount\",\n");
@@ -18620,7 +18616,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkRect2D*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkRect2D*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRects\",\n");
@@ -18656,7 +18652,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     const PointerDecoder<uint32_t>&             pImageIndex)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -18687,7 +18683,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -18702,7 +18698,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAcquireNextImageInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAcquireNextImageInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAcquireInfo\",\n");
@@ -18728,7 +18724,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageIndex\",\n");
@@ -18766,7 +18762,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     const StructPointerDecoder<Decoded_VkDisplayPropertiesKHR>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -18797,7 +18793,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -18812,7 +18808,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
@@ -18839,7 +18835,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayPropertiesKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayPropertiesKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -18875,7 +18871,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     const StructPointerDecoder<Decoded_VkDisplayPlanePropertiesKHR>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -18906,7 +18902,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -18921,7 +18917,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
@@ -18948,7 +18944,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayPlanePropertiesKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayPlanePropertiesKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -18985,7 +18981,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     const HandlePointerDecoder<VkDisplayKHR>&   pDisplays)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -19016,7 +19012,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -19031,7 +19027,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"planeIndex\",\n");
@@ -19046,7 +19042,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplayCount\",\n");
@@ -19073,7 +19069,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplays\",\n");
@@ -19111,7 +19107,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     const StructPointerDecoder<Decoded_VkDisplayModePropertiesKHR>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -19142,7 +19138,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -19157,7 +19153,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"display\",\n");
@@ -19172,7 +19168,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
@@ -19199,7 +19195,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayModePropertiesKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayModePropertiesKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -19237,7 +19233,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     const HandlePointerDecoder<VkDisplayModeKHR>& pMode)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -19268,7 +19264,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -19283,7 +19279,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"display\",\n");
@@ -19298,7 +19294,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDisplayModeCreateInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDisplayModeCreateInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -19324,7 +19320,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -19350,7 +19346,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayModeKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayModeKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMode\",\n");
@@ -19388,7 +19384,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     const StructPointerDecoder<Decoded_VkDisplayPlaneCapabilitiesKHR>& pCapabilities)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -19419,7 +19415,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -19434,7 +19430,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayModeKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayModeKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"mode\",\n");
@@ -19449,7 +19445,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"planeIndex\",\n");
@@ -19464,7 +19460,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayPlaneCapabilitiesKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayPlaneCapabilitiesKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCapabilities\",\n");
@@ -19501,7 +19497,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -19532,7 +19528,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -19547,7 +19543,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDisplaySurfaceCreateInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDisplaySurfaceCreateInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -19573,7 +19569,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -19599,7 +19595,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -19639,7 +19635,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     const HandlePointerDecoder<VkSwapchainKHR>& pSwapchains)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -19670,7 +19666,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -19685,7 +19681,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"swapchainCount\",\n");
@@ -19700,7 +19696,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSwapchainCreateInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSwapchainCreateInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfos\",\n");
@@ -19726,7 +19722,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -19752,7 +19748,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSwapchains\",\n");
@@ -19791,7 +19787,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -19822,7 +19818,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -19837,7 +19833,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkXlibSurfaceCreateInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkXlibSurfaceCreateInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -19863,7 +19859,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -19889,7 +19885,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -19927,7 +19923,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     size_t                                      visualID)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -19960,7 +19956,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -19975,7 +19971,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queueFamilyIndex\",\n");
@@ -19990,7 +19986,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dpy\",\n");
@@ -20005,7 +20001,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"size_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"size_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"visualID\",\n");
@@ -20032,7 +20028,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -20063,7 +20059,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -20078,7 +20074,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkXcbSurfaceCreateInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkXcbSurfaceCreateInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -20104,7 +20100,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -20130,7 +20126,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -20168,7 +20164,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     uint32_t                                    visual_id)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -20201,7 +20197,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -20216,7 +20212,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queueFamilyIndex\",\n");
@@ -20231,7 +20227,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"connection\",\n");
@@ -20258,7 +20254,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"visual_id\",\n");
@@ -20285,7 +20281,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -20316,7 +20312,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -20331,7 +20327,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkWaylandSurfaceCreateInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkWaylandSurfaceCreateInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -20357,7 +20353,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -20383,7 +20379,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -20420,7 +20416,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     uint64_t                                    display)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -20453,7 +20449,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -20468,7 +20464,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queueFamilyIndex\",\n");
@@ -20483,7 +20479,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"struct void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"struct void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"display\",\n");
@@ -20522,7 +20518,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -20553,7 +20549,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -20568,7 +20564,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAndroidSurfaceCreateInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAndroidSurfaceCreateInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -20594,7 +20590,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -20620,7 +20616,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -20659,7 +20655,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -20690,7 +20686,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -20705,7 +20701,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkWin32SurfaceCreateInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkWin32SurfaceCreateInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -20731,7 +20727,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -20757,7 +20753,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -20793,7 +20789,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     uint32_t                                    queueFamilyIndex)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -20826,7 +20822,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -20841,7 +20837,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queueFamilyIndex\",\n");
@@ -20865,7 +20861,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     const StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures2>& pFeatures)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -20892,7 +20888,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -20907,7 +20903,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceFeatures2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceFeatures2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFeatures\",\n");
@@ -20941,7 +20937,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     const StructPointerDecoder<Decoded_VkPhysicalDeviceProperties2>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -20968,7 +20964,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -20983,7 +20979,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceProperties2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceProperties2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -21018,7 +21014,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     const StructPointerDecoder<Decoded_VkFormatProperties2>& pFormatProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -21045,7 +21041,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -21060,7 +21056,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFormat"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFormat"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"format\",\n");
@@ -21075,7 +21071,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFormatProperties2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFormatProperties2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFormatProperties\",\n");
@@ -21111,7 +21107,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     const StructPointerDecoder<Decoded_VkImageFormatProperties2>& pImageFormatProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -21142,7 +21138,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -21157,7 +21153,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceImageFormatInfo2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceImageFormatInfo2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageFormatInfo\",\n");
@@ -21183,7 +21179,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageFormatProperties2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageFormatProperties2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageFormatProperties\",\n");
@@ -21218,7 +21214,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     const StructPointerDecoder<Decoded_VkQueueFamilyProperties2>& pQueueFamilyProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -21245,7 +21241,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -21260,7 +21256,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueFamilyPropertyCount\",\n");
@@ -21287,7 +21283,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueueFamilyProperties2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueueFamilyProperties2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueFamilyProperties\",\n");
@@ -21321,7 +21317,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     const StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties2>& pMemoryProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -21348,7 +21344,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -21363,7 +21359,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceMemoryProperties2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceMemoryProperties2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryProperties\",\n");
@@ -21399,7 +21395,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     const StructPointerDecoder<Decoded_VkSparseImageFormatProperties2>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -21426,7 +21422,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -21441,7 +21437,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceSparseImageFormatInfo2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceSparseImageFormatInfo2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFormatInfo\",\n");
@@ -21467,7 +21463,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
@@ -21494,7 +21490,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSparseImageFormatProperties2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSparseImageFormatProperties2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -21532,7 +21528,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     const PointerDecoder<VkPeerMemoryFeatureFlags>& pPeerMemoryFeatures)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -21559,7 +21555,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -21574,7 +21570,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"heapIndex\",\n");
@@ -21589,7 +21585,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"localDeviceIndex\",\n");
@@ -21604,7 +21600,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"remoteDeviceIndex\",\n");
@@ -21619,7 +21615,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPeerMemoryFeatureFlags*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPeerMemoryFeatureFlags*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPeerMemoryFeatures\",\n");
@@ -21655,7 +21651,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
     uint32_t                                    deviceMask)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -21682,7 +21678,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -21697,7 +21693,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"deviceMask\",\n");
@@ -21725,7 +21721,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     uint32_t                                    groupCountZ)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -21752,7 +21748,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -21767,7 +21763,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"baseGroupX\",\n");
@@ -21782,7 +21778,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"baseGroupY\",\n");
@@ -21797,7 +21793,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"baseGroupZ\",\n");
@@ -21812,7 +21808,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"groupCountX\",\n");
@@ -21827,7 +21823,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"groupCountY\",\n");
@@ -21842,7 +21838,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"groupCountZ\",\n");
@@ -21867,7 +21863,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     VkCommandPoolTrimFlags                      flags)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -21894,7 +21890,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -21909,7 +21905,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandPool\",\n");
@@ -21924,7 +21920,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandPoolTrimFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandPoolTrimFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -21950,7 +21946,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     const StructPointerDecoder<Decoded_VkPhysicalDeviceGroupProperties>& pPhysicalDeviceGroupProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -21981,7 +21977,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -21996,7 +21992,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPhysicalDeviceGroupCount\",\n");
@@ -22023,7 +22019,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceGroupProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDeviceGroupProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPhysicalDeviceGroupProperties\",\n");
@@ -22059,7 +22055,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     const StructPointerDecoder<Decoded_VkExternalBufferProperties>& pExternalBufferProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -22086,7 +22082,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -22101,7 +22097,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceExternalBufferInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceExternalBufferInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalBufferInfo\",\n");
@@ -22127,7 +22123,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExternalBufferProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExternalBufferProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalBufferProperties\",\n");
@@ -22164,7 +22160,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     const PointerDecoder<uint64_t>&             pHandle)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -22195,7 +22191,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -22210,7 +22206,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkMemoryGetWin32HandleInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkMemoryGetWin32HandleInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGetWin32HandleInfo\",\n");
@@ -22236,7 +22232,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void**"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void**"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHandle\",\n");
@@ -22275,7 +22271,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     const StructPointerDecoder<Decoded_VkMemoryWin32HandlePropertiesKHR>& pMemoryWin32HandleProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -22306,7 +22302,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -22321,7 +22317,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExternalMemoryHandleTypeFlagBits"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExternalMemoryHandleTypeFlagBits"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"handleType\",\n");
@@ -22336,7 +22332,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"handle\",\n");
@@ -22363,7 +22359,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkMemoryWin32HandlePropertiesKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkMemoryWin32HandlePropertiesKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryWin32HandleProperties\",\n");
@@ -22400,7 +22396,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     const PointerDecoder<int>&                  pFd)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -22431,7 +22427,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -22446,7 +22442,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkMemoryGetFdInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkMemoryGetFdInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGetFdInfo\",\n");
@@ -22472,7 +22468,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"int*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"int*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFd\",\n");
@@ -22511,7 +22507,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     const StructPointerDecoder<Decoded_VkMemoryFdPropertiesKHR>& pMemoryFdProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -22542,7 +22538,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -22557,7 +22553,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExternalMemoryHandleTypeFlagBits"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExternalMemoryHandleTypeFlagBits"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"handleType\",\n");
@@ -22572,13 +22568,13 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"int"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"int"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"fd\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, fd); //EQA
+    SignedDecimalToStringJson(outputFile, fd); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -22587,7 +22583,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkMemoryFdPropertiesKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkMemoryFdPropertiesKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryFdProperties\",\n");
@@ -22623,7 +22619,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     const StructPointerDecoder<Decoded_VkExternalSemaphoreProperties>& pExternalSemaphoreProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -22650,7 +22646,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -22665,7 +22661,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceExternalSemaphoreInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceExternalSemaphoreInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalSemaphoreInfo\",\n");
@@ -22691,7 +22687,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExternalSemaphoreProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExternalSemaphoreProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalSemaphoreProperties\",\n");
@@ -22727,7 +22723,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     const StructPointerDecoder<Decoded_VkImportSemaphoreWin32HandleInfoKHR>& pImportSemaphoreWin32HandleInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -22758,7 +22754,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -22773,7 +22769,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImportSemaphoreWin32HandleInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImportSemaphoreWin32HandleInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImportSemaphoreWin32HandleInfo\",\n");
@@ -22809,7 +22805,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     const PointerDecoder<uint64_t>&             pHandle)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -22840,7 +22836,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -22855,7 +22851,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSemaphoreGetWin32HandleInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSemaphoreGetWin32HandleInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGetWin32HandleInfo\",\n");
@@ -22881,7 +22877,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void**"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void**"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHandle\",\n");
@@ -22919,7 +22915,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     const StructPointerDecoder<Decoded_VkImportSemaphoreFdInfoKHR>& pImportSemaphoreFdInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -22950,7 +22946,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -22965,7 +22961,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImportSemaphoreFdInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImportSemaphoreFdInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImportSemaphoreFdInfo\",\n");
@@ -23001,7 +22997,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     const PointerDecoder<int>&                  pFd)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -23032,7 +23028,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -23047,7 +23043,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSemaphoreGetFdInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSemaphoreGetFdInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGetFdInfo\",\n");
@@ -23073,7 +23069,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"int*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"int*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFd\",\n");
@@ -23114,7 +23110,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     const StructPointerDecoder<Decoded_VkWriteDescriptorSet>& pDescriptorWrites)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -23141,7 +23137,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -23156,7 +23152,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineBindPoint"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineBindPoint"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipelineBindPoint\",\n");
@@ -23171,7 +23167,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"layout\",\n");
@@ -23186,7 +23182,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"set\",\n");
@@ -23201,7 +23197,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"descriptorWriteCount\",\n");
@@ -23216,7 +23212,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkWriteDescriptorSet*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkWriteDescriptorSet*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorWrites\",\n");
@@ -23254,7 +23250,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     const HandlePointerDecoder<VkDescriptorUpdateTemplate>& pDescriptorUpdateTemplate)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -23285,7 +23281,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -23300,7 +23296,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorUpdateTemplateCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorUpdateTemplateCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -23326,7 +23322,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -23352,7 +23348,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorUpdateTemplate*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorUpdateTemplate*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorUpdateTemplate\",\n");
@@ -23388,7 +23384,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -23415,7 +23411,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -23430,7 +23426,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorUpdateTemplate"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorUpdateTemplate"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"descriptorUpdateTemplate\",\n");
@@ -23445,7 +23441,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -23483,7 +23479,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     const HandlePointerDecoder<VkRenderPass>&   pRenderPass)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -23514,7 +23510,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -23529,7 +23525,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkRenderPassCreateInfo2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkRenderPassCreateInfo2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -23555,7 +23551,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -23581,7 +23577,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkRenderPass*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkRenderPass*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRenderPass\",\n");
@@ -23617,7 +23613,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     const StructPointerDecoder<Decoded_VkSubpassBeginInfoKHR>& pSubpassBeginInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -23644,7 +23640,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -23659,7 +23655,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkRenderPassBeginInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkRenderPassBeginInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRenderPassBegin\",\n");
@@ -23685,7 +23681,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSubpassBeginInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSubpassBeginInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSubpassBeginInfo\",\n");
@@ -23720,7 +23716,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     const StructPointerDecoder<Decoded_VkSubpassEndInfoKHR>& pSubpassEndInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -23747,7 +23743,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -23762,7 +23758,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSubpassBeginInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSubpassBeginInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSubpassBeginInfo\",\n");
@@ -23788,7 +23784,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSubpassEndInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSubpassEndInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSubpassEndInfo\",\n");
@@ -23822,7 +23818,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     const StructPointerDecoder<Decoded_VkSubpassEndInfoKHR>& pSubpassEndInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -23849,7 +23845,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -23864,7 +23860,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSubpassEndInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSubpassEndInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSubpassEndInfo\",\n");
@@ -23900,7 +23896,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     format::HandleId                            swapchain)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -23931,7 +23927,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -23946,7 +23942,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"swapchain\",\n");
@@ -23971,7 +23967,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     const StructPointerDecoder<Decoded_VkExternalFenceProperties>& pExternalFenceProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -23998,7 +23994,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -24013,7 +24009,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceExternalFenceInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceExternalFenceInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalFenceInfo\",\n");
@@ -24039,7 +24035,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExternalFenceProperties*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExternalFenceProperties*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalFenceProperties\",\n");
@@ -24075,7 +24071,7 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     const StructPointerDecoder<Decoded_VkImportFenceWin32HandleInfoKHR>& pImportFenceWin32HandleInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -24106,7 +24102,7 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -24121,7 +24117,7 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImportFenceWin32HandleInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImportFenceWin32HandleInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImportFenceWin32HandleInfo\",\n");
@@ -24157,7 +24153,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     const PointerDecoder<uint64_t>&             pHandle)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -24188,7 +24184,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -24203,7 +24199,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkFenceGetWin32HandleInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkFenceGetWin32HandleInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGetWin32HandleInfo\",\n");
@@ -24229,7 +24225,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void**"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void**"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHandle\",\n");
@@ -24267,7 +24263,7 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     const StructPointerDecoder<Decoded_VkImportFenceFdInfoKHR>& pImportFenceFdInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -24298,7 +24294,7 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -24313,7 +24309,7 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImportFenceFdInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImportFenceFdInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImportFenceFdInfo\",\n");
@@ -24349,7 +24345,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     const PointerDecoder<int>&                  pFd)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -24380,7 +24376,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -24395,7 +24391,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkFenceGetFdInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkFenceGetFdInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGetFdInfo\",\n");
@@ -24421,7 +24417,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"int*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"int*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFd\",\n");
@@ -24460,7 +24456,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     const StructPointerDecoder<Decoded_VkSurfaceCapabilities2KHR>& pSurfaceCapabilities)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -24491,7 +24487,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -24506,7 +24502,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceInfo\",\n");
@@ -24532,7 +24528,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceCapabilities2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceCapabilities2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceCapabilities\",\n");
@@ -24569,7 +24565,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     const StructPointerDecoder<Decoded_VkSurfaceFormat2KHR>& pSurfaceFormats)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -24600,7 +24596,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -24615,7 +24611,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceInfo\",\n");
@@ -24641,7 +24637,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceFormatCount\",\n");
@@ -24668,7 +24664,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceFormat2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceFormat2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceFormats\",\n");
@@ -24705,7 +24701,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     const StructPointerDecoder<Decoded_VkDisplayProperties2KHR>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -24736,7 +24732,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -24751,7 +24747,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
@@ -24778,7 +24774,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayProperties2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayProperties2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -24814,7 +24810,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     const StructPointerDecoder<Decoded_VkDisplayPlaneProperties2KHR>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -24845,7 +24841,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -24860,7 +24856,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
@@ -24887,7 +24883,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayPlaneProperties2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayPlaneProperties2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -24924,7 +24920,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     const StructPointerDecoder<Decoded_VkDisplayModeProperties2KHR>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -24955,7 +24951,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -24970,7 +24966,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"display\",\n");
@@ -24985,7 +24981,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
@@ -25012,7 +25008,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayModeProperties2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayModeProperties2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -25048,7 +25044,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     const StructPointerDecoder<Decoded_VkDisplayPlaneCapabilities2KHR>& pCapabilities)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -25079,7 +25075,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -25094,7 +25090,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDisplayPlaneInfo2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDisplayPlaneInfo2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplayPlaneInfo\",\n");
@@ -25120,7 +25116,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayPlaneCapabilities2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayPlaneCapabilities2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCapabilities\",\n");
@@ -25156,7 +25152,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     const StructPointerDecoder<Decoded_VkMemoryRequirements2>& pMemoryRequirements)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -25183,7 +25179,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -25198,7 +25194,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageMemoryRequirementsInfo2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageMemoryRequirementsInfo2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
@@ -25224,7 +25220,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
@@ -25259,7 +25255,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     const StructPointerDecoder<Decoded_VkMemoryRequirements2>& pMemoryRequirements)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -25286,7 +25282,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -25301,7 +25297,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBufferMemoryRequirementsInfo2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBufferMemoryRequirementsInfo2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
@@ -25327,7 +25323,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
@@ -25363,7 +25359,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     const StructPointerDecoder<Decoded_VkSparseImageMemoryRequirements2>& pSparseMemoryRequirements)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -25390,7 +25386,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -25405,7 +25401,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageSparseMemoryRequirementsInfo2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageSparseMemoryRequirementsInfo2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
@@ -25431,7 +25427,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSparseMemoryRequirementCount\",\n");
@@ -25458,7 +25454,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSparseImageMemoryRequirements2*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSparseImageMemoryRequirements2*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSparseMemoryRequirements\",\n");
@@ -25496,7 +25492,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     const HandlePointerDecoder<VkSamplerYcbcrConversion>& pYcbcrConversion)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -25527,7 +25523,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -25542,7 +25538,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSamplerYcbcrConversionCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSamplerYcbcrConversionCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -25568,7 +25564,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -25594,7 +25590,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSamplerYcbcrConversion*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSamplerYcbcrConversion*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pYcbcrConversion\",\n");
@@ -25630,7 +25626,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -25657,7 +25653,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -25672,7 +25668,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSamplerYcbcrConversion"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSamplerYcbcrConversion"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"ycbcrConversion\",\n");
@@ -25687,7 +25683,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -25724,7 +25720,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     const StructPointerDecoder<Decoded_VkBindBufferMemoryInfo>& pBindInfos)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -25755,7 +25751,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -25770,7 +25766,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"bindInfoCount\",\n");
@@ -25785,7 +25781,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBindBufferMemoryInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBindBufferMemoryInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBindInfos\",\n");
@@ -25821,7 +25817,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     const StructPointerDecoder<Decoded_VkBindImageMemoryInfo>& pBindInfos)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -25852,7 +25848,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -25867,7 +25863,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"bindInfoCount\",\n");
@@ -25882,7 +25878,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBindImageMemoryInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBindImageMemoryInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBindInfos\",\n");
@@ -25918,7 +25914,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     const StructPointerDecoder<Decoded_VkDescriptorSetLayoutSupport>& pSupport)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -25945,7 +25941,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -25960,7 +25956,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDescriptorSetLayoutCreateInfo*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -25986,7 +25982,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorSetLayoutSupport*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDescriptorSetLayoutSupport*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSupport\",\n");
@@ -26026,7 +26022,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     uint32_t                                    stride)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -26053,7 +26049,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -26068,7 +26064,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -26083,13 +26079,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, offset); //EQA
+    SignedDecimalToStringJson(outputFile, offset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -26098,7 +26094,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"countBuffer\",\n");
@@ -26113,13 +26109,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"countBufferOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, countBufferOffset); //EQA
+    SignedDecimalToStringJson(outputFile, countBufferOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -26128,7 +26124,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxDrawCount\",\n");
@@ -26143,7 +26139,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stride\",\n");
@@ -26171,7 +26167,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     uint32_t                                    stride)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -26198,7 +26194,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -26213,7 +26209,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -26228,13 +26224,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, offset); //EQA
+    SignedDecimalToStringJson(outputFile, offset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -26243,7 +26239,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"countBuffer\",\n");
@@ -26258,13 +26254,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"countBufferOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, countBufferOffset); //EQA
+    SignedDecimalToStringJson(outputFile, countBufferOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -26273,7 +26269,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxDrawCount\",\n");
@@ -26288,7 +26284,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stride\",\n");
@@ -26314,7 +26310,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     const PointerDecoder<uint64_t>&             pValue)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -26345,7 +26341,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -26360,7 +26356,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSemaphore"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSemaphore"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"semaphore\",\n");
@@ -26375,7 +26371,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint64_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint64_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pValue\",\n");
@@ -26412,7 +26408,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     uint64_t                                    timeout)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -26443,7 +26439,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -26458,7 +26454,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSemaphoreWaitInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSemaphoreWaitInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pWaitInfo\",\n");
@@ -26484,7 +26480,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint64_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint64_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"timeout\",\n");
@@ -26508,7 +26504,7 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     const StructPointerDecoder<Decoded_VkSemaphoreSignalInfoKHR>& pSignalInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -26539,7 +26535,7 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -26554,7 +26550,7 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSemaphoreSignalInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSemaphoreSignalInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSignalInfo\",\n");
@@ -26592,7 +26588,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     const StructPointerDecoder<Decoded_VkPipelineExecutablePropertiesKHR>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -26623,7 +26619,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -26638,7 +26634,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPipelineInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPipelineInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPipelineInfo\",\n");
@@ -26664,7 +26660,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExecutableCount\",\n");
@@ -26691,7 +26687,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineExecutablePropertiesKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineExecutablePropertiesKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -26728,7 +26724,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     const StructPointerDecoder<Decoded_VkPipelineExecutableStatisticKHR>& pStatistics)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -26759,7 +26755,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -26774,7 +26770,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPipelineExecutableInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPipelineExecutableInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExecutableInfo\",\n");
@@ -26800,7 +26796,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pStatisticCount\",\n");
@@ -26827,7 +26823,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineExecutableStatisticKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineExecutableStatisticKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pStatistics\",\n");
@@ -26864,7 +26860,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     const StructPointerDecoder<Decoded_VkPipelineExecutableInternalRepresentationKHR>& pInternalRepresentations)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -26895,7 +26891,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -26910,7 +26906,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPipelineExecutableInfoKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPipelineExecutableInfoKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExecutableInfo\",\n");
@@ -26936,7 +26932,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInternalRepresentationCount\",\n");
@@ -26963,7 +26959,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineExecutableInternalRepresentationKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineExecutableInternalRepresentationKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInternalRepresentations\",\n");
@@ -27001,7 +26997,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     const HandlePointerDecoder<VkDebugReportCallbackEXT>& pCallback)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -27032,7 +27028,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -27047,7 +27043,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugReportCallbackCreateInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugReportCallbackCreateInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -27073,7 +27069,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -27099,7 +27095,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDebugReportCallbackEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDebugReportCallbackEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCallback\",\n");
@@ -27135,7 +27131,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -27162,7 +27158,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -27177,7 +27173,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDebugReportCallbackEXT"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDebugReportCallbackEXT"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"callback\",\n");
@@ -27192,7 +27188,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -27232,7 +27228,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     const StringDecoder&                        pMessage)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -27259,7 +27255,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -27274,7 +27270,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDebugReportFlagsEXT"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDebugReportFlagsEXT"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -27289,7 +27285,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDebugReportObjectTypeEXT"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDebugReportObjectTypeEXT"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"objectType\",\n");
@@ -27304,7 +27300,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint64_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint64_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"object\",\n");
@@ -27319,7 +27315,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"size_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"size_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"location\",\n");
@@ -27334,13 +27330,13 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"int32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"int32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"messageCode\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, messageCode); //EQA
+    SignedDecimalToStringJson(outputFile, messageCode); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -27349,7 +27345,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const char*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const char*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLayerPrefix\",\n");
@@ -27376,7 +27372,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const char*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const char*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMessage\",\n");
@@ -27413,7 +27409,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     const StructPointerDecoder<Decoded_VkDebugMarkerObjectTagInfoEXT>& pTagInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -27444,7 +27440,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -27459,7 +27455,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugMarkerObjectTagInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugMarkerObjectTagInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pTagInfo\",\n");
@@ -27494,7 +27490,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     const StructPointerDecoder<Decoded_VkDebugMarkerObjectNameInfoEXT>& pNameInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -27525,7 +27521,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -27540,7 +27536,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugMarkerObjectNameInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugMarkerObjectNameInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNameInfo\",\n");
@@ -27574,7 +27570,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     const StructPointerDecoder<Decoded_VkDebugMarkerMarkerInfoEXT>& pMarkerInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -27601,7 +27597,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -27616,7 +27612,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugMarkerMarkerInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugMarkerMarkerInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMarkerInfo\",\n");
@@ -27649,7 +27645,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerEndEXT(
     format::HandleId                            commandBuffer)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -27676,7 +27672,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerEndEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -27699,7 +27695,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     const StructPointerDecoder<Decoded_VkDebugMarkerMarkerInfoEXT>& pMarkerInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -27726,7 +27722,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -27741,7 +27737,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugMarkerMarkerInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugMarkerMarkerInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMarkerInfo\",\n");
@@ -27780,7 +27776,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     const PointerDecoder<VkDeviceSize>&         pSizes)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -27807,7 +27803,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -27822,7 +27818,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstBinding\",\n");
@@ -27837,7 +27833,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"bindingCount\",\n");
@@ -27852,7 +27848,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBuffer*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBuffer*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBuffers\",\n");
@@ -27879,7 +27875,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceSize*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceSize*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pOffsets\",\n");
@@ -27906,7 +27902,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceSize*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceSize*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSizes\",\n");
@@ -27944,7 +27940,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     const PointerDecoder<VkDeviceSize>&         pCounterBufferOffsets)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -27971,7 +27967,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -27986,7 +27982,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstCounterBuffer\",\n");
@@ -28001,7 +27997,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"counterBufferCount\",\n");
@@ -28016,7 +28012,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBuffer*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBuffer*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCounterBuffers\",\n");
@@ -28043,7 +28039,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceSize*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceSize*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCounterBufferOffsets\",\n");
@@ -28081,7 +28077,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     const PointerDecoder<VkDeviceSize>&         pCounterBufferOffsets)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -28108,7 +28104,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -28123,7 +28119,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstCounterBuffer\",\n");
@@ -28138,7 +28134,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"counterBufferCount\",\n");
@@ -28153,7 +28149,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBuffer*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBuffer*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCounterBuffers\",\n");
@@ -28180,7 +28176,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceSize*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceSize*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCounterBufferOffsets\",\n");
@@ -28218,7 +28214,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     uint32_t                                    index)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -28245,7 +28241,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -28260,7 +28256,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryPool\",\n");
@@ -28275,7 +28271,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"query\",\n");
@@ -28290,7 +28286,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryControlFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryControlFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -28305,7 +28301,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"index\",\n");
@@ -28330,7 +28326,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     uint32_t                                    index)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -28357,7 +28353,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -28372,7 +28368,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryPool\",\n");
@@ -28387,7 +28383,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"query\",\n");
@@ -28402,7 +28398,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"index\",\n");
@@ -28430,7 +28426,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     uint32_t                                    vertexStride)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -28457,7 +28453,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -28472,7 +28468,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instanceCount\",\n");
@@ -28487,7 +28483,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstInstance\",\n");
@@ -28502,7 +28498,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"counterBuffer\",\n");
@@ -28517,13 +28513,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"counterBufferOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, counterBufferOffset); //EQA
+    SignedDecimalToStringJson(outputFile, counterBufferOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -28532,7 +28528,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"counterOffset\",\n");
@@ -28547,7 +28543,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"vertexStride\",\n");
@@ -28572,7 +28568,7 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     const StructPointerDecoder<Decoded_VkImageViewHandleInfoNVX>& pInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -28605,7 +28601,7 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -28620,7 +28616,7 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImageViewHandleInfoNVX*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImageViewHandleInfoNVX*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
@@ -28660,7 +28656,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     uint32_t                                    stride)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -28687,7 +28683,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -28702,7 +28698,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -28717,13 +28713,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, offset); //EQA
+    SignedDecimalToStringJson(outputFile, offset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -28732,7 +28728,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"countBuffer\",\n");
@@ -28747,13 +28743,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"countBufferOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, countBufferOffset); //EQA
+    SignedDecimalToStringJson(outputFile, countBufferOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -28762,7 +28758,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxDrawCount\",\n");
@@ -28777,7 +28773,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stride\",\n");
@@ -28805,7 +28801,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     uint32_t                                    stride)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -28832,7 +28828,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -28847,7 +28843,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -28862,13 +28858,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, offset); //EQA
+    SignedDecimalToStringJson(outputFile, offset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -28877,7 +28873,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"countBuffer\",\n");
@@ -28892,13 +28888,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"countBufferOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, countBufferOffset); //EQA
+    SignedDecimalToStringJson(outputFile, countBufferOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -28907,7 +28903,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxDrawCount\",\n");
@@ -28922,7 +28918,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stride\",\n");
@@ -28951,7 +28947,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     const PointerDecoder<uint8_t>&              pInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -28982,7 +28978,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -28997,7 +28993,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipeline"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipeline"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipeline\",\n");
@@ -29012,7 +29008,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkShaderStageFlagBits"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkShaderStageFlagBits"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"shaderStage\",\n");
@@ -29027,7 +29023,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkShaderInfoTypeAMD"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkShaderInfoTypeAMD"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"infoType\",\n");
@@ -29042,7 +29038,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"size_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"size_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfoSize\",\n");
@@ -29069,7 +29065,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
@@ -29108,7 +29104,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -29139,7 +29135,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -29154,7 +29150,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkStreamDescriptorSurfaceCreateInfoGGP*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkStreamDescriptorSurfaceCreateInfoGGP*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -29180,7 +29176,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -29206,7 +29202,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -29249,7 +29245,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     const StructPointerDecoder<Decoded_VkExternalImageFormatPropertiesNV>& pExternalImageFormatProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -29280,7 +29276,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -29295,7 +29291,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFormat"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFormat"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"format\",\n");
@@ -29310,7 +29306,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageType"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageType"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"type\",\n");
@@ -29325,7 +29321,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageTiling"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageTiling"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"tiling\",\n");
@@ -29340,7 +29336,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageUsageFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageUsageFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"usage\",\n");
@@ -29355,7 +29351,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageCreateFlags"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageCreateFlags"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"flags\",\n");
@@ -29370,7 +29366,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"externalHandleType\",\n");
@@ -29385,7 +29381,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExternalImageFormatPropertiesNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExternalImageFormatPropertiesNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalImageFormatProperties\",\n");
@@ -29423,7 +29419,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     const PointerDecoder<uint64_t>&             pHandle)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -29454,7 +29450,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -29469,7 +29465,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceMemory"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memory\",\n");
@@ -29484,7 +29480,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExternalMemoryHandleTypeFlagsNV"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"handleType\",\n");
@@ -29499,7 +29495,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void**"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void**"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHandle\",\n");
@@ -29539,7 +29535,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -29570,7 +29566,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -29585,7 +29581,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkViSurfaceCreateInfoNN*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkViSurfaceCreateInfoNN*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -29611,7 +29607,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -29637,7 +29633,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -29673,7 +29669,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     const StructPointerDecoder<Decoded_VkConditionalRenderingBeginInfoEXT>& pConditionalRenderingBegin)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -29700,7 +29696,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -29715,7 +29711,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkConditionalRenderingBeginInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkConditionalRenderingBeginInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pConditionalRenderingBegin\",\n");
@@ -29748,7 +29744,7 @@ void VulkanJsonConsumer::Process_vkCmdEndConditionalRenderingEXT(
     format::HandleId                            commandBuffer)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -29775,7 +29771,7 @@ void VulkanJsonConsumer::Process_vkCmdEndConditionalRenderingEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -29799,7 +29795,7 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     const StructPointerDecoder<Decoded_VkCmdProcessCommandsInfoNVX>& pProcessCommandsInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -29826,7 +29822,7 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -29841,7 +29837,7 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkCmdProcessCommandsInfoNVX*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkCmdProcessCommandsInfoNVX*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProcessCommandsInfo\",\n");
@@ -29875,7 +29871,7 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     const StructPointerDecoder<Decoded_VkCmdReserveSpaceForCommandsInfoNVX>& pReserveSpaceInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -29902,7 +29898,7 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -29917,7 +29913,7 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkCmdReserveSpaceForCommandsInfoNVX*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkCmdReserveSpaceForCommandsInfoNVX*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pReserveSpaceInfo\",\n");
@@ -29954,7 +29950,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     const HandlePointerDecoder<VkIndirectCommandsLayoutNVX>& pIndirectCommandsLayout)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -29985,7 +29981,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -30000,7 +29996,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkIndirectCommandsLayoutCreateInfoNVX*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkIndirectCommandsLayoutCreateInfoNVX*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -30026,7 +30022,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -30052,7 +30048,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkIndirectCommandsLayoutNVX*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkIndirectCommandsLayoutNVX*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pIndirectCommandsLayout\",\n");
@@ -30088,7 +30084,7 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -30115,7 +30111,7 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -30130,7 +30126,7 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkIndirectCommandsLayoutNVX"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkIndirectCommandsLayoutNVX"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"indirectCommandsLayout\",\n");
@@ -30145,7 +30141,7 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -30182,7 +30178,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     const HandlePointerDecoder<VkObjectTableNVX>& pObjectTable)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -30213,7 +30209,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -30228,7 +30224,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkObjectTableCreateInfoNVX*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkObjectTableCreateInfoNVX*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -30254,7 +30250,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -30280,7 +30276,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkObjectTableNVX*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkObjectTableNVX*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pObjectTable\",\n");
@@ -30316,7 +30312,7 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -30343,7 +30339,7 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -30358,7 +30354,7 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkObjectTableNVX"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkObjectTableNVX"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"objectTable\",\n");
@@ -30373,7 +30369,7 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -30411,7 +30407,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     const PointerDecoder<uint32_t>&             pObjectIndices)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -30442,7 +30438,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -30457,7 +30453,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkObjectTableNVX"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkObjectTableNVX"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"objectTable\",\n");
@@ -30472,7 +30468,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"objectCount\",\n");
@@ -30487,7 +30483,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkObjectEntryTypeNVX*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkObjectEntryTypeNVX*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pObjectEntryTypes\",\n");
@@ -30514,7 +30510,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pObjectIndices\",\n");
@@ -30550,7 +30546,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     const StructPointerDecoder<Decoded_VkDeviceGeneratedCommandsLimitsNVX>& pLimits)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -30577,7 +30573,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -30592,7 +30588,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceGeneratedCommandsFeaturesNVX*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceGeneratedCommandsFeaturesNVX*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFeatures\",\n");
@@ -30618,7 +30614,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceGeneratedCommandsLimitsNVX*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceGeneratedCommandsLimitsNVX*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLimits\",\n");
@@ -30655,7 +30651,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     const StructPointerDecoder<Decoded_VkViewportWScalingNV>& pViewportWScalings)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -30682,7 +30678,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -30697,7 +30693,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstViewport\",\n");
@@ -30712,7 +30708,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"viewportCount\",\n");
@@ -30727,7 +30723,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkViewportWScalingNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkViewportWScalingNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pViewportWScalings\",\n");
@@ -30763,7 +30759,7 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     format::HandleId                            display)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -30794,7 +30790,7 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -30809,7 +30805,7 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"display\",\n");
@@ -30835,7 +30831,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     format::HandleId                            display)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -30866,7 +30862,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -30881,7 +30877,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dpy\",\n");
@@ -30896,7 +30892,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"display\",\n");
@@ -30922,7 +30918,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     const HandlePointerDecoder<VkDisplayKHR>&   pDisplay)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -30953,7 +30949,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -30968,7 +30964,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dpy\",\n");
@@ -30983,7 +30979,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"size_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"size_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"rrOutput\",\n");
@@ -30998,7 +30994,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplay\",\n");
@@ -31036,7 +31032,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     const StructPointerDecoder<Decoded_VkSurfaceCapabilities2EXT>& pSurfaceCapabilities)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -31067,7 +31063,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -31082,7 +31078,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"surface\",\n");
@@ -31097,7 +31093,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceCapabilities2EXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceCapabilities2EXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceCapabilities\",\n");
@@ -31134,7 +31130,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     const StructPointerDecoder<Decoded_VkDisplayPowerInfoEXT>& pDisplayPowerInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -31165,7 +31161,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -31180,7 +31176,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"display\",\n");
@@ -31195,7 +31191,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDisplayPowerInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDisplayPowerInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplayPowerInfo\",\n");
@@ -31232,7 +31228,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     const HandlePointerDecoder<VkFence>&        pFence)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -31263,7 +31259,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -31278,7 +31274,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceEventInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDeviceEventInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDeviceEventInfo\",\n");
@@ -31304,7 +31300,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -31330,7 +31326,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFence*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFence*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFence\",\n");
@@ -31369,7 +31365,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     const HandlePointerDecoder<VkFence>&        pFence)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -31400,7 +31396,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -31415,7 +31411,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDisplayKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"display\",\n");
@@ -31430,7 +31426,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDisplayEventInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDisplayEventInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplayEventInfo\",\n");
@@ -31456,7 +31452,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -31482,7 +31478,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFence*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFence*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFence\",\n");
@@ -31520,7 +31516,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     const PointerDecoder<uint64_t>&             pCounterValue)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -31551,7 +31547,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -31566,7 +31562,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"swapchain\",\n");
@@ -31581,7 +31577,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceCounterFlagBitsEXT"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceCounterFlagBitsEXT"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"counter\",\n");
@@ -31596,7 +31592,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint64_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint64_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCounterValue\",\n");
@@ -31634,7 +31630,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     const StructPointerDecoder<Decoded_VkRefreshCycleDurationGOOGLE>& pDisplayTimingProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -31665,7 +31661,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -31680,7 +31676,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"swapchain\",\n");
@@ -31695,7 +31691,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkRefreshCycleDurationGOOGLE*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkRefreshCycleDurationGOOGLE*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplayTimingProperties\",\n");
@@ -31732,7 +31728,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     const StructPointerDecoder<Decoded_VkPastPresentationTimingGOOGLE>& pPresentationTimings)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -31763,7 +31759,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -31778,7 +31774,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"swapchain\",\n");
@@ -31793,7 +31789,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentationTimingCount\",\n");
@@ -31820,7 +31816,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPastPresentationTimingGOOGLE*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPastPresentationTimingGOOGLE*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentationTimings\",\n");
@@ -31857,7 +31853,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     const StructPointerDecoder<Decoded_VkRect2D>& pDiscardRectangles)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -31884,7 +31880,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -31899,7 +31895,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstDiscardRectangle\",\n");
@@ -31914,7 +31910,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"discardRectangleCount\",\n");
@@ -31929,7 +31925,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkRect2D*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkRect2D*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDiscardRectangles\",\n");
@@ -31966,7 +31962,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     const StructPointerDecoder<Decoded_VkHdrMetadataEXT>& pMetadata)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -31993,7 +31989,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -32008,7 +32004,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"swapchainCount\",\n");
@@ -32023,7 +32019,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSwapchainKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSwapchainKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSwapchains\",\n");
@@ -32050,7 +32046,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkHdrMetadataEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkHdrMetadataEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMetadata\",\n");
@@ -32088,7 +32084,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -32119,7 +32115,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -32134,7 +32130,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkIOSSurfaceCreateInfoMVK*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkIOSSurfaceCreateInfoMVK*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -32160,7 +32156,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -32186,7 +32182,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -32225,7 +32221,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -32256,7 +32252,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -32271,7 +32267,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkMacOSSurfaceCreateInfoMVK*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkMacOSSurfaceCreateInfoMVK*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -32297,7 +32293,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -32323,7 +32319,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -32360,7 +32356,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     const StructPointerDecoder<Decoded_VkDebugUtilsObjectNameInfoEXT>& pNameInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -32391,7 +32387,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -32406,7 +32402,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsObjectNameInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsObjectNameInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNameInfo\",\n");
@@ -32441,7 +32437,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     const StructPointerDecoder<Decoded_VkDebugUtilsObjectTagInfoEXT>& pTagInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -32472,7 +32468,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -32487,7 +32483,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsObjectTagInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsObjectTagInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pTagInfo\",\n");
@@ -32521,7 +32517,7 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     const StructPointerDecoder<Decoded_VkDebugUtilsLabelEXT>& pLabelInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -32548,7 +32544,7 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queue\",\n");
@@ -32563,7 +32559,7 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsLabelEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsLabelEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLabelInfo\",\n");
@@ -32596,7 +32592,7 @@ void VulkanJsonConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
     format::HandleId                            queue)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -32623,7 +32619,7 @@ void VulkanJsonConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queue\",\n");
@@ -32646,7 +32642,7 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     const StructPointerDecoder<Decoded_VkDebugUtilsLabelEXT>& pLabelInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -32673,7 +32669,7 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queue\",\n");
@@ -32688,7 +32684,7 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsLabelEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsLabelEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLabelInfo\",\n");
@@ -32722,7 +32718,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     const StructPointerDecoder<Decoded_VkDebugUtilsLabelEXT>& pLabelInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -32749,7 +32745,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -32764,7 +32760,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsLabelEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsLabelEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLabelInfo\",\n");
@@ -32797,7 +32793,7 @@ void VulkanJsonConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
     format::HandleId                            commandBuffer)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -32824,7 +32820,7 @@ void VulkanJsonConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -32847,7 +32843,7 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     const StructPointerDecoder<Decoded_VkDebugUtilsLabelEXT>& pLabelInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -32874,7 +32870,7 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -32889,7 +32885,7 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsLabelEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsLabelEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLabelInfo\",\n");
@@ -32926,7 +32922,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     const HandlePointerDecoder<VkDebugUtilsMessengerEXT>& pMessenger)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -32957,7 +32953,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -32972,7 +32968,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsMessengerCreateInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsMessengerCreateInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -32998,7 +32994,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -33024,7 +33020,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDebugUtilsMessengerEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDebugUtilsMessengerEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMessenger\",\n");
@@ -33060,7 +33056,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -33087,7 +33083,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -33102,7 +33098,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDebugUtilsMessengerEXT"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDebugUtilsMessengerEXT"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"messenger\",\n");
@@ -33117,7 +33113,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -33153,7 +33149,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     const StructPointerDecoder<Decoded_VkDebugUtilsMessengerCallbackDataEXT>& pCallbackData)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -33180,7 +33176,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -33195,7 +33191,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDebugUtilsMessageSeverityFlagBitsEXT"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDebugUtilsMessageSeverityFlagBitsEXT"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"messageSeverity\",\n");
@@ -33210,7 +33206,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDebugUtilsMessageTypeFlagsEXT"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDebugUtilsMessageTypeFlagsEXT"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"messageTypes\",\n");
@@ -33225,7 +33221,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsMessengerCallbackDataEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkDebugUtilsMessengerCallbackDataEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCallbackData\",\n");
@@ -33262,7 +33258,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     const StructPointerDecoder<Decoded_VkAndroidHardwareBufferPropertiesANDROID>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -33293,7 +33289,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -33308,7 +33304,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const struct void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const struct void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -33335,7 +33331,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkAndroidHardwareBufferPropertiesANDROID*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkAndroidHardwareBufferPropertiesANDROID*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -33371,7 +33367,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     const PointerDecoder<uint64_t>&             pBuffer)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -33402,7 +33398,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -33417,7 +33413,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkMemoryGetAndroidHardwareBufferInfoANDROID*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkMemoryGetAndroidHardwareBufferInfoANDROID*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
@@ -33443,7 +33439,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"struct void**"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"struct void**"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBuffer\",\n");
@@ -33480,7 +33476,7 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     const StructPointerDecoder<Decoded_VkSampleLocationsInfoEXT>& pSampleLocationsInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -33507,7 +33503,7 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -33522,7 +33518,7 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkSampleLocationsInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkSampleLocationsInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSampleLocationsInfo\",\n");
@@ -33557,7 +33553,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     const StructPointerDecoder<Decoded_VkMultisamplePropertiesEXT>& pMultisampleProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -33584,7 +33580,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -33599,7 +33595,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSampleCountFlagBits"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSampleCountFlagBits"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"samples\",\n");
@@ -33614,7 +33610,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkMultisamplePropertiesEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkMultisamplePropertiesEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMultisampleProperties\",\n");
@@ -33651,7 +33647,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     const StructPointerDecoder<Decoded_VkImageDrmFormatModifierPropertiesEXT>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -33682,7 +33678,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -33697,7 +33693,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImage"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImage"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"image\",\n");
@@ -33712,7 +33708,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageDrmFormatModifierPropertiesEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageDrmFormatModifierPropertiesEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -33750,7 +33746,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     const HandlePointerDecoder<VkValidationCacheEXT>& pValidationCache)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -33781,7 +33777,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -33796,7 +33792,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkValidationCacheCreateInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkValidationCacheCreateInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -33822,7 +33818,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -33848,7 +33844,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkValidationCacheEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkValidationCacheEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pValidationCache\",\n");
@@ -33884,7 +33880,7 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -33911,7 +33907,7 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -33926,7 +33922,7 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkValidationCacheEXT"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkValidationCacheEXT"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"validationCache\",\n");
@@ -33941,7 +33937,7 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -33978,7 +33974,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     const HandlePointerDecoder<VkValidationCacheEXT>& pSrcCaches)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -34009,7 +34005,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -34024,7 +34020,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkValidationCacheEXT"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkValidationCacheEXT"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstCache\",\n");
@@ -34039,7 +34035,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcCacheCount\",\n");
@@ -34054,7 +34050,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkValidationCacheEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkValidationCacheEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSrcCaches\",\n");
@@ -34092,7 +34088,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     const PointerDecoder<uint8_t>&              pData)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -34123,7 +34119,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -34138,7 +34134,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkValidationCacheEXT"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkValidationCacheEXT"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"validationCache\",\n");
@@ -34153,7 +34149,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"size_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"size_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDataSize\",\n");
@@ -34180,7 +34176,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pData\",\n");
@@ -34217,7 +34213,7 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     VkImageLayout                               imageLayout)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -34244,7 +34240,7 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -34259,7 +34255,7 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageView"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageView"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageView\",\n");
@@ -34274,7 +34270,7 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkImageLayout"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageLayout\",\n");
@@ -34299,7 +34295,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     const StructPointerDecoder<Decoded_VkShadingRatePaletteNV>& pShadingRatePalettes)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -34326,7 +34322,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -34341,7 +34337,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstViewport\",\n");
@@ -34356,7 +34352,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"viewportCount\",\n");
@@ -34371,7 +34367,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkShadingRatePaletteNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkShadingRatePaletteNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pShadingRatePalettes\",\n");
@@ -34407,7 +34403,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     const StructPointerDecoder<Decoded_VkCoarseSampleOrderCustomNV>& pCustomSampleOrders)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -34434,7 +34430,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -34449,7 +34445,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCoarseSampleOrderTypeNV"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCoarseSampleOrderTypeNV"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"sampleOrderType\",\n");
@@ -34464,7 +34460,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"customSampleOrderCount\",\n");
@@ -34479,7 +34475,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkCoarseSampleOrderCustomNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkCoarseSampleOrderCustomNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCustomSampleOrders\",\n");
@@ -34517,7 +34513,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     const HandlePointerDecoder<VkAccelerationStructureNV>& pAccelerationStructure)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -34548,7 +34544,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -34563,7 +34559,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAccelerationStructureCreateInfoNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAccelerationStructureCreateInfoNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -34589,7 +34585,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -34615,7 +34611,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAccelerationStructure\",\n");
@@ -34651,7 +34647,7 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -34678,7 +34674,7 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -34693,7 +34689,7 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"accelerationStructure\",\n");
@@ -34708,7 +34704,7 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -34743,7 +34739,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     const StructPointerDecoder<Decoded_VkMemoryRequirements2KHR>& pMemoryRequirements)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -34770,7 +34766,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -34785,7 +34781,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAccelerationStructureMemoryRequirementsInfoNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAccelerationStructureMemoryRequirementsInfoNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
@@ -34811,7 +34807,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkMemoryRequirements2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
@@ -34847,7 +34843,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     const StructPointerDecoder<Decoded_VkBindAccelerationStructureMemoryInfoNV>& pBindInfos)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -34878,7 +34874,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -34893,7 +34889,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"bindInfoCount\",\n");
@@ -34908,7 +34904,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBindAccelerationStructureMemoryInfoNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBindAccelerationStructureMemoryInfoNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBindInfos\",\n");
@@ -34949,7 +34945,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     VkDeviceSize                                scratchOffset)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -34976,7 +34972,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -34991,7 +34987,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAccelerationStructureInfoNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAccelerationStructureInfoNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
@@ -35017,7 +35013,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instanceData\",\n");
@@ -35032,13 +35028,13 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instanceOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, instanceOffset); //EQA
+    SignedDecimalToStringJson(outputFile, instanceOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35047,13 +35043,13 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBool32"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBool32"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"update\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, update); //EQA
+    SignedDecimalToStringJson(outputFile, update); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35062,7 +35058,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dst\",\n");
@@ -35077,7 +35073,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"src\",\n");
@@ -35092,7 +35088,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"scratch\",\n");
@@ -35107,13 +35103,13 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"scratchOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, scratchOffset); //EQA
+    SignedDecimalToStringJson(outputFile, scratchOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -35132,7 +35128,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     VkCopyAccelerationStructureModeNV           mode)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -35159,7 +35155,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -35174,7 +35170,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dst\",\n");
@@ -35189,7 +35185,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"src\",\n");
@@ -35204,7 +35200,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCopyAccelerationStructureModeNV"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCopyAccelerationStructureModeNV"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"mode\",\n");
@@ -35240,7 +35236,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     uint32_t                                    depth)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -35267,7 +35263,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -35282,7 +35278,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"raygenShaderBindingTableBuffer\",\n");
@@ -35297,13 +35293,13 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"raygenShaderBindingOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, raygenShaderBindingOffset); //EQA
+    SignedDecimalToStringJson(outputFile, raygenShaderBindingOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35312,7 +35308,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"missShaderBindingTableBuffer\",\n");
@@ -35327,13 +35323,13 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"missShaderBindingOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, missShaderBindingOffset); //EQA
+    SignedDecimalToStringJson(outputFile, missShaderBindingOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35342,13 +35338,13 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"missShaderBindingStride\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, missShaderBindingStride); //EQA
+    SignedDecimalToStringJson(outputFile, missShaderBindingStride); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35357,7 +35353,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"hitShaderBindingTableBuffer\",\n");
@@ -35372,13 +35368,13 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"hitShaderBindingOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, hitShaderBindingOffset); //EQA
+    SignedDecimalToStringJson(outputFile, hitShaderBindingOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35387,13 +35383,13 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"hitShaderBindingStride\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, hitShaderBindingStride); //EQA
+    SignedDecimalToStringJson(outputFile, hitShaderBindingStride); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35402,7 +35398,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"callableShaderBindingTableBuffer\",\n");
@@ -35417,13 +35413,13 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"callableShaderBindingOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, callableShaderBindingOffset); //EQA
+    SignedDecimalToStringJson(outputFile, callableShaderBindingOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35432,13 +35428,13 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"callableShaderBindingStride\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, callableShaderBindingStride); //EQA
+    SignedDecimalToStringJson(outputFile, callableShaderBindingStride); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35447,7 +35443,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"width\",\n");
@@ -35462,7 +35458,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"height\",\n");
@@ -35477,7 +35473,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"depth\",\n");
@@ -35505,7 +35501,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     const HandlePointerDecoder<VkPipeline>&     pPipelines)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -35536,7 +35532,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -35551,7 +35547,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineCache"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipelineCache\",\n");
@@ -35566,7 +35562,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"createInfoCount\",\n");
@@ -35581,7 +35577,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkRayTracingPipelineCreateInfoNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkRayTracingPipelineCreateInfoNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfos\",\n");
@@ -35607,7 +35603,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -35633,7 +35629,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipeline*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipeline*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPipelines\",\n");
@@ -35673,7 +35669,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     const PointerDecoder<uint8_t>&              pData)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -35704,7 +35700,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -35719,7 +35715,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipeline"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipeline"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipeline\",\n");
@@ -35734,7 +35730,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstGroup\",\n");
@@ -35749,7 +35745,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"groupCount\",\n");
@@ -35764,7 +35760,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"size_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"size_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dataSize\",\n");
@@ -35779,7 +35775,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pData\",\n");
@@ -35817,7 +35813,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     const PointerDecoder<uint8_t>&              pData)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -35848,7 +35844,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -35863,7 +35859,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkAccelerationStructureNV"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"accelerationStructure\",\n");
@@ -35878,7 +35874,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"size_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"size_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dataSize\",\n");
@@ -35893,7 +35889,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pData\",\n");
@@ -35932,7 +35928,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     uint32_t                                    firstQuery)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -35959,7 +35955,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -35974,7 +35970,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"accelerationStructureCount\",\n");
@@ -35989,7 +35985,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAccelerationStructureNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAccelerationStructureNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAccelerationStructures\",\n");
@@ -36016,7 +36012,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryType"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryType"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryType\",\n");
@@ -36031,7 +36027,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryPool\",\n");
@@ -36046,7 +36042,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstQuery\",\n");
@@ -36071,7 +36067,7 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     uint32_t                                    shader)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -36102,7 +36098,7 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -36117,7 +36113,7 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipeline"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipeline"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipeline\",\n");
@@ -36132,7 +36128,7 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"shader\",\n");
@@ -36159,7 +36155,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     const StructPointerDecoder<Decoded_VkMemoryHostPointerPropertiesEXT>& pMemoryHostPointerProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -36190,7 +36186,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -36205,7 +36201,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkExternalMemoryHandleTypeFlagBits"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkExternalMemoryHandleTypeFlagBits"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"handleType\",\n");
@@ -36220,7 +36216,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHostPointer\",\n");
@@ -36247,7 +36243,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkMemoryHostPointerPropertiesEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkMemoryHostPointerPropertiesEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryHostPointerProperties\",\n");
@@ -36285,7 +36281,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     uint32_t                                    marker)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -36312,7 +36308,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -36327,7 +36323,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlagBits"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPipelineStageFlagBits"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pipelineStage\",\n");
@@ -36342,7 +36338,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstBuffer\",\n");
@@ -36357,13 +36353,13 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, dstOffset); //EQA
+    SignedDecimalToStringJson(outputFile, dstOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -36372,7 +36368,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"marker\",\n");
@@ -36398,7 +36394,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     const PointerDecoder<VkTimeDomainEXT>&      pTimeDomains)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -36429,7 +36425,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -36444,7 +36440,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pTimeDomainCount\",\n");
@@ -36471,7 +36467,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkTimeDomainEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkTimeDomainEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pTimeDomains\",\n");
@@ -36510,7 +36506,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     const PointerDecoder<uint64_t>&             pMaxDeviation)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -36541,7 +36537,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -36556,7 +36552,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"timestampCount\",\n");
@@ -36571,7 +36567,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkCalibratedTimestampInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkCalibratedTimestampInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pTimestampInfos\",\n");
@@ -36597,7 +36593,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint64_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint64_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pTimestamps\",\n");
@@ -36624,7 +36620,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint64_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint64_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMaxDeviation\",\n");
@@ -36661,7 +36657,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     uint32_t                                    firstTask)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -36688,7 +36684,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -36703,7 +36699,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"taskCount\",\n");
@@ -36718,7 +36714,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstTask\",\n");
@@ -36744,7 +36740,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     uint32_t                                    stride)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -36771,7 +36767,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -36786,7 +36782,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -36801,13 +36797,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, offset); //EQA
+    SignedDecimalToStringJson(outputFile, offset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -36816,7 +36812,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"drawCount\",\n");
@@ -36831,7 +36827,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stride\",\n");
@@ -36859,7 +36855,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     uint32_t                                    stride)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -36886,7 +36882,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -36901,7 +36897,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -36916,13 +36912,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, offset); //EQA
+    SignedDecimalToStringJson(outputFile, offset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -36931,7 +36927,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"countBuffer\",\n");
@@ -36946,13 +36942,13 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceSize"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"countBufferOffset\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, countBufferOffset); //EQA
+    SignedDecimalToStringJson(outputFile, countBufferOffset); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -36961,7 +36957,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxDrawCount\",\n");
@@ -36976,7 +36972,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stride\",\n");
@@ -37002,7 +36998,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     const StructPointerDecoder<Decoded_VkRect2D>& pExclusiveScissors)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -37029,7 +37025,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -37044,7 +37040,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstExclusiveScissor\",\n");
@@ -37059,7 +37055,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"exclusiveScissorCount\",\n");
@@ -37074,7 +37070,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkRect2D*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkRect2D*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExclusiveScissors\",\n");
@@ -37109,7 +37105,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     uint64_t                                    pCheckpointMarker)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -37136,7 +37132,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -37151,7 +37147,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCheckpointMarker\",\n");
@@ -37187,7 +37183,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     const StructPointerDecoder<Decoded_VkCheckpointDataNV>& pCheckpointData)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -37214,7 +37210,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queue\",\n");
@@ -37229,7 +37225,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCheckpointDataCount\",\n");
@@ -37256,7 +37252,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCheckpointDataNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCheckpointDataNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCheckpointData\",\n");
@@ -37292,7 +37288,7 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     const StructPointerDecoder<Decoded_VkInitializePerformanceApiInfoINTEL>& pInitializeInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -37323,7 +37319,7 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -37338,7 +37334,7 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkInitializePerformanceApiInfoINTEL*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkInitializePerformanceApiInfoINTEL*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInitializeInfo\",\n");
@@ -37371,7 +37367,7 @@ void VulkanJsonConsumer::Process_vkUninitializePerformanceApiINTEL(
     format::HandleId                            device)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -37398,7 +37394,7 @@ void VulkanJsonConsumer::Process_vkUninitializePerformanceApiINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -37422,7 +37418,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     const StructPointerDecoder<Decoded_VkPerformanceMarkerInfoINTEL>& pMarkerInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -37453,7 +37449,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -37468,7 +37464,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPerformanceMarkerInfoINTEL*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPerformanceMarkerInfoINTEL*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMarkerInfo\",\n");
@@ -37503,7 +37499,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     const StructPointerDecoder<Decoded_VkPerformanceStreamMarkerInfoINTEL>& pMarkerInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -37534,7 +37530,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -37549,7 +37545,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPerformanceStreamMarkerInfoINTEL*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPerformanceStreamMarkerInfoINTEL*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMarkerInfo\",\n");
@@ -37584,7 +37580,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     const StructPointerDecoder<Decoded_VkPerformanceOverrideInfoINTEL>& pOverrideInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -37615,7 +37611,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -37630,7 +37626,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPerformanceOverrideInfoINTEL*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPerformanceOverrideInfoINTEL*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pOverrideInfo\",\n");
@@ -37666,7 +37662,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     const HandlePointerDecoder<VkPerformanceConfigurationINTEL>& pConfiguration)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -37697,7 +37693,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -37712,7 +37708,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPerformanceConfigurationAcquireInfoINTEL*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPerformanceConfigurationAcquireInfoINTEL*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAcquireInfo\",\n");
@@ -37738,7 +37734,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPerformanceConfigurationINTEL*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPerformanceConfigurationINTEL*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pConfiguration\",\n");
@@ -37774,7 +37770,7 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     format::HandleId                            configuration)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -37805,7 +37801,7 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -37820,7 +37816,7 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPerformanceConfigurationINTEL"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPerformanceConfigurationINTEL"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"configuration\",\n");
@@ -37844,7 +37840,7 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     format::HandleId                            configuration)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -37875,7 +37871,7 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueue"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queue\",\n");
@@ -37890,7 +37886,7 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPerformanceConfigurationINTEL"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPerformanceConfigurationINTEL"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"configuration\",\n");
@@ -37915,7 +37911,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     const StructPointerDecoder<Decoded_VkPerformanceValueINTEL>& pValue)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -37946,7 +37942,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -37961,7 +37957,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPerformanceParameterTypeINTEL"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPerformanceParameterTypeINTEL"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"parameter\",\n");
@@ -37976,7 +37972,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPerformanceValueINTEL*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPerformanceValueINTEL*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pValue\",\n");
@@ -38012,7 +38008,7 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     VkBool32                                    localDimmingEnable)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -38039,7 +38035,7 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -38054,7 +38050,7 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"swapChain\",\n");
@@ -38069,13 +38065,13 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkBool32"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkBool32"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"localDimmingEnable\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"value\" : \"");
-    SignedDecimalToStringJson(outputFile, localDimmingEnable); //EQA
+    SignedDecimalToStringJson(outputFile, localDimmingEnable); // EQA
     OutputStringJson(outputFile, "\"\n");
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -38096,7 +38092,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -38127,7 +38123,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -38142,7 +38138,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkImagePipeSurfaceCreateInfoFUCHSIA*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkImagePipeSurfaceCreateInfoFUCHSIA*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -38168,7 +38164,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -38194,7 +38190,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -38233,7 +38229,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -38264,7 +38260,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -38279,7 +38275,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkMetalSurfaceCreateInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkMetalSurfaceCreateInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -38305,7 +38301,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -38331,7 +38327,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -38368,7 +38364,7 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     const StructPointerDecoder<Decoded_VkBufferDeviceAddressInfoEXT>& pInfo)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -38401,7 +38397,7 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -38416,7 +38412,7 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkBufferDeviceAddressInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkBufferDeviceAddressInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
@@ -38453,7 +38449,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     const StructPointerDecoder<Decoded_VkCooperativeMatrixPropertiesNV>& pProperties)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -38484,7 +38480,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -38499,7 +38495,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
@@ -38526,7 +38522,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCooperativeMatrixPropertiesNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCooperativeMatrixPropertiesNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
@@ -38563,7 +38559,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     const StructPointerDecoder<Decoded_VkFramebufferMixedSamplesCombinationNV>& pCombinations)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -38594,7 +38590,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -38609,7 +38605,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCombinationCount\",\n");
@@ -38636,7 +38632,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkFramebufferMixedSamplesCombinationNV*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkFramebufferMixedSamplesCombinationNV*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCombinations\",\n");
@@ -38674,7 +38670,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     const PointerDecoder<VkPresentModeKHR>&     pPresentModes)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -38705,7 +38701,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDevice\",\n");
@@ -38720,7 +38716,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceInfo\",\n");
@@ -38746,7 +38742,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentModeCount\",\n");
@@ -38773,7 +38769,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkPresentModeKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkPresentModeKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentModes\",\n");
@@ -38809,7 +38805,7 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     format::HandleId                            swapchain)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -38840,7 +38836,7 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -38855,7 +38851,7 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"swapchain\",\n");
@@ -38879,7 +38875,7 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     format::HandleId                            swapchain)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -38910,7 +38906,7 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -38925,7 +38921,7 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSwapchainKHR"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"swapchain\",\n");
@@ -38950,7 +38946,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     const PointerDecoder<VkDeviceGroupPresentModeFlagsKHR>& pModes)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -38981,7 +38977,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -38996,7 +38992,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkPhysicalDeviceSurfaceInfo2KHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceInfo\",\n");
@@ -39022,7 +39018,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDeviceGroupPresentModeFlagsKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pModes\",\n");
@@ -39062,7 +39058,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -39093,7 +39089,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkInstance"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"instance\",\n");
@@ -39108,7 +39104,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkHeadlessSurfaceCreateInfoEXT*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkHeadlessSurfaceCreateInfoEXT*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
@@ -39134,7 +39130,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"const VkAllocationCallbacks*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
@@ -39160,7 +39156,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkSurfaceKHR*"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
@@ -39197,7 +39193,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     uint16_t                                    lineStipplePattern)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -39224,7 +39220,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkCommandBuffer"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"commandBuffer\",\n");
@@ -39239,7 +39235,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"lineStippleFactor\",\n");
@@ -39254,7 +39250,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint16_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint16_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"lineStipplePattern\",\n");
@@ -39280,7 +39276,7 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     uint32_t                                    queryCount)
 {
     uint32_t indent = 5;
-    FILE *outputFile = GetFile();
+    FILE* outputFile = GetFile();
 
     if (need_function_comma)
     {
@@ -39307,7 +39303,7 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkDevice"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"device\",\n");
@@ -39322,7 +39318,7 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"VkQueryPool"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryPool\",\n");
@@ -39337,7 +39333,7 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"firstQuery\",\n");
@@ -39352,7 +39348,7 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     IndentSpacesJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     IndentSpacesJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); //NUN
+    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queryCount\",\n");
