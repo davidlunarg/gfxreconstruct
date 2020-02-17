@@ -222,7 +222,6 @@ void WideStringToQuotedStringJson(FILE* outputFile, const wchar_t* s)
 template <typename T>
 void ArrayToStringJson(FILE*                            outputFile,
                        int                              indent,
-                       const int                        pointer_count,
                        const char*                      full_type_name,
                        const T*                         array,
                        const char*                      array_name,
@@ -238,14 +237,8 @@ void ArrayToStringJson(FILE*                            outputFile,
         OutputStringJson(outputFile, " [ ]\n");
         return;
     }
-    if ((pointer_count > 2 && strstr(full_type_name, "char")) || (pointer_count > 1 && !strstr(full_type_name, "char")))
-    {
-        fprintf(stderr, "Error in ArrayToStringJson: arrays of arrays not implemented\n");
-        return;
-    }
 
-    if (pointer_count <= 1 &&
-        (std::is_same<T, const char>::value || std::is_same<T, const char>::value || std::is_same<T, char>::value ||
+    if ((std::is_same<T, const char>::value || std::is_same<T, const char>::value || std::is_same<T, char>::value ||
          std::is_same<T, const char*>::value || std::is_same<T, char*>::value))
     {
         StringToQuotedStringJson(outputFile, reinterpret_cast<const char*>(array));
@@ -317,7 +310,6 @@ void ArrayToStringJson(FILE*                            outputFile,
 template <typename T>
 void ArrayOfScalarsToStringJson(FILE*                            outputFile,
                                 int                              indent,
-                                const int                        pointer_count,
                                 const char*                      full_type_name,
                                 const T*                         array,
                                 const char*                      array_name,
@@ -328,14 +320,8 @@ void ArrayOfScalarsToStringJson(FILE*                            outputFile,
     assert((vinfo.is_handle_or_addr + vinfo.is_enum + vinfo.is_flags) <= 1);
     assert(vinfo.is_enum ? vinfo.enum_to_string_func != nullptr : true);
     assert(vinfo.is_flags ? vinfo.enum_to_string_func != nullptr : true);
-    if ((pointer_count > 2 && strstr(full_type_name, "char")) || (pointer_count > 1 && !strstr(full_type_name, "char")))
-    {
-        fprintf(stderr, "Error in ArrayOfScalersToStringJson: arrays of arrays not implemented\n");
-        return;
-    }
 
-    if (pointer_count <= 1 &&
-        (std::is_same<T, const char>::value || std::is_same<T, const char>::value || std::is_same<T, char>::value ||
+    if ((std::is_same<T, const char>::value || std::is_same<T, const char>::value || std::is_same<T, char>::value ||
          std::is_same<T, const char*>::value || std::is_same<T, char*>::value))
     {
         StringToQuotedStringJson(outputFile, reinterpret_cast<const char*>(array));

@@ -334,7 +334,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pPhysicalDevices = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "VkPhysicalDevice*", &pPhysicalDevices, "pPhysicalDevices", *pPhysicalDeviceCount.GetPointer(), vinfo_pPhysicalDevices); // AQA
+        ArrayToStringJson(outputFile, indent, "VkPhysicalDevice*", &pPhysicalDevices, "pPhysicalDevices", *pPhysicalDeviceCount.GetPointer(), vinfo_pPhysicalDevices); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -843,7 +843,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties>(outputFile, indent, 1, "VkQueueFamilyProperties", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties>(outputFile, indent, "VkQueueFamilyProperties", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -1338,7 +1338,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubmitInfo>(outputFile, indent, 1, "VkSubmitInfo", pSubmits.GetMetaStructPointer(), "pSubmits", submitCount, false, pSubmits.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSubmitInfo>(outputFile, indent, "VkSubmitInfo", pSubmits.GetMetaStructPointer(), "pSubmits", submitCount, false, pSubmits.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -1997,7 +1997,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkMappedMemoryRange>(outputFile, indent, 1, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkMappedMemoryRange>(outputFile, indent, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2094,7 +2094,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkMappedMemoryRange>(outputFile, indent, 1, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkMappedMemoryRange>(outputFile, indent, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2696,7 +2696,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements>(outputFile, indent, 1, "VkSparseImageMemoryRequirements", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements>(outputFile, indent, "VkSparseImageMemoryRequirements", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2880,7 +2880,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties>(outputFile, indent, 1, "VkSparseImageFormatProperties", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties>(outputFile, indent, "VkSparseImageFormatProperties", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2978,7 +2978,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBindSparseInfo>(outputFile, indent, 1, "VkBindSparseInfo", pBindInfo.GetMetaStructPointer(), "pBindInfo", bindInfoCount, false, pBindInfo.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBindSparseInfo>(outputFile, indent, "VkBindSparseInfo", pBindInfo.GetMetaStructPointer(), "pBindInfo", bindInfoCount, false, pBindInfo.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -3319,7 +3319,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pFences = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -3489,7 +3489,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pFences = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -4561,7 +4561,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "void*", &pData, "pData", dataSize, vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", &pData, "pData", dataSize, vinfo_pData); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -6204,7 +6204,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -6318,7 +6318,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSrcCaches = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkPipelineCache*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkPipelineCache*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -6433,7 +6433,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkGraphicsPipelineCreateInfo>(outputFile, indent, 1, "VkGraphicsPipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkGraphicsPipelineCreateInfo>(outputFile, indent, "VkGraphicsPipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -6486,7 +6486,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
+        ArrayToStringJson(outputFile, indent, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -6601,7 +6601,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkComputePipelineCreateInfo>(outputFile, indent, 1, "VkComputePipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkComputePipelineCreateInfo>(outputFile, indent, "VkComputePipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -6654,7 +6654,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
+        ArrayToStringJson(outputFile, indent, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -7853,7 +7853,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", pAllocateInfo.GetPointer()->descriptorSetCount, vinfo_pDescriptorSets); // AQA
+        ArrayToStringJson(outputFile, indent, "VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", pAllocateInfo.GetPointer()->descriptorSetCount, vinfo_pDescriptorSets); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -7967,7 +7967,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -8061,7 +8061,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkWriteDescriptorSet>(outputFile, indent, 1, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkWriteDescriptorSet>(outputFile, indent, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -8102,7 +8102,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCopyDescriptorSet>(outputFile, indent, 1, "VkCopyDescriptorSet", pDescriptorCopies.GetMetaStructPointer(), "pDescriptorCopies", descriptorCopyCount, false, pDescriptorCopies.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkCopyDescriptorSet>(outputFile, indent, "VkCopyDescriptorSet", pDescriptorCopies.GetMetaStructPointer(), "pDescriptorCopies", descriptorCopyCount, false, pDescriptorCopies.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -9073,7 +9073,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", pAllocateInfo.GetPointer()->commandBufferCount, vinfo_pCommandBuffers); // AQA
+        ArrayToStringJson(outputFile, indent, "VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", pAllocateInfo.GetPointer()->commandBufferCount, vinfo_pCommandBuffers); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -9182,7 +9182,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -9576,7 +9576,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkViewport>(outputFile, indent, 1, "VkViewport", pViewports.GetMetaStructPointer(), "pViewports", viewportCount, false, pViewports.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkViewport>(outputFile, indent, "VkViewport", pViewports.GetMetaStructPointer(), "pViewports", viewportCount, false, pViewports.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -9684,7 +9684,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, 1, "VkRect2D", pScissors.GetMetaStructPointer(), "pScissors", scissorCount, false, pScissors.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pScissors.GetMetaStructPointer(), "pScissors", scissorCount, false, pScissors.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -9919,7 +9919,7 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_blendConstants = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "const float", &blendConstants, "blendConstants", 4, vinfo_blendConstants); // AUA
+    ArrayToStringJson(outputFile, indent, "const float", &blendConstants, "blendConstants", 4, vinfo_blendConstants); // AUA
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
 
@@ -10385,7 +10385,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -10427,7 +10427,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pDynamicOffsets = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pDynamicOffsets, "pDynamicOffsets", dynamicOffsetCount, vinfo_pDynamicOffsets); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pDynamicOffsets, "pDynamicOffsets", dynamicOffsetCount, vinfo_pDynamicOffsets); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -10634,7 +10634,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pBuffers = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -10661,7 +10661,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pOffsets = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -11431,7 +11431,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBufferCopy>(outputFile, indent, 1, "VkBufferCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBufferCopy>(outputFile, indent, "VkBufferCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -11587,7 +11587,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageCopy>(outputFile, indent, 1, "VkImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageCopy>(outputFile, indent, "VkImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -11744,7 +11744,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageBlit>(outputFile, indent, 1, "VkImageBlit", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageBlit>(outputFile, indent, "VkImageBlit", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -11899,7 +11899,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBufferImageCopy>(outputFile, indent, 1, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBufferImageCopy>(outputFile, indent, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12039,7 +12039,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBufferImageCopy>(outputFile, indent, 1, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBufferImageCopy>(outputFile, indent, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12424,7 +12424,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageSubresourceRange>(outputFile, indent, 1, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageSubresourceRange>(outputFile, indent, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12575,7 +12575,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageSubresourceRange>(outputFile, indent, 1, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageSubresourceRange>(outputFile, indent, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12669,7 +12669,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkClearAttachment>(outputFile, indent, 1, "VkClearAttachment", pAttachments.GetMetaStructPointer(), "pAttachments", attachmentCount, false, pAttachments.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkClearAttachment>(outputFile, indent, "VkClearAttachment", pAttachments.GetMetaStructPointer(), "pAttachments", attachmentCount, false, pAttachments.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -12710,7 +12710,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkClearRect>(outputFile, indent, 1, "VkClearRect", pRects.GetMetaStructPointer(), "pRects", rectCount, false, pRects.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkClearRect>(outputFile, indent, "VkClearRect", pRects.GetMetaStructPointer(), "pRects", rectCount, false, pRects.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12866,7 +12866,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageResolve>(outputFile, indent, 1, "VkImageResolve", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageResolve>(outputFile, indent, "VkImageResolve", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -13129,7 +13129,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pEvents = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkEvent*", &pEvents, "pEvents", eventCount, vinfo_pEvents); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkEvent*", &pEvents, "pEvents", eventCount, vinfo_pEvents); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13200,7 +13200,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkMemoryBarrier>(outputFile, indent, 1, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkMemoryBarrier>(outputFile, indent, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13241,7 +13241,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBufferMemoryBarrier>(outputFile, indent, 1, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBufferMemoryBarrier>(outputFile, indent, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13282,7 +13282,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageMemoryBarrier>(outputFile, indent, 1, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageMemoryBarrier>(outputFile, indent, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -13426,7 +13426,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkMemoryBarrier>(outputFile, indent, 1, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkMemoryBarrier>(outputFile, indent, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13467,7 +13467,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBufferMemoryBarrier>(outputFile, indent, 1, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBufferMemoryBarrier>(outputFile, indent, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13508,7 +13508,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageMemoryBarrier>(outputFile, indent, 1, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageMemoryBarrier>(outputFile, indent, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -14182,7 +14182,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pValues = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const void*", &pValues, "pValues", size, vinfo_pValues); // AUA
+        ArrayToStringJson(outputFile, indent, "const void*", &pValues, "pValues", size, vinfo_pValues); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -14481,7 +14481,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -14579,7 +14579,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBindBufferMemoryInfo>(outputFile, indent, 1, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBindBufferMemoryInfo>(outputFile, indent, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -14676,7 +14676,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBindImageMemoryInfo>(outputFile, indent, 1, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBindImageMemoryInfo>(outputFile, indent, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15121,7 +15121,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent, 1, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15458,7 +15458,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent, 1, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15914,7 +15914,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties2>(outputFile, indent, 1, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties2>(outputFile, indent, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -16121,7 +16121,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties2>(outputFile, indent, 1, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties2>(outputFile, indent, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -17604,7 +17604,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSurfaceFormatKHR>(outputFile, indent, 1, "VkSurfaceFormatKHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSurfaceFormatKHR>(outputFile, indent, "VkSurfaceFormatKHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -17730,7 +17730,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHR};
-        ArrayToStringJson(outputFile, indent, 0, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUA
+        ArrayToStringJson(outputFile, indent, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -18085,7 +18085,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSwapchainImages = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "VkImage*", &pSwapchainImages, "pSwapchainImages", *pSwapchainImageCount.GetPointer(), vinfo_pSwapchainImages); // AQA
+        ArrayToStringJson(outputFile, indent, "VkImage*", &pSwapchainImages, "pSwapchainImages", *pSwapchainImageCount.GetPointer(), vinfo_pSwapchainImages); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -18633,7 +18633,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, 1, "VkRect2D", pRects.GetMetaStructPointer(), "pRects", *pRectCount.GetPointer(), false, pRects.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pRects.GetMetaStructPointer(), "pRects", *pRectCount.GetPointer(), false, pRects.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -18852,7 +18852,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDisplayPropertiesKHR>(outputFile, indent, 1, "VkDisplayPropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkDisplayPropertiesKHR>(outputFile, indent, "VkDisplayPropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -18961,7 +18961,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDisplayPlanePropertiesKHR>(outputFile, indent, 1, "VkDisplayPlanePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkDisplayPlanePropertiesKHR>(outputFile, indent, "VkDisplayPlanePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -19087,7 +19087,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pDisplays = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "VkDisplayKHR*", &pDisplays, "pDisplays", *pDisplayCount.GetPointer(), vinfo_pDisplays); // AQA
+        ArrayToStringJson(outputFile, indent, "VkDisplayKHR*", &pDisplays, "pDisplays", *pDisplayCount.GetPointer(), vinfo_pDisplays); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -19212,7 +19212,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDisplayModePropertiesKHR>(outputFile, indent, 1, "VkDisplayModePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkDisplayModePropertiesKHR>(outputFile, indent, "VkDisplayModePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -19713,7 +19713,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSwapchainCreateInfoKHR>(outputFile, indent, 1, "VkSwapchainCreateInfoKHR", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", swapchainCount, false, pCreateInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSwapchainCreateInfoKHR>(outputFile, indent, "VkSwapchainCreateInfoKHR", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", swapchainCount, false, pCreateInfos.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -19766,7 +19766,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AQA
+        ArrayToStringJson(outputFile, indent, "VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -21300,7 +21300,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties2>(outputFile, indent, 1, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties2>(outputFile, indent, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -21507,7 +21507,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties2>(outputFile, indent, 1, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties2>(outputFile, indent, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -22036,7 +22036,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent, 1, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -23229,7 +23229,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkWriteDescriptorSet>(outputFile, indent, 1, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkWriteDescriptorSet>(outputFile, indent, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -24681,7 +24681,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSurfaceFormat2KHR>(outputFile, indent, 1, "VkSurfaceFormat2KHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSurfaceFormat2KHR>(outputFile, indent, "VkSurfaceFormat2KHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -24791,7 +24791,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDisplayProperties2KHR>(outputFile, indent, 1, "VkDisplayProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkDisplayProperties2KHR>(outputFile, indent, "VkDisplayProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -24900,7 +24900,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDisplayPlaneProperties2KHR>(outputFile, indent, 1, "VkDisplayPlaneProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkDisplayPlaneProperties2KHR>(outputFile, indent, "VkDisplayPlaneProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25025,7 +25025,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDisplayModeProperties2KHR>(outputFile, indent, 1, "VkDisplayModeProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkDisplayModeProperties2KHR>(outputFile, indent, "VkDisplayModeProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25471,7 +25471,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent, 1, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25798,7 +25798,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBindBufferMemoryInfo>(outputFile, indent, 1, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBindBufferMemoryInfo>(outputFile, indent, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25895,7 +25895,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBindImageMemoryInfo>(outputFile, indent, 1, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBindImageMemoryInfo>(outputFile, indent, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -26704,7 +26704,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineExecutablePropertiesKHR>(outputFile, indent, 1, "VkPipelineExecutablePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pExecutableCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkPipelineExecutablePropertiesKHR>(outputFile, indent, "VkPipelineExecutablePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pExecutableCount.GetPointer(), false, pProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -26840,7 +26840,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineExecutableStatisticKHR>(outputFile, indent, 1, "VkPipelineExecutableStatisticKHR", pStatistics.GetMetaStructPointer(), "pStatistics", *pStatisticCount.GetPointer(), false, pStatistics.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkPipelineExecutableStatisticKHR>(outputFile, indent, "VkPipelineExecutableStatisticKHR", pStatistics.GetMetaStructPointer(), "pStatistics", *pStatisticCount.GetPointer(), false, pStatistics.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -26976,7 +26976,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineExecutableInternalRepresentationKHR>(outputFile, indent, 1, "VkPipelineExecutableInternalRepresentationKHR", pInternalRepresentations.GetMetaStructPointer(), "pInternalRepresentations", *pInternalRepresentationCount.GetPointer(), false, pInternalRepresentations.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkPipelineExecutableInternalRepresentationKHR>(outputFile, indent, "VkPipelineExecutableInternalRepresentationKHR", pInternalRepresentations.GetMetaStructPointer(), "pInternalRepresentations", *pInternalRepresentationCount.GetPointer(), false, pInternalRepresentations.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -27866,7 +27866,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pBuffers = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -27893,7 +27893,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pOffsets = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -27920,7 +27920,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pSizes = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDeviceSize*", &pSizes, "pSizes", bindingCount, vinfo_pSizes); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkDeviceSize*", &pSizes, "pSizes", bindingCount, vinfo_pSizes); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -28030,7 +28030,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pCounterBuffers = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -28057,7 +28057,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pCounterBufferOffsets = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -28167,7 +28167,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pCounterBuffers = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -28194,7 +28194,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pCounterBufferOffsets = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -29083,7 +29083,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pInfo = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "void*", &pInfo, "pInfo", *pInfoSize.GetPointer(), vinfo_pInfo); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", &pInfo, "pInfo", *pInfoSize.GetPointer(), vinfo_pInfo); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -30501,7 +30501,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pObjectEntryTypes = {false, true, false, EnumToStringVkObjectEntryTypeNVX};
-        ArrayToStringJson(outputFile, indent, 0, "const VkObjectEntryTypeNVX*", &pObjectEntryTypes, "pObjectEntryTypes", objectCount, vinfo_pObjectEntryTypes); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkObjectEntryTypeNVX*", &pObjectEntryTypes, "pObjectEntryTypes", objectCount, vinfo_pObjectEntryTypes); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -30528,7 +30528,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pObjectIndices = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pObjectIndices, "pObjectIndices", objectCount, vinfo_pObjectIndices); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pObjectIndices, "pObjectIndices", objectCount, vinfo_pObjectIndices); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -30740,7 +30740,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkViewportWScalingNV>(outputFile, indent, 1, "VkViewportWScalingNV", pViewportWScalings.GetMetaStructPointer(), "pViewportWScalings", viewportCount, false, pViewportWScalings.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkViewportWScalingNV>(outputFile, indent, "VkViewportWScalingNV", pViewportWScalings.GetMetaStructPointer(), "pViewportWScalings", viewportCount, false, pViewportWScalings.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -31833,7 +31833,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPastPresentationTimingGOOGLE>(outputFile, indent, 1, "VkPastPresentationTimingGOOGLE", pPresentationTimings.GetMetaStructPointer(), "pPresentationTimings", *pPresentationTimingCount.GetPointer(), false, pPresentationTimings.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkPastPresentationTimingGOOGLE>(outputFile, indent, "VkPastPresentationTimingGOOGLE", pPresentationTimings.GetMetaStructPointer(), "pPresentationTimings", *pPresentationTimingCount.GetPointer(), false, pPresentationTimings.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -31942,7 +31942,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, 1, "VkRect2D", pDiscardRectangles.GetMetaStructPointer(), "pDiscardRectangles", discardRectangleCount, false, pDiscardRectangles.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pDiscardRectangles.GetMetaStructPointer(), "pDiscardRectangles", discardRectangleCount, false, pDiscardRectangles.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -32037,7 +32037,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -32063,7 +32063,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkHdrMetadataEXT>(outputFile, indent, 1, "VkHdrMetadataEXT", pMetadata.GetMetaStructPointer(), "pMetadata", swapchainCount, false, pMetadata.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkHdrMetadataEXT>(outputFile, indent, "VkHdrMetadataEXT", pMetadata.GetMetaStructPointer(), "pMetadata", swapchainCount, false, pMetadata.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34068,7 +34068,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSrcCaches = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkValidationCacheEXT*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkValidationCacheEXT*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34194,7 +34194,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34384,7 +34384,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkShadingRatePaletteNV>(outputFile, indent, 1, "VkShadingRatePaletteNV", pShadingRatePalettes.GetMetaStructPointer(), "pShadingRatePalettes", viewportCount, false, pShadingRatePalettes.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkShadingRatePaletteNV>(outputFile, indent, "VkShadingRatePaletteNV", pShadingRatePalettes.GetMetaStructPointer(), "pShadingRatePalettes", viewportCount, false, pShadingRatePalettes.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34492,7 +34492,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent, 1, "VkCoarseSampleOrderCustomNV", pCustomSampleOrders.GetMetaStructPointer(), "pCustomSampleOrders", customSampleOrderCount, false, pCustomSampleOrders.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent, "VkCoarseSampleOrderCustomNV", pCustomSampleOrders.GetMetaStructPointer(), "pCustomSampleOrders", customSampleOrderCount, false, pCustomSampleOrders.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34921,7 +34921,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBindAccelerationStructureMemoryInfoNV>(outputFile, indent, 1, "VkBindAccelerationStructureMemoryInfoNV", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBindAccelerationStructureMemoryInfoNV>(outputFile, indent, "VkBindAccelerationStructureMemoryInfoNV", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -35594,7 +35594,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRayTracingPipelineCreateInfoNV>(outputFile, indent, 1, "VkRayTracingPipelineCreateInfoNV", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkRayTracingPipelineCreateInfoNV>(outputFile, indent, "VkRayTracingPipelineCreateInfoNV", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35647,7 +35647,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
+        ArrayToStringJson(outputFile, indent, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -35793,7 +35793,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "void*", &pData, "pData", dataSize, vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", &pData, "pData", dataSize, vinfo_pData); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -35907,7 +35907,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "void*", &pData, "pData", dataSize, vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", &pData, "pData", dataSize, vinfo_pData); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -36003,7 +36003,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pAccelerationStructures = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkAccelerationStructureNV*", &pAccelerationStructures, "pAccelerationStructures", accelerationStructureCount, vinfo_pAccelerationStructures); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkAccelerationStructureNV*", &pAccelerationStructures, "pAccelerationStructures", accelerationStructureCount, vinfo_pAccelerationStructures); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -36485,7 +36485,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pTimeDomains = {false, true, false, EnumToStringVkTimeDomainEXT};
-        ArrayToStringJson(outputFile, indent, 0, "VkTimeDomainEXT*", &pTimeDomains, "pTimeDomains", *pTimeDomainCount.GetPointer(), vinfo_pTimeDomains); // AUA
+        ArrayToStringJson(outputFile, indent, "VkTimeDomainEXT*", &pTimeDomains, "pTimeDomains", *pTimeDomainCount.GetPointer(), vinfo_pTimeDomains); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -36584,7 +36584,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCalibratedTimestampInfoEXT>(outputFile, indent, 1, "VkCalibratedTimestampInfoEXT", pTimestampInfos.GetMetaStructPointer(), "pTimestampInfos", timestampCount, false, pTimestampInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkCalibratedTimestampInfoEXT>(outputFile, indent, "VkCalibratedTimestampInfoEXT", pTimestampInfos.GetMetaStructPointer(), "pTimestampInfos", timestampCount, false, pTimestampInfos.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -36611,7 +36611,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pTimestamps = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "uint64_t*", &pTimestamps, "pTimestamps", timestampCount, vinfo_pTimestamps); // AUA
+        ArrayToStringJson(outputFile, indent, "uint64_t*", &pTimestamps, "pTimestamps", timestampCount, vinfo_pTimestamps); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -37087,7 +37087,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, 1, "VkRect2D", pExclusiveScissors.GetMetaStructPointer(), "pExclusiveScissors", exclusiveScissorCount, false, pExclusiveScissors.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pExclusiveScissors.GetMetaStructPointer(), "pExclusiveScissors", exclusiveScissorCount, false, pExclusiveScissors.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -37269,7 +37269,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCheckpointDataNV>(outputFile, indent, 1, "VkCheckpointDataNV", pCheckpointData.GetMetaStructPointer(), "pCheckpointData", *pCheckpointDataCount.GetPointer(), false, pCheckpointData.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkCheckpointDataNV>(outputFile, indent, "VkCheckpointDataNV", pCheckpointData.GetMetaStructPointer(), "pCheckpointData", *pCheckpointDataCount.GetPointer(), false, pCheckpointData.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -38539,7 +38539,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCooperativeMatrixPropertiesNV>(outputFile, indent, 1, "VkCooperativeMatrixPropertiesNV", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkCooperativeMatrixPropertiesNV>(outputFile, indent, "VkCooperativeMatrixPropertiesNV", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -38649,7 +38649,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkFramebufferMixedSamplesCombinationNV>(outputFile, indent, 1, "VkFramebufferMixedSamplesCombinationNV", pCombinations.GetMetaStructPointer(), "pCombinations", *pCombinationCount.GetPointer(), false, pCombinations.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkFramebufferMixedSamplesCombinationNV>(outputFile, indent, "VkFramebufferMixedSamplesCombinationNV", pCombinations.GetMetaStructPointer(), "pCombinations", *pCombinationCount.GetPointer(), false, pCombinations.GetAddress()); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -38787,7 +38787,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHR};
-        ArrayToStringJson(outputFile, indent, 0, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUA
+        ArrayToStringJson(outputFile, indent, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");

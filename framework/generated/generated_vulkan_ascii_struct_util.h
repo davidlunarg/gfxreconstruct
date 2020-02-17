@@ -520,7 +520,6 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBuff
 template <typename T>
 void ArrayOfStructsToString(FILE*        outputFile,
                             int          indent,
-                            const int    pointer_count,
                             const char*  base_type_name,
                             T*           array,
                             const char*  array_name,
@@ -550,14 +549,7 @@ void ArrayOfStructsToString(FILE*        outputFile,
             OutputString(outputFile, " (Union)");
         }
         OutputString(outputFile, ":");
-        if (pointer_count > 1)
-        {
-            fprintf(stderr, "ERROR: ArrayOfStructsToString cannot handle arrays of arrays\n");
-        }
-        else
-        {
-            StructureToString(outputFile, array[j], indent + 1, base_addr + j * sizeof(T));
-        }
+        StructureToString(outputFile, array[j], indent + 1, base_addr + j * sizeof(T));
         if (j < array_length - 1)
         {
             OutputString(outputFile, "\n");
@@ -1350,7 +1342,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkInstanceCreateInfo &pst
     {
         AddrToString(outputFile, pstruct_in.ppEnabledLayerNames.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_ppEnabledLayerNames = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 1, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); // AUC
+        ArrayToString(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -1373,7 +1365,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkInstanceCreateInfo &pst
     {
         AddrToString(outputFile, pstruct_in.ppEnabledExtensionNames.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_ppEnabledExtensionNames = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 1, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); // AUC
+        ArrayToString(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); // AUC
     }
 }
 
@@ -2321,7 +2313,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceLimits, maxComputeWorkGroupCount)); // IYY
     ScalarValueToStringStruct vinfo_maxComputeWorkGroupCount = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, 0, "uint32_t", &pstruct_in.maxComputeWorkGroupCount, "maxComputeWorkGroupCount", 3, vinfo_maxComputeWorkGroupCount); // JPE
+    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.maxComputeWorkGroupCount, "maxComputeWorkGroupCount", 3, vinfo_maxComputeWorkGroupCount); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t maxComputeWorkGroupInvocations
@@ -2340,7 +2332,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceLimits, maxComputeWorkGroupSize)); // IYY
     ScalarValueToStringStruct vinfo_maxComputeWorkGroupSize = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, 0, "uint32_t", &pstruct_in.maxComputeWorkGroupSize, "maxComputeWorkGroupSize", 3, vinfo_maxComputeWorkGroupSize); // JPE
+    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.maxComputeWorkGroupSize, "maxComputeWorkGroupSize", 3, vinfo_maxComputeWorkGroupSize); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t subPixelPrecisionBits
@@ -2408,7 +2400,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceLimits, maxViewportDimensions)); // IYY
     ScalarValueToStringStruct vinfo_maxViewportDimensions = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, 0, "uint32_t", &pstruct_in.maxViewportDimensions, "maxViewportDimensions", 2, vinfo_maxViewportDimensions); // JPE
+    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.maxViewportDimensions, "maxViewportDimensions", 2, vinfo_maxViewportDimensions); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: float viewportBoundsRange
@@ -2420,7 +2412,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceLimits, viewportBoundsRange)); // IYY
     ScalarValueToStringStruct vinfo_viewportBoundsRange = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, 0, "float", &pstruct_in.viewportBoundsRange, "viewportBoundsRange", 2, vinfo_viewportBoundsRange); // JPE
+    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.viewportBoundsRange, "viewportBoundsRange", 2, vinfo_viewportBoundsRange); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t viewportSubPixelBits
@@ -2656,7 +2648,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceLimits, pointSizeRange)); // IYY
     ScalarValueToStringStruct vinfo_pointSizeRange = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, 0, "float", &pstruct_in.pointSizeRange, "pointSizeRange", 2, vinfo_pointSizeRange); // JPE
+    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.pointSizeRange, "pointSizeRange", 2, vinfo_pointSizeRange); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: float lineWidthRange
@@ -2668,7 +2660,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceLimits, lineWidthRange)); // IYY
     ScalarValueToStringStruct vinfo_lineWidthRange = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, 0, "float", &pstruct_in.lineWidthRange, "lineWidthRange", 2, vinfo_lineWidthRange); // JPE
+    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.lineWidthRange, "lineWidthRange", 2, vinfo_lineWidthRange); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: float pointSizeGranularity
@@ -2818,7 +2810,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePropertie
     OutputString(outputFile, "deviceName:                     "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     ScalarValueToStringStruct vinfo_deviceName = {false, false, false, nullptr};
-    ArrayOfScalarsToString<char>(outputFile, indent, 0, "char", pstruct_in.deviceName.GetPointer(), "deviceName", VK_MAX_PHYSICAL_DEVICE_NAME_SIZE, vinfo_deviceName); // JPB
+    ArrayOfScalarsToString<char>(outputFile, indent, "char", pstruct_in.deviceName.GetPointer(), "deviceName", VK_MAX_PHYSICAL_DEVICE_NAME_SIZE, vinfo_deviceName); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint8_t pipelineCacheUUID
@@ -2830,7 +2822,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePropertie
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceProperties, pipelineCacheUUID)); // IYY
     ScalarValueToStringStruct vinfo_pipelineCacheUUID = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint8_t>>(outputFile, indent, 0, "uint8_t", &pstruct_in.pipelineCacheUUID, "pipelineCacheUUID", VK_UUID_SIZE, vinfo_pipelineCacheUUID); // JPE
+    ArrayToString<PointerDecoder<uint8_t>>(outputFile, indent, "uint8_t", &pstruct_in.pipelineCacheUUID, "pipelineCacheUUID", VK_UUID_SIZE, vinfo_pipelineCacheUUID); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkPhysicalDeviceLimits limits
@@ -2958,7 +2950,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPro
     UnsignedDecimalToString(outputFile, pstruct->memoryTypeCount); // DFW
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceMemoryProperties, memoryTypes)); // IYY
-    ArrayOfStructsToString<Decoded_VkMemoryType>(outputFile, indent+1, 0, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount , false, pstruct_in.memoryTypes->GetAddress()); // EPB
+    ArrayOfStructsToString<Decoded_VkMemoryType>(outputFile, indent+1, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount , false, pstruct_in.memoryTypes->GetAddress()); // EPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t memoryHeapCount
@@ -2976,7 +2968,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPro
     UnsignedDecimalToString(outputFile, pstruct->memoryHeapCount); // DFW
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceMemoryProperties, memoryHeaps)); // IYY
-    ArrayOfStructsToString<Decoded_VkMemoryHeap>(outputFile, indent+1, 0, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount , false, pstruct_in.memoryHeaps->GetAddress()); // EPB
+    ArrayOfStructsToString<Decoded_VkMemoryHeap>(outputFile, indent+1, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount , false, pstruct_in.memoryHeaps->GetAddress()); // EPB
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceQueueCreateInfo &pstruct_in, int indent, uint64_t base_addr)
@@ -3052,7 +3044,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceQueueCreateInfo &
     {
         AddrToString(outputFile, pstruct_in.pQueuePriorities.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pQueuePriorities = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const float*", &pstruct_in.pQueuePriorities, "pQueuePriorities", pstruct->queueCount, vinfo_pQueuePriorities); // AUC
+        ArrayToString(outputFile, indent, "const float*", &pstruct_in.pQueuePriorities, "pQueuePriorities", pstruct->queueCount, vinfo_pQueuePriorities); // AUC
     }
 }
 
@@ -3121,7 +3113,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pstru
     else
     {
         AddrToString(outputFile, pstruct_in.pQueueCreateInfos->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDeviceQueueCreateInfo>(outputFile, indent+1, 1, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDeviceQueueCreateInfo>(outputFile, indent+1, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3144,7 +3136,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pstru
     {
         AddrToString(outputFile, pstruct_in.ppEnabledLayerNames.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_ppEnabledLayerNames = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 1, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); // AUC
+        ArrayToString(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3167,7 +3159,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pstru
     {
         AddrToString(outputFile, pstruct_in.ppEnabledExtensionNames.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_ppEnabledExtensionNames = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 1, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); // AUC
+        ArrayToString(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3202,7 +3194,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExtensionProperties &ps
     OutputString(outputFile, "extensionName:                  "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     ScalarValueToStringStruct vinfo_extensionName = {false, false, false, nullptr};
-    ArrayOfScalarsToString<char>(outputFile, indent, 0, "char", pstruct_in.extensionName.GetPointer(), "extensionName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_extensionName); // JPB
+    ArrayOfScalarsToString<char>(outputFile, indent, "char", pstruct_in.extensionName.GetPointer(), "extensionName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_extensionName); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t specVersion
@@ -3227,7 +3219,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkLayerProperties &pstruc
     OutputString(outputFile, "layerName:                      "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     ScalarValueToStringStruct vinfo_layerName = {false, false, false, nullptr};
-    ArrayOfScalarsToString<char>(outputFile, indent, 0, "char", pstruct_in.layerName.GetPointer(), "layerName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_layerName); // JPB
+    ArrayOfScalarsToString<char>(outputFile, indent, "char", pstruct_in.layerName.GetPointer(), "layerName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_layerName); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t specVersion
@@ -3249,7 +3241,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkLayerProperties &pstruc
     OutputString(outputFile, "description:                    "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     ScalarValueToStringStruct vinfo_description = {false, false, false, nullptr};
-    ArrayOfScalarsToString<char>(outputFile, indent, 0, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
+    ArrayOfScalarsToString<char>(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in, int indent, uint64_t base_addr)
@@ -3311,7 +3303,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in,
     {
         AddrToString(outputFile, pstruct_in.pWaitSemaphores.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pWaitSemaphores = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AUC
+        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3327,7 +3319,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in,
     {
         AddrToString(outputFile, pstruct_in.pWaitDstStageMask.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pWaitDstStageMask = {false, false, true, EnumToStringVkPipelineStageFlagBits};
-        ArrayToString(outputFile, indent, 0, "const VkPipelineStageFlags*", &pstruct_in.pWaitDstStageMask, "pWaitDstStageMask", pstruct->waitSemaphoreCount, vinfo_pWaitDstStageMask); // AUB
+        ArrayToString(outputFile, indent, "const VkPipelineStageFlags*", &pstruct_in.pWaitDstStageMask, "pWaitDstStageMask", pstruct->waitSemaphoreCount, vinfo_pWaitDstStageMask); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3350,7 +3342,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in,
     {
         AddrToString(outputFile, pstruct_in.pCommandBuffers.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkCommandBuffer*", &pstruct_in.pCommandBuffers, "pCommandBuffers", pstruct->commandBufferCount, vinfo_pCommandBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkCommandBuffer*", &pstruct_in.pCommandBuffers, "pCommandBuffers", pstruct->commandBufferCount, vinfo_pCommandBuffers); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3373,7 +3365,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in,
     {
         AddrToString(outputFile, pstruct_in.pSignalSemaphores.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSignalSemaphores = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AUC
+        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AUC
     }
 }
 
@@ -3679,7 +3671,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseBufferMemoryBindI
     else
     {
         AddrToString(outputFile, pstruct_in.pBinds->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSparseMemoryBind>(outputFile, indent+1, 1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSparseMemoryBind>(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress());  // CCP
     }
 }
 
@@ -3718,7 +3710,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseImageOpaqueMemory
     else
     {
         AddrToString(outputFile, pstruct_in.pBinds->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSparseMemoryBind>(outputFile, indent+1, 1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSparseMemoryBind>(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress());  // CCP
     }
 }
 
@@ -3871,7 +3863,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseImageMemoryBindIn
     else
     {
         AddrToString(outputFile, pstruct_in.pBinds->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSparseImageMemoryBind>(outputFile, indent+1, 1, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSparseImageMemoryBind>(outputFile, indent+1, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress());  // CCP
     }
 }
 
@@ -3934,7 +3926,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct
     {
         AddrToString(outputFile, pstruct_in.pWaitSemaphores.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pWaitSemaphores = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AUC
+        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3956,7 +3948,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct
     else
     {
         AddrToString(outputFile, pstruct_in.pBufferBinds->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSparseBufferMemoryBindInfo>(outputFile, indent+1, 1, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSparseBufferMemoryBindInfo>(outputFile, indent+1, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3978,7 +3970,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct
     else
     {
         AddrToString(outputFile, pstruct_in.pImageOpaqueBinds->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSparseImageOpaqueMemoryBindInfo>(outputFile, indent+1, 1, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSparseImageOpaqueMemoryBindInfo>(outputFile, indent+1, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -4000,7 +3992,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct
     else
     {
         AddrToString(outputFile, pstruct_in.pImageBinds->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSparseImageMemoryBindInfo>(outputFile, indent+1, 1, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSparseImageMemoryBindInfo>(outputFile, indent+1, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -4023,7 +4015,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct
     {
         AddrToString(outputFile, pstruct_in.pSignalSemaphores.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSignalSemaphores = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AUC
+        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AUC
     }
 }
 
@@ -4329,7 +4321,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferCreateInfo &pstru
     {
         AddrToString(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUC
     }
 }
 
@@ -4555,7 +4547,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageCreateInfo &pstruc
     {
         AddrToString(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -4865,7 +4857,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkShaderModuleCreateInfo 
         if (kPrintShaderCode)
         {
             ScalarValueToStringStruct vinfo_pCode = {false, false, false, nullptr};
-            ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, 1, "const uint32_t*", &pstruct_in.pCode, "pCode", pstruct->codeSize / 4, vinfo_pCode);  // CUK
+            ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "const uint32_t*", &pstruct_in.pCode, "pCode", pstruct->codeSize / 4, vinfo_pCode);  // CUK
         }
     }
 }
@@ -4936,7 +4928,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCacheCreateInfo
     {
         AddrToString(outputFile, pstruct_in.pInitialData.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pInitialData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const void*", &pstruct_in.pInitialData, "pInitialData", pstruct->initialDataSize, vinfo_pInitialData); // PRC
+        ArrayToString(outputFile, indent, "const void*", &pstruct_in.pInitialData, "pInitialData", pstruct->initialDataSize, vinfo_pInitialData); // PRC
     }
 }
 
@@ -4999,7 +4991,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSpecializationInfo &pst
     else
     {
         AddrToString(outputFile, pstruct_in.pMapEntries->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSpecializationMapEntry>(outputFile, indent+1, 1, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSpecializationMapEntry>(outputFile, indent+1, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5022,7 +5014,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSpecializationInfo &pst
     {
         AddrToString(outputFile, pstruct_in.pData.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "const void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // PRC
     }
 }
 
@@ -5253,7 +5245,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineVertexInputStat
     else
     {
         AddrToString(outputFile, pstruct_in.pVertexBindingDescriptions->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkVertexInputBindingDescription>(outputFile, indent+1, 1, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkVertexInputBindingDescription>(outputFile, indent+1, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5275,7 +5267,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineVertexInputStat
     else
     {
         AddrToString(outputFile, pstruct_in.pVertexAttributeDescriptions->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkVertexInputAttributeDescription>(outputFile, indent+1, 1, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkVertexInputAttributeDescription>(outputFile, indent+1, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress());  // CCP
     }
 }
 
@@ -5586,7 +5578,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportStateCr
     else
     {
         AddrToString(outputFile, pstruct_in.pViewports->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkViewport>(outputFile, indent+1, 1, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkViewport>(outputFile, indent+1, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5608,7 +5600,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportStateCr
     else
     {
         AddrToString(outputFile, pstruct_in.pScissors->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, 1, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress());  // CCP
     }
 }
 
@@ -5818,7 +5810,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineMultisampleStat
     {
         AddrToString(outputFile, pstruct_in.pSampleMask.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSampleMask = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkSampleMask*", &pstruct_in.pSampleMask, "pSampleMask", pstruct->rasterizationSamples, vinfo_pSampleMask); // AUC
+        ArrayToString(outputFile, indent, "const VkSampleMask*", &pstruct_in.pSampleMask, "pSampleMask", pstruct->rasterizationSamples, vinfo_pSampleMask); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6186,7 +6178,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineColorBlendState
     else
     {
         AddrToString(outputFile, pstruct_in.pAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPipelineColorBlendAttachmentState>(outputFile, indent+1, 1, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPipelineColorBlendAttachmentState>(outputFile, indent+1, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6199,7 +6191,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineColorBlendState
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPipelineColorBlendStateCreateInfo, blendConstants)); // IYY
     ScalarValueToStringStruct vinfo_blendConstants = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, 0, "float", &pstruct_in.blendConstants, "blendConstants", 4, vinfo_blendConstants); // JPE
+    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.blendConstants, "blendConstants", 4, vinfo_blendConstants); // JPE
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineDynamicStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
@@ -6268,7 +6260,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineDynamicStateCre
     {
         AddrToString(outputFile, pstruct_in.pDynamicStates.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDynamicStates = {false, true, false, EnumToStringVkDynamicState};
-        ArrayToString(outputFile, indent, 0, "const VkDynamicState*", &pstruct_in.pDynamicStates, "pDynamicStates", pstruct->dynamicStateCount, vinfo_pDynamicStates); // AUC
+        ArrayToString(outputFile, indent, "const VkDynamicState*", &pstruct_in.pDynamicStates, "pDynamicStates", pstruct->dynamicStateCount, vinfo_pDynamicStates); // AUC
     }
 }
 
@@ -6337,7 +6329,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
     else
     {
         AddrToString(outputFile, pstruct_in.pStages->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent+1, 1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6692,7 +6684,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineLayoutCreateInf
     {
         AddrToString(outputFile, pstruct_in.pSetLayouts.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSetLayouts = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->setLayoutCount, vinfo_pSetLayouts); // AUC
+        ArrayToString(outputFile, indent, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->setLayoutCount, vinfo_pSetLayouts); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6714,7 +6706,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineLayoutCreateInf
     else
     {
         AddrToString(outputFile, pstruct_in.pPushConstantRanges->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPushConstantRange>(outputFile, indent+1, 1, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPushConstantRange>(outputFile, indent+1, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress());  // CCP
     }
 }
 
@@ -6947,7 +6939,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBind
     {
         AddrToString(outputFile, pstruct_in.pImmutableSamplers.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pImmutableSamplers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkSampler*", &pstruct_in.pImmutableSamplers, "pImmutableSamplers", pstruct->descriptorCount, vinfo_pImmutableSamplers); // AUC
+        ArrayToString(outputFile, indent, "const VkSampler*", &pstruct_in.pImmutableSamplers, "pImmutableSamplers", pstruct->descriptorCount, vinfo_pImmutableSamplers); // AUC
     }
 }
 
@@ -7016,7 +7008,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutCrea
     else
     {
         AddrToString(outputFile, pstruct_in.pBindings->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDescriptorSetLayoutBinding>(outputFile, indent+1, 1, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDescriptorSetLayoutBinding>(outputFile, indent+1, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress());  // CCP
     }
 }
 
@@ -7119,7 +7111,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorPoolCreateInf
     else
     {
         AddrToString(outputFile, pstruct_in.pPoolSizes->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDescriptorPoolSize>(outputFile, indent+1, 1, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDescriptorPoolSize>(outputFile, indent+1, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress());  // CCP
     }
 }
 
@@ -7189,7 +7181,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetAllocateIn
     {
         AddrToString(outputFile, pstruct_in.pSetLayouts.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSetLayouts = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->descriptorSetCount, vinfo_pSetLayouts); // AUC
+        ArrayToString(outputFile, indent, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->descriptorSetCount, vinfo_pSetLayouts); // AUC
     }
 }
 
@@ -7347,7 +7339,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSet &pst
     else
     {
         AddrToString(outputFile, pstruct_in.pImageInfo->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDescriptorImageInfo>(outputFile, indent+1, 1, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDescriptorImageInfo>(outputFile, indent+1, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7362,7 +7354,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSet &pst
     else
     {
         AddrToString(outputFile, pstruct_in.pBufferInfo->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDescriptorBufferInfo>(outputFile, indent+1, 1, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDescriptorBufferInfo>(outputFile, indent+1, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7378,7 +7370,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSet &pst
     {
         AddrToString(outputFile, pstruct_in.pTexelBufferView.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pTexelBufferView = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkBufferView*", &pstruct_in.pTexelBufferView, "pTexelBufferView", pstruct->descriptorCount, vinfo_pTexelBufferView); // AUC
+        ArrayToString(outputFile, indent, "const VkBufferView*", &pstruct_in.pTexelBufferView, "pTexelBufferView", pstruct->descriptorCount, vinfo_pTexelBufferView); // AUC
     }
 }
 
@@ -7544,7 +7536,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFramebufferCreateInfo &
     {
         AddrToString(outputFile, pstruct_in.pAttachments.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pAttachments = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AUC
+        ArrayToString(outputFile, indent, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7738,7 +7730,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription &pst
     else
     {
         AddrToString(outputFile, pstruct_in.pInputAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentReference>(outputFile, indent+1, 1, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentReference>(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7760,7 +7752,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription &pst
     else
     {
         AddrToString(outputFile, pstruct_in.pColorAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentReference>(outputFile, indent+1, 1, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentReference>(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7775,7 +7767,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription &pst
     else
     {
         AddrToString(outputFile, pstruct_in.pResolveAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentReference>(outputFile, indent+1, 1, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentReference>(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7814,7 +7806,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription &pst
     {
         AddrToString(outputFile, pstruct_in.pPreserveAttachments.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPreserveAttachments = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUC
     }
 }
 
@@ -7942,7 +7934,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo &p
     else
     {
         AddrToString(outputFile, pstruct_in.pAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentDescription>(outputFile, indent+1, 1, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentDescription>(outputFile, indent+1, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7964,7 +7956,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo &p
     else
     {
         AddrToString(outputFile, pstruct_in.pSubpasses->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSubpassDescription>(outputFile, indent+1, 1, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSubpassDescription>(outputFile, indent+1, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7986,7 +7978,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo &p
     else
     {
         AddrToString(outputFile, pstruct_in.pDependencies->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSubpassDependency>(outputFile, indent+1, 1, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSubpassDependency>(outputFile, indent+1, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress());  // CCP
     }
 }
 
@@ -8392,7 +8384,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageBlit &pstruct_in, 
     OutputString(outputFile, "2"); // DFX
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkImageBlit, srcOffsets)); // IYY
-    ArrayOfStructsToString<Decoded_VkOffset3D>(outputFile, indent+1, 0, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2 , false, pstruct_in.srcOffsets->GetAddress()); // EPB
+    ArrayOfStructsToString<Decoded_VkOffset3D>(outputFile, indent+1, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2 , false, pstruct_in.srcOffsets->GetAddress()); // EPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkImageSubresourceLayers dstSubresource
@@ -8410,7 +8402,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageBlit &pstruct_in, 
     OutputString(outputFile, "2"); // DFX
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkImageBlit, dstOffsets)); // IYY
-    ArrayOfStructsToString<Decoded_VkOffset3D>(outputFile, indent+1, 0, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2 , false, pstruct_in.dstOffsets->GetAddress()); // EPB
+    ArrayOfStructsToString<Decoded_VkOffset3D>(outputFile, indent+1, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2 , false, pstruct_in.dstOffsets->GetAddress()); // EPB
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkBufferImageCopy &pstruct_in, int indent, uint64_t base_addr)
@@ -8484,7 +8476,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkClearColorValue &pstruc
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkClearColorValue, float32)); // IYY
     ScalarValueToStringStruct vinfo_float32 = {false, false, false, nullptr};
-    ArrayOfScalarsToString<float>(outputFile, indent, 0, "float", pstruct_in.decoded_value->float32, "float32", 4, vinfo_float32); // JPC
+    ArrayOfScalarsToString<float>(outputFile, indent, "float", pstruct_in.decoded_value->float32, "float32", 4, vinfo_float32); // JPC
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: int32_t int32
@@ -8496,7 +8488,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkClearColorValue &pstruc
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkClearColorValue, int32)); // IYY
     ScalarValueToStringStruct vinfo_int32 = {false, false, false, nullptr};
-    ArrayOfScalarsToString<int32_t>(outputFile, indent, 0, "int32_t", pstruct_in.decoded_value->int32, "int32", 4, vinfo_int32); // JPC
+    ArrayOfScalarsToString<int32_t>(outputFile, indent, "int32_t", pstruct_in.decoded_value->int32, "int32", 4, vinfo_int32); // JPC
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t uint32
@@ -8508,7 +8500,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkClearColorValue &pstruc
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkClearColorValue, uint32)); // IYY
     ScalarValueToStringStruct vinfo_uint32 = {false, false, false, nullptr};
-    ArrayOfScalarsToString<uint32_t>(outputFile, indent, 0, "uint32_t", pstruct_in.decoded_value->uint32, "uint32", 4, vinfo_uint32); // JPC
+    ArrayOfScalarsToString<uint32_t>(outputFile, indent, "uint32_t", pstruct_in.decoded_value->uint32, "uint32", 4, vinfo_uint32); // JPC
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkClearDepthStencilValue &pstruct_in, int indent, uint64_t base_addr)
@@ -8992,7 +8984,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassBeginInfo &ps
     else
     {
         AddrToString(outputFile, pstruct_in.pClearValues->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkClearValue>(outputFile, indent+1, 1, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkClearValue>(outputFile, indent+1, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress());  // CCP
     }
 }
 
@@ -9595,7 +9587,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupRenderPassBe
     else
     {
         AddrToString(outputFile, pstruct_in.pDeviceRenderAreas->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, 1, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress());  // CCP
     }
 }
 
@@ -9705,7 +9697,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInfo &
     {
         AddrToString(outputFile, pstruct_in.pWaitSemaphoreDeviceIndices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pWaitSemaphoreDeviceIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pWaitSemaphoreDeviceIndices, "pWaitSemaphoreDeviceIndices", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphoreDeviceIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pWaitSemaphoreDeviceIndices, "pWaitSemaphoreDeviceIndices", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphoreDeviceIndices); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -9728,7 +9720,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInfo &
     {
         AddrToString(outputFile, pstruct_in.pCommandBufferDeviceMasks.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCommandBufferDeviceMasks = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pCommandBufferDeviceMasks, "pCommandBufferDeviceMasks", pstruct->commandBufferCount, vinfo_pCommandBufferDeviceMasks); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pCommandBufferDeviceMasks, "pCommandBufferDeviceMasks", pstruct->commandBufferCount, vinfo_pCommandBufferDeviceMasks); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -9751,7 +9743,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInfo &
     {
         AddrToString(outputFile, pstruct_in.pSignalSemaphoreDeviceIndices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSignalSemaphoreDeviceIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pSignalSemaphoreDeviceIndices, "pSignalSemaphoreDeviceIndices", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphoreDeviceIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pSignalSemaphoreDeviceIndices, "pSignalSemaphoreDeviceIndices", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphoreDeviceIndices); // AUC
     }
 }
 
@@ -9868,7 +9860,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindBufferMemoryDeviceG
     {
         AddrToString(outputFile, pstruct_in.pDeviceIndices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDeviceIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUC
     }
 }
 
@@ -9931,7 +9923,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindImageMemoryDeviceGr
     {
         AddrToString(outputFile, pstruct_in.pDeviceIndices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDeviceIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -9953,7 +9945,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindImageMemoryDeviceGr
     else
     {
         AddrToString(outputFile, pstruct_in.pSplitInstanceBindRegions->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, 1, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress());  // CCP
     }
 }
 
@@ -10013,7 +10005,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceGroupProp
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceGroupProperties, physicalDevices)); // IYY
     ScalarValueToStringStruct vinfo_physicalDevices = {true, false, false, nullptr};
-    ArrayToString<HandlePointerDecoder<VkPhysicalDevice>>(outputFile, indent, 0, "VkPhysicalDevice", &pstruct_in.physicalDevices, "physicalDevices", pstruct->physicalDeviceCount, vinfo_physicalDevices); // JPD
+    ArrayToString<HandlePointerDecoder<VkPhysicalDevice>>(outputFile, indent, "VkPhysicalDevice", &pstruct_in.physicalDevices, "physicalDevices", pstruct->physicalDeviceCount, vinfo_physicalDevices); // JPD
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkBool32 subsetAllocation
@@ -10082,7 +10074,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupDeviceCreate
     {
         AddrToString(outputFile, pstruct_in.pPhysicalDevices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPhysicalDevices = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkPhysicalDevice*", &pstruct_in.pPhysicalDevices, "pPhysicalDevices", pstruct->physicalDeviceCount, vinfo_pPhysicalDevices); // AUC
+        ArrayToString(outputFile, indent, "const VkPhysicalDevice*", &pstruct_in.pPhysicalDevices, "pPhysicalDevices", pstruct->physicalDeviceCount, vinfo_pPhysicalDevices); // AUC
     }
 }
 
@@ -10960,7 +10952,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassInputAttachme
     else
     {
         AddrToString(outputFile, pstruct_in.pAspectReferences->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkInputAttachmentAspectReference>(outputFile, indent+1, 1, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkInputAttachmentAspectReference>(outputFile, indent+1, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress());  // CCP
     }
 }
 
@@ -11120,7 +11112,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassMultiviewCrea
     {
         AddrToString(outputFile, pstruct_in.pViewMasks.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pViewMasks = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pViewMasks, "pViewMasks", pstruct->subpassCount, vinfo_pViewMasks); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pViewMasks, "pViewMasks", pstruct->subpassCount, vinfo_pViewMasks); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -11143,7 +11135,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassMultiviewCrea
     {
         AddrToString(outputFile, pstruct_in.pViewOffsets.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pViewOffsets = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const int32_t*", &pstruct_in.pViewOffsets, "pViewOffsets", pstruct->dependencyCount, vinfo_pViewOffsets); // AUC
+        ArrayToString(outputFile, indent, "const int32_t*", &pstruct_in.pViewOffsets, "pViewOffsets", pstruct->dependencyCount, vinfo_pViewOffsets); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -11166,7 +11158,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassMultiviewCrea
     {
         AddrToString(outputFile, pstruct_in.pCorrelationMasks.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCorrelationMasks = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pCorrelationMasks, "pCorrelationMasks", pstruct->correlationMaskCount, vinfo_pCorrelationMasks); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pCorrelationMasks, "pCorrelationMasks", pstruct->correlationMaskCount, vinfo_pCorrelationMasks); // AUC
     }
 }
 
@@ -12016,7 +12008,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorUpdateTemplat
     else
     {
         AddrToString(outputFile, pstruct_in.pDescriptorUpdateEntries->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDescriptorUpdateTemplateEntry>(outputFile, indent+1, 1, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDescriptorUpdateTemplateEntry>(outputFile, indent+1, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -12349,7 +12341,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPropert
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceIDProperties, deviceUUID)); // IYY
     ScalarValueToStringStruct vinfo_deviceUUID = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint8_t>>(outputFile, indent, 0, "uint8_t", &pstruct_in.deviceUUID, "deviceUUID", VK_UUID_SIZE, vinfo_deviceUUID); // JPE
+    ArrayToString<PointerDecoder<uint8_t>>(outputFile, indent, "uint8_t", &pstruct_in.deviceUUID, "deviceUUID", VK_UUID_SIZE, vinfo_deviceUUID); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint8_t driverUUID
@@ -12361,7 +12353,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPropert
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceIDProperties, driverUUID)); // IYY
     ScalarValueToStringStruct vinfo_driverUUID = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint8_t>>(outputFile, indent, 0, "uint8_t", &pstruct_in.driverUUID, "driverUUID", VK_UUID_SIZE, vinfo_driverUUID); // JPE
+    ArrayToString<PointerDecoder<uint8_t>>(outputFile, indent, "uint8_t", &pstruct_in.driverUUID, "driverUUID", VK_UUID_SIZE, vinfo_driverUUID); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint8_t deviceLUID
@@ -12373,7 +12365,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPropert
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceIDProperties, deviceLUID)); // IYY
     ScalarValueToStringStruct vinfo_deviceLUID = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint8_t>>(outputFile, indent, 0, "uint8_t", &pstruct_in.deviceLUID, "deviceLUID", VK_LUID_SIZE, vinfo_deviceLUID); // JPE
+    ArrayToString<PointerDecoder<uint8_t>>(outputFile, indent, "uint8_t", &pstruct_in.deviceLUID, "deviceLUID", VK_LUID_SIZE, vinfo_deviceLUID); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t deviceNodeMask
@@ -13239,7 +13231,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSwapchainCreateInfoKHR 
     {
         AddrToString(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -13346,7 +13338,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstruct
     {
         AddrToString(outputFile, pstruct_in.pWaitSemaphores.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pWaitSemaphores = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AUC
+        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -13369,7 +13361,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstruct
     {
         AddrToString(outputFile, pstruct_in.pSwapchains.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkSwapchainKHR*", &pstruct_in.pSwapchains, "pSwapchains", pstruct->swapchainCount, vinfo_pSwapchains); // AUC
+        ArrayToString(outputFile, indent, "const VkSwapchainKHR*", &pstruct_in.pSwapchains, "pSwapchains", pstruct->swapchainCount, vinfo_pSwapchains); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -13385,7 +13377,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstruct
     {
         AddrToString(outputFile, pstruct_in.pImageIndices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pImageIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pImageIndices, "pImageIndices", pstruct->swapchainCount, vinfo_pImageIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pImageIndices, "pImageIndices", pstruct->swapchainCount, vinfo_pImageIndices); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -13401,7 +13393,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstruct
     {
         AddrToString(outputFile, pstruct_in.pResults.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pResults = {false, true, false, EnumToStringVkResult};
-        ArrayToString(outputFile, indent, 0, "VkResult*", &pstruct_in.pResults, "pResults", pstruct->swapchainCount, vinfo_pResults); // AUC
+        ArrayToString(outputFile, indent, "VkResult*", &pstruct_in.pResults, "pResults", pstruct->swapchainCount, vinfo_pResults); // AUC
     }
 }
 
@@ -13630,7 +13622,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupPresentCapab
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkDeviceGroupPresentCapabilitiesKHR, presentMask)); // IYY
     ScalarValueToStringStruct vinfo_presentMask = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, 0, "uint32_t", &pstruct_in.presentMask, "presentMask", VK_MAX_DEVICE_GROUP_SIZE, vinfo_presentMask); // JPE
+    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.presentMask, "presentMask", VK_MAX_DEVICE_GROUP_SIZE, vinfo_presentMask); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkDeviceGroupPresentModeFlagsKHR modes
@@ -13699,7 +13691,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupPresentInfoK
     {
         AddrToString(outputFile, pstruct_in.pDeviceMasks.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDeviceMasks = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pDeviceMasks, "pDeviceMasks", pstruct->swapchainCount, vinfo_pDeviceMasks); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceMasks, "pDeviceMasks", pstruct->swapchainCount, vinfo_pDeviceMasks); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -14999,7 +14991,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     {
         AddrToString(outputFile, pstruct_in.pAcquireSyncs.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pAcquireSyncs = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -15015,7 +15007,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     {
         AddrToString(outputFile, pstruct_in.pAcquireKeys.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pAcquireKeys = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -15031,7 +15023,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     {
         AddrToString(outputFile, pstruct_in.pAcquireTimeouts.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pAcquireTimeouts = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pAcquireTimeouts, "pAcquireTimeouts", pstruct->acquireCount, vinfo_pAcquireTimeouts); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pAcquireTimeouts, "pAcquireTimeouts", pstruct->acquireCount, vinfo_pAcquireTimeouts); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -15054,7 +15046,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     {
         AddrToString(outputFile, pstruct_in.pReleaseSyncs.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pReleaseSyncs = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -15070,7 +15062,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     {
         AddrToString(outputFile, pstruct_in.pReleaseKeys.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pReleaseKeys = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUC
     }
 }
 
@@ -15301,7 +15293,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInfoKHR
     {
         AddrToString(outputFile, pstruct_in.pWaitSemaphoreValues.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pWaitSemaphoreValues = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValuesCount, vinfo_pWaitSemaphoreValues); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValuesCount, vinfo_pWaitSemaphoreValues); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -15324,7 +15316,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInfoKHR
     {
         AddrToString(outputFile, pstruct_in.pSignalSemaphoreValues.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSignalSemaphoreValues = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValuesCount, vinfo_pSignalSemaphoreValues); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValuesCount, vinfo_pSignalSemaphoreValues); // AUC
     }
 }
 
@@ -15673,7 +15665,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentRegionKHR &pstru
     else
     {
         AddrToString(outputFile, pstruct_in.pRectangles->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRectLayerKHR>(outputFile, indent+1, 1, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRectLayerKHR>(outputFile, indent+1, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress());  // CCP
     }
 }
 
@@ -15735,7 +15727,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentRegionsKHR &pstr
     else
     {
         AddrToString(outputFile, pstruct_in.pRegions->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPresentRegionKHR>(outputFile, indent+1, 1, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPresentRegionKHR>(outputFile, indent+1, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress());  // CCP
     }
 }
 
@@ -15880,7 +15872,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFramebufferAttachmentIm
     {
         AddrToString(outputFile, pstruct_in.pViewFormats.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pViewFormats = {false, true, false, EnumToStringVkFormat};
-        ArrayToString(outputFile, indent, 0, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUC
+        ArrayToString(outputFile, indent, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUC
     }
 }
 
@@ -15942,7 +15934,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFramebufferAttachmentsC
     else
     {
         AddrToString(outputFile, pstruct_in.pAttachmentImageInfos->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkFramebufferAttachmentImageInfoKHR>(outputFile, indent+1, 1, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkFramebufferAttachmentImageInfoKHR>(outputFile, indent+1, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress());  // CCP
     }
 }
 
@@ -16005,7 +15997,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassAttachmentBeg
     {
         AddrToString(outputFile, pstruct_in.pAttachments.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pAttachments = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AUC
+        ArrayToString(outputFile, indent, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AUC
     }
 }
 
@@ -16282,7 +16274,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription2KHR 
     else
     {
         AddrToString(outputFile, pstruct_in.pInputAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, 1, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16304,7 +16296,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription2KHR 
     else
     {
         AddrToString(outputFile, pstruct_in.pColorAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, 1, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16319,7 +16311,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription2KHR 
     else
     {
         AddrToString(outputFile, pstruct_in.pResolveAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, 1, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16358,7 +16350,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription2KHR 
     {
         AddrToString(outputFile, pstruct_in.pPreserveAttachments.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPreserveAttachments = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUC
     }
 }
 
@@ -16523,7 +16515,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2KH
     else
     {
         AddrToString(outputFile, pstruct_in.pAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentDescription2KHR>(outputFile, indent+1, 1, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentDescription2KHR>(outputFile, indent+1, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16545,7 +16537,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2KH
     else
     {
         AddrToString(outputFile, pstruct_in.pSubpasses->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSubpassDescription2KHR>(outputFile, indent+1, 1, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSubpassDescription2KHR>(outputFile, indent+1, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16567,7 +16559,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2KH
     else
     {
         AddrToString(outputFile, pstruct_in.pDependencies->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSubpassDependency2KHR>(outputFile, indent+1, 1, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSubpassDependency2KHR>(outputFile, indent+1, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16590,7 +16582,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2KH
     {
         AddrToString(outputFile, pstruct_in.pCorrelatedViewMasks.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCorrelatedViewMasks = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pCorrelatedViewMasks, "pCorrelatedViewMasks", pstruct->correlatedViewMaskCount, vinfo_pCorrelatedViewMasks); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pCorrelatedViewMasks, "pCorrelatedViewMasks", pstruct->correlatedViewMaskCount, vinfo_pCorrelatedViewMasks); // AUC
     }
 }
 
@@ -17526,7 +17518,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageFormatListCreateIn
     {
         AddrToString(outputFile, pstruct_in.pViewFormats.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pViewFormats = {false, true, false, EnumToStringVkFormat};
-        ArrayToString(outputFile, indent, 0, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUC
+        ArrayToString(outputFile, indent, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUC
     }
 }
 
@@ -17839,7 +17831,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDriverPro
     OutputString(outputFile, "driverName:                     "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     ScalarValueToStringStruct vinfo_driverName = {false, false, false, nullptr};
-    ArrayOfScalarsToString<char>(outputFile, indent, 0, "char", pstruct_in.driverName.GetPointer(), "driverName", VK_MAX_DRIVER_NAME_SIZE_KHR, vinfo_driverName); // JPB
+    ArrayOfScalarsToString<char>(outputFile, indent, "char", pstruct_in.driverName.GetPointer(), "driverName", VK_MAX_DRIVER_NAME_SIZE_KHR, vinfo_driverName); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: char driverInfo
@@ -17847,7 +17839,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDriverPro
     OutputString(outputFile, "driverInfo:                     "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     ScalarValueToStringStruct vinfo_driverInfo = {false, false, false, nullptr};
-    ArrayOfScalarsToString<char>(outputFile, indent, 0, "char", pstruct_in.driverInfo.GetPointer(), "driverInfo", VK_MAX_DRIVER_INFO_SIZE_KHR, vinfo_driverInfo); // JPB
+    ArrayOfScalarsToString<char>(outputFile, indent, "char", pstruct_in.driverInfo.GetPointer(), "driverInfo", VK_MAX_DRIVER_INFO_SIZE_KHR, vinfo_driverInfo); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkConformanceVersionKHR conformanceVersion
@@ -18376,7 +18368,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkTimelineSemaphoreSubmit
     {
         AddrToString(outputFile, pstruct_in.pWaitSemaphoreValues.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pWaitSemaphoreValues = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValueCount, vinfo_pWaitSemaphoreValues); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValueCount, vinfo_pWaitSemaphoreValues); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -18399,7 +18391,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkTimelineSemaphoreSubmit
     {
         AddrToString(outputFile, pstruct_in.pSignalSemaphoreValues.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSignalSemaphoreValues = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValueCount, vinfo_pSignalSemaphoreValues); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValueCount, vinfo_pSignalSemaphoreValues); // AUC
     }
 }
 
@@ -18469,7 +18461,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKHR &p
     {
         AddrToString(outputFile, pstruct_in.pSemaphores.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSemaphores = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkSemaphore*", &pstruct_in.pSemaphores, "pSemaphores", pstruct->semaphoreCount, vinfo_pSemaphores); // AUC
+        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pSemaphores, "pSemaphores", pstruct->semaphoreCount, vinfo_pSemaphores); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -18485,7 +18477,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKHR &p
     {
         AddrToString(outputFile, pstruct_in.pValues.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pValues = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pValues, "pValues", pstruct->semaphoreCount, vinfo_pValues); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pValues, "pValues", pstruct->semaphoreCount, vinfo_pValues); // AUC
     }
 }
 
@@ -18844,7 +18836,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutablePrope
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     ScalarValueToStringStruct vinfo_name = {false, false, false, nullptr};
-    ArrayOfScalarsToString<char>(outputFile, indent, 0, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
+    ArrayOfScalarsToString<char>(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: char description
@@ -18852,7 +18844,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutablePrope
     OutputString(outputFile, "description:                    "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     ScalarValueToStringStruct vinfo_description = {false, false, false, nullptr};
-    ArrayOfScalarsToString<char>(outputFile, indent, 0, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
+    ArrayOfScalarsToString<char>(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t subgroupSize
@@ -18999,7 +18991,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableStati
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     ScalarValueToStringStruct vinfo_name = {false, false, false, nullptr};
-    ArrayOfScalarsToString<char>(outputFile, indent, 0, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
+    ArrayOfScalarsToString<char>(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: char description
@@ -19007,7 +18999,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableStati
     OutputString(outputFile, "description:                    "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     ScalarValueToStringStruct vinfo_description = {false, false, false, nullptr};
-    ArrayOfScalarsToString<char>(outputFile, indent, 0, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
+    ArrayOfScalarsToString<char>(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkPipelineExecutableStatisticFormatKHR format
@@ -19073,7 +19065,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableInter
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     ScalarValueToStringStruct vinfo_name = {false, false, false, nullptr};
-    ArrayOfScalarsToString<char>(outputFile, indent, 0, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
+    ArrayOfScalarsToString<char>(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: char description
@@ -19081,7 +19073,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableInter
     OutputString(outputFile, "description:                    "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     ScalarValueToStringStruct vinfo_description = {false, false, false, nullptr};
-    ArrayOfScalarsToString<char>(outputFile, indent, 0, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
+    ArrayOfScalarsToString<char>(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkBool32 isText
@@ -19110,7 +19102,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableInter
     {
         AddrToString(outputFile, pstruct_in.pData.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // PRC
     }
 }
 
@@ -19379,7 +19371,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugMarkerObjectTagInf
     {
         AddrToString(outputFile, pstruct_in.pTag.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pTag = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const void*", &pstruct_in.pTag, "pTag", pstruct->tagSize, vinfo_pTag); // PRC
+        ArrayToString(outputFile, indent, "const void*", &pstruct_in.pTag, "pTag", pstruct->tagSize, vinfo_pTag); // PRC
     }
 }
 
@@ -19439,7 +19431,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugMarkerMarkerInfoEX
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkDebugMarkerMarkerInfoEXT, color)); // IYY
     ScalarValueToStringStruct vinfo_color = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, 0, "float", &pstruct_in.color, "color", 4, vinfo_color); // JPE
+    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.color, "color", 4, vinfo_color); // JPE
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDedicatedAllocationImageCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
@@ -20025,7 +20017,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkShaderStatisticsInfoAMD
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkShaderStatisticsInfoAMD, computeWorkGroupSize)); // IYY
     ScalarValueToStringStruct vinfo_computeWorkGroupSize = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, 0, "uint32_t", &pstruct_in.computeWorkGroupSize, "computeWorkGroupSize", 3, vinfo_computeWorkGroupSize); // JPE
+    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.computeWorkGroupSize, "computeWorkGroupSize", 3, vinfo_computeWorkGroupSize); // JPE
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkStreamDescriptorSurfaceCreateInfoGGP &pstruct_in, int indent, uint64_t base_addr)
@@ -20443,7 +20435,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     {
         AddrToString(outputFile, pstruct_in.pAcquireSyncs.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pAcquireSyncs = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -20459,7 +20451,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     {
         AddrToString(outputFile, pstruct_in.pAcquireKeys.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pAcquireKeys = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -20475,7 +20467,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     {
         AddrToString(outputFile, pstruct_in.pAcquireTimeoutMilliseconds.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pAcquireTimeoutMilliseconds = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pAcquireTimeoutMilliseconds, "pAcquireTimeoutMilliseconds", pstruct->acquireCount, vinfo_pAcquireTimeoutMilliseconds); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pAcquireTimeoutMilliseconds, "pAcquireTimeoutMilliseconds", pstruct->acquireCount, vinfo_pAcquireTimeoutMilliseconds); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -20498,7 +20490,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     {
         AddrToString(outputFile, pstruct_in.pReleaseSyncs.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pReleaseSyncs = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -20514,7 +20506,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     {
         AddrToString(outputFile, pstruct_in.pReleaseKeys.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pReleaseKeys = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUC
     }
 }
 
@@ -20577,7 +20569,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkValidationFlagsEXT &pst
     {
         AddrToString(outputFile, pstruct_in.pDisabledValidationChecks.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDisabledValidationChecks = {false, true, false, EnumToStringVkValidationCheckEXT};
-        ArrayToString(outputFile, indent, 0, "const VkValidationCheckEXT*", &pstruct_in.pDisabledValidationChecks, "pDisabledValidationChecks", pstruct->disabledValidationCheckCount, vinfo_pDisabledValidationChecks); // AUC
+        ArrayToString(outputFile, indent, "const VkValidationCheckEXT*", &pstruct_in.pDisabledValidationChecks, "pDisabledValidationChecks", pstruct->disabledValidationCheckCount, vinfo_pDisabledValidationChecks); // AUC
     }
 }
 
@@ -21220,7 +21212,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkIndirectCommandsLayoutC
     else
     {
         AddrToString(outputFile, pstruct_in.pTokens->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkIndirectCommandsLayoutTokenNVX>(outputFile, indent+1, 1, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkIndirectCommandsLayoutTokenNVX>(outputFile, indent+1, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress());  // CCP
     }
 }
 
@@ -21296,7 +21288,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCmdProcessCommandsInfoN
     else
     {
         AddrToString(outputFile, pstruct_in.pIndirectCommandsTokens->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkIndirectCommandsTokenNVX>(outputFile, indent+1, 1, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkIndirectCommandsTokenNVX>(outputFile, indent+1, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -21462,7 +21454,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTableCreateInfoNV
     {
         AddrToString(outputFile, pstruct_in.pObjectEntryTypes.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pObjectEntryTypes = {false, true, false, EnumToStringVkObjectEntryTypeNVX};
-        ArrayToString(outputFile, indent, 0, "const VkObjectEntryTypeNVX*", &pstruct_in.pObjectEntryTypes, "pObjectEntryTypes", pstruct->objectCount, vinfo_pObjectEntryTypes); // AUC
+        ArrayToString(outputFile, indent, "const VkObjectEntryTypeNVX*", &pstruct_in.pObjectEntryTypes, "pObjectEntryTypes", pstruct->objectCount, vinfo_pObjectEntryTypes); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -21478,7 +21470,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTableCreateInfoNV
     {
         AddrToString(outputFile, pstruct_in.pObjectEntryCounts.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pObjectEntryCounts = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pObjectEntryCounts, "pObjectEntryCounts", pstruct->objectCount, vinfo_pObjectEntryCounts); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pObjectEntryCounts, "pObjectEntryCounts", pstruct->objectCount, vinfo_pObjectEntryCounts); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -21494,7 +21486,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTableCreateInfoNV
     {
         AddrToString(outputFile, pstruct_in.pObjectEntryUsageFlags.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pObjectEntryUsageFlags = {false, false, true, EnumToStringVkObjectEntryUsageFlagBitsNVX};
-        ArrayToString(outputFile, indent, 0, "const VkObjectEntryUsageFlagsNVX*", &pstruct_in.pObjectEntryUsageFlags, "pObjectEntryUsageFlags", pstruct->objectCount, vinfo_pObjectEntryUsageFlags); // AUB
+        ArrayToString(outputFile, indent, "const VkObjectEntryUsageFlagsNVX*", &pstruct_in.pObjectEntryUsageFlags, "pObjectEntryUsageFlags", pstruct->objectCount, vinfo_pObjectEntryUsageFlags); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -21843,7 +21835,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportWScalin
     else
     {
         AddrToString(outputFile, pstruct_in.pViewportWScalings->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkViewportWScalingNV>(outputFile, indent+1, 1, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkViewportWScalingNV>(outputFile, indent+1, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress());  // CCP
     }
 }
 
@@ -22308,7 +22300,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOGLE 
     else
     {
         AddrToString(outputFile, pstruct_in.pTimes->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPresentTimeGOOGLE>(outputFile, indent+1, 1, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPresentTimeGOOGLE>(outputFile, indent+1, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress());  // CCP
     }
 }
 
@@ -22474,7 +22466,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportSwizzle
     else
     {
         AddrToString(outputFile, pstruct_in.pViewportSwizzles->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkViewportSwizzleNV>(outputFile, indent+1, 1, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkViewportSwizzleNV>(outputFile, indent+1, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress());  // CCP
     }
 }
 
@@ -22600,7 +22592,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineDiscardRectangl
     else
     {
         AddrToString(outputFile, pstruct_in.pDiscardRectangles->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, 1, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress());  // CCP
     }
 }
 
@@ -23261,7 +23253,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsObjectTagInfo
     {
         AddrToString(outputFile, pstruct_in.pTag.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pTag = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const void*", &pstruct_in.pTag, "pTag", pstruct->tagSize, vinfo_pTag); // PRC
+        ArrayToString(outputFile, indent, "const void*", &pstruct_in.pTag, "pTag", pstruct->tagSize, vinfo_pTag); // PRC
     }
 }
 
@@ -23321,7 +23313,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsLabelEXT &pst
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkDebugUtilsLabelEXT, color)); // IYY
     ScalarValueToStringStruct vinfo_color = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, 0, "float", &pstruct_in.color, "color", 4, vinfo_color); // JPE
+    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.color, "color", 4, vinfo_color); // JPE
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCallbackDataEXT &pstruct_in, int indent, uint64_t base_addr)
@@ -23410,7 +23402,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCall
     else
     {
         AddrToString(outputFile, pstruct_in.pQueueLabels->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent+1, 1, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -23432,7 +23424,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCall
     else
     {
         AddrToString(outputFile, pstruct_in.pCmdBufLabels->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent+1, 1, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -23454,7 +23446,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCall
     else
     {
         AddrToString(outputFile, pstruct_in.pObjects->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDebugUtilsObjectNameInfoEXT>(outputFile, indent+1, 1, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDebugUtilsObjectNameInfoEXT>(outputFile, indent+1, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress());  // CCP
     }
 }
 
@@ -24192,7 +24184,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSetInlin
     {
         AddrToString(outputFile, pstruct_in.pData.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "const void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // PRC
     }
 }
 
@@ -24342,7 +24334,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSampleLocationsInfoEXT 
     else
     {
         AddrToString(outputFile, pstruct_in.pSampleLocations->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSampleLocationEXT>(outputFile, indent+1, 1, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSampleLocationEXT>(outputFile, indent+1, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress());  // CCP
     }
 }
 
@@ -24452,7 +24444,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassSampleLocatio
     else
     {
         AddrToString(outputFile, pstruct_in.pAttachmentInitialSampleLocations->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentSampleLocationsEXT>(outputFile, indent+1, 1, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentSampleLocationsEXT>(outputFile, indent+1, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -24474,7 +24466,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassSampleLocatio
     else
     {
         AddrToString(outputFile, pstruct_in.pPostSubpassSampleLocations->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSubpassSampleLocationsEXT>(outputFile, indent+1, 1, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSubpassSampleLocationsEXT>(outputFile, indent+1, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress());  // CCP
     }
 }
 
@@ -24595,7 +24587,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSampleLoc
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceSampleLocationsPropertiesEXT, sampleLocationCoordinateRange)); // IYY
     ScalarValueToStringStruct vinfo_sampleLocationCoordinateRange = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, 0, "float", &pstruct_in.sampleLocationCoordinateRange, "sampleLocationCoordinateRange", 2, vinfo_sampleLocationCoordinateRange); // JPE
+    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.sampleLocationCoordinateRange, "sampleLocationCoordinateRange", 2, vinfo_sampleLocationCoordinateRange); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t sampleLocationSubPixelBits
@@ -24996,7 +24988,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCoverageModulat
     {
         AddrToString(outputFile, pstruct_in.pCoverageModulationTable.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCoverageModulationTable = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const float*", &pstruct_in.pCoverageModulationTable, "pCoverageModulationTable", pstruct->coverageModulationTableCount, vinfo_pCoverageModulationTable); // AUC
+        ArrayToString(outputFile, indent, "const float*", &pstruct_in.pCoverageModulationTable, "pCoverageModulationTable", pstruct->coverageModulationTableCount, vinfo_pCoverageModulationTable); // AUC
     }
 }
 
@@ -25190,7 +25182,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDrmFormatModifierProper
     else
     {
         AddrToString(outputFile, pstruct_in.pDrmFormatModifierProperties->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDrmFormatModifierPropertiesEXT>(outputFile, indent+1, 1, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDrmFormatModifierPropertiesEXT>(outputFile, indent+1, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress());  // CCP
     }
 }
 
@@ -25270,7 +25262,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImageDrmF
     {
         AddrToString(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUC
     }
 }
 
@@ -25333,7 +25325,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageDrmFormatModifierL
     {
         AddrToString(outputFile, pstruct_in.pDrmFormatModifiers.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDrmFormatModifiers = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pDrmFormatModifiers, "pDrmFormatModifiers", pstruct->drmFormatModifierCount, vinfo_pDrmFormatModifiers); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pDrmFormatModifiers, "pDrmFormatModifiers", pstruct->drmFormatModifierCount, vinfo_pDrmFormatModifiers); // AUC
     }
 }
 
@@ -25402,7 +25394,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageDrmFormatModifierE
     else
     {
         AddrToString(outputFile, pstruct_in.pPlaneLayouts->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSubresourceLayout>(outputFile, indent+1, 1, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSubresourceLayout>(outputFile, indent+1, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress());  // CCP
     }
 }
 
@@ -25519,7 +25511,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkValidationCacheCreateIn
     {
         AddrToString(outputFile, pstruct_in.pInitialData.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pInitialData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const void*", &pstruct_in.pInitialData, "pInitialData", pstruct->initialDataSize, vinfo_pInitialData); // PRC
+        ArrayToString(outputFile, indent, "const void*", &pstruct_in.pInitialData, "pInitialData", pstruct->initialDataSize, vinfo_pInitialData); // PRC
     }
 }
 
@@ -25629,7 +25621,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBind
     {
         AddrToString(outputFile, pstruct_in.pBindingFlags.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pBindingFlags = {false, false, true, EnumToStringVkDescriptorBindingFlagBitsEXT};
-        ArrayToString(outputFile, indent, 0, "const VkDescriptorBindingFlagsEXT*", &pstruct_in.pBindingFlags, "pBindingFlags", pstruct->bindingCount, vinfo_pBindingFlags); // AUB
+        ArrayToString(outputFile, indent, "const VkDescriptorBindingFlagsEXT*", &pstruct_in.pBindingFlags, "pBindingFlags", pstruct->bindingCount, vinfo_pBindingFlags); // AUB
     }
 }
 
@@ -26073,7 +26065,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetVariableDe
     {
         AddrToString(outputFile, pstruct_in.pDescriptorCounts.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDescriptorCounts = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pDescriptorCounts, "pDescriptorCounts", pstruct->descriptorSetCount, vinfo_pDescriptorCounts); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDescriptorCounts, "pDescriptorCounts", pstruct->descriptorSetCount, vinfo_pDescriptorCounts); // AUC
     }
 }
 
@@ -26153,7 +26145,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkShadingRatePaletteNV &p
     {
         AddrToString(outputFile, pstruct_in.pShadingRatePaletteEntries.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pShadingRatePaletteEntries = {false, true, false, EnumToStringVkShadingRatePaletteEntryNV};
-        ArrayToString(outputFile, indent, 0, "const VkShadingRatePaletteEntryNV*", &pstruct_in.pShadingRatePaletteEntries, "pShadingRatePaletteEntries", pstruct->shadingRatePaletteEntryCount, vinfo_pShadingRatePaletteEntries); // AUC
+        ArrayToString(outputFile, indent, "const VkShadingRatePaletteEntryNV*", &pstruct_in.pShadingRatePaletteEntries, "pShadingRatePaletteEntries", pstruct->shadingRatePaletteEntryCount, vinfo_pShadingRatePaletteEntries); // AUC
     }
 }
 
@@ -26222,7 +26214,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportShading
     else
     {
         AddrToString(outputFile, pstruct_in.pShadingRatePalettes->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkShadingRatePaletteNV>(outputFile, indent+1, 1, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkShadingRatePaletteNV>(outputFile, indent+1, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress());  // CCP
     }
 }
 
@@ -26417,7 +26409,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCoarseSampleOrderCustom
     else
     {
         AddrToString(outputFile, pstruct_in.pSampleLocations->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkCoarseSampleLocationNV>(outputFile, indent+1, 1, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkCoarseSampleLocationNV>(outputFile, indent+1, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress());  // CCP
     }
 }
 
@@ -26489,7 +26481,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportCoarseS
     else
     {
         AddrToString(outputFile, pstruct_in.pCustomSampleOrders->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent+1, 1, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent+1, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress());  // CCP
     }
 }
 
@@ -26636,7 +26628,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRayTracingPipelineCreat
     else
     {
         AddrToString(outputFile, pstruct_in.pStages->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent+1, 1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -26658,7 +26650,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRayTracingPipelineCreat
     else
     {
         AddrToString(outputFile, pstruct_in.pGroups->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRayTracingShaderGroupCreateInfoNV>(outputFile, indent+1, 1, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRayTracingShaderGroupCreateInfoNV>(outputFile, indent+1, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress());  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -27051,7 +27043,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAccelerationStructureIn
     else
     {
         AddrToString(outputFile, pstruct_in.pGeometries->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkGeometryNV>(outputFile, indent+1, 1, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkGeometryNV>(outputFile, indent+1, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress());  // CCP
     }
 }
 
@@ -27189,7 +27181,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindAccelerationStructu
     {
         AddrToString(outputFile, pstruct_in.pDeviceIndices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDeviceIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUC
     }
 }
 
@@ -27252,7 +27244,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSetAccel
     {
         AddrToString(outputFile, pstruct_in.pAccelerationStructures.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pAccelerationStructures = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkAccelerationStructureNV*", &pstruct_in.pAccelerationStructures, "pAccelerationStructures", pstruct->accelerationStructureCount, vinfo_pAccelerationStructures); // AUC
+        ArrayToString(outputFile, indent, "const VkAccelerationStructureNV*", &pstruct_in.pAccelerationStructures, "pAccelerationStructures", pstruct->accelerationStructureCount, vinfo_pAccelerationStructures); // AUC
     }
 }
 
@@ -28229,7 +28221,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineVertexInputDivi
     else
     {
         AddrToString(outputFile, pstruct_in.pVertexBindingDivisors->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkVertexInputBindingDivisorDescriptionEXT>(outputFile, indent+1, 1, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkVertexInputBindingDivisorDescriptionEXT>(outputFile, indent+1, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress());  // CCP
     }
 }
 
@@ -28432,7 +28424,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCreationFeedbac
     else
     {
         AddrToString(outputFile, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPipelineCreationFeedbackEXT>(outputFile, indent+1, 1, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPipelineCreationFeedbackEXT>(outputFile, indent+1, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress());  // CCP
     }
 }
 
@@ -28607,7 +28599,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShade
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceMeshShaderPropertiesNV, maxTaskWorkGroupSize)); // IYY
     ScalarValueToStringStruct vinfo_maxTaskWorkGroupSize = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, 0, "uint32_t", &pstruct_in.maxTaskWorkGroupSize, "maxTaskWorkGroupSize", 3, vinfo_maxTaskWorkGroupSize); // JPE
+    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.maxTaskWorkGroupSize, "maxTaskWorkGroupSize", 3, vinfo_maxTaskWorkGroupSize); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t maxTaskTotalMemorySize
@@ -28640,7 +28632,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShade
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceMeshShaderPropertiesNV, maxMeshWorkGroupSize)); // IYY
     ScalarValueToStringStruct vinfo_maxMeshWorkGroupSize = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, 0, "uint32_t", &pstruct_in.maxMeshWorkGroupSize, "maxMeshWorkGroupSize", 3, vinfo_maxMeshWorkGroupSize); // JPE
+    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.maxMeshWorkGroupSize, "maxMeshWorkGroupSize", 3, vinfo_maxMeshWorkGroupSize); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t maxMeshTotalMemorySize
@@ -28861,7 +28853,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportExclusi
     else
     {
         AddrToString(outputFile, pstruct_in.pExclusiveScissors->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, 1, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress());  // CCP
     }
 }
 
@@ -30267,7 +30259,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryBud
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceMemoryBudgetPropertiesEXT, heapBudget)); // IYY
     ScalarValueToStringStruct vinfo_heapBudget = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<VkDeviceSize>>(outputFile, indent, 0, "VkDeviceSize", &pstruct_in.heapBudget, "heapBudget", VK_MAX_MEMORY_HEAPS, vinfo_heapBudget); // JPE
+    ArrayToString<PointerDecoder<VkDeviceSize>>(outputFile, indent, "VkDeviceSize", &pstruct_in.heapBudget, "heapBudget", VK_MAX_MEMORY_HEAPS, vinfo_heapBudget); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkDeviceSize heapUsage
@@ -30279,7 +30271,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryBud
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceMemoryBudgetPropertiesEXT, heapUsage)); // IYY
     ScalarValueToStringStruct vinfo_heapUsage = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<VkDeviceSize>>(outputFile, indent, 0, "VkDeviceSize", &pstruct_in.heapUsage, "heapUsage", VK_MAX_MEMORY_HEAPS, vinfo_heapUsage); // JPE
+    ArrayToString<PointerDecoder<VkDeviceSize>>(outputFile, indent, "VkDeviceSize", &pstruct_in.heapUsage, "heapUsage", VK_MAX_MEMORY_HEAPS, vinfo_heapUsage); // JPE
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPriorityFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
@@ -30684,7 +30676,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkValidationFeaturesEXT &
     {
         AddrToString(outputFile, pstruct_in.pEnabledValidationFeatures.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pEnabledValidationFeatures = {false, true, false, EnumToStringVkValidationFeatureEnableEXT};
-        ArrayToString(outputFile, indent, 0, "const VkValidationFeatureEnableEXT*", &pstruct_in.pEnabledValidationFeatures, "pEnabledValidationFeatures", pstruct->enabledValidationFeatureCount, vinfo_pEnabledValidationFeatures); // AUC
+        ArrayToString(outputFile, indent, "const VkValidationFeatureEnableEXT*", &pstruct_in.pEnabledValidationFeatures, "pEnabledValidationFeatures", pstruct->enabledValidationFeatureCount, vinfo_pEnabledValidationFeatures); // AUC
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -30707,7 +30699,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkValidationFeaturesEXT &
     {
         AddrToString(outputFile, pstruct_in.pDisabledValidationFeatures.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDisabledValidationFeatures = {false, true, false, EnumToStringVkValidationFeatureDisableEXT};
-        ArrayToString(outputFile, indent, 0, "const VkValidationFeatureDisableEXT*", &pstruct_in.pDisabledValidationFeatures, "pDisabledValidationFeatures", pstruct->disabledValidationFeatureCount, vinfo_pDisabledValidationFeatures); // AUC
+        ArrayToString(outputFile, indent, "const VkValidationFeatureDisableEXT*", &pstruct_in.pDisabledValidationFeatures, "pDisabledValidationFeatures", pstruct->disabledValidationFeatureCount, vinfo_pDisabledValidationFeatures); // AUC
     }
 }
 
