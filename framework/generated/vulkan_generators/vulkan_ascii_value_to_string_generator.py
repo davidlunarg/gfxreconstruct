@@ -163,11 +163,11 @@ class ValueToString(BaseGenerator):
                     self.wc('        OutputString(outputFile, " (Union)");')
                 self.wc('        OutputString(outputFile, ":");')
                 if isFuncArg:
-                    self.wc('        StructureToString(outputFile, *' + value.name + '.GetMetaStructPointer(), indent+1,' +
+                    self.wc('        StructureToString(outputFile, *' + value.name + '.GetMetaStructPointer(), indent+1, ' +
                                          value.name + '.GetAddress()); // GLM')
                 else:
-                    self.wc('        StructureToString(outputFile, *' + pstruct_in + value.name + '->GetMetaStructPointer(), indent+1,' +
-                                         ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // GLN')
+                    self.wc('        StructureToString(outputFile, *' + pstruct_in + value.name + '->GetMetaStructPointer(), indent+1, ' +
+                                         'base_addr + offsetof(' + structName + ', ' + value.name + ')); // GLN')
             else:
                 if (value.baseType == "wchar_t"):
                     if isFuncArg:
