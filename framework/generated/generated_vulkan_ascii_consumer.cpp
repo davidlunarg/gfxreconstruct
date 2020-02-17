@@ -59,7 +59,7 @@ void VulkanAsciiConsumer::Process_vkCreateInstance(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -75,7 +75,7 @@ void VulkanAsciiConsumer::Process_vkCreateInstance(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -125,7 +125,7 @@ void VulkanAsciiConsumer::Process_vkDestroyInstance(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -214,7 +214,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures(
     {
         AddrToString(outputFile, pFeatures.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFeatures.GetMetaStructPointer(), indent+1,pFeatures.GetAddress()); // GLM
+        StructureToString(outputFile, *pFeatures.GetMetaStructPointer(), indent+1, pFeatures.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -260,7 +260,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     {
         AddrToString(outputFile, pFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1,pFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1, pFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -347,7 +347,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     {
         AddrToString(outputFile, pImageFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1,pImageFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1, pImageFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -382,7 +382,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties(
     {
         AddrToString(outputFile, pProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1,pProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -467,7 +467,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     {
         AddrToString(outputFile, pMemoryProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1,pMemoryProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1, pMemoryProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -507,7 +507,7 @@ void VulkanAsciiConsumer::Process_vkCreateDevice(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -523,7 +523,7 @@ void VulkanAsciiConsumer::Process_vkCreateDevice(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -573,7 +573,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDevice(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -758,7 +758,7 @@ void VulkanAsciiConsumer::Process_vkAllocateMemory(
     {
         AddrToString(outputFile, pAllocateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent+1,pAllocateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent+1, pAllocateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -774,7 +774,7 @@ void VulkanAsciiConsumer::Process_vkAllocateMemory(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -832,7 +832,7 @@ void VulkanAsciiConsumer::Process_vkFreeMemory(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1192,7 +1192,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements(
     {
         AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1235,7 +1235,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements(
     {
         AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1488,7 +1488,7 @@ void VulkanAsciiConsumer::Process_vkCreateFence(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1504,7 +1504,7 @@ void VulkanAsciiConsumer::Process_vkCreateFence(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1562,7 +1562,7 @@ void VulkanAsciiConsumer::Process_vkDestroyFence(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1739,7 +1739,7 @@ void VulkanAsciiConsumer::Process_vkCreateSemaphore(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1755,7 +1755,7 @@ void VulkanAsciiConsumer::Process_vkCreateSemaphore(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1813,7 +1813,7 @@ void VulkanAsciiConsumer::Process_vkDestroySemaphore(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1853,7 +1853,7 @@ void VulkanAsciiConsumer::Process_vkCreateEvent(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1869,7 +1869,7 @@ void VulkanAsciiConsumer::Process_vkCreateEvent(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1927,7 +1927,7 @@ void VulkanAsciiConsumer::Process_vkDestroyEvent(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2054,7 +2054,7 @@ void VulkanAsciiConsumer::Process_vkCreateQueryPool(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2070,7 +2070,7 @@ void VulkanAsciiConsumer::Process_vkCreateQueryPool(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2128,7 +2128,7 @@ void VulkanAsciiConsumer::Process_vkDestroyQueryPool(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2254,7 +2254,7 @@ void VulkanAsciiConsumer::Process_vkCreateBuffer(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2270,7 +2270,7 @@ void VulkanAsciiConsumer::Process_vkCreateBuffer(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2328,7 +2328,7 @@ void VulkanAsciiConsumer::Process_vkDestroyBuffer(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2368,7 +2368,7 @@ void VulkanAsciiConsumer::Process_vkCreateBufferView(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2384,7 +2384,7 @@ void VulkanAsciiConsumer::Process_vkCreateBufferView(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2441,7 +2441,7 @@ void VulkanAsciiConsumer::Process_vkDestroyBufferView(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2481,7 +2481,7 @@ void VulkanAsciiConsumer::Process_vkCreateImage(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2497,7 +2497,7 @@ void VulkanAsciiConsumer::Process_vkCreateImage(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2555,7 +2555,7 @@ void VulkanAsciiConsumer::Process_vkDestroyImage(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2599,7 +2599,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSubresourceLayout(
     {
         AddrToString(outputFile, pSubresource.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSubresource.GetMetaStructPointer(), indent+1,pSubresource.GetAddress()); // GLM
+        StructureToString(outputFile, *pSubresource.GetMetaStructPointer(), indent+1, pSubresource.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2615,7 +2615,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSubresourceLayout(
     {
         AddrToString(outputFile, pLayout.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pLayout.GetMetaStructPointer(), indent+1,pLayout.GetAddress()); // GLM
+        StructureToString(outputFile, *pLayout.GetMetaStructPointer(), indent+1, pLayout.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2655,7 +2655,7 @@ void VulkanAsciiConsumer::Process_vkCreateImageView(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2671,7 +2671,7 @@ void VulkanAsciiConsumer::Process_vkCreateImageView(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2728,7 +2728,7 @@ void VulkanAsciiConsumer::Process_vkDestroyImageView(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2768,7 +2768,7 @@ void VulkanAsciiConsumer::Process_vkCreateShaderModule(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2784,7 +2784,7 @@ void VulkanAsciiConsumer::Process_vkCreateShaderModule(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2842,7 +2842,7 @@ void VulkanAsciiConsumer::Process_vkDestroyShaderModule(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2882,7 +2882,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineCache(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2898,7 +2898,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineCache(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2956,7 +2956,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipelineCache(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3143,7 +3143,7 @@ void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3230,7 +3230,7 @@ void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3289,7 +3289,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipeline(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3329,7 +3329,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineLayout(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3345,7 +3345,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineLayout(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3403,7 +3403,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipelineLayout(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3443,7 +3443,7 @@ void VulkanAsciiConsumer::Process_vkCreateSampler(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3459,7 +3459,7 @@ void VulkanAsciiConsumer::Process_vkCreateSampler(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3517,7 +3517,7 @@ void VulkanAsciiConsumer::Process_vkDestroySampler(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3557,7 +3557,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorSetLayout(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3573,7 +3573,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorSetLayout(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3631,7 +3631,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorSetLayout(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3671,7 +3671,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorPool(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3687,7 +3687,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorPool(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3745,7 +3745,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorPool(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3821,7 +3821,7 @@ void VulkanAsciiConsumer::Process_vkAllocateDescriptorSets(
     {
         AddrToString(outputFile, pAllocateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent+1,pAllocateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent+1, pAllocateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3997,7 +3997,7 @@ void VulkanAsciiConsumer::Process_vkCreateFramebuffer(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4013,7 +4013,7 @@ void VulkanAsciiConsumer::Process_vkCreateFramebuffer(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4071,7 +4071,7 @@ void VulkanAsciiConsumer::Process_vkDestroyFramebuffer(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4111,7 +4111,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4127,7 +4127,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4185,7 +4185,7 @@ void VulkanAsciiConsumer::Process_vkDestroyRenderPass(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4228,7 +4228,7 @@ void VulkanAsciiConsumer::Process_vkGetRenderAreaGranularity(
     {
         AddrToString(outputFile, pGranularity.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pGranularity.GetMetaStructPointer(), indent+1,pGranularity.GetAddress()); // GLM
+        StructureToString(outputFile, *pGranularity.GetMetaStructPointer(), indent+1, pGranularity.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4268,7 +4268,7 @@ void VulkanAsciiConsumer::Process_vkCreateCommandPool(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4284,7 +4284,7 @@ void VulkanAsciiConsumer::Process_vkCreateCommandPool(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4342,7 +4342,7 @@ void VulkanAsciiConsumer::Process_vkDestroyCommandPool(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4418,7 +4418,7 @@ void VulkanAsciiConsumer::Process_vkAllocateCommandBuffers(
     {
         AddrToString(outputFile, pAllocateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent+1,pAllocateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent+1, pAllocateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4523,7 +4523,7 @@ void VulkanAsciiConsumer::Process_vkBeginCommandBuffer(
     {
         AddrToString(outputFile, pBeginInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pBeginInfo.GetMetaStructPointer(), indent+1,pBeginInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pBeginInfo.GetMetaStructPointer(), indent+1, pBeginInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5967,7 +5967,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearColorImage(
         AddrToString(outputFile, pColor.GetAddress()); // JHI
         OutputString(outputFile, " (Union)");
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pColor.GetMetaStructPointer(), indent+1,pColor.GetAddress()); // GLM
+        StructureToString(outputFile, *pColor.GetMetaStructPointer(), indent+1, pColor.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6045,7 +6045,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearDepthStencilImage(
     {
         AddrToString(outputFile, pDepthStencil.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pDepthStencil.GetMetaStructPointer(), indent+1,pDepthStencil.GetAddress()); // GLM
+        StructureToString(outputFile, *pDepthStencil.GetMetaStructPointer(), indent+1, pDepthStencil.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6866,7 +6866,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass(
     {
         AddrToString(outputFile, pRenderPassBegin.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pRenderPassBegin.GetMetaStructPointer(), indent+1,pRenderPassBegin.GetAddress()); // GLM
+        StructureToString(outputFile, *pRenderPassBegin.GetMetaStructPointer(), indent+1, pRenderPassBegin.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7296,7 +7296,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2(
     {
         AddrToString(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7312,7 +7312,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2(
     {
         AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7348,7 +7348,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2(
     {
         AddrToString(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7364,7 +7364,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2(
     {
         AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7401,7 +7401,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2(
     {
         AddrToString(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7466,7 +7466,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2(
     {
         AddrToString(outputFile, pFeatures.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFeatures.GetMetaStructPointer(), indent+1,pFeatures.GetAddress()); // GLM
+        StructureToString(outputFile, *pFeatures.GetMetaStructPointer(), indent+1, pFeatures.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7501,7 +7501,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2(
     {
         AddrToString(outputFile, pProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1,pProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7547,7 +7547,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     {
         AddrToString(outputFile, pFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1,pFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1, pFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7586,7 +7586,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     {
         AddrToString(outputFile, pImageFormatInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pImageFormatInfo.GetMetaStructPointer(), indent+1,pImageFormatInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pImageFormatInfo.GetMetaStructPointer(), indent+1, pImageFormatInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7602,7 +7602,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     {
         AddrToString(outputFile, pImageFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1,pImageFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1, pImageFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7687,7 +7687,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     {
         AddrToString(outputFile, pMemoryProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1,pMemoryProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1, pMemoryProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7724,7 +7724,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     {
         AddrToString(outputFile, pFormatInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFormatInfo.GetMetaStructPointer(), indent+1,pFormatInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pFormatInfo.GetMetaStructPointer(), indent+1, pFormatInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7824,7 +7824,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceQueue2(
     {
         AddrToString(outputFile, pQueueInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pQueueInfo.GetMetaStructPointer(), indent+1,pQueueInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pQueueInfo.GetMetaStructPointer(), indent+1, pQueueInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7879,7 +7879,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversion(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7895,7 +7895,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversion(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7953,7 +7953,7 @@ void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversion(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7993,7 +7993,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplate(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8009,7 +8009,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplate(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8067,7 +8067,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8103,7 +8103,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     {
         AddrToString(outputFile, pExternalBufferInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalBufferInfo.GetMetaStructPointer(), indent+1,pExternalBufferInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalBufferInfo.GetMetaStructPointer(), indent+1, pExternalBufferInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8119,7 +8119,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     {
         AddrToString(outputFile, pExternalBufferProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalBufferProperties.GetMetaStructPointer(), indent+1,pExternalBufferProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalBufferProperties.GetMetaStructPointer(), indent+1, pExternalBufferProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8155,7 +8155,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     {
         AddrToString(outputFile, pExternalFenceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalFenceInfo.GetMetaStructPointer(), indent+1,pExternalFenceInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalFenceInfo.GetMetaStructPointer(), indent+1, pExternalFenceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8171,7 +8171,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     {
         AddrToString(outputFile, pExternalFenceProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalFenceProperties.GetMetaStructPointer(), indent+1,pExternalFenceProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalFenceProperties.GetMetaStructPointer(), indent+1, pExternalFenceProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8207,7 +8207,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
     {
         AddrToString(outputFile, pExternalSemaphoreInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalSemaphoreInfo.GetMetaStructPointer(), indent+1,pExternalSemaphoreInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalSemaphoreInfo.GetMetaStructPointer(), indent+1, pExternalSemaphoreInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8223,7 +8223,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
     {
         AddrToString(outputFile, pExternalSemaphoreProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalSemaphoreProperties.GetMetaStructPointer(), indent+1,pExternalSemaphoreProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalSemaphoreProperties.GetMetaStructPointer(), indent+1, pExternalSemaphoreProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8259,7 +8259,7 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupport(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8275,7 +8275,7 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupport(
     {
         AddrToString(outputFile, pSupport.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSupport.GetMetaStructPointer(), indent+1,pSupport.GetAddress()); // GLM
+        StructureToString(outputFile, *pSupport.GetMetaStructPointer(), indent+1, pSupport.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8319,7 +8319,7 @@ void VulkanAsciiConsumer::Process_vkDestroySurfaceKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8418,7 +8418,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     {
         AddrToString(outputFile, pSurfaceCapabilities.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1,pSurfaceCapabilities.GetAddress()); // GLM
+        StructureToString(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1, pSurfaceCapabilities.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8582,7 +8582,7 @@ void VulkanAsciiConsumer::Process_vkCreateSwapchainKHR(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8598,7 +8598,7 @@ void VulkanAsciiConsumer::Process_vkCreateSwapchainKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8656,7 +8656,7 @@ void VulkanAsciiConsumer::Process_vkDestroySwapchainKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8825,7 +8825,7 @@ void VulkanAsciiConsumer::Process_vkQueuePresentKHR(
     {
         AddrToString(outputFile, pPresentInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pPresentInfo.GetMetaStructPointer(), indent+1,pPresentInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pPresentInfo.GetMetaStructPointer(), indent+1, pPresentInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8863,7 +8863,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     {
         AddrToString(outputFile, pDeviceGroupPresentCapabilities.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pDeviceGroupPresentCapabilities.GetMetaStructPointer(), indent+1,pDeviceGroupPresentCapabilities.GetAddress()); // GLM
+        StructureToString(outputFile, *pDeviceGroupPresentCapabilities.GetMetaStructPointer(), indent+1, pDeviceGroupPresentCapabilities.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9008,7 +9008,7 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImage2KHR(
     {
         AddrToString(outputFile, pAcquireInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAcquireInfo.GetMetaStructPointer(), indent+1,pAcquireInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pAcquireInfo.GetMetaStructPointer(), indent+1, pAcquireInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9301,7 +9301,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayModeKHR(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9317,7 +9317,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayModeKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9386,7 +9386,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     {
         AddrToString(outputFile, pCapabilities.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCapabilities.GetMetaStructPointer(), indent+1,pCapabilities.GetAddress()); // GLM
+        StructureToString(outputFile, *pCapabilities.GetMetaStructPointer(), indent+1, pCapabilities.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9426,7 +9426,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9442,7 +9442,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9521,7 +9521,7 @@ void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9578,7 +9578,7 @@ void VulkanAsciiConsumer::Process_vkCreateXlibSurfaceKHR(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9594,7 +9594,7 @@ void VulkanAsciiConsumer::Process_vkCreateXlibSurfaceKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9693,7 +9693,7 @@ void VulkanAsciiConsumer::Process_vkCreateXcbSurfaceKHR(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9709,7 +9709,7 @@ void VulkanAsciiConsumer::Process_vkCreateXcbSurfaceKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9815,7 +9815,7 @@ void VulkanAsciiConsumer::Process_vkCreateWaylandSurfaceKHR(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9831,7 +9831,7 @@ void VulkanAsciiConsumer::Process_vkCreateWaylandSurfaceKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9929,7 +9929,7 @@ void VulkanAsciiConsumer::Process_vkCreateAndroidSurfaceKHR(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9945,7 +9945,7 @@ void VulkanAsciiConsumer::Process_vkCreateAndroidSurfaceKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10001,7 +10001,7 @@ void VulkanAsciiConsumer::Process_vkCreateWin32SurfaceKHR(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10017,7 +10017,7 @@ void VulkanAsciiConsumer::Process_vkCreateWin32SurfaceKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10095,7 +10095,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     {
         AddrToString(outputFile, pFeatures.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFeatures.GetMetaStructPointer(), indent+1,pFeatures.GetAddress()); // GLM
+        StructureToString(outputFile, *pFeatures.GetMetaStructPointer(), indent+1, pFeatures.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10130,7 +10130,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     {
         AddrToString(outputFile, pProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1,pProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10176,7 +10176,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     {
         AddrToString(outputFile, pFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1,pFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1, pFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10215,7 +10215,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     {
         AddrToString(outputFile, pImageFormatInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pImageFormatInfo.GetMetaStructPointer(), indent+1,pImageFormatInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pImageFormatInfo.GetMetaStructPointer(), indent+1, pImageFormatInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10231,7 +10231,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     {
         AddrToString(outputFile, pImageFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1,pImageFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1, pImageFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10316,7 +10316,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     {
         AddrToString(outputFile, pMemoryProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1,pMemoryProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1, pMemoryProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10353,7 +10353,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     {
         AddrToString(outputFile, pFormatInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFormatInfo.GetMetaStructPointer(), indent+1,pFormatInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pFormatInfo.GetMetaStructPointer(), indent+1, pFormatInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10660,7 +10660,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR
     {
         AddrToString(outputFile, pExternalBufferInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalBufferInfo.GetMetaStructPointer(), indent+1,pExternalBufferInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalBufferInfo.GetMetaStructPointer(), indent+1, pExternalBufferInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10676,7 +10676,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR
     {
         AddrToString(outputFile, pExternalBufferProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalBufferProperties.GetMetaStructPointer(), indent+1,pExternalBufferProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalBufferProperties.GetMetaStructPointer(), indent+1, pExternalBufferProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10716,7 +10716,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleKHR(
     {
         AddrToString(outputFile, pGetWin32HandleInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent+1,pGetWin32HandleInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent+1, pGetWin32HandleInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10795,7 +10795,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     {
         AddrToString(outputFile, pMemoryWin32HandleProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryWin32HandleProperties.GetMetaStructPointer(), indent+1,pMemoryWin32HandleProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryWin32HandleProperties.GetMetaStructPointer(), indent+1, pMemoryWin32HandleProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10835,7 +10835,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdKHR(
     {
         AddrToString(outputFile, pGetFdInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent+1,pGetFdInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent+1, pGetFdInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10907,7 +10907,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdPropertiesKHR(
     {
         AddrToString(outputFile, pMemoryFdProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryFdProperties.GetMetaStructPointer(), indent+1,pMemoryFdProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryFdProperties.GetMetaStructPointer(), indent+1, pMemoryFdProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10944,7 +10944,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
     {
         AddrToString(outputFile, pExternalSemaphoreInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalSemaphoreInfo.GetMetaStructPointer(), indent+1,pExternalSemaphoreInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalSemaphoreInfo.GetMetaStructPointer(), indent+1, pExternalSemaphoreInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10960,7 +10960,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
     {
         AddrToString(outputFile, pExternalSemaphoreProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalSemaphoreProperties.GetMetaStructPointer(), indent+1,pExternalSemaphoreProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalSemaphoreProperties.GetMetaStructPointer(), indent+1, pExternalSemaphoreProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10999,7 +10999,7 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     {
         AddrToString(outputFile, pImportSemaphoreWin32HandleInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pImportSemaphoreWin32HandleInfo.GetMetaStructPointer(), indent+1,pImportSemaphoreWin32HandleInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pImportSemaphoreWin32HandleInfo.GetMetaStructPointer(), indent+1, pImportSemaphoreWin32HandleInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11038,7 +11038,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     {
         AddrToString(outputFile, pGetWin32HandleInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent+1,pGetWin32HandleInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent+1, pGetWin32HandleInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11092,7 +11092,7 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreFdKHR(
     {
         AddrToString(outputFile, pImportSemaphoreFdInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pImportSemaphoreFdInfo.GetMetaStructPointer(), indent+1,pImportSemaphoreFdInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pImportSemaphoreFdInfo.GetMetaStructPointer(), indent+1, pImportSemaphoreFdInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11131,7 +11131,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreFdKHR(
     {
         AddrToString(outputFile, pGetFdInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent+1,pGetFdInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent+1, pGetFdInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11257,7 +11257,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11273,7 +11273,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11331,7 +11331,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11372,7 +11372,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass2KHR(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11388,7 +11388,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass2KHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11439,7 +11439,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass2KHR(
     {
         AddrToString(outputFile, pRenderPassBegin.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pRenderPassBegin.GetMetaStructPointer(), indent+1,pRenderPassBegin.GetAddress()); // GLM
+        StructureToString(outputFile, *pRenderPassBegin.GetMetaStructPointer(), indent+1, pRenderPassBegin.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11455,7 +11455,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass2KHR(
     {
         AddrToString(outputFile, pSubpassBeginInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSubpassBeginInfo.GetMetaStructPointer(), indent+1,pSubpassBeginInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pSubpassBeginInfo.GetMetaStructPointer(), indent+1, pSubpassBeginInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11491,7 +11491,7 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass2KHR(
     {
         AddrToString(outputFile, pSubpassBeginInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSubpassBeginInfo.GetMetaStructPointer(), indent+1,pSubpassBeginInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pSubpassBeginInfo.GetMetaStructPointer(), indent+1, pSubpassBeginInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11507,7 +11507,7 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass2KHR(
     {
         AddrToString(outputFile, pSubpassEndInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSubpassEndInfo.GetMetaStructPointer(), indent+1,pSubpassEndInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pSubpassEndInfo.GetMetaStructPointer(), indent+1, pSubpassEndInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11542,7 +11542,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndRenderPass2KHR(
     {
         AddrToString(outputFile, pSubpassEndInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSubpassEndInfo.GetMetaStructPointer(), indent+1,pSubpassEndInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pSubpassEndInfo.GetMetaStructPointer(), indent+1, pSubpassEndInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11609,7 +11609,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     {
         AddrToString(outputFile, pExternalFenceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalFenceInfo.GetMetaStructPointer(), indent+1,pExternalFenceInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalFenceInfo.GetMetaStructPointer(), indent+1, pExternalFenceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11625,7 +11625,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     {
         AddrToString(outputFile, pExternalFenceProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalFenceProperties.GetMetaStructPointer(), indent+1,pExternalFenceProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalFenceProperties.GetMetaStructPointer(), indent+1, pExternalFenceProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11664,7 +11664,7 @@ void VulkanAsciiConsumer::Process_vkImportFenceWin32HandleKHR(
     {
         AddrToString(outputFile, pImportFenceWin32HandleInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pImportFenceWin32HandleInfo.GetMetaStructPointer(), indent+1,pImportFenceWin32HandleInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pImportFenceWin32HandleInfo.GetMetaStructPointer(), indent+1, pImportFenceWin32HandleInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11703,7 +11703,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceWin32HandleKHR(
     {
         AddrToString(outputFile, pGetWin32HandleInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent+1,pGetWin32HandleInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent+1, pGetWin32HandleInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11757,7 +11757,7 @@ void VulkanAsciiConsumer::Process_vkImportFenceFdKHR(
     {
         AddrToString(outputFile, pImportFenceFdInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pImportFenceFdInfo.GetMetaStructPointer(), indent+1,pImportFenceFdInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pImportFenceFdInfo.GetMetaStructPointer(), indent+1, pImportFenceFdInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11796,7 +11796,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceFdKHR(
     {
         AddrToString(outputFile, pGetFdInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent+1,pGetFdInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent+1, pGetFdInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11851,7 +11851,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     {
         AddrToString(outputFile, pSurfaceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1,pSurfaceInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1, pSurfaceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11867,7 +11867,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     {
         AddrToString(outputFile, pSurfaceCapabilities.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1,pSurfaceCapabilities.GetAddress()); // GLM
+        StructureToString(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1, pSurfaceCapabilities.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11907,7 +11907,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     {
         AddrToString(outputFile, pSurfaceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1,pSurfaceInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1, pSurfaceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12144,7 +12144,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     {
         AddrToString(outputFile, pDisplayPlaneInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pDisplayPlaneInfo.GetMetaStructPointer(), indent+1,pDisplayPlaneInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pDisplayPlaneInfo.GetMetaStructPointer(), indent+1, pDisplayPlaneInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12160,7 +12160,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     {
         AddrToString(outputFile, pCapabilities.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCapabilities.GetMetaStructPointer(), indent+1,pCapabilities.GetAddress()); // GLM
+        StructureToString(outputFile, *pCapabilities.GetMetaStructPointer(), indent+1, pCapabilities.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12197,7 +12197,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2KHR(
     {
         AddrToString(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12213,7 +12213,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2KHR(
     {
         AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12249,7 +12249,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     {
         AddrToString(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12265,7 +12265,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     {
         AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12302,7 +12302,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     {
         AddrToString(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12373,7 +12373,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12389,7 +12389,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12447,7 +12447,7 @@ void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12575,7 +12575,7 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12591,7 +12591,7 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     {
         AddrToString(outputFile, pSupport.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSupport.GetMetaStructPointer(), indent+1,pSupport.GetAddress()); // GLM
+        StructureToString(outputFile, *pSupport.GetMetaStructPointer(), indent+1, pSupport.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12809,7 +12809,7 @@ void VulkanAsciiConsumer::Process_vkWaitSemaphoresKHR(
     {
         AddrToString(outputFile, pWaitInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pWaitInfo.GetMetaStructPointer(), indent+1,pWaitInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pWaitInfo.GetMetaStructPointer(), indent+1, pWaitInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12854,7 +12854,7 @@ void VulkanAsciiConsumer::Process_vkSignalSemaphoreKHR(
     {
         AddrToString(outputFile, pSignalInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSignalInfo.GetMetaStructPointer(), indent+1,pSignalInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pSignalInfo.GetMetaStructPointer(), indent+1, pSignalInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12895,7 +12895,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     {
         AddrToString(outputFile, pPipelineInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pPipelineInfo.GetMetaStructPointer(), indent+1,pPipelineInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pPipelineInfo.GetMetaStructPointer(), indent+1, pPipelineInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12965,7 +12965,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     {
         AddrToString(outputFile, pExecutableInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExecutableInfo.GetMetaStructPointer(), indent+1,pExecutableInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pExecutableInfo.GetMetaStructPointer(), indent+1, pExecutableInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13035,7 +13035,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableInternalRepresentations
     {
         AddrToString(outputFile, pExecutableInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExecutableInfo.GetMetaStructPointer(), indent+1,pExecutableInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pExecutableInfo.GetMetaStructPointer(), indent+1, pExecutableInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13106,7 +13106,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugReportCallbackEXT(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13122,7 +13122,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugReportCallbackEXT(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13180,7 +13180,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDebugReportCallbackEXT(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13296,7 +13296,7 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     {
         AddrToString(outputFile, pTagInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pTagInfo.GetMetaStructPointer(), indent+1,pTagInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pTagInfo.GetMetaStructPointer(), indent+1, pTagInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13334,7 +13334,7 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     {
         AddrToString(outputFile, pNameInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pNameInfo.GetMetaStructPointer(), indent+1,pNameInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pNameInfo.GetMetaStructPointer(), indent+1, pNameInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13369,7 +13369,7 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerBeginEXT(
     {
         AddrToString(outputFile, pMarkerInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1,pMarkerInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1, pMarkerInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13422,7 +13422,7 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerInsertEXT(
     {
         AddrToString(outputFile, pMarkerInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1,pMarkerInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1, pMarkerInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13839,7 +13839,7 @@ void VulkanAsciiConsumer::Process_vkGetImageViewHandleNVX(
     {
         AddrToString(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14098,7 +14098,7 @@ void VulkanAsciiConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14114,7 +14114,7 @@ void VulkanAsciiConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14225,7 +14225,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalImageFormatProperti
     {
         AddrToString(outputFile, pExternalImageFormatProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalImageFormatProperties.GetMetaStructPointer(), indent+1,pExternalImageFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalImageFormatProperties.GetMetaStructPointer(), indent+1, pExternalImageFormatProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14320,7 +14320,7 @@ void VulkanAsciiConsumer::Process_vkCreateViSurfaceNN(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14336,7 +14336,7 @@ void VulkanAsciiConsumer::Process_vkCreateViSurfaceNN(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14387,7 +14387,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     {
         AddrToString(outputFile, pConditionalRenderingBegin.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pConditionalRenderingBegin.GetMetaStructPointer(), indent+1,pConditionalRenderingBegin.GetAddress()); // GLM
+        StructureToString(outputFile, *pConditionalRenderingBegin.GetMetaStructPointer(), indent+1, pConditionalRenderingBegin.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14441,7 +14441,7 @@ void VulkanAsciiConsumer::Process_vkCmdProcessCommandsNVX(
     {
         AddrToString(outputFile, pProcessCommandsInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pProcessCommandsInfo.GetMetaStructPointer(), indent+1,pProcessCommandsInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pProcessCommandsInfo.GetMetaStructPointer(), indent+1, pProcessCommandsInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14476,7 +14476,7 @@ void VulkanAsciiConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     {
         AddrToString(outputFile, pReserveSpaceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pReserveSpaceInfo.GetMetaStructPointer(), indent+1,pReserveSpaceInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pReserveSpaceInfo.GetMetaStructPointer(), indent+1, pReserveSpaceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14516,7 +14516,7 @@ void VulkanAsciiConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14532,7 +14532,7 @@ void VulkanAsciiConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14590,7 +14590,7 @@ void VulkanAsciiConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14630,7 +14630,7 @@ void VulkanAsciiConsumer::Process_vkCreateObjectTableNVX(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14646,7 +14646,7 @@ void VulkanAsciiConsumer::Process_vkCreateObjectTableNVX(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14704,7 +14704,7 @@ void VulkanAsciiConsumer::Process_vkDestroyObjectTableNVX(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14811,7 +14811,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsProperties
     {
         AddrToString(outputFile, pFeatures.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFeatures.GetMetaStructPointer(), indent+1,pFeatures.GetAddress()); // GLM
+        StructureToString(outputFile, *pFeatures.GetMetaStructPointer(), indent+1, pFeatures.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14827,7 +14827,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsProperties
     {
         AddrToString(outputFile, pLimits.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pLimits.GetMetaStructPointer(), indent+1,pLimits.GetAddress()); // GLM
+        StructureToString(outputFile, *pLimits.GetMetaStructPointer(), indent+1, pLimits.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15046,7 +15046,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     {
         AddrToString(outputFile, pSurfaceCapabilities.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1,pSurfaceCapabilities.GetAddress()); // GLM
+        StructureToString(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1, pSurfaceCapabilities.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15093,7 +15093,7 @@ void VulkanAsciiConsumer::Process_vkDisplayPowerControlEXT(
     {
         AddrToString(outputFile, pDisplayPowerInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pDisplayPowerInfo.GetMetaStructPointer(), indent+1,pDisplayPowerInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pDisplayPowerInfo.GetMetaStructPointer(), indent+1, pDisplayPowerInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15133,7 +15133,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDeviceEventEXT(
     {
         AddrToString(outputFile, pDeviceEventInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pDeviceEventInfo.GetMetaStructPointer(), indent+1,pDeviceEventInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pDeviceEventInfo.GetMetaStructPointer(), indent+1, pDeviceEventInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15149,7 +15149,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDeviceEventEXT(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15212,7 +15212,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDisplayEventEXT(
     {
         AddrToString(outputFile, pDisplayEventInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pDisplayEventInfo.GetMetaStructPointer(), indent+1,pDisplayEventInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pDisplayEventInfo.GetMetaStructPointer(), indent+1, pDisplayEventInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15228,7 +15228,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDisplayEventEXT(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15346,7 +15346,7 @@ void VulkanAsciiConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     {
         AddrToString(outputFile, pDisplayTimingProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pDisplayTimingProperties.GetMetaStructPointer(), indent+1,pDisplayTimingProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pDisplayTimingProperties.GetMetaStructPointer(), indent+1, pDisplayTimingProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15559,7 +15559,7 @@ void VulkanAsciiConsumer::Process_vkCreateIOSSurfaceMVK(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15575,7 +15575,7 @@ void VulkanAsciiConsumer::Process_vkCreateIOSSurfaceMVK(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15631,7 +15631,7 @@ void VulkanAsciiConsumer::Process_vkCreateMacOSSurfaceMVK(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15647,7 +15647,7 @@ void VulkanAsciiConsumer::Process_vkCreateMacOSSurfaceMVK(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15701,7 +15701,7 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     {
         AddrToString(outputFile, pNameInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pNameInfo.GetMetaStructPointer(), indent+1,pNameInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pNameInfo.GetMetaStructPointer(), indent+1, pNameInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15739,7 +15739,7 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     {
         AddrToString(outputFile, pTagInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pTagInfo.GetMetaStructPointer(), indent+1,pTagInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pTagInfo.GetMetaStructPointer(), indent+1, pTagInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15774,7 +15774,7 @@ void VulkanAsciiConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     {
         AddrToString(outputFile, pLabelInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1,pLabelInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1, pLabelInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15827,7 +15827,7 @@ void VulkanAsciiConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     {
         AddrToString(outputFile, pLabelInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1,pLabelInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1, pLabelInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15862,7 +15862,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     {
         AddrToString(outputFile, pLabelInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1,pLabelInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1, pLabelInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15915,7 +15915,7 @@ void VulkanAsciiConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     {
         AddrToString(outputFile, pLabelInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1,pLabelInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pLabelInfo.GetMetaStructPointer(), indent+1, pLabelInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15955,7 +15955,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15971,7 +15971,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16029,7 +16029,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16083,7 +16083,7 @@ void VulkanAsciiConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     {
         AddrToString(outputFile, pCallbackData.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCallbackData.GetMetaStructPointer(), indent+1,pCallbackData.GetAddress()); // GLM
+        StructureToString(outputFile, *pCallbackData.GetMetaStructPointer(), indent+1, pCallbackData.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16137,7 +16137,7 @@ void VulkanAsciiConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     {
         AddrToString(outputFile, pProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1,pProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16176,7 +16176,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     {
         AddrToString(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16227,7 +16227,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetSampleLocationsEXT(
     {
         AddrToString(outputFile, pSampleLocationsInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSampleLocationsInfo.GetMetaStructPointer(), indent+1,pSampleLocationsInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pSampleLocationsInfo.GetMetaStructPointer(), indent+1, pSampleLocationsInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16273,7 +16273,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     {
         AddrToString(outputFile, pMultisampleProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMultisampleProperties.GetMetaStructPointer(), indent+1,pMultisampleProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMultisampleProperties.GetMetaStructPointer(), indent+1, pMultisampleProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16320,7 +16320,7 @@ void VulkanAsciiConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     {
         AddrToString(outputFile, pProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1,pProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16361,7 +16361,7 @@ void VulkanAsciiConsumer::Process_vkCreateValidationCacheEXT(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16377,7 +16377,7 @@ void VulkanAsciiConsumer::Process_vkCreateValidationCacheEXT(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16435,7 +16435,7 @@ void VulkanAsciiConsumer::Process_vkDestroyValidationCacheEXT(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16733,7 +16733,7 @@ void VulkanAsciiConsumer::Process_vkCreateAccelerationStructureNV(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16749,7 +16749,7 @@ void VulkanAsciiConsumer::Process_vkCreateAccelerationStructureNV(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16807,7 +16807,7 @@ void VulkanAsciiConsumer::Process_vkDestroyAccelerationStructureNV(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16843,7 +16843,7 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV
     {
         AddrToString(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16859,7 +16859,7 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV
     {
         AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1,pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16946,7 +16946,7 @@ void VulkanAsciiConsumer::Process_vkCmdBuildAccelerationStructureNV(
     {
         AddrToString(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17241,7 +17241,7 @@ void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17553,7 +17553,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     {
         AddrToString(outputFile, pMemoryHostPointerProperties.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryHostPointerProperties.GetMetaStructPointer(), indent+1,pMemoryHostPointerProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryHostPointerProperties.GetMetaStructPointer(), indent+1, pMemoryHostPointerProperties.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18065,7 +18065,7 @@ void VulkanAsciiConsumer::Process_vkInitializePerformanceApiINTEL(
     {
         AddrToString(outputFile, pInitializeInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pInitializeInfo.GetMetaStructPointer(), indent+1,pInitializeInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pInitializeInfo.GetMetaStructPointer(), indent+1, pInitializeInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18121,7 +18121,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     {
         AddrToString(outputFile, pMarkerInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1,pMarkerInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1, pMarkerInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18159,7 +18159,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     {
         AddrToString(outputFile, pMarkerInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1,pMarkerInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent+1, pMarkerInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18197,7 +18197,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     {
         AddrToString(outputFile, pOverrideInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pOverrideInfo.GetMetaStructPointer(), indent+1,pOverrideInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pOverrideInfo.GetMetaStructPointer(), indent+1, pOverrideInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18236,7 +18236,7 @@ void VulkanAsciiConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     {
         AddrToString(outputFile, pAcquireInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAcquireInfo.GetMetaStructPointer(), indent+1,pAcquireInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pAcquireInfo.GetMetaStructPointer(), indent+1, pAcquireInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18358,7 +18358,7 @@ void VulkanAsciiConsumer::Process_vkGetPerformanceParameterINTEL(
     {
         AddrToString(outputFile, pValue.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pValue.GetMetaStructPointer(), indent+1,pValue.GetAddress()); // GLM
+        StructureToString(outputFile, *pValue.GetMetaStructPointer(), indent+1, pValue.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18434,7 +18434,7 @@ void VulkanAsciiConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18450,7 +18450,7 @@ void VulkanAsciiConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18506,7 +18506,7 @@ void VulkanAsciiConsumer::Process_vkCreateMetalSurfaceEXT(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18522,7 +18522,7 @@ void VulkanAsciiConsumer::Process_vkCreateMetalSurfaceEXT(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18574,7 +18574,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferDeviceAddressEXT(
     {
         AddrToString(outputFile, pInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1,pInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pInfo.GetMetaStructPointer(), indent+1, pInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18723,7 +18723,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     {
         AddrToString(outputFile, pSurfaceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1,pSurfaceInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1, pSurfaceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18851,7 +18851,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     {
         AddrToString(outputFile, pSurfaceInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1,pSurfaceInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent+1, pSurfaceInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18907,7 +18907,7 @@ void VulkanAsciiConsumer::Process_vkCreateHeadlessSurfaceEXT(
     {
         AddrToString(outputFile, pCreateInfo.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1,pCreateInfo.GetAddress()); // GLM
+        StructureToString(outputFile, *pCreateInfo.GetMetaStructPointer(), indent+1, pCreateInfo.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18923,7 +18923,7 @@ void VulkanAsciiConsumer::Process_vkCreateHeadlessSurfaceEXT(
     {
         AddrToString(outputFile, pAllocator.GetAddress()); // JHI
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1,pAllocator.GetAddress()); // GLM
+        StructureToString(outputFile, *pAllocator.GetMetaStructPointer(), indent+1, pAllocator.GetAddress()); // GLM
     }
     OutputString(outputFile, "\n"); // HHS
 
