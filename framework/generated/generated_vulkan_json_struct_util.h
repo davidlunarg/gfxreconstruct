@@ -520,7 +520,6 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTexel
 template <typename T>
 void ArrayOfStructsToStringJson(FILE*    outputFile,
                             int          indent,
-                            const int    pointer_count,
                             const char*  base_type_name,
                             T*           array,
                             const char*  array_name,
@@ -529,11 +528,6 @@ void ArrayOfStructsToStringJson(FILE*    outputFile,
                             uint64_t     base_addr)
 {
     assert(outputFile != nullptr);
-    if (pointer_count > 1)
-    {
-        fprintf(stderr, "ERROR: ArrayOfStructsToStringJson cannot handle arrays of arrays\n");
-        return;
-    }
     if (array_length == 0 || array == nullptr)
     {
         OutputStringJson(outputFile, "[ ]\n");
@@ -1524,7 +1518,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkInstanceCreateInfo 
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRG
         ScalarValueToStringStruct vinfo_ppEnabledLayerNames = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 1, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); // UQA
+        ArrayToStringJson(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); // UQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -1570,7 +1564,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkInstanceCreateInfo 
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRG
         ScalarValueToStringStruct vinfo_ppEnabledExtensionNames = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 1, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); // UQA
+        ArrayToStringJson(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); // UQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -3810,7 +3804,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLimit
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_maxComputeWorkGroupCount = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "uint32_t", &pstruct_in.maxComputeWorkGroupCount, "maxComputeWorkGroupCount", 3, vinfo_maxComputeWorkGroupCount); // AUA
+    ArrayToStringJson(outputFile, indent, "uint32_t", &pstruct_in.maxComputeWorkGroupCount, "maxComputeWorkGroupCount", 3, vinfo_maxComputeWorkGroupCount); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -3851,7 +3845,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLimit
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_maxComputeWorkGroupSize = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "uint32_t", &pstruct_in.maxComputeWorkGroupSize, "maxComputeWorkGroupSize", 3, vinfo_maxComputeWorkGroupSize); // AUA
+    ArrayToStringJson(outputFile, indent, "uint32_t", &pstruct_in.maxComputeWorkGroupSize, "maxComputeWorkGroupSize", 3, vinfo_maxComputeWorkGroupSize); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -4011,7 +4005,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLimit
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_maxViewportDimensions = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "uint32_t", &pstruct_in.maxViewportDimensions, "maxViewportDimensions", 2, vinfo_maxViewportDimensions); // AUA
+    ArrayToStringJson(outputFile, indent, "uint32_t", &pstruct_in.maxViewportDimensions, "maxViewportDimensions", 2, vinfo_maxViewportDimensions); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -4035,7 +4029,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLimit
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_viewportBoundsRange = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "float", &pstruct_in.viewportBoundsRange, "viewportBoundsRange", 2, vinfo_viewportBoundsRange); // AUA
+    ArrayToStringJson(outputFile, indent, "float", &pstruct_in.viewportBoundsRange, "viewportBoundsRange", 2, vinfo_viewportBoundsRange); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -4603,7 +4597,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLimit
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_pointSizeRange = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "float", &pstruct_in.pointSizeRange, "pointSizeRange", 2, vinfo_pointSizeRange); // AUA
+    ArrayToStringJson(outputFile, indent, "float", &pstruct_in.pointSizeRange, "pointSizeRange", 2, vinfo_pointSizeRange); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -4627,7 +4621,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLimit
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_lineWidthRange = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "float", &pstruct_in.lineWidthRange, "lineWidthRange", 2, vinfo_lineWidthRange); // AUA
+    ArrayToStringJson(outputFile, indent, "float", &pstruct_in.lineWidthRange, "lineWidthRange", 2, vinfo_lineWidthRange); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -4972,7 +4966,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevicePrope
     IndentSpacesJson(outputFile, indent); // UTW
     OutputStringJson(outputFile, "\"value\" : "); // TRH
     ScalarValueToStringStruct vinfo_deviceName = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<char>(outputFile, indent, 0, "char", pstruct_in.deviceName.GetPointer(), "deviceName", VK_MAX_PHYSICAL_DEVICE_NAME_SIZE, vinfo_deviceName); // TRJ
+    ArrayOfScalarsToStringJson<char>(outputFile, indent, "char", pstruct_in.deviceName.GetPointer(), "deviceName", VK_MAX_PHYSICAL_DEVICE_NAME_SIZE, vinfo_deviceName); // TRJ
     OutputStringJson(outputFile, "\n"); // TRX
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -4997,7 +4991,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevicePrope
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_pipelineCacheUUID = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "uint8_t", &pstruct_in.pipelineCacheUUID, "pipelineCacheUUID", VK_UUID_SIZE, vinfo_pipelineCacheUUID); // AUA
+    ArrayToStringJson(outputFile, indent, "uint8_t", &pstruct_in.pipelineCacheUUID, "pipelineCacheUUID", VK_UUID_SIZE, vinfo_pipelineCacheUUID); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -5268,7 +5262,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemor
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    ArrayOfStructsToStringJson<Decoded_VkMemoryType>(outputFile, indent, 0, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount, false, pstruct_in.memoryTypes->GetAddress()); // CCY
+    ArrayOfStructsToStringJson<Decoded_VkMemoryType>(outputFile, indent, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount, false, pstruct_in.memoryTypes->GetAddress()); // CCY
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -5308,7 +5302,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemor
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    ArrayOfStructsToStringJson<Decoded_VkMemoryHeap>(outputFile, indent, 0, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount, false, pstruct_in.memoryHeaps->GetAddress()); // CCY
+    ArrayOfStructsToStringJson<Decoded_VkMemoryHeap>(outputFile, indent, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount, false, pstruct_in.memoryHeaps->GetAddress()); // CCY
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "}\n"); // UXS
@@ -5450,7 +5444,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceQueueCreateIn
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pQueuePriorities = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const float*", &pstruct_in.pQueuePriorities, "pQueuePriorities", pstruct->queueCount, vinfo_pQueuePriorities); // AUA
+        ArrayToStringJson(outputFile, indent, "const float*", &pstruct_in.pQueuePriorities, "pQueuePriorities", pstruct->queueCount, vinfo_pQueuePriorities); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -5575,7 +5569,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &p
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDeviceQueueCreateInfo>(outputFile, indent, 1, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDeviceQueueCreateInfo>(outputFile, indent, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -5621,7 +5615,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &p
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRG
         ScalarValueToStringStruct vinfo_ppEnabledLayerNames = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 1, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); // UQA
+        ArrayToStringJson(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); // UQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -5667,7 +5661,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &p
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRG
         ScalarValueToStringStruct vinfo_ppEnabledExtensionNames = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 1, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); // UQA
+        ArrayToStringJson(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); // UQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -5736,7 +5730,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExtensionProperties
     IndentSpacesJson(outputFile, indent); // UTW
     OutputStringJson(outputFile, "\"value\" : "); // TRH
     ScalarValueToStringStruct vinfo_extensionName = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<char>(outputFile, indent, 0, "char", pstruct_in.extensionName.GetPointer(), "extensionName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_extensionName); // TRJ
+    ArrayOfScalarsToStringJson<char>(outputFile, indent, "char", pstruct_in.extensionName.GetPointer(), "extensionName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_extensionName); // TRJ
     OutputStringJson(outputFile, "\n"); // TRX
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -5794,7 +5788,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkLayerProperties &ps
     IndentSpacesJson(outputFile, indent); // UTW
     OutputStringJson(outputFile, "\"value\" : "); // TRH
     ScalarValueToStringStruct vinfo_layerName = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<char>(outputFile, indent, 0, "char", pstruct_in.layerName.GetPointer(), "layerName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_layerName); // TRJ
+    ArrayOfScalarsToStringJson<char>(outputFile, indent, "char", pstruct_in.layerName.GetPointer(), "layerName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_layerName); // TRJ
     OutputStringJson(outputFile, "\n"); // TRX
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -5853,7 +5847,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkLayerProperties &ps
     IndentSpacesJson(outputFile, indent); // UTW
     OutputStringJson(outputFile, "\"value\" : "); // TRH
     ScalarValueToStringStruct vinfo_description = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<char>(outputFile, indent, 0, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // TRJ
+    ArrayOfScalarsToStringJson<char>(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // TRJ
     OutputStringJson(outputFile, "\n"); // TRX
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -5962,7 +5956,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pWaitSemaphores = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -5991,7 +5985,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pWaitDstStageMask = {false, false, true, EnumToStringVkPipelineStageFlagBits};
-        ArrayToStringJson(outputFile, indent, 0, "const VkPipelineStageFlags*", &pstruct_in.pWaitDstStageMask, "pWaitDstStageMask", pstruct->waitSemaphoreCount, vinfo_pWaitDstStageMask); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkPipelineStageFlags*", &pstruct_in.pWaitDstStageMask, "pWaitDstStageMask", pstruct->waitSemaphoreCount, vinfo_pWaitDstStageMask); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -6037,7 +6031,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkCommandBuffer*", &pstruct_in.pCommandBuffers, "pCommandBuffers", pstruct->commandBufferCount, vinfo_pCommandBuffers); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkCommandBuffer*", &pstruct_in.pCommandBuffers, "pCommandBuffers", pstruct->commandBufferCount, vinfo_pCommandBuffers); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -6083,7 +6077,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSignalSemaphores = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -6706,7 +6700,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseBufferMemoryB
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseMemoryBind>(outputFile, indent, 1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSparseMemoryBind>(outputFile, indent, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -6784,7 +6778,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageOpaqueMe
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseMemoryBind>(outputFile, indent, 1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSparseMemoryBind>(outputFile, indent, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -7111,7 +7105,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageMemoryBi
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryBind>(outputFile, indent, 1, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryBind>(outputFile, indent, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -7220,7 +7214,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pst
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pWaitSemaphores = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -7265,7 +7259,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pst
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseBufferMemoryBindInfo>(outputFile, indent, 1, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSparseBufferMemoryBindInfo>(outputFile, indent, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -7310,7 +7304,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pst
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageOpaqueMemoryBindInfo>(outputFile, indent, 1, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageOpaqueMemoryBindInfo>(outputFile, indent, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -7355,7 +7349,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pst
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryBindInfo>(outputFile, indent, 1, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryBindInfo>(outputFile, indent, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -7401,7 +7395,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pst
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSignalSemaphores = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -7949,7 +7943,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferCreateInfo &p
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -8375,7 +8369,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageCreateInfo &ps
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -8969,7 +8963,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkShaderModuleCreateI
             IndentSpacesJson(outputFile, indent);
             OutputStringJson(outputFile, "\"elements\" : ");
             ScalarValueToStringStruct vinfo_pCode = {false, false, false, nullptr};
-            ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pCode, "pCode", pstruct->codeSize / 4, vinfo_pCode); // AUX
+            ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pCode, "pCode", pstruct->codeSize / 4, vinfo_pCode); // AUX
         }
     } // HWR
     indent--;
@@ -9096,7 +9090,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCacheCreate
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pInitialData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const void*", &pstruct_in.pInitialData, "pInitialData", pstruct->initialDataSize, vinfo_pInitialData); // AUA
+        ArrayToStringJson(outputFile, indent, "const void*", &pstruct_in.pInitialData, "pInitialData", pstruct->initialDataSize, vinfo_pInitialData); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -9224,7 +9218,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSpecializationInfo 
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSpecializationMapEntry>(outputFile, indent, 1, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSpecializationMapEntry>(outputFile, indent, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -9270,7 +9264,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSpecializationInfo 
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "const void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -9717,7 +9711,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineVertexInput
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkVertexInputBindingDescription>(outputFile, indent, 1, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkVertexInputBindingDescription>(outputFile, indent, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -9762,7 +9756,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineVertexInput
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkVertexInputAttributeDescription>(outputFile, indent, 1, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkVertexInputAttributeDescription>(outputFile, indent, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -10364,7 +10358,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportSta
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkViewport>(outputFile, indent, 1, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkViewport>(outputFile, indent, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -10409,7 +10403,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportSta
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, 1, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -10819,7 +10813,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineMultisample
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pSampleMask = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkSampleMask*", &pstruct_in.pSampleMask, "pSampleMask", pstruct->rasterizationSamples, vinfo_pSampleMask); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkSampleMask*", &pstruct_in.pSampleMask, "pSampleMask", pstruct->rasterizationSamples, vinfo_pSampleMask); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -11530,7 +11524,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineColorBlendS
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineColorBlendAttachmentState>(outputFile, indent, 1, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPipelineColorBlendAttachmentState>(outputFile, indent, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -11555,7 +11549,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineColorBlendS
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_blendConstants = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "float", &pstruct_in.blendConstants, "blendConstants", 4, vinfo_blendConstants); // AUA
+    ArrayToStringJson(outputFile, indent, "float", &pstruct_in.blendConstants, "blendConstants", 4, vinfo_blendConstants); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "}\n"); // UXS
@@ -11680,7 +11674,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineDynamicStat
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pDynamicStates = {false, true, false, EnumToStringVkDynamicState};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDynamicState*", &pstruct_in.pDynamicStates, "pDynamicStates", pstruct->dynamicStateCount, vinfo_pDynamicStates); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkDynamicState*", &pstruct_in.pDynamicStates, "pDynamicStates", pstruct->dynamicStateCount, vinfo_pDynamicStates); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -11805,7 +11799,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCre
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent, 1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -12482,7 +12476,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineLayoutCreat
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSetLayouts = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->setLayoutCount, vinfo_pSetLayouts); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->setLayoutCount, vinfo_pSetLayouts); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -12527,7 +12521,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineLayoutCreat
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPushConstantRange>(outputFile, indent, 1, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPushConstantRange>(outputFile, indent, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -12975,7 +12969,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayout
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pImmutableSamplers = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkSampler*", &pstruct_in.pImmutableSamplers, "pImmutableSamplers", pstruct->descriptorCount, vinfo_pImmutableSamplers); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkSampler*", &pstruct_in.pImmutableSamplers, "pImmutableSamplers", pstruct->descriptorCount, vinfo_pImmutableSamplers); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -13100,7 +13094,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayout
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDescriptorSetLayoutBinding>(outputFile, indent, 1, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDescriptorSetLayoutBinding>(outputFile, indent, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -13292,7 +13286,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorPoolCreat
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDescriptorPoolSize>(outputFile, indent, 1, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDescriptorPoolSize>(outputFile, indent, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -13418,7 +13412,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetAlloca
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSetLayouts = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->descriptorSetCount, vinfo_pSetLayouts); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->descriptorSetCount, vinfo_pSetLayouts); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -13728,7 +13722,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet 
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDescriptorImageInfo>(outputFile, indent, 1, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDescriptorImageInfo>(outputFile, indent, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -13756,7 +13750,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet 
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDescriptorBufferInfo>(outputFile, indent, 1, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDescriptorBufferInfo>(outputFile, indent, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -13785,7 +13779,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet 
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pTexelBufferView = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkBufferView*", &pstruct_in.pTexelBufferView, "pTexelBufferView", pstruct->descriptorCount, vinfo_pTexelBufferView); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkBufferView*", &pstruct_in.pTexelBufferView, "pTexelBufferView", pstruct->descriptorCount, vinfo_pTexelBufferView); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14110,7 +14104,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferCreateIn
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pAttachments = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14475,7 +14469,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription 
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(outputFile, indent, 1, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(outputFile, indent, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14520,7 +14514,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription 
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(outputFile, indent, 1, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(outputFile, indent, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14548,7 +14542,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription 
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(outputFile, indent, 1, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(outputFile, indent, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14622,7 +14616,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription 
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pPreserveAttachments = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14882,7 +14876,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentDescription>(outputFile, indent, 1, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentDescription>(outputFile, indent, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14927,7 +14921,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubpassDescription>(outputFile, indent, 1, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSubpassDescription>(outputFile, indent, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14972,7 +14966,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubpassDependency>(outputFile, indent, 1, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSubpassDependency>(outputFile, indent, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -15759,7 +15753,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageBlit &pstruct_
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    ArrayOfStructsToStringJson<Decoded_VkOffset3D>(outputFile, indent, 0, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2, false, pstruct_in.srcOffsets->GetAddress()); // CCY
+    ArrayOfStructsToStringJson<Decoded_VkOffset3D>(outputFile, indent, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2, false, pstruct_in.srcOffsets->GetAddress()); // CCY
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -15798,7 +15792,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageBlit &pstruct_
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    ArrayOfStructsToStringJson<Decoded_VkOffset3D>(outputFile, indent, 0, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2, false, pstruct_in.dstOffsets->GetAddress()); // CCY
+    ArrayOfStructsToStringJson<Decoded_VkOffset3D>(outputFile, indent, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2, false, pstruct_in.dstOffsets->GetAddress()); // CCY
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "}\n"); // UXS
@@ -15953,7 +15947,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkClearColorValue &ps
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRP
     ScalarValueToStringStruct vinfo_float32 = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<float>(outputFile, indent, 0, "float", pstruct_in.decoded_value->float32, "float32", 4, vinfo_float32); // TPA
+    ArrayOfScalarsToStringJson<float>(outputFile, indent, "float", pstruct_in.decoded_value->float32, "float32", 4, vinfo_float32); // TPA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -15977,7 +15971,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkClearColorValue &ps
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRP
     ScalarValueToStringStruct vinfo_int32 = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<int32_t>(outputFile, indent, 0, "int32_t", pstruct_in.decoded_value->int32, "int32", 4, vinfo_int32); // TPA
+    ArrayOfScalarsToStringJson<int32_t>(outputFile, indent, "int32_t", pstruct_in.decoded_value->int32, "int32", 4, vinfo_int32); // TPA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -16001,7 +15995,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkClearColorValue &ps
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRP
     ScalarValueToStringStruct vinfo_uint32 = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<uint32_t>(outputFile, indent, 0, "uint32_t", pstruct_in.decoded_value->uint32, "uint32", 4, vinfo_uint32); // TPA
+    ArrayOfScalarsToStringJson<uint32_t>(outputFile, indent, "uint32_t", pstruct_in.decoded_value->uint32, "uint32", 4, vinfo_uint32); // TPA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "}\n"); // UXS
@@ -16961,7 +16955,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassBeginInfo
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkClearValue>(outputFile, indent, 1, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkClearValue>(outputFile, indent, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -18119,7 +18113,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupRenderPa
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, 1, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -18308,7 +18302,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupSubmitIn
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pWaitSemaphoreDeviceIndices = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pWaitSemaphoreDeviceIndices, "pWaitSemaphoreDeviceIndices", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphoreDeviceIndices); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pWaitSemaphoreDeviceIndices, "pWaitSemaphoreDeviceIndices", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphoreDeviceIndices); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -18354,7 +18348,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupSubmitIn
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pCommandBufferDeviceMasks = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pCommandBufferDeviceMasks, "pCommandBufferDeviceMasks", pstruct->commandBufferCount, vinfo_pCommandBufferDeviceMasks); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pCommandBufferDeviceMasks, "pCommandBufferDeviceMasks", pstruct->commandBufferCount, vinfo_pCommandBufferDeviceMasks); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -18400,7 +18394,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupSubmitIn
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pSignalSemaphoreDeviceIndices = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pSignalSemaphoreDeviceIndices, "pSignalSemaphoreDeviceIndices", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphoreDeviceIndices); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pSignalSemaphoreDeviceIndices, "pSignalSemaphoreDeviceIndices", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphoreDeviceIndices); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -18606,7 +18600,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindBufferMemoryDev
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pDeviceIndices = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -18715,7 +18709,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindImageMemoryDevi
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pDeviceIndices = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -18760,7 +18754,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindImageMemoryDevi
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, 1, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -18865,7 +18859,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceGroup
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRI
     ScalarValueToStringStruct vinfo_physicalDevices = {true, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "VkPhysicalDevice", &pstruct_in.physicalDevices, "physicalDevices", pstruct->physicalDeviceCount, vinfo_physicalDevices); // AQA
+    ArrayToStringJson(outputFile, indent, "VkPhysicalDevice", &pstruct_in.physicalDevices, "physicalDevices", pstruct->physicalDeviceCount, vinfo_physicalDevices); // AQA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -18990,7 +18984,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupDeviceCr
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pPhysicalDevices = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkPhysicalDevice*", &pstruct_in.pPhysicalDevices, "pPhysicalDevices", pstruct->physicalDeviceCount, vinfo_pPhysicalDevices); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkPhysicalDevice*", &pstruct_in.pPhysicalDevices, "pPhysicalDevices", pstruct->physicalDeviceCount, vinfo_pPhysicalDevices); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -20492,7 +20486,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassInputAtta
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkInputAttachmentAspectReference>(outputFile, indent, 1, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkInputAttachmentAspectReference>(outputFile, indent, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -20761,7 +20755,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassMultiview
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pViewMasks = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pViewMasks, "pViewMasks", pstruct->subpassCount, vinfo_pViewMasks); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pViewMasks, "pViewMasks", pstruct->subpassCount, vinfo_pViewMasks); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -20807,7 +20801,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassMultiview
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pViewOffsets = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const int32_t*", &pstruct_in.pViewOffsets, "pViewOffsets", pstruct->dependencyCount, vinfo_pViewOffsets); // AUA
+        ArrayToStringJson(outputFile, indent, "const int32_t*", &pstruct_in.pViewOffsets, "pViewOffsets", pstruct->dependencyCount, vinfo_pViewOffsets); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -20853,7 +20847,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassMultiview
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pCorrelationMasks = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pCorrelationMasks, "pCorrelationMasks", pstruct->correlationMaskCount, vinfo_pCorrelationMasks); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pCorrelationMasks, "pCorrelationMasks", pstruct->correlationMaskCount, vinfo_pCorrelationMasks); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -22356,7 +22350,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorUpdateTem
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDescriptorUpdateTemplateEntry>(outputFile, indent, 1, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDescriptorUpdateTemplateEntry>(outputFile, indent, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -22948,7 +22942,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPro
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_deviceUUID = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "uint8_t", &pstruct_in.deviceUUID, "deviceUUID", VK_UUID_SIZE, vinfo_deviceUUID); // AUA
+    ArrayToStringJson(outputFile, indent, "uint8_t", &pstruct_in.deviceUUID, "deviceUUID", VK_UUID_SIZE, vinfo_deviceUUID); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -22972,7 +22966,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPro
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_driverUUID = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "uint8_t", &pstruct_in.driverUUID, "driverUUID", VK_UUID_SIZE, vinfo_driverUUID); // AUA
+    ArrayToStringJson(outputFile, indent, "uint8_t", &pstruct_in.driverUUID, "driverUUID", VK_UUID_SIZE, vinfo_driverUUID); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -22996,7 +22990,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPro
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_deviceLUID = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "uint8_t", &pstruct_in.deviceLUID, "deviceLUID", VK_LUID_SIZE, vinfo_deviceLUID); // AUA
+    ArrayToStringJson(outputFile, indent, "uint8_t", &pstruct_in.deviceLUID, "deviceLUID", VK_LUID_SIZE, vinfo_deviceLUID); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -24568,7 +24562,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSwapchainCreateInfo
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -24762,7 +24756,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentInfoKHR &pst
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pWaitSemaphores = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -24808,7 +24802,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentInfoKHR &pst
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkSwapchainKHR*", &pstruct_in.pSwapchains, "pSwapchains", pstruct->swapchainCount, vinfo_pSwapchains); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkSwapchainKHR*", &pstruct_in.pSwapchains, "pSwapchains", pstruct->swapchainCount, vinfo_pSwapchains); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -24837,7 +24831,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentInfoKHR &pst
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pImageIndices = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pImageIndices, "pImageIndices", pstruct->swapchainCount, vinfo_pImageIndices); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pImageIndices, "pImageIndices", pstruct->swapchainCount, vinfo_pImageIndices); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -24866,7 +24860,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentInfoKHR &pst
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pResults = {false, true, false, EnumToStringVkResult};
-        ArrayToStringJson(outputFile, indent, 0, "VkResult*", &pstruct_in.pResults, "pResults", pstruct->swapchainCount, vinfo_pResults); // AUA
+        ArrayToStringJson(outputFile, indent, "VkResult*", &pstruct_in.pResults, "pResults", pstruct->swapchainCount, vinfo_pResults); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -25279,7 +25273,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupPresentC
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_presentMask = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "uint32_t", &pstruct_in.presentMask, "presentMask", VK_MAX_DEVICE_GROUP_SIZE, vinfo_presentMask); // AUA
+    ArrayToStringJson(outputFile, indent, "uint32_t", &pstruct_in.presentMask, "presentMask", VK_MAX_DEVICE_GROUP_SIZE, vinfo_presentMask); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -25404,7 +25398,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupPresentI
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pDeviceMasks = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pDeviceMasks, "pDeviceMasks", pstruct->swapchainCount, vinfo_pDeviceMasks); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceMasks, "pDeviceMasks", pstruct->swapchainCount, vinfo_pDeviceMasks); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -27823,7 +27817,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pAcquireSyncs = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -27852,7 +27846,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pAcquireKeys = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -27881,7 +27875,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pAcquireTimeouts = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pAcquireTimeouts, "pAcquireTimeouts", pstruct->acquireCount, vinfo_pAcquireTimeouts); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pAcquireTimeouts, "pAcquireTimeouts", pstruct->acquireCount, vinfo_pAcquireTimeouts); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -27927,7 +27921,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pReleaseSyncs = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -27956,7 +27950,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pReleaseKeys = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -28376,7 +28370,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInf
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pWaitSemaphoreValues = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValuesCount, vinfo_pWaitSemaphoreValues); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValuesCount, vinfo_pWaitSemaphoreValues); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -28422,7 +28416,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInf
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pSignalSemaphoreValues = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValuesCount, vinfo_pSignalSemaphoreValues); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValuesCount, vinfo_pSignalSemaphoreValues); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -29050,7 +29044,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentRegionKHR &p
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRectLayerKHR>(outputFile, indent, 1, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRectLayerKHR>(outputFile, indent, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -29158,7 +29152,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentRegionsKHR &
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPresentRegionKHR>(outputFile, indent, 1, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPresentRegionKHR>(outputFile, indent, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -29432,7 +29426,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferAttachme
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pViewFormats = {false, true, false, EnumToStringVkFormat};
-        ArrayToStringJson(outputFile, indent, 0, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -29540,7 +29534,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferAttachme
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkFramebufferAttachmentImageInfoKHR>(outputFile, indent, 1, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkFramebufferAttachmentImageInfoKHR>(outputFile, indent, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -29649,7 +29643,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassAttachmen
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pAttachments = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30138,7 +30132,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription2
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(outputFile, indent, 1, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30183,7 +30177,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription2
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(outputFile, indent, 1, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30211,7 +30205,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription2
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(outputFile, indent, 1, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30285,7 +30279,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription2
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pPreserveAttachments = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30609,7 +30603,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentDescription2KHR>(outputFile, indent, 1, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentDescription2KHR>(outputFile, indent, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30654,7 +30648,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubpassDescription2KHR>(outputFile, indent, 1, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSubpassDescription2KHR>(outputFile, indent, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30699,7 +30693,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubpassDependency2KHR>(outputFile, indent, 1, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSubpassDependency2KHR>(outputFile, indent, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30745,7 +30739,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pCorrelatedViewMasks = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pCorrelatedViewMasks, "pCorrelatedViewMasks", pstruct->correlatedViewMaskCount, vinfo_pCorrelatedViewMasks); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pCorrelatedViewMasks, "pCorrelatedViewMasks", pstruct->correlatedViewMaskCount, vinfo_pCorrelatedViewMasks); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -32364,7 +32358,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageFormatListCrea
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pViewFormats = {false, true, false, EnumToStringVkFormat};
-        ArrayToStringJson(outputFile, indent, 0, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -32941,7 +32935,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDrive
     IndentSpacesJson(outputFile, indent); // UTW
     OutputStringJson(outputFile, "\"value\" : "); // TRH
     ScalarValueToStringStruct vinfo_driverName = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<char>(outputFile, indent, 0, "char", pstruct_in.driverName.GetPointer(), "driverName", VK_MAX_DRIVER_NAME_SIZE_KHR, vinfo_driverName); // TRJ
+    ArrayOfScalarsToStringJson<char>(outputFile, indent, "char", pstruct_in.driverName.GetPointer(), "driverName", VK_MAX_DRIVER_NAME_SIZE_KHR, vinfo_driverName); // TRJ
     OutputStringJson(outputFile, "\n"); // TRX
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -32966,7 +32960,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDrive
     IndentSpacesJson(outputFile, indent); // UTW
     OutputStringJson(outputFile, "\"value\" : "); // TRH
     ScalarValueToStringStruct vinfo_driverInfo = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<char>(outputFile, indent, 0, "char", pstruct_in.driverInfo.GetPointer(), "driverInfo", VK_MAX_DRIVER_INFO_SIZE_KHR, vinfo_driverInfo); // TRJ
+    ArrayOfScalarsToStringJson<char>(outputFile, indent, "char", pstruct_in.driverInfo.GetPointer(), "driverInfo", VK_MAX_DRIVER_INFO_SIZE_KHR, vinfo_driverInfo); // TRJ
     OutputStringJson(outputFile, "\n"); // TRX
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -33956,7 +33950,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkTimelineSemaphoreSu
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pWaitSemaphoreValues = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValueCount, vinfo_pWaitSemaphoreValues); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValueCount, vinfo_pWaitSemaphoreValues); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -34002,7 +33996,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkTimelineSemaphoreSu
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pSignalSemaphoreValues = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValueCount, vinfo_pSignalSemaphoreValues); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValueCount, vinfo_pSignalSemaphoreValues); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -34128,7 +34122,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKH
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSemaphores = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkSemaphore*", &pstruct_in.pSemaphores, "pSemaphores", pstruct->semaphoreCount, vinfo_pSemaphores); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkSemaphore*", &pstruct_in.pSemaphores, "pSemaphores", pstruct->semaphoreCount, vinfo_pSemaphores); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -34157,7 +34151,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKH
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pValues = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pValues, "pValues", pstruct->semaphoreCount, vinfo_pValues); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint64_t*", &pstruct_in.pValues, "pValues", pstruct->semaphoreCount, vinfo_pValues); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -34793,7 +34787,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableP
     IndentSpacesJson(outputFile, indent); // UTW
     OutputStringJson(outputFile, "\"value\" : "); // TRH
     ScalarValueToStringStruct vinfo_name = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<char>(outputFile, indent, 0, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // TRJ
+    ArrayOfScalarsToStringJson<char>(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // TRJ
     OutputStringJson(outputFile, "\n"); // TRX
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -34818,7 +34812,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableP
     IndentSpacesJson(outputFile, indent); // UTW
     OutputStringJson(outputFile, "\"value\" : "); // TRH
     ScalarValueToStringStruct vinfo_description = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<char>(outputFile, indent, 0, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // TRJ
+    ArrayOfScalarsToStringJson<char>(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // TRJ
     OutputStringJson(outputFile, "\n"); // TRX
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -35104,7 +35098,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableS
     IndentSpacesJson(outputFile, indent); // UTW
     OutputStringJson(outputFile, "\"value\" : "); // TRH
     ScalarValueToStringStruct vinfo_name = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<char>(outputFile, indent, 0, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // TRJ
+    ArrayOfScalarsToStringJson<char>(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // TRJ
     OutputStringJson(outputFile, "\n"); // TRX
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -35129,7 +35123,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableS
     IndentSpacesJson(outputFile, indent); // UTW
     OutputStringJson(outputFile, "\"value\" : "); // TRH
     ScalarValueToStringStruct vinfo_description = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<char>(outputFile, indent, 0, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // TRJ
+    ArrayOfScalarsToStringJson<char>(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // TRJ
     OutputStringJson(outputFile, "\n"); // TRX
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -35250,7 +35244,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableI
     IndentSpacesJson(outputFile, indent); // UTW
     OutputStringJson(outputFile, "\"value\" : "); // TRH
     ScalarValueToStringStruct vinfo_name = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<char>(outputFile, indent, 0, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // TRJ
+    ArrayOfScalarsToStringJson<char>(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // TRJ
     OutputStringJson(outputFile, "\n"); // TRX
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -35275,7 +35269,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableI
     IndentSpacesJson(outputFile, indent); // UTW
     OutputStringJson(outputFile, "\"value\" : "); // TRH
     ScalarValueToStringStruct vinfo_description = {false, false, false, nullptr};
-    ArrayOfScalarsToStringJson<char>(outputFile, indent, 0, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // TRJ
+    ArrayOfScalarsToStringJson<char>(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // TRJ
     OutputStringJson(outputFile, "\n"); // TRX
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -35338,7 +35332,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableI
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -35830,7 +35824,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugMarkerObjectTa
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pTag = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const void*", &pstruct_in.pTag, "pTag", pstruct->tagSize, vinfo_pTag); // AUA
+        ArrayToStringJson(outputFile, indent, "const void*", &pstruct_in.pTag, "pTag", pstruct->tagSize, vinfo_pTag); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -35947,7 +35941,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugMarkerMarkerIn
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_color = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "float", &pstruct_in.color, "color", 4, vinfo_color); // AUA
+    ArrayToStringJson(outputFile, indent, "float", &pstruct_in.color, "color", 4, vinfo_color); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "}\n"); // UXS
@@ -37067,7 +37061,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkShaderStatisticsInf
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_computeWorkGroupSize = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "uint32_t", &pstruct_in.computeWorkGroupSize, "computeWorkGroupSize", 3, vinfo_computeWorkGroupSize); // AUA
+    ArrayToStringJson(outputFile, indent, "uint32_t", &pstruct_in.computeWorkGroupSize, "computeWorkGroupSize", 3, vinfo_computeWorkGroupSize); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "}\n"); // UXS
@@ -37814,7 +37808,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pAcquireSyncs = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -37843,7 +37837,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pAcquireKeys = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -37872,7 +37866,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pAcquireTimeoutMilliseconds = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pAcquireTimeoutMilliseconds, "pAcquireTimeoutMilliseconds", pstruct->acquireCount, vinfo_pAcquireTimeoutMilliseconds); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pAcquireTimeoutMilliseconds, "pAcquireTimeoutMilliseconds", pstruct->acquireCount, vinfo_pAcquireTimeoutMilliseconds); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -37918,7 +37912,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pReleaseSyncs = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -37947,7 +37941,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pReleaseKeys = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -38056,7 +38050,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationFlagsEXT 
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pDisabledValidationChecks = {false, true, false, EnumToStringVkValidationCheckEXT};
-        ArrayToStringJson(outputFile, indent, 0, "const VkValidationCheckEXT*", &pstruct_in.pDisabledValidationChecks, "pDisabledValidationChecks", pstruct->disabledValidationCheckCount, vinfo_pDisabledValidationChecks); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkValidationCheckEXT*", &pstruct_in.pDisabledValidationChecks, "pDisabledValidationChecks", pstruct->disabledValidationCheckCount, vinfo_pDisabledValidationChecks); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -39217,7 +39211,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkIndirectCommandsLay
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkIndirectCommandsLayoutTokenNVX>(outputFile, indent, 1, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkIndirectCommandsLayoutTokenNVX>(outputFile, indent, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -39359,7 +39353,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCmdProcessCommandsI
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkIndirectCommandsTokenNVX>(outputFile, indent, 1, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkIndirectCommandsTokenNVX>(outputFile, indent, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -39684,7 +39678,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableCreateIn
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pObjectEntryTypes = {false, true, false, EnumToStringVkObjectEntryTypeNVX};
-        ArrayToStringJson(outputFile, indent, 0, "const VkObjectEntryTypeNVX*", &pstruct_in.pObjectEntryTypes, "pObjectEntryTypes", pstruct->objectCount, vinfo_pObjectEntryTypes); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkObjectEntryTypeNVX*", &pstruct_in.pObjectEntryTypes, "pObjectEntryTypes", pstruct->objectCount, vinfo_pObjectEntryTypes); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -39713,7 +39707,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableCreateIn
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pObjectEntryCounts = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pObjectEntryCounts, "pObjectEntryCounts", pstruct->objectCount, vinfo_pObjectEntryCounts); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pObjectEntryCounts, "pObjectEntryCounts", pstruct->objectCount, vinfo_pObjectEntryCounts); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -39742,7 +39736,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableCreateIn
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pObjectEntryUsageFlags = {false, false, true, EnumToStringVkObjectEntryUsageFlagBitsNVX};
-        ArrayToStringJson(outputFile, indent, 0, "const VkObjectEntryUsageFlagsNVX*", &pstruct_in.pObjectEntryUsageFlags, "pObjectEntryUsageFlags", pstruct->objectCount, vinfo_pObjectEntryUsageFlags); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkObjectEntryUsageFlagsNVX*", &pstruct_in.pObjectEntryUsageFlags, "pObjectEntryUsageFlags", pstruct->objectCount, vinfo_pObjectEntryUsageFlags); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -40438,7 +40432,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportWSc
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkViewportWScalingNV>(outputFile, indent, 1, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkViewportWScalingNV>(outputFile, indent, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -41297,7 +41291,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentTimesInfoGOO
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPresentTimeGOOGLE>(outputFile, indent, 1, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPresentTimeGOOGLE>(outputFile, indent, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -41586,7 +41580,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportSwi
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkViewportSwizzleNV>(outputFile, indent, 1, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkViewportSwizzleNV>(outputFile, indent, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -41808,7 +41802,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineDiscardRect
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, 1, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -43064,7 +43058,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsObjectTag
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pTag = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const void*", &pstruct_in.pTag, "pTag", pstruct->tagSize, vinfo_pTag); // AUA
+        ArrayToStringJson(outputFile, indent, "const void*", &pstruct_in.pTag, "pTag", pstruct->tagSize, vinfo_pTag); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -43181,7 +43175,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsLabelEXT 
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_color = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "float", &pstruct_in.color, "color", 4, vinfo_color); // AUA
+    ArrayToStringJson(outputFile, indent, "float", &pstruct_in.color, "color", 4, vinfo_color); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "}\n"); // UXS
@@ -43380,7 +43374,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsMessenger
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent, 1, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -43425,7 +43419,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsMessenger
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent, 1, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -43470,7 +43464,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsMessenger
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDebugUtilsObjectNameInfoEXT>(outputFile, indent, 1, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDebugUtilsObjectNameInfoEXT>(outputFile, indent, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -44788,7 +44782,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSetI
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "const void*", &pstruct_in.pData, "pData", pstruct->dataSize, vinfo_pData); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -45059,7 +45053,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSampleLocationsInfo
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSampleLocationEXT>(outputFile, indent, 1, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSampleLocationEXT>(outputFile, indent, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -45265,7 +45259,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassSampleLoc
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentSampleLocationsEXT>(outputFile, indent, 1, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentSampleLocationsEXT>(outputFile, indent, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -45310,7 +45304,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassSampleLoc
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubpassSampleLocationsEXT>(outputFile, indent, 1, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSubpassSampleLocationsEXT>(outputFile, indent, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -45527,7 +45521,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSampl
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_sampleLocationCoordinateRange = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "float", &pstruct_in.sampleLocationCoordinateRange, "sampleLocationCoordinateRange", 2, vinfo_sampleLocationCoordinateRange); // AUA
+    ArrayToStringJson(outputFile, indent, "float", &pstruct_in.sampleLocationCoordinateRange, "sampleLocationCoordinateRange", 2, vinfo_sampleLocationCoordinateRange); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -46272,7 +46266,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCoverageMod
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pCoverageModulationTable = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const float*", &pstruct_in.pCoverageModulationTable, "pCoverageModulationTable", pstruct->coverageModulationTableCount, vinfo_pCoverageModulationTable); // AUA
+        ArrayToStringJson(outputFile, indent, "const float*", &pstruct_in.pCoverageModulationTable, "pCoverageModulationTable", pstruct->coverageModulationTableCount, vinfo_pCoverageModulationTable); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -46624,7 +46618,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDrmFormatModifierPr
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDrmFormatModifierPropertiesEXT>(outputFile, indent, 1, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDrmFormatModifierPropertiesEXT>(outputFile, indent, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -46767,7 +46761,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImage
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -46876,7 +46870,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageDrmFormatModif
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pDrmFormatModifiers = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint64_t*", &pstruct_in.pDrmFormatModifiers, "pDrmFormatModifiers", pstruct->drmFormatModifierCount, vinfo_pDrmFormatModifiers); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint64_t*", &pstruct_in.pDrmFormatModifiers, "pDrmFormatModifiers", pstruct->drmFormatModifierCount, vinfo_pDrmFormatModifiers); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -47001,7 +46995,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageDrmFormatModif
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubresourceLayout>(outputFile, indent, 1, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSubresourceLayout>(outputFile, indent, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -47207,7 +47201,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationCacheCrea
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pInitialData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const void*", &pstruct_in.pInitialData, "pInitialData", pstruct->initialDataSize, vinfo_pInitialData); // AUA
+        ArrayToStringJson(outputFile, indent, "const void*", &pstruct_in.pInitialData, "pInitialData", pstruct->initialDataSize, vinfo_pInitialData); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -47396,7 +47390,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayout
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pBindingFlags = {false, false, true, EnumToStringVkDescriptorBindingFlagBitsEXT};
-        ArrayToStringJson(outputFile, indent, 0, "const VkDescriptorBindingFlagsEXT*", &pstruct_in.pBindingFlags, "pBindingFlags", pstruct->bindingCount, vinfo_pBindingFlags); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkDescriptorBindingFlagsEXT*", &pstruct_in.pBindingFlags, "pBindingFlags", pstruct->bindingCount, vinfo_pBindingFlags); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -48362,7 +48356,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetVariab
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pDescriptorCounts = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pDescriptorCounts, "pDescriptorCounts", pstruct->descriptorSetCount, vinfo_pDescriptorCounts); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pDescriptorCounts, "pDescriptorCounts", pstruct->descriptorSetCount, vinfo_pDescriptorCounts); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -48504,7 +48498,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkShadingRatePaletteN
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pShadingRatePaletteEntries = {false, true, false, EnumToStringVkShadingRatePaletteEntryNV};
-        ArrayToStringJson(outputFile, indent, 0, "const VkShadingRatePaletteEntryNV*", &pstruct_in.pShadingRatePaletteEntries, "pShadingRatePaletteEntries", pstruct->shadingRatePaletteEntryCount, vinfo_pShadingRatePaletteEntries); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkShadingRatePaletteEntryNV*", &pstruct_in.pShadingRatePaletteEntries, "pShadingRatePaletteEntries", pstruct->shadingRatePaletteEntryCount, vinfo_pShadingRatePaletteEntries); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -48629,7 +48623,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportSha
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkShadingRatePaletteNV>(outputFile, indent, 1, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkShadingRatePaletteNV>(outputFile, indent, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -49001,7 +48995,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCoarseSampleOrderCu
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCoarseSampleLocationNV>(outputFile, indent, 1, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkCoarseSampleLocationNV>(outputFile, indent, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -49126,7 +49120,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportCoa
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent, 1, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -49399,7 +49393,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRayTracingPipelineC
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent, 1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -49444,7 +49438,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRayTracingPipelineC
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRayTracingShaderGroupCreateInfoNV>(outputFile, indent, 1, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRayTracingShaderGroupCreateInfoNV>(outputFile, indent, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -50213,7 +50207,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAccelerationStructu
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkGeometryNV>(outputFile, indent, 1, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkGeometryNV>(outputFile, indent, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -50469,7 +50463,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindAccelerationStr
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pDeviceIndices = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUA
+        ArrayToStringJson(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -50578,7 +50572,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSetA
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pAccelerationStructures = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, 0, "const VkAccelerationStructureNV*", &pstruct_in.pAccelerationStructures, "pAccelerationStructures", pstruct->accelerationStructureCount, vinfo_pAccelerationStructures); // AQA
+        ArrayToStringJson(outputFile, indent, "const VkAccelerationStructureNV*", &pstruct_in.pAccelerationStructures, "pAccelerationStructures", pstruct->accelerationStructureCount, vinfo_pAccelerationStructures); // AQA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -52339,7 +52333,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineVertexInput
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkVertexInputBindingDivisorDescriptionEXT>(outputFile, indent, 1, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkVertexInputBindingDivisorDescriptionEXT>(outputFile, indent, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -52702,7 +52696,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCreationFee
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineCreationFeedbackEXT>(outputFile, indent, 1, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPipelineCreationFeedbackEXT>(outputFile, indent, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -53018,7 +53012,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshS
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_maxTaskWorkGroupSize = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "uint32_t", &pstruct_in.maxTaskWorkGroupSize, "maxTaskWorkGroupSize", 3, vinfo_maxTaskWorkGroupSize); // AUA
+    ArrayToStringJson(outputFile, indent, "uint32_t", &pstruct_in.maxTaskWorkGroupSize, "maxTaskWorkGroupSize", 3, vinfo_maxTaskWorkGroupSize); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -53093,7 +53087,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshS
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_maxMeshWorkGroupSize = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "uint32_t", &pstruct_in.maxMeshWorkGroupSize, "maxMeshWorkGroupSize", 3, vinfo_maxMeshWorkGroupSize); // AUA
+    ArrayToStringJson(outputFile, indent, "uint32_t", &pstruct_in.maxMeshWorkGroupSize, "maxMeshWorkGroupSize", 3, vinfo_maxMeshWorkGroupSize); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -53512,7 +53506,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportExc
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, 1, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress()); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -56004,7 +55998,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemor
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_heapBudget = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "VkDeviceSize", &pstruct_in.heapBudget, "heapBudget", VK_MAX_MEMORY_HEAPS, vinfo_heapBudget); // AUA
+    ArrayToStringJson(outputFile, indent, "VkDeviceSize", &pstruct_in.heapBudget, "heapBudget", VK_MAX_MEMORY_HEAPS, vinfo_heapBudget); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -56028,7 +56022,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemor
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" : ");
     ScalarValueToStringStruct vinfo_heapUsage = {false, false, false, nullptr};
-    ArrayToStringJson(outputFile, indent, -1, "VkDeviceSize", &pstruct_in.heapUsage, "heapUsage", VK_MAX_MEMORY_HEAPS, vinfo_heapUsage); // AUA
+    ArrayToStringJson(outputFile, indent, "VkDeviceSize", &pstruct_in.heapUsage, "heapUsage", VK_MAX_MEMORY_HEAPS, vinfo_heapUsage); // AUA
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "}\n"); // UXS
@@ -56730,7 +56724,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationFeaturesE
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pEnabledValidationFeatures = {false, true, false, EnumToStringVkValidationFeatureEnableEXT};
-        ArrayToStringJson(outputFile, indent, 0, "const VkValidationFeatureEnableEXT*", &pstruct_in.pEnabledValidationFeatures, "pEnabledValidationFeatures", pstruct->enabledValidationFeatureCount, vinfo_pEnabledValidationFeatures); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkValidationFeatureEnableEXT*", &pstruct_in.pEnabledValidationFeatures, "pEnabledValidationFeatures", pstruct->enabledValidationFeatureCount, vinfo_pEnabledValidationFeatures); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -56776,7 +56770,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationFeaturesE
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pDisabledValidationFeatures = {false, true, false, EnumToStringVkValidationFeatureDisableEXT};
-        ArrayToStringJson(outputFile, indent, 0, "const VkValidationFeatureDisableEXT*", &pstruct_in.pDisabledValidationFeatures, "pDisabledValidationFeatures", pstruct->disabledValidationFeatureCount, vinfo_pDisabledValidationFeatures); // AUA
+        ArrayToStringJson(outputFile, indent, "const VkValidationFeatureDisableEXT*", &pstruct_in.pDisabledValidationFeatures, "pDisabledValidationFeatures", pstruct->disabledValidationFeatureCount, vinfo_pDisabledValidationFeatures); // AUA
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW

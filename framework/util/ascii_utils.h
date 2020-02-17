@@ -222,7 +222,6 @@ void WideStringToQuotedString(FILE* outputFile, const wchar_t* s)
 template <typename T>
 void ArrayToString(FILE*                            outputFile,
                    int                              indent,
-                   const int                        pointer_count,
                    const char*                      full_type_name,
                    const T*                         array,
                    const char*                      array_name,
@@ -237,14 +236,8 @@ void ArrayToString(FILE*                            outputFile,
     {
         return;
     }
-    if ((pointer_count > 2 && strstr(full_type_name, "char")) || (pointer_count > 1 && !strstr(full_type_name, "char")))
-    {
-        fprintf(stderr, "Error in ArrayToString: arrays of arrays not implemented\n");
-        return;
-    }
 
-    if (pointer_count <= 1 &&
-        (std::is_same<T, const char>::value || std::is_same<T, const char>::value || std::is_same<T, char>::value ||
+    if ((std::is_same<T, const char>::value || std::is_same<T, const char>::value || std::is_same<T, char>::value ||
          std::is_same<T, const char*>::value || std::is_same<T, char*>::value))
     {
         StringToQuotedString(outputFile, reinterpret_cast<const char*>(array));
@@ -289,7 +282,6 @@ void ArrayToString(FILE*                            outputFile,
 template <typename T>
 void ArrayOfScalarsToString(FILE*                            outputFile,
                             int                              indent,
-                            const int                        pointer_count,
                             const char*                      full_type_name,
                             const T*                         array,
                             const char*                      array_name,
@@ -304,14 +296,8 @@ void ArrayOfScalarsToString(FILE*                            outputFile,
     {
         return;
     }
-    if ((pointer_count > 2 && strstr(full_type_name, "char")) || (pointer_count > 1 && !strstr(full_type_name, "char")))
-    {
-        fprintf(stderr, "Error in ArrayOfScalersToString: arrays of arrays not implemented\n");
-        return;
-    }
 
-    if (pointer_count <= 1 &&
-        (std::is_same<T, const char>::value || std::is_same<T, const char>::value || std::is_same<T, char>::value ||
+    if ((std::is_same<T, const char>::value || std::is_same<T, const char>::value || std::is_same<T, char>::value ||
          std::is_same<T, const char*>::value || std::is_same<T, char*>::value))
     {
         StringToQuotedString(outputFile, reinterpret_cast<const char*>(array));

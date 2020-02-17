@@ -18,7 +18,6 @@
 # TODO:
 #    Display thread information
 #    Rename executable to gfxrecon-convert
-#    Check use of pointerCount, in both ascii and json
 
 import os,re,sys
 from base_generator import *

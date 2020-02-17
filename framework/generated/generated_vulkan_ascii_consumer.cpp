@@ -179,7 +179,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDevices(
     {
         AddrToString(outputFile, pPhysicalDevices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPhysicalDevices = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "VkPhysicalDevice*", &pPhysicalDevices, "pPhysicalDevices", *pPhysicalDeviceCount.GetPointer(), vinfo_pPhysicalDevices); // AUC
+        ArrayToString(outputFile, indent, "VkPhysicalDevice*", &pPhysicalDevices, "pPhysicalDevices", *pPhysicalDeviceCount.GetPointer(), vinfo_pPhysicalDevices); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -432,7 +432,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     else
     {
         AddrToString(outputFile, pQueueFamilyProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkQueueFamilyProperties>(outputFile, indent+1, 1, "VkQueueFamilyProperties", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkQueueFamilyProperties>(outputFile, indent+1, "VkQueueFamilyProperties", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -669,7 +669,7 @@ void VulkanAsciiConsumer::Process_vkQueueSubmit(
     else
     {
         AddrToString(outputFile, pSubmits.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSubmitInfo>(outputFile, indent+1, 1, "VkSubmitInfo", pSubmits.GetMetaStructPointer(), "pSubmits", submitCount, false, pSubmits.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkSubmitInfo>(outputFile, indent+1, "VkSubmitInfo", pSubmits.GetMetaStructPointer(), "pSubmits", submitCount, false, pSubmits.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -972,7 +972,7 @@ void VulkanAsciiConsumer::Process_vkFlushMappedMemoryRanges(
     else
     {
         AddrToString(outputFile, pMemoryRanges.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkMappedMemoryRange>(outputFile, indent+1, 1, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkMappedMemoryRange>(outputFile, indent+1, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1017,7 +1017,7 @@ void VulkanAsciiConsumer::Process_vkInvalidateMappedMemoryRanges(
     else
     {
         AddrToString(outputFile, pMemoryRanges.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkMappedMemoryRange>(outputFile, indent+1, 1, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkMappedMemoryRange>(outputFile, indent+1, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1293,7 +1293,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements(
     else
     {
         AddrToString(outputFile, pSparseMemoryRequirements.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSparseImageMemoryRequirements>(outputFile, indent+1, 1, "VkSparseImageMemoryRequirements", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkSparseImageMemoryRequirements>(outputFile, indent+1, "VkSparseImageMemoryRequirements", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1395,7 +1395,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     else
     {
         AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSparseImageFormatProperties>(outputFile, indent+1, 1, "VkSparseImageFormatProperties", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkSparseImageFormatProperties>(outputFile, indent+1, "VkSparseImageFormatProperties", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1441,7 +1441,7 @@ void VulkanAsciiConsumer::Process_vkQueueBindSparse(
     else
     {
         AddrToString(outputFile, pBindInfo.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBindSparseInfo>(outputFile, indent+1, 1, "VkBindSparseInfo", pBindInfo.GetMetaStructPointer(), "pBindInfo", bindInfoCount, false, pBindInfo.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkBindSparseInfo>(outputFile, indent+1, "VkBindSparseInfo", pBindInfo.GetMetaStructPointer(), "pBindInfo", bindInfoCount, false, pBindInfo.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1608,7 +1608,7 @@ void VulkanAsciiConsumer::Process_vkResetFences(
     {
         AddrToString(outputFile, pFences.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pFences = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AUC
+        ArrayToString(outputFile, indent, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1685,7 +1685,7 @@ void VulkanAsciiConsumer::Process_vkWaitForFences(
     {
         AddrToString(outputFile, pFences.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pFences = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AUC
+        ArrayToString(outputFile, indent, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2200,7 +2200,7 @@ void VulkanAsciiConsumer::Process_vkGetQueryPoolResults(
     {
         AddrToString(outputFile, pData.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "void*", &pData, "pData", dataSize, vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "void*", &pData, "pData", dataSize, vinfo_pData); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3018,7 +3018,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineCacheData(
     {
         AddrToString(outputFile, pData.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3072,7 +3072,7 @@ void VulkanAsciiConsumer::Process_vkMergePipelineCaches(
     {
         AddrToString(outputFile, pSrcCaches.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSrcCaches = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkPipelineCache*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AUC
+        ArrayToString(outputFile, indent, "const VkPipelineCache*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3127,7 +3127,7 @@ void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
     else
     {
         AddrToString(outputFile, pCreateInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkGraphicsPipelineCreateInfo>(outputFile, indent+1, 1, "VkGraphicsPipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkGraphicsPipelineCreateInfo>(outputFile, indent+1, "VkGraphicsPipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3159,7 +3159,7 @@ void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
     {
         AddrToString(outputFile, pPipelines.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AUC
+        ArrayToString(outputFile, indent, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3214,7 +3214,7 @@ void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
     else
     {
         AddrToString(outputFile, pCreateInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkComputePipelineCreateInfo>(outputFile, indent+1, 1, "VkComputePipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkComputePipelineCreateInfo>(outputFile, indent+1, "VkComputePipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3246,7 +3246,7 @@ void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
     {
         AddrToString(outputFile, pPipelines.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AUC
+        ArrayToString(outputFile, indent, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3837,7 +3837,7 @@ void VulkanAsciiConsumer::Process_vkAllocateDescriptorSets(
     {
         AddrToString(outputFile, pDescriptorSets.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", pAllocateInfo.GetPointer()->descriptorSetCount, vinfo_pDescriptorSets); // AUC
+        ArrayToString(outputFile, indent, "VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", pAllocateInfo.GetPointer()->descriptorSetCount, vinfo_pDescriptorSets); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3891,7 +3891,7 @@ void VulkanAsciiConsumer::Process_vkFreeDescriptorSets(
     {
         AddrToString(outputFile, pDescriptorSets.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AUC
+        ArrayToString(outputFile, indent, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3935,7 +3935,7 @@ void VulkanAsciiConsumer::Process_vkUpdateDescriptorSets(
     else
     {
         AddrToString(outputFile, pDescriptorWrites.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkWriteDescriptorSet>(outputFile, indent+1, 1, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkWriteDescriptorSet>(outputFile, indent+1, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3957,7 +3957,7 @@ void VulkanAsciiConsumer::Process_vkUpdateDescriptorSets(
     else
     {
         AddrToString(outputFile, pDescriptorCopies.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkCopyDescriptorSet>(outputFile, indent+1, 1, "VkCopyDescriptorSet", pDescriptorCopies.GetMetaStructPointer(), "pDescriptorCopies", descriptorCopyCount, false, pDescriptorCopies.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkCopyDescriptorSet>(outputFile, indent+1, "VkCopyDescriptorSet", pDescriptorCopies.GetMetaStructPointer(), "pDescriptorCopies", descriptorCopyCount, false, pDescriptorCopies.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4434,7 +4434,7 @@ void VulkanAsciiConsumer::Process_vkAllocateCommandBuffers(
     {
         AddrToString(outputFile, pCommandBuffers.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", pAllocateInfo.GetPointer()->commandBufferCount, vinfo_pCommandBuffers); // AUC
+        ArrayToString(outputFile, indent, "VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", pAllocateInfo.GetPointer()->commandBufferCount, vinfo_pCommandBuffers); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4485,7 +4485,7 @@ void VulkanAsciiConsumer::Process_vkFreeCommandBuffers(
     {
         AddrToString(outputFile, pCommandBuffers.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4660,7 +4660,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewport(
     else
     {
         AddrToString(outputFile, pViewports.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkViewport>(outputFile, indent+1, 1, "VkViewport", pViewports.GetMetaStructPointer(), "pViewports", viewportCount, false, pViewports.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkViewport>(outputFile, indent+1, "VkViewport", pViewports.GetMetaStructPointer(), "pViewports", viewportCount, false, pViewports.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4710,7 +4710,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetScissor(
     else
     {
         AddrToString(outputFile, pScissors.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, 1, "VkRect2D", pScissors.GetMetaStructPointer(), "pScissors", scissorCount, false, pScissors.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pScissors.GetMetaStructPointer(), "pScissors", scissorCount, false, pScissors.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4809,7 +4809,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetBlendConstants(
     OutputString(outputFile, "4"); // DFX
     OutputString(outputFile, "] = ");
     ScalarValueToStringStruct vinfo_blendConstants = {false, false, false, nullptr};
-    ArrayOfScalarsToString<float>(outputFile, indent, 0, "const float", blendConstants.GetPointer(), "blendConstants", 4, vinfo_blendConstants); // JPA
+    ArrayOfScalarsToString<float>(outputFile, indent, "const float", blendConstants.GetPointer(), "blendConstants", 4, vinfo_blendConstants); // JPA
     OutputString(outputFile, "\n"); // HHS
 
     OutputString(outputFile, "\n"); // HDS
@@ -5016,7 +5016,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindDescriptorSets(
     {
         AddrToString(outputFile, pDescriptorSets.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AUC
+        ArrayToString(outputFile, indent, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5039,7 +5039,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindDescriptorSets(
     {
         AddrToString(outputFile, pDynamicOffsets.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDynamicOffsets = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pDynamicOffsets, "pDynamicOffsets", dynamicOffsetCount, vinfo_pDynamicOffsets); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pDynamicOffsets, "pDynamicOffsets", dynamicOffsetCount, vinfo_pDynamicOffsets); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5136,7 +5136,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindVertexBuffers(
     {
         AddrToString(outputFile, pBuffers.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5152,7 +5152,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindVertexBuffers(
     {
         AddrToString(outputFile, pOffsets.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pOffsets = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5494,7 +5494,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyBuffer(
     else
     {
         AddrToString(outputFile, pRegions.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBufferCopy>(outputFile, indent+1, 1, "VkBufferCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkBufferCopy>(outputFile, indent+1, "VkBufferCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5574,7 +5574,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImage(
     else
     {
         AddrToString(outputFile, pRegions.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageCopy>(outputFile, indent+1, 1, "VkImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkImageCopy>(outputFile, indent+1, "VkImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5655,7 +5655,7 @@ void VulkanAsciiConsumer::Process_vkCmdBlitImage(
     else
     {
         AddrToString(outputFile, pRegions.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageBlit>(outputFile, indent+1, 1, "VkImageBlit", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkImageBlit>(outputFile, indent+1, "VkImageBlit", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5734,7 +5734,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyBufferToImage(
     else
     {
         AddrToString(outputFile, pRegions.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBufferImageCopy>(outputFile, indent+1, 1, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkBufferImageCopy>(outputFile, indent+1, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5803,7 +5803,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImageToBuffer(
     else
     {
         AddrToString(outputFile, pRegions.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBufferImageCopy>(outputFile, indent+1, 1, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkBufferImageCopy>(outputFile, indent+1, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5989,7 +5989,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearColorImage(
     else
     {
         AddrToString(outputFile, pRanges.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageSubresourceRange>(outputFile, indent+1, 1, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkImageSubresourceRange>(outputFile, indent+1, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6067,7 +6067,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearDepthStencilImage(
     else
     {
         AddrToString(outputFile, pRanges.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageSubresourceRange>(outputFile, indent+1, 1, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkImageSubresourceRange>(outputFile, indent+1, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6111,7 +6111,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearAttachments(
     else
     {
         AddrToString(outputFile, pAttachments.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkClearAttachment>(outputFile, indent+1, 1, "VkClearAttachment", pAttachments.GetMetaStructPointer(), "pAttachments", attachmentCount, false, pAttachments.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkClearAttachment>(outputFile, indent+1, "VkClearAttachment", pAttachments.GetMetaStructPointer(), "pAttachments", attachmentCount, false, pAttachments.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6133,7 +6133,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearAttachments(
     else
     {
         AddrToString(outputFile, pRects.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkClearRect>(outputFile, indent+1, 1, "VkClearRect", pRects.GetMetaStructPointer(), "pRects", rectCount, false, pRects.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkClearRect>(outputFile, indent+1, "VkClearRect", pRects.GetMetaStructPointer(), "pRects", rectCount, false, pRects.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6213,7 +6213,7 @@ void VulkanAsciiConsumer::Process_vkCmdResolveImage(
     else
     {
         AddrToString(outputFile, pRegions.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageResolve>(outputFile, indent+1, 1, "VkImageResolve", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkImageResolve>(outputFile, indent+1, "VkImageResolve", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6332,7 +6332,7 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
     {
         AddrToString(outputFile, pEvents.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pEvents = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkEvent*", &pEvents, "pEvents", eventCount, vinfo_pEvents); // AUC
+        ArrayToString(outputFile, indent, "const VkEvent*", &pEvents, "pEvents", eventCount, vinfo_pEvents); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6368,7 +6368,7 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
     else
     {
         AddrToString(outputFile, pMemoryBarriers.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkMemoryBarrier>(outputFile, indent+1, 1, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkMemoryBarrier>(outputFile, indent+1, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6390,7 +6390,7 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
     else
     {
         AddrToString(outputFile, pBufferMemoryBarriers.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBufferMemoryBarrier>(outputFile, indent+1, 1, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkBufferMemoryBarrier>(outputFile, indent+1, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6412,7 +6412,7 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
     else
     {
         AddrToString(outputFile, pImageMemoryBarriers.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageMemoryBarrier>(outputFile, indent+1, 1, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkImageMemoryBarrier>(outputFile, indent+1, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6482,7 +6482,7 @@ void VulkanAsciiConsumer::Process_vkCmdPipelineBarrier(
     else
     {
         AddrToString(outputFile, pMemoryBarriers.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkMemoryBarrier>(outputFile, indent+1, 1, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkMemoryBarrier>(outputFile, indent+1, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6504,7 +6504,7 @@ void VulkanAsciiConsumer::Process_vkCmdPipelineBarrier(
     else
     {
         AddrToString(outputFile, pBufferMemoryBarriers.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBufferMemoryBarrier>(outputFile, indent+1, 1, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkBufferMemoryBarrier>(outputFile, indent+1, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6526,7 +6526,7 @@ void VulkanAsciiConsumer::Process_vkCmdPipelineBarrier(
     else
     {
         AddrToString(outputFile, pImageMemoryBarriers.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageMemoryBarrier>(outputFile, indent+1, 1, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkImageMemoryBarrier>(outputFile, indent+1, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6830,7 +6830,7 @@ void VulkanAsciiConsumer::Process_vkCmdPushConstants(
     {
         AddrToString(outputFile, pValues.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pValues = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const void*", &pValues, "pValues", size, vinfo_pValues); // PRC
+        ArrayToString(outputFile, indent, "const void*", &pValues, "pValues", size, vinfo_pValues); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6966,7 +6966,7 @@ void VulkanAsciiConsumer::Process_vkCmdExecuteCommands(
     {
         AddrToString(outputFile, pCommandBuffers.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7012,7 +7012,7 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory2(
     else
     {
         AddrToString(outputFile, pBindInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBindBufferMemoryInfo>(outputFile, indent+1, 1, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkBindBufferMemoryInfo>(outputFile, indent+1, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7057,7 +7057,7 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory2(
     else
     {
         AddrToString(outputFile, pBindInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBindImageMemoryInfo>(outputFile, indent+1, 1, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkBindImageMemoryInfo>(outputFile, indent+1, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7260,7 +7260,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     else
     {
         AddrToString(outputFile, pPhysicalDeviceGroupProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent+1, 1, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent+1, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7431,7 +7431,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2(
     else
     {
         AddrToString(outputFile, pSparseMemoryRequirements.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent+1, 1, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent+1, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7652,7 +7652,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     else
     {
         AddrToString(outputFile, pQueueFamilyProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkQueueFamilyProperties2>(outputFile, indent+1, 1, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkQueueFamilyProperties2>(outputFile, indent+1, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7754,7 +7754,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     else
     {
         AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSparseImageFormatProperties2>(outputFile, indent+1, 1, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkSparseImageFormatProperties2>(outputFile, indent+1, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8479,7 +8479,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     else
     {
         AddrToString(outputFile, pSurfaceFormats.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSurfaceFormatKHR>(outputFile, indent+1, 1, "VkSurfaceFormatKHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkSurfaceFormatKHR>(outputFile, indent+1, "VkSurfaceFormatKHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8541,7 +8541,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     {
         AddrToString(outputFile, pPresentModes.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHR};
-        ArrayToString(outputFile, indent, 0, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUC
+        ArrayToString(outputFile, indent, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8718,7 +8718,7 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainImagesKHR(
     {
         AddrToString(outputFile, pSwapchainImages.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSwapchainImages = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "VkImage*", &pSwapchainImages, "pSwapchainImages", *pSwapchainImageCount.GetPointer(), vinfo_pSwapchainImages); // AUC
+        ArrayToString(outputFile, indent, "VkImage*", &pSwapchainImages, "pSwapchainImages", *pSwapchainImageCount.GetPointer(), vinfo_pSwapchainImages); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8969,7 +8969,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     else
     {
         AddrToString(outputFile, pRects.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, 1, "VkRect2D", pRects.GetMetaStructPointer(), "pRects", *pRectCount.GetPointer(), false, pRects.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pRects.GetMetaStructPointer(), "pRects", *pRectCount.GetPointer(), false, pRects.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9077,7 +9077,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     else
     {
         AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkDisplayPropertiesKHR>(outputFile, indent+1, 1, "VkDisplayPropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkDisplayPropertiesKHR>(outputFile, indent+1, "VkDisplayPropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9130,7 +9130,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     else
     {
         AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkDisplayPlanePropertiesKHR>(outputFile, indent+1, 1, "VkDisplayPlanePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkDisplayPlanePropertiesKHR>(outputFile, indent+1, "VkDisplayPlanePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9192,7 +9192,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     {
         AddrToString(outputFile, pDisplays.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDisplays = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "VkDisplayKHR*", &pDisplays, "pDisplays", *pDisplayCount.GetPointer(), vinfo_pDisplays); // AUC
+        ArrayToString(outputFile, indent, "VkDisplayKHR*", &pDisplays, "pDisplays", *pDisplayCount.GetPointer(), vinfo_pDisplays); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9253,7 +9253,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModePropertiesKHR(
     else
     {
         AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkDisplayModePropertiesKHR>(outputFile, indent+1, 1, "VkDisplayModePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkDisplayModePropertiesKHR>(outputFile, indent+1, "VkDisplayModePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9505,7 +9505,7 @@ void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
     else
     {
         AddrToString(outputFile, pCreateInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSwapchainCreateInfoKHR>(outputFile, indent+1, 1, "VkSwapchainCreateInfoKHR", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", swapchainCount, false, pCreateInfos.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkSwapchainCreateInfoKHR>(outputFile, indent+1, "VkSwapchainCreateInfoKHR", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", swapchainCount, false, pCreateInfos.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9537,7 +9537,7 @@ void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
     {
         AddrToString(outputFile, pSwapchains.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AUC
+        ArrayToString(outputFile, indent, "VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10281,7 +10281,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     else
     {
         AddrToString(outputFile, pQueueFamilyProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkQueueFamilyProperties2>(outputFile, indent+1, 1, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkQueueFamilyProperties2>(outputFile, indent+1, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10383,7 +10383,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     else
     {
         AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSparseImageFormatProperties2>(outputFile, indent+1, 1, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkSparseImageFormatProperties2>(outputFile, indent+1, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10623,7 +10623,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     else
     {
         AddrToString(outputFile, pPhysicalDeviceGroupProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent+1, 1, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent+1, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11216,7 +11216,7 @@ void VulkanAsciiConsumer::Process_vkCmdPushDescriptorSetKHR(
     else
     {
         AddrToString(outputFile, pDescriptorWrites.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkWriteDescriptorSet>(outputFile, indent+1, 1, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkWriteDescriptorSet>(outputFile, indent+1, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11937,7 +11937,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     else
     {
         AddrToString(outputFile, pSurfaceFormats.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSurfaceFormat2KHR>(outputFile, indent+1, 1, "VkSurfaceFormat2KHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkSurfaceFormat2KHR>(outputFile, indent+1, "VkSurfaceFormat2KHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11991,7 +11991,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     else
     {
         AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkDisplayProperties2KHR>(outputFile, indent+1, 1, "VkDisplayProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkDisplayProperties2KHR>(outputFile, indent+1, "VkDisplayProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12044,7 +12044,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     else
     {
         AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkDisplayPlaneProperties2KHR>(outputFile, indent+1, 1, "VkDisplayPlaneProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkDisplayPlaneProperties2KHR>(outputFile, indent+1, "VkDisplayPlaneProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12105,7 +12105,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModeProperties2KHR(
     else
     {
         AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkDisplayModeProperties2KHR>(outputFile, indent+1, 1, "VkDisplayModeProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkDisplayModeProperties2KHR>(outputFile, indent+1, "VkDisplayModeProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12332,7 +12332,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     else
     {
         AddrToString(outputFile, pSparseMemoryRequirements.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent+1, 1, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent+1, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12493,7 +12493,7 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory2KHR(
     else
     {
         AddrToString(outputFile, pBindInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBindBufferMemoryInfo>(outputFile, indent+1, 1, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkBindBufferMemoryInfo>(outputFile, indent+1, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12538,7 +12538,7 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory2KHR(
     else
     {
         AddrToString(outputFile, pBindInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBindImageMemoryInfo>(outputFile, indent+1, 1, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkBindImageMemoryInfo>(outputFile, indent+1, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12925,7 +12925,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     else
     {
         AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkPipelineExecutablePropertiesKHR>(outputFile, indent+1, 1, "VkPipelineExecutablePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pExecutableCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkPipelineExecutablePropertiesKHR>(outputFile, indent+1, "VkPipelineExecutablePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pExecutableCount.GetPointer(), false, pProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12995,7 +12995,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     else
     {
         AddrToString(outputFile, pStatistics.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkPipelineExecutableStatisticKHR>(outputFile, indent+1, 1, "VkPipelineExecutableStatisticKHR", pStatistics.GetMetaStructPointer(), "pStatistics", *pStatisticCount.GetPointer(), false, pStatistics.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkPipelineExecutableStatisticKHR>(outputFile, indent+1, "VkPipelineExecutableStatisticKHR", pStatistics.GetMetaStructPointer(), "pStatistics", *pStatisticCount.GetPointer(), false, pStatistics.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13065,7 +13065,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableInternalRepresentations
     else
     {
         AddrToString(outputFile, pInternalRepresentations.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkPipelineExecutableInternalRepresentationKHR>(outputFile, indent+1, 1, "VkPipelineExecutableInternalRepresentationKHR", pInternalRepresentations.GetMetaStructPointer(), "pInternalRepresentations", *pInternalRepresentationCount.GetPointer(), false, pInternalRepresentations.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkPipelineExecutableInternalRepresentationKHR>(outputFile, indent+1, "VkPipelineExecutableInternalRepresentationKHR", pInternalRepresentations.GetMetaStructPointer(), "pInternalRepresentations", *pInternalRepresentationCount.GetPointer(), false, pInternalRepresentations.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13476,7 +13476,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     {
         AddrToString(outputFile, pBuffers.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13492,7 +13492,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     {
         AddrToString(outputFile, pOffsets.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pOffsets = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13508,7 +13508,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     {
         AddrToString(outputFile, pSizes.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSizes = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDeviceSize*", &pSizes, "pSizes", bindingCount, vinfo_pSizes); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pSizes, "pSizes", bindingCount, vinfo_pSizes); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13560,7 +13560,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     {
         AddrToString(outputFile, pCounterBuffers.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCounterBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13576,7 +13576,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     {
         AddrToString(outputFile, pCounterBufferOffsets.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCounterBufferOffsets = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13628,7 +13628,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndTransformFeedbackEXT(
     {
         AddrToString(outputFile, pCounterBuffers.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCounterBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13644,7 +13644,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndTransformFeedbackEXT(
     {
         AddrToString(outputFile, pCounterBufferOffsets.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCounterBufferOffsets = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14057,7 +14057,7 @@ void VulkanAsciiConsumer::Process_vkGetShaderInfoAMD(
     {
         AddrToString(outputFile, pInfo.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pInfo = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "void*", &pInfo, "pInfo", *pInfoSize.GetPointer(), vinfo_pInfo); // PRC
+        ArrayToString(outputFile, indent, "void*", &pInfo, "pInfo", *pInfoSize.GetPointer(), vinfo_pInfo); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14759,7 +14759,7 @@ void VulkanAsciiConsumer::Process_vkUnregisterObjectsNVX(
     {
         AddrToString(outputFile, pObjectEntryTypes.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pObjectEntryTypes = {false, true, false, EnumToStringVkObjectEntryTypeNVX};
-        ArrayToString(outputFile, indent, 0, "const VkObjectEntryTypeNVX*", &pObjectEntryTypes, "pObjectEntryTypes", objectCount, vinfo_pObjectEntryTypes); // AUC
+        ArrayToString(outputFile, indent, "const VkObjectEntryTypeNVX*", &pObjectEntryTypes, "pObjectEntryTypes", objectCount, vinfo_pObjectEntryTypes); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14775,7 +14775,7 @@ void VulkanAsciiConsumer::Process_vkUnregisterObjectsNVX(
     {
         AddrToString(outputFile, pObjectIndices.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pObjectIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const uint32_t*", &pObjectIndices, "pObjectIndices", objectCount, vinfo_pObjectIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pObjectIndices, "pObjectIndices", objectCount, vinfo_pObjectIndices); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14878,7 +14878,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewportWScalingNV(
     else
     {
         AddrToString(outputFile, pViewportWScalings.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkViewportWScalingNV>(outputFile, indent+1, 1, "VkViewportWScalingNV", pViewportWScalings.GetMetaStructPointer(), "pViewportWScalings", viewportCount, false, pViewportWScalings.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkViewportWScalingNV>(outputFile, indent+1, "VkViewportWScalingNV", pViewportWScalings.GetMetaStructPointer(), "pViewportWScalings", viewportCount, false, pViewportWScalings.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15407,7 +15407,7 @@ void VulkanAsciiConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     else
     {
         AddrToString(outputFile, pPresentationTimings.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkPastPresentationTimingGOOGLE>(outputFile, indent+1, 1, "VkPastPresentationTimingGOOGLE", pPresentationTimings.GetMetaStructPointer(), "pPresentationTimings", *pPresentationTimingCount.GetPointer(), false, pPresentationTimings.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkPastPresentationTimingGOOGLE>(outputFile, indent+1, "VkPastPresentationTimingGOOGLE", pPresentationTimings.GetMetaStructPointer(), "pPresentationTimings", *pPresentationTimingCount.GetPointer(), false, pPresentationTimings.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15458,7 +15458,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetDiscardRectangleEXT(
     else
     {
         AddrToString(outputFile, pDiscardRectangles.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, 1, "VkRect2D", pDiscardRectangles.GetMetaStructPointer(), "pDiscardRectangles", discardRectangleCount, false, pDiscardRectangles.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pDiscardRectangles.GetMetaStructPointer(), "pDiscardRectangles", discardRectangleCount, false, pDiscardRectangles.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15503,7 +15503,7 @@ void VulkanAsciiConsumer::Process_vkSetHdrMetadataEXT(
     {
         AddrToString(outputFile, pSwapchains.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AUC
+        ArrayToString(outputFile, indent, "const VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15518,7 +15518,7 @@ void VulkanAsciiConsumer::Process_vkSetHdrMetadataEXT(
     else
     {
         AddrToString(outputFile, pMetadata.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkHdrMetadataEXT>(outputFile, indent+1, 1, "VkHdrMetadataEXT", pMetadata.GetMetaStructPointer(), "pMetadata", swapchainCount, false, pMetadata.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkHdrMetadataEXT>(outputFile, indent+1, "VkHdrMetadataEXT", pMetadata.GetMetaStructPointer(), "pMetadata", swapchainCount, false, pMetadata.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16489,7 +16489,7 @@ void VulkanAsciiConsumer::Process_vkMergeValidationCachesEXT(
     {
         AddrToString(outputFile, pSrcCaches.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSrcCaches = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkValidationCacheEXT*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AUC
+        ArrayToString(outputFile, indent, "const VkValidationCacheEXT*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16551,7 +16551,7 @@ void VulkanAsciiConsumer::Process_vkGetValidationCacheDataEXT(
     {
         AddrToString(outputFile, pData.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16639,7 +16639,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     else
     {
         AddrToString(outputFile, pShadingRatePalettes.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkShadingRatePaletteNV>(outputFile, indent+1, 1, "VkShadingRatePaletteNV", pShadingRatePalettes.GetMetaStructPointer(), "pShadingRatePalettes", viewportCount, false, pShadingRatePalettes.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkShadingRatePaletteNV>(outputFile, indent+1, "VkShadingRatePaletteNV", pShadingRatePalettes.GetMetaStructPointer(), "pShadingRatePalettes", viewportCount, false, pShadingRatePalettes.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16692,7 +16692,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     else
     {
         AddrToString(outputFile, pCustomSampleOrders.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent+1, 1, "VkCoarseSampleOrderCustomNV", pCustomSampleOrders.GetMetaStructPointer(), "pCustomSampleOrders", customSampleOrderCount, false, pCustomSampleOrders.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent+1, "VkCoarseSampleOrderCustomNV", pCustomSampleOrders.GetMetaStructPointer(), "pCustomSampleOrders", customSampleOrderCount, false, pCustomSampleOrders.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16904,7 +16904,7 @@ void VulkanAsciiConsumer::Process_vkBindAccelerationStructureMemoryNV(
     else
     {
         AddrToString(outputFile, pBindInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBindAccelerationStructureMemoryInfoNV>(outputFile, indent+1, 1, "VkBindAccelerationStructureMemoryInfoNV", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkBindAccelerationStructureMemoryInfoNV>(outputFile, indent+1, "VkBindAccelerationStructureMemoryInfoNV", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17225,7 +17225,7 @@ void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
     else
     {
         AddrToString(outputFile, pCreateInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkRayTracingPipelineCreateInfoNV>(outputFile, indent+1, 1, "VkRayTracingPipelineCreateInfoNV", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkRayTracingPipelineCreateInfoNV>(outputFile, indent+1, "VkRayTracingPipelineCreateInfoNV", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17257,7 +17257,7 @@ void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
     {
         AddrToString(outputFile, pPipelines.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AUC
+        ArrayToString(outputFile, indent, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17327,7 +17327,7 @@ void VulkanAsciiConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     {
         AddrToString(outputFile, pData.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "void*", &pData, "pData", dataSize, vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "void*", &pData, "pData", dataSize, vinfo_pData); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17381,7 +17381,7 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureHandleNV(
     {
         AddrToString(outputFile, pData.GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "void*", &pData, "pData", dataSize, vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "void*", &pData, "pData", dataSize, vinfo_pData); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17427,7 +17427,7 @@ void VulkanAsciiConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     {
         AddrToString(outputFile, pAccelerationStructures.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pAccelerationStructures = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "const VkAccelerationStructureNV*", &pAccelerationStructures, "pAccelerationStructures", accelerationStructureCount, vinfo_pAccelerationStructures); // AUC
+        ArrayToString(outputFile, indent, "const VkAccelerationStructureNV*", &pAccelerationStructures, "pAccelerationStructures", accelerationStructureCount, vinfo_pAccelerationStructures); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17662,7 +17662,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT
     {
         AddrToString(outputFile, pTimeDomains.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pTimeDomains = {false, true, false, EnumToStringVkTimeDomainEXT};
-        ArrayToString(outputFile, indent, 0, "VkTimeDomainEXT*", &pTimeDomains, "pTimeDomains", *pTimeDomainCount.GetPointer(), vinfo_pTimeDomains); // AUC
+        ArrayToString(outputFile, indent, "VkTimeDomainEXT*", &pTimeDomains, "pTimeDomains", *pTimeDomainCount.GetPointer(), vinfo_pTimeDomains); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17709,7 +17709,7 @@ void VulkanAsciiConsumer::Process_vkGetCalibratedTimestampsEXT(
     else
     {
         AddrToString(outputFile, pTimestampInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkCalibratedTimestampInfoEXT>(outputFile, indent+1, 1, "VkCalibratedTimestampInfoEXT", pTimestampInfos.GetMetaStructPointer(), "pTimestampInfos", timestampCount, false, pTimestampInfos.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkCalibratedTimestampInfoEXT>(outputFile, indent+1, "VkCalibratedTimestampInfoEXT", pTimestampInfos.GetMetaStructPointer(), "pTimestampInfos", timestampCount, false, pTimestampInfos.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17725,7 +17725,7 @@ void VulkanAsciiConsumer::Process_vkGetCalibratedTimestampsEXT(
     {
         AddrToString(outputFile, pTimestamps.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pTimestamps = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, 0, "uint64_t*", &pTimestamps, "pTimestamps", timestampCount, vinfo_pTimestamps); // AUC
+        ArrayToString(outputFile, indent, "uint64_t*", &pTimestamps, "pTimestamps", timestampCount, vinfo_pTimestamps); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17942,7 +17942,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetExclusiveScissorNV(
     else
     {
         AddrToString(outputFile, pExclusiveScissors.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, 1, "VkRect2D", pExclusiveScissors.GetMetaStructPointer(), "pExclusiveScissors", exclusiveScissorCount, false, pExclusiveScissors.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pExclusiveScissors.GetMetaStructPointer(), "pExclusiveScissors", exclusiveScissorCount, false, pExclusiveScissors.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18026,7 +18026,7 @@ void VulkanAsciiConsumer::Process_vkGetQueueCheckpointDataNV(
     else
     {
         AddrToString(outputFile, pCheckpointData.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkCheckpointDataNV>(outputFile, indent+1, 1, "VkCheckpointDataNV", pCheckpointData.GetMetaStructPointer(), "pCheckpointData", *pCheckpointDataCount.GetPointer(), false, pCheckpointData.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkCheckpointDataNV>(outputFile, indent+1, "VkCheckpointDataNV", pCheckpointData.GetMetaStructPointer(), "pCheckpointData", *pCheckpointDataCount.GetPointer(), false, pCheckpointData.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18628,7 +18628,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixProperties
     else
     {
         AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkCooperativeMatrixPropertiesNV>(outputFile, indent+1, 1, "VkCooperativeMatrixPropertiesNV", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkCooperativeMatrixPropertiesNV>(outputFile, indent+1, "VkCooperativeMatrixPropertiesNV", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18682,7 +18682,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSa
     else
     {
         AddrToString(outputFile, pCombinations.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkFramebufferMixedSamplesCombinationNV>(outputFile, indent+1, 1, "VkFramebufferMixedSamplesCombinationNV", pCombinations.GetMetaStructPointer(), "pCombinations", *pCombinationCount.GetPointer(), false, pCombinations.GetAddress());  // CCO
+        ArrayOfStructsToString<Decoded_VkFramebufferMixedSamplesCombinationNV>(outputFile, indent+1, "VkFramebufferMixedSamplesCombinationNV", pCombinations.GetMetaStructPointer(), "pCombinations", *pCombinationCount.GetPointer(), false, pCombinations.GetAddress());  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18754,7 +18754,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     {
         AddrToString(outputFile, pPresentModes.GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHR};
-        ArrayToString(outputFile, indent, 0, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUC
+        ArrayToString(outputFile, indent, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUC
     }
     OutputString(outputFile, "\n"); // HHS
 
