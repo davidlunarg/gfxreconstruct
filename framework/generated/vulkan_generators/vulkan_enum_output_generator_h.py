@@ -20,7 +20,7 @@ import os,re,sys
 from collections import OrderedDict
 from base_generator import *
 
-class VulkanAsciiEnumGeneratorOptionsCpp(BaseGeneratorOptions):
+class VulkanEnumOutputGeneratorOptionsH(BaseGeneratorOptions):
     """Options for generating enum to ascii utilities"""
     def __init__(self,
                  blacklists = None,         # Path to JSON file listing apicalls and structs to ignore.
@@ -34,9 +34,9 @@ class VulkanAsciiEnumGeneratorOptionsCpp(BaseGeneratorOptions):
                                       filename, directory, prefixText,
                                       protectFile, protectFeature)
 
-# VulkanAsciiEnumBodyGeneratorCpp - subclass of BaseGenerator.
-# Generates C++ funcs for converting Vulkan enum values to ascii.
-class VulkanAsciiEnumGeneratorCpp(BaseGenerator):
+# VulkanEnumOutputBodyGeneratorH - subclass of BaseGenerator.
+# Generates header file for C++ funcs for converting Vulkan enum values to ascii.
+class VulkanEnumOutputGeneratorH(BaseGenerator):
     def __init__(self,
                  errFile = sys.stderr,
                  warnFile = sys.stderr,
@@ -55,56 +55,27 @@ class VulkanAsciiEnumGeneratorCpp(BaseGenerator):
 
     def beginFile(self, genOpts):
         BaseGenerator.beginFile(self, genOpts)
-        self.wc('#include "format/platform_types.h"')
-        self.wc('#include "generated/generated_vulkan_ascii_enum_util.h"')
+
         self.wc('#include "util/defines.h"')
         self.wc('#include "vulkan/vulkan.h"')
-        self.wc('#include <cassert>')
-        self.wc('#include <string>')
+        self.wc('#include <inttypes.h>')
+        self.newline()
+
         self.newline()
         self.wc('GFXRECON_BEGIN_NAMESPACE(gfxrecon)')
         self.wc('GFXRECON_BEGIN_NAMESPACE(decode)')
 
     def endFile(self):
-        # Generate functions to convert enum values to strings
+        # Generate functions headers to convert enum values to strings
+        self.newline()
         for enumName in self.enumListNoAliases:
             if enumName in self.enumList:
-                self.newline()
-                self.wc('void EnumToString' + enumName + '(FILE* outputFile, uint32_t enum_uint32)')
-                self.wc('{')
-                self.wc('    ' + enumName + ' e = static_cast<' + enumName + '>(enum_uint32);')
-                self.wc('    assert(outputFile != nullptr); // RYZ')
-                # Use list e to eliminate duplicates and make sure we don't use aliases
-                e = list()
-                for enumValue in self.enumList[enumName]:
-                    enumString=str(enumValue.attrib.get('name'));
-                    isAlias = str(enumValue.attrib.get('alias'))
-                    supported = str(enumValue.attrib.get('supported'))
-                    if (not enumString in e) and isAlias == 'None' and supported != 'disabled':
-                        e.append(enumString);
-                if len(e) > 0:
-                    self.wc('    switch (e)')
-                    self.wc('    {')
-                    # Add a case for each enum
-                    for enumValue in e:
-                        self.wc('        case ' + enumValue + ':')
-                        self.wc('            fprintf(outputFile, "' + enumValue + '");')
-                        self.wc('            return;')
-                    self.wc('        default:')
-                    self.wc('            fprintf(outputFile, "UNKNOWN");')
-                    self.wc('            return;')
-                    self.wc('    }')
-                else:
-                    self.wc('    fprintf(outputFile, "UNKNOWN");')
-            self.wc('}')
+                self.wc('void EnumToString' + enumName + '(FILE* outputFile, uint32_t enum_uint32);')
 
         # Generate functions to convert aliased enum types to string
+        self.newline()
         for enumName in self.enumListAliases:
-            self.wc('\nvoid EnumToString' + enumName + '(FILE* outputFile, ' + enumName + ' e)')
-            self.wc('{')
-            self.wc('    assert(outputFile != nullptr);')
-            self.wc('    EnumToString' + self.enumListAliases[enumName] + '(outputFile, e);')
-            self.wc('}')
+            self.wc('void EnumToString' + enumName + '(FILE* outputFile, ' + enumName + ' e);')
 
         self.newline()
         self.wc('GFXRECON_END_NAMESPACE(decode)')

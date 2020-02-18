@@ -45,7 +45,7 @@ target_sources(gfxrecon_decode
                    ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_ascii_consumer.h
                    ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_ascii_consumer.cpp
                    ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_ascii_struct_util.h
-                   ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_ascii_enum_util.cpp
+                   ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_enum_output_util.cpp
                    ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_json_consumer.h
                    ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_json_consumer.cpp
                    ${CMAKE_SOURCE_DIR}/framework/generated/generated_vulkan_json_struct_util.h

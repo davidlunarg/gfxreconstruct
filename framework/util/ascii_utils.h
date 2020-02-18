@@ -26,7 +26,7 @@
 #define GFXRECON_UTILS_ASCII_UTILS_H
 
 #include "format/platform_types.h"
-#include "generated/generated_vulkan_ascii_enum_util.h"
+#include "generated/generated_vulkan_enum_output_util.h"
 #include "util/defines.h"
 #include "vulkan/vulkan.h"
 #include <functional>
