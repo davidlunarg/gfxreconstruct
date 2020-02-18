@@ -44,7 +44,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     VkResult                                    returnValue,
     const StructPointerDecoder<Decoded_VkInstanceCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkInstance>&     pInstance)
+    HandlePointerDecoder<VkInstance>*           pInstance)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -82,7 +82,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -91,11 +91,11 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -108,7 +108,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -117,11 +117,11 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -134,7 +134,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInstance\",\n");
-    if (pInstance.GetPointer() == nullptr) // WWY
+    if (pInstance->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -143,11 +143,11 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInstance.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInstance->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pInstance.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pInstance->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -211,7 +211,7 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -220,11 +220,11 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -239,8 +239,8 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
 void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     VkResult                                    returnValue,
     format::HandleId                            instance,
-    const PointerDecoder<uint32_t>&             pPhysicalDeviceCount,
-    const HandlePointerDecoder<VkPhysicalDevice>& pPhysicalDevices)
+    PointerDecoder<uint32_t>*                   pPhysicalDeviceCount,
+    HandlePointerDecoder<VkPhysicalDevice>*     pPhysicalDevices)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -293,7 +293,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPhysicalDeviceCount\",\n");
-    if (pPhysicalDeviceCount.GetPointer() == nullptr) // WWY
+    if (pPhysicalDeviceCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -302,11 +302,11 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPhysicalDeviceCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPhysicalDeviceCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPhysicalDeviceCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPhysicalDeviceCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -320,7 +320,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPhysicalDevices\",\n");
-    if (pPhysicalDevices.GetPointer() == nullptr) // WWY
+    if (pPhysicalDevices->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -329,12 +329,12 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPhysicalDevices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPhysicalDevices->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pPhysicalDevices = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "VkPhysicalDevice*", &pPhysicalDevices, "pPhysicalDevices", *pPhysicalDeviceCount.GetPointer(), vinfo_pPhysicalDevices); // AQA
+        ArrayToStringJson(outputFile, indent, "VkPhysicalDevice*", pPhysicalDevices, "pPhysicalDevices", *pPhysicalDeviceCount->GetPointer(), vinfo_pPhysicalDevices); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -348,7 +348,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     format::HandleId                            physicalDevice,
-    const StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures>& pFeatures)
+    StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures>* pFeatures)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -397,7 +397,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFeatures\",\n");
-    if (pFeatures.GetPointer() == nullptr) // WWY
+    if (pFeatures->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -406,11 +406,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFeatures.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFeatures->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pFeatures.GetMetaStructPointer(), indent, pFeatures.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pFeatures->GetMetaStructPointer(), indent, pFeatures->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -425,7 +425,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
-    const StructPointerDecoder<Decoded_VkFormatProperties>& pFormatProperties)
+    StructPointerDecoder<Decoded_VkFormatProperties>* pFormatProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -489,7 +489,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFormatProperties\",\n");
-    if (pFormatProperties.GetPointer() == nullptr) // WWY
+    if (pFormatProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -498,11 +498,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFormatProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFormatProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pFormatProperties.GetMetaStructPointer(), indent, pFormatProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pFormatProperties->GetMetaStructPointer(), indent, pFormatProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -522,7 +522,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     VkImageTiling                               tiling,
     VkImageUsageFlags                           usage,
     VkImageCreateFlags                          flags,
-    const StructPointerDecoder<Decoded_VkImageFormatProperties>& pImageFormatProperties)
+    StructPointerDecoder<Decoded_VkImageFormatProperties>* pImageFormatProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -650,7 +650,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageFormatProperties\",\n");
-    if (pImageFormatProperties.GetPointer() == nullptr) // WWY
+    if (pImageFormatProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -659,11 +659,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImageFormatProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImageFormatProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent, pImageFormatProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pImageFormatProperties->GetMetaStructPointer(), indent, pImageFormatProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -677,7 +677,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     format::HandleId                            physicalDevice,
-    const StructPointerDecoder<Decoded_VkPhysicalDeviceProperties>& pProperties)
+    StructPointerDecoder<Decoded_VkPhysicalDeviceProperties>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -726,7 +726,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -735,11 +735,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pProperties.GetMetaStructPointer(), indent, pProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pProperties->GetMetaStructPointer(), indent, pProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -753,8 +753,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     format::HandleId                            physicalDevice,
-    const PointerDecoder<uint32_t>&             pQueueFamilyPropertyCount,
-    const StructPointerDecoder<Decoded_VkQueueFamilyProperties>& pQueueFamilyProperties)
+    PointerDecoder<uint32_t>*                   pQueueFamilyPropertyCount,
+    StructPointerDecoder<Decoded_VkQueueFamilyProperties>* pQueueFamilyProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -803,7 +803,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueFamilyPropertyCount\",\n");
-    if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
+    if (pQueueFamilyPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -812,11 +812,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pQueueFamilyPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pQueueFamilyPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pQueueFamilyPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pQueueFamilyPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -830,7 +830,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueFamilyProperties\",\n");
-    if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
+    if (pQueueFamilyProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -839,11 +839,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pQueueFamilyProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pQueueFamilyProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties>(outputFile, indent, "VkQueueFamilyProperties", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties>(outputFile, indent, "VkQueueFamilyProperties", pQueueFamilyProperties->GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount->GetPointer(), false, pQueueFamilyProperties->GetAddress(), sizeof(VkQueueFamilyProperties)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -857,7 +857,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     format::HandleId                            physicalDevice,
-    const StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties>& pMemoryProperties)
+    StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties>* pMemoryProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -906,7 +906,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryProperties\",\n");
-    if (pMemoryProperties.GetPointer() == nullptr) // WWY
+    if (pMemoryProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -915,11 +915,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent, pMemoryProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryProperties->GetMetaStructPointer(), indent, pMemoryProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -936,7 +936,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkDeviceCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkDevice>&       pDevice)
+    HandlePointerDecoder<VkDevice>*             pDevice)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -989,7 +989,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -998,11 +998,11 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -1015,7 +1015,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -1024,11 +1024,11 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -1041,7 +1041,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDevice\",\n");
-    if (pDevice.GetPointer() == nullptr) // WWY
+    if (pDevice->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -1050,11 +1050,11 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDevice.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDevice->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pDevice.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pDevice->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -1118,7 +1118,7 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -1127,11 +1127,11 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -1147,7 +1147,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     format::HandleId                            device,
     uint32_t                                    queueFamilyIndex,
     uint32_t                                    queueIndex,
-    const HandlePointerDecoder<VkQueue>&        pQueue)
+    HandlePointerDecoder<VkQueue>*              pQueue)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -1226,7 +1226,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueue\",\n");
-    if (pQueue.GetPointer() == nullptr) // WWY
+    if (pQueue->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -1235,11 +1235,11 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pQueue.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pQueue->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pQueue.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pQueue->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -1325,7 +1325,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSubmits\",\n");
-    if (pSubmits.GetPointer() == nullptr) // WWY
+    if (pSubmits.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -1334,11 +1334,11 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSubmits.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSubmits.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubmitInfo>(outputFile, indent, "VkSubmitInfo", pSubmits.GetMetaStructPointer(), "pSubmits", submitCount, false, pSubmits.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSubmitInfo>(outputFile, indent, "VkSubmitInfo", pSubmits.GetMetaStructPointer(), "pSubmits", submitCount, false, pSubmits.GetAddress(), sizeof(VkSubmitInfo)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -1478,7 +1478,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkMemoryAllocateInfo>& pAllocateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkDeviceMemory>& pMemory)
+    HandlePointerDecoder<VkDeviceMemory>*       pMemory)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -1531,7 +1531,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocateInfo\",\n");
-    if (pAllocateInfo.GetPointer() == nullptr) // WWY
+    if (pAllocateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -1540,11 +1540,11 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent, pAllocateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent, pAllocateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -1557,7 +1557,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -1566,11 +1566,11 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -1583,7 +1583,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemory\",\n");
-    if (pMemory.GetPointer() == nullptr) // WWY
+    if (pMemory->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -1592,11 +1592,11 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemory.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemory->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pMemory.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pMemory->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -1676,7 +1676,7 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -1685,11 +1685,11 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -1708,7 +1708,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     VkDeviceSize                                offset,
     VkDeviceSize                                size,
     VkMemoryMapFlags                            flags,
-    const PointerDecoder<uint64_t>&             ppData)
+    PointerDecoder<uint64_t, void*>*            ppData)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -1821,7 +1821,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"ppData\",\n");
-    if (ppData.GetPointer() == nullptr) // WWY
+    if (ppData->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -1830,11 +1830,11 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, ppData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, ppData->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *(static_cast<uint64_t*>(ppData.GetPointer()))); // PXA
+        AddrToStringJson(outputFile, *(static_cast<uint64_t*>(ppData->GetPointer()))); // PXA
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -1984,7 +1984,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRanges\",\n");
-    if (pMemoryRanges.GetPointer() == nullptr) // WWY
+    if (pMemoryRanges.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -1993,11 +1993,11 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryRanges.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryRanges.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkMappedMemoryRange>(outputFile, indent, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkMappedMemoryRange>(outputFile, indent, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress(), sizeof(VkMappedMemoryRange)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2081,7 +2081,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRanges\",\n");
-    if (pMemoryRanges.GetPointer() == nullptr) // WWY
+    if (pMemoryRanges.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -2090,11 +2090,11 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryRanges.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryRanges.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkMappedMemoryRange>(outputFile, indent, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkMappedMemoryRange>(outputFile, indent, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress(), sizeof(VkMappedMemoryRange)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2109,7 +2109,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
 void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     format::HandleId                            device,
     format::HandleId                            memory,
-    const PointerDecoder<VkDeviceSize>&         pCommittedMemoryInBytes)
+    PointerDecoder<VkDeviceSize>*               pCommittedMemoryInBytes)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -2173,7 +2173,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCommittedMemoryInBytes\",\n");
-    if (pCommittedMemoryInBytes.GetPointer() == nullptr) // WWY
+    if (pCommittedMemoryInBytes->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -2182,12 +2182,12 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCommittedMemoryInBytes.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCommittedMemoryInBytes->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pCommittedMemoryInBytes = {false, false, false, nullptr};
-        ScalarValueToStringJson(outputFile, pCommittedMemoryInBytes.GetPointer(), vinfo_pCommittedMemoryInBytes); // PXS
+        ScalarValueToStringJson(outputFile, pCommittedMemoryInBytes->GetPointer(), vinfo_pCommittedMemoryInBytes); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -2407,7 +2407,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
 void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     format::HandleId                            device,
     format::HandleId                            buffer,
-    const StructPointerDecoder<Decoded_VkMemoryRequirements>& pMemoryRequirements)
+    StructPointerDecoder<Decoded_VkMemoryRequirements>* pMemoryRequirements)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -2471,7 +2471,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -2480,11 +2480,11 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryRequirements.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryRequirements->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent, pMemoryRequirements.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent, pMemoryRequirements->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2499,7 +2499,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
 void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     format::HandleId                            device,
     format::HandleId                            image,
-    const StructPointerDecoder<Decoded_VkMemoryRequirements>& pMemoryRequirements)
+    StructPointerDecoder<Decoded_VkMemoryRequirements>* pMemoryRequirements)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -2563,7 +2563,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -2572,11 +2572,11 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryRequirements.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryRequirements->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent, pMemoryRequirements.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent, pMemoryRequirements->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2591,8 +2591,8 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
 void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     format::HandleId                            device,
     format::HandleId                            image,
-    const PointerDecoder<uint32_t>&             pSparseMemoryRequirementCount,
-    const StructPointerDecoder<Decoded_VkSparseImageMemoryRequirements>& pSparseMemoryRequirements)
+    PointerDecoder<uint32_t>*                   pSparseMemoryRequirementCount,
+    StructPointerDecoder<Decoded_VkSparseImageMemoryRequirements>* pSparseMemoryRequirements)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -2656,7 +2656,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSparseMemoryRequirementCount\",\n");
-    if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
+    if (pSparseMemoryRequirementCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -2665,11 +2665,11 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSparseMemoryRequirementCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSparseMemoryRequirementCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pSparseMemoryRequirementCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pSparseMemoryRequirementCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -2683,7 +2683,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSparseMemoryRequirements\",\n");
-    if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pSparseMemoryRequirements->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -2692,11 +2692,11 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSparseMemoryRequirements.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSparseMemoryRequirements->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements>(outputFile, indent, "VkSparseImageMemoryRequirements", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements>(outputFile, indent, "VkSparseImageMemoryRequirements", pSparseMemoryRequirements->GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount->GetPointer(), false, pSparseMemoryRequirements->GetAddress(), sizeof(VkSparseImageMemoryRequirements)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2715,8 +2715,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     VkSampleCountFlagBits                       samples,
     VkImageUsageFlags                           usage,
     VkImageTiling                               tiling,
-    const PointerDecoder<uint32_t>&             pPropertyCount,
-    const StructPointerDecoder<Decoded_VkSparseImageFormatProperties>& pProperties)
+    PointerDecoder<uint32_t>*                   pPropertyCount,
+    StructPointerDecoder<Decoded_VkSparseImageFormatProperties>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -2840,7 +2840,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -2849,11 +2849,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -2867,7 +2867,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -2876,11 +2876,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties>(outputFile, indent, "VkSparseImageFormatProperties", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties>(outputFile, indent, "VkSparseImageFormatProperties", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkSparseImageFormatProperties)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2965,7 +2965,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBindInfo\",\n");
-    if (pBindInfo.GetPointer() == nullptr) // WWY
+    if (pBindInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -2974,11 +2974,11 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBindInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBindInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBindSparseInfo>(outputFile, indent, "VkBindSparseInfo", pBindInfo.GetMetaStructPointer(), "pBindInfo", bindInfoCount, false, pBindInfo.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBindSparseInfo>(outputFile, indent, "VkBindSparseInfo", pBindInfo.GetMetaStructPointer(), "pBindInfo", bindInfoCount, false, pBindInfo.GetAddress(), sizeof(VkBindSparseInfo)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -3010,7 +3010,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkFenceCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkFence>&        pFence)
+    HandlePointerDecoder<VkFence>*              pFence)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -3063,7 +3063,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3072,11 +3072,11 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -3089,7 +3089,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3098,11 +3098,11 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -3115,7 +3115,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFence\",\n");
-    if (pFence.GetPointer() == nullptr) // WWY
+    if (pFence->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3124,11 +3124,11 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFence.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFence->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pFence.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pFence->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -3208,7 +3208,7 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3217,11 +3217,11 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -3305,7 +3305,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFences\",\n");
-    if (pFences.GetPointer() == nullptr) // WWY
+    if (pFences.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3314,7 +3314,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFences.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFences.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -3475,7 +3475,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFences\",\n");
-    if (pFences.GetPointer() == nullptr) // WWY
+    if (pFences.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3484,7 +3484,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFences.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFences.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -3536,7 +3536,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSemaphoreCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSemaphore>&    pSemaphore)
+    HandlePointerDecoder<VkSemaphore>*          pSemaphore)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -3589,7 +3589,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3598,11 +3598,11 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -3615,7 +3615,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3624,11 +3624,11 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -3641,7 +3641,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSemaphore\",\n");
-    if (pSemaphore.GetPointer() == nullptr) // WWY
+    if (pSemaphore->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3650,11 +3650,11 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSemaphore.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSemaphore->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSemaphore.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSemaphore->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -3734,7 +3734,7 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3743,11 +3743,11 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -3764,7 +3764,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkEventCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkEvent>&        pEvent)
+    HandlePointerDecoder<VkEvent>*              pEvent)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -3817,7 +3817,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3826,11 +3826,11 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -3843,7 +3843,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3852,11 +3852,11 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -3869,7 +3869,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pEvent\",\n");
-    if (pEvent.GetPointer() == nullptr) // WWY
+    if (pEvent->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3878,11 +3878,11 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pEvent.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pEvent->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pEvent.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pEvent->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -3962,7 +3962,7 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -3971,11 +3971,11 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -4202,7 +4202,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkQueryPoolCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkQueryPool>&    pQueryPool)
+    HandlePointerDecoder<VkQueryPool>*          pQueryPool)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -4255,7 +4255,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -4264,11 +4264,11 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -4281,7 +4281,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -4290,11 +4290,11 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -4307,7 +4307,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueryPool\",\n");
-    if (pQueryPool.GetPointer() == nullptr) // WWY
+    if (pQueryPool->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -4316,11 +4316,11 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pQueryPool.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pQueryPool->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pQueryPool.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pQueryPool->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -4400,7 +4400,7 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -4409,11 +4409,11 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -4432,7 +4432,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     uint32_t                                    firstQuery,
     uint32_t                                    queryCount,
     size_t                                      dataSize,
-    const PointerDecoder<uint8_t>&              pData,
+    PointerDecoder<uint8_t>*                    pData,
     VkDeviceSize                                stride,
     VkQueryResultFlags                          flags)
 {
@@ -4547,7 +4547,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pData\",\n");
-    if (pData.GetPointer() == nullptr) // WWY
+    if (pData->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -4556,12 +4556,12 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pData->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "void*", &pData, "pData", dataSize, vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", pData, "pData", dataSize, vinfo_pData); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -4608,7 +4608,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkBufferCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkBuffer>&       pBuffer)
+    HandlePointerDecoder<VkBuffer>*             pBuffer)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -4661,7 +4661,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -4670,11 +4670,11 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -4687,7 +4687,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -4696,11 +4696,11 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -4713,7 +4713,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBuffer\",\n");
-    if (pBuffer.GetPointer() == nullptr) // WWY
+    if (pBuffer->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -4722,11 +4722,11 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBuffer.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBuffer->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pBuffer.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pBuffer->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -4806,7 +4806,7 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -4815,11 +4815,11 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -4836,7 +4836,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkBufferViewCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkBufferView>&   pView)
+    HandlePointerDecoder<VkBufferView>*         pView)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -4889,7 +4889,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -4898,11 +4898,11 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -4915,7 +4915,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -4924,11 +4924,11 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -4941,7 +4941,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pView\",\n");
-    if (pView.GetPointer() == nullptr) // WWY
+    if (pView->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -4950,11 +4950,11 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pView.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pView->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pView.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pView->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -5034,7 +5034,7 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5043,11 +5043,11 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -5064,7 +5064,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkImage>&        pImage)
+    HandlePointerDecoder<VkImage>*              pImage)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -5117,7 +5117,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5126,11 +5126,11 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -5143,7 +5143,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5152,11 +5152,11 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -5169,7 +5169,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImage\",\n");
-    if (pImage.GetPointer() == nullptr) // WWY
+    if (pImage->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5178,11 +5178,11 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImage.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImage->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pImage.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pImage->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -5262,7 +5262,7 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5271,11 +5271,11 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -5291,7 +5291,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     format::HandleId                            device,
     format::HandleId                            image,
     const StructPointerDecoder<Decoded_VkImageSubresource>& pSubresource,
-    const StructPointerDecoder<Decoded_VkSubresourceLayout>& pLayout)
+    StructPointerDecoder<Decoded_VkSubresourceLayout>* pLayout)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -5355,7 +5355,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSubresource\",\n");
-    if (pSubresource.GetPointer() == nullptr) // WWY
+    if (pSubresource.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5364,11 +5364,11 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSubresource.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSubresource.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSubresource.GetMetaStructPointer(), indent, pSubresource.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSubresource.GetMetaStructPointer(), indent, pSubresource.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -5381,7 +5381,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLayout\",\n");
-    if (pLayout.GetPointer() == nullptr) // WWY
+    if (pLayout->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5390,11 +5390,11 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pLayout.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pLayout->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pLayout.GetMetaStructPointer(), indent, pLayout.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pLayout->GetMetaStructPointer(), indent, pLayout->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -5411,7 +5411,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageViewCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkImageView>&    pView)
+    HandlePointerDecoder<VkImageView>*          pView)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -5464,7 +5464,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5473,11 +5473,11 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -5490,7 +5490,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5499,11 +5499,11 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -5516,7 +5516,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pView\",\n");
-    if (pView.GetPointer() == nullptr) // WWY
+    if (pView->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5525,11 +5525,11 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pView.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pView->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pView.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pView->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -5609,7 +5609,7 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5618,11 +5618,11 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -5639,7 +5639,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkShaderModuleCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkShaderModule>& pShaderModule)
+    HandlePointerDecoder<VkShaderModule>*       pShaderModule)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -5692,7 +5692,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5701,11 +5701,11 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -5718,7 +5718,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5727,11 +5727,11 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -5744,7 +5744,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pShaderModule\",\n");
-    if (pShaderModule.GetPointer() == nullptr) // WWY
+    if (pShaderModule->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5753,11 +5753,11 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pShaderModule.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pShaderModule->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pShaderModule.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pShaderModule->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -5837,7 +5837,7 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5846,11 +5846,11 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -5867,7 +5867,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPipelineCacheCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkPipelineCache>& pPipelineCache)
+    HandlePointerDecoder<VkPipelineCache>*      pPipelineCache)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -5920,7 +5920,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5929,11 +5929,11 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -5946,7 +5946,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5955,11 +5955,11 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -5972,7 +5972,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPipelineCache\",\n");
-    if (pPipelineCache.GetPointer() == nullptr) // WWY
+    if (pPipelineCache->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -5981,11 +5981,11 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPipelineCache.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPipelineCache->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pPipelineCache.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pPipelineCache->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -6065,7 +6065,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6074,11 +6074,11 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -6094,8 +6094,8 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     VkResult                                    returnValue,
     format::HandleId                            device,
     format::HandleId                            pipelineCache,
-    const PointerDecoder<size_t>&               pDataSize,
-    const PointerDecoder<uint8_t>&              pData)
+    PointerDecoder<size_t>*                     pDataSize,
+    PointerDecoder<uint8_t>*                    pData)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -6163,7 +6163,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDataSize\",\n");
-    if (pDataSize.GetPointer() == nullptr) // WWY
+    if (pDataSize->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6172,11 +6172,11 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDataSize.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDataSize->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pDataSize.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pDataSize->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -6190,7 +6190,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pData\",\n");
-    if (pData.GetPointer() == nullptr) // WWY
+    if (pData->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6199,12 +6199,12 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pData->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", pData, "pData", *pDataSize->GetPointer(), vinfo_pData); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -6304,7 +6304,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSrcCaches\",\n");
-    if (pSrcCaches.GetPointer() == nullptr) // WWY
+    if (pSrcCaches.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6313,7 +6313,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSrcCaches.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSrcCaches.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -6337,7 +6337,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     uint32_t                                    createInfoCount,
     const StructPointerDecoder<Decoded_VkGraphicsPipelineCreateInfo>& pCreateInfos,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkPipeline>&     pPipelines)
+    HandlePointerDecoder<VkPipeline>*           pPipelines)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -6420,7 +6420,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfos\",\n");
-    if (pCreateInfos.GetPointer() == nullptr) // WWY
+    if (pCreateInfos.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6429,11 +6429,11 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfos.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfos.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkGraphicsPipelineCreateInfo>(outputFile, indent, "VkGraphicsPipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkGraphicsPipelineCreateInfo>(outputFile, indent, "VkGraphicsPipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress(), sizeof(VkGraphicsPipelineCreateInfo)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -6446,7 +6446,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6455,11 +6455,11 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -6472,7 +6472,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPipelines\",\n");
-    if (pPipelines.GetPointer() == nullptr) // WWY
+    if (pPipelines->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6481,12 +6481,12 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPipelines.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPipelines->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
+        ArrayToStringJson(outputFile, indent, "VkPipeline*", pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -6505,7 +6505,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     uint32_t                                    createInfoCount,
     const StructPointerDecoder<Decoded_VkComputePipelineCreateInfo>& pCreateInfos,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkPipeline>&     pPipelines)
+    HandlePointerDecoder<VkPipeline>*           pPipelines)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -6588,7 +6588,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfos\",\n");
-    if (pCreateInfos.GetPointer() == nullptr) // WWY
+    if (pCreateInfos.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6597,11 +6597,11 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfos.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfos.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkComputePipelineCreateInfo>(outputFile, indent, "VkComputePipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkComputePipelineCreateInfo>(outputFile, indent, "VkComputePipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress(), sizeof(VkComputePipelineCreateInfo)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -6614,7 +6614,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6623,11 +6623,11 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -6640,7 +6640,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPipelines\",\n");
-    if (pPipelines.GetPointer() == nullptr) // WWY
+    if (pPipelines->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6649,12 +6649,12 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPipelines.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPipelines->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
+        ArrayToStringJson(outputFile, indent, "VkPipeline*", pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -6733,7 +6733,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6742,11 +6742,11 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -6763,7 +6763,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPipelineLayoutCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkPipelineLayout>& pPipelineLayout)
+    HandlePointerDecoder<VkPipelineLayout>*     pPipelineLayout)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -6816,7 +6816,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6825,11 +6825,11 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -6842,7 +6842,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6851,11 +6851,11 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -6868,7 +6868,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPipelineLayout\",\n");
-    if (pPipelineLayout.GetPointer() == nullptr) // WWY
+    if (pPipelineLayout->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6877,11 +6877,11 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPipelineLayout.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPipelineLayout->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pPipelineLayout.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pPipelineLayout->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -6961,7 +6961,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -6970,11 +6970,11 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -6991,7 +6991,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSamplerCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSampler>&      pSampler)
+    HandlePointerDecoder<VkSampler>*            pSampler)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -7044,7 +7044,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7053,11 +7053,11 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -7070,7 +7070,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7079,11 +7079,11 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -7096,7 +7096,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSampler\",\n");
-    if (pSampler.GetPointer() == nullptr) // WWY
+    if (pSampler->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7105,11 +7105,11 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSampler.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSampler->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSampler.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSampler->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -7189,7 +7189,7 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7198,11 +7198,11 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -7219,7 +7219,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorSetLayoutCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkDescriptorSetLayout>& pSetLayout)
+    HandlePointerDecoder<VkDescriptorSetLayout>* pSetLayout)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -7272,7 +7272,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7281,11 +7281,11 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -7298,7 +7298,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7307,11 +7307,11 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -7324,7 +7324,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSetLayout\",\n");
-    if (pSetLayout.GetPointer() == nullptr) // WWY
+    if (pSetLayout->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7333,11 +7333,11 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSetLayout.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSetLayout->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSetLayout.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSetLayout->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -7417,7 +7417,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7426,11 +7426,11 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -7447,7 +7447,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorPoolCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkDescriptorPool>& pDescriptorPool)
+    HandlePointerDecoder<VkDescriptorPool>*     pDescriptorPool)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -7500,7 +7500,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7509,11 +7509,11 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -7526,7 +7526,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7535,11 +7535,11 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -7552,7 +7552,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorPool\",\n");
-    if (pDescriptorPool.GetPointer() == nullptr) // WWY
+    if (pDescriptorPool->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7561,11 +7561,11 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDescriptorPool.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDescriptorPool->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pDescriptorPool.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pDescriptorPool->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -7645,7 +7645,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7654,11 +7654,11 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -7760,7 +7760,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorSetAllocateInfo>& pAllocateInfo,
-    const HandlePointerDecoder<VkDescriptorSet>& pDescriptorSets)
+    HandlePointerDecoder<VkDescriptorSet>*      pDescriptorSets)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -7813,7 +7813,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocateInfo\",\n");
-    if (pAllocateInfo.GetPointer() == nullptr) // WWY
+    if (pAllocateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7822,11 +7822,11 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent, pAllocateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent, pAllocateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -7839,7 +7839,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorSets\",\n");
-    if (pDescriptorSets.GetPointer() == nullptr) // WWY
+    if (pDescriptorSets->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7848,12 +7848,12 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDescriptorSets.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDescriptorSets->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", pAllocateInfo.GetPointer()->descriptorSetCount, vinfo_pDescriptorSets); // AQA
+        ArrayToStringJson(outputFile, indent, "VkDescriptorSet*", pDescriptorSets, "pDescriptorSets", pAllocateInfo.GetPointer()->descriptorSetCount, vinfo_pDescriptorSets); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -7953,7 +7953,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorSets\",\n");
-    if (pDescriptorSets.GetPointer() == nullptr) // WWY
+    if (pDescriptorSets.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -7962,7 +7962,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDescriptorSets.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDescriptorSets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -8048,7 +8048,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorWrites\",\n");
-    if (pDescriptorWrites.GetPointer() == nullptr) // WWY
+    if (pDescriptorWrites.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8057,11 +8057,11 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDescriptorWrites.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDescriptorWrites.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkWriteDescriptorSet>(outputFile, indent, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkWriteDescriptorSet>(outputFile, indent, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress(), sizeof(VkWriteDescriptorSet)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -8089,7 +8089,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorCopies\",\n");
-    if (pDescriptorCopies.GetPointer() == nullptr) // WWY
+    if (pDescriptorCopies.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8098,11 +8098,11 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDescriptorCopies.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDescriptorCopies.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCopyDescriptorSet>(outputFile, indent, "VkCopyDescriptorSet", pDescriptorCopies.GetMetaStructPointer(), "pDescriptorCopies", descriptorCopyCount, false, pDescriptorCopies.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkCopyDescriptorSet>(outputFile, indent, "VkCopyDescriptorSet", pDescriptorCopies.GetMetaStructPointer(), "pDescriptorCopies", descriptorCopyCount, false, pDescriptorCopies.GetAddress(), sizeof(VkCopyDescriptorSet)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -8119,7 +8119,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkFramebufferCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkFramebuffer>&  pFramebuffer)
+    HandlePointerDecoder<VkFramebuffer>*        pFramebuffer)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -8172,7 +8172,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8181,11 +8181,11 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -8198,7 +8198,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8207,11 +8207,11 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -8224,7 +8224,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFramebuffer\",\n");
-    if (pFramebuffer.GetPointer() == nullptr) // WWY
+    if (pFramebuffer->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8233,11 +8233,11 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFramebuffer.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFramebuffer->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pFramebuffer.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pFramebuffer->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -8317,7 +8317,7 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8326,11 +8326,11 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -8347,7 +8347,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkRenderPassCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkRenderPass>&   pRenderPass)
+    HandlePointerDecoder<VkRenderPass>*         pRenderPass)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -8400,7 +8400,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8409,11 +8409,11 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -8426,7 +8426,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8435,11 +8435,11 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -8452,7 +8452,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRenderPass\",\n");
-    if (pRenderPass.GetPointer() == nullptr) // WWY
+    if (pRenderPass->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8461,11 +8461,11 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRenderPass.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRenderPass->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pRenderPass.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pRenderPass->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -8545,7 +8545,7 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8554,11 +8554,11 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -8573,7 +8573,7 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
 void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     format::HandleId                            device,
     format::HandleId                            renderPass,
-    const StructPointerDecoder<Decoded_VkExtent2D>& pGranularity)
+    StructPointerDecoder<Decoded_VkExtent2D>*   pGranularity)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -8637,7 +8637,7 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGranularity\",\n");
-    if (pGranularity.GetPointer() == nullptr) // WWY
+    if (pGranularity->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8646,11 +8646,11 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pGranularity.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pGranularity->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pGranularity.GetMetaStructPointer(), indent, pGranularity.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pGranularity->GetMetaStructPointer(), indent, pGranularity->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -8667,7 +8667,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkCommandPoolCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkCommandPool>&  pCommandPool)
+    HandlePointerDecoder<VkCommandPool>*        pCommandPool)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -8720,7 +8720,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8729,11 +8729,11 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -8746,7 +8746,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8755,11 +8755,11 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -8772,7 +8772,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCommandPool\",\n");
-    if (pCommandPool.GetPointer() == nullptr) // WWY
+    if (pCommandPool->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8781,11 +8781,11 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCommandPool.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCommandPool->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pCommandPool.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pCommandPool->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -8865,7 +8865,7 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -8874,11 +8874,11 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -8980,7 +8980,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkCommandBufferAllocateInfo>& pAllocateInfo,
-    const HandlePointerDecoder<VkCommandBuffer>& pCommandBuffers)
+    HandlePointerDecoder<VkCommandBuffer>*      pCommandBuffers)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -9033,7 +9033,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocateInfo\",\n");
-    if (pAllocateInfo.GetPointer() == nullptr) // WWY
+    if (pAllocateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -9042,11 +9042,11 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent, pAllocateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocateInfo.GetMetaStructPointer(), indent, pAllocateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -9059,7 +9059,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCommandBuffers\",\n");
-    if (pCommandBuffers.GetPointer() == nullptr) // WWY
+    if (pCommandBuffers->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -9068,12 +9068,12 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCommandBuffers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCommandBuffers->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", pAllocateInfo.GetPointer()->commandBufferCount, vinfo_pCommandBuffers); // AQA
+        ArrayToStringJson(outputFile, indent, "VkCommandBuffer*", pCommandBuffers, "pCommandBuffers", pAllocateInfo.GetPointer()->commandBufferCount, vinfo_pCommandBuffers); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -9168,7 +9168,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCommandBuffers\",\n");
-    if (pCommandBuffers.GetPointer() == nullptr) // WWY
+    if (pCommandBuffers.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -9177,7 +9177,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCommandBuffers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCommandBuffers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -9250,7 +9250,7 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBeginInfo\",\n");
-    if (pBeginInfo.GetPointer() == nullptr) // WWY
+    if (pBeginInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -9259,11 +9259,11 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBeginInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBeginInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pBeginInfo.GetMetaStructPointer(), indent, pBeginInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pBeginInfo.GetMetaStructPointer(), indent, pBeginInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -9563,7 +9563,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pViewports\",\n");
-    if (pViewports.GetPointer() == nullptr) // WWY
+    if (pViewports.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -9572,11 +9572,11 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pViewports.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pViewports.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkViewport>(outputFile, indent, "VkViewport", pViewports.GetMetaStructPointer(), "pViewports", viewportCount, false, pViewports.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkViewport>(outputFile, indent, "VkViewport", pViewports.GetMetaStructPointer(), "pViewports", viewportCount, false, pViewports.GetAddress(), sizeof(VkViewport)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -9671,7 +9671,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pScissors\",\n");
-    if (pScissors.GetPointer() == nullptr) // WWY
+    if (pScissors.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -9680,11 +9680,11 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pScissors.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pScissors.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pScissors.GetMetaStructPointer(), "pScissors", scissorCount, false, pScissors.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pScissors.GetMetaStructPointer(), "pScissors", scissorCount, false, pScissors.GetAddress(), sizeof(VkRect2D)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -10371,7 +10371,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorSets\",\n");
-    if (pDescriptorSets.GetPointer() == nullptr) // WWY
+    if (pDescriptorSets.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -10380,7 +10380,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDescriptorSets.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDescriptorSets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -10413,7 +10413,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDynamicOffsets\",\n");
-    if (pDynamicOffsets.GetPointer() == nullptr) // WWY
+    if (pDynamicOffsets.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -10422,7 +10422,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDynamicOffsets.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDynamicOffsets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -10620,7 +10620,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBuffers\",\n");
-    if (pBuffers.GetPointer() == nullptr) // WWY
+    if (pBuffers.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -10629,7 +10629,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBuffers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBuffers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -10647,7 +10647,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pOffsets\",\n");
-    if (pOffsets.GetPointer() == nullptr) // WWY
+    if (pOffsets.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -10656,7 +10656,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pOffsets.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pOffsets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -11418,7 +11418,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRegions\",\n");
-    if (pRegions.GetPointer() == nullptr) // WWY
+    if (pRegions.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -11427,11 +11427,11 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRegions.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRegions.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBufferCopy>(outputFile, indent, "VkBufferCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBufferCopy>(outputFile, indent, "VkBufferCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkBufferCopy)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -11574,7 +11574,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRegions\",\n");
-    if (pRegions.GetPointer() == nullptr) // WWY
+    if (pRegions.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -11583,11 +11583,11 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRegions.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRegions.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageCopy>(outputFile, indent, "VkImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageCopy>(outputFile, indent, "VkImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkImageCopy)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -11731,7 +11731,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRegions\",\n");
-    if (pRegions.GetPointer() == nullptr) // WWY
+    if (pRegions.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -11740,11 +11740,11 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRegions.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRegions.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageBlit>(outputFile, indent, "VkImageBlit", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageBlit>(outputFile, indent, "VkImageBlit", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkImageBlit)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -11886,7 +11886,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRegions\",\n");
-    if (pRegions.GetPointer() == nullptr) // WWY
+    if (pRegions.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -11895,11 +11895,11 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRegions.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRegions.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBufferImageCopy>(outputFile, indent, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBufferImageCopy>(outputFile, indent, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkBufferImageCopy)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12026,7 +12026,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRegions\",\n");
-    if (pRegions.GetPointer() == nullptr) // WWY
+    if (pRegions.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -12035,11 +12035,11 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRegions.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRegions.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBufferImageCopy>(outputFile, indent, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBufferImageCopy>(outputFile, indent, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkBufferImageCopy)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12150,7 +12150,7 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pData\",\n");
-    if (pData.GetPointer() == nullptr) // WWY
+    if (pData.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -12159,7 +12159,7 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pData.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -12370,7 +12370,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pColor\",\n");
-    if (pColor.GetPointer() == nullptr) // WWY
+    if (pColor.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -12379,11 +12379,11 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pColor.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pColor.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pColor.GetMetaStructPointer(), indent, pColor.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pColor.GetMetaStructPointer(), indent, pColor.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -12411,7 +12411,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRanges\",\n");
-    if (pRanges.GetPointer() == nullptr) // WWY
+    if (pRanges.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -12420,11 +12420,11 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRanges.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRanges.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageSubresourceRange>(outputFile, indent, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageSubresourceRange>(outputFile, indent, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress(), sizeof(VkImageSubresourceRange)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12521,7 +12521,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDepthStencil\",\n");
-    if (pDepthStencil.GetPointer() == nullptr) // WWY
+    if (pDepthStencil.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -12530,11 +12530,11 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDepthStencil.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDepthStencil.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pDepthStencil.GetMetaStructPointer(), indent, pDepthStencil.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pDepthStencil.GetMetaStructPointer(), indent, pDepthStencil.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -12562,7 +12562,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRanges\",\n");
-    if (pRanges.GetPointer() == nullptr) // WWY
+    if (pRanges.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -12571,11 +12571,11 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRanges.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRanges.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageSubresourceRange>(outputFile, indent, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageSubresourceRange>(outputFile, indent, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress(), sizeof(VkImageSubresourceRange)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12656,7 +12656,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAttachments\",\n");
-    if (pAttachments.GetPointer() == nullptr) // WWY
+    if (pAttachments.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -12665,11 +12665,11 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAttachments.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAttachments.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkClearAttachment>(outputFile, indent, "VkClearAttachment", pAttachments.GetMetaStructPointer(), "pAttachments", attachmentCount, false, pAttachments.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkClearAttachment>(outputFile, indent, "VkClearAttachment", pAttachments.GetMetaStructPointer(), "pAttachments", attachmentCount, false, pAttachments.GetAddress(), sizeof(VkClearAttachment)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -12697,7 +12697,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRects\",\n");
-    if (pRects.GetPointer() == nullptr) // WWY
+    if (pRects.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -12706,11 +12706,11 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRects.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRects.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkClearRect>(outputFile, indent, "VkClearRect", pRects.GetMetaStructPointer(), "pRects", rectCount, false, pRects.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkClearRect>(outputFile, indent, "VkClearRect", pRects.GetMetaStructPointer(), "pRects", rectCount, false, pRects.GetAddress(), sizeof(VkClearRect)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12853,7 +12853,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRegions\",\n");
-    if (pRegions.GetPointer() == nullptr) // WWY
+    if (pRegions.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -12862,11 +12862,11 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRegions.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRegions.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageResolve>(outputFile, indent, "VkImageResolve", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageResolve>(outputFile, indent, "VkImageResolve", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkImageResolve)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -13115,7 +13115,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pEvents\",\n");
-    if (pEvents.GetPointer() == nullptr) // WWY
+    if (pEvents.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -13124,7 +13124,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pEvents.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pEvents.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -13187,7 +13187,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryBarriers\",\n");
-    if (pMemoryBarriers.GetPointer() == nullptr) // WWY
+    if (pMemoryBarriers.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -13196,11 +13196,11 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryBarriers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryBarriers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkMemoryBarrier>(outputFile, indent, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkMemoryBarrier>(outputFile, indent, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress(), sizeof(VkMemoryBarrier)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13228,7 +13228,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBufferMemoryBarriers\",\n");
-    if (pBufferMemoryBarriers.GetPointer() == nullptr) // WWY
+    if (pBufferMemoryBarriers.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -13237,11 +13237,11 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBufferMemoryBarriers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBufferMemoryBarriers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBufferMemoryBarrier>(outputFile, indent, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBufferMemoryBarrier>(outputFile, indent, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress(), sizeof(VkBufferMemoryBarrier)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13269,7 +13269,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageMemoryBarriers\",\n");
-    if (pImageMemoryBarriers.GetPointer() == nullptr) // WWY
+    if (pImageMemoryBarriers.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -13278,11 +13278,11 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImageMemoryBarriers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImageMemoryBarriers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageMemoryBarrier>(outputFile, indent, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageMemoryBarrier>(outputFile, indent, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress(), sizeof(VkImageMemoryBarrier)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -13413,7 +13413,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryBarriers\",\n");
-    if (pMemoryBarriers.GetPointer() == nullptr) // WWY
+    if (pMemoryBarriers.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -13422,11 +13422,11 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryBarriers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryBarriers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkMemoryBarrier>(outputFile, indent, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkMemoryBarrier>(outputFile, indent, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress(), sizeof(VkMemoryBarrier)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13454,7 +13454,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBufferMemoryBarriers\",\n");
-    if (pBufferMemoryBarriers.GetPointer() == nullptr) // WWY
+    if (pBufferMemoryBarriers.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -13463,11 +13463,11 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBufferMemoryBarriers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBufferMemoryBarriers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBufferMemoryBarrier>(outputFile, indent, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBufferMemoryBarrier>(outputFile, indent, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress(), sizeof(VkBufferMemoryBarrier)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13495,7 +13495,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageMemoryBarriers\",\n");
-    if (pImageMemoryBarriers.GetPointer() == nullptr) // WWY
+    if (pImageMemoryBarriers.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -13504,11 +13504,11 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImageMemoryBarriers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImageMemoryBarriers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkImageMemoryBarrier>(outputFile, indent, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkImageMemoryBarrier>(outputFile, indent, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress(), sizeof(VkImageMemoryBarrier)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -14168,7 +14168,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pValues\",\n");
-    if (pValues.GetPointer() == nullptr) // WWY
+    if (pValues.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -14177,7 +14177,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pValues.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pValues.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -14246,7 +14246,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRenderPassBegin\",\n");
-    if (pRenderPassBegin.GetPointer() == nullptr) // WWY
+    if (pRenderPassBegin.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -14255,11 +14255,11 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRenderPassBegin.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRenderPassBegin.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pRenderPassBegin.GetMetaStructPointer(), indent, pRenderPassBegin.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pRenderPassBegin.GetMetaStructPointer(), indent, pRenderPassBegin.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -14467,7 +14467,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCommandBuffers\",\n");
-    if (pCommandBuffers.GetPointer() == nullptr) // WWY
+    if (pCommandBuffers.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -14476,7 +14476,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCommandBuffers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCommandBuffers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -14566,7 +14566,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBindInfos\",\n");
-    if (pBindInfos.GetPointer() == nullptr) // WWY
+    if (pBindInfos.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -14575,11 +14575,11 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBindInfos.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBindInfos.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBindBufferMemoryInfo>(outputFile, indent, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBindBufferMemoryInfo>(outputFile, indent, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindBufferMemoryInfo)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -14663,7 +14663,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBindInfos\",\n");
-    if (pBindInfos.GetPointer() == nullptr) // WWY
+    if (pBindInfos.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -14672,11 +14672,11 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBindInfos.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBindInfos.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBindImageMemoryInfo>(outputFile, indent, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBindImageMemoryInfo>(outputFile, indent, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindImageMemoryInfo)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -14693,7 +14693,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     uint32_t                                    heapIndex,
     uint32_t                                    localDeviceIndex,
     uint32_t                                    remoteDeviceIndex,
-    const PointerDecoder<VkPeerMemoryFeatureFlags>& pPeerMemoryFeatures)
+    PointerDecoder<VkPeerMemoryFeatureFlags>*   pPeerMemoryFeatures)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -14787,7 +14787,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPeerMemoryFeatures\",\n");
-    if (pPeerMemoryFeatures.GetPointer() == nullptr) // WWY
+    if (pPeerMemoryFeatures->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -14796,12 +14796,12 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPeerMemoryFeatures.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPeerMemoryFeatures->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pPeerMemoryFeatures = {false, false, true, EnumToStringVkPeerMemoryFeatureFlagBits};
-        ScalarValueToStringJson(outputFile, pPeerMemoryFeatures.GetPointer(), vinfo_pPeerMemoryFeatures); // PXS
+        ScalarValueToStringJson(outputFile, pPeerMemoryFeatures->GetPointer(), vinfo_pPeerMemoryFeatures); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -15027,8 +15027,8 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
 void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     VkResult                                    returnValue,
     format::HandleId                            instance,
-    const PointerDecoder<uint32_t>&             pPhysicalDeviceGroupCount,
-    const StructPointerDecoder<Decoded_VkPhysicalDeviceGroupProperties>& pPhysicalDeviceGroupProperties)
+    PointerDecoder<uint32_t>*                   pPhysicalDeviceGroupCount,
+    StructPointerDecoder<Decoded_VkPhysicalDeviceGroupProperties>* pPhysicalDeviceGroupProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -15081,7 +15081,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPhysicalDeviceGroupCount\",\n");
-    if (pPhysicalDeviceGroupCount.GetPointer() == nullptr) // WWY
+    if (pPhysicalDeviceGroupCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15090,11 +15090,11 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPhysicalDeviceGroupCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPhysicalDeviceGroupCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPhysicalDeviceGroupCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPhysicalDeviceGroupCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -15108,7 +15108,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPhysicalDeviceGroupProperties\",\n");
-    if (pPhysicalDeviceGroupProperties.GetPointer() == nullptr) // WWY
+    if (pPhysicalDeviceGroupProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15117,11 +15117,11 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPhysicalDeviceGroupProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPhysicalDeviceGroupProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties->GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount->GetPointer(), false, pPhysicalDeviceGroupProperties->GetAddress(), sizeof(VkPhysicalDeviceGroupProperties)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15136,7 +15136,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
 void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageMemoryRequirementsInfo2>& pInfo,
-    const StructPointerDecoder<Decoded_VkMemoryRequirements2>& pMemoryRequirements)
+    StructPointerDecoder<Decoded_VkMemoryRequirements2>* pMemoryRequirements)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -15185,7 +15185,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15194,11 +15194,11 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -15211,7 +15211,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15220,11 +15220,11 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryRequirements.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryRequirements->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent, pMemoryRequirements.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent, pMemoryRequirements->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15239,7 +15239,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
 void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkBufferMemoryRequirementsInfo2>& pInfo,
-    const StructPointerDecoder<Decoded_VkMemoryRequirements2>& pMemoryRequirements)
+    StructPointerDecoder<Decoded_VkMemoryRequirements2>* pMemoryRequirements)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -15288,7 +15288,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15297,11 +15297,11 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -15314,7 +15314,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15323,11 +15323,11 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryRequirements.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryRequirements->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent, pMemoryRequirements.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent, pMemoryRequirements->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15342,8 +15342,8 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
 void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageSparseMemoryRequirementsInfo2>& pInfo,
-    const PointerDecoder<uint32_t>&             pSparseMemoryRequirementCount,
-    const StructPointerDecoder<Decoded_VkSparseImageMemoryRequirements2>& pSparseMemoryRequirements)
+    PointerDecoder<uint32_t>*                   pSparseMemoryRequirementCount,
+    StructPointerDecoder<Decoded_VkSparseImageMemoryRequirements2>* pSparseMemoryRequirements)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -15392,7 +15392,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15401,11 +15401,11 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -15418,7 +15418,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSparseMemoryRequirementCount\",\n");
-    if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
+    if (pSparseMemoryRequirementCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15427,11 +15427,11 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSparseMemoryRequirementCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSparseMemoryRequirementCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pSparseMemoryRequirementCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pSparseMemoryRequirementCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -15445,7 +15445,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSparseMemoryRequirements\",\n");
-    if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pSparseMemoryRequirements->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15454,11 +15454,11 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSparseMemoryRequirements.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSparseMemoryRequirements->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements->GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount->GetPointer(), false, pSparseMemoryRequirements->GetAddress(), sizeof(VkSparseImageMemoryRequirements2)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15472,7 +15472,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     format::HandleId                            physicalDevice,
-    const StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures2>& pFeatures)
+    StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures2>* pFeatures)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -15521,7 +15521,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFeatures\",\n");
-    if (pFeatures.GetPointer() == nullptr) // WWY
+    if (pFeatures->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15530,11 +15530,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFeatures.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFeatures->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pFeatures.GetMetaStructPointer(), indent, pFeatures.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pFeatures->GetMetaStructPointer(), indent, pFeatures->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15548,7 +15548,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     format::HandleId                            physicalDevice,
-    const StructPointerDecoder<Decoded_VkPhysicalDeviceProperties2>& pProperties)
+    StructPointerDecoder<Decoded_VkPhysicalDeviceProperties2>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -15597,7 +15597,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15606,11 +15606,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pProperties.GetMetaStructPointer(), indent, pProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pProperties->GetMetaStructPointer(), indent, pProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15625,7 +15625,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
-    const StructPointerDecoder<Decoded_VkFormatProperties2>& pFormatProperties)
+    StructPointerDecoder<Decoded_VkFormatProperties2>* pFormatProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -15689,7 +15689,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFormatProperties\",\n");
-    if (pFormatProperties.GetPointer() == nullptr) // WWY
+    if (pFormatProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15698,11 +15698,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFormatProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFormatProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pFormatProperties.GetMetaStructPointer(), indent, pFormatProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pFormatProperties->GetMetaStructPointer(), indent, pFormatProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15718,7 +15718,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceImageFormatInfo2>& pImageFormatInfo,
-    const StructPointerDecoder<Decoded_VkImageFormatProperties2>& pImageFormatProperties)
+    StructPointerDecoder<Decoded_VkImageFormatProperties2>* pImageFormatProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -15771,7 +15771,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageFormatInfo\",\n");
-    if (pImageFormatInfo.GetPointer() == nullptr) // WWY
+    if (pImageFormatInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15780,11 +15780,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImageFormatInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImageFormatInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pImageFormatInfo.GetMetaStructPointer(), indent, pImageFormatInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pImageFormatInfo.GetMetaStructPointer(), indent, pImageFormatInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -15797,7 +15797,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageFormatProperties\",\n");
-    if (pImageFormatProperties.GetPointer() == nullptr) // WWY
+    if (pImageFormatProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15806,11 +15806,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImageFormatProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImageFormatProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent, pImageFormatProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pImageFormatProperties->GetMetaStructPointer(), indent, pImageFormatProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15824,8 +15824,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     format::HandleId                            physicalDevice,
-    const PointerDecoder<uint32_t>&             pQueueFamilyPropertyCount,
-    const StructPointerDecoder<Decoded_VkQueueFamilyProperties2>& pQueueFamilyProperties)
+    PointerDecoder<uint32_t>*                   pQueueFamilyPropertyCount,
+    StructPointerDecoder<Decoded_VkQueueFamilyProperties2>* pQueueFamilyProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -15874,7 +15874,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueFamilyPropertyCount\",\n");
-    if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
+    if (pQueueFamilyPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15883,11 +15883,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pQueueFamilyPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pQueueFamilyPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pQueueFamilyPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pQueueFamilyPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -15901,7 +15901,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueFamilyProperties\",\n");
-    if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
+    if (pQueueFamilyProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15910,11 +15910,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pQueueFamilyProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pQueueFamilyProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties2>(outputFile, indent, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties2>(outputFile, indent, "VkQueueFamilyProperties2", pQueueFamilyProperties->GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount->GetPointer(), false, pQueueFamilyProperties->GetAddress(), sizeof(VkQueueFamilyProperties2)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15928,7 +15928,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     format::HandleId                            physicalDevice,
-    const StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties2>& pMemoryProperties)
+    StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties2>* pMemoryProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -15977,7 +15977,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryProperties\",\n");
-    if (pMemoryProperties.GetPointer() == nullptr) // WWY
+    if (pMemoryProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -15986,11 +15986,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent, pMemoryProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryProperties->GetMetaStructPointer(), indent, pMemoryProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -16005,8 +16005,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2(
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceSparseImageFormatInfo2>& pFormatInfo,
-    const PointerDecoder<uint32_t>&             pPropertyCount,
-    const StructPointerDecoder<Decoded_VkSparseImageFormatProperties2>& pProperties)
+    PointerDecoder<uint32_t>*                   pPropertyCount,
+    StructPointerDecoder<Decoded_VkSparseImageFormatProperties2>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -16055,7 +16055,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFormatInfo\",\n");
-    if (pFormatInfo.GetPointer() == nullptr) // WWY
+    if (pFormatInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16064,11 +16064,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFormatInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFormatInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pFormatInfo.GetMetaStructPointer(), indent, pFormatInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pFormatInfo.GetMetaStructPointer(), indent, pFormatInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -16081,7 +16081,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16090,11 +16090,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -16108,7 +16108,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16117,11 +16117,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties2>(outputFile, indent, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties2>(outputFile, indent, "VkSparseImageFormatProperties2", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkSparseImageFormatProperties2)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -16217,7 +16217,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
 void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDeviceQueueInfo2>& pQueueInfo,
-    const HandlePointerDecoder<VkQueue>&        pQueue)
+    HandlePointerDecoder<VkQueue>*              pQueue)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -16266,7 +16266,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueInfo\",\n");
-    if (pQueueInfo.GetPointer() == nullptr) // WWY
+    if (pQueueInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16275,11 +16275,11 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pQueueInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pQueueInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pQueueInfo.GetMetaStructPointer(), indent, pQueueInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pQueueInfo.GetMetaStructPointer(), indent, pQueueInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -16292,7 +16292,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueue\",\n");
-    if (pQueue.GetPointer() == nullptr) // WWY
+    if (pQueue->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16301,11 +16301,11 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pQueue.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pQueue->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pQueue.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pQueue->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -16323,7 +16323,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSamplerYcbcrConversionCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSamplerYcbcrConversion>& pYcbcrConversion)
+    HandlePointerDecoder<VkSamplerYcbcrConversion>* pYcbcrConversion)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -16376,7 +16376,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16385,11 +16385,11 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -16402,7 +16402,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16411,11 +16411,11 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -16428,7 +16428,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pYcbcrConversion\",\n");
-    if (pYcbcrConversion.GetPointer() == nullptr) // WWY
+    if (pYcbcrConversion->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16437,11 +16437,11 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pYcbcrConversion.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pYcbcrConversion->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pYcbcrConversion.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pYcbcrConversion->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -16521,7 +16521,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16530,11 +16530,11 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -16551,7 +16551,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorUpdateTemplateCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkDescriptorUpdateTemplate>& pDescriptorUpdateTemplate)
+    HandlePointerDecoder<VkDescriptorUpdateTemplate>* pDescriptorUpdateTemplate)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -16604,7 +16604,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16613,11 +16613,11 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -16630,7 +16630,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16639,11 +16639,11 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -16656,7 +16656,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorUpdateTemplate\",\n");
-    if (pDescriptorUpdateTemplate.GetPointer() == nullptr) // WWY
+    if (pDescriptorUpdateTemplate->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16665,11 +16665,11 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDescriptorUpdateTemplate.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDescriptorUpdateTemplate->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pDescriptorUpdateTemplate.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pDescriptorUpdateTemplate->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -16749,7 +16749,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16758,11 +16758,11 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -16777,7 +16777,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceExternalBufferInfo>& pExternalBufferInfo,
-    const StructPointerDecoder<Decoded_VkExternalBufferProperties>& pExternalBufferProperties)
+    StructPointerDecoder<Decoded_VkExternalBufferProperties>* pExternalBufferProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -16826,7 +16826,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalBufferInfo\",\n");
-    if (pExternalBufferInfo.GetPointer() == nullptr) // WWY
+    if (pExternalBufferInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16835,11 +16835,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalBufferInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalBufferInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalBufferInfo.GetMetaStructPointer(), indent, pExternalBufferInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalBufferInfo.GetMetaStructPointer(), indent, pExternalBufferInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -16852,7 +16852,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalBufferProperties\",\n");
-    if (pExternalBufferProperties.GetPointer() == nullptr) // WWY
+    if (pExternalBufferProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16861,11 +16861,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalBufferProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalBufferProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalBufferProperties.GetMetaStructPointer(), indent, pExternalBufferProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalBufferProperties->GetMetaStructPointer(), indent, pExternalBufferProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -16880,7 +16880,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceExternalFenceInfo>& pExternalFenceInfo,
-    const StructPointerDecoder<Decoded_VkExternalFenceProperties>& pExternalFenceProperties)
+    StructPointerDecoder<Decoded_VkExternalFenceProperties>* pExternalFenceProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -16929,7 +16929,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalFenceInfo\",\n");
-    if (pExternalFenceInfo.GetPointer() == nullptr) // WWY
+    if (pExternalFenceInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16938,11 +16938,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalFenceInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalFenceInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalFenceInfo.GetMetaStructPointer(), indent, pExternalFenceInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalFenceInfo.GetMetaStructPointer(), indent, pExternalFenceInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -16955,7 +16955,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalFenceProperties\",\n");
-    if (pExternalFenceProperties.GetPointer() == nullptr) // WWY
+    if (pExternalFenceProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -16964,11 +16964,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalFenceProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalFenceProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalFenceProperties.GetMetaStructPointer(), indent, pExternalFenceProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalFenceProperties->GetMetaStructPointer(), indent, pExternalFenceProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -16983,7 +16983,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceExternalSemaphoreInfo>& pExternalSemaphoreInfo,
-    const StructPointerDecoder<Decoded_VkExternalSemaphoreProperties>& pExternalSemaphoreProperties)
+    StructPointerDecoder<Decoded_VkExternalSemaphoreProperties>* pExternalSemaphoreProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -17032,7 +17032,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalSemaphoreInfo\",\n");
-    if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WWY
+    if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17041,11 +17041,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalSemaphoreInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalSemaphoreInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalSemaphoreInfo.GetMetaStructPointer(), indent, pExternalSemaphoreInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalSemaphoreInfo.GetMetaStructPointer(), indent, pExternalSemaphoreInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -17058,7 +17058,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalSemaphoreProperties\",\n");
-    if (pExternalSemaphoreProperties.GetPointer() == nullptr) // WWY
+    if (pExternalSemaphoreProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17067,11 +17067,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalSemaphoreProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalSemaphoreProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalSemaphoreProperties.GetMetaStructPointer(), indent, pExternalSemaphoreProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalSemaphoreProperties->GetMetaStructPointer(), indent, pExternalSemaphoreProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -17086,7 +17086,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
 void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorSetLayoutCreateInfo>& pCreateInfo,
-    const StructPointerDecoder<Decoded_VkDescriptorSetLayoutSupport>& pSupport)
+    StructPointerDecoder<Decoded_VkDescriptorSetLayoutSupport>* pSupport)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -17135,7 +17135,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17144,11 +17144,11 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -17161,7 +17161,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSupport\",\n");
-    if (pSupport.GetPointer() == nullptr) // WWY
+    if (pSupport->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17170,11 +17170,11 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSupport.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSupport->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSupport.GetMetaStructPointer(), indent, pSupport.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSupport->GetMetaStructPointer(), indent, pSupport->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -17254,7 +17254,7 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17263,11 +17263,11 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -17284,7 +17284,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     format::HandleId                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
     format::HandleId                            surface,
-    const PointerDecoder<VkBool32>&             pSupported)
+    PointerDecoder<VkBool32>*                   pSupported)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -17367,7 +17367,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSupported\",\n");
-    if (pSupported.GetPointer() == nullptr) // WWY
+    if (pSupported->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17376,12 +17376,12 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSupported.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSupported->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pSupported = {false, false, false, nullptr};
-        ScalarValueToStringJson(outputFile, pSupported.GetPointer(), vinfo_pSupported); // PXS
+        ScalarValueToStringJson(outputFile, pSupported->GetPointer(), vinfo_pSupported); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -17398,7 +17398,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
-    const StructPointerDecoder<Decoded_VkSurfaceCapabilitiesKHR>& pSurfaceCapabilities)
+    StructPointerDecoder<Decoded_VkSurfaceCapabilitiesKHR>* pSurfaceCapabilities)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -17466,7 +17466,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceCapabilities\",\n");
-    if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
+    if (pSurfaceCapabilities->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17475,11 +17475,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurfaceCapabilities.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurfaceCapabilities->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent, pSurfaceCapabilities.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSurfaceCapabilities->GetMetaStructPointer(), indent, pSurfaceCapabilities->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -17495,8 +17495,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
-    const PointerDecoder<uint32_t>&             pSurfaceFormatCount,
-    const StructPointerDecoder<Decoded_VkSurfaceFormatKHR>& pSurfaceFormats)
+    PointerDecoder<uint32_t>*                   pSurfaceFormatCount,
+    StructPointerDecoder<Decoded_VkSurfaceFormatKHR>* pSurfaceFormats)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -17564,7 +17564,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceFormatCount\",\n");
-    if (pSurfaceFormatCount.GetPointer() == nullptr) // WWY
+    if (pSurfaceFormatCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17573,11 +17573,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurfaceFormatCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurfaceFormatCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pSurfaceFormatCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pSurfaceFormatCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -17591,7 +17591,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceFormats\",\n");
-    if (pSurfaceFormats.GetPointer() == nullptr) // WWY
+    if (pSurfaceFormats->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17600,11 +17600,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurfaceFormats.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurfaceFormats->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSurfaceFormatKHR>(outputFile, indent, "VkSurfaceFormatKHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSurfaceFormatKHR>(outputFile, indent, "VkSurfaceFormatKHR", pSurfaceFormats->GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount->GetPointer(), false, pSurfaceFormats->GetAddress(), sizeof(VkSurfaceFormatKHR)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -17620,8 +17620,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
-    const PointerDecoder<uint32_t>&             pPresentModeCount,
-    const PointerDecoder<VkPresentModeKHR>&     pPresentModes)
+    PointerDecoder<uint32_t>*                   pPresentModeCount,
+    PointerDecoder<VkPresentModeKHR>*           pPresentModes)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -17689,7 +17689,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentModeCount\",\n");
-    if (pPresentModeCount.GetPointer() == nullptr) // WWY
+    if (pPresentModeCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17698,11 +17698,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPresentModeCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPresentModeCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPresentModeCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPresentModeCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -17716,7 +17716,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentModes\",\n");
-    if (pPresentModes.GetPointer() == nullptr) // WWY
+    if (pPresentModes->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17725,12 +17725,12 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPresentModes.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPresentModes->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHR};
-        ArrayToStringJson(outputFile, indent, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUA
+        ArrayToStringJson(outputFile, indent, "VkPresentModeKHR*", pPresentModes, "pPresentModes", *pPresentModeCount->GetPointer(), vinfo_pPresentModes); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -17748,7 +17748,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSwapchainCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSwapchainKHR>& pSwapchain)
+    HandlePointerDecoder<VkSwapchainKHR>*       pSwapchain)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -17801,7 +17801,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17810,11 +17810,11 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -17827,7 +17827,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17836,11 +17836,11 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -17853,7 +17853,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSwapchain\",\n");
-    if (pSwapchain.GetPointer() == nullptr) // WWY
+    if (pSwapchain->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17862,11 +17862,11 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSwapchain.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSwapchain->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSwapchain.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSwapchain->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -17946,7 +17946,7 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -17955,11 +17955,11 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -17975,8 +17975,8 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
     format::HandleId                            swapchain,
-    const PointerDecoder<uint32_t>&             pSwapchainImageCount,
-    const HandlePointerDecoder<VkImage>&        pSwapchainImages)
+    PointerDecoder<uint32_t>*                   pSwapchainImageCount,
+    HandlePointerDecoder<VkImage>*              pSwapchainImages)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -18044,7 +18044,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSwapchainImageCount\",\n");
-    if (pSwapchainImageCount.GetPointer() == nullptr) // WWY
+    if (pSwapchainImageCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18053,11 +18053,11 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSwapchainImageCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSwapchainImageCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pSwapchainImageCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pSwapchainImageCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -18071,7 +18071,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSwapchainImages\",\n");
-    if (pSwapchainImages.GetPointer() == nullptr) // WWY
+    if (pSwapchainImages->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18080,12 +18080,12 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSwapchainImages.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSwapchainImages->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSwapchainImages = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "VkImage*", &pSwapchainImages, "pSwapchainImages", *pSwapchainImageCount.GetPointer(), vinfo_pSwapchainImages); // AQA
+        ArrayToStringJson(outputFile, indent, "VkImage*", pSwapchainImages, "pSwapchainImages", *pSwapchainImageCount->GetPointer(), vinfo_pSwapchainImages); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -18104,7 +18104,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     uint64_t                                    timeout,
     format::HandleId                            semaphore,
     format::HandleId                            fence,
-    const PointerDecoder<uint32_t>&             pImageIndex)
+    PointerDecoder<uint32_t>*                   pImageIndex)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -18217,7 +18217,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageIndex\",\n");
-    if (pImageIndex.GetPointer() == nullptr) // WWY
+    if (pImageIndex->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18226,11 +18226,11 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImageIndex.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImageIndex->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pImageIndex.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pImageIndex->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -18299,7 +18299,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentInfo\",\n");
-    if (pPresentInfo.GetPointer() == nullptr) // WWY
+    if (pPresentInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18308,11 +18308,11 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPresentInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPresentInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pPresentInfo.GetMetaStructPointer(), indent, pPresentInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pPresentInfo.GetMetaStructPointer(), indent, pPresentInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -18343,7 +18343,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
 void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
-    const StructPointerDecoder<Decoded_VkDeviceGroupPresentCapabilitiesKHR>& pDeviceGroupPresentCapabilities)
+    StructPointerDecoder<Decoded_VkDeviceGroupPresentCapabilitiesKHR>* pDeviceGroupPresentCapabilities)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -18396,7 +18396,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDeviceGroupPresentCapabilities\",\n");
-    if (pDeviceGroupPresentCapabilities.GetPointer() == nullptr) // WWY
+    if (pDeviceGroupPresentCapabilities->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18405,11 +18405,11 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDeviceGroupPresentCapabilities.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDeviceGroupPresentCapabilities->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pDeviceGroupPresentCapabilities.GetMetaStructPointer(), indent, pDeviceGroupPresentCapabilities.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pDeviceGroupPresentCapabilities->GetMetaStructPointer(), indent, pDeviceGroupPresentCapabilities->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -18425,7 +18425,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
     format::HandleId                            surface,
-    const PointerDecoder<VkDeviceGroupPresentModeFlagsKHR>& pModes)
+    PointerDecoder<VkDeviceGroupPresentModeFlagsKHR>* pModes)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -18493,7 +18493,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pModes\",\n");
-    if (pModes.GetPointer() == nullptr) // WWY
+    if (pModes->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18502,12 +18502,12 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pModes.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pModes->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pModes = {false, false, true, EnumToStringVkDeviceGroupPresentModeFlagBitsKHR};
-        ScalarValueToStringJson(outputFile, pModes.GetPointer(), vinfo_pModes); // PXS
+        ScalarValueToStringJson(outputFile, pModes->GetPointer(), vinfo_pModes); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -18524,8 +18524,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
-    const PointerDecoder<uint32_t>&             pRectCount,
-    const StructPointerDecoder<Decoded_VkRect2D>& pRects)
+    PointerDecoder<uint32_t>*                   pRectCount,
+    StructPointerDecoder<Decoded_VkRect2D>*     pRects)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -18593,7 +18593,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRectCount\",\n");
-    if (pRectCount.GetPointer() == nullptr) // WWY
+    if (pRectCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18602,11 +18602,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRectCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRectCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pRectCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pRectCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -18620,7 +18620,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRects\",\n");
-    if (pRects.GetPointer() == nullptr) // WWY
+    if (pRects->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18629,11 +18629,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRects.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRects->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pRects.GetMetaStructPointer(), "pRects", *pRectCount.GetPointer(), false, pRects.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pRects->GetMetaStructPointer(), "pRects", *pRectCount->GetPointer(), false, pRects->GetAddress(), sizeof(VkRect2D)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -18649,7 +18649,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkAcquireNextImageInfoKHR>& pAcquireInfo,
-    const PointerDecoder<uint32_t>&             pImageIndex)
+    PointerDecoder<uint32_t>*                   pImageIndex)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -18702,7 +18702,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAcquireInfo\",\n");
-    if (pAcquireInfo.GetPointer() == nullptr) // WWY
+    if (pAcquireInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18711,11 +18711,11 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAcquireInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAcquireInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAcquireInfo.GetMetaStructPointer(), indent, pAcquireInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAcquireInfo.GetMetaStructPointer(), indent, pAcquireInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -18728,7 +18728,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageIndex\",\n");
-    if (pImageIndex.GetPointer() == nullptr) // WWY
+    if (pImageIndex->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18737,11 +18737,11 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImageIndex.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImageIndex->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pImageIndex.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pImageIndex->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -18758,8 +18758,8 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
-    const PointerDecoder<uint32_t>&             pPropertyCount,
-    const StructPointerDecoder<Decoded_VkDisplayPropertiesKHR>& pProperties)
+    PointerDecoder<uint32_t>*                   pPropertyCount,
+    StructPointerDecoder<Decoded_VkDisplayPropertiesKHR>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -18812,7 +18812,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18821,11 +18821,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -18839,7 +18839,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18848,11 +18848,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDisplayPropertiesKHR>(outputFile, indent, "VkDisplayPropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkDisplayPropertiesKHR>(outputFile, indent, "VkDisplayPropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayPropertiesKHR)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -18867,8 +18867,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
-    const PointerDecoder<uint32_t>&             pPropertyCount,
-    const StructPointerDecoder<Decoded_VkDisplayPlanePropertiesKHR>& pProperties)
+    PointerDecoder<uint32_t>*                   pPropertyCount,
+    StructPointerDecoder<Decoded_VkDisplayPlanePropertiesKHR>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -18921,7 +18921,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18930,11 +18930,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -18948,7 +18948,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -18957,11 +18957,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDisplayPlanePropertiesKHR>(outputFile, indent, "VkDisplayPlanePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkDisplayPlanePropertiesKHR>(outputFile, indent, "VkDisplayPlanePropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayPlanePropertiesKHR)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -18977,8 +18977,8 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     uint32_t                                    planeIndex,
-    const PointerDecoder<uint32_t>&             pDisplayCount,
-    const HandlePointerDecoder<VkDisplayKHR>&   pDisplays)
+    PointerDecoder<uint32_t>*                   pDisplayCount,
+    HandlePointerDecoder<VkDisplayKHR>*         pDisplays)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -19046,7 +19046,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplayCount\",\n");
-    if (pDisplayCount.GetPointer() == nullptr) // WWY
+    if (pDisplayCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19055,11 +19055,11 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDisplayCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDisplayCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pDisplayCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pDisplayCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -19073,7 +19073,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplays\",\n");
-    if (pDisplays.GetPointer() == nullptr) // WWY
+    if (pDisplays->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19082,12 +19082,12 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDisplays.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDisplays->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pDisplays = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "VkDisplayKHR*", &pDisplays, "pDisplays", *pDisplayCount.GetPointer(), vinfo_pDisplays); // AQA
+        ArrayToStringJson(outputFile, indent, "VkDisplayKHR*", pDisplays, "pDisplays", *pDisplayCount->GetPointer(), vinfo_pDisplays); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -19103,8 +19103,8 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     format::HandleId                            display,
-    const PointerDecoder<uint32_t>&             pPropertyCount,
-    const StructPointerDecoder<Decoded_VkDisplayModePropertiesKHR>& pProperties)
+    PointerDecoder<uint32_t>*                   pPropertyCount,
+    StructPointerDecoder<Decoded_VkDisplayModePropertiesKHR>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -19172,7 +19172,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19181,11 +19181,11 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -19199,7 +19199,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19208,11 +19208,11 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDisplayModePropertiesKHR>(outputFile, indent, "VkDisplayModePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkDisplayModePropertiesKHR>(outputFile, indent, "VkDisplayModePropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayModePropertiesKHR)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -19230,7 +19230,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     format::HandleId                            display,
     const StructPointerDecoder<Decoded_VkDisplayModeCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkDisplayModeKHR>& pMode)
+    HandlePointerDecoder<VkDisplayModeKHR>*     pMode)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -19298,7 +19298,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19307,11 +19307,11 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -19324,7 +19324,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19333,11 +19333,11 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -19350,7 +19350,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMode\",\n");
-    if (pMode.GetPointer() == nullptr) // WWY
+    if (pMode->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19359,11 +19359,11 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMode.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMode->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pMode.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pMode->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -19381,7 +19381,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     format::HandleId                            physicalDevice,
     format::HandleId                            mode,
     uint32_t                                    planeIndex,
-    const StructPointerDecoder<Decoded_VkDisplayPlaneCapabilitiesKHR>& pCapabilities)
+    StructPointerDecoder<Decoded_VkDisplayPlaneCapabilitiesKHR>* pCapabilities)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -19464,7 +19464,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCapabilities\",\n");
-    if (pCapabilities.GetPointer() == nullptr) // WWY
+    if (pCapabilities->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19473,11 +19473,11 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCapabilities.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCapabilities->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCapabilities.GetMetaStructPointer(), indent, pCapabilities.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCapabilities->GetMetaStructPointer(), indent, pCapabilities->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -19494,7 +19494,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkDisplaySurfaceCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -19547,7 +19547,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19556,11 +19556,11 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -19573,7 +19573,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19582,11 +19582,11 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -19599,7 +19599,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19608,11 +19608,11 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -19632,7 +19632,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     uint32_t                                    swapchainCount,
     const StructPointerDecoder<Decoded_VkSwapchainCreateInfoKHR>& pCreateInfos,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSwapchainKHR>& pSwapchains)
+    HandlePointerDecoder<VkSwapchainKHR>*       pSwapchains)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -19700,7 +19700,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfos\",\n");
-    if (pCreateInfos.GetPointer() == nullptr) // WWY
+    if (pCreateInfos.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19709,11 +19709,11 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfos.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfos.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSwapchainCreateInfoKHR>(outputFile, indent, "VkSwapchainCreateInfoKHR", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", swapchainCount, false, pCreateInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSwapchainCreateInfoKHR>(outputFile, indent, "VkSwapchainCreateInfoKHR", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", swapchainCount, false, pCreateInfos.GetAddress(), sizeof(VkSwapchainCreateInfoKHR)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -19726,7 +19726,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19735,11 +19735,11 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -19752,7 +19752,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSwapchains\",\n");
-    if (pSwapchains.GetPointer() == nullptr) // WWY
+    if (pSwapchains->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19761,12 +19761,12 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSwapchains.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSwapchains->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AQA
+        ArrayToStringJson(outputFile, indent, "VkSwapchainKHR*", pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -19784,7 +19784,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkXlibSurfaceCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -19837,7 +19837,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19846,11 +19846,11 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -19863,7 +19863,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19872,11 +19872,11 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -19889,7 +19889,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -19898,11 +19898,11 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -20025,7 +20025,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkXcbSurfaceCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -20078,7 +20078,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20087,11 +20087,11 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -20104,7 +20104,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20113,11 +20113,11 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -20130,7 +20130,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20139,11 +20139,11 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -20278,7 +20278,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkWaylandSurfaceCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -20331,7 +20331,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20340,11 +20340,11 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -20357,7 +20357,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20366,11 +20366,11 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -20383,7 +20383,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20392,11 +20392,11 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -20515,7 +20515,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkAndroidSurfaceCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -20568,7 +20568,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20577,11 +20577,11 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -20594,7 +20594,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20603,11 +20603,11 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -20620,7 +20620,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20629,11 +20629,11 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -20652,7 +20652,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkWin32SurfaceCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -20705,7 +20705,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20714,11 +20714,11 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -20731,7 +20731,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20740,11 +20740,11 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -20757,7 +20757,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20766,11 +20766,11 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -20858,7 +20858,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     format::HandleId                            physicalDevice,
-    const StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures2>& pFeatures)
+    StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures2>* pFeatures)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -20907,7 +20907,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFeatures\",\n");
-    if (pFeatures.GetPointer() == nullptr) // WWY
+    if (pFeatures->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20916,11 +20916,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFeatures.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFeatures->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pFeatures.GetMetaStructPointer(), indent, pFeatures.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pFeatures->GetMetaStructPointer(), indent, pFeatures->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -20934,7 +20934,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     format::HandleId                            physicalDevice,
-    const StructPointerDecoder<Decoded_VkPhysicalDeviceProperties2>& pProperties)
+    StructPointerDecoder<Decoded_VkPhysicalDeviceProperties2>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -20983,7 +20983,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -20992,11 +20992,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pProperties.GetMetaStructPointer(), indent, pProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pProperties->GetMetaStructPointer(), indent, pProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -21011,7 +21011,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
-    const StructPointerDecoder<Decoded_VkFormatProperties2>& pFormatProperties)
+    StructPointerDecoder<Decoded_VkFormatProperties2>* pFormatProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -21075,7 +21075,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFormatProperties\",\n");
-    if (pFormatProperties.GetPointer() == nullptr) // WWY
+    if (pFormatProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -21084,11 +21084,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFormatProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFormatProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pFormatProperties.GetMetaStructPointer(), indent, pFormatProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pFormatProperties->GetMetaStructPointer(), indent, pFormatProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -21104,7 +21104,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceImageFormatInfo2>& pImageFormatInfo,
-    const StructPointerDecoder<Decoded_VkImageFormatProperties2>& pImageFormatProperties)
+    StructPointerDecoder<Decoded_VkImageFormatProperties2>* pImageFormatProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -21157,7 +21157,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageFormatInfo\",\n");
-    if (pImageFormatInfo.GetPointer() == nullptr) // WWY
+    if (pImageFormatInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -21166,11 +21166,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImageFormatInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImageFormatInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pImageFormatInfo.GetMetaStructPointer(), indent, pImageFormatInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pImageFormatInfo.GetMetaStructPointer(), indent, pImageFormatInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -21183,7 +21183,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImageFormatProperties\",\n");
-    if (pImageFormatProperties.GetPointer() == nullptr) // WWY
+    if (pImageFormatProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -21192,11 +21192,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImageFormatProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImageFormatProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent, pImageFormatProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pImageFormatProperties->GetMetaStructPointer(), indent, pImageFormatProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -21210,8 +21210,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     format::HandleId                            physicalDevice,
-    const PointerDecoder<uint32_t>&             pQueueFamilyPropertyCount,
-    const StructPointerDecoder<Decoded_VkQueueFamilyProperties2>& pQueueFamilyProperties)
+    PointerDecoder<uint32_t>*                   pQueueFamilyPropertyCount,
+    StructPointerDecoder<Decoded_VkQueueFamilyProperties2>* pQueueFamilyProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -21260,7 +21260,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueFamilyPropertyCount\",\n");
-    if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
+    if (pQueueFamilyPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -21269,11 +21269,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pQueueFamilyPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pQueueFamilyPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pQueueFamilyPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pQueueFamilyPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -21287,7 +21287,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pQueueFamilyProperties\",\n");
-    if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
+    if (pQueueFamilyProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -21296,11 +21296,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pQueueFamilyProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pQueueFamilyProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties2>(outputFile, indent, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkQueueFamilyProperties2>(outputFile, indent, "VkQueueFamilyProperties2", pQueueFamilyProperties->GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount->GetPointer(), false, pQueueFamilyProperties->GetAddress(), sizeof(VkQueueFamilyProperties2)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -21314,7 +21314,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     format::HandleId                            physicalDevice,
-    const StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties2>& pMemoryProperties)
+    StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties2>* pMemoryProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -21363,7 +21363,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryProperties\",\n");
-    if (pMemoryProperties.GetPointer() == nullptr) // WWY
+    if (pMemoryProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -21372,11 +21372,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent, pMemoryProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryProperties->GetMetaStructPointer(), indent, pMemoryProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -21391,8 +21391,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2KHR(
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceSparseImageFormatInfo2>& pFormatInfo,
-    const PointerDecoder<uint32_t>&             pPropertyCount,
-    const StructPointerDecoder<Decoded_VkSparseImageFormatProperties2>& pProperties)
+    PointerDecoder<uint32_t>*                   pPropertyCount,
+    StructPointerDecoder<Decoded_VkSparseImageFormatProperties2>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -21441,7 +21441,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFormatInfo\",\n");
-    if (pFormatInfo.GetPointer() == nullptr) // WWY
+    if (pFormatInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -21450,11 +21450,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFormatInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFormatInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pFormatInfo.GetMetaStructPointer(), indent, pFormatInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pFormatInfo.GetMetaStructPointer(), indent, pFormatInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -21467,7 +21467,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -21476,11 +21476,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -21494,7 +21494,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -21503,11 +21503,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties2>(outputFile, indent, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageFormatProperties2>(outputFile, indent, "VkSparseImageFormatProperties2", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkSparseImageFormatProperties2)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -21525,7 +21525,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     uint32_t                                    heapIndex,
     uint32_t                                    localDeviceIndex,
     uint32_t                                    remoteDeviceIndex,
-    const PointerDecoder<VkPeerMemoryFeatureFlags>& pPeerMemoryFeatures)
+    PointerDecoder<VkPeerMemoryFeatureFlags>*   pPeerMemoryFeatures)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -21619,7 +21619,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPeerMemoryFeatures\",\n");
-    if (pPeerMemoryFeatures.GetPointer() == nullptr) // WWY
+    if (pPeerMemoryFeatures->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -21628,12 +21628,12 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPeerMemoryFeatures.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPeerMemoryFeatures->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pPeerMemoryFeatures = {false, false, true, EnumToStringVkPeerMemoryFeatureFlagBits};
-        ScalarValueToStringJson(outputFile, pPeerMemoryFeatures.GetPointer(), vinfo_pPeerMemoryFeatures); // PXS
+        ScalarValueToStringJson(outputFile, pPeerMemoryFeatures->GetPointer(), vinfo_pPeerMemoryFeatures); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -21942,8 +21942,8 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
 void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     VkResult                                    returnValue,
     format::HandleId                            instance,
-    const PointerDecoder<uint32_t>&             pPhysicalDeviceGroupCount,
-    const StructPointerDecoder<Decoded_VkPhysicalDeviceGroupProperties>& pPhysicalDeviceGroupProperties)
+    PointerDecoder<uint32_t>*                   pPhysicalDeviceGroupCount,
+    StructPointerDecoder<Decoded_VkPhysicalDeviceGroupProperties>* pPhysicalDeviceGroupProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -21996,7 +21996,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPhysicalDeviceGroupCount\",\n");
-    if (pPhysicalDeviceGroupCount.GetPointer() == nullptr) // WWY
+    if (pPhysicalDeviceGroupCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22005,11 +22005,11 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPhysicalDeviceGroupCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPhysicalDeviceGroupCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPhysicalDeviceGroupCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPhysicalDeviceGroupCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -22023,7 +22023,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPhysicalDeviceGroupProperties\",\n");
-    if (pPhysicalDeviceGroupProperties.GetPointer() == nullptr) // WWY
+    if (pPhysicalDeviceGroupProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22032,11 +22032,11 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPhysicalDeviceGroupProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPhysicalDeviceGroupProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties->GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount->GetPointer(), false, pPhysicalDeviceGroupProperties->GetAddress(), sizeof(VkPhysicalDeviceGroupProperties)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -22052,7 +22052,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceExternalBufferInfo>& pExternalBufferInfo,
-    const StructPointerDecoder<Decoded_VkExternalBufferProperties>& pExternalBufferProperties)
+    StructPointerDecoder<Decoded_VkExternalBufferProperties>* pExternalBufferProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -22101,7 +22101,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalBufferInfo\",\n");
-    if (pExternalBufferInfo.GetPointer() == nullptr) // WWY
+    if (pExternalBufferInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22110,11 +22110,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalBufferInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalBufferInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalBufferInfo.GetMetaStructPointer(), indent, pExternalBufferInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalBufferInfo.GetMetaStructPointer(), indent, pExternalBufferInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -22127,7 +22127,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalBufferProperties\",\n");
-    if (pExternalBufferProperties.GetPointer() == nullptr) // WWY
+    if (pExternalBufferProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22136,11 +22136,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalBufferProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalBufferProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalBufferProperties.GetMetaStructPointer(), indent, pExternalBufferProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalBufferProperties->GetMetaStructPointer(), indent, pExternalBufferProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -22157,7 +22157,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkMemoryGetWin32HandleInfoKHR>& pGetWin32HandleInfo,
-    const PointerDecoder<uint64_t>&             pHandle)
+    PointerDecoder<uint64_t, void*>*            pHandle)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -22210,7 +22210,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGetWin32HandleInfo\",\n");
-    if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
+    if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22219,11 +22219,11 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pGetWin32HandleInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pGetWin32HandleInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent, pGetWin32HandleInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent, pGetWin32HandleInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -22236,7 +22236,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHandle\",\n");
-    if (pHandle.GetPointer() == nullptr) // WWY
+    if (pHandle->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22245,12 +22245,12 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pHandle.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pHandle->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pHandle = {false, false, false, nullptr};
-        ScalarValueToStringJson(outputFile, pHandle.GetPointer(), vinfo_pHandle); // PXS
+        ScalarValueToStringJson(outputFile, pHandle->GetPointer(), vinfo_pHandle); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -22268,7 +22268,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     format::HandleId                            device,
     VkExternalMemoryHandleTypeFlagBits          handleType,
     uint64_t                                    handle,
-    const StructPointerDecoder<Decoded_VkMemoryWin32HandlePropertiesKHR>& pMemoryWin32HandleProperties)
+    StructPointerDecoder<Decoded_VkMemoryWin32HandlePropertiesKHR>* pMemoryWin32HandleProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -22363,7 +22363,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryWin32HandleProperties\",\n");
-    if (pMemoryWin32HandleProperties.GetPointer() == nullptr) // WWY
+    if (pMemoryWin32HandleProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22372,11 +22372,11 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryWin32HandleProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryWin32HandleProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryWin32HandleProperties.GetMetaStructPointer(), indent, pMemoryWin32HandleProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryWin32HandleProperties->GetMetaStructPointer(), indent, pMemoryWin32HandleProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -22393,7 +22393,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkMemoryGetFdInfoKHR>& pGetFdInfo,
-    const PointerDecoder<int>&                  pFd)
+    PointerDecoder<int>*                        pFd)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -22446,7 +22446,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGetFdInfo\",\n");
-    if (pGetFdInfo.GetPointer() == nullptr) // WWY
+    if (pGetFdInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22455,11 +22455,11 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pGetFdInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pGetFdInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent, pGetFdInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent, pGetFdInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -22472,7 +22472,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFd\",\n");
-    if (pFd.GetPointer() == nullptr) // WWY
+    if (pFd->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22481,12 +22481,12 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFd.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFd->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pFd = {false, false, false, nullptr};
-        ScalarValueToStringJson(outputFile, pFd.GetPointer(), vinfo_pFd); // PXS
+        ScalarValueToStringJson(outputFile, pFd->GetPointer(), vinfo_pFd); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -22504,7 +22504,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     format::HandleId                            device,
     VkExternalMemoryHandleTypeFlagBits          handleType,
     int                                         fd,
-    const StructPointerDecoder<Decoded_VkMemoryFdPropertiesKHR>& pMemoryFdProperties)
+    StructPointerDecoder<Decoded_VkMemoryFdPropertiesKHR>* pMemoryFdProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -22587,7 +22587,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryFdProperties\",\n");
-    if (pMemoryFdProperties.GetPointer() == nullptr) // WWY
+    if (pMemoryFdProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22596,11 +22596,11 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryFdProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryFdProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryFdProperties.GetMetaStructPointer(), indent, pMemoryFdProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryFdProperties->GetMetaStructPointer(), indent, pMemoryFdProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -22616,7 +22616,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR(
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceExternalSemaphoreInfo>& pExternalSemaphoreInfo,
-    const StructPointerDecoder<Decoded_VkExternalSemaphoreProperties>& pExternalSemaphoreProperties)
+    StructPointerDecoder<Decoded_VkExternalSemaphoreProperties>* pExternalSemaphoreProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -22665,7 +22665,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalSemaphoreInfo\",\n");
-    if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WWY
+    if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22674,11 +22674,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalSemaphoreInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalSemaphoreInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalSemaphoreInfo.GetMetaStructPointer(), indent, pExternalSemaphoreInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalSemaphoreInfo.GetMetaStructPointer(), indent, pExternalSemaphoreInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -22691,7 +22691,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalSemaphoreProperties\",\n");
-    if (pExternalSemaphoreProperties.GetPointer() == nullptr) // WWY
+    if (pExternalSemaphoreProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22700,11 +22700,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalSemaphoreProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalSemaphoreProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalSemaphoreProperties.GetMetaStructPointer(), indent, pExternalSemaphoreProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalSemaphoreProperties->GetMetaStructPointer(), indent, pExternalSemaphoreProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -22773,7 +22773,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImportSemaphoreWin32HandleInfo\",\n");
-    if (pImportSemaphoreWin32HandleInfo.GetPointer() == nullptr) // WWY
+    if (pImportSemaphoreWin32HandleInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22782,11 +22782,11 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImportSemaphoreWin32HandleInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImportSemaphoreWin32HandleInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pImportSemaphoreWin32HandleInfo.GetMetaStructPointer(), indent, pImportSemaphoreWin32HandleInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pImportSemaphoreWin32HandleInfo.GetMetaStructPointer(), indent, pImportSemaphoreWin32HandleInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -22802,7 +22802,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSemaphoreGetWin32HandleInfoKHR>& pGetWin32HandleInfo,
-    const PointerDecoder<uint64_t>&             pHandle)
+    PointerDecoder<uint64_t, void*>*            pHandle)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -22855,7 +22855,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGetWin32HandleInfo\",\n");
-    if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
+    if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22864,11 +22864,11 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pGetWin32HandleInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pGetWin32HandleInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent, pGetWin32HandleInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent, pGetWin32HandleInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -22881,7 +22881,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHandle\",\n");
-    if (pHandle.GetPointer() == nullptr) // WWY
+    if (pHandle->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22890,12 +22890,12 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pHandle.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pHandle->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pHandle = {false, false, false, nullptr};
-        ScalarValueToStringJson(outputFile, pHandle.GetPointer(), vinfo_pHandle); // PXS
+        ScalarValueToStringJson(outputFile, pHandle->GetPointer(), vinfo_pHandle); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -22965,7 +22965,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImportSemaphoreFdInfo\",\n");
-    if (pImportSemaphoreFdInfo.GetPointer() == nullptr) // WWY
+    if (pImportSemaphoreFdInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -22974,11 +22974,11 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImportSemaphoreFdInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImportSemaphoreFdInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pImportSemaphoreFdInfo.GetMetaStructPointer(), indent, pImportSemaphoreFdInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pImportSemaphoreFdInfo.GetMetaStructPointer(), indent, pImportSemaphoreFdInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -22994,7 +22994,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSemaphoreGetFdInfoKHR>& pGetFdInfo,
-    const PointerDecoder<int>&                  pFd)
+    PointerDecoder<int>*                        pFd)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -23047,7 +23047,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGetFdInfo\",\n");
-    if (pGetFdInfo.GetPointer() == nullptr) // WWY
+    if (pGetFdInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23056,11 +23056,11 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pGetFdInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pGetFdInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent, pGetFdInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent, pGetFdInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -23073,7 +23073,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFd\",\n");
-    if (pFd.GetPointer() == nullptr) // WWY
+    if (pFd->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23082,12 +23082,12 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFd.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFd->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pFd = {false, false, false, nullptr};
-        ScalarValueToStringJson(outputFile, pFd.GetPointer(), vinfo_pFd); // PXS
+        ScalarValueToStringJson(outputFile, pFd->GetPointer(), vinfo_pFd); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -23216,7 +23216,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorWrites\",\n");
-    if (pDescriptorWrites.GetPointer() == nullptr) // WWY
+    if (pDescriptorWrites.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23225,11 +23225,11 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDescriptorWrites.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDescriptorWrites.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkWriteDescriptorSet>(outputFile, indent, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkWriteDescriptorSet>(outputFile, indent, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress(), sizeof(VkWriteDescriptorSet)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -23247,7 +23247,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorUpdateTemplateCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkDescriptorUpdateTemplate>& pDescriptorUpdateTemplate)
+    HandlePointerDecoder<VkDescriptorUpdateTemplate>* pDescriptorUpdateTemplate)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -23300,7 +23300,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23309,11 +23309,11 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -23326,7 +23326,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23335,11 +23335,11 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -23352,7 +23352,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDescriptorUpdateTemplate\",\n");
-    if (pDescriptorUpdateTemplate.GetPointer() == nullptr) // WWY
+    if (pDescriptorUpdateTemplate->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23361,11 +23361,11 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDescriptorUpdateTemplate.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDescriptorUpdateTemplate->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pDescriptorUpdateTemplate.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pDescriptorUpdateTemplate->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -23445,7 +23445,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23454,11 +23454,11 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -23476,7 +23476,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkRenderPassCreateInfo2KHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkRenderPass>&   pRenderPass)
+    HandlePointerDecoder<VkRenderPass>*         pRenderPass)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -23529,7 +23529,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23538,11 +23538,11 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -23555,7 +23555,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23564,11 +23564,11 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -23581,7 +23581,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRenderPass\",\n");
-    if (pRenderPass.GetPointer() == nullptr) // WWY
+    if (pRenderPass->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23590,11 +23590,11 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRenderPass.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRenderPass->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pRenderPass.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pRenderPass->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -23659,7 +23659,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pRenderPassBegin\",\n");
-    if (pRenderPassBegin.GetPointer() == nullptr) // WWY
+    if (pRenderPassBegin.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23668,11 +23668,11 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pRenderPassBegin.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pRenderPassBegin.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pRenderPassBegin.GetMetaStructPointer(), indent, pRenderPassBegin.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pRenderPassBegin.GetMetaStructPointer(), indent, pRenderPassBegin.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -23685,7 +23685,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSubpassBeginInfo\",\n");
-    if (pSubpassBeginInfo.GetPointer() == nullptr) // WWY
+    if (pSubpassBeginInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23694,11 +23694,11 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSubpassBeginInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSubpassBeginInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSubpassBeginInfo.GetMetaStructPointer(), indent, pSubpassBeginInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSubpassBeginInfo.GetMetaStructPointer(), indent, pSubpassBeginInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -23762,7 +23762,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSubpassBeginInfo\",\n");
-    if (pSubpassBeginInfo.GetPointer() == nullptr) // WWY
+    if (pSubpassBeginInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23771,11 +23771,11 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSubpassBeginInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSubpassBeginInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSubpassBeginInfo.GetMetaStructPointer(), indent, pSubpassBeginInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSubpassBeginInfo.GetMetaStructPointer(), indent, pSubpassBeginInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -23788,7 +23788,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSubpassEndInfo\",\n");
-    if (pSubpassEndInfo.GetPointer() == nullptr) // WWY
+    if (pSubpassEndInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23797,11 +23797,11 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSubpassEndInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSubpassEndInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSubpassEndInfo.GetMetaStructPointer(), indent, pSubpassEndInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSubpassEndInfo.GetMetaStructPointer(), indent, pSubpassEndInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -23864,7 +23864,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSubpassEndInfo\",\n");
-    if (pSubpassEndInfo.GetPointer() == nullptr) // WWY
+    if (pSubpassEndInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -23873,11 +23873,11 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSubpassEndInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSubpassEndInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSubpassEndInfo.GetMetaStructPointer(), indent, pSubpassEndInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSubpassEndInfo.GetMetaStructPointer(), indent, pSubpassEndInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -23964,7 +23964,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceExternalFenceInfo>& pExternalFenceInfo,
-    const StructPointerDecoder<Decoded_VkExternalFenceProperties>& pExternalFenceProperties)
+    StructPointerDecoder<Decoded_VkExternalFenceProperties>* pExternalFenceProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -24013,7 +24013,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalFenceInfo\",\n");
-    if (pExternalFenceInfo.GetPointer() == nullptr) // WWY
+    if (pExternalFenceInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24022,11 +24022,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalFenceInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalFenceInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalFenceInfo.GetMetaStructPointer(), indent, pExternalFenceInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalFenceInfo.GetMetaStructPointer(), indent, pExternalFenceInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -24039,7 +24039,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalFenceProperties\",\n");
-    if (pExternalFenceProperties.GetPointer() == nullptr) // WWY
+    if (pExternalFenceProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24048,11 +24048,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalFenceProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalFenceProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalFenceProperties.GetMetaStructPointer(), indent, pExternalFenceProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalFenceProperties->GetMetaStructPointer(), indent, pExternalFenceProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -24121,7 +24121,7 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImportFenceWin32HandleInfo\",\n");
-    if (pImportFenceWin32HandleInfo.GetPointer() == nullptr) // WWY
+    if (pImportFenceWin32HandleInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24130,11 +24130,11 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImportFenceWin32HandleInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImportFenceWin32HandleInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pImportFenceWin32HandleInfo.GetMetaStructPointer(), indent, pImportFenceWin32HandleInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pImportFenceWin32HandleInfo.GetMetaStructPointer(), indent, pImportFenceWin32HandleInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -24150,7 +24150,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkFenceGetWin32HandleInfoKHR>& pGetWin32HandleInfo,
-    const PointerDecoder<uint64_t>&             pHandle)
+    PointerDecoder<uint64_t, void*>*            pHandle)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -24203,7 +24203,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGetWin32HandleInfo\",\n");
-    if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
+    if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24212,11 +24212,11 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pGetWin32HandleInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pGetWin32HandleInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent, pGetWin32HandleInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pGetWin32HandleInfo.GetMetaStructPointer(), indent, pGetWin32HandleInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -24229,7 +24229,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHandle\",\n");
-    if (pHandle.GetPointer() == nullptr) // WWY
+    if (pHandle->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24238,12 +24238,12 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pHandle.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pHandle->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pHandle = {false, false, false, nullptr};
-        ScalarValueToStringJson(outputFile, pHandle.GetPointer(), vinfo_pHandle); // PXS
+        ScalarValueToStringJson(outputFile, pHandle->GetPointer(), vinfo_pHandle); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -24313,7 +24313,7 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pImportFenceFdInfo\",\n");
-    if (pImportFenceFdInfo.GetPointer() == nullptr) // WWY
+    if (pImportFenceFdInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24322,11 +24322,11 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pImportFenceFdInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pImportFenceFdInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pImportFenceFdInfo.GetMetaStructPointer(), indent, pImportFenceFdInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pImportFenceFdInfo.GetMetaStructPointer(), indent, pImportFenceFdInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -24342,7 +24342,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkFenceGetFdInfoKHR>& pGetFdInfo,
-    const PointerDecoder<int>&                  pFd)
+    PointerDecoder<int>*                        pFd)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -24395,7 +24395,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pGetFdInfo\",\n");
-    if (pGetFdInfo.GetPointer() == nullptr) // WWY
+    if (pGetFdInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24404,11 +24404,11 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pGetFdInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pGetFdInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent, pGetFdInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pGetFdInfo.GetMetaStructPointer(), indent, pGetFdInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -24421,7 +24421,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFd\",\n");
-    if (pFd.GetPointer() == nullptr) // WWY
+    if (pFd->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24430,12 +24430,12 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFd.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFd->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pFd = {false, false, false, nullptr};
-        ScalarValueToStringJson(outputFile, pFd.GetPointer(), vinfo_pFd); // PXS
+        ScalarValueToStringJson(outputFile, pFd->GetPointer(), vinfo_pFd); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -24453,7 +24453,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>& pSurfaceInfo,
-    const StructPointerDecoder<Decoded_VkSurfaceCapabilities2KHR>& pSurfaceCapabilities)
+    StructPointerDecoder<Decoded_VkSurfaceCapabilities2KHR>* pSurfaceCapabilities)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -24506,7 +24506,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceInfo\",\n");
-    if (pSurfaceInfo.GetPointer() == nullptr) // WWY
+    if (pSurfaceInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24515,11 +24515,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurfaceInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurfaceInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent, pSurfaceInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent, pSurfaceInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -24532,7 +24532,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceCapabilities\",\n");
-    if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
+    if (pSurfaceCapabilities->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24541,11 +24541,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurfaceCapabilities.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurfaceCapabilities->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent, pSurfaceCapabilities.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSurfaceCapabilities->GetMetaStructPointer(), indent, pSurfaceCapabilities->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -24561,8 +24561,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>& pSurfaceInfo,
-    const PointerDecoder<uint32_t>&             pSurfaceFormatCount,
-    const StructPointerDecoder<Decoded_VkSurfaceFormat2KHR>& pSurfaceFormats)
+    PointerDecoder<uint32_t>*                   pSurfaceFormatCount,
+    StructPointerDecoder<Decoded_VkSurfaceFormat2KHR>* pSurfaceFormats)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -24615,7 +24615,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceInfo\",\n");
-    if (pSurfaceInfo.GetPointer() == nullptr) // WWY
+    if (pSurfaceInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24624,11 +24624,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurfaceInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurfaceInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent, pSurfaceInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent, pSurfaceInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -24641,7 +24641,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceFormatCount\",\n");
-    if (pSurfaceFormatCount.GetPointer() == nullptr) // WWY
+    if (pSurfaceFormatCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24650,11 +24650,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurfaceFormatCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurfaceFormatCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pSurfaceFormatCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pSurfaceFormatCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -24668,7 +24668,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceFormats\",\n");
-    if (pSurfaceFormats.GetPointer() == nullptr) // WWY
+    if (pSurfaceFormats->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24677,11 +24677,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurfaceFormats.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurfaceFormats->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSurfaceFormat2KHR>(outputFile, indent, "VkSurfaceFormat2KHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSurfaceFormat2KHR>(outputFile, indent, "VkSurfaceFormat2KHR", pSurfaceFormats->GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount->GetPointer(), false, pSurfaceFormats->GetAddress(), sizeof(VkSurfaceFormat2KHR)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -24697,8 +24697,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
-    const PointerDecoder<uint32_t>&             pPropertyCount,
-    const StructPointerDecoder<Decoded_VkDisplayProperties2KHR>& pProperties)
+    PointerDecoder<uint32_t>*                   pPropertyCount,
+    StructPointerDecoder<Decoded_VkDisplayProperties2KHR>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -24751,7 +24751,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24760,11 +24760,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -24778,7 +24778,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24787,11 +24787,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDisplayProperties2KHR>(outputFile, indent, "VkDisplayProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkDisplayProperties2KHR>(outputFile, indent, "VkDisplayProperties2KHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayProperties2KHR)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -24806,8 +24806,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
-    const PointerDecoder<uint32_t>&             pPropertyCount,
-    const StructPointerDecoder<Decoded_VkDisplayPlaneProperties2KHR>& pProperties)
+    PointerDecoder<uint32_t>*                   pPropertyCount,
+    StructPointerDecoder<Decoded_VkDisplayPlaneProperties2KHR>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -24860,7 +24860,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24869,11 +24869,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -24887,7 +24887,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24896,11 +24896,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDisplayPlaneProperties2KHR>(outputFile, indent, "VkDisplayPlaneProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkDisplayPlaneProperties2KHR>(outputFile, indent, "VkDisplayPlaneProperties2KHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayPlaneProperties2KHR)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -24916,8 +24916,8 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     format::HandleId                            display,
-    const PointerDecoder<uint32_t>&             pPropertyCount,
-    const StructPointerDecoder<Decoded_VkDisplayModeProperties2KHR>& pProperties)
+    PointerDecoder<uint32_t>*                   pPropertyCount,
+    StructPointerDecoder<Decoded_VkDisplayModeProperties2KHR>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -24985,7 +24985,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -24994,11 +24994,11 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -25012,7 +25012,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25021,11 +25021,11 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDisplayModeProperties2KHR>(outputFile, indent, "VkDisplayModeProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkDisplayModeProperties2KHR>(outputFile, indent, "VkDisplayModeProperties2KHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayModeProperties2KHR)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25041,7 +25041,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkDisplayPlaneInfo2KHR>& pDisplayPlaneInfo,
-    const StructPointerDecoder<Decoded_VkDisplayPlaneCapabilities2KHR>& pCapabilities)
+    StructPointerDecoder<Decoded_VkDisplayPlaneCapabilities2KHR>* pCapabilities)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -25094,7 +25094,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplayPlaneInfo\",\n");
-    if (pDisplayPlaneInfo.GetPointer() == nullptr) // WWY
+    if (pDisplayPlaneInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25103,11 +25103,11 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDisplayPlaneInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDisplayPlaneInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pDisplayPlaneInfo.GetMetaStructPointer(), indent, pDisplayPlaneInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pDisplayPlaneInfo.GetMetaStructPointer(), indent, pDisplayPlaneInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -25120,7 +25120,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCapabilities\",\n");
-    if (pCapabilities.GetPointer() == nullptr) // WWY
+    if (pCapabilities->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25129,11 +25129,11 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCapabilities.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCapabilities->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCapabilities.GetMetaStructPointer(), indent, pCapabilities.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCapabilities->GetMetaStructPointer(), indent, pCapabilities->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25149,7 +25149,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
 void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageMemoryRequirementsInfo2>& pInfo,
-    const StructPointerDecoder<Decoded_VkMemoryRequirements2>& pMemoryRequirements)
+    StructPointerDecoder<Decoded_VkMemoryRequirements2>* pMemoryRequirements)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -25198,7 +25198,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25207,11 +25207,11 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -25224,7 +25224,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25233,11 +25233,11 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryRequirements.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryRequirements->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent, pMemoryRequirements.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent, pMemoryRequirements->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25252,7 +25252,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
 void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkBufferMemoryRequirementsInfo2>& pInfo,
-    const StructPointerDecoder<Decoded_VkMemoryRequirements2>& pMemoryRequirements)
+    StructPointerDecoder<Decoded_VkMemoryRequirements2>* pMemoryRequirements)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -25301,7 +25301,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25310,11 +25310,11 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -25327,7 +25327,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25336,11 +25336,11 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryRequirements.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryRequirements->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent, pMemoryRequirements.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent, pMemoryRequirements->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25355,8 +25355,8 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
 void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageSparseMemoryRequirementsInfo2>& pInfo,
-    const PointerDecoder<uint32_t>&             pSparseMemoryRequirementCount,
-    const StructPointerDecoder<Decoded_VkSparseImageMemoryRequirements2>& pSparseMemoryRequirements)
+    PointerDecoder<uint32_t>*                   pSparseMemoryRequirementCount,
+    StructPointerDecoder<Decoded_VkSparseImageMemoryRequirements2>* pSparseMemoryRequirements)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -25405,7 +25405,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25414,11 +25414,11 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -25431,7 +25431,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSparseMemoryRequirementCount\",\n");
-    if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
+    if (pSparseMemoryRequirementCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25440,11 +25440,11 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSparseMemoryRequirementCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSparseMemoryRequirementCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pSparseMemoryRequirementCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pSparseMemoryRequirementCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -25458,7 +25458,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSparseMemoryRequirements\",\n");
-    if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pSparseMemoryRequirements->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25467,11 +25467,11 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSparseMemoryRequirements.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSparseMemoryRequirements->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements->GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount->GetPointer(), false, pSparseMemoryRequirements->GetAddress(), sizeof(VkSparseImageMemoryRequirements2)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25489,7 +25489,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSamplerYcbcrConversionCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSamplerYcbcrConversion>& pYcbcrConversion)
+    HandlePointerDecoder<VkSamplerYcbcrConversion>* pYcbcrConversion)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -25542,7 +25542,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25551,11 +25551,11 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -25568,7 +25568,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25577,11 +25577,11 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -25594,7 +25594,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pYcbcrConversion\",\n");
-    if (pYcbcrConversion.GetPointer() == nullptr) // WWY
+    if (pYcbcrConversion->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25603,11 +25603,11 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pYcbcrConversion.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pYcbcrConversion->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pYcbcrConversion.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pYcbcrConversion->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -25687,7 +25687,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25696,11 +25696,11 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25785,7 +25785,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBindInfos\",\n");
-    if (pBindInfos.GetPointer() == nullptr) // WWY
+    if (pBindInfos.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25794,11 +25794,11 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBindInfos.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBindInfos.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBindBufferMemoryInfo>(outputFile, indent, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBindBufferMemoryInfo>(outputFile, indent, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindBufferMemoryInfo)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25882,7 +25882,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBindInfos\",\n");
-    if (pBindInfos.GetPointer() == nullptr) // WWY
+    if (pBindInfos.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25891,11 +25891,11 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBindInfos.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBindInfos.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBindImageMemoryInfo>(outputFile, indent, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBindImageMemoryInfo>(outputFile, indent, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindImageMemoryInfo)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25911,7 +25911,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
 void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorSetLayoutCreateInfo>& pCreateInfo,
-    const StructPointerDecoder<Decoded_VkDescriptorSetLayoutSupport>& pSupport)
+    StructPointerDecoder<Decoded_VkDescriptorSetLayoutSupport>* pSupport)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -25960,7 +25960,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25969,11 +25969,11 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -25986,7 +25986,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSupport\",\n");
-    if (pSupport.GetPointer() == nullptr) // WWY
+    if (pSupport->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -25995,11 +25995,11 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSupport.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSupport->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSupport.GetMetaStructPointer(), indent, pSupport.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSupport->GetMetaStructPointer(), indent, pSupport->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -26307,7 +26307,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
     format::HandleId                            semaphore,
-    const PointerDecoder<uint64_t>&             pValue)
+    PointerDecoder<uint64_t>*                   pValue)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -26375,7 +26375,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pValue\",\n");
-    if (pValue.GetPointer() == nullptr) // WWY
+    if (pValue->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -26384,11 +26384,11 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pValue.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pValue->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pValue.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pValue->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -26458,7 +26458,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pWaitInfo\",\n");
-    if (pWaitInfo.GetPointer() == nullptr) // WWY
+    if (pWaitInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -26467,11 +26467,11 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pWaitInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pWaitInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pWaitInfo.GetMetaStructPointer(), indent, pWaitInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pWaitInfo.GetMetaStructPointer(), indent, pWaitInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -26554,7 +26554,7 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSignalInfo\",\n");
-    if (pSignalInfo.GetPointer() == nullptr) // WWY
+    if (pSignalInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -26563,11 +26563,11 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSignalInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSignalInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSignalInfo.GetMetaStructPointer(), indent, pSignalInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSignalInfo.GetMetaStructPointer(), indent, pSignalInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -26584,8 +26584,8 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPipelineInfoKHR>& pPipelineInfo,
-    const PointerDecoder<uint32_t>&             pExecutableCount,
-    const StructPointerDecoder<Decoded_VkPipelineExecutablePropertiesKHR>& pProperties)
+    PointerDecoder<uint32_t>*                   pExecutableCount,
+    StructPointerDecoder<Decoded_VkPipelineExecutablePropertiesKHR>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -26638,7 +26638,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPipelineInfo\",\n");
-    if (pPipelineInfo.GetPointer() == nullptr) // WWY
+    if (pPipelineInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -26647,11 +26647,11 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPipelineInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPipelineInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pPipelineInfo.GetMetaStructPointer(), indent, pPipelineInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pPipelineInfo.GetMetaStructPointer(), indent, pPipelineInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -26664,7 +26664,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExecutableCount\",\n");
-    if (pExecutableCount.GetPointer() == nullptr) // WWY
+    if (pExecutableCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -26673,11 +26673,11 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExecutableCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExecutableCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pExecutableCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pExecutableCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -26691,7 +26691,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -26700,11 +26700,11 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineExecutablePropertiesKHR>(outputFile, indent, "VkPipelineExecutablePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pExecutableCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkPipelineExecutablePropertiesKHR>(outputFile, indent, "VkPipelineExecutablePropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pExecutableCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkPipelineExecutablePropertiesKHR)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -26720,8 +26720,8 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPipelineExecutableInfoKHR>& pExecutableInfo,
-    const PointerDecoder<uint32_t>&             pStatisticCount,
-    const StructPointerDecoder<Decoded_VkPipelineExecutableStatisticKHR>& pStatistics)
+    PointerDecoder<uint32_t>*                   pStatisticCount,
+    StructPointerDecoder<Decoded_VkPipelineExecutableStatisticKHR>* pStatistics)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -26774,7 +26774,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExecutableInfo\",\n");
-    if (pExecutableInfo.GetPointer() == nullptr) // WWY
+    if (pExecutableInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -26783,11 +26783,11 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExecutableInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExecutableInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExecutableInfo.GetMetaStructPointer(), indent, pExecutableInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExecutableInfo.GetMetaStructPointer(), indent, pExecutableInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -26800,7 +26800,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pStatisticCount\",\n");
-    if (pStatisticCount.GetPointer() == nullptr) // WWY
+    if (pStatisticCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -26809,11 +26809,11 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pStatisticCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pStatisticCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pStatisticCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pStatisticCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -26827,7 +26827,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pStatistics\",\n");
-    if (pStatistics.GetPointer() == nullptr) // WWY
+    if (pStatistics->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -26836,11 +26836,11 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pStatistics.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pStatistics->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineExecutableStatisticKHR>(outputFile, indent, "VkPipelineExecutableStatisticKHR", pStatistics.GetMetaStructPointer(), "pStatistics", *pStatisticCount.GetPointer(), false, pStatistics.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkPipelineExecutableStatisticKHR>(outputFile, indent, "VkPipelineExecutableStatisticKHR", pStatistics->GetMetaStructPointer(), "pStatistics", *pStatisticCount->GetPointer(), false, pStatistics->GetAddress(), sizeof(VkPipelineExecutableStatisticKHR)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -26856,8 +26856,8 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPipelineExecutableInfoKHR>& pExecutableInfo,
-    const PointerDecoder<uint32_t>&             pInternalRepresentationCount,
-    const StructPointerDecoder<Decoded_VkPipelineExecutableInternalRepresentationKHR>& pInternalRepresentations)
+    PointerDecoder<uint32_t>*                   pInternalRepresentationCount,
+    StructPointerDecoder<Decoded_VkPipelineExecutableInternalRepresentationKHR>* pInternalRepresentations)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -26910,7 +26910,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExecutableInfo\",\n");
-    if (pExecutableInfo.GetPointer() == nullptr) // WWY
+    if (pExecutableInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -26919,11 +26919,11 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExecutableInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExecutableInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExecutableInfo.GetMetaStructPointer(), indent, pExecutableInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExecutableInfo.GetMetaStructPointer(), indent, pExecutableInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -26936,7 +26936,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInternalRepresentationCount\",\n");
-    if (pInternalRepresentationCount.GetPointer() == nullptr) // WWY
+    if (pInternalRepresentationCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -26945,11 +26945,11 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInternalRepresentationCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInternalRepresentationCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pInternalRepresentationCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pInternalRepresentationCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -26963,7 +26963,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInternalRepresentations\",\n");
-    if (pInternalRepresentations.GetPointer() == nullptr) // WWY
+    if (pInternalRepresentations->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -26972,11 +26972,11 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInternalRepresentations.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInternalRepresentations->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineExecutableInternalRepresentationKHR>(outputFile, indent, "VkPipelineExecutableInternalRepresentationKHR", pInternalRepresentations.GetMetaStructPointer(), "pInternalRepresentations", *pInternalRepresentationCount.GetPointer(), false, pInternalRepresentations.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkPipelineExecutableInternalRepresentationKHR>(outputFile, indent, "VkPipelineExecutableInternalRepresentationKHR", pInternalRepresentations->GetMetaStructPointer(), "pInternalRepresentations", *pInternalRepresentationCount->GetPointer(), false, pInternalRepresentations->GetAddress(), sizeof(VkPipelineExecutableInternalRepresentationKHR)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -26994,7 +26994,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkDebugReportCallbackCreateInfoEXT>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkDebugReportCallbackEXT>& pCallback)
+    HandlePointerDecoder<VkDebugReportCallbackEXT>* pCallback)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -27047,7 +27047,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27056,11 +27056,11 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -27073,7 +27073,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27082,11 +27082,11 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -27099,7 +27099,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCallback\",\n");
-    if (pCallback.GetPointer() == nullptr) // WWY
+    if (pCallback->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27108,11 +27108,11 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCallback.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCallback->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pCallback.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pCallback->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -27192,7 +27192,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27201,11 +27201,11 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -27349,7 +27349,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLayerPrefix\",\n");
-    if (pLayerPrefix.GetPointer() == nullptr) // WWY
+    if (pLayerPrefix.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27358,7 +27358,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pLayerPrefix.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pLayerPrefix.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : ");
@@ -27376,7 +27376,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMessage\",\n");
-    if (pMessage.GetPointer() == nullptr) // WWY
+    if (pMessage.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27385,7 +27385,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMessage.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMessage.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : ");
@@ -27459,7 +27459,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pTagInfo\",\n");
-    if (pTagInfo.GetPointer() == nullptr) // WWY
+    if (pTagInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27468,11 +27468,11 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pTagInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pTagInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pTagInfo.GetMetaStructPointer(), indent, pTagInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pTagInfo.GetMetaStructPointer(), indent, pTagInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -27540,7 +27540,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNameInfo\",\n");
-    if (pNameInfo.GetPointer() == nullptr) // WWY
+    if (pNameInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27549,11 +27549,11 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pNameInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pNameInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pNameInfo.GetMetaStructPointer(), indent, pNameInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pNameInfo.GetMetaStructPointer(), indent, pNameInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -27616,7 +27616,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMarkerInfo\",\n");
-    if (pMarkerInfo.GetPointer() == nullptr) // WWY
+    if (pMarkerInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27625,11 +27625,11 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMarkerInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMarkerInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent, pMarkerInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent, pMarkerInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -27741,7 +27741,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMarkerInfo\",\n");
-    if (pMarkerInfo.GetPointer() == nullptr) // WWY
+    if (pMarkerInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27750,11 +27750,11 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMarkerInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMarkerInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent, pMarkerInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent, pMarkerInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -27852,7 +27852,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBuffers\",\n");
-    if (pBuffers.GetPointer() == nullptr) // WWY
+    if (pBuffers.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27861,7 +27861,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBuffers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBuffers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -27879,7 +27879,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pOffsets\",\n");
-    if (pOffsets.GetPointer() == nullptr) // WWY
+    if (pOffsets.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27888,7 +27888,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pOffsets.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pOffsets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -27906,7 +27906,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSizes\",\n");
-    if (pSizes.GetPointer() == nullptr) // WWY
+    if (pSizes.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -27915,7 +27915,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSizes.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSizes.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -28016,7 +28016,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCounterBuffers\",\n");
-    if (pCounterBuffers.GetPointer() == nullptr) // WWY
+    if (pCounterBuffers.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -28025,7 +28025,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCounterBuffers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCounterBuffers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -28043,7 +28043,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCounterBufferOffsets\",\n");
-    if (pCounterBufferOffsets.GetPointer() == nullptr) // WWY
+    if (pCounterBufferOffsets.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -28052,7 +28052,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCounterBufferOffsets.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCounterBufferOffsets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -28153,7 +28153,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCounterBuffers\",\n");
-    if (pCounterBuffers.GetPointer() == nullptr) // WWY
+    if (pCounterBuffers.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -28162,7 +28162,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCounterBuffers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCounterBuffers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -28180,7 +28180,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCounterBufferOffsets\",\n");
-    if (pCounterBufferOffsets.GetPointer() == nullptr) // WWY
+    if (pCounterBufferOffsets.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -28189,7 +28189,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCounterBufferOffsets.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCounterBufferOffsets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -28620,7 +28620,7 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -28629,11 +28629,11 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -28943,8 +28943,8 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     format::HandleId                            pipeline,
     VkShaderStageFlagBits                       shaderStage,
     VkShaderInfoTypeAMD                         infoType,
-    const PointerDecoder<size_t>&               pInfoSize,
-    const PointerDecoder<uint8_t>&              pInfo)
+    PointerDecoder<size_t>*                     pInfoSize,
+    PointerDecoder<uint8_t>*                    pInfo)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -29042,7 +29042,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfoSize\",\n");
-    if (pInfoSize.GetPointer() == nullptr) // WWY
+    if (pInfoSize->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29051,11 +29051,11 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfoSize.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfoSize->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pInfoSize.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pInfoSize->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -29069,7 +29069,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29078,12 +29078,12 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfo->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pInfo = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "void*", &pInfo, "pInfo", *pInfoSize.GetPointer(), vinfo_pInfo); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", pInfo, "pInfo", *pInfoSize->GetPointer(), vinfo_pInfo); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -29101,7 +29101,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkStreamDescriptorSurfaceCreateInfoGGP>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -29154,7 +29154,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29163,11 +29163,11 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -29180,7 +29180,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29189,11 +29189,11 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -29206,7 +29206,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29215,11 +29215,11 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -29242,7 +29242,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     VkImageUsageFlags                           usage,
     VkImageCreateFlags                          flags,
     VkExternalMemoryHandleTypeFlagsNV           externalHandleType,
-    const StructPointerDecoder<Decoded_VkExternalImageFormatPropertiesNV>& pExternalImageFormatProperties)
+    StructPointerDecoder<Decoded_VkExternalImageFormatPropertiesNV>* pExternalImageFormatProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -29385,7 +29385,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExternalImageFormatProperties\",\n");
-    if (pExternalImageFormatProperties.GetPointer() == nullptr) // WWY
+    if (pExternalImageFormatProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29394,11 +29394,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExternalImageFormatProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExternalImageFormatProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pExternalImageFormatProperties.GetMetaStructPointer(), indent, pExternalImageFormatProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pExternalImageFormatProperties->GetMetaStructPointer(), indent, pExternalImageFormatProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -29416,7 +29416,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     format::HandleId                            device,
     format::HandleId                            memory,
     VkExternalMemoryHandleTypeFlagsNV           handleType,
-    const PointerDecoder<uint64_t>&             pHandle)
+    PointerDecoder<uint64_t, void*>*            pHandle)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -29499,7 +29499,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHandle\",\n");
-    if (pHandle.GetPointer() == nullptr) // WWY
+    if (pHandle->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29508,12 +29508,12 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pHandle.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pHandle->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pHandle = {false, false, false, nullptr};
-        ScalarValueToStringJson(outputFile, pHandle.GetPointer(), vinfo_pHandle); // PXS
+        ScalarValueToStringJson(outputFile, pHandle->GetPointer(), vinfo_pHandle); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -29532,7 +29532,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkViSurfaceCreateInfoNN>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -29585,7 +29585,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29594,11 +29594,11 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -29611,7 +29611,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29620,11 +29620,11 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -29637,7 +29637,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29646,11 +29646,11 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -29715,7 +29715,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pConditionalRenderingBegin\",\n");
-    if (pConditionalRenderingBegin.GetPointer() == nullptr) // WWY
+    if (pConditionalRenderingBegin.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29724,11 +29724,11 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pConditionalRenderingBegin.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pConditionalRenderingBegin.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pConditionalRenderingBegin.GetMetaStructPointer(), indent, pConditionalRenderingBegin.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pConditionalRenderingBegin.GetMetaStructPointer(), indent, pConditionalRenderingBegin.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -29841,7 +29841,7 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProcessCommandsInfo\",\n");
-    if (pProcessCommandsInfo.GetPointer() == nullptr) // WWY
+    if (pProcessCommandsInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29850,11 +29850,11 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProcessCommandsInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProcessCommandsInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pProcessCommandsInfo.GetMetaStructPointer(), indent, pProcessCommandsInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pProcessCommandsInfo.GetMetaStructPointer(), indent, pProcessCommandsInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -29917,7 +29917,7 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pReserveSpaceInfo\",\n");
-    if (pReserveSpaceInfo.GetPointer() == nullptr) // WWY
+    if (pReserveSpaceInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -29926,11 +29926,11 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pReserveSpaceInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pReserveSpaceInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pReserveSpaceInfo.GetMetaStructPointer(), indent, pReserveSpaceInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pReserveSpaceInfo.GetMetaStructPointer(), indent, pReserveSpaceInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -29947,7 +29947,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkIndirectCommandsLayoutCreateInfoNVX>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkIndirectCommandsLayoutNVX>& pIndirectCommandsLayout)
+    HandlePointerDecoder<VkIndirectCommandsLayoutNVX>* pIndirectCommandsLayout)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -30000,7 +30000,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30009,11 +30009,11 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -30026,7 +30026,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30035,11 +30035,11 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -30052,7 +30052,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pIndirectCommandsLayout\",\n");
-    if (pIndirectCommandsLayout.GetPointer() == nullptr) // WWY
+    if (pIndirectCommandsLayout->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30061,11 +30061,11 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pIndirectCommandsLayout.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pIndirectCommandsLayout->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pIndirectCommandsLayout.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pIndirectCommandsLayout->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -30145,7 +30145,7 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30154,11 +30154,11 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -30175,7 +30175,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkObjectTableCreateInfoNVX>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkObjectTableNVX>& pObjectTable)
+    HandlePointerDecoder<VkObjectTableNVX>*     pObjectTable)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -30228,7 +30228,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30237,11 +30237,11 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -30254,7 +30254,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30263,11 +30263,11 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -30280,7 +30280,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pObjectTable\",\n");
-    if (pObjectTable.GetPointer() == nullptr) // WWY
+    if (pObjectTable->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30289,11 +30289,11 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pObjectTable.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pObjectTable->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pObjectTable.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pObjectTable->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -30373,7 +30373,7 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30382,11 +30382,11 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -30487,7 +30487,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pObjectEntryTypes\",\n");
-    if (pObjectEntryTypes.GetPointer() == nullptr) // WWY
+    if (pObjectEntryTypes.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30496,7 +30496,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pObjectEntryTypes.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pObjectEntryTypes.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -30514,7 +30514,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pObjectIndices\",\n");
-    if (pObjectIndices.GetPointer() == nullptr) // WWY
+    if (pObjectIndices.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30523,7 +30523,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pObjectIndices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pObjectIndices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -30542,8 +30542,8 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
     format::HandleId                            physicalDevice,
-    const StructPointerDecoder<Decoded_VkDeviceGeneratedCommandsFeaturesNVX>& pFeatures,
-    const StructPointerDecoder<Decoded_VkDeviceGeneratedCommandsLimitsNVX>& pLimits)
+    StructPointerDecoder<Decoded_VkDeviceGeneratedCommandsFeaturesNVX>* pFeatures,
+    StructPointerDecoder<Decoded_VkDeviceGeneratedCommandsLimitsNVX>* pLimits)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -30592,7 +30592,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFeatures\",\n");
-    if (pFeatures.GetPointer() == nullptr) // WWY
+    if (pFeatures->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30601,11 +30601,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFeatures.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFeatures->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pFeatures.GetMetaStructPointer(), indent, pFeatures.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pFeatures->GetMetaStructPointer(), indent, pFeatures->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -30618,7 +30618,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLimits\",\n");
-    if (pLimits.GetPointer() == nullptr) // WWY
+    if (pLimits->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30627,11 +30627,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pLimits.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pLimits->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pLimits.GetMetaStructPointer(), indent, pLimits.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pLimits->GetMetaStructPointer(), indent, pLimits->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -30727,7 +30727,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pViewportWScalings\",\n");
-    if (pViewportWScalings.GetPointer() == nullptr) // WWY
+    if (pViewportWScalings.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -30736,11 +30736,11 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pViewportWScalings.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pViewportWScalings.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkViewportWScalingNV>(outputFile, indent, "VkViewportWScalingNV", pViewportWScalings.GetMetaStructPointer(), "pViewportWScalings", viewportCount, false, pViewportWScalings.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkViewportWScalingNV>(outputFile, indent, "VkViewportWScalingNV", pViewportWScalings.GetMetaStructPointer(), "pViewportWScalings", viewportCount, false, pViewportWScalings.GetAddress(), sizeof(VkViewportWScalingNV)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -30915,7 +30915,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     format::HandleId                            physicalDevice,
     uint64_t                                    dpy,
     size_t                                      rrOutput,
-    const HandlePointerDecoder<VkDisplayKHR>&   pDisplay)
+    HandlePointerDecoder<VkDisplayKHR>*         pDisplay)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -30998,7 +30998,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplay\",\n");
-    if (pDisplay.GetPointer() == nullptr) // WWY
+    if (pDisplay->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31007,11 +31007,11 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDisplay.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDisplay->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pDisplay.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pDisplay->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -31029,7 +31029,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
-    const StructPointerDecoder<Decoded_VkSurfaceCapabilities2EXT>& pSurfaceCapabilities)
+    StructPointerDecoder<Decoded_VkSurfaceCapabilities2EXT>* pSurfaceCapabilities)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -31097,7 +31097,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceCapabilities\",\n");
-    if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
+    if (pSurfaceCapabilities->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31106,11 +31106,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurfaceCapabilities.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurfaceCapabilities->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent, pSurfaceCapabilities.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSurfaceCapabilities->GetMetaStructPointer(), indent, pSurfaceCapabilities->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -31195,7 +31195,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplayPowerInfo\",\n");
-    if (pDisplayPowerInfo.GetPointer() == nullptr) // WWY
+    if (pDisplayPowerInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31204,11 +31204,11 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDisplayPowerInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDisplayPowerInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pDisplayPowerInfo.GetMetaStructPointer(), indent, pDisplayPowerInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pDisplayPowerInfo.GetMetaStructPointer(), indent, pDisplayPowerInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -31225,7 +31225,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDeviceEventInfoEXT>& pDeviceEventInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkFence>&        pFence)
+    HandlePointerDecoder<VkFence>*              pFence)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -31278,7 +31278,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDeviceEventInfo\",\n");
-    if (pDeviceEventInfo.GetPointer() == nullptr) // WWY
+    if (pDeviceEventInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31287,11 +31287,11 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDeviceEventInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDeviceEventInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pDeviceEventInfo.GetMetaStructPointer(), indent, pDeviceEventInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pDeviceEventInfo.GetMetaStructPointer(), indent, pDeviceEventInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -31304,7 +31304,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31313,11 +31313,11 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -31330,7 +31330,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFence\",\n");
-    if (pFence.GetPointer() == nullptr) // WWY
+    if (pFence->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31339,11 +31339,11 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFence.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFence->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pFence.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pFence->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -31362,7 +31362,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     format::HandleId                            display,
     const StructPointerDecoder<Decoded_VkDisplayEventInfoEXT>& pDisplayEventInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkFence>&        pFence)
+    HandlePointerDecoder<VkFence>*              pFence)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -31430,7 +31430,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplayEventInfo\",\n");
-    if (pDisplayEventInfo.GetPointer() == nullptr) // WWY
+    if (pDisplayEventInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31439,11 +31439,11 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDisplayEventInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDisplayEventInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pDisplayEventInfo.GetMetaStructPointer(), indent, pDisplayEventInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pDisplayEventInfo.GetMetaStructPointer(), indent, pDisplayEventInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -31456,7 +31456,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31465,11 +31465,11 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -31482,7 +31482,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pFence\",\n");
-    if (pFence.GetPointer() == nullptr) // WWY
+    if (pFence->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31491,11 +31491,11 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pFence.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pFence->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pFence.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pFence->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -31513,7 +31513,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     format::HandleId                            device,
     format::HandleId                            swapchain,
     VkSurfaceCounterFlagBitsEXT                 counter,
-    const PointerDecoder<uint64_t>&             pCounterValue)
+    PointerDecoder<uint64_t>*                   pCounterValue)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -31596,7 +31596,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCounterValue\",\n");
-    if (pCounterValue.GetPointer() == nullptr) // WWY
+    if (pCounterValue->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31605,11 +31605,11 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCounterValue.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCounterValue->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pCounterValue.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pCounterValue->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -31627,7 +31627,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     VkResult                                    returnValue,
     format::HandleId                            device,
     format::HandleId                            swapchain,
-    const StructPointerDecoder<Decoded_VkRefreshCycleDurationGOOGLE>& pDisplayTimingProperties)
+    StructPointerDecoder<Decoded_VkRefreshCycleDurationGOOGLE>* pDisplayTimingProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -31695,7 +31695,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDisplayTimingProperties\",\n");
-    if (pDisplayTimingProperties.GetPointer() == nullptr) // WWY
+    if (pDisplayTimingProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31704,11 +31704,11 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDisplayTimingProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDisplayTimingProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pDisplayTimingProperties.GetMetaStructPointer(), indent, pDisplayTimingProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pDisplayTimingProperties->GetMetaStructPointer(), indent, pDisplayTimingProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -31724,8 +31724,8 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     VkResult                                    returnValue,
     format::HandleId                            device,
     format::HandleId                            swapchain,
-    const PointerDecoder<uint32_t>&             pPresentationTimingCount,
-    const StructPointerDecoder<Decoded_VkPastPresentationTimingGOOGLE>& pPresentationTimings)
+    PointerDecoder<uint32_t>*                   pPresentationTimingCount,
+    StructPointerDecoder<Decoded_VkPastPresentationTimingGOOGLE>* pPresentationTimings)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -31793,7 +31793,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentationTimingCount\",\n");
-    if (pPresentationTimingCount.GetPointer() == nullptr) // WWY
+    if (pPresentationTimingCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31802,11 +31802,11 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPresentationTimingCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPresentationTimingCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPresentationTimingCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPresentationTimingCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -31820,7 +31820,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentationTimings\",\n");
-    if (pPresentationTimings.GetPointer() == nullptr) // WWY
+    if (pPresentationTimings->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31829,11 +31829,11 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPresentationTimings.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPresentationTimings->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPastPresentationTimingGOOGLE>(outputFile, indent, "VkPastPresentationTimingGOOGLE", pPresentationTimings.GetMetaStructPointer(), "pPresentationTimings", *pPresentationTimingCount.GetPointer(), false, pPresentationTimings.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkPastPresentationTimingGOOGLE>(outputFile, indent, "VkPastPresentationTimingGOOGLE", pPresentationTimings->GetMetaStructPointer(), "pPresentationTimings", *pPresentationTimingCount->GetPointer(), false, pPresentationTimings->GetAddress(), sizeof(VkPastPresentationTimingGOOGLE)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -31929,7 +31929,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDiscardRectangles\",\n");
-    if (pDiscardRectangles.GetPointer() == nullptr) // WWY
+    if (pDiscardRectangles.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -31938,11 +31938,11 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDiscardRectangles.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDiscardRectangles.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pDiscardRectangles.GetMetaStructPointer(), "pDiscardRectangles", discardRectangleCount, false, pDiscardRectangles.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pDiscardRectangles.GetMetaStructPointer(), "pDiscardRectangles", discardRectangleCount, false, pDiscardRectangles.GetAddress(), sizeof(VkRect2D)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -32023,7 +32023,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSwapchains\",\n");
-    if (pSwapchains.GetPointer() == nullptr) // WWY
+    if (pSwapchains.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32032,7 +32032,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSwapchains.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSwapchains.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -32050,7 +32050,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMetadata\",\n");
-    if (pMetadata.GetPointer() == nullptr) // WWY
+    if (pMetadata.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32059,11 +32059,11 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMetadata.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMetadata.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkHdrMetadataEXT>(outputFile, indent, "VkHdrMetadataEXT", pMetadata.GetMetaStructPointer(), "pMetadata", swapchainCount, false, pMetadata.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkHdrMetadataEXT>(outputFile, indent, "VkHdrMetadataEXT", pMetadata.GetMetaStructPointer(), "pMetadata", swapchainCount, false, pMetadata.GetAddress(), sizeof(VkHdrMetadataEXT)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -32081,7 +32081,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkIOSSurfaceCreateInfoMVK>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -32134,7 +32134,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32143,11 +32143,11 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -32160,7 +32160,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32169,11 +32169,11 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -32186,7 +32186,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32195,11 +32195,11 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -32218,7 +32218,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkMacOSSurfaceCreateInfoMVK>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -32271,7 +32271,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32280,11 +32280,11 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -32297,7 +32297,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32306,11 +32306,11 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -32323,7 +32323,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32332,11 +32332,11 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -32406,7 +32406,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNameInfo\",\n");
-    if (pNameInfo.GetPointer() == nullptr) // WWY
+    if (pNameInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32415,11 +32415,11 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pNameInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pNameInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pNameInfo.GetMetaStructPointer(), indent, pNameInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pNameInfo.GetMetaStructPointer(), indent, pNameInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -32487,7 +32487,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pTagInfo\",\n");
-    if (pTagInfo.GetPointer() == nullptr) // WWY
+    if (pTagInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32496,11 +32496,11 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pTagInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pTagInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pTagInfo.GetMetaStructPointer(), indent, pTagInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pTagInfo.GetMetaStructPointer(), indent, pTagInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -32563,7 +32563,7 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLabelInfo\",\n");
-    if (pLabelInfo.GetPointer() == nullptr) // WWY
+    if (pLabelInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32572,11 +32572,11 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pLabelInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pLabelInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pLabelInfo.GetMetaStructPointer(), indent, pLabelInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pLabelInfo.GetMetaStructPointer(), indent, pLabelInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -32688,7 +32688,7 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLabelInfo\",\n");
-    if (pLabelInfo.GetPointer() == nullptr) // WWY
+    if (pLabelInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32697,11 +32697,11 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pLabelInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pLabelInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pLabelInfo.GetMetaStructPointer(), indent, pLabelInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pLabelInfo.GetMetaStructPointer(), indent, pLabelInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -32764,7 +32764,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLabelInfo\",\n");
-    if (pLabelInfo.GetPointer() == nullptr) // WWY
+    if (pLabelInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32773,11 +32773,11 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pLabelInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pLabelInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pLabelInfo.GetMetaStructPointer(), indent, pLabelInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pLabelInfo.GetMetaStructPointer(), indent, pLabelInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -32889,7 +32889,7 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLabelInfo\",\n");
-    if (pLabelInfo.GetPointer() == nullptr) // WWY
+    if (pLabelInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32898,11 +32898,11 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pLabelInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pLabelInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pLabelInfo.GetMetaStructPointer(), indent, pLabelInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pLabelInfo.GetMetaStructPointer(), indent, pLabelInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -32919,7 +32919,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkDebugUtilsMessengerCreateInfoEXT>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkDebugUtilsMessengerEXT>& pMessenger)
+    HandlePointerDecoder<VkDebugUtilsMessengerEXT>* pMessenger)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -32972,7 +32972,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -32981,11 +32981,11 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -32998,7 +32998,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33007,11 +33007,11 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -33024,7 +33024,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMessenger\",\n");
-    if (pMessenger.GetPointer() == nullptr) // WWY
+    if (pMessenger->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33033,11 +33033,11 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMessenger.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMessenger->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pMessenger.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pMessenger->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -33117,7 +33117,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33126,11 +33126,11 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -33225,7 +33225,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCallbackData\",\n");
-    if (pCallbackData.GetPointer() == nullptr) // WWY
+    if (pCallbackData.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33234,11 +33234,11 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCallbackData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCallbackData.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCallbackData.GetMetaStructPointer(), indent, pCallbackData.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCallbackData.GetMetaStructPointer(), indent, pCallbackData.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -33255,7 +33255,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     VkResult                                    returnValue,
     format::HandleId                            device,
     uint64_t                                    buffer,
-    const StructPointerDecoder<Decoded_VkAndroidHardwareBufferPropertiesANDROID>& pProperties)
+    StructPointerDecoder<Decoded_VkAndroidHardwareBufferPropertiesANDROID>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -33335,7 +33335,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33344,11 +33344,11 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pProperties.GetMetaStructPointer(), indent, pProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pProperties->GetMetaStructPointer(), indent, pProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -33364,7 +33364,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkMemoryGetAndroidHardwareBufferInfoANDROID>& pInfo,
-    const PointerDecoder<uint64_t>&             pBuffer)
+    PointerDecoder<uint64_t, void*>*            pBuffer)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -33417,7 +33417,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33426,11 +33426,11 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -33443,7 +33443,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBuffer\",\n");
-    if (pBuffer.GetPointer() == nullptr) // WWY
+    if (pBuffer->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33452,12 +33452,12 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBuffer.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBuffer->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pBuffer = {false, false, false, nullptr};
-        ScalarValueToStringJson(outputFile, pBuffer.GetPointer(), vinfo_pBuffer); // PXS
+        ScalarValueToStringJson(outputFile, pBuffer->GetPointer(), vinfo_pBuffer); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -33522,7 +33522,7 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSampleLocationsInfo\",\n");
-    if (pSampleLocationsInfo.GetPointer() == nullptr) // WWY
+    if (pSampleLocationsInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33531,11 +33531,11 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSampleLocationsInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSampleLocationsInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSampleLocationsInfo.GetMetaStructPointer(), indent, pSampleLocationsInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSampleLocationsInfo.GetMetaStructPointer(), indent, pSampleLocationsInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -33550,7 +33550,7 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     format::HandleId                            physicalDevice,
     VkSampleCountFlagBits                       samples,
-    const StructPointerDecoder<Decoded_VkMultisamplePropertiesEXT>& pMultisampleProperties)
+    StructPointerDecoder<Decoded_VkMultisamplePropertiesEXT>* pMultisampleProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -33614,7 +33614,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMultisampleProperties\",\n");
-    if (pMultisampleProperties.GetPointer() == nullptr) // WWY
+    if (pMultisampleProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33623,11 +33623,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMultisampleProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMultisampleProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMultisampleProperties.GetMetaStructPointer(), indent, pMultisampleProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMultisampleProperties->GetMetaStructPointer(), indent, pMultisampleProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -33644,7 +33644,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     VkResult                                    returnValue,
     format::HandleId                            device,
     format::HandleId                            image,
-    const StructPointerDecoder<Decoded_VkImageDrmFormatModifierPropertiesEXT>& pProperties)
+    StructPointerDecoder<Decoded_VkImageDrmFormatModifierPropertiesEXT>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -33712,7 +33712,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33721,11 +33721,11 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pProperties.GetMetaStructPointer(), indent, pProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pProperties->GetMetaStructPointer(), indent, pProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -33743,7 +33743,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkValidationCacheCreateInfoEXT>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkValidationCacheEXT>& pValidationCache)
+    HandlePointerDecoder<VkValidationCacheEXT>* pValidationCache)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -33796,7 +33796,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33805,11 +33805,11 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -33822,7 +33822,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33831,11 +33831,11 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -33848,7 +33848,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pValidationCache\",\n");
-    if (pValidationCache.GetPointer() == nullptr) // WWY
+    if (pValidationCache->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33857,11 +33857,11 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pValidationCache.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pValidationCache->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pValidationCache.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pValidationCache->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -33941,7 +33941,7 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -33950,11 +33950,11 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34054,7 +34054,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSrcCaches\",\n");
-    if (pSrcCaches.GetPointer() == nullptr) // WWY
+    if (pSrcCaches.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -34063,7 +34063,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSrcCaches.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSrcCaches.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -34084,8 +34084,8 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     VkResult                                    returnValue,
     format::HandleId                            device,
     format::HandleId                            validationCache,
-    const PointerDecoder<size_t>&               pDataSize,
-    const PointerDecoder<uint8_t>&              pData)
+    PointerDecoder<size_t>*                     pDataSize,
+    PointerDecoder<uint8_t>*                    pData)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -34153,7 +34153,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pDataSize\",\n");
-    if (pDataSize.GetPointer() == nullptr) // WWY
+    if (pDataSize->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -34162,11 +34162,11 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pDataSize.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pDataSize->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pDataSize.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pDataSize->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -34180,7 +34180,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pData\",\n");
-    if (pData.GetPointer() == nullptr) // WWY
+    if (pData->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -34189,12 +34189,12 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pData->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", pData, "pData", *pDataSize->GetPointer(), vinfo_pData); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34371,7 +34371,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pShadingRatePalettes\",\n");
-    if (pShadingRatePalettes.GetPointer() == nullptr) // WWY
+    if (pShadingRatePalettes.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -34380,11 +34380,11 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pShadingRatePalettes.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pShadingRatePalettes.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkShadingRatePaletteNV>(outputFile, indent, "VkShadingRatePaletteNV", pShadingRatePalettes.GetMetaStructPointer(), "pShadingRatePalettes", viewportCount, false, pShadingRatePalettes.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkShadingRatePaletteNV>(outputFile, indent, "VkShadingRatePaletteNV", pShadingRatePalettes.GetMetaStructPointer(), "pShadingRatePalettes", viewportCount, false, pShadingRatePalettes.GetAddress(), sizeof(VkShadingRatePaletteNV)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34479,7 +34479,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCustomSampleOrders\",\n");
-    if (pCustomSampleOrders.GetPointer() == nullptr) // WWY
+    if (pCustomSampleOrders.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -34488,11 +34488,11 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCustomSampleOrders.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCustomSampleOrders.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent, "VkCoarseSampleOrderCustomNV", pCustomSampleOrders.GetMetaStructPointer(), "pCustomSampleOrders", customSampleOrderCount, false, pCustomSampleOrders.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent, "VkCoarseSampleOrderCustomNV", pCustomSampleOrders.GetMetaStructPointer(), "pCustomSampleOrders", customSampleOrderCount, false, pCustomSampleOrders.GetAddress(), sizeof(VkCoarseSampleOrderCustomNV)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34510,7 +34510,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkAccelerationStructureCreateInfoNV>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkAccelerationStructureNV>& pAccelerationStructure)
+    HandlePointerDecoder<VkAccelerationStructureNV>* pAccelerationStructure)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -34563,7 +34563,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -34572,11 +34572,11 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -34589,7 +34589,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -34598,11 +34598,11 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -34615,7 +34615,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAccelerationStructure\",\n");
-    if (pAccelerationStructure.GetPointer() == nullptr) // WWY
+    if (pAccelerationStructure->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -34624,11 +34624,11 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAccelerationStructure.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAccelerationStructure->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pAccelerationStructure.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pAccelerationStructure->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -34708,7 +34708,7 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -34717,11 +34717,11 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34736,7 +34736,7 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
 void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkAccelerationStructureMemoryRequirementsInfoNV>& pInfo,
-    const StructPointerDecoder<Decoded_VkMemoryRequirements2KHR>& pMemoryRequirements)
+    StructPointerDecoder<Decoded_VkMemoryRequirements2KHR>* pMemoryRequirements)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -34785,7 +34785,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -34794,11 +34794,11 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -34811,7 +34811,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryRequirements\",\n");
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -34820,11 +34820,11 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryRequirements.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryRequirements->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent, pMemoryRequirements.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent, pMemoryRequirements->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34908,7 +34908,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBindInfos\",\n");
-    if (pBindInfos.GetPointer() == nullptr) // WWY
+    if (pBindInfos.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -34917,11 +34917,11 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pBindInfos.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pBindInfos.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkBindAccelerationStructureMemoryInfoNV>(outputFile, indent, "VkBindAccelerationStructureMemoryInfoNV", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkBindAccelerationStructureMemoryInfoNV>(outputFile, indent, "VkBindAccelerationStructureMemoryInfoNV", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindAccelerationStructureMemoryInfoNV)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34991,7 +34991,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -35000,11 +35000,11 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35498,7 +35498,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     uint32_t                                    createInfoCount,
     const StructPointerDecoder<Decoded_VkRayTracingPipelineCreateInfoNV>& pCreateInfos,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkPipeline>&     pPipelines)
+    HandlePointerDecoder<VkPipeline>*           pPipelines)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -35581,7 +35581,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfos\",\n");
-    if (pCreateInfos.GetPointer() == nullptr) // WWY
+    if (pCreateInfos.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -35590,11 +35590,11 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfos.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfos.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRayTracingPipelineCreateInfoNV>(outputFile, indent, "VkRayTracingPipelineCreateInfoNV", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkRayTracingPipelineCreateInfoNV>(outputFile, indent, "VkRayTracingPipelineCreateInfoNV", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress(), sizeof(VkRayTracingPipelineCreateInfoNV)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35607,7 +35607,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -35616,11 +35616,11 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -35633,7 +35633,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPipelines\",\n");
-    if (pPipelines.GetPointer() == nullptr) // WWY
+    if (pPipelines->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -35642,12 +35642,12 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPipelines.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPipelines->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
+        ArrayToStringJson(outputFile, indent, "VkPipeline*", pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AQA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -35666,7 +35666,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     uint32_t                                    firstGroup,
     uint32_t                                    groupCount,
     size_t                                      dataSize,
-    const PointerDecoder<uint8_t>&              pData)
+    PointerDecoder<uint8_t>*                    pData)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -35779,7 +35779,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pData\",\n");
-    if (pData.GetPointer() == nullptr) // WWY
+    if (pData->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -35788,12 +35788,12 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pData->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "void*", &pData, "pData", dataSize, vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", pData, "pData", dataSize, vinfo_pData); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -35810,7 +35810,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     format::HandleId                            device,
     format::HandleId                            accelerationStructure,
     size_t                                      dataSize,
-    const PointerDecoder<uint8_t>&              pData)
+    PointerDecoder<uint8_t>*                    pData)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -35893,7 +35893,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pData\",\n");
-    if (pData.GetPointer() == nullptr) // WWY
+    if (pData->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -35902,12 +35902,12 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pData->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "void*", &pData, "pData", dataSize, vinfo_pData); // AUA
+        ArrayToStringJson(outputFile, indent, "void*", pData, "pData", dataSize, vinfo_pData); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -35989,7 +35989,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAccelerationStructures\",\n");
-    if (pAccelerationStructures.GetPointer() == nullptr) // WWY
+    if (pAccelerationStructures.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -35998,7 +35998,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAccelerationStructures.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAccelerationStructures.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -36152,7 +36152,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     format::HandleId                            device,
     VkExternalMemoryHandleTypeFlagBits          handleType,
     uint64_t                                    pHostPointer,
-    const StructPointerDecoder<Decoded_VkMemoryHostPointerPropertiesEXT>& pMemoryHostPointerProperties)
+    StructPointerDecoder<Decoded_VkMemoryHostPointerPropertiesEXT>* pMemoryHostPointerProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -36247,7 +36247,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMemoryHostPointerProperties\",\n");
-    if (pMemoryHostPointerProperties.GetPointer() == nullptr) // WWY
+    if (pMemoryHostPointerProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -36256,11 +36256,11 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMemoryHostPointerProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMemoryHostPointerProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMemoryHostPointerProperties.GetMetaStructPointer(), indent, pMemoryHostPointerProperties.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMemoryHostPointerProperties->GetMetaStructPointer(), indent, pMemoryHostPointerProperties->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -36390,8 +36390,8 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
-    const PointerDecoder<uint32_t>&             pTimeDomainCount,
-    const PointerDecoder<VkTimeDomainEXT>&      pTimeDomains)
+    PointerDecoder<uint32_t>*                   pTimeDomainCount,
+    PointerDecoder<VkTimeDomainEXT>*            pTimeDomains)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -36444,7 +36444,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pTimeDomainCount\",\n");
-    if (pTimeDomainCount.GetPointer() == nullptr) // WWY
+    if (pTimeDomainCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -36453,11 +36453,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pTimeDomainCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pTimeDomainCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pTimeDomainCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pTimeDomainCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -36471,7 +36471,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pTimeDomains\",\n");
-    if (pTimeDomains.GetPointer() == nullptr) // WWY
+    if (pTimeDomains->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -36480,12 +36480,12 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pTimeDomains.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pTimeDomains->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pTimeDomains = {false, true, false, EnumToStringVkTimeDomainEXT};
-        ArrayToStringJson(outputFile, indent, "VkTimeDomainEXT*", &pTimeDomains, "pTimeDomains", *pTimeDomainCount.GetPointer(), vinfo_pTimeDomains); // AUA
+        ArrayToStringJson(outputFile, indent, "VkTimeDomainEXT*", pTimeDomains, "pTimeDomains", *pTimeDomainCount->GetPointer(), vinfo_pTimeDomains); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -36502,8 +36502,8 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     format::HandleId                            device,
     uint32_t                                    timestampCount,
     const StructPointerDecoder<Decoded_VkCalibratedTimestampInfoEXT>& pTimestampInfos,
-    const PointerDecoder<uint64_t>&             pTimestamps,
-    const PointerDecoder<uint64_t>&             pMaxDeviation)
+    PointerDecoder<uint64_t>*                   pTimestamps,
+    PointerDecoder<uint64_t>*                   pMaxDeviation)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -36571,7 +36571,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pTimestampInfos\",\n");
-    if (pTimestampInfos.GetPointer() == nullptr) // WWY
+    if (pTimestampInfos.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -36580,11 +36580,11 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pTimestampInfos.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pTimestampInfos.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCalibratedTimestampInfoEXT>(outputFile, indent, "VkCalibratedTimestampInfoEXT", pTimestampInfos.GetMetaStructPointer(), "pTimestampInfos", timestampCount, false, pTimestampInfos.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkCalibratedTimestampInfoEXT>(outputFile, indent, "VkCalibratedTimestampInfoEXT", pTimestampInfos.GetMetaStructPointer(), "pTimestampInfos", timestampCount, false, pTimestampInfos.GetAddress(), sizeof(VkCalibratedTimestampInfoEXT)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -36597,7 +36597,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pTimestamps\",\n");
-    if (pTimestamps.GetPointer() == nullptr) // WWY
+    if (pTimestamps->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -36606,12 +36606,12 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pTimestamps.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pTimestamps->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pTimestamps = {false, false, false, nullptr};
-        ArrayToStringJson(outputFile, indent, "uint64_t*", &pTimestamps, "pTimestamps", timestampCount, vinfo_pTimestamps); // AUA
+        ArrayToStringJson(outputFile, indent, "uint64_t*", pTimestamps, "pTimestamps", timestampCount, vinfo_pTimestamps); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -36624,7 +36624,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMaxDeviation\",\n");
-    if (pMaxDeviation.GetPointer() == nullptr) // WWY
+    if (pMaxDeviation->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -36633,11 +36633,11 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMaxDeviation.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMaxDeviation->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pMaxDeviation.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pMaxDeviation->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -37074,7 +37074,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pExclusiveScissors\",\n");
-    if (pExclusiveScissors.GetPointer() == nullptr) // WWY
+    if (pExclusiveScissors.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -37083,11 +37083,11 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pExclusiveScissors.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pExclusiveScissors.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pExclusiveScissors.GetMetaStructPointer(), "pExclusiveScissors", exclusiveScissorCount, false, pExclusiveScissors.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pExclusiveScissors.GetMetaStructPointer(), "pExclusiveScissors", exclusiveScissorCount, false, pExclusiveScissors.GetAddress(), sizeof(VkRect2D)); // CRP
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -37179,8 +37179,8 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
 
 void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     format::HandleId                            queue,
-    const PointerDecoder<uint32_t>&             pCheckpointDataCount,
-    const StructPointerDecoder<Decoded_VkCheckpointDataNV>& pCheckpointData)
+    PointerDecoder<uint32_t>*                   pCheckpointDataCount,
+    StructPointerDecoder<Decoded_VkCheckpointDataNV>* pCheckpointData)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -37229,7 +37229,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCheckpointDataCount\",\n");
-    if (pCheckpointDataCount.GetPointer() == nullptr) // WWY
+    if (pCheckpointDataCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -37238,11 +37238,11 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCheckpointDataCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCheckpointDataCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pCheckpointDataCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pCheckpointDataCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -37256,7 +37256,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCheckpointData\",\n");
-    if (pCheckpointData.GetPointer() == nullptr) // WWY
+    if (pCheckpointData->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -37265,11 +37265,11 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCheckpointData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCheckpointData->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCheckpointDataNV>(outputFile, indent, "VkCheckpointDataNV", pCheckpointData.GetMetaStructPointer(), "pCheckpointData", *pCheckpointDataCount.GetPointer(), false, pCheckpointData.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkCheckpointDataNV>(outputFile, indent, "VkCheckpointDataNV", pCheckpointData->GetMetaStructPointer(), "pCheckpointData", *pCheckpointDataCount->GetPointer(), false, pCheckpointData->GetAddress(), sizeof(VkCheckpointDataNV)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -37338,7 +37338,7 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInitializeInfo\",\n");
-    if (pInitializeInfo.GetPointer() == nullptr) // WWY
+    if (pInitializeInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -37347,11 +37347,11 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInitializeInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInitializeInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pInitializeInfo.GetMetaStructPointer(), indent, pInitializeInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pInitializeInfo.GetMetaStructPointer(), indent, pInitializeInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -37468,7 +37468,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMarkerInfo\",\n");
-    if (pMarkerInfo.GetPointer() == nullptr) // WWY
+    if (pMarkerInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -37477,11 +37477,11 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMarkerInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMarkerInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent, pMarkerInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent, pMarkerInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -37549,7 +37549,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pMarkerInfo\",\n");
-    if (pMarkerInfo.GetPointer() == nullptr) // WWY
+    if (pMarkerInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -37558,11 +37558,11 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pMarkerInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pMarkerInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent, pMarkerInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pMarkerInfo.GetMetaStructPointer(), indent, pMarkerInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -37630,7 +37630,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pOverrideInfo\",\n");
-    if (pOverrideInfo.GetPointer() == nullptr) // WWY
+    if (pOverrideInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -37639,11 +37639,11 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pOverrideInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pOverrideInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pOverrideInfo.GetMetaStructPointer(), indent, pOverrideInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pOverrideInfo.GetMetaStructPointer(), indent, pOverrideInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -37659,7 +37659,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPerformanceConfigurationAcquireInfoINTEL>& pAcquireInfo,
-    const HandlePointerDecoder<VkPerformanceConfigurationINTEL>& pConfiguration)
+    HandlePointerDecoder<VkPerformanceConfigurationINTEL>* pConfiguration)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -37712,7 +37712,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAcquireInfo\",\n");
-    if (pAcquireInfo.GetPointer() == nullptr) // WWY
+    if (pAcquireInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -37721,11 +37721,11 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAcquireInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAcquireInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAcquireInfo.GetMetaStructPointer(), indent, pAcquireInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAcquireInfo.GetMetaStructPointer(), indent, pAcquireInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -37738,7 +37738,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pConfiguration\",\n");
-    if (pConfiguration.GetPointer() == nullptr) // WWY
+    if (pConfiguration->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -37747,11 +37747,11 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pConfiguration.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pConfiguration->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pConfiguration.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pConfiguration->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -37908,7 +37908,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     VkResult                                    returnValue,
     format::HandleId                            device,
     VkPerformanceParameterTypeINTEL             parameter,
-    const StructPointerDecoder<Decoded_VkPerformanceValueINTEL>& pValue)
+    StructPointerDecoder<Decoded_VkPerformanceValueINTEL>* pValue)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -37976,7 +37976,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pValue\",\n");
-    if (pValue.GetPointer() == nullptr) // WWY
+    if (pValue->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -37985,11 +37985,11 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pValue.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pValue->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pValue.GetMetaStructPointer(), indent, pValue.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pValue->GetMetaStructPointer(), indent, pValue->GetAddress()); // GLX
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -38089,7 +38089,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkImagePipeSurfaceCreateInfoFUCHSIA>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -38142,7 +38142,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38151,11 +38151,11 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -38168,7 +38168,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38177,11 +38177,11 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -38194,7 +38194,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38203,11 +38203,11 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -38226,7 +38226,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkMetalSurfaceCreateInfoEXT>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -38279,7 +38279,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38288,11 +38288,11 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -38305,7 +38305,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38314,11 +38314,11 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -38331,7 +38331,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38340,11 +38340,11 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -38416,7 +38416,7 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pInfo\",\n");
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38425,11 +38425,11 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pInfo.GetMetaStructPointer(), indent, pInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -38445,8 +38445,8 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
-    const PointerDecoder<uint32_t>&             pPropertyCount,
-    const StructPointerDecoder<Decoded_VkCooperativeMatrixPropertiesNV>& pProperties)
+    PointerDecoder<uint32_t>*                   pPropertyCount,
+    StructPointerDecoder<Decoded_VkCooperativeMatrixPropertiesNV>* pProperties)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -38499,7 +38499,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPropertyCount\",\n");
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38508,11 +38508,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPropertyCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPropertyCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPropertyCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPropertyCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -38526,7 +38526,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pProperties\",\n");
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38535,11 +38535,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pProperties.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pProperties->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCooperativeMatrixPropertiesNV>(outputFile, indent, "VkCooperativeMatrixPropertiesNV", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkCooperativeMatrixPropertiesNV>(outputFile, indent, "VkCooperativeMatrixPropertiesNV", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkCooperativeMatrixPropertiesNV)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -38555,8 +38555,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
-    const PointerDecoder<uint32_t>&             pCombinationCount,
-    const StructPointerDecoder<Decoded_VkFramebufferMixedSamplesCombinationNV>& pCombinations)
+    PointerDecoder<uint32_t>*                   pCombinationCount,
+    StructPointerDecoder<Decoded_VkFramebufferMixedSamplesCombinationNV>* pCombinations)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -38609,7 +38609,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCombinationCount\",\n");
-    if (pCombinationCount.GetPointer() == nullptr) // WWY
+    if (pCombinationCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38618,11 +38618,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCombinationCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCombinationCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pCombinationCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pCombinationCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -38636,7 +38636,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCombinations\",\n");
-    if (pCombinations.GetPointer() == nullptr) // WWY
+    if (pCombinations->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38645,11 +38645,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCombinations.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCombinations->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkFramebufferMixedSamplesCombinationNV>(outputFile, indent, "VkFramebufferMixedSamplesCombinationNV", pCombinations.GetMetaStructPointer(), "pCombinations", *pCombinationCount.GetPointer(), false, pCombinations.GetAddress()); // CRO
+        ArrayOfStructsToStringJson<Decoded_VkFramebufferMixedSamplesCombinationNV>(outputFile, indent, "VkFramebufferMixedSamplesCombinationNV", pCombinations->GetMetaStructPointer(), "pCombinations", *pCombinationCount->GetPointer(), false, pCombinations->GetAddress(), sizeof(VkFramebufferMixedSamplesCombinationNV)); // CRO
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -38666,8 +38666,8 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>& pSurfaceInfo,
-    const PointerDecoder<uint32_t>&             pPresentModeCount,
-    const PointerDecoder<VkPresentModeKHR>&     pPresentModes)
+    PointerDecoder<uint32_t>*                   pPresentModeCount,
+    PointerDecoder<VkPresentModeKHR>*           pPresentModes)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -38720,7 +38720,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceInfo\",\n");
-    if (pSurfaceInfo.GetPointer() == nullptr) // WWY
+    if (pSurfaceInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38729,11 +38729,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurfaceInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurfaceInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent, pSurfaceInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent, pSurfaceInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -38746,7 +38746,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentModeCount\",\n");
-    if (pPresentModeCount.GetPointer() == nullptr) // WWY
+    if (pPresentModeCount->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38755,11 +38755,11 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPresentModeCount.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPresentModeCount->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
-        IndentSpacesJson(outputFile, indent); // UQA
+        IndentSpacesJson(outputFile, indent); // UHA
         OutputStringJson(outputFile, "\"value\" : \"");
-        UnsignedDecimalToStringJson(outputFile, *pPresentModeCount.GetPointer());
+        UnsignedDecimalToStringJson(outputFile, *pPresentModeCount->GetPointer()); //WRT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -38773,7 +38773,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pPresentModes\",\n");
-    if (pPresentModes.GetPointer() == nullptr) // WWY
+    if (pPresentModes->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -38782,12 +38782,12 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pPresentModes.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pPresentModes->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
         ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHR};
-        ArrayToStringJson(outputFile, indent, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUA
+        ArrayToStringJson(outputFile, indent, "VkPresentModeKHR*", pPresentModes, "pPresentModes", *pPresentModeCount->GetPointer(), vinfo_pPresentModes); // AUA
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -38943,7 +38943,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     VkResult                                    returnValue,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>& pSurfaceInfo,
-    const PointerDecoder<VkDeviceGroupPresentModeFlagsKHR>& pModes)
+    PointerDecoder<VkDeviceGroupPresentModeFlagsKHR>* pModes)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -38996,7 +38996,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurfaceInfo\",\n");
-    if (pSurfaceInfo.GetPointer() == nullptr) // WWY
+    if (pSurfaceInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -39005,11 +39005,11 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurfaceInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurfaceInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent, pSurfaceInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pSurfaceInfo.GetMetaStructPointer(), indent, pSurfaceInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -39022,7 +39022,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pModes\",\n");
-    if (pModes.GetPointer() == nullptr) // WWY
+    if (pModes->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -39031,12 +39031,12 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pModes.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pModes->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
         ScalarValueToStringStruct vinfo_pModes = {false, false, true, EnumToStringVkDeviceGroupPresentModeFlagBitsKHR};
-        ScalarValueToStringJson(outputFile, pModes.GetPointer(), vinfo_pModes); // PXS
+        ScalarValueToStringJson(outputFile, pModes->GetPointer(), vinfo_pModes); // PXR
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);
@@ -39055,7 +39055,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkHeadlessSurfaceCreateInfoEXT>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
-    const HandlePointerDecoder<VkSurfaceKHR>&   pSurface)
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
     uint32_t indent = 5;
     FILE* outputFile = GetFile();
@@ -39108,7 +39108,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pCreateInfo\",\n");
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -39117,11 +39117,11 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pCreateInfo.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pCreateInfo.GetMetaStructPointer(), indent, pCreateInfo.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -39134,7 +39134,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pAllocator\",\n");
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WWU
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -39143,11 +39143,11 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pAllocator.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLX
+        StructureToStringJson(outputFile, *pAllocator.GetMetaStructPointer(), indent, pAllocator.GetAddress()); // GLW
     } // HWR
     IndentSpacesJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -39160,7 +39160,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pSurface\",\n");
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WWY
     {
         IndentSpacesJson(outputFile, indent); // RGV
         OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
@@ -39169,11 +39169,11 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pSurface.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pSurface->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
-        AddrToStringJson(outputFile, *pSurface.GetPointer()); // URY
+        AddrToStringJson(outputFile, *pSurface->GetPointer()); // URY
         OutputStringJson(outputFile, "\"\n");
     } // HWR
     IndentSpacesJson(outputFile, 4);

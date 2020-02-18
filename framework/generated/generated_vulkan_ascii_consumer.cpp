@@ -51,7 +51,7 @@ void VulkanAsciiConsumer::Process_vkCreateInstance(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkInstanceCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -67,7 +67,7 @@ void VulkanAsciiConsumer::Process_vkCreateInstance(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -83,14 +83,14 @@ void VulkanAsciiConsumer::Process_vkCreateInstance(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInstance:                      "); // HRW
     OutputString(outputFile, "VkInstance* = "); // TEQ
-    if (pInstance.GetPointer() == nullptr) // WWY
+    if (pInstance->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pInstance = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pInstance.GetPointer(), vinfo_pInstance); // PWS
+        ScalarValueToString(outputFile, pInstance->GetPointer(), vinfo_pInstance); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -117,7 +117,7 @@ void VulkanAsciiConsumer::Process_vkDestroyInstance(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -156,14 +156,14 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDevices(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPhysicalDeviceCount:           "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPhysicalDeviceCount.GetPointer() == nullptr) // WWY
+    if (pPhysicalDeviceCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPhysicalDeviceCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPhysicalDeviceCount.GetPointer(), vinfo_pPhysicalDeviceCount); // PWS
+        ScalarValueToString(outputFile, pPhysicalDeviceCount->GetPointer(), vinfo_pPhysicalDeviceCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -171,15 +171,15 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDevices(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPhysicalDevices:               "); // HRW
     OutputString(outputFile, "VkPhysicalDevice* = "); // TEQ
-    if (pPhysicalDevices.GetPointer() == nullptr) // WWY
+    if (pPhysicalDevices->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pPhysicalDevices.GetAddress()); // PAZ
+        AddrToString(outputFile, pPhysicalDevices->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPhysicalDevices = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "VkPhysicalDevice*", &pPhysicalDevices, "pPhysicalDevices", *pPhysicalDeviceCount.GetPointer(), vinfo_pPhysicalDevices); // AUC
+        ArrayToString(outputFile, indent, "VkPhysicalDevice*", pPhysicalDevices, "pPhysicalDevices", *pPhysicalDeviceCount->GetPointer(), vinfo_pPhysicalDevices); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -206,15 +206,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFeatures:                      "); // HRW
     OutputString(outputFile, "VkPhysicalDeviceFeatures* = "); // TEQ
-    if (pFeatures.GetPointer() == nullptr) // WWY
+    if (pFeatures->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pFeatures.GetAddress()); // JHI
+        AddrToString(outputFile, pFeatures->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFeatures.GetMetaStructPointer(), indent+1, pFeatures.GetAddress()); // GLM
+        StructureToString(outputFile, *pFeatures->GetMetaStructPointer(), indent+1, pFeatures->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -252,15 +252,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFormatProperties:              "); // HRW
     OutputString(outputFile, "VkFormatProperties* = "); // TEQ
-    if (pFormatProperties.GetPointer() == nullptr) // WWY
+    if (pFormatProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pFormatProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pFormatProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1, pFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pFormatProperties->GetMetaStructPointer(), indent+1, pFormatProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -339,15 +339,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageFormatProperties:         "); // HRW
     OutputString(outputFile, "VkImageFormatProperties* = "); // TEQ
-    if (pImageFormatProperties.GetPointer() == nullptr) // WWY
+    if (pImageFormatProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pImageFormatProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pImageFormatProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1, pImageFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pImageFormatProperties->GetMetaStructPointer(), indent+1, pImageFormatProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -374,15 +374,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkPhysicalDeviceProperties* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pProperties->GetMetaStructPointer(), indent+1, pProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -410,14 +410,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueFamilyPropertyCount:      "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
+    if (pQueueFamilyPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pQueueFamilyPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pQueueFamilyPropertyCount.GetPointer(), vinfo_pQueueFamilyPropertyCount); // PWS
+        ScalarValueToString(outputFile, pQueueFamilyPropertyCount->GetPointer(), vinfo_pQueueFamilyPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -425,14 +425,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueFamilyProperties:         "); // HRW
     OutputString(outputFile, "VkQueueFamilyProperties* = "); // TEQ
-    if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
+    if (pQueueFamilyProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pQueueFamilyProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkQueueFamilyProperties>(outputFile, indent+1, "VkQueueFamilyProperties", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pQueueFamilyProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkQueueFamilyProperties>(outputFile, indent+1, "VkQueueFamilyProperties", pQueueFamilyProperties->GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount->GetPointer(), false, pQueueFamilyProperties->GetAddress(), sizeof(VkQueueFamilyProperties));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -459,15 +459,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryProperties:              "); // HRW
     OutputString(outputFile, "VkPhysicalDeviceMemoryProperties* = "); // TEQ
-    if (pMemoryProperties.GetPointer() == nullptr) // WWY
+    if (pMemoryProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1, pMemoryProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryProperties->GetMetaStructPointer(), indent+1, pMemoryProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -499,7 +499,7 @@ void VulkanAsciiConsumer::Process_vkCreateDevice(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkDeviceCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -515,7 +515,7 @@ void VulkanAsciiConsumer::Process_vkCreateDevice(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -531,14 +531,14 @@ void VulkanAsciiConsumer::Process_vkCreateDevice(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDevice:                        "); // HRW
     OutputString(outputFile, "VkDevice* = "); // TEQ
-    if (pDevice.GetPointer() == nullptr) // WWY
+    if (pDevice->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pDevice = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pDevice.GetPointer(), vinfo_pDevice); // PWS
+        ScalarValueToString(outputFile, pDevice->GetPointer(), vinfo_pDevice); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -565,7 +565,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDevice(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -616,14 +616,14 @@ void VulkanAsciiConsumer::Process_vkGetDeviceQueue(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueue:                         "); // HRW
     OutputString(outputFile, "VkQueue* = "); // TEQ
-    if (pQueue.GetPointer() == nullptr) // WWY
+    if (pQueue->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pQueue = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pQueue.GetPointer(), vinfo_pQueue); // PWS
+        ScalarValueToString(outputFile, pQueue->GetPointer(), vinfo_pQueue); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -662,14 +662,14 @@ void VulkanAsciiConsumer::Process_vkQueueSubmit(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSubmits:                       "); // HRW
     OutputString(outputFile, "const VkSubmitInfo* = "); // TEQ
-    if (pSubmits.GetPointer() == nullptr) // WWY
+    if (pSubmits.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSubmits.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSubmitInfo>(outputFile, indent+1, "VkSubmitInfo", pSubmits.GetMetaStructPointer(), "pSubmits", submitCount, false, pSubmits.GetAddress());  // CCO
+        AddrToString(outputFile, pSubmits.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkSubmitInfo>(outputFile, indent+1, "VkSubmitInfo", pSubmits.GetMetaStructPointer(), "pSubmits", submitCount, false, pSubmits.GetAddress(), sizeof(VkSubmitInfo));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -750,7 +750,7 @@ void VulkanAsciiConsumer::Process_vkAllocateMemory(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocateInfo:                  "); // HRW
     OutputString(outputFile, "const VkMemoryAllocateInfo* = "); // TEQ
-    if (pAllocateInfo.GetPointer() == nullptr) // WWY
+    if (pAllocateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -766,7 +766,7 @@ void VulkanAsciiConsumer::Process_vkAllocateMemory(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -782,14 +782,14 @@ void VulkanAsciiConsumer::Process_vkAllocateMemory(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemory:                        "); // HRW
     OutputString(outputFile, "VkDeviceMemory* = "); // TEQ
-    if (pMemory.GetPointer() == nullptr) // WWY
+    if (pMemory->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pMemory = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pMemory.GetPointer(), vinfo_pMemory); // PWS
+        ScalarValueToString(outputFile, pMemory->GetPointer(), vinfo_pMemory); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -824,7 +824,7 @@ void VulkanAsciiConsumer::Process_vkFreeMemory(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -894,14 +894,14 @@ void VulkanAsciiConsumer::Process_vkMapMemory(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "ppData:                         "); // HRW
     OutputString(outputFile, "void** = "); // TEQ
-    if (ppData.GetPointer() == nullptr) // WWY
+    if (ppData->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_ppData = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, ppData.GetPointer(), vinfo_ppData); // PWS
+        ScalarValueToString(outputFile, ppData->GetPointer(), vinfo_ppData); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -965,14 +965,14 @@ void VulkanAsciiConsumer::Process_vkFlushMappedMemoryRanges(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryRanges:                  "); // HRW
     OutputString(outputFile, "const VkMappedMemoryRange* = "); // TEQ
-    if (pMemoryRanges.GetPointer() == nullptr) // WWY
+    if (pMemoryRanges.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryRanges.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkMappedMemoryRange>(outputFile, indent+1, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress());  // CCO
+        AddrToString(outputFile, pMemoryRanges.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkMappedMemoryRange>(outputFile, indent+1, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress(), sizeof(VkMappedMemoryRange));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1010,14 +1010,14 @@ void VulkanAsciiConsumer::Process_vkInvalidateMappedMemoryRanges(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryRanges:                  "); // HRW
     OutputString(outputFile, "const VkMappedMemoryRange* = "); // TEQ
-    if (pMemoryRanges.GetPointer() == nullptr) // WWY
+    if (pMemoryRanges.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryRanges.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkMappedMemoryRange>(outputFile, indent+1, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress());  // CCO
+        AddrToString(outputFile, pMemoryRanges.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkMappedMemoryRange>(outputFile, indent+1, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress(), sizeof(VkMappedMemoryRange));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1052,14 +1052,14 @@ void VulkanAsciiConsumer::Process_vkGetDeviceMemoryCommitment(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCommittedMemoryInBytes:        "); // HRW
     OutputString(outputFile, "VkDeviceSize* = "); // TEQ
-    if (pCommittedMemoryInBytes.GetPointer() == nullptr) // WWY
+    if (pCommittedMemoryInBytes->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pCommittedMemoryInBytes = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pCommittedMemoryInBytes.GetPointer(), vinfo_pCommittedMemoryInBytes); // PWS
+        ScalarValueToString(outputFile, pCommittedMemoryInBytes->GetPointer(), vinfo_pCommittedMemoryInBytes); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1184,15 +1184,15 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryRequirements:            "); // HRW
     OutputString(outputFile, "VkMemoryRequirements* = "); // TEQ
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryRequirements->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent+1, pMemoryRequirements->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1227,15 +1227,15 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryRequirements:            "); // HRW
     OutputString(outputFile, "VkMemoryRequirements* = "); // TEQ
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryRequirements->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent+1, pMemoryRequirements->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1271,14 +1271,14 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSparseMemoryRequirementCount:  "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
+    if (pSparseMemoryRequirementCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSparseMemoryRequirementCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pSparseMemoryRequirementCount.GetPointer(), vinfo_pSparseMemoryRequirementCount); // PWS
+        ScalarValueToString(outputFile, pSparseMemoryRequirementCount->GetPointer(), vinfo_pSparseMemoryRequirementCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1286,14 +1286,14 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSparseMemoryRequirements:      "); // HRW
     OutputString(outputFile, "VkSparseImageMemoryRequirements* = "); // TEQ
-    if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pSparseMemoryRequirements->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSparseMemoryRequirements.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSparseImageMemoryRequirements>(outputFile, indent+1, "VkSparseImageMemoryRequirements", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress());  // CCO
+        AddrToString(outputFile, pSparseMemoryRequirements->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkSparseImageMemoryRequirements>(outputFile, indent+1, "VkSparseImageMemoryRequirements", pSparseMemoryRequirements->GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount->GetPointer(), false, pSparseMemoryRequirements->GetAddress(), sizeof(VkSparseImageMemoryRequirements));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1373,14 +1373,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPropertyCount:                 "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPropertyCount.GetPointer(), vinfo_pPropertyCount); // PWS
+        ScalarValueToString(outputFile, pPropertyCount->GetPointer(), vinfo_pPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1388,14 +1388,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkSparseImageFormatProperties* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSparseImageFormatProperties>(outputFile, indent+1, "VkSparseImageFormatProperties", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkSparseImageFormatProperties>(outputFile, indent+1, "VkSparseImageFormatProperties", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkSparseImageFormatProperties));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1434,14 +1434,14 @@ void VulkanAsciiConsumer::Process_vkQueueBindSparse(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBindInfo:                      "); // HRW
     OutputString(outputFile, "const VkBindSparseInfo* = "); // TEQ
-    if (pBindInfo.GetPointer() == nullptr) // WWY
+    if (pBindInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pBindInfo.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBindSparseInfo>(outputFile, indent+1, "VkBindSparseInfo", pBindInfo.GetMetaStructPointer(), "pBindInfo", bindInfoCount, false, pBindInfo.GetAddress());  // CCO
+        AddrToString(outputFile, pBindInfo.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkBindSparseInfo>(outputFile, indent+1, "VkBindSparseInfo", pBindInfo.GetMetaStructPointer(), "pBindInfo", bindInfoCount, false, pBindInfo.GetAddress(), sizeof(VkBindSparseInfo));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1480,7 +1480,7 @@ void VulkanAsciiConsumer::Process_vkCreateFence(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkFenceCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -1496,7 +1496,7 @@ void VulkanAsciiConsumer::Process_vkCreateFence(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -1512,14 +1512,14 @@ void VulkanAsciiConsumer::Process_vkCreateFence(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFence:                         "); // HRW
     OutputString(outputFile, "VkFence* = "); // TEQ
-    if (pFence.GetPointer() == nullptr) // WWY
+    if (pFence->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pFence = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pFence.GetPointer(), vinfo_pFence); // PWS
+        ScalarValueToString(outputFile, pFence->GetPointer(), vinfo_pFence); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1554,7 +1554,7 @@ void VulkanAsciiConsumer::Process_vkDestroyFence(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -1600,15 +1600,15 @@ void VulkanAsciiConsumer::Process_vkResetFences(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFences:                        "); // HRW
     OutputString(outputFile, "const VkFence* = "); // TEQ
-    if (pFences.GetPointer() == nullptr) // WWY
+    if (pFences.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pFences.GetAddress()); // PAZ
+        AddrToString(outputFile, pFences.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pFences = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AUC
+        ArrayToString(outputFile, indent, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1677,15 +1677,15 @@ void VulkanAsciiConsumer::Process_vkWaitForFences(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFences:                        "); // HRW
     OutputString(outputFile, "const VkFence* = "); // TEQ
-    if (pFences.GetPointer() == nullptr) // WWY
+    if (pFences.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pFences.GetAddress()); // PAZ
+        AddrToString(outputFile, pFences.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pFences = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AUC
+        ArrayToString(outputFile, indent, "const VkFence*", &pFences, "pFences", fenceCount, vinfo_pFences); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1731,7 +1731,7 @@ void VulkanAsciiConsumer::Process_vkCreateSemaphore(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkSemaphoreCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -1747,7 +1747,7 @@ void VulkanAsciiConsumer::Process_vkCreateSemaphore(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -1763,14 +1763,14 @@ void VulkanAsciiConsumer::Process_vkCreateSemaphore(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSemaphore:                     "); // HRW
     OutputString(outputFile, "VkSemaphore* = "); // TEQ
-    if (pSemaphore.GetPointer() == nullptr) // WWY
+    if (pSemaphore->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSemaphore = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSemaphore.GetPointer(), vinfo_pSemaphore); // PWS
+        ScalarValueToString(outputFile, pSemaphore->GetPointer(), vinfo_pSemaphore); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1805,7 +1805,7 @@ void VulkanAsciiConsumer::Process_vkDestroySemaphore(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -1845,7 +1845,7 @@ void VulkanAsciiConsumer::Process_vkCreateEvent(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkEventCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -1861,7 +1861,7 @@ void VulkanAsciiConsumer::Process_vkCreateEvent(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -1877,14 +1877,14 @@ void VulkanAsciiConsumer::Process_vkCreateEvent(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pEvent:                         "); // HRW
     OutputString(outputFile, "VkEvent* = "); // TEQ
-    if (pEvent.GetPointer() == nullptr) // WWY
+    if (pEvent->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pEvent = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pEvent.GetPointer(), vinfo_pEvent); // PWS
+        ScalarValueToString(outputFile, pEvent->GetPointer(), vinfo_pEvent); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -1919,7 +1919,7 @@ void VulkanAsciiConsumer::Process_vkDestroyEvent(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2046,7 +2046,7 @@ void VulkanAsciiConsumer::Process_vkCreateQueryPool(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkQueryPoolCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2062,7 +2062,7 @@ void VulkanAsciiConsumer::Process_vkCreateQueryPool(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2078,14 +2078,14 @@ void VulkanAsciiConsumer::Process_vkCreateQueryPool(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueryPool:                     "); // HRW
     OutputString(outputFile, "VkQueryPool* = "); // TEQ
-    if (pQueryPool.GetPointer() == nullptr) // WWY
+    if (pQueryPool->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pQueryPool = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pQueryPool.GetPointer(), vinfo_pQueryPool); // PWS
+        ScalarValueToString(outputFile, pQueryPool->GetPointer(), vinfo_pQueryPool); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2120,7 +2120,7 @@ void VulkanAsciiConsumer::Process_vkDestroyQueryPool(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2192,15 +2192,15 @@ void VulkanAsciiConsumer::Process_vkGetQueryPoolResults(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pData:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pData.GetPointer() == nullptr) // WWY
+    if (pData->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pData.GetAddress()); // AHW
+        AddrToString(outputFile, pData->GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "void*", &pData, "pData", dataSize, vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "void*", pData, "pData", dataSize, vinfo_pData); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2246,7 +2246,7 @@ void VulkanAsciiConsumer::Process_vkCreateBuffer(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkBufferCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2262,7 +2262,7 @@ void VulkanAsciiConsumer::Process_vkCreateBuffer(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2278,14 +2278,14 @@ void VulkanAsciiConsumer::Process_vkCreateBuffer(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBuffer:                        "); // HRW
     OutputString(outputFile, "VkBuffer* = "); // TEQ
-    if (pBuffer.GetPointer() == nullptr) // WWY
+    if (pBuffer->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pBuffer = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pBuffer.GetPointer(), vinfo_pBuffer); // PWS
+        ScalarValueToString(outputFile, pBuffer->GetPointer(), vinfo_pBuffer); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2320,7 +2320,7 @@ void VulkanAsciiConsumer::Process_vkDestroyBuffer(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2360,7 +2360,7 @@ void VulkanAsciiConsumer::Process_vkCreateBufferView(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkBufferViewCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2376,7 +2376,7 @@ void VulkanAsciiConsumer::Process_vkCreateBufferView(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2392,13 +2392,13 @@ void VulkanAsciiConsumer::Process_vkCreateBufferView(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pView:                          "); // HRW
     OutputString(outputFile, "VkBufferView* = "); // TEQ
-    if (pView.GetPointer() == nullptr) // WWY
+    if (pView->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, *(static_cast<uint64_t*>(pView.GetPointer()))); // PWA
+        AddrToString(outputFile, *(static_cast<uint64_t*>(pView->GetPointer()))); // PWA
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2433,7 +2433,7 @@ void VulkanAsciiConsumer::Process_vkDestroyBufferView(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2473,7 +2473,7 @@ void VulkanAsciiConsumer::Process_vkCreateImage(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkImageCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2489,7 +2489,7 @@ void VulkanAsciiConsumer::Process_vkCreateImage(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2505,14 +2505,14 @@ void VulkanAsciiConsumer::Process_vkCreateImage(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImage:                         "); // HRW
     OutputString(outputFile, "VkImage* = "); // TEQ
-    if (pImage.GetPointer() == nullptr) // WWY
+    if (pImage->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pImage = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pImage.GetPointer(), vinfo_pImage); // PWS
+        ScalarValueToString(outputFile, pImage->GetPointer(), vinfo_pImage); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2547,7 +2547,7 @@ void VulkanAsciiConsumer::Process_vkDestroyImage(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2591,7 +2591,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSubresourceLayout(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSubresource:                   "); // HRW
     OutputString(outputFile, "const VkImageSubresource* = "); // TEQ
-    if (pSubresource.GetPointer() == nullptr) // WWY
+    if (pSubresource.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2607,15 +2607,15 @@ void VulkanAsciiConsumer::Process_vkGetImageSubresourceLayout(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pLayout:                        "); // HRW
     OutputString(outputFile, "VkSubresourceLayout* = "); // TEQ
-    if (pLayout.GetPointer() == nullptr) // WWY
+    if (pLayout->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pLayout.GetAddress()); // JHI
+        AddrToString(outputFile, pLayout->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pLayout.GetMetaStructPointer(), indent+1, pLayout.GetAddress()); // GLM
+        StructureToString(outputFile, *pLayout->GetMetaStructPointer(), indent+1, pLayout->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2647,7 +2647,7 @@ void VulkanAsciiConsumer::Process_vkCreateImageView(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkImageViewCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2663,7 +2663,7 @@ void VulkanAsciiConsumer::Process_vkCreateImageView(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2679,13 +2679,13 @@ void VulkanAsciiConsumer::Process_vkCreateImageView(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pView:                          "); // HRW
     OutputString(outputFile, "VkImageView* = "); // TEQ
-    if (pView.GetPointer() == nullptr) // WWY
+    if (pView->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, *(static_cast<uint64_t*>(pView.GetPointer()))); // PWA
+        AddrToString(outputFile, *(static_cast<uint64_t*>(pView->GetPointer()))); // PWA
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2720,7 +2720,7 @@ void VulkanAsciiConsumer::Process_vkDestroyImageView(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2760,7 +2760,7 @@ void VulkanAsciiConsumer::Process_vkCreateShaderModule(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkShaderModuleCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2776,7 +2776,7 @@ void VulkanAsciiConsumer::Process_vkCreateShaderModule(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2792,14 +2792,14 @@ void VulkanAsciiConsumer::Process_vkCreateShaderModule(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pShaderModule:                  "); // HRW
     OutputString(outputFile, "VkShaderModule* = "); // TEQ
-    if (pShaderModule.GetPointer() == nullptr) // WWY
+    if (pShaderModule->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pShaderModule = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pShaderModule.GetPointer(), vinfo_pShaderModule); // PWS
+        ScalarValueToString(outputFile, pShaderModule->GetPointer(), vinfo_pShaderModule); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2834,7 +2834,7 @@ void VulkanAsciiConsumer::Process_vkDestroyShaderModule(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2874,7 +2874,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineCache(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkPipelineCacheCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2890,7 +2890,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineCache(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2906,14 +2906,14 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineCache(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPipelineCache:                 "); // HRW
     OutputString(outputFile, "VkPipelineCache* = "); // TEQ
-    if (pPipelineCache.GetPointer() == nullptr) // WWY
+    if (pPipelineCache->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPipelineCache = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pPipelineCache.GetPointer(), vinfo_pPipelineCache); // PWS
+        ScalarValueToString(outputFile, pPipelineCache->GetPointer(), vinfo_pPipelineCache); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -2948,7 +2948,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipelineCache(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -2995,14 +2995,14 @@ void VulkanAsciiConsumer::Process_vkGetPipelineCacheData(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDataSize:                      "); // HRW
     OutputString(outputFile, "size_t* = "); // TEQ
-    if (pDataSize.GetPointer() == nullptr) // WWY
+    if (pDataSize->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pDataSize = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pDataSize.GetPointer(), vinfo_pDataSize); // PWS
+        ScalarValueToString(outputFile, pDataSize->GetPointer(), vinfo_pDataSize); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3010,15 +3010,15 @@ void VulkanAsciiConsumer::Process_vkGetPipelineCacheData(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pData:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pData.GetPointer() == nullptr) // WWY
+    if (pData->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pData.GetAddress()); // AHW
+        AddrToString(outputFile, pData->GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "void*", pData, "pData", *pDataSize->GetPointer(), vinfo_pData); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3064,15 +3064,15 @@ void VulkanAsciiConsumer::Process_vkMergePipelineCaches(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSrcCaches:                     "); // HRW
     OutputString(outputFile, "const VkPipelineCache* = "); // TEQ
-    if (pSrcCaches.GetPointer() == nullptr) // WWY
+    if (pSrcCaches.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSrcCaches.GetAddress()); // PAZ
+        AddrToString(outputFile, pSrcCaches.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSrcCaches = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkPipelineCache*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AUC
+        ArrayToString(outputFile, indent, "const VkPipelineCache*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3120,14 +3120,14 @@ void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfos:                   "); // HRW
     OutputString(outputFile, "const VkGraphicsPipelineCreateInfo* = "); // TEQ
-    if (pCreateInfos.GetPointer() == nullptr) // WWY
+    if (pCreateInfos.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCreateInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkGraphicsPipelineCreateInfo>(outputFile, indent+1, "VkGraphicsPipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress());  // CCO
+        AddrToString(outputFile, pCreateInfos.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkGraphicsPipelineCreateInfo>(outputFile, indent+1, "VkGraphicsPipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress(), sizeof(VkGraphicsPipelineCreateInfo));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3135,7 +3135,7 @@ void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3151,15 +3151,15 @@ void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPipelines:                     "); // HRW
     OutputString(outputFile, "VkPipeline* = "); // TEQ
-    if (pPipelines.GetPointer() == nullptr) // WWY
+    if (pPipelines->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pPipelines.GetAddress()); // PAZ
+        AddrToString(outputFile, pPipelines->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AUC
+        ArrayToString(outputFile, indent, "VkPipeline*", pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3207,14 +3207,14 @@ void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfos:                   "); // HRW
     OutputString(outputFile, "const VkComputePipelineCreateInfo* = "); // TEQ
-    if (pCreateInfos.GetPointer() == nullptr) // WWY
+    if (pCreateInfos.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCreateInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkComputePipelineCreateInfo>(outputFile, indent+1, "VkComputePipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress());  // CCO
+        AddrToString(outputFile, pCreateInfos.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkComputePipelineCreateInfo>(outputFile, indent+1, "VkComputePipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress(), sizeof(VkComputePipelineCreateInfo));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3222,7 +3222,7 @@ void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3238,15 +3238,15 @@ void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPipelines:                     "); // HRW
     OutputString(outputFile, "VkPipeline* = "); // TEQ
-    if (pPipelines.GetPointer() == nullptr) // WWY
+    if (pPipelines->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pPipelines.GetAddress()); // PAZ
+        AddrToString(outputFile, pPipelines->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AUC
+        ArrayToString(outputFile, indent, "VkPipeline*", pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3281,7 +3281,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipeline(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3321,7 +3321,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineLayout(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkPipelineLayoutCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3337,7 +3337,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineLayout(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3353,14 +3353,14 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineLayout(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPipelineLayout:                "); // HRW
     OutputString(outputFile, "VkPipelineLayout* = "); // TEQ
-    if (pPipelineLayout.GetPointer() == nullptr) // WWY
+    if (pPipelineLayout->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPipelineLayout = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pPipelineLayout.GetPointer(), vinfo_pPipelineLayout); // PWS
+        ScalarValueToString(outputFile, pPipelineLayout->GetPointer(), vinfo_pPipelineLayout); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3395,7 +3395,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipelineLayout(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3435,7 +3435,7 @@ void VulkanAsciiConsumer::Process_vkCreateSampler(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkSamplerCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3451,7 +3451,7 @@ void VulkanAsciiConsumer::Process_vkCreateSampler(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3467,14 +3467,14 @@ void VulkanAsciiConsumer::Process_vkCreateSampler(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSampler:                       "); // HRW
     OutputString(outputFile, "VkSampler* = "); // TEQ
-    if (pSampler.GetPointer() == nullptr) // WWY
+    if (pSampler->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSampler = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSampler.GetPointer(), vinfo_pSampler); // PWS
+        ScalarValueToString(outputFile, pSampler->GetPointer(), vinfo_pSampler); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3509,7 +3509,7 @@ void VulkanAsciiConsumer::Process_vkDestroySampler(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3549,7 +3549,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorSetLayout(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkDescriptorSetLayoutCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3565,7 +3565,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorSetLayout(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3581,14 +3581,14 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorSetLayout(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSetLayout:                     "); // HRW
     OutputString(outputFile, "VkDescriptorSetLayout* = "); // TEQ
-    if (pSetLayout.GetPointer() == nullptr) // WWY
+    if (pSetLayout->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSetLayout = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSetLayout.GetPointer(), vinfo_pSetLayout); // PWS
+        ScalarValueToString(outputFile, pSetLayout->GetPointer(), vinfo_pSetLayout); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3623,7 +3623,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorSetLayout(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3663,7 +3663,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorPool(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkDescriptorPoolCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3679,7 +3679,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorPool(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3695,14 +3695,14 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorPool(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDescriptorPool:                "); // HRW
     OutputString(outputFile, "VkDescriptorPool* = "); // TEQ
-    if (pDescriptorPool.GetPointer() == nullptr) // WWY
+    if (pDescriptorPool->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pDescriptorPool = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pDescriptorPool.GetPointer(), vinfo_pDescriptorPool); // PWS
+        ScalarValueToString(outputFile, pDescriptorPool->GetPointer(), vinfo_pDescriptorPool); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3737,7 +3737,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorPool(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3813,7 +3813,7 @@ void VulkanAsciiConsumer::Process_vkAllocateDescriptorSets(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocateInfo:                  "); // HRW
     OutputString(outputFile, "const VkDescriptorSetAllocateInfo* = "); // TEQ
-    if (pAllocateInfo.GetPointer() == nullptr) // WWY
+    if (pAllocateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -3829,15 +3829,15 @@ void VulkanAsciiConsumer::Process_vkAllocateDescriptorSets(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDescriptorSets:                "); // HRW
     OutputString(outputFile, "VkDescriptorSet* = "); // TEQ
-    if (pDescriptorSets.GetPointer() == nullptr) // WWY
+    if (pDescriptorSets->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pDescriptorSets.GetAddress()); // PAZ
+        AddrToString(outputFile, pDescriptorSets->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", pAllocateInfo.GetPointer()->descriptorSetCount, vinfo_pDescriptorSets); // AUC
+        ArrayToString(outputFile, indent, "VkDescriptorSet*", pDescriptorSets, "pDescriptorSets", pAllocateInfo.GetPointer()->descriptorSetCount, vinfo_pDescriptorSets); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3883,15 +3883,15 @@ void VulkanAsciiConsumer::Process_vkFreeDescriptorSets(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDescriptorSets:                "); // HRW
     OutputString(outputFile, "const VkDescriptorSet* = "); // TEQ
-    if (pDescriptorSets.GetPointer() == nullptr) // WWY
+    if (pDescriptorSets.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pDescriptorSets.GetAddress()); // PAZ
+        AddrToString(outputFile, pDescriptorSets.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AUC
+        ArrayToString(outputFile, indent, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3928,14 +3928,14 @@ void VulkanAsciiConsumer::Process_vkUpdateDescriptorSets(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDescriptorWrites:              "); // HRW
     OutputString(outputFile, "const VkWriteDescriptorSet* = "); // TEQ
-    if (pDescriptorWrites.GetPointer() == nullptr) // WWY
+    if (pDescriptorWrites.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pDescriptorWrites.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkWriteDescriptorSet>(outputFile, indent+1, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress());  // CCO
+        AddrToString(outputFile, pDescriptorWrites.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkWriteDescriptorSet>(outputFile, indent+1, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress(), sizeof(VkWriteDescriptorSet));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3950,14 +3950,14 @@ void VulkanAsciiConsumer::Process_vkUpdateDescriptorSets(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDescriptorCopies:              "); // HRW
     OutputString(outputFile, "const VkCopyDescriptorSet* = "); // TEQ
-    if (pDescriptorCopies.GetPointer() == nullptr) // WWY
+    if (pDescriptorCopies.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pDescriptorCopies.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkCopyDescriptorSet>(outputFile, indent+1, "VkCopyDescriptorSet", pDescriptorCopies.GetMetaStructPointer(), "pDescriptorCopies", descriptorCopyCount, false, pDescriptorCopies.GetAddress());  // CCO
+        AddrToString(outputFile, pDescriptorCopies.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkCopyDescriptorSet>(outputFile, indent+1, "VkCopyDescriptorSet", pDescriptorCopies.GetMetaStructPointer(), "pDescriptorCopies", descriptorCopyCount, false, pDescriptorCopies.GetAddress(), sizeof(VkCopyDescriptorSet));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -3989,7 +3989,7 @@ void VulkanAsciiConsumer::Process_vkCreateFramebuffer(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkFramebufferCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -4005,7 +4005,7 @@ void VulkanAsciiConsumer::Process_vkCreateFramebuffer(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -4021,14 +4021,14 @@ void VulkanAsciiConsumer::Process_vkCreateFramebuffer(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFramebuffer:                   "); // HRW
     OutputString(outputFile, "VkFramebuffer* = "); // TEQ
-    if (pFramebuffer.GetPointer() == nullptr) // WWY
+    if (pFramebuffer->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pFramebuffer = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pFramebuffer.GetPointer(), vinfo_pFramebuffer); // PWS
+        ScalarValueToString(outputFile, pFramebuffer->GetPointer(), vinfo_pFramebuffer); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4063,7 +4063,7 @@ void VulkanAsciiConsumer::Process_vkDestroyFramebuffer(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -4103,7 +4103,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkRenderPassCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -4119,7 +4119,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -4135,14 +4135,14 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRenderPass:                    "); // HRW
     OutputString(outputFile, "VkRenderPass* = "); // TEQ
-    if (pRenderPass.GetPointer() == nullptr) // WWY
+    if (pRenderPass->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pRenderPass = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pRenderPass.GetPointer(), vinfo_pRenderPass); // PWS
+        ScalarValueToString(outputFile, pRenderPass->GetPointer(), vinfo_pRenderPass); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4177,7 +4177,7 @@ void VulkanAsciiConsumer::Process_vkDestroyRenderPass(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -4220,15 +4220,15 @@ void VulkanAsciiConsumer::Process_vkGetRenderAreaGranularity(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pGranularity:                   "); // HRW
     OutputString(outputFile, "VkExtent2D* = "); // TEQ
-    if (pGranularity.GetPointer() == nullptr) // WWY
+    if (pGranularity->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pGranularity.GetAddress()); // JHI
+        AddrToString(outputFile, pGranularity->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pGranularity.GetMetaStructPointer(), indent+1, pGranularity.GetAddress()); // GLM
+        StructureToString(outputFile, *pGranularity->GetMetaStructPointer(), indent+1, pGranularity->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4260,7 +4260,7 @@ void VulkanAsciiConsumer::Process_vkCreateCommandPool(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkCommandPoolCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -4276,7 +4276,7 @@ void VulkanAsciiConsumer::Process_vkCreateCommandPool(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -4292,14 +4292,14 @@ void VulkanAsciiConsumer::Process_vkCreateCommandPool(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCommandPool:                   "); // HRW
     OutputString(outputFile, "VkCommandPool* = "); // TEQ
-    if (pCommandPool.GetPointer() == nullptr) // WWY
+    if (pCommandPool->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pCommandPool = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pCommandPool.GetPointer(), vinfo_pCommandPool); // PWS
+        ScalarValueToString(outputFile, pCommandPool->GetPointer(), vinfo_pCommandPool); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4334,7 +4334,7 @@ void VulkanAsciiConsumer::Process_vkDestroyCommandPool(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -4410,7 +4410,7 @@ void VulkanAsciiConsumer::Process_vkAllocateCommandBuffers(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocateInfo:                  "); // HRW
     OutputString(outputFile, "const VkCommandBufferAllocateInfo* = "); // TEQ
-    if (pAllocateInfo.GetPointer() == nullptr) // WWY
+    if (pAllocateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -4426,15 +4426,15 @@ void VulkanAsciiConsumer::Process_vkAllocateCommandBuffers(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCommandBuffers:                "); // HRW
     OutputString(outputFile, "VkCommandBuffer* = "); // TEQ
-    if (pCommandBuffers.GetPointer() == nullptr) // WWY
+    if (pCommandBuffers->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCommandBuffers.GetAddress()); // PAZ
+        AddrToString(outputFile, pCommandBuffers->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", pAllocateInfo.GetPointer()->commandBufferCount, vinfo_pCommandBuffers); // AUC
+        ArrayToString(outputFile, indent, "VkCommandBuffer*", pCommandBuffers, "pCommandBuffers", pAllocateInfo.GetPointer()->commandBufferCount, vinfo_pCommandBuffers); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4477,15 +4477,15 @@ void VulkanAsciiConsumer::Process_vkFreeCommandBuffers(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCommandBuffers:                "); // HRW
     OutputString(outputFile, "const VkCommandBuffer* = "); // TEQ
-    if (pCommandBuffers.GetPointer() == nullptr) // WWY
+    if (pCommandBuffers.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCommandBuffers.GetAddress()); // PAZ
+        AddrToString(outputFile, pCommandBuffers.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4515,7 +4515,7 @@ void VulkanAsciiConsumer::Process_vkBeginCommandBuffer(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBeginInfo:                     "); // HRW
     OutputString(outputFile, "const VkCommandBufferBeginInfo* = "); // TEQ
-    if (pBeginInfo.GetPointer() == nullptr) // WWY
+    if (pBeginInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -4653,14 +4653,14 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewport(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pViewports:                     "); // HRW
     OutputString(outputFile, "const VkViewport* = "); // TEQ
-    if (pViewports.GetPointer() == nullptr) // WWY
+    if (pViewports.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pViewports.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkViewport>(outputFile, indent+1, "VkViewport", pViewports.GetMetaStructPointer(), "pViewports", viewportCount, false, pViewports.GetAddress());  // CCO
+        AddrToString(outputFile, pViewports.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkViewport>(outputFile, indent+1, "VkViewport", pViewports.GetMetaStructPointer(), "pViewports", viewportCount, false, pViewports.GetAddress(), sizeof(VkViewport));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -4703,14 +4703,14 @@ void VulkanAsciiConsumer::Process_vkCmdSetScissor(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pScissors:                      "); // HRW
     OutputString(outputFile, "const VkRect2D* = "); // TEQ
-    if (pScissors.GetPointer() == nullptr) // WWY
+    if (pScissors.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pScissors.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pScissors.GetMetaStructPointer(), "pScissors", scissorCount, false, pScissors.GetAddress());  // CCO
+        AddrToString(outputFile, pScissors.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pScissors.GetMetaStructPointer(), "pScissors", scissorCount, false, pScissors.GetAddress(), sizeof(VkRect2D));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5008,15 +5008,15 @@ void VulkanAsciiConsumer::Process_vkCmdBindDescriptorSets(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDescriptorSets:                "); // HRW
     OutputString(outputFile, "const VkDescriptorSet* = "); // TEQ
-    if (pDescriptorSets.GetPointer() == nullptr) // WWY
+    if (pDescriptorSets.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pDescriptorSets.GetAddress()); // PAZ
+        AddrToString(outputFile, pDescriptorSets.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pDescriptorSets = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AUC
+        ArrayToString(outputFile, indent, "const VkDescriptorSet*", &pDescriptorSets, "pDescriptorSets", descriptorSetCount, vinfo_pDescriptorSets); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5031,15 +5031,15 @@ void VulkanAsciiConsumer::Process_vkCmdBindDescriptorSets(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDynamicOffsets:                "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pDynamicOffsets.GetPointer() == nullptr) // WWY
+    if (pDynamicOffsets.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pDynamicOffsets.GetAddress()); // PAZ
+        AddrToString(outputFile, pDynamicOffsets.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pDynamicOffsets = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pDynamicOffsets, "pDynamicOffsets", dynamicOffsetCount, vinfo_pDynamicOffsets); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pDynamicOffsets, "pDynamicOffsets", dynamicOffsetCount, vinfo_pDynamicOffsets); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5128,15 +5128,15 @@ void VulkanAsciiConsumer::Process_vkCmdBindVertexBuffers(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBuffers:                       "); // HRW
     OutputString(outputFile, "const VkBuffer* = "); // TEQ
-    if (pBuffers.GetPointer() == nullptr) // WWY
+    if (pBuffers.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pBuffers.GetAddress()); // PAZ
+        AddrToString(outputFile, pBuffers.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5144,15 +5144,15 @@ void VulkanAsciiConsumer::Process_vkCmdBindVertexBuffers(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pOffsets:                       "); // HRW
     OutputString(outputFile, "const VkDeviceSize* = "); // TEQ
-    if (pOffsets.GetPointer() == nullptr) // WWY
+    if (pOffsets.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pOffsets.GetAddress()); // PAZ
+        AddrToString(outputFile, pOffsets.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pOffsets = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5487,14 +5487,14 @@ void VulkanAsciiConsumer::Process_vkCmdCopyBuffer(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRegions:                       "); // HRW
     OutputString(outputFile, "const VkBufferCopy* = "); // TEQ
-    if (pRegions.GetPointer() == nullptr) // WWY
+    if (pRegions.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pRegions.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBufferCopy>(outputFile, indent+1, "VkBufferCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
+        AddrToString(outputFile, pRegions.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkBufferCopy>(outputFile, indent+1, "VkBufferCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkBufferCopy));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5567,14 +5567,14 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImage(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRegions:                       "); // HRW
     OutputString(outputFile, "const VkImageCopy* = "); // TEQ
-    if (pRegions.GetPointer() == nullptr) // WWY
+    if (pRegions.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pRegions.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageCopy>(outputFile, indent+1, "VkImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
+        AddrToString(outputFile, pRegions.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkImageCopy>(outputFile, indent+1, "VkImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkImageCopy));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5648,14 +5648,14 @@ void VulkanAsciiConsumer::Process_vkCmdBlitImage(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRegions:                       "); // HRW
     OutputString(outputFile, "const VkImageBlit* = "); // TEQ
-    if (pRegions.GetPointer() == nullptr) // WWY
+    if (pRegions.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pRegions.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageBlit>(outputFile, indent+1, "VkImageBlit", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
+        AddrToString(outputFile, pRegions.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkImageBlit>(outputFile, indent+1, "VkImageBlit", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkImageBlit));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5727,14 +5727,14 @@ void VulkanAsciiConsumer::Process_vkCmdCopyBufferToImage(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRegions:                       "); // HRW
     OutputString(outputFile, "const VkBufferImageCopy* = "); // TEQ
-    if (pRegions.GetPointer() == nullptr) // WWY
+    if (pRegions.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pRegions.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBufferImageCopy>(outputFile, indent+1, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
+        AddrToString(outputFile, pRegions.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkBufferImageCopy>(outputFile, indent+1, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkBufferImageCopy));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5796,14 +5796,14 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImageToBuffer(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRegions:                       "); // HRW
     OutputString(outputFile, "const VkBufferImageCopy* = "); // TEQ
-    if (pRegions.GetPointer() == nullptr) // WWY
+    if (pRegions.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pRegions.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBufferImageCopy>(outputFile, indent+1, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
+        AddrToString(outputFile, pRegions.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkBufferImageCopy>(outputFile, indent+1, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkBufferImageCopy));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -5854,7 +5854,7 @@ void VulkanAsciiConsumer::Process_vkCmdUpdateBuffer(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pData:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pData.GetPointer() == nullptr) // WWY
+    if (pData.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -5958,7 +5958,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearColorImage(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pColor:                         "); // HRW
     OutputString(outputFile, "const VkClearColorValue* = "); // TEQ
-    if (pColor.GetPointer() == nullptr) // WWY
+    if (pColor.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -5982,14 +5982,14 @@ void VulkanAsciiConsumer::Process_vkCmdClearColorImage(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRanges:                        "); // HRW
     OutputString(outputFile, "const VkImageSubresourceRange* = "); // TEQ
-    if (pRanges.GetPointer() == nullptr) // WWY
+    if (pRanges.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pRanges.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageSubresourceRange>(outputFile, indent+1, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress());  // CCO
+        AddrToString(outputFile, pRanges.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkImageSubresourceRange>(outputFile, indent+1, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress(), sizeof(VkImageSubresourceRange));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6037,7 +6037,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearDepthStencilImage(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDepthStencil:                  "); // HRW
     OutputString(outputFile, "const VkClearDepthStencilValue* = "); // TEQ
-    if (pDepthStencil.GetPointer() == nullptr) // WWY
+    if (pDepthStencil.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -6060,14 +6060,14 @@ void VulkanAsciiConsumer::Process_vkCmdClearDepthStencilImage(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRanges:                        "); // HRW
     OutputString(outputFile, "const VkImageSubresourceRange* = "); // TEQ
-    if (pRanges.GetPointer() == nullptr) // WWY
+    if (pRanges.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pRanges.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageSubresourceRange>(outputFile, indent+1, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress());  // CCO
+        AddrToString(outputFile, pRanges.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkImageSubresourceRange>(outputFile, indent+1, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress(), sizeof(VkImageSubresourceRange));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6104,14 +6104,14 @@ void VulkanAsciiConsumer::Process_vkCmdClearAttachments(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAttachments:                   "); // HRW
     OutputString(outputFile, "const VkClearAttachment* = "); // TEQ
-    if (pAttachments.GetPointer() == nullptr) // WWY
+    if (pAttachments.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pAttachments.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkClearAttachment>(outputFile, indent+1, "VkClearAttachment", pAttachments.GetMetaStructPointer(), "pAttachments", attachmentCount, false, pAttachments.GetAddress());  // CCO
+        AddrToString(outputFile, pAttachments.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkClearAttachment>(outputFile, indent+1, "VkClearAttachment", pAttachments.GetMetaStructPointer(), "pAttachments", attachmentCount, false, pAttachments.GetAddress(), sizeof(VkClearAttachment));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6126,14 +6126,14 @@ void VulkanAsciiConsumer::Process_vkCmdClearAttachments(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRects:                         "); // HRW
     OutputString(outputFile, "const VkClearRect* = "); // TEQ
-    if (pRects.GetPointer() == nullptr) // WWY
+    if (pRects.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pRects.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkClearRect>(outputFile, indent+1, "VkClearRect", pRects.GetMetaStructPointer(), "pRects", rectCount, false, pRects.GetAddress());  // CCO
+        AddrToString(outputFile, pRects.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkClearRect>(outputFile, indent+1, "VkClearRect", pRects.GetMetaStructPointer(), "pRects", rectCount, false, pRects.GetAddress(), sizeof(VkClearRect));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6206,14 +6206,14 @@ void VulkanAsciiConsumer::Process_vkCmdResolveImage(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRegions:                       "); // HRW
     OutputString(outputFile, "const VkImageResolve* = "); // TEQ
-    if (pRegions.GetPointer() == nullptr) // WWY
+    if (pRegions.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pRegions.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageResolve>(outputFile, indent+1, "VkImageResolve", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress());  // CCO
+        AddrToString(outputFile, pRegions.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkImageResolve>(outputFile, indent+1, "VkImageResolve", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkImageResolve));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6324,15 +6324,15 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pEvents:                        "); // HRW
     OutputString(outputFile, "const VkEvent* = "); // TEQ
-    if (pEvents.GetPointer() == nullptr) // WWY
+    if (pEvents.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pEvents.GetAddress()); // PAZ
+        AddrToString(outputFile, pEvents.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pEvents = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkEvent*", &pEvents, "pEvents", eventCount, vinfo_pEvents); // AUC
+        ArrayToString(outputFile, indent, "const VkEvent*", &pEvents, "pEvents", eventCount, vinfo_pEvents); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6361,14 +6361,14 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryBarriers:                "); // HRW
     OutputString(outputFile, "const VkMemoryBarrier* = "); // TEQ
-    if (pMemoryBarriers.GetPointer() == nullptr) // WWY
+    if (pMemoryBarriers.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryBarriers.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkMemoryBarrier>(outputFile, indent+1, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress());  // CCO
+        AddrToString(outputFile, pMemoryBarriers.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkMemoryBarrier>(outputFile, indent+1, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress(), sizeof(VkMemoryBarrier));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6383,14 +6383,14 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBufferMemoryBarriers:          "); // HRW
     OutputString(outputFile, "const VkBufferMemoryBarrier* = "); // TEQ
-    if (pBufferMemoryBarriers.GetPointer() == nullptr) // WWY
+    if (pBufferMemoryBarriers.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pBufferMemoryBarriers.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBufferMemoryBarrier>(outputFile, indent+1, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress());  // CCO
+        AddrToString(outputFile, pBufferMemoryBarriers.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkBufferMemoryBarrier>(outputFile, indent+1, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress(), sizeof(VkBufferMemoryBarrier));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6405,14 +6405,14 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageMemoryBarriers:           "); // HRW
     OutputString(outputFile, "const VkImageMemoryBarrier* = "); // TEQ
-    if (pImageMemoryBarriers.GetPointer() == nullptr) // WWY
+    if (pImageMemoryBarriers.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pImageMemoryBarriers.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageMemoryBarrier>(outputFile, indent+1, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress());  // CCO
+        AddrToString(outputFile, pImageMemoryBarriers.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkImageMemoryBarrier>(outputFile, indent+1, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress(), sizeof(VkImageMemoryBarrier));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6475,14 +6475,14 @@ void VulkanAsciiConsumer::Process_vkCmdPipelineBarrier(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryBarriers:                "); // HRW
     OutputString(outputFile, "const VkMemoryBarrier* = "); // TEQ
-    if (pMemoryBarriers.GetPointer() == nullptr) // WWY
+    if (pMemoryBarriers.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryBarriers.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkMemoryBarrier>(outputFile, indent+1, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress());  // CCO
+        AddrToString(outputFile, pMemoryBarriers.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkMemoryBarrier>(outputFile, indent+1, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress(), sizeof(VkMemoryBarrier));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6497,14 +6497,14 @@ void VulkanAsciiConsumer::Process_vkCmdPipelineBarrier(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBufferMemoryBarriers:          "); // HRW
     OutputString(outputFile, "const VkBufferMemoryBarrier* = "); // TEQ
-    if (pBufferMemoryBarriers.GetPointer() == nullptr) // WWY
+    if (pBufferMemoryBarriers.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pBufferMemoryBarriers.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBufferMemoryBarrier>(outputFile, indent+1, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress());  // CCO
+        AddrToString(outputFile, pBufferMemoryBarriers.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkBufferMemoryBarrier>(outputFile, indent+1, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress(), sizeof(VkBufferMemoryBarrier));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6519,14 +6519,14 @@ void VulkanAsciiConsumer::Process_vkCmdPipelineBarrier(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageMemoryBarriers:           "); // HRW
     OutputString(outputFile, "const VkImageMemoryBarrier* = "); // TEQ
-    if (pImageMemoryBarriers.GetPointer() == nullptr) // WWY
+    if (pImageMemoryBarriers.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pImageMemoryBarriers.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkImageMemoryBarrier>(outputFile, indent+1, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress());  // CCO
+        AddrToString(outputFile, pImageMemoryBarriers.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkImageMemoryBarrier>(outputFile, indent+1, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress(), sizeof(VkImageMemoryBarrier));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -6822,7 +6822,7 @@ void VulkanAsciiConsumer::Process_vkCmdPushConstants(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pValues:                        "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pValues.GetPointer() == nullptr) // WWY
+    if (pValues.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -6858,7 +6858,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRenderPassBegin:               "); // HRW
     OutputString(outputFile, "const VkRenderPassBeginInfo* = "); // TEQ
-    if (pRenderPassBegin.GetPointer() == nullptr) // WWY
+    if (pRenderPassBegin.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -6958,15 +6958,15 @@ void VulkanAsciiConsumer::Process_vkCmdExecuteCommands(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCommandBuffers:                "); // HRW
     OutputString(outputFile, "const VkCommandBuffer* = "); // TEQ
-    if (pCommandBuffers.GetPointer() == nullptr) // WWY
+    if (pCommandBuffers.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCommandBuffers.GetAddress()); // PAZ
+        AddrToString(outputFile, pCommandBuffers.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkCommandBuffer*", &pCommandBuffers, "pCommandBuffers", commandBufferCount, vinfo_pCommandBuffers); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7005,14 +7005,14 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBindInfos:                     "); // HRW
     OutputString(outputFile, "const VkBindBufferMemoryInfo* = "); // TEQ
-    if (pBindInfos.GetPointer() == nullptr) // WWY
+    if (pBindInfos.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pBindInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBindBufferMemoryInfo>(outputFile, indent+1, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
+        AddrToString(outputFile, pBindInfos.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkBindBufferMemoryInfo>(outputFile, indent+1, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindBufferMemoryInfo));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7050,14 +7050,14 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBindInfos:                     "); // HRW
     OutputString(outputFile, "const VkBindImageMemoryInfo* = "); // TEQ
-    if (pBindInfos.GetPointer() == nullptr) // WWY
+    if (pBindInfos.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pBindInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBindImageMemoryInfo>(outputFile, indent+1, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
+        AddrToString(outputFile, pBindInfos.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkBindImageMemoryInfo>(outputFile, indent+1, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindImageMemoryInfo));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7108,14 +7108,14 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPeerMemoryFeatures:            "); // HRW
     OutputString(outputFile, "VkPeerMemoryFeatureFlags* = "); // TEQ
-    if (pPeerMemoryFeatures.GetPointer() == nullptr) // WWY
+    if (pPeerMemoryFeatures->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPeerMemoryFeatures = {false, false, true, EnumToStringVkPeerMemoryFeatureFlagBits};
-        ScalarValueToString(outputFile, pPeerMemoryFeatures.GetPointer(), vinfo_pPeerMemoryFeatures); // PWS
+        ScalarValueToString(outputFile, pPeerMemoryFeatures->GetPointer(), vinfo_pPeerMemoryFeatures); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7238,14 +7238,14 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPhysicalDeviceGroupCount:      "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPhysicalDeviceGroupCount.GetPointer() == nullptr) // WWY
+    if (pPhysicalDeviceGroupCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPhysicalDeviceGroupCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPhysicalDeviceGroupCount.GetPointer(), vinfo_pPhysicalDeviceGroupCount); // PWS
+        ScalarValueToString(outputFile, pPhysicalDeviceGroupCount->GetPointer(), vinfo_pPhysicalDeviceGroupCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7253,14 +7253,14 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPhysicalDeviceGroupProperties: "); // HRW
     OutputString(outputFile, "VkPhysicalDeviceGroupProperties* = "); // TEQ
-    if (pPhysicalDeviceGroupProperties.GetPointer() == nullptr) // WWY
+    if (pPhysicalDeviceGroupProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pPhysicalDeviceGroupProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent+1, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pPhysicalDeviceGroupProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent+1, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties->GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount->GetPointer(), false, pPhysicalDeviceGroupProperties->GetAddress(), sizeof(VkPhysicalDeviceGroupProperties));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7288,7 +7288,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfo:                          "); // HRW
     OutputString(outputFile, "const VkImageMemoryRequirementsInfo2* = "); // TEQ
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -7304,15 +7304,15 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryRequirements:            "); // HRW
     OutputString(outputFile, "VkMemoryRequirements2* = "); // TEQ
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryRequirements->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent+1, pMemoryRequirements->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7340,7 +7340,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfo:                          "); // HRW
     OutputString(outputFile, "const VkBufferMemoryRequirementsInfo2* = "); // TEQ
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -7356,15 +7356,15 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryRequirements:            "); // HRW
     OutputString(outputFile, "VkMemoryRequirements2* = "); // TEQ
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryRequirements->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent+1, pMemoryRequirements->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7393,7 +7393,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfo:                          "); // HRW
     OutputString(outputFile, "const VkImageSparseMemoryRequirementsInfo2* = "); // TEQ
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -7409,14 +7409,14 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSparseMemoryRequirementCount:  "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
+    if (pSparseMemoryRequirementCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSparseMemoryRequirementCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pSparseMemoryRequirementCount.GetPointer(), vinfo_pSparseMemoryRequirementCount); // PWS
+        ScalarValueToString(outputFile, pSparseMemoryRequirementCount->GetPointer(), vinfo_pSparseMemoryRequirementCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7424,14 +7424,14 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSparseMemoryRequirements:      "); // HRW
     OutputString(outputFile, "VkSparseImageMemoryRequirements2* = "); // TEQ
-    if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pSparseMemoryRequirements->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSparseMemoryRequirements.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent+1, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress());  // CCO
+        AddrToString(outputFile, pSparseMemoryRequirements->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent+1, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements->GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount->GetPointer(), false, pSparseMemoryRequirements->GetAddress(), sizeof(VkSparseImageMemoryRequirements2));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7458,15 +7458,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFeatures:                      "); // HRW
     OutputString(outputFile, "VkPhysicalDeviceFeatures2* = "); // TEQ
-    if (pFeatures.GetPointer() == nullptr) // WWY
+    if (pFeatures->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pFeatures.GetAddress()); // JHI
+        AddrToString(outputFile, pFeatures->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFeatures.GetMetaStructPointer(), indent+1, pFeatures.GetAddress()); // GLM
+        StructureToString(outputFile, *pFeatures->GetMetaStructPointer(), indent+1, pFeatures->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7493,15 +7493,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkPhysicalDeviceProperties2* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pProperties->GetMetaStructPointer(), indent+1, pProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7539,15 +7539,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFormatProperties:              "); // HRW
     OutputString(outputFile, "VkFormatProperties2* = "); // TEQ
-    if (pFormatProperties.GetPointer() == nullptr) // WWY
+    if (pFormatProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pFormatProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pFormatProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1, pFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pFormatProperties->GetMetaStructPointer(), indent+1, pFormatProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7578,7 +7578,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageFormatInfo:               "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceImageFormatInfo2* = "); // TEQ
-    if (pImageFormatInfo.GetPointer() == nullptr) // WWY
+    if (pImageFormatInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -7594,15 +7594,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageFormatProperties:         "); // HRW
     OutputString(outputFile, "VkImageFormatProperties2* = "); // TEQ
-    if (pImageFormatProperties.GetPointer() == nullptr) // WWY
+    if (pImageFormatProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pImageFormatProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pImageFormatProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1, pImageFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pImageFormatProperties->GetMetaStructPointer(), indent+1, pImageFormatProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7630,14 +7630,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueFamilyPropertyCount:      "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
+    if (pQueueFamilyPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pQueueFamilyPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pQueueFamilyPropertyCount.GetPointer(), vinfo_pQueueFamilyPropertyCount); // PWS
+        ScalarValueToString(outputFile, pQueueFamilyPropertyCount->GetPointer(), vinfo_pQueueFamilyPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7645,14 +7645,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueFamilyProperties:         "); // HRW
     OutputString(outputFile, "VkQueueFamilyProperties2* = "); // TEQ
-    if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
+    if (pQueueFamilyProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pQueueFamilyProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkQueueFamilyProperties2>(outputFile, indent+1, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pQueueFamilyProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkQueueFamilyProperties2>(outputFile, indent+1, "VkQueueFamilyProperties2", pQueueFamilyProperties->GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount->GetPointer(), false, pQueueFamilyProperties->GetAddress(), sizeof(VkQueueFamilyProperties2));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7679,15 +7679,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryProperties:              "); // HRW
     OutputString(outputFile, "VkPhysicalDeviceMemoryProperties2* = "); // TEQ
-    if (pMemoryProperties.GetPointer() == nullptr) // WWY
+    if (pMemoryProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1, pMemoryProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryProperties->GetMetaStructPointer(), indent+1, pMemoryProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7716,7 +7716,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFormatInfo:                    "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceSparseImageFormatInfo2* = "); // TEQ
-    if (pFormatInfo.GetPointer() == nullptr) // WWY
+    if (pFormatInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -7732,14 +7732,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPropertyCount:                 "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPropertyCount.GetPointer(), vinfo_pPropertyCount); // PWS
+        ScalarValueToString(outputFile, pPropertyCount->GetPointer(), vinfo_pPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7747,14 +7747,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkSparseImageFormatProperties2* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSparseImageFormatProperties2>(outputFile, indent+1, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkSparseImageFormatProperties2>(outputFile, indent+1, "VkSparseImageFormatProperties2", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkSparseImageFormatProperties2));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7816,7 +7816,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceQueue2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueInfo:                     "); // HRW
     OutputString(outputFile, "const VkDeviceQueueInfo2* = "); // TEQ
-    if (pQueueInfo.GetPointer() == nullptr) // WWY
+    if (pQueueInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -7832,14 +7832,14 @@ void VulkanAsciiConsumer::Process_vkGetDeviceQueue2(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueue:                         "); // HRW
     OutputString(outputFile, "VkQueue* = "); // TEQ
-    if (pQueue.GetPointer() == nullptr) // WWY
+    if (pQueue->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pQueue = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pQueue.GetPointer(), vinfo_pQueue); // PWS
+        ScalarValueToString(outputFile, pQueue->GetPointer(), vinfo_pQueue); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7871,7 +7871,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversion(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkSamplerYcbcrConversionCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -7887,7 +7887,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversion(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -7903,14 +7903,14 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversion(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pYcbcrConversion:               "); // HRW
     OutputString(outputFile, "VkSamplerYcbcrConversion* = "); // TEQ
-    if (pYcbcrConversion.GetPointer() == nullptr) // WWY
+    if (pYcbcrConversion->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pYcbcrConversion = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pYcbcrConversion.GetPointer(), vinfo_pYcbcrConversion); // PWS
+        ScalarValueToString(outputFile, pYcbcrConversion->GetPointer(), vinfo_pYcbcrConversion); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -7945,7 +7945,7 @@ void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversion(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -7985,7 +7985,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplate(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkDescriptorUpdateTemplateCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -8001,7 +8001,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplate(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -8017,14 +8017,14 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplate(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDescriptorUpdateTemplate:      "); // HRW
     OutputString(outputFile, "VkDescriptorUpdateTemplate* = "); // TEQ
-    if (pDescriptorUpdateTemplate.GetPointer() == nullptr) // WWY
+    if (pDescriptorUpdateTemplate->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pDescriptorUpdateTemplate = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pDescriptorUpdateTemplate.GetPointer(), vinfo_pDescriptorUpdateTemplate); // PWS
+        ScalarValueToString(outputFile, pDescriptorUpdateTemplate->GetPointer(), vinfo_pDescriptorUpdateTemplate); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8059,7 +8059,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -8095,7 +8095,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalBufferInfo:            "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceExternalBufferInfo* = "); // TEQ
-    if (pExternalBufferInfo.GetPointer() == nullptr) // WWY
+    if (pExternalBufferInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -8111,15 +8111,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalBufferProperties:      "); // HRW
     OutputString(outputFile, "VkExternalBufferProperties* = "); // TEQ
-    if (pExternalBufferProperties.GetPointer() == nullptr) // WWY
+    if (pExternalBufferProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pExternalBufferProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pExternalBufferProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalBufferProperties.GetMetaStructPointer(), indent+1, pExternalBufferProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalBufferProperties->GetMetaStructPointer(), indent+1, pExternalBufferProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8147,7 +8147,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalFenceInfo:             "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceExternalFenceInfo* = "); // TEQ
-    if (pExternalFenceInfo.GetPointer() == nullptr) // WWY
+    if (pExternalFenceInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -8163,15 +8163,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalFenceProperties:       "); // HRW
     OutputString(outputFile, "VkExternalFenceProperties* = "); // TEQ
-    if (pExternalFenceProperties.GetPointer() == nullptr) // WWY
+    if (pExternalFenceProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pExternalFenceProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pExternalFenceProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalFenceProperties.GetMetaStructPointer(), indent+1, pExternalFenceProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalFenceProperties->GetMetaStructPointer(), indent+1, pExternalFenceProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8199,7 +8199,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalSemaphoreInfo:         "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceExternalSemaphoreInfo* = "); // TEQ
-    if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WWY
+    if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -8215,15 +8215,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalSemaphoreProperties:   "); // HRW
     OutputString(outputFile, "VkExternalSemaphoreProperties* = "); // TEQ
-    if (pExternalSemaphoreProperties.GetPointer() == nullptr) // WWY
+    if (pExternalSemaphoreProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pExternalSemaphoreProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pExternalSemaphoreProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalSemaphoreProperties.GetMetaStructPointer(), indent+1, pExternalSemaphoreProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalSemaphoreProperties->GetMetaStructPointer(), indent+1, pExternalSemaphoreProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8251,7 +8251,7 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupport(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkDescriptorSetLayoutCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -8267,15 +8267,15 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupport(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSupport:                       "); // HRW
     OutputString(outputFile, "VkDescriptorSetLayoutSupport* = "); // TEQ
-    if (pSupport.GetPointer() == nullptr) // WWY
+    if (pSupport->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSupport.GetAddress()); // JHI
+        AddrToString(outputFile, pSupport->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSupport.GetMetaStructPointer(), indent+1, pSupport.GetAddress()); // GLM
+        StructureToString(outputFile, *pSupport->GetMetaStructPointer(), indent+1, pSupport->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8311,7 +8311,7 @@ void VulkanAsciiConsumer::Process_vkDestroySurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -8365,14 +8365,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSupported:                     "); // HRW
     OutputString(outputFile, "VkBool32* = "); // TEQ
-    if (pSupported.GetPointer() == nullptr) // WWY
+    if (pSupported->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSupported = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pSupported.GetPointer(), vinfo_pSupported); // PWS
+        ScalarValueToString(outputFile, pSupported->GetPointer(), vinfo_pSupported); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8410,15 +8410,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurfaceCapabilities:           "); // HRW
     OutputString(outputFile, "VkSurfaceCapabilitiesKHR* = "); // TEQ
-    if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
+    if (pSurfaceCapabilities->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSurfaceCapabilities.GetAddress()); // JHI
+        AddrToString(outputFile, pSurfaceCapabilities->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1, pSurfaceCapabilities.GetAddress()); // GLM
+        StructureToString(outputFile, *pSurfaceCapabilities->GetMetaStructPointer(), indent+1, pSurfaceCapabilities->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8457,14 +8457,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurfaceFormatCount:            "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pSurfaceFormatCount.GetPointer() == nullptr) // WWY
+    if (pSurfaceFormatCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurfaceFormatCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurfaceFormatCount.GetPointer(), vinfo_pSurfaceFormatCount); // PWS
+        ScalarValueToString(outputFile, pSurfaceFormatCount->GetPointer(), vinfo_pSurfaceFormatCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8472,14 +8472,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurfaceFormats:                "); // HRW
     OutputString(outputFile, "VkSurfaceFormatKHR* = "); // TEQ
-    if (pSurfaceFormats.GetPointer() == nullptr) // WWY
+    if (pSurfaceFormats->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSurfaceFormats.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSurfaceFormatKHR>(outputFile, indent+1, "VkSurfaceFormatKHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress());  // CCO
+        AddrToString(outputFile, pSurfaceFormats->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkSurfaceFormatKHR>(outputFile, indent+1, "VkSurfaceFormatKHR", pSurfaceFormats->GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount->GetPointer(), false, pSurfaceFormats->GetAddress(), sizeof(VkSurfaceFormatKHR));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8518,14 +8518,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPresentModeCount:              "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPresentModeCount.GetPointer() == nullptr) // WWY
+    if (pPresentModeCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPresentModeCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPresentModeCount.GetPointer(), vinfo_pPresentModeCount); // PWS
+        ScalarValueToString(outputFile, pPresentModeCount->GetPointer(), vinfo_pPresentModeCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8533,15 +8533,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPresentModes:                  "); // HRW
     OutputString(outputFile, "VkPresentModeKHR* = "); // TEQ
-    if (pPresentModes.GetPointer() == nullptr) // WWY
+    if (pPresentModes->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pPresentModes.GetAddress()); // PAZ
+        AddrToString(outputFile, pPresentModes->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHR};
-        ArrayToString(outputFile, indent, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUC
+        ArrayToString(outputFile, indent, "VkPresentModeKHR*", pPresentModes, "pPresentModes", *pPresentModeCount->GetPointer(), vinfo_pPresentModes); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8574,7 +8574,7 @@ void VulkanAsciiConsumer::Process_vkCreateSwapchainKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkSwapchainCreateInfoKHR* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -8590,7 +8590,7 @@ void VulkanAsciiConsumer::Process_vkCreateSwapchainKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -8606,14 +8606,14 @@ void VulkanAsciiConsumer::Process_vkCreateSwapchainKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSwapchain:                     "); // HRW
     OutputString(outputFile, "VkSwapchainKHR* = "); // TEQ
-    if (pSwapchain.GetPointer() == nullptr) // WWY
+    if (pSwapchain->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSwapchain = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSwapchain.GetPointer(), vinfo_pSwapchain); // PWS
+        ScalarValueToString(outputFile, pSwapchain->GetPointer(), vinfo_pSwapchain); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8648,7 +8648,7 @@ void VulkanAsciiConsumer::Process_vkDestroySwapchainKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -8695,14 +8695,14 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainImagesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSwapchainImageCount:           "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pSwapchainImageCount.GetPointer() == nullptr) // WWY
+    if (pSwapchainImageCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSwapchainImageCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pSwapchainImageCount.GetPointer(), vinfo_pSwapchainImageCount); // PWS
+        ScalarValueToString(outputFile, pSwapchainImageCount->GetPointer(), vinfo_pSwapchainImageCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8710,15 +8710,15 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainImagesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSwapchainImages:               "); // HRW
     OutputString(outputFile, "VkImage* = "); // TEQ
-    if (pSwapchainImages.GetPointer() == nullptr) // WWY
+    if (pSwapchainImages->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSwapchainImages.GetAddress()); // PAZ
+        AddrToString(outputFile, pSwapchainImages->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSwapchainImages = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "VkImage*", &pSwapchainImages, "pSwapchainImages", *pSwapchainImageCount.GetPointer(), vinfo_pSwapchainImages); // AUC
+        ArrayToString(outputFile, indent, "VkImage*", pSwapchainImages, "pSwapchainImages", *pSwapchainImageCount->GetPointer(), vinfo_pSwapchainImages); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8780,14 +8780,14 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImageKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageIndex:                    "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pImageIndex.GetPointer() == nullptr) // WWY
+    if (pImageIndex->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pImageIndex = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pImageIndex.GetPointer(), vinfo_pImageIndex); // PWS
+        ScalarValueToString(outputFile, pImageIndex->GetPointer(), vinfo_pImageIndex); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8817,7 +8817,7 @@ void VulkanAsciiConsumer::Process_vkQueuePresentKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPresentInfo:                   "); // HRW
     OutputString(outputFile, "const VkPresentInfoKHR* = "); // TEQ
-    if (pPresentInfo.GetPointer() == nullptr) // WWY
+    if (pPresentInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -8855,15 +8855,15 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDeviceGroupPresentCapabilities: "); // HRW
     OutputString(outputFile, "VkDeviceGroupPresentCapabilitiesKHR* = "); // TEQ
-    if (pDeviceGroupPresentCapabilities.GetPointer() == nullptr) // WWY
+    if (pDeviceGroupPresentCapabilities->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pDeviceGroupPresentCapabilities.GetAddress()); // JHI
+        AddrToString(outputFile, pDeviceGroupPresentCapabilities->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pDeviceGroupPresentCapabilities.GetMetaStructPointer(), indent+1, pDeviceGroupPresentCapabilities.GetAddress()); // GLM
+        StructureToString(outputFile, *pDeviceGroupPresentCapabilities->GetMetaStructPointer(), indent+1, pDeviceGroupPresentCapabilities->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8901,14 +8901,14 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pModes:                         "); // HRW
     OutputString(outputFile, "VkDeviceGroupPresentModeFlagsKHR* = "); // TEQ
-    if (pModes.GetPointer() == nullptr) // WWY
+    if (pModes->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pModes = {false, false, true, EnumToStringVkDeviceGroupPresentModeFlagBitsKHR};
-        ScalarValueToString(outputFile, pModes.GetPointer(), vinfo_pModes); // PWS
+        ScalarValueToString(outputFile, pModes->GetPointer(), vinfo_pModes); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8947,14 +8947,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRectCount:                     "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pRectCount.GetPointer() == nullptr) // WWY
+    if (pRectCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pRectCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pRectCount.GetPointer(), vinfo_pRectCount); // PWS
+        ScalarValueToString(outputFile, pRectCount->GetPointer(), vinfo_pRectCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -8962,14 +8962,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRects:                         "); // HRW
     OutputString(outputFile, "VkRect2D* = "); // TEQ
-    if (pRects.GetPointer() == nullptr) // WWY
+    if (pRects->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pRects.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pRects.GetMetaStructPointer(), "pRects", *pRectCount.GetPointer(), false, pRects.GetAddress());  // CCO
+        AddrToString(outputFile, pRects->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pRects->GetMetaStructPointer(), "pRects", *pRectCount->GetPointer(), false, pRects->GetAddress(), sizeof(VkRect2D));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9000,7 +9000,7 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImage2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAcquireInfo:                   "); // HRW
     OutputString(outputFile, "const VkAcquireNextImageInfoKHR* = "); // TEQ
-    if (pAcquireInfo.GetPointer() == nullptr) // WWY
+    if (pAcquireInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9016,14 +9016,14 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImage2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageIndex:                    "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pImageIndex.GetPointer() == nullptr) // WWY
+    if (pImageIndex->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pImageIndex = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pImageIndex.GetPointer(), vinfo_pImageIndex); // PWS
+        ScalarValueToString(outputFile, pImageIndex->GetPointer(), vinfo_pImageIndex); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9055,14 +9055,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPropertyCount:                 "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPropertyCount.GetPointer(), vinfo_pPropertyCount); // PWS
+        ScalarValueToString(outputFile, pPropertyCount->GetPointer(), vinfo_pPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9070,14 +9070,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkDisplayPropertiesKHR* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkDisplayPropertiesKHR>(outputFile, indent+1, "VkDisplayPropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkDisplayPropertiesKHR>(outputFile, indent+1, "VkDisplayPropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayPropertiesKHR));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9108,14 +9108,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPropertyCount:                 "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPropertyCount.GetPointer(), vinfo_pPropertyCount); // PWS
+        ScalarValueToString(outputFile, pPropertyCount->GetPointer(), vinfo_pPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9123,14 +9123,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkDisplayPlanePropertiesKHR* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkDisplayPlanePropertiesKHR>(outputFile, indent+1, "VkDisplayPlanePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkDisplayPlanePropertiesKHR>(outputFile, indent+1, "VkDisplayPlanePropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayPlanePropertiesKHR));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9169,14 +9169,14 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDisplayCount:                  "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pDisplayCount.GetPointer() == nullptr) // WWY
+    if (pDisplayCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pDisplayCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pDisplayCount.GetPointer(), vinfo_pDisplayCount); // PWS
+        ScalarValueToString(outputFile, pDisplayCount->GetPointer(), vinfo_pDisplayCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9184,15 +9184,15 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDisplays:                      "); // HRW
     OutputString(outputFile, "VkDisplayKHR* = "); // TEQ
-    if (pDisplays.GetPointer() == nullptr) // WWY
+    if (pDisplays->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pDisplays.GetAddress()); // PAZ
+        AddrToString(outputFile, pDisplays->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pDisplays = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "VkDisplayKHR*", &pDisplays, "pDisplays", *pDisplayCount.GetPointer(), vinfo_pDisplays); // AUC
+        ArrayToString(outputFile, indent, "VkDisplayKHR*", pDisplays, "pDisplays", *pDisplayCount->GetPointer(), vinfo_pDisplays); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9231,14 +9231,14 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModePropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPropertyCount:                 "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPropertyCount.GetPointer(), vinfo_pPropertyCount); // PWS
+        ScalarValueToString(outputFile, pPropertyCount->GetPointer(), vinfo_pPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9246,14 +9246,14 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModePropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkDisplayModePropertiesKHR* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkDisplayModePropertiesKHR>(outputFile, indent+1, "VkDisplayModePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkDisplayModePropertiesKHR>(outputFile, indent+1, "VkDisplayModePropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayModePropertiesKHR));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9293,7 +9293,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayModeKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkDisplayModeCreateInfoKHR* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9309,7 +9309,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayModeKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9325,14 +9325,14 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayModeKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMode:                          "); // HRW
     OutputString(outputFile, "VkDisplayModeKHR* = "); // TEQ
-    if (pMode.GetPointer() == nullptr) // WWY
+    if (pMode->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pMode = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pMode.GetPointer(), vinfo_pMode); // PWS
+        ScalarValueToString(outputFile, pMode->GetPointer(), vinfo_pMode); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9378,15 +9378,15 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCapabilities:                  "); // HRW
     OutputString(outputFile, "VkDisplayPlaneCapabilitiesKHR* = "); // TEQ
-    if (pCapabilities.GetPointer() == nullptr) // WWY
+    if (pCapabilities->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCapabilities.GetAddress()); // JHI
+        AddrToString(outputFile, pCapabilities->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCapabilities.GetMetaStructPointer(), indent+1, pCapabilities.GetAddress()); // GLM
+        StructureToString(outputFile, *pCapabilities->GetMetaStructPointer(), indent+1, pCapabilities->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9418,7 +9418,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkDisplaySurfaceCreateInfoKHR* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9434,7 +9434,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9450,14 +9450,14 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9498,14 +9498,14 @@ void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfos:                   "); // HRW
     OutputString(outputFile, "const VkSwapchainCreateInfoKHR* = "); // TEQ
-    if (pCreateInfos.GetPointer() == nullptr) // WWY
+    if (pCreateInfos.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCreateInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSwapchainCreateInfoKHR>(outputFile, indent+1, "VkSwapchainCreateInfoKHR", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", swapchainCount, false, pCreateInfos.GetAddress());  // CCO
+        AddrToString(outputFile, pCreateInfos.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkSwapchainCreateInfoKHR>(outputFile, indent+1, "VkSwapchainCreateInfoKHR", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", swapchainCount, false, pCreateInfos.GetAddress(), sizeof(VkSwapchainCreateInfoKHR));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9513,7 +9513,7 @@ void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9529,15 +9529,15 @@ void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSwapchains:                    "); // HRW
     OutputString(outputFile, "VkSwapchainKHR* = "); // TEQ
-    if (pSwapchains.GetPointer() == nullptr) // WWY
+    if (pSwapchains->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSwapchains.GetAddress()); // PAZ
+        AddrToString(outputFile, pSwapchains->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AUC
+        ArrayToString(outputFile, indent, "VkSwapchainKHR*", pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9570,7 +9570,7 @@ void VulkanAsciiConsumer::Process_vkCreateXlibSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkXlibSurfaceCreateInfoKHR* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9586,7 +9586,7 @@ void VulkanAsciiConsumer::Process_vkCreateXlibSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9602,14 +9602,14 @@ void VulkanAsciiConsumer::Process_vkCreateXlibSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9685,7 +9685,7 @@ void VulkanAsciiConsumer::Process_vkCreateXcbSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkXcbSurfaceCreateInfoKHR* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9701,7 +9701,7 @@ void VulkanAsciiConsumer::Process_vkCreateXcbSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9717,14 +9717,14 @@ void VulkanAsciiConsumer::Process_vkCreateXcbSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9807,7 +9807,7 @@ void VulkanAsciiConsumer::Process_vkCreateWaylandSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkWaylandSurfaceCreateInfoKHR* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9823,7 +9823,7 @@ void VulkanAsciiConsumer::Process_vkCreateWaylandSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9839,14 +9839,14 @@ void VulkanAsciiConsumer::Process_vkCreateWaylandSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9921,7 +9921,7 @@ void VulkanAsciiConsumer::Process_vkCreateAndroidSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkAndroidSurfaceCreateInfoKHR* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9937,7 +9937,7 @@ void VulkanAsciiConsumer::Process_vkCreateAndroidSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -9953,14 +9953,14 @@ void VulkanAsciiConsumer::Process_vkCreateAndroidSurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -9993,7 +9993,7 @@ void VulkanAsciiConsumer::Process_vkCreateWin32SurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkWin32SurfaceCreateInfoKHR* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -10009,7 +10009,7 @@ void VulkanAsciiConsumer::Process_vkCreateWin32SurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -10025,14 +10025,14 @@ void VulkanAsciiConsumer::Process_vkCreateWin32SurfaceKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10087,15 +10087,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFeatures:                      "); // HRW
     OutputString(outputFile, "VkPhysicalDeviceFeatures2* = "); // TEQ
-    if (pFeatures.GetPointer() == nullptr) // WWY
+    if (pFeatures->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pFeatures.GetAddress()); // JHI
+        AddrToString(outputFile, pFeatures->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFeatures.GetMetaStructPointer(), indent+1, pFeatures.GetAddress()); // GLM
+        StructureToString(outputFile, *pFeatures->GetMetaStructPointer(), indent+1, pFeatures->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10122,15 +10122,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkPhysicalDeviceProperties2* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pProperties->GetMetaStructPointer(), indent+1, pProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10168,15 +10168,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFormatProperties:              "); // HRW
     OutputString(outputFile, "VkFormatProperties2* = "); // TEQ
-    if (pFormatProperties.GetPointer() == nullptr) // WWY
+    if (pFormatProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pFormatProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pFormatProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFormatProperties.GetMetaStructPointer(), indent+1, pFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pFormatProperties->GetMetaStructPointer(), indent+1, pFormatProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10207,7 +10207,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageFormatInfo:               "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceImageFormatInfo2* = "); // TEQ
-    if (pImageFormatInfo.GetPointer() == nullptr) // WWY
+    if (pImageFormatInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -10223,15 +10223,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageFormatProperties:         "); // HRW
     OutputString(outputFile, "VkImageFormatProperties2* = "); // TEQ
-    if (pImageFormatProperties.GetPointer() == nullptr) // WWY
+    if (pImageFormatProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pImageFormatProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pImageFormatProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pImageFormatProperties.GetMetaStructPointer(), indent+1, pImageFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pImageFormatProperties->GetMetaStructPointer(), indent+1, pImageFormatProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10259,14 +10259,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueFamilyPropertyCount:      "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pQueueFamilyPropertyCount.GetPointer() == nullptr) // WWY
+    if (pQueueFamilyPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pQueueFamilyPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pQueueFamilyPropertyCount.GetPointer(), vinfo_pQueueFamilyPropertyCount); // PWS
+        ScalarValueToString(outputFile, pQueueFamilyPropertyCount->GetPointer(), vinfo_pQueueFamilyPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10274,14 +10274,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueFamilyProperties:         "); // HRW
     OutputString(outputFile, "VkQueueFamilyProperties2* = "); // TEQ
-    if (pQueueFamilyProperties.GetPointer() == nullptr) // WWY
+    if (pQueueFamilyProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pQueueFamilyProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkQueueFamilyProperties2>(outputFile, indent+1, "VkQueueFamilyProperties2", pQueueFamilyProperties.GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount.GetPointer(), false, pQueueFamilyProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pQueueFamilyProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkQueueFamilyProperties2>(outputFile, indent+1, "VkQueueFamilyProperties2", pQueueFamilyProperties->GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount->GetPointer(), false, pQueueFamilyProperties->GetAddress(), sizeof(VkQueueFamilyProperties2));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10308,15 +10308,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryProperties:              "); // HRW
     OutputString(outputFile, "VkPhysicalDeviceMemoryProperties2* = "); // TEQ
-    if (pMemoryProperties.GetPointer() == nullptr) // WWY
+    if (pMemoryProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryProperties.GetMetaStructPointer(), indent+1, pMemoryProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryProperties->GetMetaStructPointer(), indent+1, pMemoryProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10345,7 +10345,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFormatInfo:                    "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceSparseImageFormatInfo2* = "); // TEQ
-    if (pFormatInfo.GetPointer() == nullptr) // WWY
+    if (pFormatInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -10361,14 +10361,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPropertyCount:                 "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPropertyCount.GetPointer(), vinfo_pPropertyCount); // PWS
+        ScalarValueToString(outputFile, pPropertyCount->GetPointer(), vinfo_pPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10376,14 +10376,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkSparseImageFormatProperties2* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSparseImageFormatProperties2>(outputFile, indent+1, "VkSparseImageFormatProperties2", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkSparseImageFormatProperties2>(outputFile, indent+1, "VkSparseImageFormatProperties2", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkSparseImageFormatProperties2));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10435,14 +10435,14 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPeerMemoryFeatures:            "); // HRW
     OutputString(outputFile, "VkPeerMemoryFeatureFlags* = "); // TEQ
-    if (pPeerMemoryFeatures.GetPointer() == nullptr) // WWY
+    if (pPeerMemoryFeatures->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPeerMemoryFeatures = {false, false, true, EnumToStringVkPeerMemoryFeatureFlagBits};
-        ScalarValueToString(outputFile, pPeerMemoryFeatures.GetPointer(), vinfo_pPeerMemoryFeatures); // PWS
+        ScalarValueToString(outputFile, pPeerMemoryFeatures->GetPointer(), vinfo_pPeerMemoryFeatures); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10601,14 +10601,14 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPhysicalDeviceGroupCount:      "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPhysicalDeviceGroupCount.GetPointer() == nullptr) // WWY
+    if (pPhysicalDeviceGroupCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPhysicalDeviceGroupCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPhysicalDeviceGroupCount.GetPointer(), vinfo_pPhysicalDeviceGroupCount); // PWS
+        ScalarValueToString(outputFile, pPhysicalDeviceGroupCount->GetPointer(), vinfo_pPhysicalDeviceGroupCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10616,14 +10616,14 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPhysicalDeviceGroupProperties: "); // HRW
     OutputString(outputFile, "VkPhysicalDeviceGroupProperties* = "); // TEQ
-    if (pPhysicalDeviceGroupProperties.GetPointer() == nullptr) // WWY
+    if (pPhysicalDeviceGroupProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pPhysicalDeviceGroupProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent+1, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties.GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount.GetPointer(), false, pPhysicalDeviceGroupProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pPhysicalDeviceGroupProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent+1, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties->GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount->GetPointer(), false, pPhysicalDeviceGroupProperties->GetAddress(), sizeof(VkPhysicalDeviceGroupProperties));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10652,7 +10652,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalBufferInfo:            "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceExternalBufferInfo* = "); // TEQ
-    if (pExternalBufferInfo.GetPointer() == nullptr) // WWY
+    if (pExternalBufferInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -10668,15 +10668,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalBufferProperties:      "); // HRW
     OutputString(outputFile, "VkExternalBufferProperties* = "); // TEQ
-    if (pExternalBufferProperties.GetPointer() == nullptr) // WWY
+    if (pExternalBufferProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pExternalBufferProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pExternalBufferProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalBufferProperties.GetMetaStructPointer(), indent+1, pExternalBufferProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalBufferProperties->GetMetaStructPointer(), indent+1, pExternalBufferProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10708,7 +10708,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pGetWin32HandleInfo:            "); // HRW
     OutputString(outputFile, "const VkMemoryGetWin32HandleInfoKHR* = "); // TEQ
-    if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
+    if (pGetWin32HandleInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -10724,14 +10724,14 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pHandle:                        "); // HRW
     OutputString(outputFile, "void** = "); // TEQ
-    if (pHandle.GetPointer() == nullptr) // WWY
+    if (pHandle->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pHandle = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pHandle.GetPointer(), vinfo_pHandle); // PWS
+        ScalarValueToString(outputFile, pHandle->GetPointer(), vinfo_pHandle); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10787,15 +10787,15 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryWin32HandleProperties:   "); // HRW
     OutputString(outputFile, "VkMemoryWin32HandlePropertiesKHR* = "); // TEQ
-    if (pMemoryWin32HandleProperties.GetPointer() == nullptr) // WWY
+    if (pMemoryWin32HandleProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryWin32HandleProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryWin32HandleProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryWin32HandleProperties.GetMetaStructPointer(), indent+1, pMemoryWin32HandleProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryWin32HandleProperties->GetMetaStructPointer(), indent+1, pMemoryWin32HandleProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10827,7 +10827,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pGetFdInfo:                     "); // HRW
     OutputString(outputFile, "const VkMemoryGetFdInfoKHR* = "); // TEQ
-    if (pGetFdInfo.GetPointer() == nullptr) // WWY
+    if (pGetFdInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -10843,14 +10843,14 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFd:                            "); // HRW
     OutputString(outputFile, "int* = "); // TEQ
-    if (pFd.GetPointer() == nullptr) // WWY
+    if (pFd->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pFd = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pFd.GetPointer(), vinfo_pFd); // PWS
+        ScalarValueToString(outputFile, pFd->GetPointer(), vinfo_pFd); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10899,15 +10899,15 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdPropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryFdProperties:            "); // HRW
     OutputString(outputFile, "VkMemoryFdPropertiesKHR* = "); // TEQ
-    if (pMemoryFdProperties.GetPointer() == nullptr) // WWY
+    if (pMemoryFdProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryFdProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryFdProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryFdProperties.GetMetaStructPointer(), indent+1, pMemoryFdProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryFdProperties->GetMetaStructPointer(), indent+1, pMemoryFdProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10936,7 +10936,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalSemaphoreInfo:         "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceExternalSemaphoreInfo* = "); // TEQ
-    if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WWY
+    if (pExternalSemaphoreInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -10952,15 +10952,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalSemaphoreProperties:   "); // HRW
     OutputString(outputFile, "VkExternalSemaphoreProperties* = "); // TEQ
-    if (pExternalSemaphoreProperties.GetPointer() == nullptr) // WWY
+    if (pExternalSemaphoreProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pExternalSemaphoreProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pExternalSemaphoreProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalSemaphoreProperties.GetMetaStructPointer(), indent+1, pExternalSemaphoreProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalSemaphoreProperties->GetMetaStructPointer(), indent+1, pExternalSemaphoreProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -10991,7 +10991,7 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImportSemaphoreWin32HandleInfo: "); // HRW
     OutputString(outputFile, "const VkImportSemaphoreWin32HandleInfoKHR* = "); // TEQ
-    if (pImportSemaphoreWin32HandleInfo.GetPointer() == nullptr) // WWY
+    if (pImportSemaphoreWin32HandleInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11030,7 +11030,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pGetWin32HandleInfo:            "); // HRW
     OutputString(outputFile, "const VkSemaphoreGetWin32HandleInfoKHR* = "); // TEQ
-    if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
+    if (pGetWin32HandleInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11046,14 +11046,14 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pHandle:                        "); // HRW
     OutputString(outputFile, "void** = "); // TEQ
-    if (pHandle.GetPointer() == nullptr) // WWY
+    if (pHandle->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pHandle = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pHandle.GetPointer(), vinfo_pHandle); // PWS
+        ScalarValueToString(outputFile, pHandle->GetPointer(), vinfo_pHandle); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11084,7 +11084,7 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreFdKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImportSemaphoreFdInfo:         "); // HRW
     OutputString(outputFile, "const VkImportSemaphoreFdInfoKHR* = "); // TEQ
-    if (pImportSemaphoreFdInfo.GetPointer() == nullptr) // WWY
+    if (pImportSemaphoreFdInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11123,7 +11123,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreFdKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pGetFdInfo:                     "); // HRW
     OutputString(outputFile, "const VkSemaphoreGetFdInfoKHR* = "); // TEQ
-    if (pGetFdInfo.GetPointer() == nullptr) // WWY
+    if (pGetFdInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11139,14 +11139,14 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreFdKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFd:                            "); // HRW
     OutputString(outputFile, "int* = "); // TEQ
-    if (pFd.GetPointer() == nullptr) // WWY
+    if (pFd->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pFd = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pFd.GetPointer(), vinfo_pFd); // PWS
+        ScalarValueToString(outputFile, pFd->GetPointer(), vinfo_pFd); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11209,14 +11209,14 @@ void VulkanAsciiConsumer::Process_vkCmdPushDescriptorSetKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDescriptorWrites:              "); // HRW
     OutputString(outputFile, "const VkWriteDescriptorSet* = "); // TEQ
-    if (pDescriptorWrites.GetPointer() == nullptr) // WWY
+    if (pDescriptorWrites.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pDescriptorWrites.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkWriteDescriptorSet>(outputFile, indent+1, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress());  // CCO
+        AddrToString(outputFile, pDescriptorWrites.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkWriteDescriptorSet>(outputFile, indent+1, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress(), sizeof(VkWriteDescriptorSet));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11249,7 +11249,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkDescriptorUpdateTemplateCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11265,7 +11265,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11281,14 +11281,14 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDescriptorUpdateTemplate:      "); // HRW
     OutputString(outputFile, "VkDescriptorUpdateTemplate* = "); // TEQ
-    if (pDescriptorUpdateTemplate.GetPointer() == nullptr) // WWY
+    if (pDescriptorUpdateTemplate->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pDescriptorUpdateTemplate = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pDescriptorUpdateTemplate.GetPointer(), vinfo_pDescriptorUpdateTemplate); // PWS
+        ScalarValueToString(outputFile, pDescriptorUpdateTemplate->GetPointer(), vinfo_pDescriptorUpdateTemplate); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11323,7 +11323,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11364,7 +11364,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkRenderPassCreateInfo2KHR* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11380,7 +11380,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11396,14 +11396,14 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRenderPass:                    "); // HRW
     OutputString(outputFile, "VkRenderPass* = "); // TEQ
-    if (pRenderPass.GetPointer() == nullptr) // WWY
+    if (pRenderPass->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pRenderPass = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pRenderPass.GetPointer(), vinfo_pRenderPass); // PWS
+        ScalarValueToString(outputFile, pRenderPass->GetPointer(), vinfo_pRenderPass); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11431,7 +11431,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRenderPassBegin:               "); // HRW
     OutputString(outputFile, "const VkRenderPassBeginInfo* = "); // TEQ
-    if (pRenderPassBegin.GetPointer() == nullptr) // WWY
+    if (pRenderPassBegin.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11447,7 +11447,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSubpassBeginInfo:              "); // HRW
     OutputString(outputFile, "const VkSubpassBeginInfoKHR* = "); // TEQ
-    if (pSubpassBeginInfo.GetPointer() == nullptr) // WWY
+    if (pSubpassBeginInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11483,7 +11483,7 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSubpassBeginInfo:              "); // HRW
     OutputString(outputFile, "const VkSubpassBeginInfoKHR* = "); // TEQ
-    if (pSubpassBeginInfo.GetPointer() == nullptr) // WWY
+    if (pSubpassBeginInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11499,7 +11499,7 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSubpassEndInfo:                "); // HRW
     OutputString(outputFile, "const VkSubpassEndInfoKHR* = "); // TEQ
-    if (pSubpassEndInfo.GetPointer() == nullptr) // WWY
+    if (pSubpassEndInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11534,7 +11534,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndRenderPass2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSubpassEndInfo:                "); // HRW
     OutputString(outputFile, "const VkSubpassEndInfoKHR* = "); // TEQ
-    if (pSubpassEndInfo.GetPointer() == nullptr) // WWY
+    if (pSubpassEndInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11601,7 +11601,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalFenceInfo:             "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceExternalFenceInfo* = "); // TEQ
-    if (pExternalFenceInfo.GetPointer() == nullptr) // WWY
+    if (pExternalFenceInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11617,15 +11617,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalFenceProperties:       "); // HRW
     OutputString(outputFile, "VkExternalFenceProperties* = "); // TEQ
-    if (pExternalFenceProperties.GetPointer() == nullptr) // WWY
+    if (pExternalFenceProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pExternalFenceProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pExternalFenceProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalFenceProperties.GetMetaStructPointer(), indent+1, pExternalFenceProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalFenceProperties->GetMetaStructPointer(), indent+1, pExternalFenceProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11656,7 +11656,7 @@ void VulkanAsciiConsumer::Process_vkImportFenceWin32HandleKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImportFenceWin32HandleInfo:    "); // HRW
     OutputString(outputFile, "const VkImportFenceWin32HandleInfoKHR* = "); // TEQ
-    if (pImportFenceWin32HandleInfo.GetPointer() == nullptr) // WWY
+    if (pImportFenceWin32HandleInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11695,7 +11695,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceWin32HandleKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pGetWin32HandleInfo:            "); // HRW
     OutputString(outputFile, "const VkFenceGetWin32HandleInfoKHR* = "); // TEQ
-    if (pGetWin32HandleInfo.GetPointer() == nullptr) // WWY
+    if (pGetWin32HandleInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11711,14 +11711,14 @@ void VulkanAsciiConsumer::Process_vkGetFenceWin32HandleKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pHandle:                        "); // HRW
     OutputString(outputFile, "void** = "); // TEQ
-    if (pHandle.GetPointer() == nullptr) // WWY
+    if (pHandle->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pHandle = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pHandle.GetPointer(), vinfo_pHandle); // PWS
+        ScalarValueToString(outputFile, pHandle->GetPointer(), vinfo_pHandle); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11749,7 +11749,7 @@ void VulkanAsciiConsumer::Process_vkImportFenceFdKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImportFenceFdInfo:             "); // HRW
     OutputString(outputFile, "const VkImportFenceFdInfoKHR* = "); // TEQ
-    if (pImportFenceFdInfo.GetPointer() == nullptr) // WWY
+    if (pImportFenceFdInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11788,7 +11788,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceFdKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pGetFdInfo:                     "); // HRW
     OutputString(outputFile, "const VkFenceGetFdInfoKHR* = "); // TEQ
-    if (pGetFdInfo.GetPointer() == nullptr) // WWY
+    if (pGetFdInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11804,14 +11804,14 @@ void VulkanAsciiConsumer::Process_vkGetFenceFdKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFd:                            "); // HRW
     OutputString(outputFile, "int* = "); // TEQ
-    if (pFd.GetPointer() == nullptr) // WWY
+    if (pFd->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pFd = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pFd.GetPointer(), vinfo_pFd); // PWS
+        ScalarValueToString(outputFile, pFd->GetPointer(), vinfo_pFd); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11843,7 +11843,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurfaceInfo:                   "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceSurfaceInfo2KHR* = "); // TEQ
-    if (pSurfaceInfo.GetPointer() == nullptr) // WWY
+    if (pSurfaceInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11859,15 +11859,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurfaceCapabilities:           "); // HRW
     OutputString(outputFile, "VkSurfaceCapabilities2KHR* = "); // TEQ
-    if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
+    if (pSurfaceCapabilities->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSurfaceCapabilities.GetAddress()); // JHI
+        AddrToString(outputFile, pSurfaceCapabilities->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1, pSurfaceCapabilities.GetAddress()); // GLM
+        StructureToString(outputFile, *pSurfaceCapabilities->GetMetaStructPointer(), indent+1, pSurfaceCapabilities->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11899,7 +11899,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurfaceInfo:                   "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceSurfaceInfo2KHR* = "); // TEQ
-    if (pSurfaceInfo.GetPointer() == nullptr) // WWY
+    if (pSurfaceInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -11915,14 +11915,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurfaceFormatCount:            "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pSurfaceFormatCount.GetPointer() == nullptr) // WWY
+    if (pSurfaceFormatCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurfaceFormatCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurfaceFormatCount.GetPointer(), vinfo_pSurfaceFormatCount); // PWS
+        ScalarValueToString(outputFile, pSurfaceFormatCount->GetPointer(), vinfo_pSurfaceFormatCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11930,14 +11930,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurfaceFormats:                "); // HRW
     OutputString(outputFile, "VkSurfaceFormat2KHR* = "); // TEQ
-    if (pSurfaceFormats.GetPointer() == nullptr) // WWY
+    if (pSurfaceFormats->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSurfaceFormats.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSurfaceFormat2KHR>(outputFile, indent+1, "VkSurfaceFormat2KHR", pSurfaceFormats.GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount.GetPointer(), false, pSurfaceFormats.GetAddress());  // CCO
+        AddrToString(outputFile, pSurfaceFormats->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkSurfaceFormat2KHR>(outputFile, indent+1, "VkSurfaceFormat2KHR", pSurfaceFormats->GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount->GetPointer(), false, pSurfaceFormats->GetAddress(), sizeof(VkSurfaceFormat2KHR));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11969,14 +11969,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPropertyCount:                 "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPropertyCount.GetPointer(), vinfo_pPropertyCount); // PWS
+        ScalarValueToString(outputFile, pPropertyCount->GetPointer(), vinfo_pPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -11984,14 +11984,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkDisplayProperties2KHR* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkDisplayProperties2KHR>(outputFile, indent+1, "VkDisplayProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkDisplayProperties2KHR>(outputFile, indent+1, "VkDisplayProperties2KHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayProperties2KHR));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12022,14 +12022,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPropertyCount:                 "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPropertyCount.GetPointer(), vinfo_pPropertyCount); // PWS
+        ScalarValueToString(outputFile, pPropertyCount->GetPointer(), vinfo_pPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12037,14 +12037,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkDisplayPlaneProperties2KHR* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkDisplayPlaneProperties2KHR>(outputFile, indent+1, "VkDisplayPlaneProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkDisplayPlaneProperties2KHR>(outputFile, indent+1, "VkDisplayPlaneProperties2KHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayPlaneProperties2KHR));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12083,14 +12083,14 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModeProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPropertyCount:                 "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPropertyCount.GetPointer(), vinfo_pPropertyCount); // PWS
+        ScalarValueToString(outputFile, pPropertyCount->GetPointer(), vinfo_pPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12098,14 +12098,14 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModeProperties2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkDisplayModeProperties2KHR* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkDisplayModeProperties2KHR>(outputFile, indent+1, "VkDisplayModeProperties2KHR", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkDisplayModeProperties2KHR>(outputFile, indent+1, "VkDisplayModeProperties2KHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayModeProperties2KHR));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12136,7 +12136,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDisplayPlaneInfo:              "); // HRW
     OutputString(outputFile, "const VkDisplayPlaneInfo2KHR* = "); // TEQ
-    if (pDisplayPlaneInfo.GetPointer() == nullptr) // WWY
+    if (pDisplayPlaneInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -12152,15 +12152,15 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCapabilities:                  "); // HRW
     OutputString(outputFile, "VkDisplayPlaneCapabilities2KHR* = "); // TEQ
-    if (pCapabilities.GetPointer() == nullptr) // WWY
+    if (pCapabilities->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCapabilities.GetAddress()); // JHI
+        AddrToString(outputFile, pCapabilities->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pCapabilities.GetMetaStructPointer(), indent+1, pCapabilities.GetAddress()); // GLM
+        StructureToString(outputFile, *pCapabilities->GetMetaStructPointer(), indent+1, pCapabilities->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12189,7 +12189,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfo:                          "); // HRW
     OutputString(outputFile, "const VkImageMemoryRequirementsInfo2* = "); // TEQ
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -12205,15 +12205,15 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryRequirements:            "); // HRW
     OutputString(outputFile, "VkMemoryRequirements2* = "); // TEQ
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryRequirements->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent+1, pMemoryRequirements->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12241,7 +12241,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfo:                          "); // HRW
     OutputString(outputFile, "const VkBufferMemoryRequirementsInfo2* = "); // TEQ
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -12257,15 +12257,15 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryRequirements:            "); // HRW
     OutputString(outputFile, "VkMemoryRequirements2* = "); // TEQ
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryRequirements->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent+1, pMemoryRequirements->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12294,7 +12294,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfo:                          "); // HRW
     OutputString(outputFile, "const VkImageSparseMemoryRequirementsInfo2* = "); // TEQ
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -12310,14 +12310,14 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSparseMemoryRequirementCount:  "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pSparseMemoryRequirementCount.GetPointer() == nullptr) // WWY
+    if (pSparseMemoryRequirementCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSparseMemoryRequirementCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pSparseMemoryRequirementCount.GetPointer(), vinfo_pSparseMemoryRequirementCount); // PWS
+        ScalarValueToString(outputFile, pSparseMemoryRequirementCount->GetPointer(), vinfo_pSparseMemoryRequirementCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12325,14 +12325,14 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSparseMemoryRequirements:      "); // HRW
     OutputString(outputFile, "VkSparseImageMemoryRequirements2* = "); // TEQ
-    if (pSparseMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pSparseMemoryRequirements->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSparseMemoryRequirements.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent+1, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements.GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount.GetPointer(), false, pSparseMemoryRequirements.GetAddress());  // CCO
+        AddrToString(outputFile, pSparseMemoryRequirements->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent+1, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements->GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount->GetPointer(), false, pSparseMemoryRequirements->GetAddress(), sizeof(VkSparseImageMemoryRequirements2));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12365,7 +12365,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkSamplerYcbcrConversionCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -12381,7 +12381,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -12397,14 +12397,14 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pYcbcrConversion:               "); // HRW
     OutputString(outputFile, "VkSamplerYcbcrConversion* = "); // TEQ
-    if (pYcbcrConversion.GetPointer() == nullptr) // WWY
+    if (pYcbcrConversion->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pYcbcrConversion = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pYcbcrConversion.GetPointer(), vinfo_pYcbcrConversion); // PWS
+        ScalarValueToString(outputFile, pYcbcrConversion->GetPointer(), vinfo_pYcbcrConversion); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12439,7 +12439,7 @@ void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -12486,14 +12486,14 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBindInfos:                     "); // HRW
     OutputString(outputFile, "const VkBindBufferMemoryInfo* = "); // TEQ
-    if (pBindInfos.GetPointer() == nullptr) // WWY
+    if (pBindInfos.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pBindInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBindBufferMemoryInfo>(outputFile, indent+1, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
+        AddrToString(outputFile, pBindInfos.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkBindBufferMemoryInfo>(outputFile, indent+1, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindBufferMemoryInfo));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12531,14 +12531,14 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory2KHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBindInfos:                     "); // HRW
     OutputString(outputFile, "const VkBindImageMemoryInfo* = "); // TEQ
-    if (pBindInfos.GetPointer() == nullptr) // WWY
+    if (pBindInfos.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pBindInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBindImageMemoryInfo>(outputFile, indent+1, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
+        AddrToString(outputFile, pBindInfos.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkBindImageMemoryInfo>(outputFile, indent+1, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindImageMemoryInfo));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12567,7 +12567,7 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkDescriptorSetLayoutCreateInfo* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -12583,15 +12583,15 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSupport:                       "); // HRW
     OutputString(outputFile, "VkDescriptorSetLayoutSupport* = "); // TEQ
-    if (pSupport.GetPointer() == nullptr) // WWY
+    if (pSupport->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSupport.GetAddress()); // JHI
+        AddrToString(outputFile, pSupport->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSupport.GetMetaStructPointer(), indent+1, pSupport.GetAddress()); // GLM
+        StructureToString(outputFile, *pSupport->GetMetaStructPointer(), indent+1, pSupport->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12763,14 +12763,14 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreCounterValueKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pValue:                         "); // HRW
     OutputString(outputFile, "uint64_t* = "); // TEQ
-    if (pValue.GetPointer() == nullptr) // WWY
+    if (pValue->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pValue = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pValue.GetPointer(), vinfo_pValue); // PWS
+        ScalarValueToString(outputFile, pValue->GetPointer(), vinfo_pValue); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12801,7 +12801,7 @@ void VulkanAsciiConsumer::Process_vkWaitSemaphoresKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pWaitInfo:                      "); // HRW
     OutputString(outputFile, "const VkSemaphoreWaitInfoKHR* = "); // TEQ
-    if (pWaitInfo.GetPointer() == nullptr) // WWY
+    if (pWaitInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -12846,7 +12846,7 @@ void VulkanAsciiConsumer::Process_vkSignalSemaphoreKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSignalInfo:                    "); // HRW
     OutputString(outputFile, "const VkSemaphoreSignalInfoKHR* = "); // TEQ
-    if (pSignalInfo.GetPointer() == nullptr) // WWY
+    if (pSignalInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -12887,7 +12887,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPipelineInfo:                  "); // HRW
     OutputString(outputFile, "const VkPipelineInfoKHR* = "); // TEQ
-    if (pPipelineInfo.GetPointer() == nullptr) // WWY
+    if (pPipelineInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -12903,14 +12903,14 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExecutableCount:               "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pExecutableCount.GetPointer() == nullptr) // WWY
+    if (pExecutableCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pExecutableCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pExecutableCount.GetPointer(), vinfo_pExecutableCount); // PWS
+        ScalarValueToString(outputFile, pExecutableCount->GetPointer(), vinfo_pExecutableCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12918,14 +12918,14 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkPipelineExecutablePropertiesKHR* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkPipelineExecutablePropertiesKHR>(outputFile, indent+1, "VkPipelineExecutablePropertiesKHR", pProperties.GetMetaStructPointer(), "pProperties", *pExecutableCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkPipelineExecutablePropertiesKHR>(outputFile, indent+1, "VkPipelineExecutablePropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pExecutableCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkPipelineExecutablePropertiesKHR));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12957,7 +12957,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExecutableInfo:                "); // HRW
     OutputString(outputFile, "const VkPipelineExecutableInfoKHR* = "); // TEQ
-    if (pExecutableInfo.GetPointer() == nullptr) // WWY
+    if (pExecutableInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -12973,14 +12973,14 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pStatisticCount:                "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pStatisticCount.GetPointer() == nullptr) // WWY
+    if (pStatisticCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pStatisticCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pStatisticCount.GetPointer(), vinfo_pStatisticCount); // PWS
+        ScalarValueToString(outputFile, pStatisticCount->GetPointer(), vinfo_pStatisticCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -12988,14 +12988,14 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pStatistics:                    "); // HRW
     OutputString(outputFile, "VkPipelineExecutableStatisticKHR* = "); // TEQ
-    if (pStatistics.GetPointer() == nullptr) // WWY
+    if (pStatistics->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pStatistics.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkPipelineExecutableStatisticKHR>(outputFile, indent+1, "VkPipelineExecutableStatisticKHR", pStatistics.GetMetaStructPointer(), "pStatistics", *pStatisticCount.GetPointer(), false, pStatistics.GetAddress());  // CCO
+        AddrToString(outputFile, pStatistics->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkPipelineExecutableStatisticKHR>(outputFile, indent+1, "VkPipelineExecutableStatisticKHR", pStatistics->GetMetaStructPointer(), "pStatistics", *pStatisticCount->GetPointer(), false, pStatistics->GetAddress(), sizeof(VkPipelineExecutableStatisticKHR));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13027,7 +13027,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableInternalRepresentations
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExecutableInfo:                "); // HRW
     OutputString(outputFile, "const VkPipelineExecutableInfoKHR* = "); // TEQ
-    if (pExecutableInfo.GetPointer() == nullptr) // WWY
+    if (pExecutableInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -13043,14 +13043,14 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableInternalRepresentations
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInternalRepresentationCount:   "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pInternalRepresentationCount.GetPointer() == nullptr) // WWY
+    if (pInternalRepresentationCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pInternalRepresentationCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pInternalRepresentationCount.GetPointer(), vinfo_pInternalRepresentationCount); // PWS
+        ScalarValueToString(outputFile, pInternalRepresentationCount->GetPointer(), vinfo_pInternalRepresentationCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13058,14 +13058,14 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableInternalRepresentations
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInternalRepresentations:       "); // HRW
     OutputString(outputFile, "VkPipelineExecutableInternalRepresentationKHR* = "); // TEQ
-    if (pInternalRepresentations.GetPointer() == nullptr) // WWY
+    if (pInternalRepresentations->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pInternalRepresentations.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkPipelineExecutableInternalRepresentationKHR>(outputFile, indent+1, "VkPipelineExecutableInternalRepresentationKHR", pInternalRepresentations.GetMetaStructPointer(), "pInternalRepresentations", *pInternalRepresentationCount.GetPointer(), false, pInternalRepresentations.GetAddress());  // CCO
+        AddrToString(outputFile, pInternalRepresentations->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkPipelineExecutableInternalRepresentationKHR>(outputFile, indent+1, "VkPipelineExecutableInternalRepresentationKHR", pInternalRepresentations->GetMetaStructPointer(), "pInternalRepresentations", *pInternalRepresentationCount->GetPointer(), false, pInternalRepresentations->GetAddress(), sizeof(VkPipelineExecutableInternalRepresentationKHR));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13098,7 +13098,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugReportCallbackEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkDebugReportCallbackCreateInfoEXT* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -13114,7 +13114,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugReportCallbackEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -13130,14 +13130,14 @@ void VulkanAsciiConsumer::Process_vkCreateDebugReportCallbackEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCallback:                      "); // HRW
     OutputString(outputFile, "VkDebugReportCallbackEXT* = "); // TEQ
-    if (pCallback.GetPointer() == nullptr) // WWY
+    if (pCallback->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pCallback = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pCallback.GetPointer(), vinfo_pCallback); // PWS
+        ScalarValueToString(outputFile, pCallback->GetPointer(), vinfo_pCallback); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13172,7 +13172,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDebugReportCallbackEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -13288,7 +13288,7 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pTagInfo:                       "); // HRW
     OutputString(outputFile, "const VkDebugMarkerObjectTagInfoEXT* = "); // TEQ
-    if (pTagInfo.GetPointer() == nullptr) // WWY
+    if (pTagInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -13326,7 +13326,7 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNameInfo:                      "); // HRW
     OutputString(outputFile, "const VkDebugMarkerObjectNameInfoEXT* = "); // TEQ
-    if (pNameInfo.GetPointer() == nullptr) // WWY
+    if (pNameInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -13361,7 +13361,7 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerBeginEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMarkerInfo:                    "); // HRW
     OutputString(outputFile, "const VkDebugMarkerMarkerInfoEXT* = "); // TEQ
-    if (pMarkerInfo.GetPointer() == nullptr) // WWY
+    if (pMarkerInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -13414,7 +13414,7 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerInsertEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMarkerInfo:                    "); // HRW
     OutputString(outputFile, "const VkDebugMarkerMarkerInfoEXT* = "); // TEQ
-    if (pMarkerInfo.GetPointer() == nullptr) // WWY
+    if (pMarkerInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -13468,15 +13468,15 @@ void VulkanAsciiConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBuffers:                       "); // HRW
     OutputString(outputFile, "const VkBuffer* = "); // TEQ
-    if (pBuffers.GetPointer() == nullptr) // WWY
+    if (pBuffers.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pBuffers.GetAddress()); // PAZ
+        AddrToString(outputFile, pBuffers.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkBuffer*", &pBuffers, "pBuffers", bindingCount, vinfo_pBuffers); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13484,15 +13484,15 @@ void VulkanAsciiConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pOffsets:                       "); // HRW
     OutputString(outputFile, "const VkDeviceSize* = "); // TEQ
-    if (pOffsets.GetPointer() == nullptr) // WWY
+    if (pOffsets.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pOffsets.GetAddress()); // PAZ
+        AddrToString(outputFile, pOffsets.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pOffsets = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13500,15 +13500,15 @@ void VulkanAsciiConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSizes:                         "); // HRW
     OutputString(outputFile, "const VkDeviceSize* = "); // TEQ
-    if (pSizes.GetPointer() == nullptr) // WWY
+    if (pSizes.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSizes.GetAddress()); // PAZ
+        AddrToString(outputFile, pSizes.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSizes = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pSizes, "pSizes", bindingCount, vinfo_pSizes); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pSizes, "pSizes", bindingCount, vinfo_pSizes); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13552,15 +13552,15 @@ void VulkanAsciiConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCounterBuffers:                "); // HRW
     OutputString(outputFile, "const VkBuffer* = "); // TEQ
-    if (pCounterBuffers.GetPointer() == nullptr) // WWY
+    if (pCounterBuffers.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCounterBuffers.GetAddress()); // PAZ
+        AddrToString(outputFile, pCounterBuffers.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pCounterBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13568,15 +13568,15 @@ void VulkanAsciiConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCounterBufferOffsets:          "); // HRW
     OutputString(outputFile, "const VkDeviceSize* = "); // TEQ
-    if (pCounterBufferOffsets.GetPointer() == nullptr) // WWY
+    if (pCounterBufferOffsets.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCounterBufferOffsets.GetAddress()); // PAZ
+        AddrToString(outputFile, pCounterBufferOffsets.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pCounterBufferOffsets = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13620,15 +13620,15 @@ void VulkanAsciiConsumer::Process_vkCmdEndTransformFeedbackEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCounterBuffers:                "); // HRW
     OutputString(outputFile, "const VkBuffer* = "); // TEQ
-    if (pCounterBuffers.GetPointer() == nullptr) // WWY
+    if (pCounterBuffers.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCounterBuffers.GetAddress()); // PAZ
+        AddrToString(outputFile, pCounterBuffers.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pCounterBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkBuffer*", &pCounterBuffers, "pCounterBuffers", counterBufferCount, vinfo_pCounterBuffers); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13636,15 +13636,15 @@ void VulkanAsciiConsumer::Process_vkCmdEndTransformFeedbackEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCounterBufferOffsets:          "); // HRW
     OutputString(outputFile, "const VkDeviceSize* = "); // TEQ
-    if (pCounterBufferOffsets.GetPointer() == nullptr) // WWY
+    if (pCounterBufferOffsets.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCounterBufferOffsets.GetAddress()); // PAZ
+        AddrToString(outputFile, pCounterBufferOffsets.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pCounterBufferOffsets = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -13831,7 +13831,7 @@ void VulkanAsciiConsumer::Process_vkGetImageViewHandleNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfo:                          "); // HRW
     OutputString(outputFile, "const VkImageViewHandleInfoNVX* = "); // TEQ
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14034,14 +14034,14 @@ void VulkanAsciiConsumer::Process_vkGetShaderInfoAMD(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfoSize:                      "); // HRW
     OutputString(outputFile, "size_t* = "); // TEQ
-    if (pInfoSize.GetPointer() == nullptr) // WWY
+    if (pInfoSize->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pInfoSize = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pInfoSize.GetPointer(), vinfo_pInfoSize); // PWS
+        ScalarValueToString(outputFile, pInfoSize->GetPointer(), vinfo_pInfoSize); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14049,15 +14049,15 @@ void VulkanAsciiConsumer::Process_vkGetShaderInfoAMD(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfo:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pInfo.GetAddress()); // AHW
+        AddrToString(outputFile, pInfo->GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pInfo = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "void*", &pInfo, "pInfo", *pInfoSize.GetPointer(), vinfo_pInfo); // PRC
+        ArrayToString(outputFile, indent, "void*", pInfo, "pInfo", *pInfoSize->GetPointer(), vinfo_pInfo); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14090,7 +14090,7 @@ void VulkanAsciiConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkStreamDescriptorSurfaceCreateInfoGGP* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14106,7 +14106,7 @@ void VulkanAsciiConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14122,14 +14122,14 @@ void VulkanAsciiConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14217,15 +14217,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalImageFormatProperti
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExternalImageFormatProperties: "); // HRW
     OutputString(outputFile, "VkExternalImageFormatPropertiesNV* = "); // TEQ
-    if (pExternalImageFormatProperties.GetPointer() == nullptr) // WWY
+    if (pExternalImageFormatProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pExternalImageFormatProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pExternalImageFormatProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pExternalImageFormatProperties.GetMetaStructPointer(), indent+1, pExternalImageFormatProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pExternalImageFormatProperties->GetMetaStructPointer(), indent+1, pExternalImageFormatProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14272,14 +14272,14 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pHandle:                        "); // HRW
     OutputString(outputFile, "void** = "); // TEQ
-    if (pHandle.GetPointer() == nullptr) // WWY
+    if (pHandle->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pHandle = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pHandle.GetPointer(), vinfo_pHandle); // PWS
+        ScalarValueToString(outputFile, pHandle->GetPointer(), vinfo_pHandle); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14312,7 +14312,7 @@ void VulkanAsciiConsumer::Process_vkCreateViSurfaceNN(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkViSurfaceCreateInfoNN* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14328,7 +14328,7 @@ void VulkanAsciiConsumer::Process_vkCreateViSurfaceNN(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14344,14 +14344,14 @@ void VulkanAsciiConsumer::Process_vkCreateViSurfaceNN(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14379,7 +14379,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pConditionalRenderingBegin:     "); // HRW
     OutputString(outputFile, "const VkConditionalRenderingBeginInfoEXT* = "); // TEQ
-    if (pConditionalRenderingBegin.GetPointer() == nullptr) // WWY
+    if (pConditionalRenderingBegin.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14433,7 +14433,7 @@ void VulkanAsciiConsumer::Process_vkCmdProcessCommandsNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProcessCommandsInfo:           "); // HRW
     OutputString(outputFile, "const VkCmdProcessCommandsInfoNVX* = "); // TEQ
-    if (pProcessCommandsInfo.GetPointer() == nullptr) // WWY
+    if (pProcessCommandsInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14468,7 +14468,7 @@ void VulkanAsciiConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pReserveSpaceInfo:              "); // HRW
     OutputString(outputFile, "const VkCmdReserveSpaceForCommandsInfoNVX* = "); // TEQ
-    if (pReserveSpaceInfo.GetPointer() == nullptr) // WWY
+    if (pReserveSpaceInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14508,7 +14508,7 @@ void VulkanAsciiConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkIndirectCommandsLayoutCreateInfoNVX* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14524,7 +14524,7 @@ void VulkanAsciiConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14540,14 +14540,14 @@ void VulkanAsciiConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pIndirectCommandsLayout:        "); // HRW
     OutputString(outputFile, "VkIndirectCommandsLayoutNVX* = "); // TEQ
-    if (pIndirectCommandsLayout.GetPointer() == nullptr) // WWY
+    if (pIndirectCommandsLayout->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pIndirectCommandsLayout = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pIndirectCommandsLayout.GetPointer(), vinfo_pIndirectCommandsLayout); // PWS
+        ScalarValueToString(outputFile, pIndirectCommandsLayout->GetPointer(), vinfo_pIndirectCommandsLayout); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14582,7 +14582,7 @@ void VulkanAsciiConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14622,7 +14622,7 @@ void VulkanAsciiConsumer::Process_vkCreateObjectTableNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkObjectTableCreateInfoNVX* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14638,7 +14638,7 @@ void VulkanAsciiConsumer::Process_vkCreateObjectTableNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14654,14 +14654,14 @@ void VulkanAsciiConsumer::Process_vkCreateObjectTableNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pObjectTable:                   "); // HRW
     OutputString(outputFile, "VkObjectTableNVX* = "); // TEQ
-    if (pObjectTable.GetPointer() == nullptr) // WWY
+    if (pObjectTable->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pObjectTable = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pObjectTable.GetPointer(), vinfo_pObjectTable); // PWS
+        ScalarValueToString(outputFile, pObjectTable->GetPointer(), vinfo_pObjectTable); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14696,7 +14696,7 @@ void VulkanAsciiConsumer::Process_vkDestroyObjectTableNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -14751,15 +14751,15 @@ void VulkanAsciiConsumer::Process_vkUnregisterObjectsNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pObjectEntryTypes:              "); // HRW
     OutputString(outputFile, "const VkObjectEntryTypeNVX* = "); // TEQ
-    if (pObjectEntryTypes.GetPointer() == nullptr) // WWY
+    if (pObjectEntryTypes.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pObjectEntryTypes.GetAddress()); // PAZ
+        AddrToString(outputFile, pObjectEntryTypes.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pObjectEntryTypes = {false, true, false, EnumToStringVkObjectEntryTypeNVX};
-        ArrayToString(outputFile, indent, "const VkObjectEntryTypeNVX*", &pObjectEntryTypes, "pObjectEntryTypes", objectCount, vinfo_pObjectEntryTypes); // AUC
+        ArrayToString(outputFile, indent, "const VkObjectEntryTypeNVX*", &pObjectEntryTypes, "pObjectEntryTypes", objectCount, vinfo_pObjectEntryTypes); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14767,15 +14767,15 @@ void VulkanAsciiConsumer::Process_vkUnregisterObjectsNVX(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pObjectIndices:                 "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pObjectIndices.GetPointer() == nullptr) // WWY
+    if (pObjectIndices.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pObjectIndices.GetAddress()); // PAZ
+        AddrToString(outputFile, pObjectIndices.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pObjectIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pObjectIndices, "pObjectIndices", objectCount, vinfo_pObjectIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pObjectIndices, "pObjectIndices", objectCount, vinfo_pObjectIndices); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14803,15 +14803,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFeatures:                      "); // HRW
     OutputString(outputFile, "VkDeviceGeneratedCommandsFeaturesNVX* = "); // TEQ
-    if (pFeatures.GetPointer() == nullptr) // WWY
+    if (pFeatures->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pFeatures.GetAddress()); // JHI
+        AddrToString(outputFile, pFeatures->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pFeatures.GetMetaStructPointer(), indent+1, pFeatures.GetAddress()); // GLM
+        StructureToString(outputFile, *pFeatures->GetMetaStructPointer(), indent+1, pFeatures->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14819,15 +14819,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pLimits:                        "); // HRW
     OutputString(outputFile, "VkDeviceGeneratedCommandsLimitsNVX* = "); // TEQ
-    if (pLimits.GetPointer() == nullptr) // WWY
+    if (pLimits->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pLimits.GetAddress()); // JHI
+        AddrToString(outputFile, pLimits->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pLimits.GetMetaStructPointer(), indent+1, pLimits.GetAddress()); // GLM
+        StructureToString(outputFile, *pLimits->GetMetaStructPointer(), indent+1, pLimits->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14871,14 +14871,14 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewportWScalingNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pViewportWScalings:             "); // HRW
     OutputString(outputFile, "const VkViewportWScalingNV* = "); // TEQ
-    if (pViewportWScalings.GetPointer() == nullptr) // WWY
+    if (pViewportWScalings.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pViewportWScalings.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkViewportWScalingNV>(outputFile, indent+1, "VkViewportWScalingNV", pViewportWScalings.GetMetaStructPointer(), "pViewportWScalings", viewportCount, false, pViewportWScalings.GetAddress());  // CCO
+        AddrToString(outputFile, pViewportWScalings.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkViewportWScalingNV>(outputFile, indent+1, "VkViewportWScalingNV", pViewportWScalings.GetMetaStructPointer(), "pViewportWScalings", viewportCount, false, pViewportWScalings.GetAddress(), sizeof(VkViewportWScalingNV));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -14992,14 +14992,14 @@ void VulkanAsciiConsumer::Process_vkGetRandROutputDisplayEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDisplay:                       "); // HRW
     OutputString(outputFile, "VkDisplayKHR* = "); // TEQ
-    if (pDisplay.GetPointer() == nullptr) // WWY
+    if (pDisplay->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pDisplay = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pDisplay.GetPointer(), vinfo_pDisplay); // PWS
+        ScalarValueToString(outputFile, pDisplay->GetPointer(), vinfo_pDisplay); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15038,15 +15038,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurfaceCapabilities:           "); // HRW
     OutputString(outputFile, "VkSurfaceCapabilities2EXT* = "); // TEQ
-    if (pSurfaceCapabilities.GetPointer() == nullptr) // WWY
+    if (pSurfaceCapabilities->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSurfaceCapabilities.GetAddress()); // JHI
+        AddrToString(outputFile, pSurfaceCapabilities->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pSurfaceCapabilities.GetMetaStructPointer(), indent+1, pSurfaceCapabilities.GetAddress()); // GLM
+        StructureToString(outputFile, *pSurfaceCapabilities->GetMetaStructPointer(), indent+1, pSurfaceCapabilities->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15085,7 +15085,7 @@ void VulkanAsciiConsumer::Process_vkDisplayPowerControlEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDisplayPowerInfo:              "); // HRW
     OutputString(outputFile, "const VkDisplayPowerInfoEXT* = "); // TEQ
-    if (pDisplayPowerInfo.GetPointer() == nullptr) // WWY
+    if (pDisplayPowerInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15125,7 +15125,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDeviceEventEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDeviceEventInfo:               "); // HRW
     OutputString(outputFile, "const VkDeviceEventInfoEXT* = "); // TEQ
-    if (pDeviceEventInfo.GetPointer() == nullptr) // WWY
+    if (pDeviceEventInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15141,7 +15141,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDeviceEventEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15157,14 +15157,14 @@ void VulkanAsciiConsumer::Process_vkRegisterDeviceEventEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFence:                         "); // HRW
     OutputString(outputFile, "VkFence* = "); // TEQ
-    if (pFence.GetPointer() == nullptr) // WWY
+    if (pFence->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pFence = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pFence.GetPointer(), vinfo_pFence); // PWS
+        ScalarValueToString(outputFile, pFence->GetPointer(), vinfo_pFence); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15204,7 +15204,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDisplayEventEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDisplayEventInfo:              "); // HRW
     OutputString(outputFile, "const VkDisplayEventInfoEXT* = "); // TEQ
-    if (pDisplayEventInfo.GetPointer() == nullptr) // WWY
+    if (pDisplayEventInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15220,7 +15220,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDisplayEventEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15236,14 +15236,14 @@ void VulkanAsciiConsumer::Process_vkRegisterDisplayEventEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pFence:                         "); // HRW
     OutputString(outputFile, "VkFence* = "); // TEQ
-    if (pFence.GetPointer() == nullptr) // WWY
+    if (pFence->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pFence = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pFence.GetPointer(), vinfo_pFence); // PWS
+        ScalarValueToString(outputFile, pFence->GetPointer(), vinfo_pFence); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15292,14 +15292,14 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainCounterEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCounterValue:                  "); // HRW
     OutputString(outputFile, "uint64_t* = "); // TEQ
-    if (pCounterValue.GetPointer() == nullptr) // WWY
+    if (pCounterValue->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pCounterValue = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pCounterValue.GetPointer(), vinfo_pCounterValue); // PWS
+        ScalarValueToString(outputFile, pCounterValue->GetPointer(), vinfo_pCounterValue); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15338,15 +15338,15 @@ void VulkanAsciiConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDisplayTimingProperties:       "); // HRW
     OutputString(outputFile, "VkRefreshCycleDurationGOOGLE* = "); // TEQ
-    if (pDisplayTimingProperties.GetPointer() == nullptr) // WWY
+    if (pDisplayTimingProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pDisplayTimingProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pDisplayTimingProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pDisplayTimingProperties.GetMetaStructPointer(), indent+1, pDisplayTimingProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pDisplayTimingProperties->GetMetaStructPointer(), indent+1, pDisplayTimingProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15385,14 +15385,14 @@ void VulkanAsciiConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPresentationTimingCount:       "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPresentationTimingCount.GetPointer() == nullptr) // WWY
+    if (pPresentationTimingCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPresentationTimingCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPresentationTimingCount.GetPointer(), vinfo_pPresentationTimingCount); // PWS
+        ScalarValueToString(outputFile, pPresentationTimingCount->GetPointer(), vinfo_pPresentationTimingCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15400,14 +15400,14 @@ void VulkanAsciiConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPresentationTimings:           "); // HRW
     OutputString(outputFile, "VkPastPresentationTimingGOOGLE* = "); // TEQ
-    if (pPresentationTimings.GetPointer() == nullptr) // WWY
+    if (pPresentationTimings->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pPresentationTimings.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkPastPresentationTimingGOOGLE>(outputFile, indent+1, "VkPastPresentationTimingGOOGLE", pPresentationTimings.GetMetaStructPointer(), "pPresentationTimings", *pPresentationTimingCount.GetPointer(), false, pPresentationTimings.GetAddress());  // CCO
+        AddrToString(outputFile, pPresentationTimings->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkPastPresentationTimingGOOGLE>(outputFile, indent+1, "VkPastPresentationTimingGOOGLE", pPresentationTimings->GetMetaStructPointer(), "pPresentationTimings", *pPresentationTimingCount->GetPointer(), false, pPresentationTimings->GetAddress(), sizeof(VkPastPresentationTimingGOOGLE));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15451,14 +15451,14 @@ void VulkanAsciiConsumer::Process_vkCmdSetDiscardRectangleEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDiscardRectangles:             "); // HRW
     OutputString(outputFile, "const VkRect2D* = "); // TEQ
-    if (pDiscardRectangles.GetPointer() == nullptr) // WWY
+    if (pDiscardRectangles.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pDiscardRectangles.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pDiscardRectangles.GetMetaStructPointer(), "pDiscardRectangles", discardRectangleCount, false, pDiscardRectangles.GetAddress());  // CCO
+        AddrToString(outputFile, pDiscardRectangles.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pDiscardRectangles.GetMetaStructPointer(), "pDiscardRectangles", discardRectangleCount, false, pDiscardRectangles.GetAddress(), sizeof(VkRect2D));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15495,15 +15495,15 @@ void VulkanAsciiConsumer::Process_vkSetHdrMetadataEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSwapchains:                    "); // HRW
     OutputString(outputFile, "const VkSwapchainKHR* = "); // TEQ
-    if (pSwapchains.GetPointer() == nullptr) // WWY
+    if (pSwapchains.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSwapchains.GetAddress()); // PAZ
+        AddrToString(outputFile, pSwapchains.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AUC
+        ArrayToString(outputFile, indent, "const VkSwapchainKHR*", &pSwapchains, "pSwapchains", swapchainCount, vinfo_pSwapchains); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15511,14 +15511,14 @@ void VulkanAsciiConsumer::Process_vkSetHdrMetadataEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMetadata:                      "); // HRW
     OutputString(outputFile, "const VkHdrMetadataEXT* = "); // TEQ
-    if (pMetadata.GetPointer() == nullptr) // WWY
+    if (pMetadata.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMetadata.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkHdrMetadataEXT>(outputFile, indent+1, "VkHdrMetadataEXT", pMetadata.GetMetaStructPointer(), "pMetadata", swapchainCount, false, pMetadata.GetAddress());  // CCO
+        AddrToString(outputFile, pMetadata.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkHdrMetadataEXT>(outputFile, indent+1, "VkHdrMetadataEXT", pMetadata.GetMetaStructPointer(), "pMetadata", swapchainCount, false, pMetadata.GetAddress(), sizeof(VkHdrMetadataEXT));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15551,7 +15551,7 @@ void VulkanAsciiConsumer::Process_vkCreateIOSSurfaceMVK(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkIOSSurfaceCreateInfoMVK* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15567,7 +15567,7 @@ void VulkanAsciiConsumer::Process_vkCreateIOSSurfaceMVK(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15583,14 +15583,14 @@ void VulkanAsciiConsumer::Process_vkCreateIOSSurfaceMVK(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15623,7 +15623,7 @@ void VulkanAsciiConsumer::Process_vkCreateMacOSSurfaceMVK(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkMacOSSurfaceCreateInfoMVK* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15639,7 +15639,7 @@ void VulkanAsciiConsumer::Process_vkCreateMacOSSurfaceMVK(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15655,14 +15655,14 @@ void VulkanAsciiConsumer::Process_vkCreateMacOSSurfaceMVK(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -15693,7 +15693,7 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNameInfo:                      "); // HRW
     OutputString(outputFile, "const VkDebugUtilsObjectNameInfoEXT* = "); // TEQ
-    if (pNameInfo.GetPointer() == nullptr) // WWY
+    if (pNameInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15731,7 +15731,7 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pTagInfo:                       "); // HRW
     OutputString(outputFile, "const VkDebugUtilsObjectTagInfoEXT* = "); // TEQ
-    if (pTagInfo.GetPointer() == nullptr) // WWY
+    if (pTagInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15766,7 +15766,7 @@ void VulkanAsciiConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pLabelInfo:                     "); // HRW
     OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); // TEQ
-    if (pLabelInfo.GetPointer() == nullptr) // WWY
+    if (pLabelInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15819,7 +15819,7 @@ void VulkanAsciiConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pLabelInfo:                     "); // HRW
     OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); // TEQ
-    if (pLabelInfo.GetPointer() == nullptr) // WWY
+    if (pLabelInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15854,7 +15854,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pLabelInfo:                     "); // HRW
     OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); // TEQ
-    if (pLabelInfo.GetPointer() == nullptr) // WWY
+    if (pLabelInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15907,7 +15907,7 @@ void VulkanAsciiConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pLabelInfo:                     "); // HRW
     OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); // TEQ
-    if (pLabelInfo.GetPointer() == nullptr) // WWY
+    if (pLabelInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15947,7 +15947,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkDebugUtilsMessengerCreateInfoEXT* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15963,7 +15963,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -15979,14 +15979,14 @@ void VulkanAsciiConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMessenger:                     "); // HRW
     OutputString(outputFile, "VkDebugUtilsMessengerEXT* = "); // TEQ
-    if (pMessenger.GetPointer() == nullptr) // WWY
+    if (pMessenger->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pMessenger = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pMessenger.GetPointer(), vinfo_pMessenger); // PWS
+        ScalarValueToString(outputFile, pMessenger->GetPointer(), vinfo_pMessenger); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16021,7 +16021,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -16075,7 +16075,7 @@ void VulkanAsciiConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCallbackData:                  "); // HRW
     OutputString(outputFile, "const VkDebugUtilsMessengerCallbackDataEXT* = "); // TEQ
-    if (pCallbackData.GetPointer() == nullptr) // WWY
+    if (pCallbackData.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -16129,15 +16129,15 @@ void VulkanAsciiConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkAndroidHardwareBufferPropertiesANDROID* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pProperties->GetMetaStructPointer(), indent+1, pProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16168,7 +16168,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfo:                          "); // HRW
     OutputString(outputFile, "const VkMemoryGetAndroidHardwareBufferInfoANDROID* = "); // TEQ
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -16184,14 +16184,14 @@ void VulkanAsciiConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBuffer:                        "); // HRW
     OutputString(outputFile, "struct void** = "); // TEQ
-    if (pBuffer.GetPointer() == nullptr) // WWY
+    if (pBuffer->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pBuffer = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pBuffer.GetPointer(), vinfo_pBuffer); // PWS
+        ScalarValueToString(outputFile, pBuffer->GetPointer(), vinfo_pBuffer); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16219,7 +16219,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetSampleLocationsEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSampleLocationsInfo:           "); // HRW
     OutputString(outputFile, "const VkSampleLocationsInfoEXT* = "); // TEQ
-    if (pSampleLocationsInfo.GetPointer() == nullptr) // WWY
+    if (pSampleLocationsInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -16265,15 +16265,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMultisampleProperties:         "); // HRW
     OutputString(outputFile, "VkMultisamplePropertiesEXT* = "); // TEQ
-    if (pMultisampleProperties.GetPointer() == nullptr) // WWY
+    if (pMultisampleProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMultisampleProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pMultisampleProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMultisampleProperties.GetMetaStructPointer(), indent+1, pMultisampleProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMultisampleProperties->GetMetaStructPointer(), indent+1, pMultisampleProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16312,15 +16312,15 @@ void VulkanAsciiConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkImageDrmFormatModifierPropertiesEXT* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pProperties.GetMetaStructPointer(), indent+1, pProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pProperties->GetMetaStructPointer(), indent+1, pProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16353,7 +16353,7 @@ void VulkanAsciiConsumer::Process_vkCreateValidationCacheEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkValidationCacheCreateInfoEXT* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -16369,7 +16369,7 @@ void VulkanAsciiConsumer::Process_vkCreateValidationCacheEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -16385,14 +16385,14 @@ void VulkanAsciiConsumer::Process_vkCreateValidationCacheEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pValidationCache:               "); // HRW
     OutputString(outputFile, "VkValidationCacheEXT* = "); // TEQ
-    if (pValidationCache.GetPointer() == nullptr) // WWY
+    if (pValidationCache->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pValidationCache = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pValidationCache.GetPointer(), vinfo_pValidationCache); // PWS
+        ScalarValueToString(outputFile, pValidationCache->GetPointer(), vinfo_pValidationCache); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16427,7 +16427,7 @@ void VulkanAsciiConsumer::Process_vkDestroyValidationCacheEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -16481,15 +16481,15 @@ void VulkanAsciiConsumer::Process_vkMergeValidationCachesEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSrcCaches:                     "); // HRW
     OutputString(outputFile, "const VkValidationCacheEXT* = "); // TEQ
-    if (pSrcCaches.GetPointer() == nullptr) // WWY
+    if (pSrcCaches.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pSrcCaches.GetAddress()); // PAZ
+        AddrToString(outputFile, pSrcCaches.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSrcCaches = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkValidationCacheEXT*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AUC
+        ArrayToString(outputFile, indent, "const VkValidationCacheEXT*", &pSrcCaches, "pSrcCaches", srcCacheCount, vinfo_pSrcCaches); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16528,14 +16528,14 @@ void VulkanAsciiConsumer::Process_vkGetValidationCacheDataEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDataSize:                      "); // HRW
     OutputString(outputFile, "size_t* = "); // TEQ
-    if (pDataSize.GetPointer() == nullptr) // WWY
+    if (pDataSize->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pDataSize = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pDataSize.GetPointer(), vinfo_pDataSize); // PWS
+        ScalarValueToString(outputFile, pDataSize->GetPointer(), vinfo_pDataSize); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16543,15 +16543,15 @@ void VulkanAsciiConsumer::Process_vkGetValidationCacheDataEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pData:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pData.GetPointer() == nullptr) // WWY
+    if (pData->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pData.GetAddress()); // AHW
+        AddrToString(outputFile, pData->GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "void*", &pData, "pData", *pDataSize.GetPointer(), vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "void*", pData, "pData", *pDataSize->GetPointer(), vinfo_pData); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16632,14 +16632,14 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pShadingRatePalettes:           "); // HRW
     OutputString(outputFile, "const VkShadingRatePaletteNV* = "); // TEQ
-    if (pShadingRatePalettes.GetPointer() == nullptr) // WWY
+    if (pShadingRatePalettes.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pShadingRatePalettes.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkShadingRatePaletteNV>(outputFile, indent+1, "VkShadingRatePaletteNV", pShadingRatePalettes.GetMetaStructPointer(), "pShadingRatePalettes", viewportCount, false, pShadingRatePalettes.GetAddress());  // CCO
+        AddrToString(outputFile, pShadingRatePalettes.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkShadingRatePaletteNV>(outputFile, indent+1, "VkShadingRatePaletteNV", pShadingRatePalettes.GetMetaStructPointer(), "pShadingRatePalettes", viewportCount, false, pShadingRatePalettes.GetAddress(), sizeof(VkShadingRatePaletteNV));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16685,14 +16685,14 @@ void VulkanAsciiConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCustomSampleOrders:            "); // HRW
     OutputString(outputFile, "const VkCoarseSampleOrderCustomNV* = "); // TEQ
-    if (pCustomSampleOrders.GetPointer() == nullptr) // WWY
+    if (pCustomSampleOrders.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCustomSampleOrders.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent+1, "VkCoarseSampleOrderCustomNV", pCustomSampleOrders.GetMetaStructPointer(), "pCustomSampleOrders", customSampleOrderCount, false, pCustomSampleOrders.GetAddress());  // CCO
+        AddrToString(outputFile, pCustomSampleOrders.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent+1, "VkCoarseSampleOrderCustomNV", pCustomSampleOrders.GetMetaStructPointer(), "pCustomSampleOrders", customSampleOrderCount, false, pCustomSampleOrders.GetAddress(), sizeof(VkCoarseSampleOrderCustomNV));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16725,7 +16725,7 @@ void VulkanAsciiConsumer::Process_vkCreateAccelerationStructureNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkAccelerationStructureCreateInfoNV* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -16741,7 +16741,7 @@ void VulkanAsciiConsumer::Process_vkCreateAccelerationStructureNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -16757,14 +16757,14 @@ void VulkanAsciiConsumer::Process_vkCreateAccelerationStructureNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAccelerationStructure:         "); // HRW
     OutputString(outputFile, "VkAccelerationStructureNV* = "); // TEQ
-    if (pAccelerationStructure.GetPointer() == nullptr) // WWY
+    if (pAccelerationStructure->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pAccelerationStructure = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pAccelerationStructure.GetPointer(), vinfo_pAccelerationStructure); // PWS
+        ScalarValueToString(outputFile, pAccelerationStructure->GetPointer(), vinfo_pAccelerationStructure); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16799,7 +16799,7 @@ void VulkanAsciiConsumer::Process_vkDestroyAccelerationStructureNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -16835,7 +16835,7 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfo:                          "); // HRW
     OutputString(outputFile, "const VkAccelerationStructureMemoryRequirementsInfoNV* = "); // TEQ
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -16851,15 +16851,15 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryRequirements:            "); // HRW
     OutputString(outputFile, "VkMemoryRequirements2KHR* = "); // TEQ
-    if (pMemoryRequirements.GetPointer() == nullptr) // WWY
+    if (pMemoryRequirements->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryRequirements.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryRequirements->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryRequirements.GetMetaStructPointer(), indent+1, pMemoryRequirements.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryRequirements->GetMetaStructPointer(), indent+1, pMemoryRequirements->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16897,14 +16897,14 @@ void VulkanAsciiConsumer::Process_vkBindAccelerationStructureMemoryNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBindInfos:                     "); // HRW
     OutputString(outputFile, "const VkBindAccelerationStructureMemoryInfoNV* = "); // TEQ
-    if (pBindInfos.GetPointer() == nullptr) // WWY
+    if (pBindInfos.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pBindInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkBindAccelerationStructureMemoryInfoNV>(outputFile, indent+1, "VkBindAccelerationStructureMemoryInfoNV", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress());  // CCO
+        AddrToString(outputFile, pBindInfos.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkBindAccelerationStructureMemoryInfoNV>(outputFile, indent+1, "VkBindAccelerationStructureMemoryInfoNV", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindAccelerationStructureMemoryInfoNV));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -16938,7 +16938,7 @@ void VulkanAsciiConsumer::Process_vkCmdBuildAccelerationStructureNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfo:                          "); // HRW
     OutputString(outputFile, "const VkAccelerationStructureInfoNV* = "); // TEQ
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -17218,14 +17218,14 @@ void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfos:                   "); // HRW
     OutputString(outputFile, "const VkRayTracingPipelineCreateInfoNV* = "); // TEQ
-    if (pCreateInfos.GetPointer() == nullptr) // WWY
+    if (pCreateInfos.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCreateInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkRayTracingPipelineCreateInfoNV>(outputFile, indent+1, "VkRayTracingPipelineCreateInfoNV", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress());  // CCO
+        AddrToString(outputFile, pCreateInfos.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkRayTracingPipelineCreateInfoNV>(outputFile, indent+1, "VkRayTracingPipelineCreateInfoNV", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress(), sizeof(VkRayTracingPipelineCreateInfoNV));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17233,7 +17233,7 @@ void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -17249,15 +17249,15 @@ void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPipelines:                     "); // HRW
     OutputString(outputFile, "VkPipeline* = "); // TEQ
-    if (pPipelines.GetPointer() == nullptr) // WWY
+    if (pPipelines->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pPipelines.GetAddress()); // PAZ
+        AddrToString(outputFile, pPipelines->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPipelines = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "VkPipeline*", &pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AUC
+        ArrayToString(outputFile, indent, "VkPipeline*", pPipelines, "pPipelines", createInfoCount, vinfo_pPipelines); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17319,15 +17319,15 @@ void VulkanAsciiConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pData:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pData.GetPointer() == nullptr) // WWY
+    if (pData->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pData.GetAddress()); // AHW
+        AddrToString(outputFile, pData->GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "void*", &pData, "pData", dataSize, vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "void*", pData, "pData", dataSize, vinfo_pData); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17373,15 +17373,15 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureHandleNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pData:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pData.GetPointer() == nullptr) // WWY
+    if (pData->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pData.GetAddress()); // AHW
+        AddrToString(outputFile, pData->GetAddress()); // AHW
         ScalarValueToStringStruct vinfo_pData = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "void*", &pData, "pData", dataSize, vinfo_pData); // PRC
+        ArrayToString(outputFile, indent, "void*", pData, "pData", dataSize, vinfo_pData); // PRC
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17419,15 +17419,15 @@ void VulkanAsciiConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAccelerationStructures:        "); // HRW
     OutputString(outputFile, "const VkAccelerationStructureNV* = "); // TEQ
-    if (pAccelerationStructures.GetPointer() == nullptr) // WWY
+    if (pAccelerationStructures.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pAccelerationStructures.GetAddress()); // PAZ
+        AddrToString(outputFile, pAccelerationStructures.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pAccelerationStructures = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkAccelerationStructureNV*", &pAccelerationStructures, "pAccelerationStructures", accelerationStructureCount, vinfo_pAccelerationStructures); // AUC
+        ArrayToString(outputFile, indent, "const VkAccelerationStructureNV*", &pAccelerationStructures, "pAccelerationStructures", accelerationStructureCount, vinfo_pAccelerationStructures); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17545,15 +17545,15 @@ void VulkanAsciiConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMemoryHostPointerProperties:   "); // HRW
     OutputString(outputFile, "VkMemoryHostPointerPropertiesEXT* = "); // TEQ
-    if (pMemoryHostPointerProperties.GetPointer() == nullptr) // WWY
+    if (pMemoryHostPointerProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pMemoryHostPointerProperties.GetAddress()); // JHI
+        AddrToString(outputFile, pMemoryHostPointerProperties->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pMemoryHostPointerProperties.GetMetaStructPointer(), indent+1, pMemoryHostPointerProperties.GetAddress()); // GLM
+        StructureToString(outputFile, *pMemoryHostPointerProperties->GetMetaStructPointer(), indent+1, pMemoryHostPointerProperties->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17639,14 +17639,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pTimeDomainCount:               "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pTimeDomainCount.GetPointer() == nullptr) // WWY
+    if (pTimeDomainCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pTimeDomainCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pTimeDomainCount.GetPointer(), vinfo_pTimeDomainCount); // PWS
+        ScalarValueToString(outputFile, pTimeDomainCount->GetPointer(), vinfo_pTimeDomainCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17654,15 +17654,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pTimeDomains:                   "); // HRW
     OutputString(outputFile, "VkTimeDomainEXT* = "); // TEQ
-    if (pTimeDomains.GetPointer() == nullptr) // WWY
+    if (pTimeDomains->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pTimeDomains.GetAddress()); // PAZ
+        AddrToString(outputFile, pTimeDomains->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pTimeDomains = {false, true, false, EnumToStringVkTimeDomainEXT};
-        ArrayToString(outputFile, indent, "VkTimeDomainEXT*", &pTimeDomains, "pTimeDomains", *pTimeDomainCount.GetPointer(), vinfo_pTimeDomains); // AUC
+        ArrayToString(outputFile, indent, "VkTimeDomainEXT*", pTimeDomains, "pTimeDomains", *pTimeDomainCount->GetPointer(), vinfo_pTimeDomains); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17702,14 +17702,14 @@ void VulkanAsciiConsumer::Process_vkGetCalibratedTimestampsEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pTimestampInfos:                "); // HRW
     OutputString(outputFile, "const VkCalibratedTimestampInfoEXT* = "); // TEQ
-    if (pTimestampInfos.GetPointer() == nullptr) // WWY
+    if (pTimestampInfos.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pTimestampInfos.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkCalibratedTimestampInfoEXT>(outputFile, indent+1, "VkCalibratedTimestampInfoEXT", pTimestampInfos.GetMetaStructPointer(), "pTimestampInfos", timestampCount, false, pTimestampInfos.GetAddress());  // CCO
+        AddrToString(outputFile, pTimestampInfos.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkCalibratedTimestampInfoEXT>(outputFile, indent+1, "VkCalibratedTimestampInfoEXT", pTimestampInfos.GetMetaStructPointer(), "pTimestampInfos", timestampCount, false, pTimestampInfos.GetAddress(), sizeof(VkCalibratedTimestampInfoEXT));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17717,15 +17717,15 @@ void VulkanAsciiConsumer::Process_vkGetCalibratedTimestampsEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pTimestamps:                    "); // HRW
     OutputString(outputFile, "uint64_t* = "); // TEQ
-    if (pTimestamps.GetPointer() == nullptr) // WWY
+    if (pTimestamps->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pTimestamps.GetAddress()); // PAZ
+        AddrToString(outputFile, pTimestamps->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pTimestamps = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "uint64_t*", &pTimestamps, "pTimestamps", timestampCount, vinfo_pTimestamps); // AUC
+        ArrayToString(outputFile, indent, "uint64_t*", pTimestamps, "pTimestamps", timestampCount, vinfo_pTimestamps); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17733,14 +17733,14 @@ void VulkanAsciiConsumer::Process_vkGetCalibratedTimestampsEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMaxDeviation:                  "); // HRW
     OutputString(outputFile, "uint64_t* = "); // TEQ
-    if (pMaxDeviation.GetPointer() == nullptr) // WWY
+    if (pMaxDeviation->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pMaxDeviation = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pMaxDeviation.GetPointer(), vinfo_pMaxDeviation); // PWS
+        ScalarValueToString(outputFile, pMaxDeviation->GetPointer(), vinfo_pMaxDeviation); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -17935,14 +17935,14 @@ void VulkanAsciiConsumer::Process_vkCmdSetExclusiveScissorNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExclusiveScissors:             "); // HRW
     OutputString(outputFile, "const VkRect2D* = "); // TEQ
-    if (pExclusiveScissors.GetPointer() == nullptr) // WWY
+    if (pExclusiveScissors.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pExclusiveScissors.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pExclusiveScissors.GetMetaStructPointer(), "pExclusiveScissors", exclusiveScissorCount, false, pExclusiveScissors.GetAddress());  // CCO
+        AddrToString(outputFile, pExclusiveScissors.GetAddress()); // WVS
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pExclusiveScissors.GetMetaStructPointer(), "pExclusiveScissors", exclusiveScissorCount, false, pExclusiveScissors.GetAddress(), sizeof(VkRect2D));  // CCO
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18004,14 +18004,14 @@ void VulkanAsciiConsumer::Process_vkGetQueueCheckpointDataNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCheckpointDataCount:           "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pCheckpointDataCount.GetPointer() == nullptr) // WWY
+    if (pCheckpointDataCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pCheckpointDataCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pCheckpointDataCount.GetPointer(), vinfo_pCheckpointDataCount); // PWS
+        ScalarValueToString(outputFile, pCheckpointDataCount->GetPointer(), vinfo_pCheckpointDataCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18019,14 +18019,14 @@ void VulkanAsciiConsumer::Process_vkGetQueueCheckpointDataNV(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCheckpointData:                "); // HRW
     OutputString(outputFile, "VkCheckpointDataNV* = "); // TEQ
-    if (pCheckpointData.GetPointer() == nullptr) // WWY
+    if (pCheckpointData->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCheckpointData.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkCheckpointDataNV>(outputFile, indent+1, "VkCheckpointDataNV", pCheckpointData.GetMetaStructPointer(), "pCheckpointData", *pCheckpointDataCount.GetPointer(), false, pCheckpointData.GetAddress());  // CCO
+        AddrToString(outputFile, pCheckpointData->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkCheckpointDataNV>(outputFile, indent+1, "VkCheckpointDataNV", pCheckpointData->GetMetaStructPointer(), "pCheckpointData", *pCheckpointDataCount->GetPointer(), false, pCheckpointData->GetAddress(), sizeof(VkCheckpointDataNV));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18057,7 +18057,7 @@ void VulkanAsciiConsumer::Process_vkInitializePerformanceApiINTEL(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInitializeInfo:                "); // HRW
     OutputString(outputFile, "const VkInitializePerformanceApiInfoINTEL* = "); // TEQ
-    if (pInitializeInfo.GetPointer() == nullptr) // WWY
+    if (pInitializeInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18113,7 +18113,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMarkerInfo:                    "); // HRW
     OutputString(outputFile, "const VkPerformanceMarkerInfoINTEL* = "); // TEQ
-    if (pMarkerInfo.GetPointer() == nullptr) // WWY
+    if (pMarkerInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18151,7 +18151,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMarkerInfo:                    "); // HRW
     OutputString(outputFile, "const VkPerformanceStreamMarkerInfoINTEL* = "); // TEQ
-    if (pMarkerInfo.GetPointer() == nullptr) // WWY
+    if (pMarkerInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18189,7 +18189,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pOverrideInfo:                  "); // HRW
     OutputString(outputFile, "const VkPerformanceOverrideInfoINTEL* = "); // TEQ
-    if (pOverrideInfo.GetPointer() == nullptr) // WWY
+    if (pOverrideInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18228,7 +18228,7 @@ void VulkanAsciiConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAcquireInfo:                   "); // HRW
     OutputString(outputFile, "const VkPerformanceConfigurationAcquireInfoINTEL* = "); // TEQ
-    if (pAcquireInfo.GetPointer() == nullptr) // WWY
+    if (pAcquireInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18244,14 +18244,14 @@ void VulkanAsciiConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pConfiguration:                 "); // HRW
     OutputString(outputFile, "VkPerformanceConfigurationINTEL* = "); // TEQ
-    if (pConfiguration.GetPointer() == nullptr) // WWY
+    if (pConfiguration->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pConfiguration = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pConfiguration.GetPointer(), vinfo_pConfiguration); // PWS
+        ScalarValueToString(outputFile, pConfiguration->GetPointer(), vinfo_pConfiguration); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18350,15 +18350,15 @@ void VulkanAsciiConsumer::Process_vkGetPerformanceParameterINTEL(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pValue:                         "); // HRW
     OutputString(outputFile, "VkPerformanceValueINTEL* = "); // TEQ
-    if (pValue.GetPointer() == nullptr) // WWY
+    if (pValue->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pValue.GetAddress()); // JHI
+        AddrToString(outputFile, pValue->GetAddress()); // JHH
         OutputString(outputFile, ":");
-        StructureToString(outputFile, *pValue.GetMetaStructPointer(), indent+1, pValue.GetAddress()); // GLM
+        StructureToString(outputFile, *pValue->GetMetaStructPointer(), indent+1, pValue->GetAddress()); // GLK
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18426,7 +18426,7 @@ void VulkanAsciiConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkImagePipeSurfaceCreateInfoFUCHSIA* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18442,7 +18442,7 @@ void VulkanAsciiConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18458,14 +18458,14 @@ void VulkanAsciiConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18498,7 +18498,7 @@ void VulkanAsciiConsumer::Process_vkCreateMetalSurfaceEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkMetalSurfaceCreateInfoEXT* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18514,7 +18514,7 @@ void VulkanAsciiConsumer::Process_vkCreateMetalSurfaceEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18530,14 +18530,14 @@ void VulkanAsciiConsumer::Process_vkCreateMetalSurfaceEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18566,7 +18566,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferDeviceAddressEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInfo:                          "); // HRW
     OutputString(outputFile, "const VkBufferDeviceAddressInfoEXT* = "); // TEQ
-    if (pInfo.GetPointer() == nullptr) // WWY
+    if (pInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18606,14 +18606,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPropertyCount:                 "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPropertyCount.GetPointer() == nullptr) // WWY
+    if (pPropertyCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPropertyCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPropertyCount.GetPointer(), vinfo_pPropertyCount); // PWS
+        ScalarValueToString(outputFile, pPropertyCount->GetPointer(), vinfo_pPropertyCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18621,14 +18621,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pProperties:                    "); // HRW
     OutputString(outputFile, "VkCooperativeMatrixPropertiesNV* = "); // TEQ
-    if (pProperties.GetPointer() == nullptr) // WWY
+    if (pProperties->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pProperties.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkCooperativeMatrixPropertiesNV>(outputFile, indent+1, "VkCooperativeMatrixPropertiesNV", pProperties.GetMetaStructPointer(), "pProperties", *pPropertyCount.GetPointer(), false, pProperties.GetAddress());  // CCO
+        AddrToString(outputFile, pProperties->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkCooperativeMatrixPropertiesNV>(outputFile, indent+1, "VkCooperativeMatrixPropertiesNV", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkCooperativeMatrixPropertiesNV));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18660,14 +18660,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSa
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCombinationCount:              "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pCombinationCount.GetPointer() == nullptr) // WWY
+    if (pCombinationCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pCombinationCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pCombinationCount.GetPointer(), vinfo_pCombinationCount); // PWS
+        ScalarValueToString(outputFile, pCombinationCount->GetPointer(), vinfo_pCombinationCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18675,14 +18675,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSa
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCombinations:                  "); // HRW
     OutputString(outputFile, "VkFramebufferMixedSamplesCombinationNV* = "); // TEQ
-    if (pCombinations.GetPointer() == nullptr) // WWY
+    if (pCombinations->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pCombinations.GetAddress()); // WUS
-        ArrayOfStructsToString<Decoded_VkFramebufferMixedSamplesCombinationNV>(outputFile, indent+1, "VkFramebufferMixedSamplesCombinationNV", pCombinations.GetMetaStructPointer(), "pCombinations", *pCombinationCount.GetPointer(), false, pCombinations.GetAddress());  // CCO
+        AddrToString(outputFile, pCombinations->GetAddress()); // WUS
+        ArrayOfStructsToString<Decoded_VkFramebufferMixedSamplesCombinationNV>(outputFile, indent+1, "VkFramebufferMixedSamplesCombinationNV", pCombinations->GetMetaStructPointer(), "pCombinations", *pCombinationCount->GetPointer(), false, pCombinations->GetAddress(), sizeof(VkFramebufferMixedSamplesCombinationNV));  // CCN
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18715,7 +18715,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurfaceInfo:                   "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceSurfaceInfo2KHR* = "); // TEQ
-    if (pSurfaceInfo.GetPointer() == nullptr) // WWY
+    if (pSurfaceInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18731,14 +18731,14 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPresentModeCount:              "); // HRW
     OutputString(outputFile, "uint32_t* = "); // TEQ
-    if (pPresentModeCount.GetPointer() == nullptr) // WWY
+    if (pPresentModeCount->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pPresentModeCount = {false, false, false, nullptr};
-        ScalarValueToString(outputFile, pPresentModeCount.GetPointer(), vinfo_pPresentModeCount); // PWS
+        ScalarValueToString(outputFile, pPresentModeCount->GetPointer(), vinfo_pPresentModeCount); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18746,15 +18746,15 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPresentModes:                  "); // HRW
     OutputString(outputFile, "VkPresentModeKHR* = "); // TEQ
-    if (pPresentModes.GetPointer() == nullptr) // WWY
+    if (pPresentModes->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pPresentModes.GetAddress()); // PAZ
+        AddrToString(outputFile, pPresentModes->GetAddress()); // PAZ
         ScalarValueToStringStruct vinfo_pPresentModes = {false, true, false, EnumToStringVkPresentModeKHR};
-        ArrayToString(outputFile, indent, "VkPresentModeKHR*", &pPresentModes, "pPresentModes", *pPresentModeCount.GetPointer(), vinfo_pPresentModes); // AUC
+        ArrayToString(outputFile, indent, "VkPresentModeKHR*", pPresentModes, "pPresentModes", *pPresentModeCount->GetPointer(), vinfo_pPresentModes); // AUB
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18843,7 +18843,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurfaceInfo:                   "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceSurfaceInfo2KHR* = "); // TEQ
-    if (pSurfaceInfo.GetPointer() == nullptr) // WWY
+    if (pSurfaceInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18859,14 +18859,14 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pModes:                         "); // HRW
     OutputString(outputFile, "VkDeviceGroupPresentModeFlagsKHR* = "); // TEQ
-    if (pModes.GetPointer() == nullptr) // WWY
+    if (pModes->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pModes = {false, false, true, EnumToStringVkDeviceGroupPresentModeFlagBitsKHR};
-        ScalarValueToString(outputFile, pModes.GetPointer(), vinfo_pModes); // PWS
+        ScalarValueToString(outputFile, pModes->GetPointer(), vinfo_pModes); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 
@@ -18899,7 +18899,7 @@ void VulkanAsciiConsumer::Process_vkCreateHeadlessSurfaceEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCreateInfo:                    "); // HRW
     OutputString(outputFile, "const VkHeadlessSurfaceCreateInfoEXT* = "); // TEQ
-    if (pCreateInfo.GetPointer() == nullptr) // WWY
+    if (pCreateInfo.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18915,7 +18915,7 @@ void VulkanAsciiConsumer::Process_vkCreateHeadlessSurfaceEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAllocator:                     "); // HRW
     OutputString(outputFile, "const VkAllocationCallbacks* = "); // TEQ
-    if (pAllocator.GetPointer() == nullptr) // WWY
+    if (pAllocator.GetPointer() == nullptr) // WUY
     {
         OutputString(outputFile, "NULL");
     }
@@ -18931,14 +18931,14 @@ void VulkanAsciiConsumer::Process_vkCreateHeadlessSurfaceEXT(
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSurface:                       "); // HRW
     OutputString(outputFile, "VkSurfaceKHR* = "); // TEQ
-    if (pSurface.GetPointer() == nullptr) // WWY
+    if (pSurface->GetPointer() == nullptr) // WUR
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         ScalarValueToStringStruct vinfo_pSurface = {true, false, false, nullptr};
-        ScalarValueToString(outputFile, pSurface.GetPointer(), vinfo_pSurface); // PWS
+        ScalarValueToString(outputFile, pSurface->GetPointer(), vinfo_pSurface); // PNS
     }
     OutputString(outputFile, "\n"); // HHS
 

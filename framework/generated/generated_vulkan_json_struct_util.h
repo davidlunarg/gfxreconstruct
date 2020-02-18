@@ -525,7 +525,8 @@ void ArrayOfStructsToStringJson(FILE*    outputFile,
                             const char*  array_name,
                             const size_t array_length,
                             bool         is_union,
-                            uint64_t     base_addr)
+                            uint64_t     base_addr,
+                            size_t       struct_size)
 {
     assert(outputFile != nullptr);
     if (array_length == 0 || array == nullptr)
@@ -554,8 +555,7 @@ void ArrayOfStructsToStringJson(FILE*    outputFile,
         OutputStringJson(outputFile, "]\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \"");
-        AddrToStringJson(outputFile, base_addr + j * sizeof(T));
-        gfxrecon::decode::Decoded_VkWriteDescriptorSet* p = NULL;
+        AddrToStringJson(outputFile, base_addr + j * struct_size);
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
@@ -1204,7 +1204,7 @@ void PnextStructToStringJson(FILE* outputFile, int indent, void* pNext_struct, u
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkApplicationInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkApplicationInfo *pstruct = (const VkApplicationInfo *)pstruct_in.decoded_value; // BTB
+    const VkApplicationInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -1376,7 +1376,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkApplicationInfo &ps
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkInstanceCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkInstanceCreateInfo *pstruct = (const VkInstanceCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkInstanceCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -1513,7 +1513,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkInstanceCreateInfo 
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.ppEnabledLayerNames.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.ppEnabledLayerNames.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRG
@@ -1559,7 +1559,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkInstanceCreateInfo 
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.ppEnabledExtensionNames.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.ppEnabledExtensionNames.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRG
@@ -1576,7 +1576,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkInstanceCreateInfo 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAllocationCallbacks &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAllocationCallbacks *pstruct = (const VkAllocationCallbacks *)pstruct_in.decoded_value; // BTB
+    const VkAllocationCallbacks *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -1706,7 +1706,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAllocationCallbacks
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFeatures *pstruct = (const VkPhysicalDeviceFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFeatures *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -2657,7 +2657,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFeatu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkFormatProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFormatProperties *pstruct = (const VkFormatProperties *)pstruct_in.decoded_value; // BTB
+    const VkFormatProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -2724,7 +2724,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFormatProperties &p
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExtent3D &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExtent3D *pstruct = (const VkExtent3D *)pstruct_in.decoded_value; // BTB
+    const VkExtent3D *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -2791,7 +2791,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExtent3D &pstruct_i
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageFormatProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageFormatProperties *pstruct = (const VkImageFormatProperties *)pstruct_in.decoded_value; // BTB
+    const VkImageFormatProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -2891,7 +2891,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageFormatProperti
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceLimits *pstruct = (const VkPhysicalDeviceLimits *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceLimits *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4751,7 +4751,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLimit
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSparseProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSparseProperties *pstruct = (const VkPhysicalDeviceSparseProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSparseProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4852,7 +4852,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSpars
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceProperties *pstruct = (const VkPhysicalDeviceProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5034,7 +5034,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevicePrope
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkQueueFamilyProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkQueueFamilyProperties *pstruct = (const VkQueueFamilyProperties *)pstruct_in.decoded_value; // BTB
+    const VkQueueFamilyProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5117,7 +5117,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkQueueFamilyProperti
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryType &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryType *pstruct = (const VkMemoryType *)pstruct_in.decoded_value; // BTB
+    const VkMemoryType *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5167,7 +5167,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryType &pstruct
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryHeap &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryHeap *pstruct = (const VkMemoryHeap *)pstruct_in.decoded_value; // BTB
+    const VkMemoryHeap *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5217,7 +5217,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryHeap &pstruct
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMemoryProperties *pstruct = (const VkPhysicalDeviceMemoryProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMemoryProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5262,7 +5262,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemor
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    ArrayOfStructsToStringJson<Decoded_VkMemoryType>(outputFile, indent, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount, false, pstruct_in.memoryTypes->GetAddress()); // CCY
+    ArrayOfStructsToStringJson<Decoded_VkMemoryType>(outputFile, indent, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount, false, pstruct_in.memoryTypes->GetAddress(), sizeof(VkMemoryType)); // CCY
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -5302,7 +5302,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemor
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    ArrayOfStructsToStringJson<Decoded_VkMemoryHeap>(outputFile, indent, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount, false, pstruct_in.memoryHeaps->GetAddress()); // CCY
+    ArrayOfStructsToStringJson<Decoded_VkMemoryHeap>(outputFile, indent, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount, false, pstruct_in.memoryHeaps->GetAddress(), sizeof(VkMemoryHeap)); // CCY
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "}\n"); // UXS
@@ -5313,7 +5313,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemor
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceQueueCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceQueueCreateInfo *pstruct = (const VkDeviceQueueCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceQueueCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5439,7 +5439,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceQueueCreateIn
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pQueuePriorities.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pQueuePriorities.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -5456,7 +5456,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceQueueCreateIn
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceCreateInfo *pstruct = (const VkDeviceCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5569,7 +5569,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &p
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDeviceQueueCreateInfo>(outputFile, indent, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDeviceQueueCreateInfo>(outputFile, indent, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress(), sizeof(VkDeviceQueueCreateInfo)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -5610,7 +5610,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &p
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.ppEnabledLayerNames.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.ppEnabledLayerNames.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRG
@@ -5656,7 +5656,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &p
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.ppEnabledExtensionNames.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.ppEnabledExtensionNames.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRG
@@ -5701,7 +5701,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &p
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExtensionProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExtensionProperties *pstruct = (const VkExtensionProperties *)pstruct_in.decoded_value; // BTB
+    const VkExtensionProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5759,7 +5759,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExtensionProperties
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkLayerProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkLayerProperties *pstruct = (const VkLayerProperties *)pstruct_in.decoded_value; // BTB
+    const VkLayerProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5859,7 +5859,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkLayerProperties &ps
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubmitInfo *pstruct = (const VkSubmitInfo *)pstruct_in.decoded_value; // BTB
+    const VkSubmitInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5951,7 +5951,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pWaitSemaphores.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pWaitSemaphores.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -5980,7 +5980,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pWaitDstStageMask.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pWaitDstStageMask.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -6026,7 +6026,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pCommandBuffers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pCommandBuffers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -6072,7 +6072,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pSignalSemaphores.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pSignalSemaphores.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -6089,7 +6089,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryAllocateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryAllocateInfo *pstruct = (const VkMemoryAllocateInfo *)pstruct_in.decoded_value; // BTB
+    const VkMemoryAllocateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6186,7 +6186,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryAllocateInfo 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMappedMemoryRange &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMappedMemoryRange *pstruct = (const VkMappedMemoryRange *)pstruct_in.decoded_value; // BTB
+    const VkMappedMemoryRange *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6300,7 +6300,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMappedMemoryRange &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryRequirements &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryRequirements *pstruct = (const VkMemoryRequirements *)pstruct_in.decoded_value; // BTB
+    const VkMemoryRequirements *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6367,7 +6367,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryRequirements 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageFormatProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageFormatProperties *pstruct = (const VkSparseImageFormatProperties *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageFormatProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6433,7 +6433,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageFormatPr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageMemoryRequirements &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageMemoryRequirements *pstruct = (const VkSparseImageMemoryRequirements *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageMemoryRequirements *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6533,7 +6533,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageMemoryRe
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseMemoryBind &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseMemoryBind *pstruct = (const VkSparseMemoryBind *)pstruct_in.decoded_value; // BTB
+    const VkSparseMemoryBind *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6634,7 +6634,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseMemoryBind &p
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseBufferMemoryBindInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseBufferMemoryBindInfo *pstruct = (const VkSparseBufferMemoryBindInfo *)pstruct_in.decoded_value; // BTB
+    const VkSparseBufferMemoryBindInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6700,7 +6700,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseBufferMemoryB
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseMemoryBind>(outputFile, indent, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSparseMemoryBind>(outputFile, indent, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -6712,7 +6712,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseBufferMemoryB
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageOpaqueMemoryBindInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageOpaqueMemoryBindInfo *pstruct = (const VkSparseImageOpaqueMemoryBindInfo *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageOpaqueMemoryBindInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6778,7 +6778,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageOpaqueMe
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseMemoryBind>(outputFile, indent, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSparseMemoryBind>(outputFile, indent, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -6790,7 +6790,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageOpaqueMe
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageSubresource &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageSubresource *pstruct = (const VkImageSubresource *)pstruct_in.decoded_value; // BTB
+    const VkImageSubresource *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6857,7 +6857,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageSubresource &p
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkOffset3D &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkOffset3D *pstruct = (const VkOffset3D *)pstruct_in.decoded_value; // BTB
+    const VkOffset3D *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6924,7 +6924,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkOffset3D &pstruct_i
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageMemoryBind &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageMemoryBind *pstruct = (const VkSparseImageMemoryBind *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageMemoryBind *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7039,7 +7039,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageMemoryBi
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageMemoryBindInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageMemoryBindInfo *pstruct = (const VkSparseImageMemoryBindInfo *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageMemoryBindInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7105,7 +7105,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageMemoryBi
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryBind>(outputFile, indent, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryBind>(outputFile, indent, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseImageMemoryBind)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -7117,7 +7117,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageMemoryBi
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindSparseInfo *pstruct = (const VkBindSparseInfo *)pstruct_in.decoded_value; // BTB
+    const VkBindSparseInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7209,7 +7209,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pst
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pWaitSemaphores.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pWaitSemaphores.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -7259,7 +7259,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pst
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseBufferMemoryBindInfo>(outputFile, indent, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSparseBufferMemoryBindInfo>(outputFile, indent, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress(), sizeof(VkSparseBufferMemoryBindInfo)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -7304,7 +7304,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pst
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageOpaqueMemoryBindInfo>(outputFile, indent, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageOpaqueMemoryBindInfo>(outputFile, indent, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress(), sizeof(VkSparseImageOpaqueMemoryBindInfo)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -7349,7 +7349,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pst
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryBindInfo>(outputFile, indent, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSparseImageMemoryBindInfo>(outputFile, indent, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress(), sizeof(VkSparseImageMemoryBindInfo)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -7390,7 +7390,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pst
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pSignalSemaphores.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pSignalSemaphores.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -7407,7 +7407,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pst
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkFenceCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFenceCreateInfo *pstruct = (const VkFenceCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkFenceCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7487,7 +7487,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFenceCreateInfo &ps
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSemaphoreCreateInfo *pstruct = (const VkSemaphoreCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkSemaphoreCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7567,7 +7567,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreCreateInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkEventCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkEventCreateInfo *pstruct = (const VkEventCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkEventCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7647,7 +7647,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkEventCreateInfo &ps
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkQueryPoolCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkQueryPoolCreateInfo *pstruct = (const VkQueryPoolCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkQueryPoolCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7778,7 +7778,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkQueryPoolCreateInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferCreateInfo *pstruct = (const VkBufferCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkBufferCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7938,7 +7938,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferCreateInfo &p
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -7955,7 +7955,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferCreateInfo &p
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferViewCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferViewCreateInfo *pstruct = (const VkBufferViewCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkBufferViewCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8103,7 +8103,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferViewCreateInf
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageCreateInfo *pstruct = (const VkImageCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkImageCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8364,7 +8364,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageCreateInfo &ps
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -8398,7 +8398,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageCreateInfo &ps
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSubresourceLayout &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubresourceLayout *pstruct = (const VkSubresourceLayout *)pstruct_in.decoded_value; // BTB
+    const VkSubresourceLayout *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8499,7 +8499,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubresourceLayout &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkComponentMapping &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkComponentMapping *pstruct = (const VkComponentMapping *)pstruct_in.decoded_value; // BTB
+    const VkComponentMapping *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8583,7 +8583,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkComponentMapping &p
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageSubresourceRange &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageSubresourceRange *pstruct = (const VkImageSubresourceRange *)pstruct_in.decoded_value; // BTB
+    const VkImageSubresourceRange *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8684,7 +8684,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageSubresourceRan
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageViewCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageViewCreateInfo *pstruct = (const VkImageViewCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkImageViewCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8847,7 +8847,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageViewCreateInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkShaderModuleCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkShaderModuleCreateInfo *pstruct = (const VkShaderModuleCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkShaderModuleCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8956,7 +8956,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkShaderModuleCreateI
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pCode.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pCode.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         if (kPrintShaderCode)
         {
@@ -8976,7 +8976,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkShaderModuleCreateI
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCacheCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCacheCreateInfo *pstruct = (const VkPipelineCacheCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCacheCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9085,7 +9085,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCacheCreate
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pInitialData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pInitialData.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -9102,7 +9102,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCacheCreate
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSpecializationMapEntry &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSpecializationMapEntry *pstruct = (const VkSpecializationMapEntry *)pstruct_in.decoded_value; // BTB
+    const VkSpecializationMapEntry *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9169,7 +9169,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSpecializationMapEn
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSpecializationInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSpecializationInfo *pstruct = (const VkSpecializationInfo *)pstruct_in.decoded_value; // BTB
+    const VkSpecializationInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9218,7 +9218,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSpecializationInfo 
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSpecializationMapEntry>(outputFile, indent, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSpecializationMapEntry>(outputFile, indent, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress(), sizeof(VkSpecializationMapEntry)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -9259,7 +9259,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSpecializationInfo 
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pData.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -9276,7 +9276,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSpecializationInfo 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineShaderStageCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineShaderStageCreateInfo *pstruct = (const VkPipelineShaderStageCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineShaderStageCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9447,7 +9447,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineShaderStage
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkVertexInputBindingDescription &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkVertexInputBindingDescription *pstruct = (const VkVertexInputBindingDescription *)pstruct_in.decoded_value; // BTB
+    const VkVertexInputBindingDescription *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9514,7 +9514,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkVertexInputBindingD
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkVertexInputAttributeDescription &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkVertexInputAttributeDescription *pstruct = (const VkVertexInputAttributeDescription *)pstruct_in.decoded_value; // BTB
+    const VkVertexInputAttributeDescription *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9598,7 +9598,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkVertexInputAttribut
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineVertexInputStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineVertexInputStateCreateInfo *pstruct = (const VkPipelineVertexInputStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineVertexInputStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9711,7 +9711,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineVertexInput
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkVertexInputBindingDescription>(outputFile, indent, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkVertexInputBindingDescription>(outputFile, indent, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress(), sizeof(VkVertexInputBindingDescription)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -9756,7 +9756,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineVertexInput
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkVertexInputAttributeDescription>(outputFile, indent, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkVertexInputAttributeDescription>(outputFile, indent, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress(), sizeof(VkVertexInputAttributeDescription)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -9768,7 +9768,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineVertexInput
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineInputAssemblyStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineInputAssemblyStateCreateInfo *pstruct = (const VkPipelineInputAssemblyStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineInputAssemblyStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9882,7 +9882,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineInputAssemb
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineTessellationStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineTessellationStateCreateInfo *pstruct = (const VkPipelineTessellationStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineTessellationStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9979,7 +9979,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineTessellatio
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkViewport &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkViewport *pstruct = (const VkViewport *)pstruct_in.decoded_value; // BTB
+    const VkViewport *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10097,7 +10097,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkViewport &pstruct_i
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkOffset2D &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkOffset2D *pstruct = (const VkOffset2D *)pstruct_in.decoded_value; // BTB
+    const VkOffset2D *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10147,7 +10147,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkOffset2D &pstruct_i
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExtent2D &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExtent2D *pstruct = (const VkExtent2D *)pstruct_in.decoded_value; // BTB
+    const VkExtent2D *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10197,7 +10197,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExtent2D &pstruct_i
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRect2D &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRect2D *pstruct = (const VkRect2D *)pstruct_in.decoded_value; // BTB
+    const VkRect2D *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10245,7 +10245,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRect2D &pstruct_in,
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineViewportStateCreateInfo *pstruct = (const VkPipelineViewportStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineViewportStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10358,7 +10358,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportSta
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkViewport>(outputFile, indent, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkViewport>(outputFile, indent, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress(), sizeof(VkViewport)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -10403,7 +10403,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportSta
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress(), sizeof(VkRect2D)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -10415,7 +10415,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportSta
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRasterizationStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRasterizationStateCreateInfo *pstruct = (const VkPipelineRasterizationStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRasterizationStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10665,7 +10665,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRasterizati
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineMultisampleStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineMultisampleStateCreateInfo *pstruct = (const VkPipelineMultisampleStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineMultisampleStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10808,7 +10808,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineMultisample
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pSampleMask.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pSampleMask.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -10859,7 +10859,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineMultisample
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkStencilOpState &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkStencilOpState *pstruct = (const VkStencilOpState *)pstruct_in.decoded_value; // BTB
+    const VkStencilOpState *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10994,7 +10994,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkStencilOpState &pst
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineDepthStencilStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineDepthStencilStateCreateInfo *pstruct = (const VkPipelineDepthStencilStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineDepthStencilStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11225,7 +11225,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineDepthStenci
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineColorBlendAttachmentState &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineColorBlendAttachmentState *pstruct = (const VkPipelineColorBlendAttachmentState *)pstruct_in.decoded_value; // BTB
+    const VkPipelineColorBlendAttachmentState *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11377,7 +11377,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineColorBlendA
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineColorBlendStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineColorBlendStateCreateInfo *pstruct = (const VkPipelineColorBlendStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineColorBlendStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11524,7 +11524,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineColorBlendS
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineColorBlendAttachmentState>(outputFile, indent, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPipelineColorBlendAttachmentState>(outputFile, indent, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkPipelineColorBlendAttachmentState)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -11560,7 +11560,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineColorBlendS
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineDynamicStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineDynamicStateCreateInfo *pstruct = (const VkPipelineDynamicStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineDynamicStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11669,7 +11669,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineDynamicStat
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pDynamicStates.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pDynamicStates.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -11686,7 +11686,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineDynamicStat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkGraphicsPipelineCreateInfo *pstruct = (const VkGraphicsPipelineCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkGraphicsPipelineCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11799,7 +11799,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCre
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -12148,7 +12148,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCre
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkComputePipelineCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkComputePipelineCreateInfo *pstruct = (const VkComputePipelineCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkComputePipelineCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12295,7 +12295,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkComputePipelineCrea
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPushConstantRange &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPushConstantRange *pstruct = (const VkPushConstantRange *)pstruct_in.decoded_value; // BTB
+    const VkPushConstantRange *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12362,7 +12362,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPushConstantRange &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineLayoutCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineLayoutCreateInfo *pstruct = (const VkPipelineLayoutCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineLayoutCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12471,7 +12471,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineLayoutCreat
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pSetLayouts.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pSetLayouts.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -12521,7 +12521,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineLayoutCreat
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPushConstantRange>(outputFile, indent, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPushConstantRange>(outputFile, indent, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress(), sizeof(VkPushConstantRange)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -12533,7 +12533,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineLayoutCreat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSamplerCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSamplerCreateInfo *pstruct = (const VkSamplerCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkSamplerCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12868,7 +12868,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSamplerCreateInfo &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBinding &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetLayoutBinding *pstruct = (const VkDescriptorSetLayoutBinding *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetLayoutBinding *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12964,7 +12964,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayout
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pImmutableSamplers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pImmutableSamplers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -12981,7 +12981,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayout
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayoutCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetLayoutCreateInfo *pstruct = (const VkDescriptorSetLayoutCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetLayoutCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13094,7 +13094,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayout
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDescriptorSetLayoutBinding>(outputFile, indent, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDescriptorSetLayoutBinding>(outputFile, indent, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress(), sizeof(VkDescriptorSetLayoutBinding)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -13106,7 +13106,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayout
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorPoolSize &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorPoolSize *pstruct = (const VkDescriptorPoolSize *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorPoolSize *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13156,7 +13156,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorPoolSize 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorPoolCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorPoolCreateInfo *pstruct = (const VkDescriptorPoolCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorPoolCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13286,7 +13286,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorPoolCreat
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDescriptorPoolSize>(outputFile, indent, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDescriptorPoolSize>(outputFile, indent, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress(), sizeof(VkDescriptorPoolSize)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -13298,7 +13298,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorPoolCreat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetAllocateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetAllocateInfo *pstruct = (const VkDescriptorSetAllocateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetAllocateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13407,7 +13407,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetAlloca
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pSetLayouts.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pSetLayouts.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -13424,7 +13424,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetAlloca
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorImageInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorImageInfo *pstruct = (const VkDescriptorImageInfo *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorImageInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13491,7 +13491,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorImageInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorBufferInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorBufferInfo *pstruct = (const VkDescriptorBufferInfo *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorBufferInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13558,7 +13558,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorBufferInf
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWriteDescriptorSet *pstruct = (const VkWriteDescriptorSet *)pstruct_in.decoded_value; // BTB
+    const VkWriteDescriptorSet *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13722,7 +13722,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet 
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDescriptorImageInfo>(outputFile, indent, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDescriptorImageInfo>(outputFile, indent, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress(), sizeof(VkDescriptorImageInfo)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -13750,7 +13750,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet 
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDescriptorBufferInfo>(outputFile, indent, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDescriptorBufferInfo>(outputFile, indent, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress(), sizeof(VkDescriptorBufferInfo)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -13774,7 +13774,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet 
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pTexelBufferView.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pTexelBufferView.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -13791,7 +13791,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCopyDescriptorSet &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCopyDescriptorSet *pstruct = (const VkCopyDescriptorSet *)pstruct_in.decoded_value; // BTB
+    const VkCopyDescriptorSet *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13973,7 +13973,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCopyDescriptorSet &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFramebufferCreateInfo *pstruct = (const VkFramebufferCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkFramebufferCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14099,7 +14099,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferCreateIn
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pAttachments.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pAttachments.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -14167,7 +14167,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferCreateIn
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAttachmentDescription &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAttachmentDescription *pstruct = (const VkAttachmentDescription *)pstruct_in.decoded_value; // BTB
+    const VkAttachmentDescription *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14336,7 +14336,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAttachmentDescripti
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAttachmentReference &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAttachmentReference *pstruct = (const VkAttachmentReference *)pstruct_in.decoded_value; // BTB
+    const VkAttachmentReference *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14386,7 +14386,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAttachmentReference
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassDescription *pstruct = (const VkSubpassDescription *)pstruct_in.decoded_value; // BTB
+    const VkSubpassDescription *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14469,7 +14469,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription 
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(outputFile, indent, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(outputFile, indent, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14514,7 +14514,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription 
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(outputFile, indent, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(outputFile, indent, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14542,7 +14542,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription 
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(outputFile, indent, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference>(outputFile, indent, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14611,7 +14611,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription 
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pPreserveAttachments.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pPreserveAttachments.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -14628,7 +14628,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDependency &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassDependency *pstruct = (const VkSubpassDependency *)pstruct_in.decoded_value; // BTB
+    const VkSubpassDependency *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14763,7 +14763,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDependency &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassCreateInfo *pstruct = (const VkRenderPassCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14876,7 +14876,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentDescription>(outputFile, indent, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentDescription>(outputFile, indent, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14921,7 +14921,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubpassDescription>(outputFile, indent, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSubpassDescription>(outputFile, indent, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14966,7 +14966,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubpassDependency>(outputFile, indent, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSubpassDependency>(outputFile, indent, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -14978,7 +14978,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCommandPoolCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCommandPoolCreateInfo *pstruct = (const VkCommandPoolCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkCommandPoolCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15075,7 +15075,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCommandPoolCreateIn
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCommandBufferAllocateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCommandBufferAllocateInfo *pstruct = (const VkCommandBufferAllocateInfo *)pstruct_in.decoded_value; // BTB
+    const VkCommandBufferAllocateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15189,7 +15189,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCommandBufferAlloca
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCommandBufferInheritanceInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCommandBufferInheritanceInfo *pstruct = (const VkCommandBufferInheritanceInfo *)pstruct_in.decoded_value; // BTB
+    const VkCommandBufferInheritanceInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15354,7 +15354,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCommandBufferInheri
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCommandBufferBeginInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCommandBufferBeginInfo *pstruct = (const VkCommandBufferBeginInfo *)pstruct_in.decoded_value; // BTB
+    const VkCommandBufferBeginInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15462,7 +15462,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCommandBufferBeginI
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferCopy &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferCopy *pstruct = (const VkBufferCopy *)pstruct_in.decoded_value; // BTB
+    const VkBufferCopy *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15529,7 +15529,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferCopy &pstruct
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageSubresourceLayers &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageSubresourceLayers *pstruct = (const VkImageSubresourceLayers *)pstruct_in.decoded_value; // BTB
+    const VkImageSubresourceLayers *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15613,7 +15613,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageSubresourceLay
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageCopy &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageCopy *pstruct = (const VkImageCopy *)pstruct_in.decoded_value; // BTB
+    const VkImageCopy *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15709,7 +15709,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageCopy &pstruct_
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageBlit &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageBlit *pstruct = (const VkImageBlit *)pstruct_in.decoded_value; // BTB
+    const VkImageBlit *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15753,7 +15753,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageBlit &pstruct_
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    ArrayOfStructsToStringJson<Decoded_VkOffset3D>(outputFile, indent, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2, false, pstruct_in.srcOffsets->GetAddress()); // CCY
+    ArrayOfStructsToStringJson<Decoded_VkOffset3D>(outputFile, indent, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2, false, pstruct_in.srcOffsets->GetAddress(), sizeof(VkOffset3D)); // CCY
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -15792,7 +15792,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageBlit &pstruct_
     OutputStringJson(outputFile, "\",\n");
     IndentSpacesJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    ArrayOfStructsToStringJson<Decoded_VkOffset3D>(outputFile, indent, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2, false, pstruct_in.dstOffsets->GetAddress()); // CCY
+    ArrayOfStructsToStringJson<Decoded_VkOffset3D>(outputFile, indent, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2, false, pstruct_in.dstOffsets->GetAddress(), sizeof(VkOffset3D)); // CCY
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "}\n"); // UXS
@@ -15803,7 +15803,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageBlit &pstruct_
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferImageCopy &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferImageCopy *pstruct = (const VkBufferImageCopy *)pstruct_in.decoded_value; // BTB
+    const VkBufferImageCopy *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15918,7 +15918,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferImageCopy &ps
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkClearColorValue &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkClearColorValue *pstruct = (const VkClearColorValue *)pstruct_in.decoded_value; // BTB
+    const VkClearColorValue *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16006,7 +16006,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkClearColorValue &ps
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkClearDepthStencilValue &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkClearDepthStencilValue *pstruct = (const VkClearDepthStencilValue *)pstruct_in.decoded_value; // BTB
+    const VkClearDepthStencilValue *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16056,7 +16056,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkClearDepthStencilVa
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkClearValue &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkClearValue *pstruct = (const VkClearValue *)pstruct_in.decoded_value; // BTB
+    const VkClearValue *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16104,7 +16104,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkClearValue &pstruct
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkClearAttachment &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkClearAttachment *pstruct = (const VkClearAttachment *)pstruct_in.decoded_value; // BTB
+    const VkClearAttachment *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16170,7 +16170,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkClearAttachment &ps
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkClearRect &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkClearRect *pstruct = (const VkClearRect *)pstruct_in.decoded_value; // BTB
+    const VkClearRect *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16236,7 +16236,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkClearRect &pstruct_
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageResolve &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageResolve *pstruct = (const VkImageResolve *)pstruct_in.decoded_value; // BTB
+    const VkImageResolve *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16332,7 +16332,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageResolve &pstru
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryBarrier &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryBarrier *pstruct = (const VkMemoryBarrier *)pstruct_in.decoded_value; // BTB
+    const VkMemoryBarrier *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16429,7 +16429,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryBarrier &pstr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferMemoryBarrier &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferMemoryBarrier *pstruct = (const VkBufferMemoryBarrier *)pstruct_in.decoded_value; // BTB
+    const VkBufferMemoryBarrier *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16611,7 +16611,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferMemoryBarrier
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageMemoryBarrier &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageMemoryBarrier *pstruct = (const VkImageMemoryBarrier *)pstruct_in.decoded_value; // BTB
+    const VkImageMemoryBarrier *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16809,7 +16809,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageMemoryBarrier 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassBeginInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassBeginInfo *pstruct = (const VkRenderPassBeginInfo *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassBeginInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16955,7 +16955,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassBeginInfo
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkClearValue>(outputFile, indent, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkClearValue>(outputFile, indent, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress(), sizeof(VkClearValue)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -16967,7 +16967,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassBeginInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDispatchIndirectCommand &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDispatchIndirectCommand *pstruct = (const VkDispatchIndirectCommand *)pstruct_in.decoded_value; // BTB
+    const VkDispatchIndirectCommand *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17034,7 +17034,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDispatchIndirectCom
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDrawIndexedIndirectCommand &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDrawIndexedIndirectCommand *pstruct = (const VkDrawIndexedIndirectCommand *)pstruct_in.decoded_value; // BTB
+    const VkDrawIndexedIndirectCommand *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17135,7 +17135,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDrawIndexedIndirect
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDrawIndirectCommand &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDrawIndirectCommand *pstruct = (const VkDrawIndirectCommand *)pstruct_in.decoded_value; // BTB
+    const VkDrawIndirectCommand *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17219,7 +17219,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDrawIndirectCommand
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSubgroupProperties *pstruct = (const VkPhysicalDeviceSubgroupProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSubgroupProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17350,7 +17350,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBindBufferMemoryInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindBufferMemoryInfo *pstruct = (const VkBindBufferMemoryInfo *)pstruct_in.decoded_value; // BTB
+    const VkBindBufferMemoryInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17464,7 +17464,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindBufferMemoryInf
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBindImageMemoryInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindImageMemoryInfo *pstruct = (const VkBindImageMemoryInfo *)pstruct_in.decoded_value; // BTB
+    const VkBindImageMemoryInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17578,7 +17578,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindImageMemoryInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevice16BitStorageFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDevice16BitStorageFeatures *pstruct = (const VkPhysicalDevice16BitStorageFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDevice16BitStorageFeatures *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17709,7 +17709,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevice16Bit
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryDedicatedRequirements &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryDedicatedRequirements *pstruct = (const VkMemoryDedicatedRequirements *)pstruct_in.decoded_value; // BTB
+    const VkMemoryDedicatedRequirements *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17806,7 +17806,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryDedicatedRequ
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryDedicatedAllocateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryDedicatedAllocateInfo *pstruct = (const VkMemoryDedicatedAllocateInfo *)pstruct_in.decoded_value; // BTB
+    const VkMemoryDedicatedAllocateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17903,7 +17903,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryDedicatedAllo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryAllocateFlagsInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryAllocateFlagsInfo *pstruct = (const VkMemoryAllocateFlagsInfo *)pstruct_in.decoded_value; // BTB
+    const VkMemoryAllocateFlagsInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18000,7 +18000,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryAllocateFlags
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupRenderPassBeginInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupRenderPassBeginInfo *pstruct = (const VkDeviceGroupRenderPassBeginInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupRenderPassBeginInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18113,7 +18113,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupRenderPa
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress(), sizeof(VkRect2D)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -18125,7 +18125,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupRenderPa
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupCommandBufferBeginInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupCommandBufferBeginInfo *pstruct = (const VkDeviceGroupCommandBufferBeginInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupCommandBufferBeginInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18205,7 +18205,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupCommandB
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupSubmitInfo *pstruct = (const VkDeviceGroupSubmitInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupSubmitInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18297,7 +18297,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupSubmitIn
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pWaitSemaphoreDeviceIndices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pWaitSemaphoreDeviceIndices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -18343,7 +18343,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupSubmitIn
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pCommandBufferDeviceMasks.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pCommandBufferDeviceMasks.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -18389,7 +18389,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupSubmitIn
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pSignalSemaphoreDeviceIndices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pSignalSemaphoreDeviceIndices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -18406,7 +18406,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupSubmitIn
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupBindSparseInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupBindSparseInfo *pstruct = (const VkDeviceGroupBindSparseInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupBindSparseInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18503,7 +18503,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupBindSpar
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBindBufferMemoryDeviceGroupInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindBufferMemoryDeviceGroupInfo *pstruct = (const VkBindBufferMemoryDeviceGroupInfo *)pstruct_in.decoded_value; // BTB
+    const VkBindBufferMemoryDeviceGroupInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18595,7 +18595,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindBufferMemoryDev
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pDeviceIndices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pDeviceIndices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -18612,7 +18612,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindBufferMemoryDev
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBindImageMemoryDeviceGroupInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindImageMemoryDeviceGroupInfo *pstruct = (const VkBindImageMemoryDeviceGroupInfo *)pstruct_in.decoded_value; // BTB
+    const VkBindImageMemoryDeviceGroupInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18704,7 +18704,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindImageMemoryDevi
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pDeviceIndices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pDeviceIndices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -18754,7 +18754,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindImageMemoryDevi
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress(), sizeof(VkRect2D)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -18766,7 +18766,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindImageMemoryDevi
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceGroupProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceGroupProperties *pstruct = (const VkPhysicalDeviceGroupProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceGroupProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18887,7 +18887,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceGroup
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupDeviceCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupDeviceCreateInfo *pstruct = (const VkDeviceGroupDeviceCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupDeviceCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18979,7 +18979,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupDeviceCr
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pPhysicalDevices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pPhysicalDevices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -18996,7 +18996,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupDeviceCr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferMemoryRequirementsInfo2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferMemoryRequirementsInfo2 *pstruct = (const VkBufferMemoryRequirementsInfo2 *)pstruct_in.decoded_value; // BTB
+    const VkBufferMemoryRequirementsInfo2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19076,7 +19076,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferMemoryRequire
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageMemoryRequirementsInfo2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageMemoryRequirementsInfo2 *pstruct = (const VkImageMemoryRequirementsInfo2 *)pstruct_in.decoded_value; // BTB
+    const VkImageMemoryRequirementsInfo2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19156,7 +19156,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageMemoryRequirem
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageSparseMemoryRequirementsInfo2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageSparseMemoryRequirementsInfo2 *pstruct = (const VkImageSparseMemoryRequirementsInfo2 *)pstruct_in.decoded_value; // BTB
+    const VkImageSparseMemoryRequirementsInfo2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19236,7 +19236,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageSparseMemoryRe
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryRequirements2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryRequirements2 *pstruct = (const VkMemoryRequirements2 *)pstruct_in.decoded_value; // BTB
+    const VkMemoryRequirements2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19315,7 +19315,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryRequirements2
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageMemoryRequirements2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageMemoryRequirements2 *pstruct = (const VkSparseImageMemoryRequirements2 *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageMemoryRequirements2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19394,7 +19394,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageMemoryRe
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFeatures2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFeatures2 *pstruct = (const VkPhysicalDeviceFeatures2 *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFeatures2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19473,7 +19473,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFeatu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceProperties2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceProperties2 *pstruct = (const VkPhysicalDeviceProperties2 *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceProperties2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19552,7 +19552,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevicePrope
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkFormatProperties2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFormatProperties2 *pstruct = (const VkFormatProperties2 *)pstruct_in.decoded_value; // BTB
+    const VkFormatProperties2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19631,7 +19631,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFormatProperties2 &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageFormatProperties2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageFormatProperties2 *pstruct = (const VkImageFormatProperties2 *)pstruct_in.decoded_value; // BTB
+    const VkImageFormatProperties2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19710,7 +19710,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageFormatProperti
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImageFormatInfo2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceImageFormatInfo2 *pstruct = (const VkPhysicalDeviceImageFormatInfo2 *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceImageFormatInfo2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19858,7 +19858,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImage
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkQueueFamilyProperties2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkQueueFamilyProperties2 *pstruct = (const VkQueueFamilyProperties2 *)pstruct_in.decoded_value; // BTB
+    const VkQueueFamilyProperties2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19937,7 +19937,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkQueueFamilyProperti
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryProperties2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMemoryProperties2 *pstruct = (const VkPhysicalDeviceMemoryProperties2 *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMemoryProperties2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20016,7 +20016,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemor
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageFormatProperties2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageFormatProperties2 *pstruct = (const VkSparseImageFormatProperties2 *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageFormatProperties2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20095,7 +20095,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSparseImageFormatPr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSparseImageFormatInfo2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSparseImageFormatInfo2 *pstruct = (const VkPhysicalDeviceSparseImageFormatInfo2 *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSparseImageFormatInfo2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20243,7 +20243,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSpars
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevicePointClippingProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDevicePointClippingProperties *pstruct = (const VkPhysicalDevicePointClippingProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDevicePointClippingProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20323,7 +20323,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevicePoint
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkInputAttachmentAspectReference &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkInputAttachmentAspectReference *pstruct = (const VkInputAttachmentAspectReference *)pstruct_in.decoded_value; // BTB
+    const VkInputAttachmentAspectReference *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20390,7 +20390,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkInputAttachmentAspe
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassInputAttachmentAspectCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassInputAttachmentAspectCreateInfo *pstruct = (const VkRenderPassInputAttachmentAspectCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassInputAttachmentAspectCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20486,7 +20486,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassInputAtta
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkInputAttachmentAspectReference>(outputFile, indent, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkInputAttachmentAspectReference>(outputFile, indent, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress(), sizeof(VkInputAttachmentAspectReference)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -20498,7 +20498,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassInputAtta
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageViewUsageCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageViewUsageCreateInfo *pstruct = (const VkImageViewUsageCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkImageViewUsageCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20578,7 +20578,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageViewUsageCreat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineTessellationDomainOriginStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineTessellationDomainOriginStateCreateInfo *pstruct = (const VkPipelineTessellationDomainOriginStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineTessellationDomainOriginStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20658,7 +20658,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineTessellatio
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassMultiviewCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassMultiviewCreateInfo *pstruct = (const VkRenderPassMultiviewCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassMultiviewCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20750,7 +20750,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassMultiview
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pViewMasks.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pViewMasks.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -20796,7 +20796,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassMultiview
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pViewOffsets.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pViewOffsets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -20842,7 +20842,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassMultiview
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pCorrelationMasks.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pCorrelationMasks.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -20859,7 +20859,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassMultiview
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiviewFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMultiviewFeatures *pstruct = (const VkPhysicalDeviceMultiviewFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMultiviewFeatures *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20973,7 +20973,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMulti
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiviewProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMultiviewProperties *pstruct = (const VkPhysicalDeviceMultiviewProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMultiviewProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21070,7 +21070,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMulti
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVariablePointersFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceVariablePointersFeatures *pstruct = (const VkPhysicalDeviceVariablePointersFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceVariablePointersFeatures *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21167,7 +21167,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVaria
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceProtectedMemoryFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceProtectedMemoryFeatures *pstruct = (const VkPhysicalDeviceProtectedMemoryFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceProtectedMemoryFeatures *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21247,7 +21247,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceProte
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceProtectedMemoryProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceProtectedMemoryProperties *pstruct = (const VkPhysicalDeviceProtectedMemoryProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceProtectedMemoryProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21327,7 +21327,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceProte
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceQueueInfo2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceQueueInfo2 *pstruct = (const VkDeviceQueueInfo2 *)pstruct_in.decoded_value; // BTB
+    const VkDeviceQueueInfo2 *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21441,7 +21441,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceQueueInfo2 &p
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkProtectedSubmitInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkProtectedSubmitInfo *pstruct = (const VkProtectedSubmitInfo *)pstruct_in.decoded_value; // BTB
+    const VkProtectedSubmitInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21521,7 +21521,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkProtectedSubmitInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSamplerYcbcrConversionCreateInfo *pstruct = (const VkSamplerYcbcrConversionCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkSamplerYcbcrConversionCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21719,7 +21719,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConvers
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSamplerYcbcrConversionInfo *pstruct = (const VkSamplerYcbcrConversionInfo *)pstruct_in.decoded_value; // BTB
+    const VkSamplerYcbcrConversionInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21799,7 +21799,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConvers
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBindImagePlaneMemoryInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindImagePlaneMemoryInfo *pstruct = (const VkBindImagePlaneMemoryInfo *)pstruct_in.decoded_value; // BTB
+    const VkBindImagePlaneMemoryInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21879,7 +21879,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindImagePlaneMemor
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImagePlaneMemoryRequirementsInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImagePlaneMemoryRequirementsInfo *pstruct = (const VkImagePlaneMemoryRequirementsInfo *)pstruct_in.decoded_value; // BTB
+    const VkImagePlaneMemoryRequirementsInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21959,7 +21959,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImagePlaneMemoryReq
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSamplerYcbcrConversionFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSamplerYcbcrConversionFeatures *pstruct = (const VkPhysicalDeviceSamplerYcbcrConversionFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSamplerYcbcrConversionFeatures *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22039,7 +22039,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSampl
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionImageFormatProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSamplerYcbcrConversionImageFormatProperties *pstruct = (const VkSamplerYcbcrConversionImageFormatProperties *)pstruct_in.decoded_value; // BTB
+    const VkSamplerYcbcrConversionImageFormatProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22119,7 +22119,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConvers
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorUpdateTemplateEntry &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorUpdateTemplateEntry *pstruct = (const VkDescriptorUpdateTemplateEntry *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorUpdateTemplateEntry *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22237,7 +22237,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorUpdateTem
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorUpdateTemplateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorUpdateTemplateCreateInfo *pstruct = (const VkDescriptorUpdateTemplateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorUpdateTemplateCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22350,7 +22350,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorUpdateTem
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDescriptorUpdateTemplateEntry>(outputFile, indent, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDescriptorUpdateTemplateEntry>(outputFile, indent, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress(), sizeof(VkDescriptorUpdateTemplateEntry)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -22447,7 +22447,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorUpdateTem
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalMemoryProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalMemoryProperties *pstruct = (const VkExternalMemoryProperties *)pstruct_in.decoded_value; // BTB
+    const VkExternalMemoryProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22514,7 +22514,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalMemoryPrope
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalImageFormatInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceExternalImageFormatInfo *pstruct = (const VkPhysicalDeviceExternalImageFormatInfo *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceExternalImageFormatInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22594,7 +22594,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExter
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalImageFormatProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalImageFormatProperties *pstruct = (const VkExternalImageFormatProperties *)pstruct_in.decoded_value; // BTB
+    const VkExternalImageFormatProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22673,7 +22673,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalImageFormat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalBufferInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceExternalBufferInfo *pstruct = (const VkPhysicalDeviceExternalBufferInfo *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceExternalBufferInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22787,7 +22787,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExter
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalBufferProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalBufferProperties *pstruct = (const VkExternalBufferProperties *)pstruct_in.decoded_value; // BTB
+    const VkExternalBufferProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22866,7 +22866,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalBufferPrope
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceIDProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceIDProperties *pstruct = (const VkPhysicalDeviceIDProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceIDProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23035,7 +23035,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPro
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalMemoryImageCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalMemoryImageCreateInfo *pstruct = (const VkExternalMemoryImageCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkExternalMemoryImageCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23115,7 +23115,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalMemoryImage
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalMemoryBufferCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalMemoryBufferCreateInfo *pstruct = (const VkExternalMemoryBufferCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkExternalMemoryBufferCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23195,7 +23195,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalMemoryBuffe
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExportMemoryAllocateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportMemoryAllocateInfo *pstruct = (const VkExportMemoryAllocateInfo *)pstruct_in.decoded_value; // BTB
+    const VkExportMemoryAllocateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23275,7 +23275,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExportMemoryAllocat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalFenceInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceExternalFenceInfo *pstruct = (const VkPhysicalDeviceExternalFenceInfo *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceExternalFenceInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23355,7 +23355,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExter
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalFenceProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalFenceProperties *pstruct = (const VkExternalFenceProperties *)pstruct_in.decoded_value; // BTB
+    const VkExternalFenceProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23469,7 +23469,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalFenceProper
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExportFenceCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportFenceCreateInfo *pstruct = (const VkExportFenceCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkExportFenceCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23549,7 +23549,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExportFenceCreateIn
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExportSemaphoreCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportSemaphoreCreateInfo *pstruct = (const VkExportSemaphoreCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkExportSemaphoreCreateInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23629,7 +23629,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExportSemaphoreCrea
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalSemaphoreInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceExternalSemaphoreInfo *pstruct = (const VkPhysicalDeviceExternalSemaphoreInfo *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceExternalSemaphoreInfo *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23709,7 +23709,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExter
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalSemaphoreProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalSemaphoreProperties *pstruct = (const VkExternalSemaphoreProperties *)pstruct_in.decoded_value; // BTB
+    const VkExternalSemaphoreProperties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23823,7 +23823,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalSemaphorePr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMaintenance3Properties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMaintenance3Properties *pstruct = (const VkPhysicalDeviceMaintenance3Properties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMaintenance3Properties *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23920,7 +23920,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMaint
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayoutSupport &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetLayoutSupport *pstruct = (const VkDescriptorSetLayoutSupport *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetLayoutSupport *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24000,7 +24000,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayout
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderDrawParametersFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderDrawParametersFeatures *pstruct = (const VkPhysicalDeviceShaderDrawParametersFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderDrawParametersFeatures *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24080,7 +24080,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShade
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceCapabilitiesKHR *pstruct = (const VkSurfaceCapabilitiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceCapabilitiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24263,7 +24263,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceFormatKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceFormatKHR *pstruct = (const VkSurfaceFormatKHR *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceFormatKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24313,7 +24313,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceFormatKHR &p
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSwapchainCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSwapchainCreateInfoKHR *pstruct = (const VkSwapchainCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSwapchainCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24557,7 +24557,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSwapchainCreateInfo
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -24659,7 +24659,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSwapchainCreateInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPresentInfoKHR *pstruct = (const VkPresentInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkPresentInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24751,7 +24751,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentInfoKHR &pst
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pWaitSemaphores.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pWaitSemaphores.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -24797,7 +24797,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentInfoKHR &pst
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pSwapchains.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pSwapchains.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -24826,7 +24826,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentInfoKHR &pst
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pImageIndices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pImageIndices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -24855,7 +24855,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentInfoKHR &pst
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pResults.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pResults.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -24872,7 +24872,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentInfoKHR &pst
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageSwapchainCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageSwapchainCreateInfoKHR *pstruct = (const VkImageSwapchainCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImageSwapchainCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24952,7 +24952,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageSwapchainCreat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBindImageMemorySwapchainInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindImageMemorySwapchainInfoKHR *pstruct = (const VkBindImageMemorySwapchainInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkBindImageMemorySwapchainInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25049,7 +25049,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindImageMemorySwap
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAcquireNextImageInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAcquireNextImageInfoKHR *pstruct = (const VkAcquireNextImageInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkAcquireNextImageInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25197,7 +25197,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAcquireNextImageInf
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupPresentCapabilitiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupPresentCapabilitiesKHR *pstruct = (const VkDeviceGroupPresentCapabilitiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupPresentCapabilitiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25301,7 +25301,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupPresentC
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupPresentInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupPresentInfoKHR *pstruct = (const VkDeviceGroupPresentInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupPresentInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25393,7 +25393,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupPresentI
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pDeviceMasks.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pDeviceMasks.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -25427,7 +25427,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupPresentI
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupSwapchainCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupSwapchainCreateInfoKHR *pstruct = (const VkDeviceGroupSwapchainCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupSwapchainCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25507,7 +25507,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGroupSwapchai
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPropertiesKHR *pstruct = (const VkDisplayPropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPropertiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25652,7 +25652,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPropertiesKH
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayModeParametersKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayModeParametersKHR *pstruct = (const VkDisplayModeParametersKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayModeParametersKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25701,7 +25701,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayModeParamete
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayModePropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayModePropertiesKHR *pstruct = (const VkDisplayModePropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayModePropertiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25750,7 +25750,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayModeProperti
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayModeCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayModeCreateInfoKHR *pstruct = (const VkDisplayModeCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayModeCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25846,7 +25846,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayModeCreateIn
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilitiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPlaneCapabilitiesKHR *pstruct = (const VkDisplayPlaneCapabilitiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPlaneCapabilitiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26007,7 +26007,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabil
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPlanePropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPlanePropertiesKHR *pstruct = (const VkDisplayPlanePropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPlanePropertiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26057,7 +26057,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPlanePropert
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplaySurfaceCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplaySurfaceCreateInfoKHR *pstruct = (const VkDisplaySurfaceCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplaySurfaceCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26255,7 +26255,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplaySurfaceCreat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPresentInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPresentInfoKHR *pstruct = (const VkDisplayPresentInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPresentInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26367,7 +26367,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPresentInfoK
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkXlibSurfaceCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkXlibSurfaceCreateInfoKHR *pstruct = (const VkXlibSurfaceCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkXlibSurfaceCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26481,7 +26481,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkXlibSurfaceCreateIn
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkXcbSurfaceCreateInfoKHR *pstruct = (const VkXcbSurfaceCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkXcbSurfaceCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26607,7 +26607,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInf
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWaylandSurfaceCreateInfoKHR *pstruct = (const VkWaylandSurfaceCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkWaylandSurfaceCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26745,7 +26745,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWaylandSurfaceCreat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAndroidSurfaceCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAndroidSurfaceCreateInfoKHR *pstruct = (const VkAndroidSurfaceCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkAndroidSurfaceCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26854,7 +26854,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAndroidSurfaceCreat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWin32SurfaceCreateInfoKHR *pstruct = (const VkWin32SurfaceCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkWin32SurfaceCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26992,7 +26992,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32SurfaceCreateI
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImportMemoryWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportMemoryWin32HandleInfoKHR *pstruct = (const VkImportMemoryWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImportMemoryWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27130,7 +27130,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImportMemoryWin32Ha
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExportMemoryWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportMemoryWin32HandleInfoKHR *pstruct = (const VkExportMemoryWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkExportMemoryWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27269,7 +27269,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExportMemoryWin32Ha
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryWin32HandlePropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryWin32HandlePropertiesKHR *pstruct = (const VkMemoryWin32HandlePropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkMemoryWin32HandlePropertiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27349,7 +27349,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryWin32HandlePr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryGetWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryGetWin32HandleInfoKHR *pstruct = (const VkMemoryGetWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkMemoryGetWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27446,7 +27446,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryGetWin32Handl
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImportMemoryFdInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportMemoryFdInfoKHR *pstruct = (const VkImportMemoryFdInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImportMemoryFdInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27543,7 +27543,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImportMemoryFdInfoK
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryFdPropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryFdPropertiesKHR *pstruct = (const VkMemoryFdPropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkMemoryFdPropertiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27623,7 +27623,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryFdPropertiesK
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryGetFdInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryGetFdInfoKHR *pstruct = (const VkMemoryGetFdInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkMemoryGetFdInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27720,7 +27720,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryGetFdInfoKHR 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireReleaseInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWin32KeyedMutexAcquireReleaseInfoKHR *pstruct = (const VkWin32KeyedMutexAcquireReleaseInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkWin32KeyedMutexAcquireReleaseInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27812,7 +27812,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pAcquireSyncs.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pAcquireSyncs.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -27841,7 +27841,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pAcquireKeys.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pAcquireKeys.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -27870,7 +27870,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pAcquireTimeouts.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pAcquireTimeouts.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -27916,7 +27916,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pReleaseSyncs.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pReleaseSyncs.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -27945,7 +27945,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pReleaseKeys.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pReleaseKeys.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -27962,7 +27962,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImportSemaphoreWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportSemaphoreWin32HandleInfoKHR *pstruct = (const VkImportSemaphoreWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImportSemaphoreWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28134,7 +28134,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImportSemaphoreWin3
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExportSemaphoreWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportSemaphoreWin32HandleInfoKHR *pstruct = (const VkExportSemaphoreWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkExportSemaphoreWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28273,7 +28273,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExportSemaphoreWin3
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkD3D12FenceSubmitInfoKHR *pstruct = (const VkD3D12FenceSubmitInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkD3D12FenceSubmitInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28365,7 +28365,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInf
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pWaitSemaphoreValues.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pWaitSemaphoreValues.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -28411,7 +28411,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInf
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pSignalSemaphoreValues.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pSignalSemaphoreValues.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -28428,7 +28428,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInf
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreGetWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSemaphoreGetWin32HandleInfoKHR *pstruct = (const VkSemaphoreGetWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSemaphoreGetWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28525,7 +28525,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreGetWin32Ha
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImportSemaphoreFdInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportSemaphoreFdInfoKHR *pstruct = (const VkImportSemaphoreFdInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImportSemaphoreFdInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28656,7 +28656,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImportSemaphoreFdIn
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreGetFdInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSemaphoreGetFdInfoKHR *pstruct = (const VkSemaphoreGetFdInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSemaphoreGetFdInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28753,7 +28753,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreGetFdInfoK
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevicePushDescriptorPropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDevicePushDescriptorPropertiesKHR *pstruct = (const VkPhysicalDevicePushDescriptorPropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDevicePushDescriptorPropertiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28833,7 +28833,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevicePushD
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderFloat16Int8FeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderFloat16Int8FeaturesKHR *pstruct = (const VkPhysicalDeviceShaderFloat16Int8FeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderFloat16Int8FeaturesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28930,7 +28930,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShade
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRectLayerKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRectLayerKHR *pstruct = (const VkRectLayerKHR *)pstruct_in.decoded_value; // BTB
+    const VkRectLayerKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28995,7 +28995,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRectLayerKHR &pstru
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentRegionKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPresentRegionKHR *pstruct = (const VkPresentRegionKHR *)pstruct_in.decoded_value; // BTB
+    const VkPresentRegionKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29044,7 +29044,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentRegionKHR &p
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRectLayerKHR>(outputFile, indent, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRectLayerKHR>(outputFile, indent, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress(), sizeof(VkRectLayerKHR)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -29056,7 +29056,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentRegionKHR &p
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentRegionsKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPresentRegionsKHR *pstruct = (const VkPresentRegionsKHR *)pstruct_in.decoded_value; // BTB
+    const VkPresentRegionsKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29152,7 +29152,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentRegionsKHR &
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPresentRegionKHR>(outputFile, indent, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPresentRegionKHR>(outputFile, indent, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress(), sizeof(VkPresentRegionKHR)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -29164,7 +29164,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentRegionsKHR &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImagelessFramebufferFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceImagelessFramebufferFeaturesKHR *pstruct = (const VkPhysicalDeviceImagelessFramebufferFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceImagelessFramebufferFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29244,7 +29244,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImage
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferAttachmentImageInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFramebufferAttachmentImageInfoKHR *pstruct = (const VkFramebufferAttachmentImageInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkFramebufferAttachmentImageInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29421,7 +29421,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferAttachme
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pViewFormats.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pViewFormats.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -29438,7 +29438,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferAttachme
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferAttachmentsCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFramebufferAttachmentsCreateInfoKHR *pstruct = (const VkFramebufferAttachmentsCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkFramebufferAttachmentsCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29534,7 +29534,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferAttachme
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkFramebufferAttachmentImageInfoKHR>(outputFile, indent, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkFramebufferAttachmentImageInfoKHR>(outputFile, indent, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress(), sizeof(VkFramebufferAttachmentImageInfoKHR)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -29546,7 +29546,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferAttachme
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassAttachmentBeginInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassAttachmentBeginInfoKHR *pstruct = (const VkRenderPassAttachmentBeginInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassAttachmentBeginInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29638,7 +29638,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassAttachmen
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pAttachments.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pAttachments.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -29655,7 +29655,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassAttachmen
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAttachmentDescription2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAttachmentDescription2KHR *pstruct = (const VkAttachmentDescription2KHR *)pstruct_in.decoded_value; // BTB
+    const VkAttachmentDescription2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29871,7 +29871,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAttachmentDescripti
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAttachmentReference2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAttachmentReference2KHR *pstruct = (const VkAttachmentReference2KHR *)pstruct_in.decoded_value; // BTB
+    const VkAttachmentReference2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29985,7 +29985,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAttachmentReference
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassDescription2KHR *pstruct = (const VkSubpassDescription2KHR *)pstruct_in.decoded_value; // BTB
+    const VkSubpassDescription2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30132,7 +30132,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription2
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30177,7 +30177,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription2
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30205,7 +30205,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription2
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentReference2KHR>(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30274,7 +30274,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription2
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pPreserveAttachments.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pPreserveAttachments.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -30291,7 +30291,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescription2
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDependency2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassDependency2KHR *pstruct = (const VkSubpassDependency2KHR *)pstruct_in.decoded_value; // BTB
+    const VkSubpassDependency2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30490,7 +30490,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDependency2K
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassCreateInfo2KHR *pstruct = (const VkRenderPassCreateInfo2KHR *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassCreateInfo2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30603,7 +30603,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentDescription2KHR>(outputFile, indent, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentDescription2KHR>(outputFile, indent, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription2KHR)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30648,7 +30648,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubpassDescription2KHR>(outputFile, indent, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSubpassDescription2KHR>(outputFile, indent, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription2KHR)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30693,7 +30693,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubpassDependency2KHR>(outputFile, indent, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSubpassDependency2KHR>(outputFile, indent, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency2KHR)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -30734,7 +30734,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pCorrelatedViewMasks.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pCorrelatedViewMasks.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -30751,7 +30751,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassCreateInf
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassBeginInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassBeginInfoKHR *pstruct = (const VkSubpassBeginInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSubpassBeginInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30831,7 +30831,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassBeginInfoKHR
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassEndInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassEndInfoKHR *pstruct = (const VkSubpassEndInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSubpassEndInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30894,7 +30894,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassEndInfoKHR &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSharedPresentSurfaceCapabilitiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSharedPresentSurfaceCapabilitiesKHR *pstruct = (const VkSharedPresentSurfaceCapabilitiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkSharedPresentSurfaceCapabilitiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30974,7 +30974,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSharedPresentSurfac
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImportFenceWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportFenceWin32HandleInfoKHR *pstruct = (const VkImportFenceWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImportFenceWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31146,7 +31146,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImportFenceWin32Han
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExportFenceWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportFenceWin32HandleInfoKHR *pstruct = (const VkExportFenceWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkExportFenceWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31285,7 +31285,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExportFenceWin32Han
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkFenceGetWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFenceGetWin32HandleInfoKHR *pstruct = (const VkFenceGetWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkFenceGetWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31382,7 +31382,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFenceGetWin32Handle
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImportFenceFdInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportFenceFdInfoKHR *pstruct = (const VkImportFenceFdInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImportFenceFdInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31513,7 +31513,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImportFenceFdInfoKH
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkFenceGetFdInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFenceGetFdInfoKHR *pstruct = (const VkFenceGetFdInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkFenceGetFdInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31610,7 +31610,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFenceGetFdInfoKHR &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSurfaceInfo2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSurfaceInfo2KHR *pstruct = (const VkPhysicalDeviceSurfaceInfo2KHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSurfaceInfo2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31690,7 +31690,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSurfa
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceCapabilities2KHR *pstruct = (const VkSurfaceCapabilities2KHR *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceCapabilities2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31769,7 +31769,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceFormat2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceFormat2KHR *pstruct = (const VkSurfaceFormat2KHR *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceFormat2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31848,7 +31848,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceFormat2KHR &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayProperties2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayProperties2KHR *pstruct = (const VkDisplayProperties2KHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayProperties2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31927,7 +31927,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayProperties2K
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPlaneProperties2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPlaneProperties2KHR *pstruct = (const VkDisplayPlaneProperties2KHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPlaneProperties2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -32006,7 +32006,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPlanePropert
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayModeProperties2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayModeProperties2KHR *pstruct = (const VkDisplayModeProperties2KHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayModeProperties2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -32085,7 +32085,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayModeProperti
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPlaneInfo2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPlaneInfo2KHR *pstruct = (const VkDisplayPlaneInfo2KHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPlaneInfo2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -32182,7 +32182,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPlaneInfo2KH
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilities2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPlaneCapabilities2KHR *pstruct = (const VkDisplayPlaneCapabilities2KHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPlaneCapabilities2KHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -32261,7 +32261,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabil
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageFormatListCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageFormatListCreateInfoKHR *pstruct = (const VkImageFormatListCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImageFormatListCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -32353,7 +32353,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageFormatListCrea
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pViewFormats.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pViewFormats.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -32370,7 +32370,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageFormatListCrea
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR *pstruct = (const VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -32450,7 +32450,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShade
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevice8BitStorageFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDevice8BitStorageFeaturesKHR *pstruct = (const VkPhysicalDevice8BitStorageFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDevice8BitStorageFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -32564,7 +32564,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevice8BitS
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderAtomicInt64FeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderAtomicInt64FeaturesKHR *pstruct = (const VkPhysicalDeviceShaderAtomicInt64FeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderAtomicInt64FeaturesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -32661,7 +32661,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShade
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderClockFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderClockFeaturesKHR *pstruct = (const VkPhysicalDeviceShaderClockFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderClockFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -32758,7 +32758,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShade
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkConformanceVersionKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkConformanceVersionKHR *pstruct = (const VkConformanceVersionKHR *)pstruct_in.decoded_value; // BTB
+    const VkConformanceVersionKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -32842,7 +32842,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkConformanceVersionK
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDriverPropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDriverPropertiesKHR *pstruct = (const VkPhysicalDeviceDriverPropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDriverPropertiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -32988,7 +32988,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDrive
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFloatControlsPropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFloatControlsPropertiesKHR *pstruct = (const VkPhysicalDeviceFloatControlsPropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFloatControlsPropertiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -33340,7 +33340,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFloat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescriptionDepthStencilResolveKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassDescriptionDepthStencilResolveKHR *pstruct = (const VkSubpassDescriptionDepthStencilResolveKHR *)pstruct_in.decoded_value; // BTB
+    const VkSubpassDescriptionDepthStencilResolveKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -33465,7 +33465,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassDescriptionD
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthStencilResolvePropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDepthStencilResolvePropertiesKHR *pstruct = (const VkPhysicalDeviceDepthStencilResolvePropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDepthStencilResolvePropertiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -33596,7 +33596,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDepth
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelineSemaphoreFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTimelineSemaphoreFeaturesKHR *pstruct = (const VkPhysicalDeviceTimelineSemaphoreFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTimelineSemaphoreFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -33676,7 +33676,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTimel
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelineSemaphorePropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTimelineSemaphorePropertiesKHR *pstruct = (const VkPhysicalDeviceTimelineSemaphorePropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTimelineSemaphorePropertiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -33756,7 +33756,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTimel
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreTypeCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSemaphoreTypeCreateInfoKHR *pstruct = (const VkSemaphoreTypeCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSemaphoreTypeCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -33853,7 +33853,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreTypeCreate
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkTimelineSemaphoreSubmitInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkTimelineSemaphoreSubmitInfoKHR *pstruct = (const VkTimelineSemaphoreSubmitInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkTimelineSemaphoreSubmitInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -33945,7 +33945,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkTimelineSemaphoreSu
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pWaitSemaphoreValues.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pWaitSemaphoreValues.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -33991,7 +33991,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkTimelineSemaphoreSu
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pSignalSemaphoreValues.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pSignalSemaphoreValues.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -34008,7 +34008,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkTimelineSemaphoreSu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSemaphoreWaitInfoKHR *pstruct = (const VkSemaphoreWaitInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSemaphoreWaitInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -34117,7 +34117,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKH
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pSemaphores.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pSemaphores.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -34146,7 +34146,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKH
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pValues.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pValues.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -34163,7 +34163,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKH
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreSignalInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSemaphoreSignalInfoKHR *pstruct = (const VkSemaphoreSignalInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSemaphoreSignalInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -34260,7 +34260,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSemaphoreSignalInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceVulkanMemoryModelFeaturesKHR *pstruct = (const VkPhysicalDeviceVulkanMemoryModelFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceVulkanMemoryModelFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -34374,7 +34374,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVulka
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceProtectedCapabilitiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceProtectedCapabilitiesKHR *pstruct = (const VkSurfaceProtectedCapabilitiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceProtectedCapabilitiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -34454,7 +34454,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceProtectedCap
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR *pstruct = (const VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -34534,7 +34534,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceUnifo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR *pstruct = (const VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -34614,7 +34614,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevicePipel
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineInfoKHR *pstruct = (const VkPipelineInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkPipelineInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -34694,7 +34694,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineInfoKHR &ps
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutablePropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineExecutablePropertiesKHR *pstruct = (const VkPipelineExecutablePropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPipelineExecutablePropertiesKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -34841,7 +34841,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableP
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineExecutableInfoKHR *pstruct = (const VkPipelineExecutableInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkPipelineExecutableInfoKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -34938,7 +34938,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableI
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableStatisticValueKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineExecutableStatisticValueKHR *pstruct = (const VkPipelineExecutableStatisticValueKHR *)pstruct_in.decoded_value; // BTB
+    const VkPipelineExecutableStatisticValueKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -35022,7 +35022,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableS
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableStatisticKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineExecutableStatisticKHR *pstruct = (const VkPipelineExecutableStatisticKHR *)pstruct_in.decoded_value; // BTB
+    const VkPipelineExecutableStatisticKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -35168,7 +35168,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableS
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableInternalRepresentationKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineExecutableInternalRepresentationKHR *pstruct = (const VkPipelineExecutableInternalRepresentationKHR *)pstruct_in.decoded_value; // BTB
+    const VkPipelineExecutableInternalRepresentationKHR *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -35327,7 +35327,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableI
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pData.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -35344,7 +35344,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineExecutableI
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugReportCallbackCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugReportCallbackCreateInfoEXT *pstruct = (const VkDebugReportCallbackCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugReportCallbackCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -35470,7 +35470,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugReportCallback
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRasterizationStateRasterizationOrderAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRasterizationStateRasterizationOrderAMD *pstruct = (const VkPipelineRasterizationStateRasterizationOrderAMD *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRasterizationStateRasterizationOrderAMD *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -35550,7 +35550,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRasterizati
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugMarkerObjectNameInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugMarkerObjectNameInfoEXT *pstruct = (const VkDebugMarkerObjectNameInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugMarkerObjectNameInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -35676,7 +35676,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugMarkerObjectNa
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugMarkerObjectTagInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugMarkerObjectTagInfoEXT *pstruct = (const VkDebugMarkerObjectTagInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugMarkerObjectTagInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -35819,7 +35819,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugMarkerObjectTa
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pTag.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pTag.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -35836,7 +35836,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugMarkerObjectTa
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugMarkerMarkerInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugMarkerMarkerInfoEXT *pstruct = (const VkDebugMarkerMarkerInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugMarkerMarkerInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -35952,7 +35952,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugMarkerMarkerIn
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDedicatedAllocationImageCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDedicatedAllocationImageCreateInfoNV *pstruct = (const VkDedicatedAllocationImageCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkDedicatedAllocationImageCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -36032,7 +36032,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDedicatedAllocation
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDedicatedAllocationBufferCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDedicatedAllocationBufferCreateInfoNV *pstruct = (const VkDedicatedAllocationBufferCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkDedicatedAllocationBufferCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -36112,7 +36112,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDedicatedAllocation
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDedicatedAllocationMemoryAllocateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDedicatedAllocationMemoryAllocateInfoNV *pstruct = (const VkDedicatedAllocationMemoryAllocateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkDedicatedAllocationMemoryAllocateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -36209,7 +36209,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDedicatedAllocation
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTransformFeedbackFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTransformFeedbackFeaturesEXT *pstruct = (const VkPhysicalDeviceTransformFeedbackFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTransformFeedbackFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -36306,7 +36306,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTrans
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTransformFeedbackPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTransformFeedbackPropertiesEXT *pstruct = (const VkPhysicalDeviceTransformFeedbackPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTransformFeedbackPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -36539,7 +36539,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTrans
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRasterizationStateStreamCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRasterizationStateStreamCreateInfoEXT *pstruct = (const VkPipelineRasterizationStateStreamCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRasterizationStateStreamCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -36636,7 +36636,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRasterizati
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageViewHandleInfoNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageViewHandleInfoNVX *pstruct = (const VkImageViewHandleInfoNVX *)pstruct_in.decoded_value; // BTB
+    const VkImageViewHandleInfoNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -36750,7 +36750,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageViewHandleInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkTextureLODGatherFormatPropertiesAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkTextureLODGatherFormatPropertiesAMD *pstruct = (const VkTextureLODGatherFormatPropertiesAMD *)pstruct_in.decoded_value; // BTB
+    const VkTextureLODGatherFormatPropertiesAMD *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -36830,7 +36830,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkTextureLODGatherFor
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkShaderResourceUsageAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkShaderResourceUsageAMD *pstruct = (const VkShaderResourceUsageAMD *)pstruct_in.decoded_value; // BTB
+    const VkShaderResourceUsageAMD *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -36931,7 +36931,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkShaderResourceUsage
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkShaderStatisticsInfoAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkShaderStatisticsInfoAMD *pstruct = (const VkShaderStatisticsInfoAMD *)pstruct_in.decoded_value; // BTB
+    const VkShaderStatisticsInfoAMD *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -37072,7 +37072,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkShaderStatisticsInf
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkStreamDescriptorSurfaceCreateInfoGGP &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkStreamDescriptorSurfaceCreateInfoGGP *pstruct = (const VkStreamDescriptorSurfaceCreateInfoGGP *)pstruct_in.decoded_value; // BTB
+    const VkStreamDescriptorSurfaceCreateInfoGGP *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -37169,7 +37169,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkStreamDescriptorSur
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCornerSampledImageFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceCornerSampledImageFeaturesNV *pstruct = (const VkPhysicalDeviceCornerSampledImageFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceCornerSampledImageFeaturesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -37249,7 +37249,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCorne
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalImageFormatPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalImageFormatPropertiesNV *pstruct = (const VkExternalImageFormatPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkExternalImageFormatPropertiesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -37332,7 +37332,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalImageFormat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalMemoryImageCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalMemoryImageCreateInfoNV *pstruct = (const VkExternalMemoryImageCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkExternalMemoryImageCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -37412,7 +37412,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalMemoryImage
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExportMemoryAllocateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportMemoryAllocateInfoNV *pstruct = (const VkExportMemoryAllocateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkExportMemoryAllocateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -37492,7 +37492,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExportMemoryAllocat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImportMemoryWin32HandleInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportMemoryWin32HandleInfoNV *pstruct = (const VkImportMemoryWin32HandleInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkImportMemoryWin32HandleInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -37601,7 +37601,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImportMemoryWin32Ha
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExportMemoryWin32HandleInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportMemoryWin32HandleInfoNV *pstruct = (const VkExportMemoryWin32HandleInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkExportMemoryWin32HandleInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -37711,7 +37711,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExportMemoryWin32Ha
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireReleaseInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWin32KeyedMutexAcquireReleaseInfoNV *pstruct = (const VkWin32KeyedMutexAcquireReleaseInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkWin32KeyedMutexAcquireReleaseInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -37803,7 +37803,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pAcquireSyncs.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pAcquireSyncs.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -37832,7 +37832,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pAcquireKeys.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pAcquireKeys.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -37861,7 +37861,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pAcquireTimeoutMilliseconds.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pAcquireTimeoutMilliseconds.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -37907,7 +37907,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pReleaseSyncs.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pReleaseSyncs.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -37936,7 +37936,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pReleaseKeys.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pReleaseKeys.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -37953,7 +37953,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationFlagsEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkValidationFlagsEXT *pstruct = (const VkValidationFlagsEXT *)pstruct_in.decoded_value; // BTB
+    const VkValidationFlagsEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -38045,7 +38045,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationFlagsEXT 
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pDisabledValidationChecks.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pDisabledValidationChecks.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -38062,7 +38062,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationFlagsEXT 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkViSurfaceCreateInfoNN &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkViSurfaceCreateInfoNN *pstruct = (const VkViSurfaceCreateInfoNN *)pstruct_in.decoded_value; // BTB
+    const VkViSurfaceCreateInfoNN *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -38171,7 +38171,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkViSurfaceCreateInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT *pstruct = (const VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -38251,7 +38251,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTextu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageViewASTCDecodeModeEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageViewASTCDecodeModeEXT *pstruct = (const VkImageViewASTCDecodeModeEXT *)pstruct_in.decoded_value; // BTB
+    const VkImageViewASTCDecodeModeEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -38331,7 +38331,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageViewASTCDecode
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceASTCDecodeFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceASTCDecodeFeaturesEXT *pstruct = (const VkPhysicalDeviceASTCDecodeFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceASTCDecodeFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -38411,7 +38411,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceASTCD
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkConditionalRenderingBeginInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkConditionalRenderingBeginInfoEXT *pstruct = (const VkConditionalRenderingBeginInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkConditionalRenderingBeginInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -38525,7 +38525,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkConditionalRenderin
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceConditionalRenderingFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceConditionalRenderingFeaturesEXT *pstruct = (const VkPhysicalDeviceConditionalRenderingFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceConditionalRenderingFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -38622,7 +38622,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCondi
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCommandBufferInheritanceConditionalRenderingInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCommandBufferInheritanceConditionalRenderingInfoEXT *pstruct = (const VkCommandBufferInheritanceConditionalRenderingInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkCommandBufferInheritanceConditionalRenderingInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -38702,7 +38702,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCommandBufferInheri
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGeneratedCommandsFeaturesNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGeneratedCommandsFeaturesNVX *pstruct = (const VkDeviceGeneratedCommandsFeaturesNVX *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGeneratedCommandsFeaturesNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -38782,7 +38782,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGeneratedComm
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGeneratedCommandsLimitsNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGeneratedCommandsLimitsNVX *pstruct = (const VkDeviceGeneratedCommandsLimitsNVX *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGeneratedCommandsLimitsNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -38930,7 +38930,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceGeneratedComm
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkIndirectCommandsTokenNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkIndirectCommandsTokenNVX *pstruct = (const VkIndirectCommandsTokenNVX *)pstruct_in.decoded_value; // BTB
+    const VkIndirectCommandsTokenNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -38997,7 +38997,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkIndirectCommandsTok
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkIndirectCommandsLayoutTokenNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkIndirectCommandsLayoutTokenNVX *pstruct = (const VkIndirectCommandsLayoutTokenNVX *)pstruct_in.decoded_value; // BTB
+    const VkIndirectCommandsLayoutTokenNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -39081,7 +39081,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkIndirectCommandsLay
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkIndirectCommandsLayoutCreateInfoNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkIndirectCommandsLayoutCreateInfoNVX *pstruct = (const VkIndirectCommandsLayoutCreateInfoNVX *)pstruct_in.decoded_value; // BTB
+    const VkIndirectCommandsLayoutCreateInfoNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -39211,7 +39211,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkIndirectCommandsLay
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkIndirectCommandsLayoutTokenNVX>(outputFile, indent, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkIndirectCommandsLayoutTokenNVX>(outputFile, indent, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress(), sizeof(VkIndirectCommandsLayoutTokenNVX)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -39223,7 +39223,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkIndirectCommandsLay
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCmdProcessCommandsInfoNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCmdProcessCommandsInfoNVX *pstruct = (const VkCmdProcessCommandsInfoNVX *)pstruct_in.decoded_value; // BTB
+    const VkCmdProcessCommandsInfoNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -39353,7 +39353,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCmdProcessCommandsI
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkIndirectCommandsTokenNVX>(outputFile, indent, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkIndirectCommandsTokenNVX>(outputFile, indent, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress(), sizeof(VkIndirectCommandsTokenNVX)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -39467,7 +39467,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCmdProcessCommandsI
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCmdReserveSpaceForCommandsInfoNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCmdReserveSpaceForCommandsInfoNVX *pstruct = (const VkCmdReserveSpaceForCommandsInfoNVX *)pstruct_in.decoded_value; // BTB
+    const VkCmdReserveSpaceForCommandsInfoNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -39581,7 +39581,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCmdReserveSpaceForC
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableCreateInfoNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTableCreateInfoNVX *pstruct = (const VkObjectTableCreateInfoNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTableCreateInfoNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -39673,7 +39673,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableCreateIn
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pObjectEntryTypes.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pObjectEntryTypes.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -39702,7 +39702,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableCreateIn
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pObjectEntryCounts.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pObjectEntryCounts.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -39731,7 +39731,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableCreateIn
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pObjectEntryUsageFlags.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pObjectEntryUsageFlags.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -39833,7 +39833,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableCreateIn
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableEntryNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTableEntryNVX *pstruct = (const VkObjectTableEntryNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTableEntryNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -39883,7 +39883,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableEntryNVX
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTablePipelineEntryNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTablePipelineEntryNVX *pstruct = (const VkObjectTablePipelineEntryNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTablePipelineEntryNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -39950,7 +39950,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTablePipeline
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableDescriptorSetEntryNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTableDescriptorSetEntryNVX *pstruct = (const VkObjectTableDescriptorSetEntryNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTableDescriptorSetEntryNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -40034,7 +40034,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableDescript
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableVertexBufferEntryNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTableVertexBufferEntryNVX *pstruct = (const VkObjectTableVertexBufferEntryNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTableVertexBufferEntryNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -40101,7 +40101,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableVertexBu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableIndexBufferEntryNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTableIndexBufferEntryNVX *pstruct = (const VkObjectTableIndexBufferEntryNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTableIndexBufferEntryNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -40185,7 +40185,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTableIndexBuf
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTablePushConstantEntryNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTablePushConstantEntryNVX *pstruct = (const VkObjectTablePushConstantEntryNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTablePushConstantEntryNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -40269,7 +40269,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkObjectTablePushCons
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkViewportWScalingNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkViewportWScalingNV *pstruct = (const VkViewportWScalingNV *)pstruct_in.decoded_value; // BTB
+    const VkViewportWScalingNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -40319,7 +40319,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkViewportWScalingNV 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportWScalingStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineViewportWScalingStateCreateInfoNV *pstruct = (const VkPipelineViewportWScalingStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineViewportWScalingStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -40432,7 +40432,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportWSc
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkViewportWScalingNV>(outputFile, indent, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkViewportWScalingNV>(outputFile, indent, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress(), sizeof(VkViewportWScalingNV)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -40444,7 +40444,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportWSc
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities2EXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceCapabilities2EXT *pstruct = (const VkSurfaceCapabilities2EXT *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceCapabilities2EXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -40691,7 +40691,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPowerInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPowerInfoEXT *pstruct = (const VkDisplayPowerInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPowerInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -40771,7 +40771,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayPowerInfoEXT
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceEventInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceEventInfoEXT *pstruct = (const VkDeviceEventInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDeviceEventInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -40851,7 +40851,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceEventInfoEXT 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayEventInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayEventInfoEXT *pstruct = (const VkDisplayEventInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDisplayEventInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -40931,7 +40931,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayEventInfoEXT
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSwapchainCounterCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSwapchainCounterCreateInfoEXT *pstruct = (const VkSwapchainCounterCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkSwapchainCounterCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -41011,7 +41011,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSwapchainCounterCre
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRefreshCycleDurationGOOGLE &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRefreshCycleDurationGOOGLE *pstruct = (const VkRefreshCycleDurationGOOGLE *)pstruct_in.decoded_value; // BTB
+    const VkRefreshCycleDurationGOOGLE *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -41044,7 +41044,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRefreshCycleDuratio
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPastPresentationTimingGOOGLE &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPastPresentationTimingGOOGLE *pstruct = (const VkPastPresentationTimingGOOGLE *)pstruct_in.decoded_value; // BTB
+    const VkPastPresentationTimingGOOGLE *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -41145,7 +41145,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPastPresentationTim
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentTimeGOOGLE &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPresentTimeGOOGLE *pstruct = (const VkPresentTimeGOOGLE *)pstruct_in.decoded_value; // BTB
+    const VkPresentTimeGOOGLE *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -41195,7 +41195,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentTimeGOOGLE &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOGLE &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPresentTimesInfoGOOGLE *pstruct = (const VkPresentTimesInfoGOOGLE *)pstruct_in.decoded_value; // BTB
+    const VkPresentTimesInfoGOOGLE *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -41291,7 +41291,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentTimesInfoGOO
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPresentTimeGOOGLE>(outputFile, indent, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPresentTimeGOOGLE>(outputFile, indent, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress(), sizeof(VkPresentTimeGOOGLE)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -41303,7 +41303,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentTimesInfoGOO
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX *pstruct = (const VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -41383,7 +41383,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMulti
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkViewportSwizzleNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkViewportSwizzleNV *pstruct = (const VkViewportSwizzleNV *)pstruct_in.decoded_value; // BTB
+    const VkViewportSwizzleNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -41467,7 +41467,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkViewportSwizzleNV &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportSwizzleStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineViewportSwizzleStateCreateInfoNV *pstruct = (const VkPipelineViewportSwizzleStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineViewportSwizzleStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -41580,7 +41580,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportSwi
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkViewportSwizzleNV>(outputFile, indent, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkViewportSwizzleNV>(outputFile, indent, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress(), sizeof(VkViewportSwizzleNV)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -41592,7 +41592,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportSwi
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDiscardRectanglePropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDiscardRectanglePropertiesEXT *pstruct = (const VkPhysicalDeviceDiscardRectanglePropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDiscardRectanglePropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -41672,7 +41672,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDisca
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineDiscardRectangleStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineDiscardRectangleStateCreateInfoEXT *pstruct = (const VkPipelineDiscardRectangleStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineDiscardRectangleStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -41802,7 +41802,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineDiscardRect
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress(), sizeof(VkRect2D)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -41814,7 +41814,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineDiscardRect
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceConservativeRasterizationPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceConservativeRasterizationPropertiesEXT *pstruct = (const VkPhysicalDeviceConservativeRasterizationPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceConservativeRasterizationPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -42030,7 +42030,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceConse
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRasterizationConservativeStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRasterizationConservativeStateCreateInfoEXT *pstruct = (const VkPipelineRasterizationConservativeStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRasterizationConservativeStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -42144,7 +42144,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRasterizati
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthClipEnableFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDepthClipEnableFeaturesEXT *pstruct = (const VkPhysicalDeviceDepthClipEnableFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDepthClipEnableFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -42224,7 +42224,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDepth
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRasterizationDepthClipStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRasterizationDepthClipStateCreateInfoEXT *pstruct = (const VkPipelineRasterizationDepthClipStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRasterizationDepthClipStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -42321,7 +42321,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRasterizati
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkXYColorEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkXYColorEXT *pstruct = (const VkXYColorEXT *)pstruct_in.decoded_value; // BTB
+    const VkXYColorEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -42371,7 +42371,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkXYColorEXT &pstruct
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkHdrMetadataEXT *pstruct = (const VkHdrMetadataEXT *)pstruct_in.decoded_value; // BTB
+    const VkHdrMetadataEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -42566,7 +42566,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pst
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkIOSSurfaceCreateInfoMVK &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkIOSSurfaceCreateInfoMVK *pstruct = (const VkIOSSurfaceCreateInfoMVK *)pstruct_in.decoded_value; // BTB
+    const VkIOSSurfaceCreateInfoMVK *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -42675,7 +42675,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkIOSSurfaceCreateInf
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMacOSSurfaceCreateInfoMVK &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMacOSSurfaceCreateInfoMVK *pstruct = (const VkMacOSSurfaceCreateInfoMVK *)pstruct_in.decoded_value; // BTB
+    const VkMacOSSurfaceCreateInfoMVK *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -42784,7 +42784,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMacOSSurfaceCreateI
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsObjectNameInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugUtilsObjectNameInfoEXT *pstruct = (const VkDebugUtilsObjectNameInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugUtilsObjectNameInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -42910,7 +42910,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsObjectNam
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsObjectTagInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugUtilsObjectTagInfoEXT *pstruct = (const VkDebugUtilsObjectTagInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugUtilsObjectTagInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -43053,7 +43053,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsObjectTag
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pTag.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pTag.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -43070,7 +43070,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsObjectTag
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsLabelEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugUtilsLabelEXT *pstruct = (const VkDebugUtilsLabelEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugUtilsLabelEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -43186,7 +43186,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsLabelEXT 
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCallbackDataEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugUtilsMessengerCallbackDataEXT *pstruct = (const VkDebugUtilsMessengerCallbackDataEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugUtilsMessengerCallbackDataEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -43374,7 +43374,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsMessenger
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -43419,7 +43419,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsMessenger
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -43464,7 +43464,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsMessenger
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDebugUtilsObjectNameInfoEXT>(outputFile, indent, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDebugUtilsObjectNameInfoEXT>(outputFile, indent, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress(), sizeof(VkDebugUtilsObjectNameInfoEXT)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -43476,7 +43476,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsMessenger
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugUtilsMessengerCreateInfoEXT *pstruct = (const VkDebugUtilsMessengerCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugUtilsMessengerCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -43636,7 +43636,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDebugUtilsMessenger
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAndroidHardwareBufferUsageANDROID &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAndroidHardwareBufferUsageANDROID *pstruct = (const VkAndroidHardwareBufferUsageANDROID *)pstruct_in.decoded_value; // BTB
+    const VkAndroidHardwareBufferUsageANDROID *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -43716,7 +43716,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAndroidHardwareBuff
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAndroidHardwareBufferPropertiesANDROID &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAndroidHardwareBufferPropertiesANDROID *pstruct = (const VkAndroidHardwareBufferPropertiesANDROID *)pstruct_in.decoded_value; // BTB
+    const VkAndroidHardwareBufferPropertiesANDROID *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -43813,7 +43813,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAndroidHardwareBuff
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAndroidHardwareBufferFormatPropertiesANDROID &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAndroidHardwareBufferFormatPropertiesANDROID *pstruct = (const VkAndroidHardwareBufferFormatPropertiesANDROID *)pstruct_in.decoded_value; // BTB
+    const VkAndroidHardwareBufferFormatPropertiesANDROID *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -44011,7 +44011,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAndroidHardwareBuff
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImportAndroidHardwareBufferInfoANDROID &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportAndroidHardwareBufferInfoANDROID *pstruct = (const VkImportAndroidHardwareBufferInfoANDROID *)pstruct_in.decoded_value; // BTB
+    const VkImportAndroidHardwareBufferInfoANDROID *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -44103,7 +44103,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImportAndroidHardwa
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryGetAndroidHardwareBufferInfoANDROID &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryGetAndroidHardwareBufferInfoANDROID *pstruct = (const VkMemoryGetAndroidHardwareBufferInfoANDROID *)pstruct_in.decoded_value; // BTB
+    const VkMemoryGetAndroidHardwareBufferInfoANDROID *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -44183,7 +44183,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryGetAndroidHar
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalFormatANDROID &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalFormatANDROID *pstruct = (const VkExternalFormatANDROID *)pstruct_in.decoded_value; // BTB
+    const VkExternalFormatANDROID *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -44263,7 +44263,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkExternalFormatANDRO
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSamplerReductionModeCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSamplerReductionModeCreateInfoEXT *pstruct = (const VkSamplerReductionModeCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkSamplerReductionModeCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -44343,7 +44343,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSamplerReductionMod
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT *pstruct = (const VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -44440,7 +44440,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSampl
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineUniformBlockFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceInlineUniformBlockFeaturesEXT *pstruct = (const VkPhysicalDeviceInlineUniformBlockFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceInlineUniformBlockFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -44537,7 +44537,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceInlin
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineUniformBlockPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceInlineUniformBlockPropertiesEXT *pstruct = (const VkPhysicalDeviceInlineUniformBlockPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceInlineUniformBlockPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -44685,7 +44685,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceInlin
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSetInlineUniformBlockEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWriteDescriptorSetInlineUniformBlockEXT *pstruct = (const VkWriteDescriptorSetInlineUniformBlockEXT *)pstruct_in.decoded_value; // BTB
+    const VkWriteDescriptorSetInlineUniformBlockEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -44777,7 +44777,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSetI
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pData.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -44794,7 +44794,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSetI
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorPoolInlineUniformBlockCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorPoolInlineUniformBlockCreateInfoEXT *pstruct = (const VkDescriptorPoolInlineUniformBlockCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorPoolInlineUniformBlockCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -44874,7 +44874,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorPoolInlin
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSampleLocationEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSampleLocationEXT *pstruct = (const VkSampleLocationEXT *)pstruct_in.decoded_value; // BTB
+    const VkSampleLocationEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -44924,7 +44924,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSampleLocationEXT &
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSampleLocationsInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSampleLocationsInfoEXT *pstruct = (const VkSampleLocationsInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkSampleLocationsInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -45053,7 +45053,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSampleLocationsInfo
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSampleLocationEXT>(outputFile, indent, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSampleLocationEXT>(outputFile, indent, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkSampleLocationEXT)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -45065,7 +45065,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSampleLocationsInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAttachmentSampleLocationsEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAttachmentSampleLocationsEXT *pstruct = (const VkAttachmentSampleLocationsEXT *)pstruct_in.decoded_value; // BTB
+    const VkAttachmentSampleLocationsEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -45114,7 +45114,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAttachmentSampleLoc
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassSampleLocationsEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassSampleLocationsEXT *pstruct = (const VkSubpassSampleLocationsEXT *)pstruct_in.decoded_value; // BTB
+    const VkSubpassSampleLocationsEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -45163,7 +45163,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSubpassSampleLocati
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassSampleLocationsBeginInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassSampleLocationsBeginInfoEXT *pstruct = (const VkRenderPassSampleLocationsBeginInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassSampleLocationsBeginInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -45259,7 +45259,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassSampleLoc
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkAttachmentSampleLocationsEXT>(outputFile, indent, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkAttachmentSampleLocationsEXT>(outputFile, indent, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress(), sizeof(VkAttachmentSampleLocationsEXT)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -45304,7 +45304,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassSampleLoc
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubpassSampleLocationsEXT>(outputFile, indent, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSubpassSampleLocationsEXT>(outputFile, indent, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress(), sizeof(VkSubpassSampleLocationsEXT)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -45316,7 +45316,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassSampleLoc
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineSampleLocationsStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineSampleLocationsStateCreateInfoEXT *pstruct = (const VkPipelineSampleLocationsStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineSampleLocationsStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -45412,7 +45412,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineSampleLocat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSampleLocationsPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSampleLocationsPropertiesEXT *pstruct = (const VkPhysicalDeviceSampleLocationsPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSampleLocationsPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -45566,7 +45566,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSampl
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMultisamplePropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMultisamplePropertiesEXT *pstruct = (const VkMultisamplePropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkMultisamplePropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -45645,7 +45645,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMultisampleProperti
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT *pstruct = (const VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -45725,7 +45725,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceBlend
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT *pstruct = (const VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -45890,7 +45890,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceBlend
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineColorBlendAdvancedStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineColorBlendAdvancedStateCreateInfoEXT *pstruct = (const VkPipelineColorBlendAdvancedStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineColorBlendAdvancedStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -46004,7 +46004,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineColorBlendA
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCoverageToColorStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCoverageToColorStateCreateInfoNV *pstruct = (const VkPipelineCoverageToColorStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCoverageToColorStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -46118,7 +46118,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCoverageToC
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCoverageModulationStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCoverageModulationStateCreateInfoNV *pstruct = (const VkPipelineCoverageModulationStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCoverageModulationStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -46261,7 +46261,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCoverageMod
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pCoverageModulationTable.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pCoverageModulationTable.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -46278,7 +46278,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCoverageMod
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSMBuiltinsPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderSMBuiltinsPropertiesNV *pstruct = (const VkPhysicalDeviceShaderSMBuiltinsPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderSMBuiltinsPropertiesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -46375,7 +46375,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShade
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSMBuiltinsFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderSMBuiltinsFeaturesNV *pstruct = (const VkPhysicalDeviceShaderSMBuiltinsFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderSMBuiltinsFeaturesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -46455,7 +46455,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShade
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDrmFormatModifierPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDrmFormatModifierPropertiesEXT *pstruct = (const VkDrmFormatModifierPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkDrmFormatModifierPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -46522,7 +46522,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDrmFormatModifierPr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDrmFormatModifierPropertiesListEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDrmFormatModifierPropertiesListEXT *pstruct = (const VkDrmFormatModifierPropertiesListEXT *)pstruct_in.decoded_value; // BTB
+    const VkDrmFormatModifierPropertiesListEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -46618,7 +46618,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDrmFormatModifierPr
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkDrmFormatModifierPropertiesEXT>(outputFile, indent, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkDrmFormatModifierPropertiesEXT>(outputFile, indent, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress(), sizeof(VkDrmFormatModifierPropertiesEXT)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -46630,7 +46630,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDrmFormatModifierPr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImageDrmFormatModifierInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceImageDrmFormatModifierInfoEXT *pstruct = (const VkPhysicalDeviceImageDrmFormatModifierInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceImageDrmFormatModifierInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -46756,7 +46756,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImage
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -46773,7 +46773,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImage
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageDrmFormatModifierListCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageDrmFormatModifierListCreateInfoEXT *pstruct = (const VkImageDrmFormatModifierListCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkImageDrmFormatModifierListCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -46865,7 +46865,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageDrmFormatModif
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pDrmFormatModifiers.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pDrmFormatModifiers.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -46882,7 +46882,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageDrmFormatModif
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageDrmFormatModifierExplicitCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageDrmFormatModifierExplicitCreateInfoEXT *pstruct = (const VkImageDrmFormatModifierExplicitCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkImageDrmFormatModifierExplicitCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -46995,7 +46995,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageDrmFormatModif
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkSubresourceLayout>(outputFile, indent, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkSubresourceLayout>(outputFile, indent, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress(), sizeof(VkSubresourceLayout)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -47007,7 +47007,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageDrmFormatModif
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageDrmFormatModifierPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageDrmFormatModifierPropertiesEXT *pstruct = (const VkImageDrmFormatModifierPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkImageDrmFormatModifierPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -47087,7 +47087,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageDrmFormatModif
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationCacheCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkValidationCacheCreateInfoEXT *pstruct = (const VkValidationCacheCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkValidationCacheCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -47196,7 +47196,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationCacheCrea
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pInitialData.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pInitialData.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -47213,7 +47213,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationCacheCrea
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkShaderModuleValidationCacheCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkShaderModuleValidationCacheCreateInfoEXT *pstruct = (const VkShaderModuleValidationCacheCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkShaderModuleValidationCacheCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -47293,7 +47293,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkShaderModuleValidat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBindingFlagsCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetLayoutBindingFlagsCreateInfoEXT *pstruct = (const VkDescriptorSetLayoutBindingFlagsCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetLayoutBindingFlagsCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -47385,7 +47385,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayout
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pBindingFlags.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pBindingFlags.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -47402,7 +47402,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetLayout
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDescriptorIndexingFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDescriptorIndexingFeaturesEXT *pstruct = (const VkPhysicalDeviceDescriptorIndexingFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDescriptorIndexingFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -47805,7 +47805,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDescr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDescriptorIndexingPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDescriptorIndexingPropertiesEXT *pstruct = (const VkPhysicalDeviceDescriptorIndexingPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDescriptorIndexingPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -48259,7 +48259,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDescr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetVariableDescriptorCountAllocateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetVariableDescriptorCountAllocateInfoEXT *pstruct = (const VkDescriptorSetVariableDescriptorCountAllocateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetVariableDescriptorCountAllocateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -48351,7 +48351,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetVariab
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pDescriptorCounts.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pDescriptorCounts.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -48368,7 +48368,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetVariab
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetVariableDescriptorCountLayoutSupportEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetVariableDescriptorCountLayoutSupportEXT *pstruct = (const VkDescriptorSetVariableDescriptorCountLayoutSupportEXT *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetVariableDescriptorCountLayoutSupportEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -48448,7 +48448,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDescriptorSetVariab
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkShadingRatePaletteNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkShadingRatePaletteNV *pstruct = (const VkShadingRatePaletteNV *)pstruct_in.decoded_value; // BTB
+    const VkShadingRatePaletteNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -48493,7 +48493,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkShadingRatePaletteN
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pShadingRatePaletteEntries.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pShadingRatePaletteEntries.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -48510,7 +48510,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkShadingRatePaletteN
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportShadingRateImageStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineViewportShadingRateImageStateCreateInfoNV *pstruct = (const VkPipelineViewportShadingRateImageStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineViewportShadingRateImageStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -48623,7 +48623,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportSha
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkShadingRatePaletteNV>(outputFile, indent, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkShadingRatePaletteNV>(outputFile, indent, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress(), sizeof(VkShadingRatePaletteNV)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -48635,7 +48635,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportSha
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShadingRateImageFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShadingRateImageFeaturesNV *pstruct = (const VkPhysicalDeviceShadingRateImageFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShadingRateImageFeaturesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -48732,7 +48732,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShadi
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShadingRateImagePropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShadingRateImagePropertiesNV *pstruct = (const VkPhysicalDeviceShadingRateImagePropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShadingRateImagePropertiesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -48845,7 +48845,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShadi
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCoarseSampleLocationNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCoarseSampleLocationNV *pstruct = (const VkCoarseSampleLocationNV *)pstruct_in.decoded_value; // BTB
+    const VkCoarseSampleLocationNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -48912,7 +48912,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCoarseSampleLocatio
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCoarseSampleOrderCustomNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCoarseSampleOrderCustomNV *pstruct = (const VkCoarseSampleOrderCustomNV *)pstruct_in.decoded_value; // BTB
+    const VkCoarseSampleOrderCustomNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -48995,7 +48995,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCoarseSampleOrderCu
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCoarseSampleLocationNV>(outputFile, indent, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkCoarseSampleLocationNV>(outputFile, indent, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkCoarseSampleLocationNV)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -49007,7 +49007,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCoarseSampleOrderCu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportCoarseSampleOrderStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineViewportCoarseSampleOrderStateCreateInfoNV *pstruct = (const VkPipelineViewportCoarseSampleOrderStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineViewportCoarseSampleOrderStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -49120,7 +49120,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportCoa
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress(), sizeof(VkCoarseSampleOrderCustomNV)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -49132,7 +49132,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportCoa
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRayTracingShaderGroupCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRayTracingShaderGroupCreateInfoNV *pstruct = (const VkRayTracingShaderGroupCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkRayTracingShaderGroupCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -49280,7 +49280,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRayTracingShaderGro
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRayTracingPipelineCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRayTracingPipelineCreateInfoNV *pstruct = (const VkRayTracingPipelineCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkRayTracingPipelineCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -49393,7 +49393,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRayTracingPipelineC
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -49438,7 +49438,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRayTracingPipelineC
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRayTracingShaderGroupCreateInfoNV>(outputFile, indent, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRayTracingShaderGroupCreateInfoNV>(outputFile, indent, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress(), sizeof(VkRayTracingShaderGroupCreateInfoNV)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -49518,7 +49518,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRayTracingPipelineC
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkGeometryTrianglesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkGeometryTrianglesNV *pstruct = (const VkGeometryTrianglesNV *)pstruct_in.decoded_value; // BTB
+    const VkGeometryTrianglesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -49768,7 +49768,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkGeometryTrianglesNV
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkGeometryAABBNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkGeometryAABBNV *pstruct = (const VkGeometryAABBNV *)pstruct_in.decoded_value; // BTB
+    const VkGeometryAABBNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -49899,7 +49899,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkGeometryAABBNV &pst
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkGeometryDataNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkGeometryDataNV *pstruct = (const VkGeometryDataNV *)pstruct_in.decoded_value; // BTB
+    const VkGeometryDataNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -49947,7 +49947,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkGeometryDataNV &pst
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkGeometryNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkGeometryNV *pstruct = (const VkGeometryNV *)pstruct_in.decoded_value; // BTB
+    const VkGeometryNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -50060,7 +50060,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkGeometryNV &pstruct
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAccelerationStructureInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAccelerationStructureInfoNV *pstruct = (const VkAccelerationStructureInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkAccelerationStructureInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -50207,7 +50207,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAccelerationStructu
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkGeometryNV>(outputFile, indent, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkGeometryNV>(outputFile, indent, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress(), sizeof(VkGeometryNV)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -50219,7 +50219,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAccelerationStructu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAccelerationStructureCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAccelerationStructureCreateInfoNV *pstruct = (const VkAccelerationStructureCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkAccelerationStructureCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -50315,7 +50315,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAccelerationStructu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBindAccelerationStructureMemoryInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindAccelerationStructureMemoryInfoNV *pstruct = (const VkBindAccelerationStructureMemoryInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkBindAccelerationStructureMemoryInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -50458,7 +50458,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindAccelerationStr
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pDeviceIndices.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pDeviceIndices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -50475,7 +50475,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBindAccelerationStr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSetAccelerationStructureNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWriteDescriptorSetAccelerationStructureNV *pstruct = (const VkWriteDescriptorSetAccelerationStructureNV *)pstruct_in.decoded_value; // BTB
+    const VkWriteDescriptorSetAccelerationStructureNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -50567,7 +50567,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSetA
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pAccelerationStructures.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pAccelerationStructures.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRI
@@ -50584,7 +50584,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkWriteDescriptorSetA
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkAccelerationStructureMemoryRequirementsInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAccelerationStructureMemoryRequirementsInfoNV *pstruct = (const VkAccelerationStructureMemoryRequirementsInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkAccelerationStructureMemoryRequirementsInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -50681,7 +50681,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkAccelerationStructu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceRayTracingPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceRayTracingPropertiesNV *pstruct = (const VkPhysicalDeviceRayTracingPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceRayTracingPropertiesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -50880,7 +50880,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceRayTr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV *pstruct = (const VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -50960,7 +50960,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceRepre
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRepresentativeFragmentTestStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRepresentativeFragmentTestStateCreateInfoNV *pstruct = (const VkPipelineRepresentativeFragmentTestStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRepresentativeFragmentTestStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -51040,7 +51040,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRepresentat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImageViewImageFormatInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceImageViewImageFormatInfoEXT *pstruct = (const VkPhysicalDeviceImageViewImageFormatInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceImageViewImageFormatInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -51120,7 +51120,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImage
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkFilterCubicImageViewImageFormatPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFilterCubicImageViewImageFormatPropertiesEXT *pstruct = (const VkFilterCubicImageViewImageFormatPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkFilterCubicImageViewImageFormatPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -51217,7 +51217,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFilterCubicImageVie
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceQueueGlobalPriorityCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceQueueGlobalPriorityCreateInfoEXT *pstruct = (const VkDeviceQueueGlobalPriorityCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDeviceQueueGlobalPriorityCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -51297,7 +51297,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceQueueGlobalPr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImportMemoryHostPointerInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportMemoryHostPointerInfoEXT *pstruct = (const VkImportMemoryHostPointerInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkImportMemoryHostPointerInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -51406,7 +51406,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImportMemoryHostPoi
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryHostPointerPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryHostPointerPropertiesEXT *pstruct = (const VkMemoryHostPointerPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkMemoryHostPointerPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -51486,7 +51486,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryHostPointerPr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalMemoryHostPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceExternalMemoryHostPropertiesEXT *pstruct = (const VkPhysicalDeviceExternalMemoryHostPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceExternalMemoryHostPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -51566,7 +51566,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExter
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCompilerControlCreateInfoAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCompilerControlCreateInfoAMD *pstruct = (const VkPipelineCompilerControlCreateInfoAMD *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCompilerControlCreateInfoAMD *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -51646,7 +51646,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCompilerCon
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCalibratedTimestampInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCalibratedTimestampInfoEXT *pstruct = (const VkCalibratedTimestampInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkCalibratedTimestampInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -51726,7 +51726,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCalibratedTimestamp
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderCorePropertiesAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderCorePropertiesAMD *pstruct = (const VkPhysicalDeviceShaderCorePropertiesAMD *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderCorePropertiesAMD *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -52027,7 +52027,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShade
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceMemoryOverallocationCreateInfoAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceMemoryOverallocationCreateInfoAMD *pstruct = (const VkDeviceMemoryOverallocationCreateInfoAMD *)pstruct_in.decoded_value; // BTB
+    const VkDeviceMemoryOverallocationCreateInfoAMD *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -52107,7 +52107,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDeviceMemoryOverall
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT *pstruct = (const VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -52187,7 +52187,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVerte
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkVertexInputBindingDivisorDescriptionEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkVertexInputBindingDivisorDescriptionEXT *pstruct = (const VkVertexInputBindingDivisorDescriptionEXT *)pstruct_in.decoded_value; // BTB
+    const VkVertexInputBindingDivisorDescriptionEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -52237,7 +52237,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkVertexInputBindingD
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineVertexInputDivisorStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineVertexInputDivisorStateCreateInfoEXT *pstruct = (const VkPipelineVertexInputDivisorStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineVertexInputDivisorStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -52333,7 +52333,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineVertexInput
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkVertexInputBindingDivisorDescriptionEXT>(outputFile, indent, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkVertexInputBindingDivisorDescriptionEXT>(outputFile, indent, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress(), sizeof(VkVertexInputBindingDivisorDescriptionEXT)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -52345,7 +52345,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineVertexInput
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT *pstruct = (const VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -52442,7 +52442,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVerte
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentFrameTokenGGP &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPresentFrameTokenGGP *pstruct = (const VkPresentFrameTokenGGP *)pstruct_in.decoded_value; // BTB
+    const VkPresentFrameTokenGGP *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -52522,7 +52522,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPresentFrameTokenGG
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCreationFeedbackEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCreationFeedbackEXT *pstruct = (const VkPipelineCreationFeedbackEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCreationFeedbackEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -52572,7 +52572,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCreationFee
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCreationFeedbackCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCreationFeedbackCreateInfoEXT *pstruct = (const VkPipelineCreationFeedbackCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCreationFeedbackCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -52696,7 +52696,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCreationFee
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkPipelineCreationFeedbackEXT>(outputFile, indent, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkPipelineCreationFeedbackEXT>(outputFile, indent, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress(), sizeof(VkPipelineCreationFeedbackEXT)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -52708,7 +52708,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCreationFee
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceComputeShaderDerivativesFeaturesNV *pstruct = (const VkPhysicalDeviceComputeShaderDerivativesFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceComputeShaderDerivativesFeaturesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -52805,7 +52805,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCompu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShaderFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMeshShaderFeaturesNV *pstruct = (const VkPhysicalDeviceMeshShaderFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMeshShaderFeaturesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -52902,7 +52902,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshS
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShaderPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMeshShaderPropertiesNV *pstruct = (const VkPhysicalDeviceMeshShaderPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMeshShaderPropertiesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -53200,7 +53200,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshS
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDrawMeshTasksIndirectCommandNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDrawMeshTasksIndirectCommandNV *pstruct = (const VkDrawMeshTasksIndirectCommandNV *)pstruct_in.decoded_value; // BTB
+    const VkDrawMeshTasksIndirectCommandNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -53250,7 +53250,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDrawMeshTasksIndire
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV *pstruct = (const VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -53330,7 +53330,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragm
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderImageFootprintFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderImageFootprintFeaturesNV *pstruct = (const VkPhysicalDeviceShaderImageFootprintFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderImageFootprintFeaturesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -53410,7 +53410,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShade
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportExclusiveScissorStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineViewportExclusiveScissorStateCreateInfoNV *pstruct = (const VkPipelineViewportExclusiveScissorStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineViewportExclusiveScissorStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -53506,7 +53506,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportExc
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress()); // CCY
+        ArrayOfStructsToStringJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress(), sizeof(VkRect2D)); // CCY
     } // HWR
     indent--;
     IndentSpacesJson(outputFile, indent); // UEW
@@ -53518,7 +53518,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineViewportExc
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExclusiveScissorFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceExclusiveScissorFeaturesNV *pstruct = (const VkPhysicalDeviceExclusiveScissorFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceExclusiveScissorFeaturesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -53598,7 +53598,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExclu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkQueueFamilyCheckpointPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkQueueFamilyCheckpointPropertiesNV *pstruct = (const VkQueueFamilyCheckpointPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkQueueFamilyCheckpointPropertiesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -53678,7 +53678,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkQueueFamilyCheckpoi
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCheckpointDataNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCheckpointDataNV *pstruct = (const VkCheckpointDataNV *)pstruct_in.decoded_value; // BTB
+    const VkCheckpointDataNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -53787,7 +53787,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCheckpointDataNV &p
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL *pstruct = (const VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -53867,7 +53867,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShade
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPerformanceValueDataINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPerformanceValueDataINTEL *pstruct = (const VkPerformanceValueDataINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPerformanceValueDataINTEL *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -53980,7 +53980,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPerformanceValueDat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPerformanceValueINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPerformanceValueINTEL *pstruct = (const VkPerformanceValueINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPerformanceValueINTEL *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -54029,7 +54029,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPerformanceValueINT
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkInitializePerformanceApiInfoINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkInitializePerformanceApiInfoINTEL *pstruct = (const VkInitializePerformanceApiInfoINTEL *)pstruct_in.decoded_value; // BTB
+    const VkInitializePerformanceApiInfoINTEL *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -54121,7 +54121,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkInitializePerforman
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkQueryPoolCreateInfoINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkQueryPoolCreateInfoINTEL *pstruct = (const VkQueryPoolCreateInfoINTEL *)pstruct_in.decoded_value; // BTB
+    const VkQueryPoolCreateInfoINTEL *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -54201,7 +54201,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkQueryPoolCreateInfo
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPerformanceMarkerInfoINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPerformanceMarkerInfoINTEL *pstruct = (const VkPerformanceMarkerInfoINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPerformanceMarkerInfoINTEL *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -54281,7 +54281,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPerformanceMarkerIn
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPerformanceStreamMarkerInfoINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPerformanceStreamMarkerInfoINTEL *pstruct = (const VkPerformanceStreamMarkerInfoINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPerformanceStreamMarkerInfoINTEL *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -54361,7 +54361,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPerformanceStreamMa
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPerformanceOverrideInfoINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPerformanceOverrideInfoINTEL *pstruct = (const VkPerformanceOverrideInfoINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPerformanceOverrideInfoINTEL *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -54475,7 +54475,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPerformanceOverride
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPerformanceConfigurationAcquireInfoINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPerformanceConfigurationAcquireInfoINTEL *pstruct = (const VkPerformanceConfigurationAcquireInfoINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPerformanceConfigurationAcquireInfoINTEL *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -54555,7 +54555,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPerformanceConfigur
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevicePCIBusInfoPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDevicePCIBusInfoPropertiesEXT *pstruct = (const VkPhysicalDevicePCIBusInfoPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDevicePCIBusInfoPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -54686,7 +54686,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDevicePCIBu
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayNativeHdrSurfaceCapabilitiesAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayNativeHdrSurfaceCapabilitiesAMD *pstruct = (const VkDisplayNativeHdrSurfaceCapabilitiesAMD *)pstruct_in.decoded_value; // BTB
+    const VkDisplayNativeHdrSurfaceCapabilitiesAMD *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -54766,7 +54766,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkDisplayNativeHdrSur
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSwapchainDisplayNativeHdrCreateInfoAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSwapchainDisplayNativeHdrCreateInfoAMD *pstruct = (const VkSwapchainDisplayNativeHdrCreateInfoAMD *)pstruct_in.decoded_value; // BTB
+    const VkSwapchainDisplayNativeHdrCreateInfoAMD *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -54846,7 +54846,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSwapchainDisplayNat
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImagePipeSurfaceCreateInfoFUCHSIA &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImagePipeSurfaceCreateInfoFUCHSIA *pstruct = (const VkImagePipeSurfaceCreateInfoFUCHSIA *)pstruct_in.decoded_value; // BTB
+    const VkImagePipeSurfaceCreateInfoFUCHSIA *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -54943,7 +54943,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImagePipeSurfaceCre
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMetalSurfaceCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMetalSurfaceCreateInfoEXT *pstruct = (const VkMetalSurfaceCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkMetalSurfaceCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -55052,7 +55052,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMetalSurfaceCreateI
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentDensityMapFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFragmentDensityMapFeaturesEXT *pstruct = (const VkPhysicalDeviceFragmentDensityMapFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFragmentDensityMapFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -55166,7 +55166,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragm
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentDensityMapPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFragmentDensityMapPropertiesEXT *pstruct = (const VkPhysicalDeviceFragmentDensityMapPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFragmentDensityMapPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -55278,7 +55278,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragm
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassFragmentDensityMapCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassFragmentDensityMapCreateInfoEXT *pstruct = (const VkRenderPassFragmentDensityMapCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassFragmentDensityMapCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -55357,7 +55357,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkRenderPassFragmentD
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceScalarBlockLayoutFeaturesEXT *pstruct = (const VkPhysicalDeviceScalarBlockLayoutFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceScalarBlockLayoutFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -55437,7 +55437,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceScala
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupSizeControlFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSubgroupSizeControlFeaturesEXT *pstruct = (const VkPhysicalDeviceSubgroupSizeControlFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSubgroupSizeControlFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -55534,7 +55534,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupSizeControlPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSubgroupSizeControlPropertiesEXT *pstruct = (const VkPhysicalDeviceSubgroupSizeControlPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSubgroupSizeControlPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -55665,7 +55665,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT *pstruct = (const VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -55745,7 +55745,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineShaderStage
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderCoreProperties2AMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderCoreProperties2AMD *pstruct = (const VkPhysicalDeviceShaderCoreProperties2AMD *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderCoreProperties2AMD *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -55842,7 +55842,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShade
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoherentMemoryFeaturesAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceCoherentMemoryFeaturesAMD *pstruct = (const VkPhysicalDeviceCoherentMemoryFeaturesAMD *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceCoherentMemoryFeaturesAMD *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -55922,7 +55922,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoher
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryBudgetPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMemoryBudgetPropertiesEXT *pstruct = (const VkPhysicalDeviceMemoryBudgetPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMemoryBudgetPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -56033,7 +56033,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemor
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPriorityFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMemoryPriorityFeaturesEXT *pstruct = (const VkPhysicalDeviceMemoryPriorityFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMemoryPriorityFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -56113,7 +56113,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemor
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryPriorityAllocateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryPriorityAllocateInfoEXT *pstruct = (const VkMemoryPriorityAllocateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkMemoryPriorityAllocateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -56193,7 +56193,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkMemoryPriorityAlloc
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV *pstruct = (const VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -56273,7 +56273,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDedic
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceBufferDeviceAddressFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceBufferDeviceAddressFeaturesEXT *pstruct = (const VkPhysicalDeviceBufferDeviceAddressFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceBufferDeviceAddressFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -56387,7 +56387,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceBuffe
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferDeviceAddressInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferDeviceAddressInfoEXT *pstruct = (const VkBufferDeviceAddressInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkBufferDeviceAddressInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -56467,7 +56467,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferDeviceAddress
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferDeviceAddressCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferDeviceAddressCreateInfoEXT *pstruct = (const VkBufferDeviceAddressCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkBufferDeviceAddressCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -56547,7 +56547,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkBufferDeviceAddress
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkImageStencilUsageCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageStencilUsageCreateInfoEXT *pstruct = (const VkImageStencilUsageCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkImageStencilUsageCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -56627,7 +56627,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkImageStencilUsageCr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkValidationFeaturesEXT *pstruct = (const VkValidationFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkValidationFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -56719,7 +56719,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationFeaturesE
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pEnabledValidationFeatures.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pEnabledValidationFeatures.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -56765,7 +56765,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationFeaturesE
     { // JHD
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        AddrToStringJson(outputFile, pstruct_in.pDisabledValidationFeatures.GetAddress() /* RQA */ );
+        AddrToStringJson(outputFile, pstruct_in.pDisabledValidationFeatures.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         IndentSpacesJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" : ");
@@ -56782,7 +56782,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkValidationFeaturesE
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkCooperativeMatrixPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCooperativeMatrixPropertiesNV *pstruct = (const VkCooperativeMatrixPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkCooperativeMatrixPropertiesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -56981,7 +56981,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkCooperativeMatrixPr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCooperativeMatrixFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceCooperativeMatrixFeaturesNV *pstruct = (const VkPhysicalDeviceCooperativeMatrixFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceCooperativeMatrixFeaturesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -57078,7 +57078,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoope
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCooperativeMatrixPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceCooperativeMatrixPropertiesNV *pstruct = (const VkPhysicalDeviceCooperativeMatrixPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceCooperativeMatrixPropertiesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -57158,7 +57158,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoope
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoverageReductionModeFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceCoverageReductionModeFeaturesNV *pstruct = (const VkPhysicalDeviceCoverageReductionModeFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceCoverageReductionModeFeaturesNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -57238,7 +57238,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCover
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCoverageReductionStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCoverageReductionStateCreateInfoNV *pstruct = (const VkPipelineCoverageReductionStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCoverageReductionStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -57335,7 +57335,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineCoverageRed
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferMixedSamplesCombinationNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFramebufferMixedSamplesCombinationNV *pstruct = (const VkFramebufferMixedSamplesCombinationNV *)pstruct_in.decoded_value; // BTB
+    const VkFramebufferMixedSamplesCombinationNV *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -57466,7 +57466,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkFramebufferMixedSam
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT *pstruct = (const VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -57580,7 +57580,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragm
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceYcbcrImageArraysFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceYcbcrImageArraysFeaturesEXT *pstruct = (const VkPhysicalDeviceYcbcrImageArraysFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceYcbcrImageArraysFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -57660,7 +57660,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceYcbcr
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceFullScreenExclusiveInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceFullScreenExclusiveInfoEXT *pstruct = (const VkSurfaceFullScreenExclusiveInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceFullScreenExclusiveInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -57740,7 +57740,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceFullScreenEx
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesFullScreenExclusiveEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceCapabilitiesFullScreenExclusiveEXT *pstruct = (const VkSurfaceCapabilitiesFullScreenExclusiveEXT *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceCapabilitiesFullScreenExclusiveEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -57820,7 +57820,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceFullScreenExclusiveWin32InfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceFullScreenExclusiveWin32InfoEXT *pstruct = (const VkSurfaceFullScreenExclusiveWin32InfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceFullScreenExclusiveWin32InfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -57912,7 +57912,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkSurfaceFullScreenEx
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkHeadlessSurfaceCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkHeadlessSurfaceCreateInfoEXT *pstruct = (const VkHeadlessSurfaceCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkHeadlessSurfaceCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -57992,7 +57992,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkHeadlessSurfaceCrea
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRasterizationFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceLineRasterizationFeaturesEXT *pstruct = (const VkPhysicalDeviceLineRasterizationFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceLineRasterizationFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -58157,7 +58157,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLineR
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRasterizationPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceLineRasterizationPropertiesEXT *pstruct = (const VkPhysicalDeviceLineRasterizationPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceLineRasterizationPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -58237,7 +58237,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLineR
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRasterizationLineStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRasterizationLineStateCreateInfoEXT *pstruct = (const VkPipelineRasterizationLineStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRasterizationLineStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -58368,7 +58368,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPipelineRasterizati
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceHostQueryResetFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceHostQueryResetFeaturesEXT *pstruct = (const VkPhysicalDeviceHostQueryResetFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceHostQueryResetFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -58448,7 +58448,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceHostQ
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceIndexTypeUint8FeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceIndexTypeUint8FeaturesEXT *pstruct = (const VkPhysicalDeviceIndexTypeUint8FeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceIndexTypeUint8FeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -58528,7 +58528,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceIndex
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT *pstruct = (const VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -58608,7 +58608,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShade
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT *pstruct = (const VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -58688,7 +58688,7 @@ void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTexel
 
 void StructureToStringJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT *pstruct = (const VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTB
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {

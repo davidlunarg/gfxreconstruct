@@ -525,7 +525,8 @@ void ArrayOfStructsToString(FILE*        outputFile,
                             const char*  array_name,
                             const size_t array_length,
                             bool         is_union,
-                            uint64_t     base_addr)
+                            uint64_t     base_addr,
+                            size_t       struct_size)
 {
     assert(outputFile != nullptr);
     if (array_length == 0 || array == nullptr)
@@ -543,7 +544,7 @@ void ArrayOfStructsToString(FILE*        outputFile,
         fprintf(outputFile, "%-32s", tmp_string);
         OutputString(outputFile, base_type_name);
         OutputString(outputFile, " = ");
-        AddrToString(outputFile, base_addr + j * sizeof(T));
+        AddrToString(outputFile, base_addr + j * struct_size);
         if (is_union)
         {
             OutputString(outputFile, " (Union)");
@@ -1187,7 +1188,7 @@ void PnextStructToString(FILE* outputFile, int indent, void* pNext_struct, uint6
 }
 void StructureToString(FILE* outputFile, const Decoded_VkApplicationInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkApplicationInfo *pstruct = (const VkApplicationInfo *)pstruct_in.decoded_value; // BTB
+    const VkApplicationInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -1209,7 +1210,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkApplicationInfo &pstruc
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -1262,7 +1263,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkApplicationInfo &pstruc
 
 void StructureToString(FILE* outputFile, const Decoded_VkInstanceCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkInstanceCreateInfo *pstruct = (const VkInstanceCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkInstanceCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -1284,7 +1285,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkInstanceCreateInfo &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -1311,7 +1312,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkInstanceCreateInfo &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pApplicationInfo:               "); // HRW
     OutputString(outputFile, "const VkApplicationInfo* = "); // TEQ
-    if (pstruct->pApplicationInfo == nullptr) // WWZ
+    if (pstruct->pApplicationInfo == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -1334,15 +1335,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkInstanceCreateInfo &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "ppEnabledLayerNames:            "); // HRW
     OutputString(outputFile, "const char* const* = "); // TEQ
-    if (pstruct->ppEnabledLayerNames == nullptr) // WWZ
+    if (pstruct->ppEnabledLayerNames == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.ppEnabledLayerNames.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.ppEnabledLayerNames.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_ppEnabledLayerNames = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); // AUC
+        ArrayToString(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -1357,21 +1358,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkInstanceCreateInfo &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "ppEnabledExtensionNames:        "); // HRW
     OutputString(outputFile, "const char* const* = "); // TEQ
-    if (pstruct->ppEnabledExtensionNames == nullptr) // WWZ
+    if (pstruct->ppEnabledExtensionNames == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.ppEnabledExtensionNames.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.ppEnabledExtensionNames.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_ppEnabledExtensionNames = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); // AUC
+        ArrayToString(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkAllocationCallbacks &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAllocationCallbacks *pstruct = (const VkAllocationCallbacks *)pstruct_in.decoded_value; // BTB
+    const VkAllocationCallbacks *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -1383,7 +1384,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAllocationCallbacks &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pUserData:                      "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pUserData == nullptr) // WWX
+    if (pstruct->pUserData == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -1430,7 +1431,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAllocationCallbacks &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFeatures *pstruct = (const VkPhysicalDeviceFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFeatures *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -1825,7 +1826,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFeatures 
 
 void StructureToString(FILE* outputFile, const Decoded_VkFormatProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFormatProperties *pstruct = (const VkFormatProperties *)pstruct_in.decoded_value; // BTB
+    const VkFormatProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -1856,7 +1857,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFormatProperties &pstru
 
 void StructureToString(FILE* outputFile, const Decoded_VkExtent3D &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExtent3D *pstruct = (const VkExtent3D *)pstruct_in.decoded_value; // BTB
+    const VkExtent3D *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -1887,7 +1888,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExtent3D &pstruct_in, i
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageFormatProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageFormatProperties *pstruct = (const VkImageFormatProperties *)pstruct_in.decoded_value; // BTB
+    const VkImageFormatProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -1932,7 +1933,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageFormatProperties &
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceLimits *pstruct = (const VkPhysicalDeviceLimits *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceLimits *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -2313,7 +2314,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceLimits, maxComputeWorkGroupCount)); // IYY
     ScalarValueToStringStruct vinfo_maxComputeWorkGroupCount = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.maxComputeWorkGroupCount, "maxComputeWorkGroupCount", 3, vinfo_maxComputeWorkGroupCount); // JPE
+    ArrayToString(outputFile, indent, "uint32_t" , &pstruct_in.maxComputeWorkGroupCount, "maxComputeWorkGroupCount", 3, vinfo_maxComputeWorkGroupCount); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t maxComputeWorkGroupInvocations
@@ -2332,7 +2333,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceLimits, maxComputeWorkGroupSize)); // IYY
     ScalarValueToStringStruct vinfo_maxComputeWorkGroupSize = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.maxComputeWorkGroupSize, "maxComputeWorkGroupSize", 3, vinfo_maxComputeWorkGroupSize); // JPE
+    ArrayToString(outputFile, indent, "uint32_t" , &pstruct_in.maxComputeWorkGroupSize, "maxComputeWorkGroupSize", 3, vinfo_maxComputeWorkGroupSize); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t subPixelPrecisionBits
@@ -2400,7 +2401,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceLimits, maxViewportDimensions)); // IYY
     ScalarValueToStringStruct vinfo_maxViewportDimensions = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.maxViewportDimensions, "maxViewportDimensions", 2, vinfo_maxViewportDimensions); // JPE
+    ArrayToString(outputFile, indent, "uint32_t" , &pstruct_in.maxViewportDimensions, "maxViewportDimensions", 2, vinfo_maxViewportDimensions); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: float viewportBoundsRange
@@ -2412,7 +2413,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceLimits, viewportBoundsRange)); // IYY
     ScalarValueToStringStruct vinfo_viewportBoundsRange = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.viewportBoundsRange, "viewportBoundsRange", 2, vinfo_viewportBoundsRange); // JPE
+    ArrayToString(outputFile, indent, "float" , &pstruct_in.viewportBoundsRange, "viewportBoundsRange", 2, vinfo_viewportBoundsRange); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t viewportSubPixelBits
@@ -2648,7 +2649,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceLimits, pointSizeRange)); // IYY
     ScalarValueToStringStruct vinfo_pointSizeRange = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.pointSizeRange, "pointSizeRange", 2, vinfo_pointSizeRange); // JPE
+    ArrayToString(outputFile, indent, "float" , &pstruct_in.pointSizeRange, "pointSizeRange", 2, vinfo_pointSizeRange); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: float lineWidthRange
@@ -2660,7 +2661,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceLimits, lineWidthRange)); // IYY
     ScalarValueToStringStruct vinfo_lineWidthRange = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.lineWidthRange, "lineWidthRange", 2, vinfo_lineWidthRange); // JPE
+    ArrayToString(outputFile, indent, "float" , &pstruct_in.lineWidthRange, "lineWidthRange", 2, vinfo_lineWidthRange); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: float pointSizeGranularity
@@ -2714,7 +2715,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLimits &p
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSparseProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSparseProperties *pstruct = (const VkPhysicalDeviceSparseProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSparseProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -2759,7 +2760,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSparsePro
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceProperties *pstruct = (const VkPhysicalDeviceProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -2822,7 +2823,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePropertie
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceProperties, pipelineCacheUUID)); // IYY
     ScalarValueToStringStruct vinfo_pipelineCacheUUID = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint8_t>>(outputFile, indent, "uint8_t", &pstruct_in.pipelineCacheUUID, "pipelineCacheUUID", VK_UUID_SIZE, vinfo_pipelineCacheUUID); // JPE
+    ArrayToString(outputFile, indent, "uint8_t" , &pstruct_in.pipelineCacheUUID, "pipelineCacheUUID", VK_UUID_SIZE, vinfo_pipelineCacheUUID); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkPhysicalDeviceLimits limits
@@ -2841,7 +2842,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePropertie
 
 void StructureToString(FILE* outputFile, const Decoded_VkQueueFamilyProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkQueueFamilyProperties *pstruct = (const VkQueueFamilyProperties *)pstruct_in.decoded_value; // BTB
+    const VkQueueFamilyProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -2879,7 +2880,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkQueueFamilyProperties &
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryType &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryType *pstruct = (const VkMemoryType *)pstruct_in.decoded_value; // BTB
+    const VkMemoryType *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -2903,7 +2904,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryType &pstruct_in,
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryHeap &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryHeap *pstruct = (const VkMemoryHeap *)pstruct_in.decoded_value; // BTB
+    const VkMemoryHeap *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -2927,7 +2928,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryHeap &pstruct_in,
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMemoryProperties *pstruct = (const VkPhysicalDeviceMemoryProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMemoryProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -2950,7 +2951,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPro
     UnsignedDecimalToString(outputFile, pstruct->memoryTypeCount); // DFW
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceMemoryProperties, memoryTypes)); // IYY
-    ArrayOfStructsToString<Decoded_VkMemoryType>(outputFile, indent+1, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount , false, pstruct_in.memoryTypes->GetAddress()); // EPB
+    ArrayOfStructsToString<Decoded_VkMemoryType>(outputFile, indent+1, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount , false, pstruct_in.memoryTypes->GetAddress(), sizeof(VkMemoryType)); // EPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t memoryHeapCount
@@ -2968,12 +2969,12 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPro
     UnsignedDecimalToString(outputFile, pstruct->memoryHeapCount); // DFW
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceMemoryProperties, memoryHeaps)); // IYY
-    ArrayOfStructsToString<Decoded_VkMemoryHeap>(outputFile, indent+1, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount , false, pstruct_in.memoryHeaps->GetAddress()); // EPB
+    ArrayOfStructsToString<Decoded_VkMemoryHeap>(outputFile, indent+1, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount , false, pstruct_in.memoryHeaps->GetAddress(), sizeof(VkMemoryHeap)); // EPB
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceQueueCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceQueueCreateInfo *pstruct = (const VkDeviceQueueCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceQueueCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -2995,7 +2996,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceQueueCreateInfo &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -3036,21 +3037,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceQueueCreateInfo &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueuePriorities:               "); // HRW
     OutputString(outputFile, "const float* = "); // TEQ
-    if (pstruct->pQueuePriorities == nullptr) // WWZ
+    if (pstruct->pQueuePriorities == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pQueuePriorities.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pQueuePriorities.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pQueuePriorities = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const float*", &pstruct_in.pQueuePriorities, "pQueuePriorities", pstruct->queueCount, vinfo_pQueuePriorities); // AUC
+        ArrayToString(outputFile, indent, "const float*", &pstruct_in.pQueuePriorities, "pQueuePriorities", pstruct->queueCount, vinfo_pQueuePriorities); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceCreateInfo *pstruct = (const VkDeviceCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3072,7 +3073,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pstru
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -3106,14 +3107,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pstru
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueCreateInfos:              "); // HRW
     OutputString(outputFile, "const VkDeviceQueueCreateInfo* = "); // TEQ
-    if (pstruct->pQueueCreateInfos == nullptr) // WWZ
+    if (pstruct->pQueueCreateInfos == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pQueueCreateInfos->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDeviceQueueCreateInfo>(outputFile, indent+1, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDeviceQueueCreateInfo>(outputFile, indent+1, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress(), sizeof(VkDeviceQueueCreateInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3128,15 +3129,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pstru
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "ppEnabledLayerNames:            "); // HRW
     OutputString(outputFile, "const char* const* = "); // TEQ
-    if (pstruct->ppEnabledLayerNames == nullptr) // WWZ
+    if (pstruct->ppEnabledLayerNames == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.ppEnabledLayerNames.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.ppEnabledLayerNames.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_ppEnabledLayerNames = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); // AUC
+        ArrayToString(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledLayerNames, "ppEnabledLayerNames", pstruct->enabledLayerCount, vinfo_ppEnabledLayerNames); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3151,15 +3152,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pstru
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "ppEnabledExtensionNames:        "); // HRW
     OutputString(outputFile, "const char* const* = "); // TEQ
-    if (pstruct->ppEnabledExtensionNames == nullptr) // WWZ
+    if (pstruct->ppEnabledExtensionNames == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.ppEnabledExtensionNames.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.ppEnabledExtensionNames.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_ppEnabledExtensionNames = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); // AUC
+        ArrayToString(outputFile, indent, "const char* const*", &pstruct_in.ppEnabledExtensionNames, "ppEnabledExtensionNames", pstruct->enabledExtensionCount, vinfo_ppEnabledExtensionNames); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3167,7 +3168,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pstru
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pEnabledFeatures:               "); // HRW
     OutputString(outputFile, "const VkPhysicalDeviceFeatures* = "); // TEQ
-    if (pstruct->pEnabledFeatures == nullptr) // WWZ
+    if (pstruct->pEnabledFeatures == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -3181,7 +3182,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pstru
 
 void StructureToString(FILE* outputFile, const Decoded_VkExtensionProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExtensionProperties *pstruct = (const VkExtensionProperties *)pstruct_in.decoded_value; // BTB
+    const VkExtensionProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3206,7 +3207,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExtensionProperties &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkLayerProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkLayerProperties *pstruct = (const VkLayerProperties *)pstruct_in.decoded_value; // BTB
+    const VkLayerProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3246,7 +3247,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkLayerProperties &pstruc
 
 void StructureToString(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubmitInfo *pstruct = (const VkSubmitInfo *)pstruct_in.decoded_value; // BTB
+    const VkSubmitInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3268,7 +3269,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in,
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -3295,15 +3296,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in,
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pWaitSemaphores:                "); // HRW
     OutputString(outputFile, "const VkSemaphore* = "); // TEQ
-    if (pstruct->pWaitSemaphores == nullptr) // WWZ
+    if (pstruct->pWaitSemaphores == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pWaitSemaphores.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pWaitSemaphores.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pWaitSemaphores = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AUC
+        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3311,13 +3312,13 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in,
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pWaitDstStageMask:              "); // HRW
     OutputString(outputFile, "const VkPipelineStageFlags* = "); // TEQ
-    if (pstruct->pWaitDstStageMask == nullptr) // WWZ
+    if (pstruct->pWaitDstStageMask == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pWaitDstStageMask.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pWaitDstStageMask.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pWaitDstStageMask = {false, false, true, EnumToStringVkPipelineStageFlagBits};
         ArrayToString(outputFile, indent, "const VkPipelineStageFlags*", &pstruct_in.pWaitDstStageMask, "pWaitDstStageMask", pstruct->waitSemaphoreCount, vinfo_pWaitDstStageMask); // AUB
     }
@@ -3334,15 +3335,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in,
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCommandBuffers:                "); // HRW
     OutputString(outputFile, "const VkCommandBuffer* = "); // TEQ
-    if (pstruct->pCommandBuffers == nullptr) // WWZ
+    if (pstruct->pCommandBuffers == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pCommandBuffers.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pCommandBuffers.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pCommandBuffers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkCommandBuffer*", &pstruct_in.pCommandBuffers, "pCommandBuffers", pstruct->commandBufferCount, vinfo_pCommandBuffers); // AUC
+        ArrayToString(outputFile, indent, "const VkCommandBuffer*", &pstruct_in.pCommandBuffers, "pCommandBuffers", pstruct->commandBufferCount, vinfo_pCommandBuffers); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3357,21 +3358,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in,
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSignalSemaphores:              "); // HRW
     OutputString(outputFile, "const VkSemaphore* = "); // TEQ
-    if (pstruct->pSignalSemaphores == nullptr) // WWZ
+    if (pstruct->pSignalSemaphores == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pSignalSemaphores.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pSignalSemaphores.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSignalSemaphores = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AUC
+        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryAllocateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryAllocateInfo *pstruct = (const VkMemoryAllocateInfo *)pstruct_in.decoded_value; // BTB
+    const VkMemoryAllocateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3393,7 +3394,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryAllocateInfo &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -3425,7 +3426,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryAllocateInfo &pst
 
 void StructureToString(FILE* outputFile, const Decoded_VkMappedMemoryRange &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMappedMemoryRange *pstruct = (const VkMappedMemoryRange *)pstruct_in.decoded_value; // BTB
+    const VkMappedMemoryRange *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3447,7 +3448,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMappedMemoryRange &pstr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -3486,7 +3487,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMappedMemoryRange &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryRequirements &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryRequirements *pstruct = (const VkMemoryRequirements *)pstruct_in.decoded_value; // BTB
+    const VkMemoryRequirements *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3517,7 +3518,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryRequirements &pst
 
 void StructureToString(FILE* outputFile, const Decoded_VkSparseImageFormatProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageFormatProperties *pstruct = (const VkSparseImageFormatProperties *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageFormatProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3548,7 +3549,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseImageFormatProper
 
 void StructureToString(FILE* outputFile, const Decoded_VkSparseImageMemoryRequirements &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageMemoryRequirements *pstruct = (const VkSparseImageMemoryRequirements *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageMemoryRequirements *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3593,7 +3594,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseImageMemoryRequir
 
 void StructureToString(FILE* outputFile, const Decoded_VkSparseMemoryBind &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseMemoryBind *pstruct = (const VkSparseMemoryBind *)pstruct_in.decoded_value; // BTB
+    const VkSparseMemoryBind *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3638,7 +3639,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseMemoryBind &pstru
 
 void StructureToString(FILE* outputFile, const Decoded_VkSparseBufferMemoryBindInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseBufferMemoryBindInfo *pstruct = (const VkSparseBufferMemoryBindInfo *)pstruct_in.decoded_value; // BTB
+    const VkSparseBufferMemoryBindInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3664,20 +3665,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseBufferMemoryBindI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBinds:                         "); // HRW
     OutputString(outputFile, "const VkSparseMemoryBind* = "); // TEQ
-    if (pstruct->pBinds == nullptr) // WWZ
+    if (pstruct->pBinds == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pBinds->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSparseMemoryBind>(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSparseMemoryBind>(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkSparseImageOpaqueMemoryBindInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageOpaqueMemoryBindInfo *pstruct = (const VkSparseImageOpaqueMemoryBindInfo *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageOpaqueMemoryBindInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3703,20 +3704,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseImageOpaqueMemory
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBinds:                         "); // HRW
     OutputString(outputFile, "const VkSparseMemoryBind* = "); // TEQ
-    if (pstruct->pBinds == nullptr) // WWZ
+    if (pstruct->pBinds == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pBinds->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSparseMemoryBind>(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSparseMemoryBind>(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageSubresource &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageSubresource *pstruct = (const VkImageSubresource *)pstruct_in.decoded_value; // BTB
+    const VkImageSubresource *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3747,7 +3748,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageSubresource &pstru
 
 void StructureToString(FILE* outputFile, const Decoded_VkOffset3D &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkOffset3D *pstruct = (const VkOffset3D *)pstruct_in.decoded_value; // BTB
+    const VkOffset3D *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3778,7 +3779,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkOffset3D &pstruct_in, i
 
 void StructureToString(FILE* outputFile, const Decoded_VkSparseImageMemoryBind &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageMemoryBind *pstruct = (const VkSparseImageMemoryBind *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageMemoryBind *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3830,7 +3831,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseImageMemoryBind &
 
 void StructureToString(FILE* outputFile, const Decoded_VkSparseImageMemoryBindInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageMemoryBindInfo *pstruct = (const VkSparseImageMemoryBindInfo *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageMemoryBindInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3856,20 +3857,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseImageMemoryBindIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBinds:                         "); // HRW
     OutputString(outputFile, "const VkSparseImageMemoryBind* = "); // TEQ
-    if (pstruct->pBinds == nullptr) // WWZ
+    if (pstruct->pBinds == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pBinds->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSparseImageMemoryBind>(outputFile, indent+1, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSparseImageMemoryBind>(outputFile, indent+1, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseImageMemoryBind));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindSparseInfo *pstruct = (const VkBindSparseInfo *)pstruct_in.decoded_value; // BTB
+    const VkBindSparseInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -3891,7 +3892,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -3918,15 +3919,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pWaitSemaphores:                "); // HRW
     OutputString(outputFile, "const VkSemaphore* = "); // TEQ
-    if (pstruct->pWaitSemaphores == nullptr) // WWZ
+    if (pstruct->pWaitSemaphores == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pWaitSemaphores.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pWaitSemaphores.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pWaitSemaphores = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AUC
+        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3941,14 +3942,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBufferBinds:                   "); // HRW
     OutputString(outputFile, "const VkSparseBufferMemoryBindInfo* = "); // TEQ
-    if (pstruct->pBufferBinds == nullptr) // WWZ
+    if (pstruct->pBufferBinds == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pBufferBinds->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSparseBufferMemoryBindInfo>(outputFile, indent+1, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSparseBufferMemoryBindInfo>(outputFile, indent+1, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress(), sizeof(VkSparseBufferMemoryBindInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3963,14 +3964,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageOpaqueBinds:              "); // HRW
     OutputString(outputFile, "const VkSparseImageOpaqueMemoryBindInfo* = "); // TEQ
-    if (pstruct->pImageOpaqueBinds == nullptr) // WWZ
+    if (pstruct->pImageOpaqueBinds == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pImageOpaqueBinds->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSparseImageOpaqueMemoryBindInfo>(outputFile, indent+1, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSparseImageOpaqueMemoryBindInfo>(outputFile, indent+1, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress(), sizeof(VkSparseImageOpaqueMemoryBindInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3985,14 +3986,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageBinds:                    "); // HRW
     OutputString(outputFile, "const VkSparseImageMemoryBindInfo* = "); // TEQ
-    if (pstruct->pImageBinds == nullptr) // WWZ
+    if (pstruct->pImageBinds == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pImageBinds->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSparseImageMemoryBindInfo>(outputFile, indent+1, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSparseImageMemoryBindInfo>(outputFile, indent+1, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress(), sizeof(VkSparseImageMemoryBindInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -4007,21 +4008,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindSparseInfo &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSignalSemaphores:              "); // HRW
     OutputString(outputFile, "const VkSemaphore* = "); // TEQ
-    if (pstruct->pSignalSemaphores == nullptr) // WWZ
+    if (pstruct->pSignalSemaphores == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pSignalSemaphores.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pSignalSemaphores.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSignalSemaphores = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AUC
+        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pSignalSemaphores, "pSignalSemaphores", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphores); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkFenceCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFenceCreateInfo *pstruct = (const VkFenceCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkFenceCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4043,7 +4044,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFenceCreateInfo &pstruc
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -4068,7 +4069,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFenceCreateInfo &pstruc
 
 void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSemaphoreCreateInfo *pstruct = (const VkSemaphoreCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkSemaphoreCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4090,7 +4091,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreCreateInfo &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -4115,7 +4116,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreCreateInfo &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkEventCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkEventCreateInfo *pstruct = (const VkEventCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkEventCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4137,7 +4138,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkEventCreateInfo &pstruc
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -4162,7 +4163,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkEventCreateInfo &pstruc
 
 void StructureToString(FILE* outputFile, const Decoded_VkQueryPoolCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkQueryPoolCreateInfo *pstruct = (const VkQueryPoolCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkQueryPoolCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4184,7 +4185,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkQueryPoolCreateInfo &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -4233,7 +4234,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkQueryPoolCreateInfo &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkBufferCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferCreateInfo *pstruct = (const VkBufferCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkBufferCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4255,7 +4256,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferCreateInfo &pstru
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -4313,21 +4314,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferCreateInfo &pstru
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueFamilyIndices:            "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pQueueFamilyIndices == nullptr) // WWZ
+    if (pstruct->pQueueFamilyIndices == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkBufferViewCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferViewCreateInfo *pstruct = (const VkBufferViewCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkBufferViewCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4349,7 +4350,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferViewCreateInfo &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -4405,7 +4406,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferViewCreateInfo &p
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageCreateInfo *pstruct = (const VkImageCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkImageCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4427,7 +4428,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageCreateInfo &pstruc
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -4539,15 +4540,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageCreateInfo &pstruc
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueFamilyIndices:            "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pQueueFamilyIndices == nullptr) // WWZ
+    if (pstruct->pQueueFamilyIndices == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -4563,7 +4564,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageCreateInfo &pstruc
 
 void StructureToString(FILE* outputFile, const Decoded_VkSubresourceLayout &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubresourceLayout *pstruct = (const VkSubresourceLayout *)pstruct_in.decoded_value; // BTB
+    const VkSubresourceLayout *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4608,7 +4609,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubresourceLayout &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkComponentMapping &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkComponentMapping *pstruct = (const VkComponentMapping *)pstruct_in.decoded_value; // BTB
+    const VkComponentMapping *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4658,7 +4659,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkComponentMapping &pstru
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageSubresourceRange &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageSubresourceRange *pstruct = (const VkImageSubresourceRange *)pstruct_in.decoded_value; // BTB
+    const VkImageSubresourceRange *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4703,7 +4704,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageSubresourceRange &
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageViewCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageViewCreateInfo *pstruct = (const VkImageViewCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkImageViewCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4725,7 +4726,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageViewCreateInfo &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -4791,7 +4792,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageViewCreateInfo &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkShaderModuleCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkShaderModuleCreateInfo *pstruct = (const VkShaderModuleCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkShaderModuleCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4813,7 +4814,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkShaderModuleCreateInfo 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -4847,7 +4848,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkShaderModuleCreateInfo 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCode:                          "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pCode == nullptr) // WWZ
+    if (pstruct->pCode == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -4857,14 +4858,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkShaderModuleCreateInfo 
         if (kPrintShaderCode)
         {
             ScalarValueToStringStruct vinfo_pCode = {false, false, false, nullptr};
-            ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "const uint32_t*", &pstruct_in.pCode, "pCode", pstruct->codeSize / 4, vinfo_pCode);  // CUK
+            ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pCode, "pCode", pstruct->codeSize / 4, vinfo_pCode);  // CUK
         }
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineCacheCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCacheCreateInfo *pstruct = (const VkPipelineCacheCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCacheCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4886,7 +4887,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCacheCreateInfo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -4920,7 +4921,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCacheCreateInfo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInitialData:                   "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pInitialData == nullptr) // WWZ
+    if (pstruct->pInitialData == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -4934,7 +4935,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCacheCreateInfo
 
 void StructureToString(FILE* outputFile, const Decoded_VkSpecializationMapEntry &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSpecializationMapEntry *pstruct = (const VkSpecializationMapEntry *)pstruct_in.decoded_value; // BTB
+    const VkSpecializationMapEntry *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4965,7 +4966,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSpecializationMapEntry 
 
 void StructureToString(FILE* outputFile, const Decoded_VkSpecializationInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSpecializationInfo *pstruct = (const VkSpecializationInfo *)pstruct_in.decoded_value; // BTB
+    const VkSpecializationInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -4984,14 +4985,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkSpecializationInfo &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMapEntries:                    "); // HRW
     OutputString(outputFile, "const VkSpecializationMapEntry* = "); // TEQ
-    if (pstruct->pMapEntries == nullptr) // WWZ
+    if (pstruct->pMapEntries == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pMapEntries->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSpecializationMapEntry>(outputFile, indent+1, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSpecializationMapEntry>(outputFile, indent+1, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress(), sizeof(VkSpecializationMapEntry));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5006,7 +5007,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSpecializationInfo &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pData:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pData == nullptr) // WWZ
+    if (pstruct->pData == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -5020,7 +5021,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSpecializationInfo &pst
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineShaderStageCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineShaderStageCreateInfo *pstruct = (const VkPipelineShaderStageCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineShaderStageCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5042,7 +5043,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineShaderStageCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -5093,7 +5094,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineShaderStageCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSpecializationInfo:            "); // HRW
     OutputString(outputFile, "const VkSpecializationInfo* = "); // TEQ
-    if (pstruct->pSpecializationInfo == nullptr) // WWZ
+    if (pstruct->pSpecializationInfo == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -5107,7 +5108,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineShaderStageCrea
 
 void StructureToString(FILE* outputFile, const Decoded_VkVertexInputBindingDescription &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkVertexInputBindingDescription *pstruct = (const VkVertexInputBindingDescription *)pstruct_in.decoded_value; // BTB
+    const VkVertexInputBindingDescription *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5141,7 +5142,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkVertexInputBindingDescr
 
 void StructureToString(FILE* outputFile, const Decoded_VkVertexInputAttributeDescription &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkVertexInputAttributeDescription *pstruct = (const VkVertexInputAttributeDescription *)pstruct_in.decoded_value; // BTB
+    const VkVertexInputAttributeDescription *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5182,7 +5183,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkVertexInputAttributeDes
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineVertexInputStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineVertexInputStateCreateInfo *pstruct = (const VkPipelineVertexInputStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineVertexInputStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5204,7 +5205,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineVertexInputStat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -5238,14 +5239,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineVertexInputStat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pVertexBindingDescriptions:     "); // HRW
     OutputString(outputFile, "const VkVertexInputBindingDescription* = "); // TEQ
-    if (pstruct->pVertexBindingDescriptions == nullptr) // WWZ
+    if (pstruct->pVertexBindingDescriptions == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pVertexBindingDescriptions->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkVertexInputBindingDescription>(outputFile, indent+1, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkVertexInputBindingDescription>(outputFile, indent+1, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress(), sizeof(VkVertexInputBindingDescription));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5260,20 +5261,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineVertexInputStat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pVertexAttributeDescriptions:   "); // HRW
     OutputString(outputFile, "const VkVertexInputAttributeDescription* = "); // TEQ
-    if (pstruct->pVertexAttributeDescriptions == nullptr) // WWZ
+    if (pstruct->pVertexAttributeDescriptions == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pVertexAttributeDescriptions->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkVertexInputAttributeDescription>(outputFile, indent+1, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkVertexInputAttributeDescription>(outputFile, indent+1, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress(), sizeof(VkVertexInputAttributeDescription));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineInputAssemblyStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineInputAssemblyStateCreateInfo *pstruct = (const VkPipelineInputAssemblyStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineInputAssemblyStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5295,7 +5296,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineInputAssemblySt
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -5337,7 +5338,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineInputAssemblySt
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineTessellationStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineTessellationStateCreateInfo *pstruct = (const VkPipelineTessellationStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineTessellationStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5359,7 +5360,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineTessellationSta
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -5391,7 +5392,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineTessellationSta
 
 void StructureToString(FILE* outputFile, const Decoded_VkViewport &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkViewport *pstruct = (const VkViewport *)pstruct_in.decoded_value; // BTB
+    const VkViewport *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5443,7 +5444,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkViewport &pstruct_in, i
 
 void StructureToString(FILE* outputFile, const Decoded_VkOffset2D &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkOffset2D *pstruct = (const VkOffset2D *)pstruct_in.decoded_value; // BTB
+    const VkOffset2D *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5467,7 +5468,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkOffset2D &pstruct_in, i
 
 void StructureToString(FILE* outputFile, const Decoded_VkExtent2D &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExtent2D *pstruct = (const VkExtent2D *)pstruct_in.decoded_value; // BTB
+    const VkExtent2D *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5491,7 +5492,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExtent2D &pstruct_in, i
 
 void StructureToString(FILE* outputFile, const Decoded_VkRect2D &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRect2D *pstruct = (const VkRect2D *)pstruct_in.decoded_value; // BTB
+    const VkRect2D *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5515,7 +5516,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRect2D &pstruct_in, int
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineViewportStateCreateInfo *pstruct = (const VkPipelineViewportStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineViewportStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5537,7 +5538,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportStateCr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -5571,14 +5572,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportStateCr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pViewports:                     "); // HRW
     OutputString(outputFile, "const VkViewport* = "); // TEQ
-    if (pstruct->pViewports == nullptr) // WWZ
+    if (pstruct->pViewports == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pViewports->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkViewport>(outputFile, indent+1, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkViewport>(outputFile, indent+1, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress(), sizeof(VkViewport));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5593,20 +5594,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportStateCr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pScissors:                      "); // HRW
     OutputString(outputFile, "const VkRect2D* = "); // TEQ
-    if (pstruct->pScissors == nullptr) // WWZ
+    if (pstruct->pScissors == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pScissors->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRasterizationStateCreateInfo *pstruct = (const VkPipelineRasterizationStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRasterizationStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5628,7 +5629,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationSt
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -5729,7 +5730,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationSt
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineMultisampleStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineMultisampleStateCreateInfo *pstruct = (const VkPipelineMultisampleStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineMultisampleStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5751,7 +5752,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineMultisampleStat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -5802,15 +5803,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineMultisampleStat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSampleMask:                    "); // HRW
     OutputString(outputFile, "const VkSampleMask* = "); // TEQ
-    if (pstruct->pSampleMask == nullptr) // WWZ
+    if (pstruct->pSampleMask == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pSampleMask.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pSampleMask.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSampleMask = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkSampleMask*", &pstruct_in.pSampleMask, "pSampleMask", pstruct->rasterizationSamples, vinfo_pSampleMask); // AUC
+        ArrayToString(outputFile, indent, "const VkSampleMask*", &pstruct_in.pSampleMask, "pSampleMask", pstruct->rasterizationSamples, vinfo_pSampleMask); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5830,7 +5831,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineMultisampleStat
 
 void StructureToString(FILE* outputFile, const Decoded_VkStencilOpState &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkStencilOpState *pstruct = (const VkStencilOpState *)pstruct_in.decoded_value; // BTB
+    const VkStencilOpState *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5901,7 +5902,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkStencilOpState &pstruct
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineDepthStencilStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineDepthStencilStateCreateInfo *pstruct = (const VkPipelineDepthStencilStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineDepthStencilStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -5923,7 +5924,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineDepthStencilSta
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6014,7 +6015,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineDepthStencilSta
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineColorBlendAttachmentState &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineColorBlendAttachmentState *pstruct = (const VkPipelineColorBlendAttachmentState *)pstruct_in.decoded_value; // BTB
+    const VkPipelineColorBlendAttachmentState *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6098,7 +6099,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineColorBlendAttac
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineColorBlendStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineColorBlendStateCreateInfo *pstruct = (const VkPipelineColorBlendStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineColorBlendStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6120,7 +6121,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineColorBlendState
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6171,14 +6172,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineColorBlendState
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAttachments:                   "); // HRW
     OutputString(outputFile, "const VkPipelineColorBlendAttachmentState* = "); // TEQ
-    if (pstruct->pAttachments == nullptr) // WWZ
+    if (pstruct->pAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPipelineColorBlendAttachmentState>(outputFile, indent+1, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPipelineColorBlendAttachmentState>(outputFile, indent+1, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkPipelineColorBlendAttachmentState));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6191,12 +6192,12 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineColorBlendState
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPipelineColorBlendStateCreateInfo, blendConstants)); // IYY
     ScalarValueToStringStruct vinfo_blendConstants = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.blendConstants, "blendConstants", 4, vinfo_blendConstants); // JPE
+    ArrayToString(outputFile, indent, "float" , &pstruct_in.blendConstants, "blendConstants", 4, vinfo_blendConstants); // JPE
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineDynamicStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineDynamicStateCreateInfo *pstruct = (const VkPipelineDynamicStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineDynamicStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6218,7 +6219,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineDynamicStateCre
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6252,21 +6253,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineDynamicStateCre
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDynamicStates:                 "); // HRW
     OutputString(outputFile, "const VkDynamicState* = "); // TEQ
-    if (pstruct->pDynamicStates == nullptr) // WWZ
+    if (pstruct->pDynamicStates == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pDynamicStates.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pDynamicStates.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pDynamicStates = {false, true, false, EnumToStringVkDynamicState};
-        ArrayToString(outputFile, indent, "const VkDynamicState*", &pstruct_in.pDynamicStates, "pDynamicStates", pstruct->dynamicStateCount, vinfo_pDynamicStates); // AUC
+        ArrayToString(outputFile, indent, "const VkDynamicState*", &pstruct_in.pDynamicStates, "pDynamicStates", pstruct->dynamicStateCount, vinfo_pDynamicStates); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkGraphicsPipelineCreateInfo *pstruct = (const VkGraphicsPipelineCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkGraphicsPipelineCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6288,7 +6289,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6322,14 +6323,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pStages:                        "); // HRW
     OutputString(outputFile, "const VkPipelineShaderStageCreateInfo* = "); // TEQ
-    if (pstruct->pStages == nullptr) // WWZ
+    if (pstruct->pStages == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pStages->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6337,7 +6338,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pVertexInputState:              "); // HRW
     OutputString(outputFile, "const VkPipelineVertexInputStateCreateInfo* = "); // TEQ
-    if (pstruct->pVertexInputState == nullptr) // WWZ
+    if (pstruct->pVertexInputState == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6353,7 +6354,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInputAssemblyState:            "); // HRW
     OutputString(outputFile, "const VkPipelineInputAssemblyStateCreateInfo* = "); // TEQ
-    if (pstruct->pInputAssemblyState == nullptr) // WWZ
+    if (pstruct->pInputAssemblyState == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6369,7 +6370,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pTessellationState:             "); // HRW
     OutputString(outputFile, "const VkPipelineTessellationStateCreateInfo* = "); // TEQ
-    if (pstruct->pTessellationState == nullptr) // WWZ
+    if (pstruct->pTessellationState == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6385,7 +6386,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pViewportState:                 "); // HRW
     OutputString(outputFile, "const VkPipelineViewportStateCreateInfo* = "); // TEQ
-    if (pstruct->pViewportState == nullptr) // WWZ
+    if (pstruct->pViewportState == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6401,7 +6402,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRasterizationState:            "); // HRW
     OutputString(outputFile, "const VkPipelineRasterizationStateCreateInfo* = "); // TEQ
-    if (pstruct->pRasterizationState == nullptr) // WWZ
+    if (pstruct->pRasterizationState == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6417,7 +6418,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pMultisampleState:              "); // HRW
     OutputString(outputFile, "const VkPipelineMultisampleStateCreateInfo* = "); // TEQ
-    if (pstruct->pMultisampleState == nullptr) // WWZ
+    if (pstruct->pMultisampleState == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6433,7 +6434,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDepthStencilState:             "); // HRW
     OutputString(outputFile, "const VkPipelineDepthStencilStateCreateInfo* = "); // TEQ
-    if (pstruct->pDepthStencilState == nullptr) // WWZ
+    if (pstruct->pDepthStencilState == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6449,7 +6450,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pColorBlendState:               "); // HRW
     OutputString(outputFile, "const VkPipelineColorBlendStateCreateInfo* = "); // TEQ
-    if (pstruct->pColorBlendState == nullptr) // WWZ
+    if (pstruct->pColorBlendState == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6465,7 +6466,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDynamicState:                  "); // HRW
     OutputString(outputFile, "const VkPipelineDynamicStateCreateInfo* = "); // TEQ
-    if (pstruct->pDynamicState == nullptr) // WWZ
+    if (pstruct->pDynamicState == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6514,7 +6515,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGraphicsPipelineCreateI
 
 void StructureToString(FILE* outputFile, const Decoded_VkComputePipelineCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkComputePipelineCreateInfo *pstruct = (const VkComputePipelineCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkComputePipelineCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6536,7 +6537,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkComputePipelineCreateIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6589,7 +6590,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkComputePipelineCreateIn
 
 void StructureToString(FILE* outputFile, const Decoded_VkPushConstantRange &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPushConstantRange *pstruct = (const VkPushConstantRange *)pstruct_in.decoded_value; // BTB
+    const VkPushConstantRange *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6620,7 +6621,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPushConstantRange &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineLayoutCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineLayoutCreateInfo *pstruct = (const VkPipelineLayoutCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineLayoutCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6642,7 +6643,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineLayoutCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6676,15 +6677,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineLayoutCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSetLayouts:                    "); // HRW
     OutputString(outputFile, "const VkDescriptorSetLayout* = "); // TEQ
-    if (pstruct->pSetLayouts == nullptr) // WWZ
+    if (pstruct->pSetLayouts == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pSetLayouts.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pSetLayouts.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSetLayouts = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->setLayoutCount, vinfo_pSetLayouts); // AUC
+        ArrayToString(outputFile, indent, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->setLayoutCount, vinfo_pSetLayouts); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6699,20 +6700,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineLayoutCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPushConstantRanges:            "); // HRW
     OutputString(outputFile, "const VkPushConstantRange* = "); // TEQ
-    if (pstruct->pPushConstantRanges == nullptr) // WWZ
+    if (pstruct->pPushConstantRanges == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pPushConstantRanges->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPushConstantRange>(outputFile, indent+1, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPushConstantRange>(outputFile, indent+1, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress(), sizeof(VkPushConstantRange));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkSamplerCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSamplerCreateInfo *pstruct = (const VkSamplerCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkSamplerCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6734,7 +6735,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSamplerCreateInfo &pstr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -6888,7 +6889,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSamplerCreateInfo &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBinding &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetLayoutBinding *pstruct = (const VkDescriptorSetLayoutBinding *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetLayoutBinding *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6931,21 +6932,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBind
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImmutableSamplers:             "); // HRW
     OutputString(outputFile, "const VkSampler* = "); // TEQ
-    if (pstruct->pImmutableSamplers == nullptr) // WWZ
+    if (pstruct->pImmutableSamplers == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pImmutableSamplers.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pImmutableSamplers.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pImmutableSamplers = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkSampler*", &pstruct_in.pImmutableSamplers, "pImmutableSamplers", pstruct->descriptorCount, vinfo_pImmutableSamplers); // AUC
+        ArrayToString(outputFile, indent, "const VkSampler*", &pstruct_in.pImmutableSamplers, "pImmutableSamplers", pstruct->descriptorCount, vinfo_pImmutableSamplers); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetLayoutCreateInfo *pstruct = (const VkDescriptorSetLayoutCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetLayoutCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -6967,7 +6968,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -7001,20 +7002,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBindings:                      "); // HRW
     OutputString(outputFile, "const VkDescriptorSetLayoutBinding* = "); // TEQ
-    if (pstruct->pBindings == nullptr) // WWZ
+    if (pstruct->pBindings == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pBindings->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDescriptorSetLayoutBinding>(outputFile, indent+1, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDescriptorSetLayoutBinding>(outputFile, indent+1, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress(), sizeof(VkDescriptorSetLayoutBinding));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorPoolSize &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorPoolSize *pstruct = (const VkDescriptorPoolSize *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorPoolSize *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7041,7 +7042,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorPoolSize &pst
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorPoolCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorPoolCreateInfo *pstruct = (const VkDescriptorPoolCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorPoolCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7063,7 +7064,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorPoolCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -7104,20 +7105,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorPoolCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPoolSizes:                     "); // HRW
     OutputString(outputFile, "const VkDescriptorPoolSize* = "); // TEQ
-    if (pstruct->pPoolSizes == nullptr) // WWZ
+    if (pstruct->pPoolSizes == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pPoolSizes->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDescriptorPoolSize>(outputFile, indent+1, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDescriptorPoolSize>(outputFile, indent+1, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress(), sizeof(VkDescriptorPoolSize));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetAllocateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetAllocateInfo *pstruct = (const VkDescriptorSetAllocateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetAllocateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7139,7 +7140,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetAllocateIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -7173,21 +7174,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetAllocateIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSetLayouts:                    "); // HRW
     OutputString(outputFile, "const VkDescriptorSetLayout* = "); // TEQ
-    if (pstruct->pSetLayouts == nullptr) // WWZ
+    if (pstruct->pSetLayouts == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pSetLayouts.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pSetLayouts.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSetLayouts = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->descriptorSetCount, vinfo_pSetLayouts); // AUC
+        ArrayToString(outputFile, indent, "const VkDescriptorSetLayout*", &pstruct_in.pSetLayouts, "pSetLayouts", pstruct->descriptorSetCount, vinfo_pSetLayouts); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorImageInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorImageInfo *pstruct = (const VkDescriptorImageInfo *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorImageInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7221,7 +7222,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorImageInfo &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorBufferInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorBufferInfo *pstruct = (const VkDescriptorBufferInfo *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorBufferInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7252,7 +7253,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorBufferInfo &p
 
 void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSet &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWriteDescriptorSet *pstruct = (const VkWriteDescriptorSet *)pstruct_in.decoded_value; // BTB
+    const VkWriteDescriptorSet *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7274,7 +7275,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSet &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -7332,14 +7333,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSet &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageInfo:                     "); // HRW
     OutputString(outputFile, "const VkDescriptorImageInfo* = "); // TEQ
-    if (pstruct->pImageInfo == nullptr) // WWZ
+    if (pstruct->pImageInfo == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pImageInfo->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDescriptorImageInfo>(outputFile, indent+1, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDescriptorImageInfo>(outputFile, indent+1, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress(), sizeof(VkDescriptorImageInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7347,14 +7348,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSet &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBufferInfo:                    "); // HRW
     OutputString(outputFile, "const VkDescriptorBufferInfo* = "); // TEQ
-    if (pstruct->pBufferInfo == nullptr) // WWZ
+    if (pstruct->pBufferInfo == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pBufferInfo->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDescriptorBufferInfo>(outputFile, indent+1, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDescriptorBufferInfo>(outputFile, indent+1, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress(), sizeof(VkDescriptorBufferInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7362,21 +7363,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSet &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pTexelBufferView:               "); // HRW
     OutputString(outputFile, "const VkBufferView* = "); // TEQ
-    if (pstruct->pTexelBufferView == nullptr) // WWZ
+    if (pstruct->pTexelBufferView == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pTexelBufferView.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pTexelBufferView.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pTexelBufferView = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkBufferView*", &pstruct_in.pTexelBufferView, "pTexelBufferView", pstruct->descriptorCount, vinfo_pTexelBufferView); // AUC
+        ArrayToString(outputFile, indent, "const VkBufferView*", &pstruct_in.pTexelBufferView, "pTexelBufferView", pstruct->descriptorCount, vinfo_pTexelBufferView); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkCopyDescriptorSet &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCopyDescriptorSet *pstruct = (const VkCopyDescriptorSet *)pstruct_in.decoded_value; // BTB
+    const VkCopyDescriptorSet *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7398,7 +7399,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCopyDescriptorSet &pstr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -7465,7 +7466,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCopyDescriptorSet &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkFramebufferCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFramebufferCreateInfo *pstruct = (const VkFramebufferCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkFramebufferCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7487,7 +7488,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFramebufferCreateInfo &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -7528,15 +7529,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkFramebufferCreateInfo &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAttachments:                   "); // HRW
     OutputString(outputFile, "const VkImageView* = "); // TEQ
-    if (pstruct->pAttachments == nullptr) // WWZ
+    if (pstruct->pAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pAttachments.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pAttachments.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pAttachments = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AUC
+        ArrayToString(outputFile, indent, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7563,7 +7564,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFramebufferCreateInfo &
 
 void StructureToString(FILE* outputFile, const Decoded_VkAttachmentDescription &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAttachmentDescription *pstruct = (const VkAttachmentDescription *)pstruct_in.decoded_value; // BTB
+    const VkAttachmentDescription *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7660,7 +7661,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAttachmentDescription &
 
 void StructureToString(FILE* outputFile, const Decoded_VkAttachmentReference &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAttachmentReference *pstruct = (const VkAttachmentReference *)pstruct_in.decoded_value; // BTB
+    const VkAttachmentReference *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7687,7 +7688,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAttachmentReference &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassDescription *pstruct = (const VkSubpassDescription *)pstruct_in.decoded_value; // BTB
+    const VkSubpassDescription *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7723,14 +7724,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInputAttachments:              "); // HRW
     OutputString(outputFile, "const VkAttachmentReference* = "); // TEQ
-    if (pstruct->pInputAttachments == nullptr) // WWZ
+    if (pstruct->pInputAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pInputAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentReference>(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentReference>(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7745,14 +7746,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pColorAttachments:              "); // HRW
     OutputString(outputFile, "const VkAttachmentReference* = "); // TEQ
-    if (pstruct->pColorAttachments == nullptr) // WWZ
+    if (pstruct->pColorAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pColorAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentReference>(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentReference>(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7760,14 +7761,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pResolveAttachments:            "); // HRW
     OutputString(outputFile, "const VkAttachmentReference* = "); // TEQ
-    if (pstruct->pResolveAttachments == nullptr) // WWZ
+    if (pstruct->pResolveAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pResolveAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentReference>(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentReference>(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7775,7 +7776,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDepthStencilAttachment:        "); // HRW
     OutputString(outputFile, "const VkAttachmentReference* = "); // TEQ
-    if (pstruct->pDepthStencilAttachment == nullptr) // WWZ
+    if (pstruct->pDepthStencilAttachment == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -7798,21 +7799,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPreserveAttachments:           "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pPreserveAttachments == nullptr) // WWZ
+    if (pstruct->pPreserveAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pPreserveAttachments.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pPreserveAttachments.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pPreserveAttachments = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkSubpassDependency &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassDependency *pstruct = (const VkSubpassDependency *)pstruct_in.decoded_value; // BTB
+    const VkSubpassDependency *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7871,7 +7872,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDependency &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassCreateInfo *pstruct = (const VkRenderPassCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -7893,7 +7894,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -7927,14 +7928,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAttachments:                   "); // HRW
     OutputString(outputFile, "const VkAttachmentDescription* = "); // TEQ
-    if (pstruct->pAttachments == nullptr) // WWZ
+    if (pstruct->pAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentDescription>(outputFile, indent+1, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentDescription>(outputFile, indent+1, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7949,14 +7950,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSubpasses:                     "); // HRW
     OutputString(outputFile, "const VkSubpassDescription* = "); // TEQ
-    if (pstruct->pSubpasses == nullptr) // WWZ
+    if (pstruct->pSubpasses == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pSubpasses->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSubpassDescription>(outputFile, indent+1, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSubpassDescription>(outputFile, indent+1, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7971,20 +7972,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDependencies:                  "); // HRW
     OutputString(outputFile, "const VkSubpassDependency* = "); // TEQ
-    if (pstruct->pDependencies == nullptr) // WWZ
+    if (pstruct->pDependencies == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pDependencies->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSubpassDependency>(outputFile, indent+1, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSubpassDependency>(outputFile, indent+1, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkCommandPoolCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCommandPoolCreateInfo *pstruct = (const VkCommandPoolCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkCommandPoolCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8006,7 +8007,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCommandPoolCreateInfo &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -8038,7 +8039,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCommandPoolCreateInfo &
 
 void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferAllocateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCommandBufferAllocateInfo *pstruct = (const VkCommandBufferAllocateInfo *)pstruct_in.decoded_value; // BTB
+    const VkCommandBufferAllocateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8060,7 +8061,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferAllocateIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -8102,7 +8103,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferAllocateIn
 
 void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferInheritanceInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCommandBufferInheritanceInfo *pstruct = (const VkCommandBufferInheritanceInfo *)pstruct_in.decoded_value; // BTB
+    const VkCommandBufferInheritanceInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8124,7 +8125,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferInheritanc
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -8184,7 +8185,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferInheritanc
 
 void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferBeginInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCommandBufferBeginInfo *pstruct = (const VkCommandBufferBeginInfo *)pstruct_in.decoded_value; // BTB
+    const VkCommandBufferBeginInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8206,7 +8207,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferBeginInfo 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -8233,7 +8234,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferBeginInfo 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInheritanceInfo:               "); // HRW
     OutputString(outputFile, "const VkCommandBufferInheritanceInfo* = "); // TEQ
-    if (pstruct->pInheritanceInfo == nullptr) // WWZ
+    if (pstruct->pInheritanceInfo == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -8247,7 +8248,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferBeginInfo 
 
 void StructureToString(FILE* outputFile, const Decoded_VkBufferCopy &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferCopy *pstruct = (const VkBufferCopy *)pstruct_in.decoded_value; // BTB
+    const VkBufferCopy *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8278,7 +8279,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferCopy &pstruct_in,
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageSubresourceLayers &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageSubresourceLayers *pstruct = (const VkImageSubresourceLayers *)pstruct_in.decoded_value; // BTB
+    const VkImageSubresourceLayers *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8316,7 +8317,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageSubresourceLayers 
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageCopy &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageCopy *pstruct = (const VkImageCopy *)pstruct_in.decoded_value; // BTB
+    const VkImageCopy *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8361,7 +8362,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageCopy &pstruct_in, 
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageBlit &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageBlit *pstruct = (const VkImageBlit *)pstruct_in.decoded_value; // BTB
+    const VkImageBlit *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8384,7 +8385,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageBlit &pstruct_in, 
     OutputString(outputFile, "2"); // DFX
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkImageBlit, srcOffsets)); // IYY
-    ArrayOfStructsToString<Decoded_VkOffset3D>(outputFile, indent+1, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2 , false, pstruct_in.srcOffsets->GetAddress()); // EPB
+    ArrayOfStructsToString<Decoded_VkOffset3D>(outputFile, indent+1, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2 , false, pstruct_in.srcOffsets->GetAddress(), sizeof(VkOffset3D)); // EPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkImageSubresourceLayers dstSubresource
@@ -8402,12 +8403,12 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageBlit &pstruct_in, 
     OutputString(outputFile, "2"); // DFX
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkImageBlit, dstOffsets)); // IYY
-    ArrayOfStructsToString<Decoded_VkOffset3D>(outputFile, indent+1, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2 , false, pstruct_in.dstOffsets->GetAddress()); // EPB
+    ArrayOfStructsToString<Decoded_VkOffset3D>(outputFile, indent+1, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2 , false, pstruct_in.dstOffsets->GetAddress(), sizeof(VkOffset3D)); // EPB
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkBufferImageCopy &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferImageCopy *pstruct = (const VkBufferImageCopy *)pstruct_in.decoded_value; // BTB
+    const VkBufferImageCopy *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8459,7 +8460,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferImageCopy &pstruc
 
 void StructureToString(FILE* outputFile, const Decoded_VkClearColorValue &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkClearColorValue *pstruct = (const VkClearColorValue *)pstruct_in.decoded_value; // BTB
+    const VkClearColorValue *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8505,7 +8506,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkClearColorValue &pstruc
 
 void StructureToString(FILE* outputFile, const Decoded_VkClearDepthStencilValue &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkClearDepthStencilValue *pstruct = (const VkClearDepthStencilValue *)pstruct_in.decoded_value; // BTB
+    const VkClearDepthStencilValue *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8529,7 +8530,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkClearDepthStencilValue 
 
 void StructureToString(FILE* outputFile, const Decoded_VkClearValue &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkClearValue *pstruct = (const VkClearValue *)pstruct_in.decoded_value; // BTB
+    const VkClearValue *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8554,7 +8555,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkClearValue &pstruct_in,
 
 void StructureToString(FILE* outputFile, const Decoded_VkClearAttachment &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkClearAttachment *pstruct = (const VkClearAttachment *)pstruct_in.decoded_value; // BTB
+    const VkClearAttachment *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8586,7 +8587,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkClearAttachment &pstruc
 
 void StructureToString(FILE* outputFile, const Decoded_VkClearRect &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkClearRect *pstruct = (const VkClearRect *)pstruct_in.decoded_value; // BTB
+    const VkClearRect *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8617,7 +8618,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkClearRect &pstruct_in, 
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageResolve &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageResolve *pstruct = (const VkImageResolve *)pstruct_in.decoded_value; // BTB
+    const VkImageResolve *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8662,7 +8663,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageResolve &pstruct_i
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryBarrier &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryBarrier *pstruct = (const VkMemoryBarrier *)pstruct_in.decoded_value; // BTB
+    const VkMemoryBarrier *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8684,7 +8685,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryBarrier &pstruct_
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -8716,7 +8717,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryBarrier &pstruct_
 
 void StructureToString(FILE* outputFile, const Decoded_VkBufferMemoryBarrier &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferMemoryBarrier *pstruct = (const VkBufferMemoryBarrier *)pstruct_in.decoded_value; // BTB
+    const VkBufferMemoryBarrier *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8738,7 +8739,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferMemoryBarrier &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -8805,7 +8806,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferMemoryBarrier &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageMemoryBarrier &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageMemoryBarrier *pstruct = (const VkImageMemoryBarrier *)pstruct_in.decoded_value; // BTB
+    const VkImageMemoryBarrier *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8827,7 +8828,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageMemoryBarrier &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -8907,7 +8908,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageMemoryBarrier &pst
 
 void StructureToString(FILE* outputFile, const Decoded_VkRenderPassBeginInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassBeginInfo *pstruct = (const VkRenderPassBeginInfo *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassBeginInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -8929,7 +8930,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassBeginInfo &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -8977,20 +8978,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassBeginInfo &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pClearValues:                   "); // HRW
     OutputString(outputFile, "const VkClearValue* = "); // TEQ
-    if (pstruct->pClearValues == nullptr) // WWZ
+    if (pstruct->pClearValues == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pClearValues->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkClearValue>(outputFile, indent+1, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkClearValue>(outputFile, indent+1, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress(), sizeof(VkClearValue));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDispatchIndirectCommand &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDispatchIndirectCommand *pstruct = (const VkDispatchIndirectCommand *)pstruct_in.decoded_value; // BTB
+    const VkDispatchIndirectCommand *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9021,7 +9022,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDispatchIndirectCommand
 
 void StructureToString(FILE* outputFile, const Decoded_VkDrawIndexedIndirectCommand &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDrawIndexedIndirectCommand *pstruct = (const VkDrawIndexedIndirectCommand *)pstruct_in.decoded_value; // BTB
+    const VkDrawIndexedIndirectCommand *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9066,7 +9067,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDrawIndexedIndirectComm
 
 void StructureToString(FILE* outputFile, const Decoded_VkDrawIndirectCommand &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDrawIndirectCommand *pstruct = (const VkDrawIndirectCommand *)pstruct_in.decoded_value; // BTB
+    const VkDrawIndirectCommand *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9104,7 +9105,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDrawIndirectCommand &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSubgroupProperties *pstruct = (const VkPhysicalDeviceSubgroupProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSubgroupProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9126,7 +9127,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupP
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9172,7 +9173,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupP
 
 void StructureToString(FILE* outputFile, const Decoded_VkBindBufferMemoryInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindBufferMemoryInfo *pstruct = (const VkBindBufferMemoryInfo *)pstruct_in.decoded_value; // BTB
+    const VkBindBufferMemoryInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9194,7 +9195,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindBufferMemoryInfo &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9233,7 +9234,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindBufferMemoryInfo &p
 
 void StructureToString(FILE* outputFile, const Decoded_VkBindImageMemoryInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindImageMemoryInfo *pstruct = (const VkBindImageMemoryInfo *)pstruct_in.decoded_value; // BTB
+    const VkBindImageMemoryInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9255,7 +9256,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindImageMemoryInfo &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9294,7 +9295,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindImageMemoryInfo &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevice16BitStorageFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDevice16BitStorageFeatures *pstruct = (const VkPhysicalDevice16BitStorageFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDevice16BitStorageFeatures *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9316,7 +9317,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevice16BitStor
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9362,7 +9363,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevice16BitStor
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryDedicatedRequirements &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryDedicatedRequirements *pstruct = (const VkMemoryDedicatedRequirements *)pstruct_in.decoded_value; // BTB
+    const VkMemoryDedicatedRequirements *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9384,7 +9385,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryDedicatedRequirem
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9416,7 +9417,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryDedicatedRequirem
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryDedicatedAllocateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryDedicatedAllocateInfo *pstruct = (const VkMemoryDedicatedAllocateInfo *)pstruct_in.decoded_value; // BTB
+    const VkMemoryDedicatedAllocateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9438,7 +9439,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryDedicatedAllocate
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9470,7 +9471,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryDedicatedAllocate
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryAllocateFlagsInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryAllocateFlagsInfo *pstruct = (const VkMemoryAllocateFlagsInfo *)pstruct_in.decoded_value; // BTB
+    const VkMemoryAllocateFlagsInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9492,7 +9493,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryAllocateFlagsInfo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9524,7 +9525,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryAllocateFlagsInfo
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupRenderPassBeginInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupRenderPassBeginInfo *pstruct = (const VkDeviceGroupRenderPassBeginInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupRenderPassBeginInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9546,7 +9547,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupRenderPassBe
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9580,20 +9581,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupRenderPassBe
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDeviceRenderAreas:             "); // HRW
     OutputString(outputFile, "const VkRect2D* = "); // TEQ
-    if (pstruct->pDeviceRenderAreas == nullptr) // WWZ
+    if (pstruct->pDeviceRenderAreas == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pDeviceRenderAreas->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupCommandBufferBeginInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupCommandBufferBeginInfo *pstruct = (const VkDeviceGroupCommandBufferBeginInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupCommandBufferBeginInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9615,7 +9616,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupCommandBuffe
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9640,7 +9641,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupCommandBuffe
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupSubmitInfo *pstruct = (const VkDeviceGroupSubmitInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupSubmitInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9662,7 +9663,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInfo &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9689,15 +9690,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInfo &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pWaitSemaphoreDeviceIndices:    "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pWaitSemaphoreDeviceIndices == nullptr) // WWZ
+    if (pstruct->pWaitSemaphoreDeviceIndices == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pWaitSemaphoreDeviceIndices.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pWaitSemaphoreDeviceIndices.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pWaitSemaphoreDeviceIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pWaitSemaphoreDeviceIndices, "pWaitSemaphoreDeviceIndices", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphoreDeviceIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pWaitSemaphoreDeviceIndices, "pWaitSemaphoreDeviceIndices", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphoreDeviceIndices); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -9712,15 +9713,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInfo &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCommandBufferDeviceMasks:      "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pCommandBufferDeviceMasks == nullptr) // WWZ
+    if (pstruct->pCommandBufferDeviceMasks == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pCommandBufferDeviceMasks.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pCommandBufferDeviceMasks.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pCommandBufferDeviceMasks = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pCommandBufferDeviceMasks, "pCommandBufferDeviceMasks", pstruct->commandBufferCount, vinfo_pCommandBufferDeviceMasks); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pCommandBufferDeviceMasks, "pCommandBufferDeviceMasks", pstruct->commandBufferCount, vinfo_pCommandBufferDeviceMasks); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -9735,21 +9736,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInfo &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSignalSemaphoreDeviceIndices:  "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pSignalSemaphoreDeviceIndices == nullptr) // WWZ
+    if (pstruct->pSignalSemaphoreDeviceIndices == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pSignalSemaphoreDeviceIndices.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pSignalSemaphoreDeviceIndices.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSignalSemaphoreDeviceIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pSignalSemaphoreDeviceIndices, "pSignalSemaphoreDeviceIndices", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphoreDeviceIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pSignalSemaphoreDeviceIndices, "pSignalSemaphoreDeviceIndices", pstruct->signalSemaphoreCount, vinfo_pSignalSemaphoreDeviceIndices); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupBindSparseInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupBindSparseInfo *pstruct = (const VkDeviceGroupBindSparseInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupBindSparseInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9771,7 +9772,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupBindSparseIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9803,7 +9804,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupBindSparseIn
 
 void StructureToString(FILE* outputFile, const Decoded_VkBindBufferMemoryDeviceGroupInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindBufferMemoryDeviceGroupInfo *pstruct = (const VkBindBufferMemoryDeviceGroupInfo *)pstruct_in.decoded_value; // BTB
+    const VkBindBufferMemoryDeviceGroupInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9825,7 +9826,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindBufferMemoryDeviceG
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9852,21 +9853,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindBufferMemoryDeviceG
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDeviceIndices:                 "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pDeviceIndices == nullptr) // WWZ
+    if (pstruct->pDeviceIndices == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pDeviceIndices.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pDeviceIndices.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pDeviceIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkBindImageMemoryDeviceGroupInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindImageMemoryDeviceGroupInfo *pstruct = (const VkBindImageMemoryDeviceGroupInfo *)pstruct_in.decoded_value; // BTB
+    const VkBindImageMemoryDeviceGroupInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9888,7 +9889,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindImageMemoryDeviceGr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -9915,15 +9916,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindImageMemoryDeviceGr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDeviceIndices:                 "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pDeviceIndices == nullptr) // WWZ
+    if (pstruct->pDeviceIndices == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pDeviceIndices.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pDeviceIndices.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pDeviceIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -9938,20 +9939,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindImageMemoryDeviceGr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSplitInstanceBindRegions:      "); // HRW
     OutputString(outputFile, "const VkRect2D* = "); // TEQ
-    if (pstruct->pSplitInstanceBindRegions == nullptr) // WWZ
+    if (pstruct->pSplitInstanceBindRegions == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pSplitInstanceBindRegions->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceGroupProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceGroupProperties *pstruct = (const VkPhysicalDeviceGroupProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceGroupProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -9973,7 +9974,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceGroupProp
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10005,7 +10006,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceGroupProp
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceGroupProperties, physicalDevices)); // IYY
     ScalarValueToStringStruct vinfo_physicalDevices = {true, false, false, nullptr};
-    ArrayToString<HandlePointerDecoder<VkPhysicalDevice>>(outputFile, indent, "VkPhysicalDevice", &pstruct_in.physicalDevices, "physicalDevices", pstruct->physicalDeviceCount, vinfo_physicalDevices); // JPD
+    ArrayToString(outputFile, indent, "VkPhysicalDevice" , &pstruct_in.physicalDevices, "physicalDevices", pstruct->physicalDeviceCount, vinfo_physicalDevices); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkBool32 subsetAllocation
@@ -10017,7 +10018,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceGroupProp
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupDeviceCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupDeviceCreateInfo *pstruct = (const VkDeviceGroupDeviceCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupDeviceCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10039,7 +10040,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupDeviceCreate
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10066,21 +10067,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupDeviceCreate
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPhysicalDevices:               "); // HRW
     OutputString(outputFile, "const VkPhysicalDevice* = "); // TEQ
-    if (pstruct->pPhysicalDevices == nullptr) // WWZ
+    if (pstruct->pPhysicalDevices == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pPhysicalDevices.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pPhysicalDevices.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pPhysicalDevices = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkPhysicalDevice*", &pstruct_in.pPhysicalDevices, "pPhysicalDevices", pstruct->physicalDeviceCount, vinfo_pPhysicalDevices); // AUC
+        ArrayToString(outputFile, indent, "const VkPhysicalDevice*", &pstruct_in.pPhysicalDevices, "pPhysicalDevices", pstruct->physicalDeviceCount, vinfo_pPhysicalDevices); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkBufferMemoryRequirementsInfo2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferMemoryRequirementsInfo2 *pstruct = (const VkBufferMemoryRequirementsInfo2 *)pstruct_in.decoded_value; // BTB
+    const VkBufferMemoryRequirementsInfo2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10102,7 +10103,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferMemoryRequirement
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10127,7 +10128,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferMemoryRequirement
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageMemoryRequirementsInfo2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageMemoryRequirementsInfo2 *pstruct = (const VkImageMemoryRequirementsInfo2 *)pstruct_in.decoded_value; // BTB
+    const VkImageMemoryRequirementsInfo2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10149,7 +10150,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageMemoryRequirements
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10174,7 +10175,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageMemoryRequirements
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageSparseMemoryRequirementsInfo2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageSparseMemoryRequirementsInfo2 *pstruct = (const VkImageSparseMemoryRequirementsInfo2 *)pstruct_in.decoded_value; // BTB
+    const VkImageSparseMemoryRequirementsInfo2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10196,7 +10197,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageSparseMemoryRequir
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10221,7 +10222,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageSparseMemoryRequir
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryRequirements2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryRequirements2 *pstruct = (const VkMemoryRequirements2 *)pstruct_in.decoded_value; // BTB
+    const VkMemoryRequirements2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10243,7 +10244,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryRequirements2 &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10268,7 +10269,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryRequirements2 &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkSparseImageMemoryRequirements2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageMemoryRequirements2 *pstruct = (const VkSparseImageMemoryRequirements2 *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageMemoryRequirements2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10290,7 +10291,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseImageMemoryRequir
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10315,7 +10316,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseImageMemoryRequir
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFeatures2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFeatures2 *pstruct = (const VkPhysicalDeviceFeatures2 *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFeatures2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10337,7 +10338,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFeatures2
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10362,7 +10363,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFeatures2
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceProperties2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceProperties2 *pstruct = (const VkPhysicalDeviceProperties2 *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceProperties2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10384,7 +10385,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePropertie
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10409,7 +10410,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePropertie
 
 void StructureToString(FILE* outputFile, const Decoded_VkFormatProperties2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFormatProperties2 *pstruct = (const VkFormatProperties2 *)pstruct_in.decoded_value; // BTB
+    const VkFormatProperties2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10431,7 +10432,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFormatProperties2 &pstr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10456,7 +10457,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFormatProperties2 &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageFormatProperties2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageFormatProperties2 *pstruct = (const VkImageFormatProperties2 *)pstruct_in.decoded_value; // BTB
+    const VkImageFormatProperties2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10478,7 +10479,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageFormatProperties2 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10503,7 +10504,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageFormatProperties2 
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImageFormatInfo2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceImageFormatInfo2 *pstruct = (const VkPhysicalDeviceImageFormatInfo2 *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceImageFormatInfo2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10525,7 +10526,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImageForm
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10587,7 +10588,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImageForm
 
 void StructureToString(FILE* outputFile, const Decoded_VkQueueFamilyProperties2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkQueueFamilyProperties2 *pstruct = (const VkQueueFamilyProperties2 *)pstruct_in.decoded_value; // BTB
+    const VkQueueFamilyProperties2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10609,7 +10610,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkQueueFamilyProperties2 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10634,7 +10635,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkQueueFamilyProperties2 
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryProperties2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMemoryProperties2 *pstruct = (const VkPhysicalDeviceMemoryProperties2 *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMemoryProperties2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10656,7 +10657,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPro
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10681,7 +10682,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPro
 
 void StructureToString(FILE* outputFile, const Decoded_VkSparseImageFormatProperties2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSparseImageFormatProperties2 *pstruct = (const VkSparseImageFormatProperties2 *)pstruct_in.decoded_value; // BTB
+    const VkSparseImageFormatProperties2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10703,7 +10704,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseImageFormatProper
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10728,7 +10729,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSparseImageFormatProper
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSparseImageFormatInfo2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSparseImageFormatInfo2 *pstruct = (const VkPhysicalDeviceSparseImageFormatInfo2 *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSparseImageFormatInfo2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10750,7 +10751,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSparseIma
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10815,7 +10816,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSparseIma
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePointClippingProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDevicePointClippingProperties *pstruct = (const VkPhysicalDevicePointClippingProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDevicePointClippingProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10837,7 +10838,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePointClip
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10865,7 +10866,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePointClip
 
 void StructureToString(FILE* outputFile, const Decoded_VkInputAttachmentAspectReference &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkInputAttachmentAspectReference *pstruct = (const VkInputAttachmentAspectReference *)pstruct_in.decoded_value; // BTB
+    const VkInputAttachmentAspectReference *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10896,7 +10897,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkInputAttachmentAspectRe
 
 void StructureToString(FILE* outputFile, const Decoded_VkRenderPassInputAttachmentAspectCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassInputAttachmentAspectCreateInfo *pstruct = (const VkRenderPassInputAttachmentAspectCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassInputAttachmentAspectCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10918,7 +10919,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassInputAttachme
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -10945,20 +10946,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassInputAttachme
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAspectReferences:              "); // HRW
     OutputString(outputFile, "const VkInputAttachmentAspectReference* = "); // TEQ
-    if (pstruct->pAspectReferences == nullptr) // WWZ
+    if (pstruct->pAspectReferences == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pAspectReferences->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkInputAttachmentAspectReference>(outputFile, indent+1, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkInputAttachmentAspectReference>(outputFile, indent+1, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress(), sizeof(VkInputAttachmentAspectReference));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageViewUsageCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageViewUsageCreateInfo *pstruct = (const VkImageViewUsageCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkImageViewUsageCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -10980,7 +10981,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageViewUsageCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11005,7 +11006,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageViewUsageCreateInf
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineTessellationDomainOriginStateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineTessellationDomainOriginStateCreateInfo *pstruct = (const VkPipelineTessellationDomainOriginStateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkPipelineTessellationDomainOriginStateCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11027,7 +11028,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineTessellationDom
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11055,7 +11056,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineTessellationDom
 
 void StructureToString(FILE* outputFile, const Decoded_VkRenderPassMultiviewCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassMultiviewCreateInfo *pstruct = (const VkRenderPassMultiviewCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassMultiviewCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11077,7 +11078,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassMultiviewCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11104,15 +11105,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassMultiviewCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pViewMasks:                     "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pViewMasks == nullptr) // WWZ
+    if (pstruct->pViewMasks == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pViewMasks.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pViewMasks.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pViewMasks = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pViewMasks, "pViewMasks", pstruct->subpassCount, vinfo_pViewMasks); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pViewMasks, "pViewMasks", pstruct->subpassCount, vinfo_pViewMasks); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -11127,15 +11128,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassMultiviewCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pViewOffsets:                   "); // HRW
     OutputString(outputFile, "const int32_t* = "); // TEQ
-    if (pstruct->pViewOffsets == nullptr) // WWZ
+    if (pstruct->pViewOffsets == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pViewOffsets.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pViewOffsets.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pViewOffsets = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const int32_t*", &pstruct_in.pViewOffsets, "pViewOffsets", pstruct->dependencyCount, vinfo_pViewOffsets); // AUC
+        ArrayToString(outputFile, indent, "const int32_t*", &pstruct_in.pViewOffsets, "pViewOffsets", pstruct->dependencyCount, vinfo_pViewOffsets); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -11150,21 +11151,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassMultiviewCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCorrelationMasks:              "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pCorrelationMasks == nullptr) // WWZ
+    if (pstruct->pCorrelationMasks == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pCorrelationMasks.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pCorrelationMasks.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pCorrelationMasks = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pCorrelationMasks, "pCorrelationMasks", pstruct->correlationMaskCount, vinfo_pCorrelationMasks); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pCorrelationMasks, "pCorrelationMasks", pstruct->correlationMaskCount, vinfo_pCorrelationMasks); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiviewFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMultiviewFeatures *pstruct = (const VkPhysicalDeviceMultiviewFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMultiviewFeatures *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11186,7 +11187,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiview
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11225,7 +11226,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiview
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiviewProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMultiviewProperties *pstruct = (const VkPhysicalDeviceMultiviewProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMultiviewProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11247,7 +11248,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiview
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11279,7 +11280,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiview
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceVariablePointersFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceVariablePointersFeatures *pstruct = (const VkPhysicalDeviceVariablePointersFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceVariablePointersFeatures *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11301,7 +11302,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceVariableP
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11333,7 +11334,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceVariableP
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceProtectedMemoryFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceProtectedMemoryFeatures *pstruct = (const VkPhysicalDeviceProtectedMemoryFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceProtectedMemoryFeatures *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11355,7 +11356,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceProtected
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11380,7 +11381,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceProtected
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceProtectedMemoryProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceProtectedMemoryProperties *pstruct = (const VkPhysicalDeviceProtectedMemoryProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceProtectedMemoryProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11402,7 +11403,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceProtected
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11427,7 +11428,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceProtected
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceQueueInfo2 &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceQueueInfo2 *pstruct = (const VkDeviceQueueInfo2 *)pstruct_in.decoded_value; // BTB
+    const VkDeviceQueueInfo2 *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11449,7 +11450,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceQueueInfo2 &pstru
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11488,7 +11489,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceQueueInfo2 &pstru
 
 void StructureToString(FILE* outputFile, const Decoded_VkProtectedSubmitInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkProtectedSubmitInfo *pstruct = (const VkProtectedSubmitInfo *)pstruct_in.decoded_value; // BTB
+    const VkProtectedSubmitInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11510,7 +11511,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkProtectedSubmitInfo &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11535,7 +11536,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkProtectedSubmitInfo &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSamplerYcbcrConversionCreateInfo *pstruct = (const VkSamplerYcbcrConversionCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkSamplerYcbcrConversionCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11557,7 +11558,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionC
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11649,7 +11650,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionC
 
 void StructureToString(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSamplerYcbcrConversionInfo *pstruct = (const VkSamplerYcbcrConversionInfo *)pstruct_in.decoded_value; // BTB
+    const VkSamplerYcbcrConversionInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11671,7 +11672,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11696,7 +11697,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionI
 
 void StructureToString(FILE* outputFile, const Decoded_VkBindImagePlaneMemoryInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindImagePlaneMemoryInfo *pstruct = (const VkBindImagePlaneMemoryInfo *)pstruct_in.decoded_value; // BTB
+    const VkBindImagePlaneMemoryInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11718,7 +11719,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindImagePlaneMemoryInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11746,7 +11747,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindImagePlaneMemoryInf
 
 void StructureToString(FILE* outputFile, const Decoded_VkImagePlaneMemoryRequirementsInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImagePlaneMemoryRequirementsInfo *pstruct = (const VkImagePlaneMemoryRequirementsInfo *)pstruct_in.decoded_value; // BTB
+    const VkImagePlaneMemoryRequirementsInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11768,7 +11769,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImagePlaneMemoryRequire
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11796,7 +11797,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImagePlaneMemoryRequire
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSamplerYcbcrConversionFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSamplerYcbcrConversionFeatures *pstruct = (const VkPhysicalDeviceSamplerYcbcrConversionFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSamplerYcbcrConversionFeatures *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11818,7 +11819,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSamplerYc
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11843,7 +11844,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSamplerYc
 
 void StructureToString(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionImageFormatProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSamplerYcbcrConversionImageFormatProperties *pstruct = (const VkSamplerYcbcrConversionImageFormatProperties *)pstruct_in.decoded_value; // BTB
+    const VkSamplerYcbcrConversionImageFormatProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11865,7 +11866,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -11890,7 +11891,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSamplerYcbcrConversionI
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorUpdateTemplateEntry &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorUpdateTemplateEntry *pstruct = (const VkDescriptorUpdateTemplateEntry *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorUpdateTemplateEntry *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11945,7 +11946,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorUpdateTemplat
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorUpdateTemplateCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorUpdateTemplateCreateInfo *pstruct = (const VkDescriptorUpdateTemplateCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorUpdateTemplateCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -11967,7 +11968,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorUpdateTemplat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12001,14 +12002,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorUpdateTemplat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDescriptorUpdateEntries:       "); // HRW
     OutputString(outputFile, "const VkDescriptorUpdateTemplateEntry* = "); // TEQ
-    if (pstruct->pDescriptorUpdateEntries == nullptr) // WWZ
+    if (pstruct->pDescriptorUpdateEntries == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pDescriptorUpdateEntries->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDescriptorUpdateTemplateEntry>(outputFile, indent+1, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDescriptorUpdateTemplateEntry>(outputFile, indent+1, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress(), sizeof(VkDescriptorUpdateTemplateEntry));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -12055,7 +12056,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorUpdateTemplat
 
 void StructureToString(FILE* outputFile, const Decoded_VkExternalMemoryProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalMemoryProperties *pstruct = (const VkExternalMemoryProperties *)pstruct_in.decoded_value; // BTB
+    const VkExternalMemoryProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12086,7 +12087,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalMemoryPropertie
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalImageFormatInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceExternalImageFormatInfo *pstruct = (const VkPhysicalDeviceExternalImageFormatInfo *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceExternalImageFormatInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12108,7 +12109,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12136,7 +12137,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalI
 
 void StructureToString(FILE* outputFile, const Decoded_VkExternalImageFormatProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalImageFormatProperties *pstruct = (const VkExternalImageFormatProperties *)pstruct_in.decoded_value; // BTB
+    const VkExternalImageFormatProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12158,7 +12159,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalImageFormatProp
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12183,7 +12184,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalImageFormatProp
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalBufferInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceExternalBufferInfo *pstruct = (const VkPhysicalDeviceExternalBufferInfo *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceExternalBufferInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12205,7 +12206,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalB
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12247,7 +12248,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalB
 
 void StructureToString(FILE* outputFile, const Decoded_VkExternalBufferProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalBufferProperties *pstruct = (const VkExternalBufferProperties *)pstruct_in.decoded_value; // BTB
+    const VkExternalBufferProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12269,7 +12270,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalBufferPropertie
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12294,7 +12295,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalBufferPropertie
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceIDProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceIDProperties *pstruct = (const VkPhysicalDeviceIDProperties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceIDProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12316,7 +12317,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPropert
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12341,7 +12342,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPropert
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceIDProperties, deviceUUID)); // IYY
     ScalarValueToStringStruct vinfo_deviceUUID = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint8_t>>(outputFile, indent, "uint8_t", &pstruct_in.deviceUUID, "deviceUUID", VK_UUID_SIZE, vinfo_deviceUUID); // JPE
+    ArrayToString(outputFile, indent, "uint8_t" , &pstruct_in.deviceUUID, "deviceUUID", VK_UUID_SIZE, vinfo_deviceUUID); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint8_t driverUUID
@@ -12353,7 +12354,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPropert
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceIDProperties, driverUUID)); // IYY
     ScalarValueToStringStruct vinfo_driverUUID = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint8_t>>(outputFile, indent, "uint8_t", &pstruct_in.driverUUID, "driverUUID", VK_UUID_SIZE, vinfo_driverUUID); // JPE
+    ArrayToString(outputFile, indent, "uint8_t" , &pstruct_in.driverUUID, "driverUUID", VK_UUID_SIZE, vinfo_driverUUID); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint8_t deviceLUID
@@ -12365,7 +12366,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPropert
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceIDProperties, deviceLUID)); // IYY
     ScalarValueToStringStruct vinfo_deviceLUID = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint8_t>>(outputFile, indent, "uint8_t", &pstruct_in.deviceLUID, "deviceLUID", VK_LUID_SIZE, vinfo_deviceLUID); // JPE
+    ArrayToString(outputFile, indent, "uint8_t" , &pstruct_in.deviceLUID, "deviceLUID", VK_LUID_SIZE, vinfo_deviceLUID); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t deviceNodeMask
@@ -12384,7 +12385,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPropert
 
 void StructureToString(FILE* outputFile, const Decoded_VkExternalMemoryImageCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalMemoryImageCreateInfo *pstruct = (const VkExternalMemoryImageCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkExternalMemoryImageCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12406,7 +12407,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalMemoryImageCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12431,7 +12432,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalMemoryImageCrea
 
 void StructureToString(FILE* outputFile, const Decoded_VkExternalMemoryBufferCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalMemoryBufferCreateInfo *pstruct = (const VkExternalMemoryBufferCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkExternalMemoryBufferCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12453,7 +12454,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalMemoryBufferCre
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12478,7 +12479,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalMemoryBufferCre
 
 void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryAllocateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportMemoryAllocateInfo *pstruct = (const VkExportMemoryAllocateInfo *)pstruct_in.decoded_value; // BTB
+    const VkExportMemoryAllocateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12500,7 +12501,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryAllocateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12525,7 +12526,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryAllocateInf
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalFenceInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceExternalFenceInfo *pstruct = (const VkPhysicalDeviceExternalFenceInfo *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceExternalFenceInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12547,7 +12548,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalF
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12575,7 +12576,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalF
 
 void StructureToString(FILE* outputFile, const Decoded_VkExternalFenceProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalFenceProperties *pstruct = (const VkExternalFenceProperties *)pstruct_in.decoded_value; // BTB
+    const VkExternalFenceProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12597,7 +12598,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalFenceProperties
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12636,7 +12637,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalFenceProperties
 
 void StructureToString(FILE* outputFile, const Decoded_VkExportFenceCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportFenceCreateInfo *pstruct = (const VkExportFenceCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkExportFenceCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12658,7 +12659,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportFenceCreateInfo &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12683,7 +12684,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportFenceCreateInfo &
 
 void StructureToString(FILE* outputFile, const Decoded_VkExportSemaphoreCreateInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportSemaphoreCreateInfo *pstruct = (const VkExportSemaphoreCreateInfo *)pstruct_in.decoded_value; // BTB
+    const VkExportSemaphoreCreateInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12705,7 +12706,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportSemaphoreCreateIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12730,7 +12731,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportSemaphoreCreateIn
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalSemaphoreInfo &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceExternalSemaphoreInfo *pstruct = (const VkPhysicalDeviceExternalSemaphoreInfo *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceExternalSemaphoreInfo *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12752,7 +12753,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalS
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12780,7 +12781,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalS
 
 void StructureToString(FILE* outputFile, const Decoded_VkExternalSemaphoreProperties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalSemaphoreProperties *pstruct = (const VkExternalSemaphoreProperties *)pstruct_in.decoded_value; // BTB
+    const VkExternalSemaphoreProperties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12802,7 +12803,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalSemaphoreProper
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12841,7 +12842,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalSemaphoreProper
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMaintenance3Properties &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMaintenance3Properties *pstruct = (const VkPhysicalDeviceMaintenance3Properties *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMaintenance3Properties *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12863,7 +12864,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMaintenan
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12895,7 +12896,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMaintenan
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutSupport &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetLayoutSupport *pstruct = (const VkDescriptorSetLayoutSupport *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetLayoutSupport *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12917,7 +12918,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutSupp
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12942,7 +12943,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutSupp
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderDrawParametersFeatures &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderDrawParametersFeatures *pstruct = (const VkPhysicalDeviceShaderDrawParametersFeatures *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderDrawParametersFeatures *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -12964,7 +12965,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderDra
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -12989,7 +12990,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderDra
 
 void StructureToString(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceCapabilitiesKHR *pstruct = (const VkSurfaceCapabilitiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceCapabilitiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13072,7 +13073,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesKHR 
 
 void StructureToString(FILE* outputFile, const Decoded_VkSurfaceFormatKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceFormatKHR *pstruct = (const VkSurfaceFormatKHR *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceFormatKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13102,7 +13103,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceFormatKHR &pstru
 
 void StructureToString(FILE* outputFile, const Decoded_VkSwapchainCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSwapchainCreateInfoKHR *pstruct = (const VkSwapchainCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSwapchainCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13124,7 +13125,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSwapchainCreateInfoKHR 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -13223,15 +13224,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkSwapchainCreateInfoKHR 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueFamilyIndices:            "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pQueueFamilyIndices == nullptr) // WWZ
+    if (pstruct->pQueueFamilyIndices == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -13281,7 +13282,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSwapchainCreateInfoKHR 
 
 void StructureToString(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPresentInfoKHR *pstruct = (const VkPresentInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkPresentInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13303,7 +13304,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -13330,15 +13331,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pWaitSemaphores:                "); // HRW
     OutputString(outputFile, "const VkSemaphore* = "); // TEQ
-    if (pstruct->pWaitSemaphores == nullptr) // WWZ
+    if (pstruct->pWaitSemaphores == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pWaitSemaphores.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pWaitSemaphores.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pWaitSemaphores = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AUC
+        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pWaitSemaphores, "pWaitSemaphores", pstruct->waitSemaphoreCount, vinfo_pWaitSemaphores); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -13353,15 +13354,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSwapchains:                    "); // HRW
     OutputString(outputFile, "const VkSwapchainKHR* = "); // TEQ
-    if (pstruct->pSwapchains == nullptr) // WWZ
+    if (pstruct->pSwapchains == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pSwapchains.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pSwapchains.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSwapchains = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkSwapchainKHR*", &pstruct_in.pSwapchains, "pSwapchains", pstruct->swapchainCount, vinfo_pSwapchains); // AUC
+        ArrayToString(outputFile, indent, "const VkSwapchainKHR*", &pstruct_in.pSwapchains, "pSwapchains", pstruct->swapchainCount, vinfo_pSwapchains); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -13369,15 +13370,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pImageIndices:                  "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pImageIndices == nullptr) // WWZ
+    if (pstruct->pImageIndices == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pImageIndices.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pImageIndices.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pImageIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pImageIndices, "pImageIndices", pstruct->swapchainCount, vinfo_pImageIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pImageIndices, "pImageIndices", pstruct->swapchainCount, vinfo_pImageIndices); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -13385,21 +13386,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pResults:                       "); // HRW
     OutputString(outputFile, "VkResult* = "); // TEQ
-    if (pstruct->pResults == nullptr) // WWZ
+    if (pstruct->pResults == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pResults.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pResults.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pResults = {false, true, false, EnumToStringVkResult};
-        ArrayToString(outputFile, indent, "VkResult*", &pstruct_in.pResults, "pResults", pstruct->swapchainCount, vinfo_pResults); // AUC
+        ArrayToString(outputFile, indent, "VkResult*", &pstruct_in.pResults, "pResults", pstruct->swapchainCount, vinfo_pResults); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageSwapchainCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageSwapchainCreateInfoKHR *pstruct = (const VkImageSwapchainCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImageSwapchainCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13421,7 +13422,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageSwapchainCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -13446,7 +13447,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageSwapchainCreateInf
 
 void StructureToString(FILE* outputFile, const Decoded_VkBindImageMemorySwapchainInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindImageMemorySwapchainInfoKHR *pstruct = (const VkBindImageMemorySwapchainInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkBindImageMemorySwapchainInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13468,7 +13469,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindImageMemorySwapchai
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -13500,7 +13501,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindImageMemorySwapchai
 
 void StructureToString(FILE* outputFile, const Decoded_VkAcquireNextImageInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAcquireNextImageInfoKHR *pstruct = (const VkAcquireNextImageInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkAcquireNextImageInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13522,7 +13523,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAcquireNextImageInfoKHR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -13575,7 +13576,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAcquireNextImageInfoKHR
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupPresentCapabilitiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupPresentCapabilitiesKHR *pstruct = (const VkDeviceGroupPresentCapabilitiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupPresentCapabilitiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13597,7 +13598,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupPresentCapab
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -13622,7 +13623,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupPresentCapab
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkDeviceGroupPresentCapabilitiesKHR, presentMask)); // IYY
     ScalarValueToStringStruct vinfo_presentMask = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.presentMask, "presentMask", VK_MAX_DEVICE_GROUP_SIZE, vinfo_presentMask); // JPE
+    ArrayToString(outputFile, indent, "uint32_t" , &pstruct_in.presentMask, "presentMask", VK_MAX_DEVICE_GROUP_SIZE, vinfo_presentMask); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkDeviceGroupPresentModeFlagsKHR modes
@@ -13634,7 +13635,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupPresentCapab
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupPresentInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupPresentInfoKHR *pstruct = (const VkDeviceGroupPresentInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupPresentInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13656,7 +13657,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupPresentInfoK
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -13683,15 +13684,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupPresentInfoK
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDeviceMasks:                   "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pDeviceMasks == nullptr) // WWZ
+    if (pstruct->pDeviceMasks == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pDeviceMasks.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pDeviceMasks.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pDeviceMasks = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceMasks, "pDeviceMasks", pstruct->swapchainCount, vinfo_pDeviceMasks); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceMasks, "pDeviceMasks", pstruct->swapchainCount, vinfo_pDeviceMasks); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -13707,7 +13708,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupPresentInfoK
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupSwapchainCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGroupSwapchainCreateInfoKHR *pstruct = (const VkDeviceGroupSwapchainCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGroupSwapchainCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13729,7 +13730,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupSwapchainCre
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -13754,7 +13755,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGroupSwapchainCre
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayPropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPropertiesKHR *pstruct = (const VkDisplayPropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPropertiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13813,7 +13814,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPropertiesKHR &p
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayModeParametersKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayModeParametersKHR *pstruct = (const VkDisplayModeParametersKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayModeParametersKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13837,7 +13838,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayModeParametersKH
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayModePropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayModePropertiesKHR *pstruct = (const VkDisplayModePropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayModePropertiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13861,7 +13862,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayModePropertiesKH
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayModeCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayModeCreateInfoKHR *pstruct = (const VkDisplayModeCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayModeCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13883,7 +13884,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayModeCreateInfoKH
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -13915,7 +13916,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayModeCreateInfoKH
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilitiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPlaneCapabilitiesKHR *pstruct = (const VkDisplayPlaneCapabilitiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPlaneCapabilitiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -13988,7 +13989,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilitie
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlanePropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPlanePropertiesKHR *pstruct = (const VkDisplayPlanePropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPlanePropertiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14012,7 +14013,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlanePropertiesK
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplaySurfaceCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplaySurfaceCreateInfoKHR *pstruct = (const VkDisplaySurfaceCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplaySurfaceCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14034,7 +14035,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplaySurfaceCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14114,7 +14115,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplaySurfaceCreateInf
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayPresentInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPresentInfoKHR *pstruct = (const VkDisplayPresentInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPresentInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14136,7 +14137,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPresentInfoKHR &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14175,7 +14176,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPresentInfoKHR &
 
 void StructureToString(FILE* outputFile, const Decoded_VkXlibSurfaceCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkXlibSurfaceCreateInfoKHR *pstruct = (const VkXlibSurfaceCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkXlibSurfaceCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14197,7 +14198,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkXlibSurfaceCreateInfoKH
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14236,7 +14237,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkXlibSurfaceCreateInfoKH
 
 void StructureToString(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkXcbSurfaceCreateInfoKHR *pstruct = (const VkXcbSurfaceCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkXcbSurfaceCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14258,7 +14259,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInfoKHR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14285,7 +14286,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInfoKHR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "connection:                     "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->connection == nullptr) // WWX
+    if (pstruct->connection == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -14304,7 +14305,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInfoKHR
 
 void StructureToString(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWaylandSurfaceCreateInfoKHR *pstruct = (const VkWaylandSurfaceCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkWaylandSurfaceCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14326,7 +14327,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14353,7 +14354,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "display:                        "); // HRW
     OutputString(outputFile, "struct void* = "); // TEQ
-    if (pstruct->display == nullptr) // WWX
+    if (pstruct->display == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -14367,7 +14368,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "surface:                        "); // HRW
     OutputString(outputFile, "struct void* = "); // TEQ
-    if (pstruct->surface == nullptr) // WWX
+    if (pstruct->surface == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -14379,7 +14380,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateInf
 
 void StructureToString(FILE* outputFile, const Decoded_VkAndroidSurfaceCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAndroidSurfaceCreateInfoKHR *pstruct = (const VkAndroidSurfaceCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkAndroidSurfaceCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14401,7 +14402,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAndroidSurfaceCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14428,7 +14429,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAndroidSurfaceCreateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "window:                         "); // HRW
     OutputString(outputFile, "struct void* = "); // TEQ
-    if (pstruct->window == nullptr) // WWX
+    if (pstruct->window == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -14440,7 +14441,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAndroidSurfaceCreateInf
 
 void StructureToString(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWin32SurfaceCreateInfoKHR *pstruct = (const VkWin32SurfaceCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkWin32SurfaceCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14462,7 +14463,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInfoK
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14489,7 +14490,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInfoK
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "hinstance:                      "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->hinstance == nullptr) // WWX
+    if (pstruct->hinstance == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -14503,7 +14504,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInfoK
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "hwnd:                           "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->hwnd == nullptr) // WWX
+    if (pstruct->hwnd == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -14515,7 +14516,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInfoK
 
 void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportMemoryWin32HandleInfoKHR *pstruct = (const VkImportMemoryWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImportMemoryWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14537,7 +14538,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryWin32Handle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14567,7 +14568,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryWin32Handle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "handle:                         "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->handle == nullptr) // WWX
+    if (pstruct->handle == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -14581,7 +14582,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryWin32Handle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "const wchar_t* = "); // TEQ
-    if (pstruct->name == nullptr) // WWZ
+    if (pstruct->name == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14593,7 +14594,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryWin32Handle
 
 void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportMemoryWin32HandleInfoKHR *pstruct = (const VkExportMemoryWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkExportMemoryWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14615,7 +14616,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryWin32Handle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14635,7 +14636,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryWin32Handle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAttributes:                    "); // HRW
     OutputString(outputFile, "const SECURITY_ATTRIBUTES* = "); // TEQ
-    if (pstruct->pAttributes == nullptr) // WWZ
+    if (pstruct->pAttributes == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14657,7 +14658,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryWin32Handle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "const wchar_t* = "); // TEQ
-    if (pstruct->name == nullptr) // WWZ
+    if (pstruct->name == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14669,7 +14670,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryWin32Handle
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryWin32HandlePropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryWin32HandlePropertiesKHR *pstruct = (const VkMemoryWin32HandlePropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkMemoryWin32HandlePropertiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14691,7 +14692,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryWin32HandleProper
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14716,7 +14717,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryWin32HandleProper
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryGetWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryGetWin32HandleInfoKHR *pstruct = (const VkMemoryGetWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkMemoryGetWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14738,7 +14739,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryGetWin32HandleInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14773,7 +14774,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryGetWin32HandleInf
 
 void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryFdInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportMemoryFdInfoKHR *pstruct = (const VkImportMemoryFdInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImportMemoryFdInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14795,7 +14796,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryFdInfoKHR &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14830,7 +14831,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryFdInfoKHR &
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryFdPropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryFdPropertiesKHR *pstruct = (const VkMemoryFdPropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkMemoryFdPropertiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14852,7 +14853,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryFdPropertiesKHR &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14877,7 +14878,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryFdPropertiesKHR &
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryGetFdInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryGetFdInfoKHR *pstruct = (const VkMemoryGetFdInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkMemoryGetFdInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14899,7 +14900,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryGetFdInfoKHR &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14934,7 +14935,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryGetFdInfoKHR &pst
 
 void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireReleaseInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWin32KeyedMutexAcquireReleaseInfoKHR *pstruct = (const VkWin32KeyedMutexAcquireReleaseInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkWin32KeyedMutexAcquireReleaseInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -14956,7 +14957,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -14983,15 +14984,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAcquireSyncs:                  "); // HRW
     OutputString(outputFile, "const VkDeviceMemory* = "); // TEQ
-    if (pstruct->pAcquireSyncs == nullptr) // WWZ
+    if (pstruct->pAcquireSyncs == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pAcquireSyncs.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pAcquireSyncs.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pAcquireSyncs = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -14999,15 +15000,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAcquireKeys:                   "); // HRW
     OutputString(outputFile, "const uint64_t* = "); // TEQ
-    if (pstruct->pAcquireKeys == nullptr) // WWZ
+    if (pstruct->pAcquireKeys == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pAcquireKeys.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pAcquireKeys.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pAcquireKeys = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -15015,15 +15016,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAcquireTimeouts:               "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pAcquireTimeouts == nullptr) // WWZ
+    if (pstruct->pAcquireTimeouts == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pAcquireTimeouts.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pAcquireTimeouts.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pAcquireTimeouts = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pAcquireTimeouts, "pAcquireTimeouts", pstruct->acquireCount, vinfo_pAcquireTimeouts); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pAcquireTimeouts, "pAcquireTimeouts", pstruct->acquireCount, vinfo_pAcquireTimeouts); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -15038,15 +15039,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pReleaseSyncs:                  "); // HRW
     OutputString(outputFile, "const VkDeviceMemory* = "); // TEQ
-    if (pstruct->pReleaseSyncs == nullptr) // WWZ
+    if (pstruct->pReleaseSyncs == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pReleaseSyncs.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pReleaseSyncs.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pReleaseSyncs = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -15054,21 +15055,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pReleaseKeys:                   "); // HRW
     OutputString(outputFile, "const uint64_t* = "); // TEQ
-    if (pstruct->pReleaseKeys == nullptr) // WWZ
+    if (pstruct->pReleaseKeys == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pReleaseKeys.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pReleaseKeys.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pReleaseKeys = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkImportSemaphoreWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportSemaphoreWin32HandleInfoKHR *pstruct = (const VkImportSemaphoreWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImportSemaphoreWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15090,7 +15091,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportSemaphoreWin32Han
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15134,7 +15135,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportSemaphoreWin32Han
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "handle:                         "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->handle == nullptr) // WWX
+    if (pstruct->handle == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -15148,7 +15149,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportSemaphoreWin32Han
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "const wchar_t* = "); // TEQ
-    if (pstruct->name == nullptr) // WWZ
+    if (pstruct->name == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15160,7 +15161,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportSemaphoreWin32Han
 
 void StructureToString(FILE* outputFile, const Decoded_VkExportSemaphoreWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportSemaphoreWin32HandleInfoKHR *pstruct = (const VkExportSemaphoreWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkExportSemaphoreWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15182,7 +15183,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportSemaphoreWin32Han
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15202,7 +15203,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportSemaphoreWin32Han
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAttributes:                    "); // HRW
     OutputString(outputFile, "const SECURITY_ATTRIBUTES* = "); // TEQ
-    if (pstruct->pAttributes == nullptr) // WWZ
+    if (pstruct->pAttributes == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15224,7 +15225,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportSemaphoreWin32Han
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "const wchar_t* = "); // TEQ
-    if (pstruct->name == nullptr) // WWZ
+    if (pstruct->name == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15236,7 +15237,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportSemaphoreWin32Han
 
 void StructureToString(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkD3D12FenceSubmitInfoKHR *pstruct = (const VkD3D12FenceSubmitInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkD3D12FenceSubmitInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15258,7 +15259,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInfoKHR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15285,15 +15286,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInfoKHR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pWaitSemaphoreValues:           "); // HRW
     OutputString(outputFile, "const uint64_t* = "); // TEQ
-    if (pstruct->pWaitSemaphoreValues == nullptr) // WWZ
+    if (pstruct->pWaitSemaphoreValues == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pWaitSemaphoreValues.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pWaitSemaphoreValues.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pWaitSemaphoreValues = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValuesCount, vinfo_pWaitSemaphoreValues); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValuesCount, vinfo_pWaitSemaphoreValues); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -15308,21 +15309,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInfoKHR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSignalSemaphoreValues:         "); // HRW
     OutputString(outputFile, "const uint64_t* = "); // TEQ
-    if (pstruct->pSignalSemaphoreValues == nullptr) // WWZ
+    if (pstruct->pSignalSemaphoreValues == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pSignalSemaphoreValues.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pSignalSemaphoreValues.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSignalSemaphoreValues = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValuesCount, vinfo_pSignalSemaphoreValues); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValuesCount, vinfo_pSignalSemaphoreValues); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreGetWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSemaphoreGetWin32HandleInfoKHR *pstruct = (const VkSemaphoreGetWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSemaphoreGetWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15344,7 +15345,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreGetWin32Handle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15379,7 +15380,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreGetWin32Handle
 
 void StructureToString(FILE* outputFile, const Decoded_VkImportSemaphoreFdInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportSemaphoreFdInfoKHR *pstruct = (const VkImportSemaphoreFdInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImportSemaphoreFdInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15401,7 +15402,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportSemaphoreFdInfoKH
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15450,7 +15451,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportSemaphoreFdInfoKH
 
 void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreGetFdInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSemaphoreGetFdInfoKHR *pstruct = (const VkSemaphoreGetFdInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSemaphoreGetFdInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15472,7 +15473,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreGetFdInfoKHR &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15507,7 +15508,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreGetFdInfoKHR &
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePushDescriptorPropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDevicePushDescriptorPropertiesKHR *pstruct = (const VkPhysicalDevicePushDescriptorPropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDevicePushDescriptorPropertiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15529,7 +15530,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePushDescr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15554,7 +15555,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePushDescr
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderFloat16Int8FeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderFloat16Int8FeaturesKHR *pstruct = (const VkPhysicalDeviceShaderFloat16Int8FeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderFloat16Int8FeaturesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15576,7 +15577,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderFlo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15608,7 +15609,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderFlo
 
 void StructureToString(FILE* outputFile, const Decoded_VkRectLayerKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRectLayerKHR *pstruct = (const VkRectLayerKHR *)pstruct_in.decoded_value; // BTB
+    const VkRectLayerKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15639,7 +15640,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRectLayerKHR &pstruct_i
 
 void StructureToString(FILE* outputFile, const Decoded_VkPresentRegionKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPresentRegionKHR *pstruct = (const VkPresentRegionKHR *)pstruct_in.decoded_value; // BTB
+    const VkPresentRegionKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15658,20 +15659,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentRegionKHR &pstru
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRectangles:                    "); // HRW
     OutputString(outputFile, "const VkRectLayerKHR* = "); // TEQ
-    if (pstruct->pRectangles == nullptr) // WWZ
+    if (pstruct->pRectangles == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pRectangles->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRectLayerKHR>(outputFile, indent+1, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRectLayerKHR>(outputFile, indent+1, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress(), sizeof(VkRectLayerKHR));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPresentRegionsKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPresentRegionsKHR *pstruct = (const VkPresentRegionsKHR *)pstruct_in.decoded_value; // BTB
+    const VkPresentRegionsKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15693,7 +15694,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentRegionsKHR &pstr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15720,20 +15721,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentRegionsKHR &pstr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pRegions:                       "); // HRW
     OutputString(outputFile, "const VkPresentRegionKHR* = "); // TEQ
-    if (pstruct->pRegions == nullptr) // WWZ
+    if (pstruct->pRegions == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pRegions->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPresentRegionKHR>(outputFile, indent+1, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPresentRegionKHR>(outputFile, indent+1, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress(), sizeof(VkPresentRegionKHR));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImagelessFramebufferFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceImagelessFramebufferFeaturesKHR *pstruct = (const VkPhysicalDeviceImagelessFramebufferFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceImagelessFramebufferFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15755,7 +15756,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImageless
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15780,7 +15781,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImageless
 
 void StructureToString(FILE* outputFile, const Decoded_VkFramebufferAttachmentImageInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFramebufferAttachmentImageInfoKHR *pstruct = (const VkFramebufferAttachmentImageInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkFramebufferAttachmentImageInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15802,7 +15803,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFramebufferAttachmentIm
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15864,21 +15865,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkFramebufferAttachmentIm
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pViewFormats:                   "); // HRW
     OutputString(outputFile, "const VkFormat* = "); // TEQ
-    if (pstruct->pViewFormats == nullptr) // WWZ
+    if (pstruct->pViewFormats == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pViewFormats.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pViewFormats.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pViewFormats = {false, true, false, EnumToStringVkFormat};
-        ArrayToString(outputFile, indent, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUC
+        ArrayToString(outputFile, indent, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkFramebufferAttachmentsCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFramebufferAttachmentsCreateInfoKHR *pstruct = (const VkFramebufferAttachmentsCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkFramebufferAttachmentsCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15900,7 +15901,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFramebufferAttachmentsC
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15927,20 +15928,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkFramebufferAttachmentsC
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAttachmentImageInfos:          "); // HRW
     OutputString(outputFile, "const VkFramebufferAttachmentImageInfoKHR* = "); // TEQ
-    if (pstruct->pAttachmentImageInfos == nullptr) // WWZ
+    if (pstruct->pAttachmentImageInfos == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pAttachmentImageInfos->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkFramebufferAttachmentImageInfoKHR>(outputFile, indent+1, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkFramebufferAttachmentImageInfoKHR>(outputFile, indent+1, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress(), sizeof(VkFramebufferAttachmentImageInfoKHR));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkRenderPassAttachmentBeginInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassAttachmentBeginInfoKHR *pstruct = (const VkRenderPassAttachmentBeginInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassAttachmentBeginInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -15962,7 +15963,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassAttachmentBeg
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -15989,21 +15990,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassAttachmentBeg
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAttachments:                   "); // HRW
     OutputString(outputFile, "const VkImageView* = "); // TEQ
-    if (pstruct->pAttachments == nullptr) // WWZ
+    if (pstruct->pAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pAttachments.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pAttachments.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pAttachments = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AUC
+        ArrayToString(outputFile, indent, "const VkImageView*", &pstruct_in.pAttachments, "pAttachments", pstruct->attachmentCount, vinfo_pAttachments); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkAttachmentDescription2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAttachmentDescription2KHR *pstruct = (const VkAttachmentDescription2KHR *)pstruct_in.decoded_value; // BTB
+    const VkAttachmentDescription2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16025,7 +16026,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAttachmentDescription2K
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16130,7 +16131,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAttachmentDescription2K
 
 void StructureToString(FILE* outputFile, const Decoded_VkAttachmentReference2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAttachmentReference2KHR *pstruct = (const VkAttachmentReference2KHR *)pstruct_in.decoded_value; // BTB
+    const VkAttachmentReference2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16152,7 +16153,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAttachmentReference2KHR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16194,7 +16195,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAttachmentReference2KHR
 
 void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassDescription2KHR *pstruct = (const VkSubpassDescription2KHR *)pstruct_in.decoded_value; // BTB
+    const VkSubpassDescription2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16216,7 +16217,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription2KHR 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16267,14 +16268,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription2KHR 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInputAttachments:              "); // HRW
     OutputString(outputFile, "const VkAttachmentReference2KHR* = "); // TEQ
-    if (pstruct->pInputAttachments == nullptr) // WWZ
+    if (pstruct->pInputAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pInputAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16289,14 +16290,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription2KHR 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pColorAttachments:              "); // HRW
     OutputString(outputFile, "const VkAttachmentReference2KHR* = "); // TEQ
-    if (pstruct->pColorAttachments == nullptr) // WWZ
+    if (pstruct->pColorAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pColorAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16304,14 +16305,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription2KHR 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pResolveAttachments:            "); // HRW
     OutputString(outputFile, "const VkAttachmentReference2KHR* = "); // TEQ
-    if (pstruct->pResolveAttachments == nullptr) // WWZ
+    if (pstruct->pResolveAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pResolveAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16319,7 +16320,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription2KHR 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDepthStencilAttachment:        "); // HRW
     OutputString(outputFile, "const VkAttachmentReference2KHR* = "); // TEQ
-    if (pstruct->pDepthStencilAttachment == nullptr) // WWZ
+    if (pstruct->pDepthStencilAttachment == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16342,21 +16343,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescription2KHR 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPreserveAttachments:           "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pPreserveAttachments == nullptr) // WWZ
+    if (pstruct->pPreserveAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pPreserveAttachments.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pPreserveAttachments.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pPreserveAttachments = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pPreserveAttachments, "pPreserveAttachments", pstruct->preserveAttachmentCount, vinfo_pPreserveAttachments); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkSubpassDependency2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassDependency2KHR *pstruct = (const VkSubpassDependency2KHR *)pstruct_in.decoded_value; // BTB
+    const VkSubpassDependency2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16378,7 +16379,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDependency2KHR &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16452,7 +16453,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDependency2KHR &
 
 void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassCreateInfo2KHR *pstruct = (const VkRenderPassCreateInfo2KHR *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassCreateInfo2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16474,7 +16475,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2KH
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16508,14 +16509,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2KH
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAttachments:                   "); // HRW
     OutputString(outputFile, "const VkAttachmentDescription2KHR* = "); // TEQ
-    if (pstruct->pAttachments == nullptr) // WWZ
+    if (pstruct->pAttachments == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pAttachments->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentDescription2KHR>(outputFile, indent+1, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentDescription2KHR>(outputFile, indent+1, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16530,14 +16531,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2KH
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSubpasses:                     "); // HRW
     OutputString(outputFile, "const VkSubpassDescription2KHR* = "); // TEQ
-    if (pstruct->pSubpasses == nullptr) // WWZ
+    if (pstruct->pSubpasses == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pSubpasses->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSubpassDescription2KHR>(outputFile, indent+1, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSubpassDescription2KHR>(outputFile, indent+1, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16552,14 +16553,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2KH
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDependencies:                  "); // HRW
     OutputString(outputFile, "const VkSubpassDependency2KHR* = "); // TEQ
-    if (pstruct->pDependencies == nullptr) // WWZ
+    if (pstruct->pDependencies == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pDependencies->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSubpassDependency2KHR>(outputFile, indent+1, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSubpassDependency2KHR>(outputFile, indent+1, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16574,21 +16575,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2KH
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCorrelatedViewMasks:           "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pCorrelatedViewMasks == nullptr) // WWZ
+    if (pstruct->pCorrelatedViewMasks == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pCorrelatedViewMasks.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pCorrelatedViewMasks.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pCorrelatedViewMasks = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pCorrelatedViewMasks, "pCorrelatedViewMasks", pstruct->correlatedViewMaskCount, vinfo_pCorrelatedViewMasks); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pCorrelatedViewMasks, "pCorrelatedViewMasks", pstruct->correlatedViewMaskCount, vinfo_pCorrelatedViewMasks); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkSubpassBeginInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassBeginInfoKHR *pstruct = (const VkSubpassBeginInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSubpassBeginInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16610,7 +16611,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassBeginInfoKHR &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16638,7 +16639,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassBeginInfoKHR &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkSubpassEndInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassEndInfoKHR *pstruct = (const VkSubpassEndInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSubpassEndInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16660,7 +16661,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassEndInfoKHR &pstr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16678,7 +16679,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassEndInfoKHR &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkSharedPresentSurfaceCapabilitiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSharedPresentSurfaceCapabilitiesKHR *pstruct = (const VkSharedPresentSurfaceCapabilitiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkSharedPresentSurfaceCapabilitiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16700,7 +16701,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSharedPresentSurfaceCap
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16725,7 +16726,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSharedPresentSurfaceCap
 
 void StructureToString(FILE* outputFile, const Decoded_VkImportFenceWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportFenceWin32HandleInfoKHR *pstruct = (const VkImportFenceWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImportFenceWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16747,7 +16748,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportFenceWin32HandleI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16791,7 +16792,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportFenceWin32HandleI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "handle:                         "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->handle == nullptr) // WWX
+    if (pstruct->handle == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -16805,7 +16806,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportFenceWin32HandleI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "const wchar_t* = "); // TEQ
-    if (pstruct->name == nullptr) // WWZ
+    if (pstruct->name == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16817,7 +16818,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportFenceWin32HandleI
 
 void StructureToString(FILE* outputFile, const Decoded_VkExportFenceWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportFenceWin32HandleInfoKHR *pstruct = (const VkExportFenceWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkExportFenceWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16839,7 +16840,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportFenceWin32HandleI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16859,7 +16860,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportFenceWin32HandleI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAttributes:                    "); // HRW
     OutputString(outputFile, "const SECURITY_ATTRIBUTES* = "); // TEQ
-    if (pstruct->pAttributes == nullptr) // WWZ
+    if (pstruct->pAttributes == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16881,7 +16882,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportFenceWin32HandleI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "const wchar_t* = "); // TEQ
-    if (pstruct->name == nullptr) // WWZ
+    if (pstruct->name == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16893,7 +16894,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportFenceWin32HandleI
 
 void StructureToString(FILE* outputFile, const Decoded_VkFenceGetWin32HandleInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFenceGetWin32HandleInfoKHR *pstruct = (const VkFenceGetWin32HandleInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkFenceGetWin32HandleInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16915,7 +16916,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFenceGetWin32HandleInfo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -16950,7 +16951,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFenceGetWin32HandleInfo
 
 void StructureToString(FILE* outputFile, const Decoded_VkImportFenceFdInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportFenceFdInfoKHR *pstruct = (const VkImportFenceFdInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImportFenceFdInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -16972,7 +16973,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportFenceFdInfoKHR &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17021,7 +17022,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportFenceFdInfoKHR &p
 
 void StructureToString(FILE* outputFile, const Decoded_VkFenceGetFdInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFenceGetFdInfoKHR *pstruct = (const VkFenceGetFdInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkFenceGetFdInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17043,7 +17044,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFenceGetFdInfoKHR &pstr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17078,7 +17079,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFenceGetFdInfoKHR &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSurfaceInfo2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSurfaceInfo2KHR *pstruct = (const VkPhysicalDeviceSurfaceInfo2KHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSurfaceInfo2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17100,7 +17101,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSurfaceIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17125,7 +17126,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSurfaceIn
 
 void StructureToString(FILE* outputFile, const Decoded_VkSurfaceCapabilities2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceCapabilities2KHR *pstruct = (const VkSurfaceCapabilities2KHR *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceCapabilities2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17147,7 +17148,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceCapabilities2KHR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17172,7 +17173,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceCapabilities2KHR
 
 void StructureToString(FILE* outputFile, const Decoded_VkSurfaceFormat2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceFormat2KHR *pstruct = (const VkSurfaceFormat2KHR *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceFormat2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17194,7 +17195,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceFormat2KHR &pstr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17219,7 +17220,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceFormat2KHR &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayProperties2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayProperties2KHR *pstruct = (const VkDisplayProperties2KHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayProperties2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17241,7 +17242,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayProperties2KHR &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17266,7 +17267,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayProperties2KHR &
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlaneProperties2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPlaneProperties2KHR *pstruct = (const VkDisplayPlaneProperties2KHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPlaneProperties2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17288,7 +17289,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlaneProperties2
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17313,7 +17314,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlaneProperties2
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayModeProperties2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayModeProperties2KHR *pstruct = (const VkDisplayModeProperties2KHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayModeProperties2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17335,7 +17336,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayModeProperties2K
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17360,7 +17361,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayModeProperties2K
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlaneInfo2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPlaneInfo2KHR *pstruct = (const VkDisplayPlaneInfo2KHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPlaneInfo2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17382,7 +17383,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlaneInfo2KHR &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17414,7 +17415,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlaneInfo2KHR &p
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilities2KHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPlaneCapabilities2KHR *pstruct = (const VkDisplayPlaneCapabilities2KHR *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPlaneCapabilities2KHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17436,7 +17437,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilitie
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17461,7 +17462,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilitie
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageFormatListCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageFormatListCreateInfoKHR *pstruct = (const VkImageFormatListCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkImageFormatListCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17483,7 +17484,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageFormatListCreateIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17510,21 +17511,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageFormatListCreateIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pViewFormats:                   "); // HRW
     OutputString(outputFile, "const VkFormat* = "); // TEQ
-    if (pstruct->pViewFormats == nullptr) // WWZ
+    if (pstruct->pViewFormats == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pViewFormats.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pViewFormats.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pViewFormats = {false, true, false, EnumToStringVkFormat};
-        ArrayToString(outputFile, indent, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUC
+        ArrayToString(outputFile, indent, "const VkFormat*", &pstruct_in.pViewFormats, "pViewFormats", pstruct->viewFormatCount, vinfo_pViewFormats); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR *pstruct = (const VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17546,7 +17547,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSub
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17571,7 +17572,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSub
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevice8BitStorageFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDevice8BitStorageFeaturesKHR *pstruct = (const VkPhysicalDevice8BitStorageFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDevice8BitStorageFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17593,7 +17594,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevice8BitStora
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17632,7 +17633,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevice8BitStora
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderAtomicInt64FeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderAtomicInt64FeaturesKHR *pstruct = (const VkPhysicalDeviceShaderAtomicInt64FeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderAtomicInt64FeaturesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17654,7 +17655,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderAto
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17686,7 +17687,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderAto
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderClockFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderClockFeaturesKHR *pstruct = (const VkPhysicalDeviceShaderClockFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderClockFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17708,7 +17709,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderClo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17740,7 +17741,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderClo
 
 void StructureToString(FILE* outputFile, const Decoded_VkConformanceVersionKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkConformanceVersionKHR *pstruct = (const VkConformanceVersionKHR *)pstruct_in.decoded_value; // BTB
+    const VkConformanceVersionKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17778,7 +17779,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkConformanceVersionKHR &
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDriverPropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDriverPropertiesKHR *pstruct = (const VkPhysicalDeviceDriverPropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDriverPropertiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17800,7 +17801,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDriverPro
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -17851,7 +17852,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDriverPro
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFloatControlsPropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFloatControlsPropertiesKHR *pstruct = (const VkPhysicalDeviceFloatControlsPropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFloatControlsPropertiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -17873,7 +17874,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFloatCont
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18016,7 +18017,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFloatCont
 
 void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescriptionDepthStencilResolveKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassDescriptionDepthStencilResolveKHR *pstruct = (const VkSubpassDescriptionDepthStencilResolveKHR *)pstruct_in.decoded_value; // BTB
+    const VkSubpassDescriptionDepthStencilResolveKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18038,7 +18039,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescriptionDepth
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18078,7 +18079,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescriptionDepth
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDepthStencilResolveAttachment: "); // HRW
     OutputString(outputFile, "const VkAttachmentReference2KHR* = "); // TEQ
-    if (pstruct->pDepthStencilResolveAttachment == nullptr) // WWZ
+    if (pstruct->pDepthStencilResolveAttachment == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18092,7 +18093,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassDescriptionDepth
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthStencilResolvePropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDepthStencilResolvePropertiesKHR *pstruct = (const VkPhysicalDeviceDepthStencilResolvePropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDepthStencilResolvePropertiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18114,7 +18115,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthSten
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18160,7 +18161,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthSten
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelineSemaphoreFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTimelineSemaphoreFeaturesKHR *pstruct = (const VkPhysicalDeviceTimelineSemaphoreFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTimelineSemaphoreFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18182,7 +18183,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelineS
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18207,7 +18208,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelineS
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelineSemaphorePropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTimelineSemaphorePropertiesKHR *pstruct = (const VkPhysicalDeviceTimelineSemaphorePropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTimelineSemaphorePropertiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18229,7 +18230,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelineS
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18254,7 +18255,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelineS
 
 void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreTypeCreateInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSemaphoreTypeCreateInfoKHR *pstruct = (const VkSemaphoreTypeCreateInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSemaphoreTypeCreateInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18276,7 +18277,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreTypeCreateInfo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18311,7 +18312,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreTypeCreateInfo
 
 void StructureToString(FILE* outputFile, const Decoded_VkTimelineSemaphoreSubmitInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkTimelineSemaphoreSubmitInfoKHR *pstruct = (const VkTimelineSemaphoreSubmitInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkTimelineSemaphoreSubmitInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18333,7 +18334,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkTimelineSemaphoreSubmit
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18360,15 +18361,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkTimelineSemaphoreSubmit
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pWaitSemaphoreValues:           "); // HRW
     OutputString(outputFile, "const uint64_t* = "); // TEQ
-    if (pstruct->pWaitSemaphoreValues == nullptr) // WWZ
+    if (pstruct->pWaitSemaphoreValues == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pWaitSemaphoreValues.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pWaitSemaphoreValues.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pWaitSemaphoreValues = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValueCount, vinfo_pWaitSemaphoreValues); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pWaitSemaphoreValues, "pWaitSemaphoreValues", pstruct->waitSemaphoreValueCount, vinfo_pWaitSemaphoreValues); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -18383,21 +18384,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkTimelineSemaphoreSubmit
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSignalSemaphoreValues:         "); // HRW
     OutputString(outputFile, "const uint64_t* = "); // TEQ
-    if (pstruct->pSignalSemaphoreValues == nullptr) // WWZ
+    if (pstruct->pSignalSemaphoreValues == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pSignalSemaphoreValues.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pSignalSemaphoreValues.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSignalSemaphoreValues = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValueCount, vinfo_pSignalSemaphoreValues); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pSignalSemaphoreValues, "pSignalSemaphoreValues", pstruct->signalSemaphoreValueCount, vinfo_pSignalSemaphoreValues); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSemaphoreWaitInfoKHR *pstruct = (const VkSemaphoreWaitInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSemaphoreWaitInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18419,7 +18420,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKHR &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18453,15 +18454,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKHR &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSemaphores:                    "); // HRW
     OutputString(outputFile, "const VkSemaphore* = "); // TEQ
-    if (pstruct->pSemaphores == nullptr) // WWZ
+    if (pstruct->pSemaphores == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pSemaphores.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pSemaphores.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pSemaphores = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pSemaphores, "pSemaphores", pstruct->semaphoreCount, vinfo_pSemaphores); // AUC
+        ArrayToString(outputFile, indent, "const VkSemaphore*", &pstruct_in.pSemaphores, "pSemaphores", pstruct->semaphoreCount, vinfo_pSemaphores); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -18469,21 +18470,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKHR &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pValues:                        "); // HRW
     OutputString(outputFile, "const uint64_t* = "); // TEQ
-    if (pstruct->pValues == nullptr) // WWZ
+    if (pstruct->pValues == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pValues.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pValues.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pValues = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pValues, "pValues", pstruct->semaphoreCount, vinfo_pValues); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pValues, "pValues", pstruct->semaphoreCount, vinfo_pValues); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreSignalInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSemaphoreSignalInfoKHR *pstruct = (const VkSemaphoreSignalInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkSemaphoreSignalInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18505,7 +18506,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreSignalInfoKHR 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18537,7 +18538,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSemaphoreSignalInfoKHR 
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceVulkanMemoryModelFeaturesKHR *pstruct = (const VkPhysicalDeviceVulkanMemoryModelFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceVulkanMemoryModelFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18559,7 +18560,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceVulkanMem
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18598,7 +18599,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceVulkanMem
 
 void StructureToString(FILE* outputFile, const Decoded_VkSurfaceProtectedCapabilitiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceProtectedCapabilitiesKHR *pstruct = (const VkSurfaceProtectedCapabilitiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceProtectedCapabilitiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18620,7 +18621,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceProtectedCapabil
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18645,7 +18646,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceProtectedCapabil
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR *pstruct = (const VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18667,7 +18668,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceUniformBu
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18692,7 +18693,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceUniformBu
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR *pstruct = (const VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18714,7 +18715,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePipelineE
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18739,7 +18740,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePipelineE
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineInfoKHR *pstruct = (const VkPipelineInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkPipelineInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18761,7 +18762,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineInfoKHR &pstruc
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18786,7 +18787,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineInfoKHR &pstruc
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutablePropertiesKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineExecutablePropertiesKHR *pstruct = (const VkPipelineExecutablePropertiesKHR *)pstruct_in.decoded_value; // BTB
+    const VkPipelineExecutablePropertiesKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18808,7 +18809,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutablePrope
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18856,7 +18857,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutablePrope
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableInfoKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineExecutableInfoKHR *pstruct = (const VkPipelineExecutableInfoKHR *)pstruct_in.decoded_value; // BTB
+    const VkPipelineExecutableInfoKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18878,7 +18879,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableInfoK
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -18910,7 +18911,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableInfoK
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableStatisticValueKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineExecutableStatisticValueKHR *pstruct = (const VkPipelineExecutableStatisticValueKHR *)pstruct_in.decoded_value; // BTB
+    const VkPipelineExecutableStatisticValueKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18948,7 +18949,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableStati
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableStatisticKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineExecutableStatisticKHR *pstruct = (const VkPipelineExecutableStatisticKHR *)pstruct_in.decoded_value; // BTB
+    const VkPipelineExecutableStatisticKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -18970,7 +18971,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableStati
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19022,7 +19023,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableStati
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableInternalRepresentationKHR &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineExecutableInternalRepresentationKHR *pstruct = (const VkPipelineExecutableInternalRepresentationKHR *)pstruct_in.decoded_value; // BTB
+    const VkPipelineExecutableInternalRepresentationKHR *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19044,7 +19045,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableInter
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19094,7 +19095,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableInter
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pData:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pData == nullptr) // WWZ
+    if (pstruct->pData == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19108,7 +19109,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineExecutableInter
 
 void StructureToString(FILE* outputFile, const Decoded_VkDebugReportCallbackCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugReportCallbackCreateInfoEXT *pstruct = (const VkDebugReportCallbackCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugReportCallbackCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19130,7 +19131,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugReportCallbackCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19164,7 +19165,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugReportCallbackCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pUserData:                      "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pUserData == nullptr) // WWX
+    if (pstruct->pUserData == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -19176,7 +19177,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugReportCallbackCrea
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationStateRasterizationOrderAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRasterizationStateRasterizationOrderAMD *pstruct = (const VkPipelineRasterizationStateRasterizationOrderAMD *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRasterizationStateRasterizationOrderAMD *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19198,7 +19199,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationSt
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19226,7 +19227,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationSt
 
 void StructureToString(FILE* outputFile, const Decoded_VkDebugMarkerObjectNameInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugMarkerObjectNameInfoEXT *pstruct = (const VkDebugMarkerObjectNameInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugMarkerObjectNameInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19248,7 +19249,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugMarkerObjectNameIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19290,7 +19291,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugMarkerObjectNameIn
 
 void StructureToString(FILE* outputFile, const Decoded_VkDebugMarkerObjectTagInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugMarkerObjectTagInfoEXT *pstruct = (const VkDebugMarkerObjectTagInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugMarkerObjectTagInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19312,7 +19313,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugMarkerObjectTagInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19363,7 +19364,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugMarkerObjectTagInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pTag:                           "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pTag == nullptr) // WWZ
+    if (pstruct->pTag == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19377,7 +19378,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugMarkerObjectTagInf
 
 void StructureToString(FILE* outputFile, const Decoded_VkDebugMarkerMarkerInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugMarkerMarkerInfoEXT *pstruct = (const VkDebugMarkerMarkerInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugMarkerMarkerInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19399,7 +19400,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugMarkerMarkerInfoEX
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19431,12 +19432,12 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugMarkerMarkerInfoEX
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkDebugMarkerMarkerInfoEXT, color)); // IYY
     ScalarValueToStringStruct vinfo_color = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.color, "color", 4, vinfo_color); // JPE
+    ArrayToString(outputFile, indent, "float" , &pstruct_in.color, "color", 4, vinfo_color); // JPE
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDedicatedAllocationImageCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDedicatedAllocationImageCreateInfoNV *pstruct = (const VkDedicatedAllocationImageCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkDedicatedAllocationImageCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19458,7 +19459,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDedicatedAllocationImag
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19483,7 +19484,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDedicatedAllocationImag
 
 void StructureToString(FILE* outputFile, const Decoded_VkDedicatedAllocationBufferCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDedicatedAllocationBufferCreateInfoNV *pstruct = (const VkDedicatedAllocationBufferCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkDedicatedAllocationBufferCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19505,7 +19506,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDedicatedAllocationBuff
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19530,7 +19531,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDedicatedAllocationBuff
 
 void StructureToString(FILE* outputFile, const Decoded_VkDedicatedAllocationMemoryAllocateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDedicatedAllocationMemoryAllocateInfoNV *pstruct = (const VkDedicatedAllocationMemoryAllocateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkDedicatedAllocationMemoryAllocateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19552,7 +19553,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDedicatedAllocationMemo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19584,7 +19585,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDedicatedAllocationMemo
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTransformFeedbackFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTransformFeedbackFeaturesEXT *pstruct = (const VkPhysicalDeviceTransformFeedbackFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTransformFeedbackFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19606,7 +19607,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTransform
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19638,7 +19639,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTransform
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTransformFeedbackPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTransformFeedbackPropertiesEXT *pstruct = (const VkPhysicalDeviceTransformFeedbackPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTransformFeedbackPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19660,7 +19661,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTransform
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19748,7 +19749,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTransform
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationStateStreamCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRasterizationStateStreamCreateInfoEXT *pstruct = (const VkPipelineRasterizationStateStreamCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRasterizationStateStreamCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19770,7 +19771,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationSt
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19802,7 +19803,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationSt
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageViewHandleInfoNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageViewHandleInfoNVX *pstruct = (const VkImageViewHandleInfoNVX *)pstruct_in.decoded_value; // BTB
+    const VkImageViewHandleInfoNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19824,7 +19825,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageViewHandleInfoNVX 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19866,7 +19867,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageViewHandleInfoNVX 
 
 void StructureToString(FILE* outputFile, const Decoded_VkTextureLODGatherFormatPropertiesAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkTextureLODGatherFormatPropertiesAMD *pstruct = (const VkTextureLODGatherFormatPropertiesAMD *)pstruct_in.decoded_value; // BTB
+    const VkTextureLODGatherFormatPropertiesAMD *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19888,7 +19889,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkTextureLODGatherFormatP
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -19913,7 +19914,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkTextureLODGatherFormatP
 
 void StructureToString(FILE* outputFile, const Decoded_VkShaderResourceUsageAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkShaderResourceUsageAMD *pstruct = (const VkShaderResourceUsageAMD *)pstruct_in.decoded_value; // BTB
+    const VkShaderResourceUsageAMD *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -19958,7 +19959,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkShaderResourceUsageAMD 
 
 void StructureToString(FILE* outputFile, const Decoded_VkShaderStatisticsInfoAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkShaderStatisticsInfoAMD *pstruct = (const VkShaderStatisticsInfoAMD *)pstruct_in.decoded_value; // BTB
+    const VkShaderStatisticsInfoAMD *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20017,12 +20018,12 @@ void StructureToString(FILE* outputFile, const Decoded_VkShaderStatisticsInfoAMD
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkShaderStatisticsInfoAMD, computeWorkGroupSize)); // IYY
     ScalarValueToStringStruct vinfo_computeWorkGroupSize = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.computeWorkGroupSize, "computeWorkGroupSize", 3, vinfo_computeWorkGroupSize); // JPE
+    ArrayToString(outputFile, indent, "uint32_t" , &pstruct_in.computeWorkGroupSize, "computeWorkGroupSize", 3, vinfo_computeWorkGroupSize); // JPE
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkStreamDescriptorSurfaceCreateInfoGGP &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkStreamDescriptorSurfaceCreateInfoGGP *pstruct = (const VkStreamDescriptorSurfaceCreateInfoGGP *)pstruct_in.decoded_value; // BTB
+    const VkStreamDescriptorSurfaceCreateInfoGGP *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20044,7 +20045,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkStreamDescriptorSurface
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20076,7 +20077,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkStreamDescriptorSurface
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCornerSampledImageFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceCornerSampledImageFeaturesNV *pstruct = (const VkPhysicalDeviceCornerSampledImageFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceCornerSampledImageFeaturesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20098,7 +20099,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCornerSam
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20123,7 +20124,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCornerSam
 
 void StructureToString(FILE* outputFile, const Decoded_VkExternalImageFormatPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalImageFormatPropertiesNV *pstruct = (const VkExternalImageFormatPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkExternalImageFormatPropertiesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20161,7 +20162,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalImageFormatProp
 
 void StructureToString(FILE* outputFile, const Decoded_VkExternalMemoryImageCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalMemoryImageCreateInfoNV *pstruct = (const VkExternalMemoryImageCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkExternalMemoryImageCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20183,7 +20184,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalMemoryImageCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20208,7 +20209,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalMemoryImageCrea
 
 void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryAllocateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportMemoryAllocateInfoNV *pstruct = (const VkExportMemoryAllocateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkExportMemoryAllocateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20230,7 +20231,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryAllocateInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20255,7 +20256,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryAllocateInf
 
 void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryWin32HandleInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportMemoryWin32HandleInfoNV *pstruct = (const VkImportMemoryWin32HandleInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkImportMemoryWin32HandleInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20277,7 +20278,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryWin32Handle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20304,7 +20305,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryWin32Handle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "handle:                         "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->handle == nullptr) // WWX
+    if (pstruct->handle == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -20316,7 +20317,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryWin32Handle
 
 void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryWin32HandleInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExportMemoryWin32HandleInfoNV *pstruct = (const VkExportMemoryWin32HandleInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkExportMemoryWin32HandleInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20338,7 +20339,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryWin32Handle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20358,7 +20359,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryWin32Handle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAttributes:                    "); // HRW
     OutputString(outputFile, "const SECURITY_ATTRIBUTES* = "); // TEQ
-    if (pstruct->pAttributes == nullptr) // WWZ
+    if (pstruct->pAttributes == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20378,7 +20379,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExportMemoryWin32Handle
 
 void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireReleaseInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWin32KeyedMutexAcquireReleaseInfoNV *pstruct = (const VkWin32KeyedMutexAcquireReleaseInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkWin32KeyedMutexAcquireReleaseInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20400,7 +20401,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20427,15 +20428,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAcquireSyncs:                  "); // HRW
     OutputString(outputFile, "const VkDeviceMemory* = "); // TEQ
-    if (pstruct->pAcquireSyncs == nullptr) // WWZ
+    if (pstruct->pAcquireSyncs == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pAcquireSyncs.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pAcquireSyncs.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pAcquireSyncs = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pAcquireSyncs, "pAcquireSyncs", pstruct->acquireCount, vinfo_pAcquireSyncs); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -20443,15 +20444,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAcquireKeys:                   "); // HRW
     OutputString(outputFile, "const uint64_t* = "); // TEQ
-    if (pstruct->pAcquireKeys == nullptr) // WWZ
+    if (pstruct->pAcquireKeys == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pAcquireKeys.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pAcquireKeys.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pAcquireKeys = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pAcquireKeys, "pAcquireKeys", pstruct->acquireCount, vinfo_pAcquireKeys); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -20459,15 +20460,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAcquireTimeoutMilliseconds:    "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pAcquireTimeoutMilliseconds == nullptr) // WWZ
+    if (pstruct->pAcquireTimeoutMilliseconds == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pAcquireTimeoutMilliseconds.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pAcquireTimeoutMilliseconds.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pAcquireTimeoutMilliseconds = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pAcquireTimeoutMilliseconds, "pAcquireTimeoutMilliseconds", pstruct->acquireCount, vinfo_pAcquireTimeoutMilliseconds); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pAcquireTimeoutMilliseconds, "pAcquireTimeoutMilliseconds", pstruct->acquireCount, vinfo_pAcquireTimeoutMilliseconds); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -20482,15 +20483,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pReleaseSyncs:                  "); // HRW
     OutputString(outputFile, "const VkDeviceMemory* = "); // TEQ
-    if (pstruct->pReleaseSyncs == nullptr) // WWZ
+    if (pstruct->pReleaseSyncs == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pReleaseSyncs.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pReleaseSyncs.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pReleaseSyncs = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AUC
+        ArrayToString(outputFile, indent, "const VkDeviceMemory*", &pstruct_in.pReleaseSyncs, "pReleaseSyncs", pstruct->releaseCount, vinfo_pReleaseSyncs); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -20498,21 +20499,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquireR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pReleaseKeys:                   "); // HRW
     OutputString(outputFile, "const uint64_t* = "); // TEQ
-    if (pstruct->pReleaseKeys == nullptr) // WWZ
+    if (pstruct->pReleaseKeys == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pReleaseKeys.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pReleaseKeys.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pReleaseKeys = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pReleaseKeys, "pReleaseKeys", pstruct->releaseCount, vinfo_pReleaseKeys); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkValidationFlagsEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkValidationFlagsEXT *pstruct = (const VkValidationFlagsEXT *)pstruct_in.decoded_value; // BTB
+    const VkValidationFlagsEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20534,7 +20535,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkValidationFlagsEXT &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20561,21 +20562,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkValidationFlagsEXT &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDisabledValidationChecks:      "); // HRW
     OutputString(outputFile, "const VkValidationCheckEXT* = "); // TEQ
-    if (pstruct->pDisabledValidationChecks == nullptr) // WWZ
+    if (pstruct->pDisabledValidationChecks == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pDisabledValidationChecks.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pDisabledValidationChecks.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pDisabledValidationChecks = {false, true, false, EnumToStringVkValidationCheckEXT};
-        ArrayToString(outputFile, indent, "const VkValidationCheckEXT*", &pstruct_in.pDisabledValidationChecks, "pDisabledValidationChecks", pstruct->disabledValidationCheckCount, vinfo_pDisabledValidationChecks); // AUC
+        ArrayToString(outputFile, indent, "const VkValidationCheckEXT*", &pstruct_in.pDisabledValidationChecks, "pDisabledValidationChecks", pstruct->disabledValidationCheckCount, vinfo_pDisabledValidationChecks); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkViSurfaceCreateInfoNN &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkViSurfaceCreateInfoNN *pstruct = (const VkViSurfaceCreateInfoNN *)pstruct_in.decoded_value; // BTB
+    const VkViSurfaceCreateInfoNN *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20597,7 +20598,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkViSurfaceCreateInfoNN &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20624,7 +20625,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkViSurfaceCreateInfoNN &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "window:                         "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->window == nullptr) // WWX
+    if (pstruct->window == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -20636,7 +20637,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkViSurfaceCreateInfoNN &
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT *pstruct = (const VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20658,7 +20659,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTextureCo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20683,7 +20684,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTextureCo
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageViewASTCDecodeModeEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageViewASTCDecodeModeEXT *pstruct = (const VkImageViewASTCDecodeModeEXT *)pstruct_in.decoded_value; // BTB
+    const VkImageViewASTCDecodeModeEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20705,7 +20706,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageViewASTCDecodeMode
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20733,7 +20734,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageViewASTCDecodeMode
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceASTCDecodeFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceASTCDecodeFeaturesEXT *pstruct = (const VkPhysicalDeviceASTCDecodeFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceASTCDecodeFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20755,7 +20756,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceASTCDecod
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20780,7 +20781,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceASTCDecod
 
 void StructureToString(FILE* outputFile, const Decoded_VkConditionalRenderingBeginInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkConditionalRenderingBeginInfoEXT *pstruct = (const VkConditionalRenderingBeginInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkConditionalRenderingBeginInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20802,7 +20803,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkConditionalRenderingBeg
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20841,7 +20842,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkConditionalRenderingBeg
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceConditionalRenderingFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceConditionalRenderingFeaturesEXT *pstruct = (const VkPhysicalDeviceConditionalRenderingFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceConditionalRenderingFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20863,7 +20864,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCondition
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20895,7 +20896,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCondition
 
 void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferInheritanceConditionalRenderingInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCommandBufferInheritanceConditionalRenderingInfoEXT *pstruct = (const VkCommandBufferInheritanceConditionalRenderingInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkCommandBufferInheritanceConditionalRenderingInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20917,7 +20918,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferInheritanc
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20942,7 +20943,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCommandBufferInheritanc
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceGeneratedCommandsFeaturesNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGeneratedCommandsFeaturesNVX *pstruct = (const VkDeviceGeneratedCommandsFeaturesNVX *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGeneratedCommandsFeaturesNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -20964,7 +20965,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGeneratedCommands
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -20989,7 +20990,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGeneratedCommands
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceGeneratedCommandsLimitsNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceGeneratedCommandsLimitsNVX *pstruct = (const VkDeviceGeneratedCommandsLimitsNVX *)pstruct_in.decoded_value; // BTB
+    const VkDeviceGeneratedCommandsLimitsNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21011,7 +21012,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGeneratedCommands
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -21064,7 +21065,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceGeneratedCommands
 
 void StructureToString(FILE* outputFile, const Decoded_VkIndirectCommandsTokenNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkIndirectCommandsTokenNVX *pstruct = (const VkIndirectCommandsTokenNVX *)pstruct_in.decoded_value; // BTB
+    const VkIndirectCommandsTokenNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21098,7 +21099,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkIndirectCommandsTokenNV
 
 void StructureToString(FILE* outputFile, const Decoded_VkIndirectCommandsLayoutTokenNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkIndirectCommandsLayoutTokenNVX *pstruct = (const VkIndirectCommandsLayoutTokenNVX *)pstruct_in.decoded_value; // BTB
+    const VkIndirectCommandsLayoutTokenNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21139,7 +21140,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkIndirectCommandsLayoutT
 
 void StructureToString(FILE* outputFile, const Decoded_VkIndirectCommandsLayoutCreateInfoNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkIndirectCommandsLayoutCreateInfoNVX *pstruct = (const VkIndirectCommandsLayoutCreateInfoNVX *)pstruct_in.decoded_value; // BTB
+    const VkIndirectCommandsLayoutCreateInfoNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21161,7 +21162,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkIndirectCommandsLayoutC
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -21205,20 +21206,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkIndirectCommandsLayoutC
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pTokens:                        "); // HRW
     OutputString(outputFile, "const VkIndirectCommandsLayoutTokenNVX* = "); // TEQ
-    if (pstruct->pTokens == nullptr) // WWZ
+    if (pstruct->pTokens == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pTokens->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkIndirectCommandsLayoutTokenNVX>(outputFile, indent+1, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkIndirectCommandsLayoutTokenNVX>(outputFile, indent+1, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress(), sizeof(VkIndirectCommandsLayoutTokenNVX));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkCmdProcessCommandsInfoNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCmdProcessCommandsInfoNVX *pstruct = (const VkCmdProcessCommandsInfoNVX *)pstruct_in.decoded_value; // BTB
+    const VkCmdProcessCommandsInfoNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21240,7 +21241,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCmdProcessCommandsInfoN
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -21281,14 +21282,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkCmdProcessCommandsInfoN
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pIndirectCommandsTokens:        "); // HRW
     OutputString(outputFile, "const VkIndirectCommandsTokenNVX* = "); // TEQ
-    if (pstruct->pIndirectCommandsTokens == nullptr) // WWZ
+    if (pstruct->pIndirectCommandsTokens == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pIndirectCommandsTokens->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkIndirectCommandsTokenNVX>(outputFile, indent+1, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkIndirectCommandsTokenNVX>(outputFile, indent+1, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress(), sizeof(VkIndirectCommandsTokenNVX));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -21336,7 +21337,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCmdProcessCommandsInfoN
 
 void StructureToString(FILE* outputFile, const Decoded_VkCmdReserveSpaceForCommandsInfoNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCmdReserveSpaceForCommandsInfoNVX *pstruct = (const VkCmdReserveSpaceForCommandsInfoNVX *)pstruct_in.decoded_value; // BTB
+    const VkCmdReserveSpaceForCommandsInfoNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21358,7 +21359,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCmdReserveSpaceForComma
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -21397,7 +21398,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCmdReserveSpaceForComma
 
 void StructureToString(FILE* outputFile, const Decoded_VkObjectTableCreateInfoNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTableCreateInfoNVX *pstruct = (const VkObjectTableCreateInfoNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTableCreateInfoNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21419,7 +21420,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTableCreateInfoNV
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -21446,15 +21447,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTableCreateInfoNV
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pObjectEntryTypes:              "); // HRW
     OutputString(outputFile, "const VkObjectEntryTypeNVX* = "); // TEQ
-    if (pstruct->pObjectEntryTypes == nullptr) // WWZ
+    if (pstruct->pObjectEntryTypes == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pObjectEntryTypes.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pObjectEntryTypes.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pObjectEntryTypes = {false, true, false, EnumToStringVkObjectEntryTypeNVX};
-        ArrayToString(outputFile, indent, "const VkObjectEntryTypeNVX*", &pstruct_in.pObjectEntryTypes, "pObjectEntryTypes", pstruct->objectCount, vinfo_pObjectEntryTypes); // AUC
+        ArrayToString(outputFile, indent, "const VkObjectEntryTypeNVX*", &pstruct_in.pObjectEntryTypes, "pObjectEntryTypes", pstruct->objectCount, vinfo_pObjectEntryTypes); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -21462,15 +21463,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTableCreateInfoNV
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pObjectEntryCounts:             "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pObjectEntryCounts == nullptr) // WWZ
+    if (pstruct->pObjectEntryCounts == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pObjectEntryCounts.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pObjectEntryCounts.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pObjectEntryCounts = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pObjectEntryCounts, "pObjectEntryCounts", pstruct->objectCount, vinfo_pObjectEntryCounts); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pObjectEntryCounts, "pObjectEntryCounts", pstruct->objectCount, vinfo_pObjectEntryCounts); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -21478,13 +21479,13 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTableCreateInfoNV
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pObjectEntryUsageFlags:         "); // HRW
     OutputString(outputFile, "const VkObjectEntryUsageFlagsNVX* = "); // TEQ
-    if (pstruct->pObjectEntryUsageFlags == nullptr) // WWZ
+    if (pstruct->pObjectEntryUsageFlags == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pObjectEntryUsageFlags.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pObjectEntryUsageFlags.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pObjectEntryUsageFlags = {false, false, true, EnumToStringVkObjectEntryUsageFlagBitsNVX};
         ArrayToString(outputFile, indent, "const VkObjectEntryUsageFlagsNVX*", &pstruct_in.pObjectEntryUsageFlags, "pObjectEntryUsageFlags", pstruct->objectCount, vinfo_pObjectEntryUsageFlags); // AUB
     }
@@ -21527,7 +21528,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTableCreateInfoNV
 
 void StructureToString(FILE* outputFile, const Decoded_VkObjectTableEntryNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTableEntryNVX *pstruct = (const VkObjectTableEntryNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTableEntryNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21554,7 +21555,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTableEntryNVX &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkObjectTablePipelineEntryNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTablePipelineEntryNVX *pstruct = (const VkObjectTablePipelineEntryNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTablePipelineEntryNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21588,7 +21589,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTablePipelineEntr
 
 void StructureToString(FILE* outputFile, const Decoded_VkObjectTableDescriptorSetEntryNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTableDescriptorSetEntryNVX *pstruct = (const VkObjectTableDescriptorSetEntryNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTableDescriptorSetEntryNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21629,7 +21630,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTableDescriptorSe
 
 void StructureToString(FILE* outputFile, const Decoded_VkObjectTableVertexBufferEntryNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTableVertexBufferEntryNVX *pstruct = (const VkObjectTableVertexBufferEntryNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTableVertexBufferEntryNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21663,7 +21664,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTableVertexBuffer
 
 void StructureToString(FILE* outputFile, const Decoded_VkObjectTableIndexBufferEntryNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTableIndexBufferEntryNVX *pstruct = (const VkObjectTableIndexBufferEntryNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTableIndexBufferEntryNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21707,7 +21708,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTableIndexBufferE
 
 void StructureToString(FILE* outputFile, const Decoded_VkObjectTablePushConstantEntryNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkObjectTablePushConstantEntryNVX *pstruct = (const VkObjectTablePushConstantEntryNVX *)pstruct_in.decoded_value; // BTB
+    const VkObjectTablePushConstantEntryNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21748,7 +21749,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkObjectTablePushConstant
 
 void StructureToString(FILE* outputFile, const Decoded_VkViewportWScalingNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkViewportWScalingNV *pstruct = (const VkViewportWScalingNV *)pstruct_in.decoded_value; // BTB
+    const VkViewportWScalingNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21772,7 +21773,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkViewportWScalingNV &pst
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportWScalingStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineViewportWScalingStateCreateInfoNV *pstruct = (const VkPipelineViewportWScalingStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineViewportWScalingStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21794,7 +21795,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportWScalin
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -21828,20 +21829,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportWScalin
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pViewportWScalings:             "); // HRW
     OutputString(outputFile, "const VkViewportWScalingNV* = "); // TEQ
-    if (pstruct->pViewportWScalings == nullptr) // WWZ
+    if (pstruct->pViewportWScalings == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pViewportWScalings->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkViewportWScalingNV>(outputFile, indent+1, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkViewportWScalingNV>(outputFile, indent+1, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress(), sizeof(VkViewportWScalingNV));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkSurfaceCapabilities2EXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceCapabilities2EXT *pstruct = (const VkSurfaceCapabilities2EXT *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceCapabilities2EXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21863,7 +21864,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceCapabilities2EXT
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -21961,7 +21962,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceCapabilities2EXT
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayPowerInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayPowerInfoEXT *pstruct = (const VkDisplayPowerInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDisplayPowerInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -21983,7 +21984,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPowerInfoEXT &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22011,7 +22012,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayPowerInfoEXT &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceEventInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceEventInfoEXT *pstruct = (const VkDeviceEventInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDeviceEventInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22033,7 +22034,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceEventInfoEXT &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22061,7 +22062,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceEventInfoEXT &pst
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayEventInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayEventInfoEXT *pstruct = (const VkDisplayEventInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDisplayEventInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22083,7 +22084,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayEventInfoEXT &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22111,7 +22112,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayEventInfoEXT &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkSwapchainCounterCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSwapchainCounterCreateInfoEXT *pstruct = (const VkSwapchainCounterCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkSwapchainCounterCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22133,7 +22134,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSwapchainCounterCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22158,7 +22159,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSwapchainCounterCreateI
 
 void StructureToString(FILE* outputFile, const Decoded_VkRefreshCycleDurationGOOGLE &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRefreshCycleDurationGOOGLE *pstruct = (const VkRefreshCycleDurationGOOGLE *)pstruct_in.decoded_value; // BTB
+    const VkRefreshCycleDurationGOOGLE *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22175,7 +22176,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRefreshCycleDurationGOO
 
 void StructureToString(FILE* outputFile, const Decoded_VkPastPresentationTimingGOOGLE &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPastPresentationTimingGOOGLE *pstruct = (const VkPastPresentationTimingGOOGLE *)pstruct_in.decoded_value; // BTB
+    const VkPastPresentationTimingGOOGLE *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22220,7 +22221,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPastPresentationTimingG
 
 void StructureToString(FILE* outputFile, const Decoded_VkPresentTimeGOOGLE &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPresentTimeGOOGLE *pstruct = (const VkPresentTimeGOOGLE *)pstruct_in.decoded_value; // BTB
+    const VkPresentTimeGOOGLE *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22244,7 +22245,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentTimeGOOGLE &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOGLE &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPresentTimesInfoGOOGLE *pstruct = (const VkPresentTimesInfoGOOGLE *)pstruct_in.decoded_value; // BTB
+    const VkPresentTimesInfoGOOGLE *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22266,7 +22267,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOGLE 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22293,20 +22294,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOGLE 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pTimes:                         "); // HRW
     OutputString(outputFile, "const VkPresentTimeGOOGLE* = "); // TEQ
-    if (pstruct->pTimes == nullptr) // WWZ
+    if (pstruct->pTimes == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pTimes->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPresentTimeGOOGLE>(outputFile, indent+1, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPresentTimeGOOGLE>(outputFile, indent+1, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress(), sizeof(VkPresentTimeGOOGLE));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX *pstruct = (const VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22328,7 +22329,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiview
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22353,7 +22354,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiview
 
 void StructureToString(FILE* outputFile, const Decoded_VkViewportSwizzleNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkViewportSwizzleNV *pstruct = (const VkViewportSwizzleNV *)pstruct_in.decoded_value; // BTB
+    const VkViewportSwizzleNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22403,7 +22404,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkViewportSwizzleNV &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportSwizzleStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineViewportSwizzleStateCreateInfoNV *pstruct = (const VkPipelineViewportSwizzleStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineViewportSwizzleStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22425,7 +22426,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportSwizzle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22459,20 +22460,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportSwizzle
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pViewportSwizzles:              "); // HRW
     OutputString(outputFile, "const VkViewportSwizzleNV* = "); // TEQ
-    if (pstruct->pViewportSwizzles == nullptr) // WWZ
+    if (pstruct->pViewportSwizzles == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pViewportSwizzles->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkViewportSwizzleNV>(outputFile, indent+1, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkViewportSwizzleNV>(outputFile, indent+1, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress(), sizeof(VkViewportSwizzleNV));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDiscardRectanglePropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDiscardRectanglePropertiesEXT *pstruct = (const VkPhysicalDeviceDiscardRectanglePropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDiscardRectanglePropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22494,7 +22495,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDiscardRe
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22519,7 +22520,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDiscardRe
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineDiscardRectangleStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineDiscardRectangleStateCreateInfoEXT *pstruct = (const VkPipelineDiscardRectangleStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineDiscardRectangleStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22541,7 +22542,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineDiscardRectangl
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22585,20 +22586,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineDiscardRectangl
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDiscardRectangles:             "); // HRW
     OutputString(outputFile, "const VkRect2D* = "); // TEQ
-    if (pstruct->pDiscardRectangles == nullptr) // WWZ
+    if (pstruct->pDiscardRectangles == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pDiscardRectangles->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceConservativeRasterizationPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceConservativeRasterizationPropertiesEXT *pstruct = (const VkPhysicalDeviceConservativeRasterizationPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceConservativeRasterizationPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22620,7 +22621,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceConservat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22701,7 +22702,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceConservat
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationConservativeStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRasterizationConservativeStateCreateInfoEXT *pstruct = (const VkPipelineRasterizationConservativeStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRasterizationConservativeStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22723,7 +22724,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationCo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22765,7 +22766,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationCo
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthClipEnableFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDepthClipEnableFeaturesEXT *pstruct = (const VkPhysicalDeviceDepthClipEnableFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDepthClipEnableFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22787,7 +22788,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthClip
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22812,7 +22813,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthClip
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationDepthClipStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRasterizationDepthClipStateCreateInfoEXT *pstruct = (const VkPipelineRasterizationDepthClipStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRasterizationDepthClipStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22834,7 +22835,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationDe
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22866,7 +22867,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationDe
 
 void StructureToString(FILE* outputFile, const Decoded_VkXYColorEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkXYColorEXT *pstruct = (const VkXYColorEXT *)pstruct_in.decoded_value; // BTB
+    const VkXYColorEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22890,7 +22891,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkXYColorEXT &pstruct_in,
 
 void StructureToString(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkHdrMetadataEXT *pstruct = (const VkHdrMetadataEXT *)pstruct_in.decoded_value; // BTB
+    const VkHdrMetadataEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -22912,7 +22913,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -22986,7 +22987,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pstruct
 
 void StructureToString(FILE* outputFile, const Decoded_VkIOSSurfaceCreateInfoMVK &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkIOSSurfaceCreateInfoMVK *pstruct = (const VkIOSSurfaceCreateInfoMVK *)pstruct_in.decoded_value; // BTB
+    const VkIOSSurfaceCreateInfoMVK *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23008,7 +23009,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkIOSSurfaceCreateInfoMVK
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23035,7 +23036,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkIOSSurfaceCreateInfoMVK
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pView:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pView == nullptr) // WWZ
+    if (pstruct->pView == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23047,7 +23048,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkIOSSurfaceCreateInfoMVK
 
 void StructureToString(FILE* outputFile, const Decoded_VkMacOSSurfaceCreateInfoMVK &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMacOSSurfaceCreateInfoMVK *pstruct = (const VkMacOSSurfaceCreateInfoMVK *)pstruct_in.decoded_value; // BTB
+    const VkMacOSSurfaceCreateInfoMVK *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23069,7 +23070,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMacOSSurfaceCreateInfoM
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23096,7 +23097,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMacOSSurfaceCreateInfoM
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pView:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pView == nullptr) // WWZ
+    if (pstruct->pView == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23108,7 +23109,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMacOSSurfaceCreateInfoM
 
 void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsObjectNameInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugUtilsObjectNameInfoEXT *pstruct = (const VkDebugUtilsObjectNameInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugUtilsObjectNameInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23130,7 +23131,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsObjectNameInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23172,7 +23173,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsObjectNameInf
 
 void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsObjectTagInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugUtilsObjectTagInfoEXT *pstruct = (const VkDebugUtilsObjectTagInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugUtilsObjectTagInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23194,7 +23195,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsObjectTagInfo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23245,7 +23246,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsObjectTagInfo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pTag:                           "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pTag == nullptr) // WWZ
+    if (pstruct->pTag == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23259,7 +23260,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsObjectTagInfo
 
 void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsLabelEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugUtilsLabelEXT *pstruct = (const VkDebugUtilsLabelEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugUtilsLabelEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23281,7 +23282,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsLabelEXT &pst
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23313,12 +23314,12 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsLabelEXT &pst
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkDebugUtilsLabelEXT, color)); // IYY
     ScalarValueToStringStruct vinfo_color = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.color, "color", 4, vinfo_color); // JPE
+    ArrayToString(outputFile, indent, "float" , &pstruct_in.color, "color", 4, vinfo_color); // JPE
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCallbackDataEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugUtilsMessengerCallbackDataEXT *pstruct = (const VkDebugUtilsMessengerCallbackDataEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugUtilsMessengerCallbackDataEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23340,7 +23341,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCall
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23395,14 +23396,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCall
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueLabels:                   "); // HRW
     OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); // TEQ
-    if (pstruct->pQueueLabels == nullptr) // WWZ
+    if (pstruct->pQueueLabels == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pQueueLabels->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -23417,14 +23418,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCall
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCmdBufLabels:                  "); // HRW
     OutputString(outputFile, "const VkDebugUtilsLabelEXT* = "); // TEQ
-    if (pstruct->pCmdBufLabels == nullptr) // WWZ
+    if (pstruct->pCmdBufLabels == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pCmdBufLabels->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -23439,20 +23440,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCall
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pObjects:                       "); // HRW
     OutputString(outputFile, "const VkDebugUtilsObjectNameInfoEXT* = "); // TEQ
-    if (pstruct->pObjects == nullptr) // WWZ
+    if (pstruct->pObjects == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pObjects->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDebugUtilsObjectNameInfoEXT>(outputFile, indent+1, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDebugUtilsObjectNameInfoEXT>(outputFile, indent+1, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress(), sizeof(VkDebugUtilsObjectNameInfoEXT));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDebugUtilsMessengerCreateInfoEXT *pstruct = (const VkDebugUtilsMessengerCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDebugUtilsMessengerCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23474,7 +23475,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23522,7 +23523,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pUserData:                      "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pUserData == nullptr) // WWX
+    if (pstruct->pUserData == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -23534,7 +23535,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCrea
 
 void StructureToString(FILE* outputFile, const Decoded_VkAndroidHardwareBufferUsageANDROID &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAndroidHardwareBufferUsageANDROID *pstruct = (const VkAndroidHardwareBufferUsageANDROID *)pstruct_in.decoded_value; // BTB
+    const VkAndroidHardwareBufferUsageANDROID *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23556,7 +23557,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAndroidHardwareBufferUs
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23581,7 +23582,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAndroidHardwareBufferUs
 
 void StructureToString(FILE* outputFile, const Decoded_VkAndroidHardwareBufferPropertiesANDROID &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAndroidHardwareBufferPropertiesANDROID *pstruct = (const VkAndroidHardwareBufferPropertiesANDROID *)pstruct_in.decoded_value; // BTB
+    const VkAndroidHardwareBufferPropertiesANDROID *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23603,7 +23604,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAndroidHardwareBufferPr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23635,7 +23636,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAndroidHardwareBufferPr
 
 void StructureToString(FILE* outputFile, const Decoded_VkAndroidHardwareBufferFormatPropertiesANDROID &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAndroidHardwareBufferFormatPropertiesANDROID *pstruct = (const VkAndroidHardwareBufferFormatPropertiesANDROID *)pstruct_in.decoded_value; // BTB
+    const VkAndroidHardwareBufferFormatPropertiesANDROID *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23657,7 +23658,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAndroidHardwareBufferFo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23746,7 +23747,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAndroidHardwareBufferFo
 
 void StructureToString(FILE* outputFile, const Decoded_VkImportAndroidHardwareBufferInfoANDROID &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportAndroidHardwareBufferInfoANDROID *pstruct = (const VkImportAndroidHardwareBufferInfoANDROID *)pstruct_in.decoded_value; // BTB
+    const VkImportAndroidHardwareBufferInfoANDROID *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23768,7 +23769,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportAndroidHardwareBu
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23788,7 +23789,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportAndroidHardwareBu
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "buffer:                         "); // HRW
     OutputString(outputFile, "struct void* = "); // TEQ
-    if (pstruct->buffer == nullptr) // WWX
+    if (pstruct->buffer == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -23800,7 +23801,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportAndroidHardwareBu
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryGetAndroidHardwareBufferInfoANDROID &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryGetAndroidHardwareBufferInfoANDROID *pstruct = (const VkMemoryGetAndroidHardwareBufferInfoANDROID *)pstruct_in.decoded_value; // BTB
+    const VkMemoryGetAndroidHardwareBufferInfoANDROID *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23822,7 +23823,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryGetAndroidHardwar
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23847,7 +23848,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryGetAndroidHardwar
 
 void StructureToString(FILE* outputFile, const Decoded_VkExternalFormatANDROID &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkExternalFormatANDROID *pstruct = (const VkExternalFormatANDROID *)pstruct_in.decoded_value; // BTB
+    const VkExternalFormatANDROID *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23869,7 +23870,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalFormatANDROID &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23894,7 +23895,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkExternalFormatANDROID &
 
 void StructureToString(FILE* outputFile, const Decoded_VkSamplerReductionModeCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSamplerReductionModeCreateInfoEXT *pstruct = (const VkSamplerReductionModeCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkSamplerReductionModeCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23916,7 +23917,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSamplerReductionModeCre
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23944,7 +23945,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSamplerReductionModeCre
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT *pstruct = (const VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -23966,7 +23967,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSamplerFi
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -23998,7 +23999,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSamplerFi
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineUniformBlockFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceInlineUniformBlockFeaturesEXT *pstruct = (const VkPhysicalDeviceInlineUniformBlockFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceInlineUniformBlockFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24020,7 +24021,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineUni
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24052,7 +24053,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineUni
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineUniformBlockPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceInlineUniformBlockPropertiesEXT *pstruct = (const VkPhysicalDeviceInlineUniformBlockPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceInlineUniformBlockPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24074,7 +24075,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineUni
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24127,7 +24128,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineUni
 
 void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSetInlineUniformBlockEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWriteDescriptorSetInlineUniformBlockEXT *pstruct = (const VkWriteDescriptorSetInlineUniformBlockEXT *)pstruct_in.decoded_value; // BTB
+    const VkWriteDescriptorSetInlineUniformBlockEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24149,7 +24150,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSetInlin
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24176,7 +24177,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSetInlin
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pData:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pData == nullptr) // WWZ
+    if (pstruct->pData == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24190,7 +24191,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSetInlin
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorPoolInlineUniformBlockCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorPoolInlineUniformBlockCreateInfoEXT *pstruct = (const VkDescriptorPoolInlineUniformBlockCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorPoolInlineUniformBlockCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24212,7 +24213,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorPoolInlineUni
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24237,7 +24238,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorPoolInlineUni
 
 void StructureToString(FILE* outputFile, const Decoded_VkSampleLocationEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSampleLocationEXT *pstruct = (const VkSampleLocationEXT *)pstruct_in.decoded_value; // BTB
+    const VkSampleLocationEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24261,7 +24262,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSampleLocationEXT &pstr
 
 void StructureToString(FILE* outputFile, const Decoded_VkSampleLocationsInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSampleLocationsInfoEXT *pstruct = (const VkSampleLocationsInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkSampleLocationsInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24283,7 +24284,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSampleLocationsInfoEXT 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24327,20 +24328,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkSampleLocationsInfoEXT 
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSampleLocations:               "); // HRW
     OutputString(outputFile, "const VkSampleLocationEXT* = "); // TEQ
-    if (pstruct->pSampleLocations == nullptr) // WWZ
+    if (pstruct->pSampleLocations == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pSampleLocations->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSampleLocationEXT>(outputFile, indent+1, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSampleLocationEXT>(outputFile, indent+1, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkSampleLocationEXT));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkAttachmentSampleLocationsEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAttachmentSampleLocationsEXT *pstruct = (const VkAttachmentSampleLocationsEXT *)pstruct_in.decoded_value; // BTB
+    const VkAttachmentSampleLocationsEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24364,7 +24365,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAttachmentSampleLocatio
 
 void StructureToString(FILE* outputFile, const Decoded_VkSubpassSampleLocationsEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSubpassSampleLocationsEXT *pstruct = (const VkSubpassSampleLocationsEXT *)pstruct_in.decoded_value; // BTB
+    const VkSubpassSampleLocationsEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24388,7 +24389,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSubpassSampleLocationsE
 
 void StructureToString(FILE* outputFile, const Decoded_VkRenderPassSampleLocationsBeginInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassSampleLocationsBeginInfoEXT *pstruct = (const VkRenderPassSampleLocationsBeginInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassSampleLocationsBeginInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24410,7 +24411,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassSampleLocatio
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24437,14 +24438,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassSampleLocatio
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAttachmentInitialSampleLocations: "); // HRW
     OutputString(outputFile, "const VkAttachmentSampleLocationsEXT* = "); // TEQ
-    if (pstruct->pAttachmentInitialSampleLocations == nullptr) // WWZ
+    if (pstruct->pAttachmentInitialSampleLocations == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pAttachmentInitialSampleLocations->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkAttachmentSampleLocationsEXT>(outputFile, indent+1, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkAttachmentSampleLocationsEXT>(outputFile, indent+1, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress(), sizeof(VkAttachmentSampleLocationsEXT));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -24459,20 +24460,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassSampleLocatio
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPostSubpassSampleLocations:    "); // HRW
     OutputString(outputFile, "const VkSubpassSampleLocationsEXT* = "); // TEQ
-    if (pstruct->pPostSubpassSampleLocations == nullptr) // WWZ
+    if (pstruct->pPostSubpassSampleLocations == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pPostSubpassSampleLocations->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSubpassSampleLocationsEXT>(outputFile, indent+1, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSubpassSampleLocationsEXT>(outputFile, indent+1, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress(), sizeof(VkSubpassSampleLocationsEXT));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineSampleLocationsStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineSampleLocationsStateCreateInfoEXT *pstruct = (const VkPipelineSampleLocationsStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineSampleLocationsStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24494,7 +24495,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineSampleLocations
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24526,7 +24527,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineSampleLocations
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSampleLocationsPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSampleLocationsPropertiesEXT *pstruct = (const VkPhysicalDeviceSampleLocationsPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSampleLocationsPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24548,7 +24549,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSampleLoc
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24587,7 +24588,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSampleLoc
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceSampleLocationsPropertiesEXT, sampleLocationCoordinateRange)); // IYY
     ScalarValueToStringStruct vinfo_sampleLocationCoordinateRange = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<float>>(outputFile, indent, "float", &pstruct_in.sampleLocationCoordinateRange, "sampleLocationCoordinateRange", 2, vinfo_sampleLocationCoordinateRange); // JPE
+    ArrayToString(outputFile, indent, "float" , &pstruct_in.sampleLocationCoordinateRange, "sampleLocationCoordinateRange", 2, vinfo_sampleLocationCoordinateRange); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t sampleLocationSubPixelBits
@@ -24606,7 +24607,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSampleLoc
 
 void StructureToString(FILE* outputFile, const Decoded_VkMultisamplePropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMultisamplePropertiesEXT *pstruct = (const VkMultisamplePropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkMultisamplePropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24628,7 +24629,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMultisamplePropertiesEX
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24653,7 +24654,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMultisamplePropertiesEX
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT *pstruct = (const VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24675,7 +24676,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOper
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24700,7 +24701,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOper
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT *pstruct = (const VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24722,7 +24723,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOper
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24782,7 +24783,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOper
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineColorBlendAdvancedStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineColorBlendAdvancedStateCreateInfoEXT *pstruct = (const VkPipelineColorBlendAdvancedStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineColorBlendAdvancedStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24804,7 +24805,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineColorBlendAdvan
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24846,7 +24847,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineColorBlendAdvan
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineCoverageToColorStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCoverageToColorStateCreateInfoNV *pstruct = (const VkPipelineCoverageToColorStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCoverageToColorStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24868,7 +24869,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCoverageToColor
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24907,7 +24908,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCoverageToColor
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineCoverageModulationStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCoverageModulationStateCreateInfoNV *pstruct = (const VkPipelineCoverageModulationStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCoverageModulationStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -24929,7 +24930,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCoverageModulat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -24980,21 +24981,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCoverageModulat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCoverageModulationTable:       "); // HRW
     OutputString(outputFile, "const float* = "); // TEQ
-    if (pstruct->pCoverageModulationTable == nullptr) // WWZ
+    if (pstruct->pCoverageModulationTable == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pCoverageModulationTable.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pCoverageModulationTable.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pCoverageModulationTable = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const float*", &pstruct_in.pCoverageModulationTable, "pCoverageModulationTable", pstruct->coverageModulationTableCount, vinfo_pCoverageModulationTable); // AUC
+        ArrayToString(outputFile, indent, "const float*", &pstruct_in.pCoverageModulationTable, "pCoverageModulationTable", pstruct->coverageModulationTableCount, vinfo_pCoverageModulationTable); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSMBuiltinsPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderSMBuiltinsPropertiesNV *pstruct = (const VkPhysicalDeviceShaderSMBuiltinsPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderSMBuiltinsPropertiesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25016,7 +25017,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSMB
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -25048,7 +25049,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSMB
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSMBuiltinsFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderSMBuiltinsFeaturesNV *pstruct = (const VkPhysicalDeviceShaderSMBuiltinsFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderSMBuiltinsFeaturesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25070,7 +25071,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSMB
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -25095,7 +25096,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderSMB
 
 void StructureToString(FILE* outputFile, const Decoded_VkDrmFormatModifierPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDrmFormatModifierPropertiesEXT *pstruct = (const VkDrmFormatModifierPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkDrmFormatModifierPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25126,7 +25127,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDrmFormatModifierProper
 
 void StructureToString(FILE* outputFile, const Decoded_VkDrmFormatModifierPropertiesListEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDrmFormatModifierPropertiesListEXT *pstruct = (const VkDrmFormatModifierPropertiesListEXT *)pstruct_in.decoded_value; // BTB
+    const VkDrmFormatModifierPropertiesListEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25148,7 +25149,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDrmFormatModifierProper
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -25175,20 +25176,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkDrmFormatModifierProper
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDrmFormatModifierProperties:   "); // HRW
     OutputString(outputFile, "VkDrmFormatModifierPropertiesEXT* = "); // TEQ
-    if (pstruct->pDrmFormatModifierProperties == nullptr) // WWZ
+    if (pstruct->pDrmFormatModifierProperties == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pDrmFormatModifierProperties->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkDrmFormatModifierPropertiesEXT>(outputFile, indent+1, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkDrmFormatModifierPropertiesEXT>(outputFile, indent+1, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress(), sizeof(VkDrmFormatModifierPropertiesEXT));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImageDrmFormatModifierInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceImageDrmFormatModifierInfoEXT *pstruct = (const VkPhysicalDeviceImageDrmFormatModifierInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceImageDrmFormatModifierInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25210,7 +25211,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImageDrmF
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -25254,21 +25255,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImageDrmF
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pQueueFamilyIndices:            "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pQueueFamilyIndices == nullptr) // WWZ
+    if (pstruct->pQueueFamilyIndices == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pQueueFamilyIndices.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pQueueFamilyIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pQueueFamilyIndices, "pQueueFamilyIndices", pstruct->queueFamilyIndexCount, vinfo_pQueueFamilyIndices); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageDrmFormatModifierListCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageDrmFormatModifierListCreateInfoEXT *pstruct = (const VkImageDrmFormatModifierListCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkImageDrmFormatModifierListCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25290,7 +25291,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageDrmFormatModifierL
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -25317,21 +25318,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageDrmFormatModifierL
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDrmFormatModifiers:            "); // HRW
     OutputString(outputFile, "const uint64_t* = "); // TEQ
-    if (pstruct->pDrmFormatModifiers == nullptr) // WWZ
+    if (pstruct->pDrmFormatModifiers == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pDrmFormatModifiers.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pDrmFormatModifiers.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pDrmFormatModifiers = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pDrmFormatModifiers, "pDrmFormatModifiers", pstruct->drmFormatModifierCount, vinfo_pDrmFormatModifiers); // AUC
+        ArrayToString(outputFile, indent, "const uint64_t*", &pstruct_in.pDrmFormatModifiers, "pDrmFormatModifiers", pstruct->drmFormatModifierCount, vinfo_pDrmFormatModifiers); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageDrmFormatModifierExplicitCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageDrmFormatModifierExplicitCreateInfoEXT *pstruct = (const VkImageDrmFormatModifierExplicitCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkImageDrmFormatModifierExplicitCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25353,7 +25354,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageDrmFormatModifierE
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -25387,20 +25388,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageDrmFormatModifierE
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPlaneLayouts:                  "); // HRW
     OutputString(outputFile, "const VkSubresourceLayout* = "); // TEQ
-    if (pstruct->pPlaneLayouts == nullptr) // WWZ
+    if (pstruct->pPlaneLayouts == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pPlaneLayouts->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkSubresourceLayout>(outputFile, indent+1, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkSubresourceLayout>(outputFile, indent+1, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress(), sizeof(VkSubresourceLayout));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageDrmFormatModifierPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageDrmFormatModifierPropertiesEXT *pstruct = (const VkImageDrmFormatModifierPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkImageDrmFormatModifierPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25422,7 +25423,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageDrmFormatModifierP
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -25447,7 +25448,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageDrmFormatModifierP
 
 void StructureToString(FILE* outputFile, const Decoded_VkValidationCacheCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkValidationCacheCreateInfoEXT *pstruct = (const VkValidationCacheCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkValidationCacheCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25469,7 +25470,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkValidationCacheCreateIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -25503,7 +25504,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkValidationCacheCreateIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pInitialData:                   "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pInitialData == nullptr) // WWZ
+    if (pstruct->pInitialData == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -25517,7 +25518,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkValidationCacheCreateIn
 
 void StructureToString(FILE* outputFile, const Decoded_VkShaderModuleValidationCacheCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkShaderModuleValidationCacheCreateInfoEXT *pstruct = (const VkShaderModuleValidationCacheCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkShaderModuleValidationCacheCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25539,7 +25540,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkShaderModuleValidationC
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -25564,7 +25565,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkShaderModuleValidationC
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBindingFlagsCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetLayoutBindingFlagsCreateInfoEXT *pstruct = (const VkDescriptorSetLayoutBindingFlagsCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetLayoutBindingFlagsCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25586,7 +25587,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBind
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -25613,13 +25614,13 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBind
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pBindingFlags:                  "); // HRW
     OutputString(outputFile, "const VkDescriptorBindingFlagsEXT* = "); // TEQ
-    if (pstruct->pBindingFlags == nullptr) // WWZ
+    if (pstruct->pBindingFlags == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pBindingFlags.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pBindingFlags.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pBindingFlags = {false, false, true, EnumToStringVkDescriptorBindingFlagBitsEXT};
         ArrayToString(outputFile, indent, "const VkDescriptorBindingFlagsEXT*", &pstruct_in.pBindingFlags, "pBindingFlags", pstruct->bindingCount, vinfo_pBindingFlags); // AUB
     }
@@ -25627,7 +25628,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBind
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDescriptorIndexingFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDescriptorIndexingFeaturesEXT *pstruct = (const VkPhysicalDeviceDescriptorIndexingFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDescriptorIndexingFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25649,7 +25650,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDescripto
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -25807,7 +25808,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDescripto
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDescriptorIndexingPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDescriptorIndexingPropertiesEXT *pstruct = (const VkPhysicalDeviceDescriptorIndexingPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDescriptorIndexingPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -25829,7 +25830,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDescripto
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -26008,7 +26009,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDescripto
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetVariableDescriptorCountAllocateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetVariableDescriptorCountAllocateInfoEXT *pstruct = (const VkDescriptorSetVariableDescriptorCountAllocateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetVariableDescriptorCountAllocateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26030,7 +26031,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetVariableDe
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -26057,21 +26058,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetVariableDe
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDescriptorCounts:              "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pDescriptorCounts == nullptr) // WWZ
+    if (pstruct->pDescriptorCounts == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pDescriptorCounts.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pDescriptorCounts.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pDescriptorCounts = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDescriptorCounts, "pDescriptorCounts", pstruct->descriptorSetCount, vinfo_pDescriptorCounts); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDescriptorCounts, "pDescriptorCounts", pstruct->descriptorSetCount, vinfo_pDescriptorCounts); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetVariableDescriptorCountLayoutSupportEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDescriptorSetVariableDescriptorCountLayoutSupportEXT *pstruct = (const VkDescriptorSetVariableDescriptorCountLayoutSupportEXT *)pstruct_in.decoded_value; // BTB
+    const VkDescriptorSetVariableDescriptorCountLayoutSupportEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26093,7 +26094,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetVariableDe
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -26118,7 +26119,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDescriptorSetVariableDe
 
 void StructureToString(FILE* outputFile, const Decoded_VkShadingRatePaletteNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkShadingRatePaletteNV *pstruct = (const VkShadingRatePaletteNV *)pstruct_in.decoded_value; // BTB
+    const VkShadingRatePaletteNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26137,21 +26138,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkShadingRatePaletteNV &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pShadingRatePaletteEntries:     "); // HRW
     OutputString(outputFile, "const VkShadingRatePaletteEntryNV* = "); // TEQ
-    if (pstruct->pShadingRatePaletteEntries == nullptr) // WWZ
+    if (pstruct->pShadingRatePaletteEntries == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pShadingRatePaletteEntries.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pShadingRatePaletteEntries.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pShadingRatePaletteEntries = {false, true, false, EnumToStringVkShadingRatePaletteEntryNV};
-        ArrayToString(outputFile, indent, "const VkShadingRatePaletteEntryNV*", &pstruct_in.pShadingRatePaletteEntries, "pShadingRatePaletteEntries", pstruct->shadingRatePaletteEntryCount, vinfo_pShadingRatePaletteEntries); // AUC
+        ArrayToString(outputFile, indent, "const VkShadingRatePaletteEntryNV*", &pstruct_in.pShadingRatePaletteEntries, "pShadingRatePaletteEntries", pstruct->shadingRatePaletteEntryCount, vinfo_pShadingRatePaletteEntries); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportShadingRateImageStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineViewportShadingRateImageStateCreateInfoNV *pstruct = (const VkPipelineViewportShadingRateImageStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineViewportShadingRateImageStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26173,7 +26174,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportShading
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -26207,20 +26208,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportShading
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pShadingRatePalettes:           "); // HRW
     OutputString(outputFile, "const VkShadingRatePaletteNV* = "); // TEQ
-    if (pstruct->pShadingRatePalettes == nullptr) // WWZ
+    if (pstruct->pShadingRatePalettes == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pShadingRatePalettes->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkShadingRatePaletteNV>(outputFile, indent+1, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkShadingRatePaletteNV>(outputFile, indent+1, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress(), sizeof(VkShadingRatePaletteNV));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShadingRateImageFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShadingRateImageFeaturesNV *pstruct = (const VkPhysicalDeviceShadingRateImageFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShadingRateImageFeaturesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26242,7 +26243,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShadingRa
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -26274,7 +26275,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShadingRa
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShadingRateImagePropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShadingRateImagePropertiesNV *pstruct = (const VkPhysicalDeviceShadingRateImagePropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShadingRateImagePropertiesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26296,7 +26297,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShadingRa
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -26335,7 +26336,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShadingRa
 
 void StructureToString(FILE* outputFile, const Decoded_VkCoarseSampleLocationNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCoarseSampleLocationNV *pstruct = (const VkCoarseSampleLocationNV *)pstruct_in.decoded_value; // BTB
+    const VkCoarseSampleLocationNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26366,7 +26367,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCoarseSampleLocationNV 
 
 void StructureToString(FILE* outputFile, const Decoded_VkCoarseSampleOrderCustomNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCoarseSampleOrderCustomNV *pstruct = (const VkCoarseSampleOrderCustomNV *)pstruct_in.decoded_value; // BTB
+    const VkCoarseSampleOrderCustomNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26402,20 +26403,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkCoarseSampleOrderCustom
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pSampleLocations:               "); // HRW
     OutputString(outputFile, "const VkCoarseSampleLocationNV* = "); // TEQ
-    if (pstruct->pSampleLocations == nullptr) // WWZ
+    if (pstruct->pSampleLocations == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pSampleLocations->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkCoarseSampleLocationNV>(outputFile, indent+1, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkCoarseSampleLocationNV>(outputFile, indent+1, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkCoarseSampleLocationNV));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportCoarseSampleOrderStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineViewportCoarseSampleOrderStateCreateInfoNV *pstruct = (const VkPipelineViewportCoarseSampleOrderStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineViewportCoarseSampleOrderStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26437,7 +26438,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportCoarseS
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -26474,20 +26475,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportCoarseS
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCustomSampleOrders:            "); // HRW
     OutputString(outputFile, "const VkCoarseSampleOrderCustomNV* = "); // TEQ
-    if (pstruct->pCustomSampleOrders == nullptr) // WWZ
+    if (pstruct->pCustomSampleOrders == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pCustomSampleOrders->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent+1, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent+1, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress(), sizeof(VkCoarseSampleOrderCustomNV));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkRayTracingShaderGroupCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRayTracingShaderGroupCreateInfoNV *pstruct = (const VkRayTracingShaderGroupCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkRayTracingShaderGroupCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26509,7 +26510,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRayTracingShaderGroupCr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -26565,7 +26566,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRayTracingShaderGroupCr
 
 void StructureToString(FILE* outputFile, const Decoded_VkRayTracingPipelineCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRayTracingPipelineCreateInfoNV *pstruct = (const VkRayTracingPipelineCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkRayTracingPipelineCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26587,7 +26588,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRayTracingPipelineCreat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -26621,14 +26622,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkRayTracingPipelineCreat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pStages:                        "); // HRW
     OutputString(outputFile, "const VkPipelineShaderStageCreateInfo* = "); // TEQ
-    if (pstruct->pStages == nullptr) // WWZ
+    if (pstruct->pStages == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pStages->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -26643,14 +26644,14 @@ void StructureToString(FILE* outputFile, const Decoded_VkRayTracingPipelineCreat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pGroups:                        "); // HRW
     OutputString(outputFile, "const VkRayTracingShaderGroupCreateInfoNV* = "); // TEQ
-    if (pstruct->pGroups == nullptr) // WWZ
+    if (pstruct->pGroups == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pGroups->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRayTracingShaderGroupCreateInfoNV>(outputFile, indent+1, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRayTracingShaderGroupCreateInfoNV>(outputFile, indent+1, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress(), sizeof(VkRayTracingShaderGroupCreateInfoNV));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -26684,7 +26685,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRayTracingPipelineCreat
 
 void StructureToString(FILE* outputFile, const Decoded_VkGeometryTrianglesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkGeometryTrianglesNV *pstruct = (const VkGeometryTrianglesNV *)pstruct_in.decoded_value; // BTB
+    const VkGeometryTrianglesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26706,7 +26707,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGeometryTrianglesNV &ps
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -26807,7 +26808,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGeometryTrianglesNV &ps
 
 void StructureToString(FILE* outputFile, const Decoded_VkGeometryAABBNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkGeometryAABBNV *pstruct = (const VkGeometryAABBNV *)pstruct_in.decoded_value; // BTB
+    const VkGeometryAABBNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26829,7 +26830,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGeometryAABBNV &pstruct
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -26875,7 +26876,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGeometryAABBNV &pstruct
 
 void StructureToString(FILE* outputFile, const Decoded_VkGeometryDataNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkGeometryDataNV *pstruct = (const VkGeometryDataNV *)pstruct_in.decoded_value; // BTB
+    const VkGeometryDataNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26899,7 +26900,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGeometryDataNV &pstruct
 
 void StructureToString(FILE* outputFile, const Decoded_VkGeometryNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkGeometryNV *pstruct = (const VkGeometryNV *)pstruct_in.decoded_value; // BTB
+    const VkGeometryNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26921,7 +26922,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGeometryNV &pstruct_in,
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -26963,7 +26964,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkGeometryNV &pstruct_in,
 
 void StructureToString(FILE* outputFile, const Decoded_VkAccelerationStructureInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAccelerationStructureInfoNV *pstruct = (const VkAccelerationStructureInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkAccelerationStructureInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -26985,7 +26986,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAccelerationStructureIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27036,20 +27037,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkAccelerationStructureIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pGeometries:                    "); // HRW
     OutputString(outputFile, "const VkGeometryNV* = "); // TEQ
-    if (pstruct->pGeometries == nullptr) // WWZ
+    if (pstruct->pGeometries == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pGeometries->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkGeometryNV>(outputFile, indent+1, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkGeometryNV>(outputFile, indent+1, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress(), sizeof(VkGeometryNV));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkAccelerationStructureCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAccelerationStructureCreateInfoNV *pstruct = (const VkAccelerationStructureCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkAccelerationStructureCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27071,7 +27072,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAccelerationStructureCr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27103,7 +27104,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAccelerationStructureCr
 
 void StructureToString(FILE* outputFile, const Decoded_VkBindAccelerationStructureMemoryInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBindAccelerationStructureMemoryInfoNV *pstruct = (const VkBindAccelerationStructureMemoryInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkBindAccelerationStructureMemoryInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27125,7 +27126,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindAccelerationStructu
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27173,21 +27174,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkBindAccelerationStructu
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDeviceIndices:                 "); // HRW
     OutputString(outputFile, "const uint32_t* = "); // TEQ
-    if (pstruct->pDeviceIndices == nullptr) // WWZ
+    if (pstruct->pDeviceIndices == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pDeviceIndices.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pDeviceIndices.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pDeviceIndices = {false, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUC
+        ArrayToString(outputFile, indent, "const uint32_t*", &pstruct_in.pDeviceIndices, "pDeviceIndices", pstruct->deviceIndexCount, vinfo_pDeviceIndices); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSetAccelerationStructureNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkWriteDescriptorSetAccelerationStructureNV *pstruct = (const VkWriteDescriptorSetAccelerationStructureNV *)pstruct_in.decoded_value; // BTB
+    const VkWriteDescriptorSetAccelerationStructureNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27209,7 +27210,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSetAccel
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27236,21 +27237,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkWriteDescriptorSetAccel
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pAccelerationStructures:        "); // HRW
     OutputString(outputFile, "const VkAccelerationStructureNV* = "); // TEQ
-    if (pstruct->pAccelerationStructures == nullptr) // WWZ
+    if (pstruct->pAccelerationStructures == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pAccelerationStructures.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pAccelerationStructures.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pAccelerationStructures = {true, false, false, nullptr};
-        ArrayToString(outputFile, indent, "const VkAccelerationStructureNV*", &pstruct_in.pAccelerationStructures, "pAccelerationStructures", pstruct->accelerationStructureCount, vinfo_pAccelerationStructures); // AUC
+        ArrayToString(outputFile, indent, "const VkAccelerationStructureNV*", &pstruct_in.pAccelerationStructures, "pAccelerationStructures", pstruct->accelerationStructureCount, vinfo_pAccelerationStructures); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkAccelerationStructureMemoryRequirementsInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkAccelerationStructureMemoryRequirementsInfoNV *pstruct = (const VkAccelerationStructureMemoryRequirementsInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkAccelerationStructureMemoryRequirementsInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27272,7 +27273,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAccelerationStructureMe
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27307,7 +27308,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkAccelerationStructureMe
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceRayTracingPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceRayTracingPropertiesNV *pstruct = (const VkPhysicalDeviceRayTracingPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceRayTracingPropertiesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27329,7 +27330,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceRayTracin
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27403,7 +27404,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceRayTracin
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV *pstruct = (const VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27425,7 +27426,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceRepresent
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27450,7 +27451,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceRepresent
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineRepresentativeFragmentTestStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRepresentativeFragmentTestStateCreateInfoNV *pstruct = (const VkPipelineRepresentativeFragmentTestStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRepresentativeFragmentTestStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27472,7 +27473,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRepresentativeF
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27497,7 +27498,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRepresentativeF
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImageViewImageFormatInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceImageViewImageFormatInfoEXT *pstruct = (const VkPhysicalDeviceImageViewImageFormatInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceImageViewImageFormatInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27519,7 +27520,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImageView
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27547,7 +27548,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceImageView
 
 void StructureToString(FILE* outputFile, const Decoded_VkFilterCubicImageViewImageFormatPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFilterCubicImageViewImageFormatPropertiesEXT *pstruct = (const VkFilterCubicImageViewImageFormatPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkFilterCubicImageViewImageFormatPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27569,7 +27570,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFilterCubicImageViewIma
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27601,7 +27602,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFilterCubicImageViewIma
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceQueueGlobalPriorityCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceQueueGlobalPriorityCreateInfoEXT *pstruct = (const VkDeviceQueueGlobalPriorityCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkDeviceQueueGlobalPriorityCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27623,7 +27624,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceQueueGlobalPriori
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27651,7 +27652,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceQueueGlobalPriori
 
 void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryHostPointerInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImportMemoryHostPointerInfoEXT *pstruct = (const VkImportMemoryHostPointerInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkImportMemoryHostPointerInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27673,7 +27674,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryHostPointer
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27703,7 +27704,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryHostPointer
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pHostPointer:                   "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pHostPointer == nullptr) // WWX
+    if (pstruct->pHostPointer == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -27715,7 +27716,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImportMemoryHostPointer
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryHostPointerPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryHostPointerPropertiesEXT *pstruct = (const VkMemoryHostPointerPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkMemoryHostPointerPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27737,7 +27738,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryHostPointerProper
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27762,7 +27763,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryHostPointerProper
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalMemoryHostPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceExternalMemoryHostPropertiesEXT *pstruct = (const VkPhysicalDeviceExternalMemoryHostPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceExternalMemoryHostPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27784,7 +27785,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalM
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27809,7 +27810,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExternalM
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineCompilerControlCreateInfoAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCompilerControlCreateInfoAMD *pstruct = (const VkPipelineCompilerControlCreateInfoAMD *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCompilerControlCreateInfoAMD *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27831,7 +27832,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCompilerControl
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27856,7 +27857,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCompilerControl
 
 void StructureToString(FILE* outputFile, const Decoded_VkCalibratedTimestampInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCalibratedTimestampInfoEXT *pstruct = (const VkCalibratedTimestampInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkCalibratedTimestampInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27878,7 +27879,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCalibratedTimestampInfo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -27906,7 +27907,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCalibratedTimestampInfo
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderCorePropertiesAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderCorePropertiesAMD *pstruct = (const VkPhysicalDeviceShaderCorePropertiesAMD *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderCorePropertiesAMD *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -27928,7 +27929,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderCor
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28044,7 +28045,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderCor
 
 void StructureToString(FILE* outputFile, const Decoded_VkDeviceMemoryOverallocationCreateInfoAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDeviceMemoryOverallocationCreateInfoAMD *pstruct = (const VkDeviceMemoryOverallocationCreateInfoAMD *)pstruct_in.decoded_value; // BTB
+    const VkDeviceMemoryOverallocationCreateInfoAMD *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28066,7 +28067,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceMemoryOverallocat
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28094,7 +28095,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDeviceMemoryOverallocat
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT *pstruct = (const VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28116,7 +28117,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexAtt
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28141,7 +28142,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexAtt
 
 void StructureToString(FILE* outputFile, const Decoded_VkVertexInputBindingDivisorDescriptionEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkVertexInputBindingDivisorDescriptionEXT *pstruct = (const VkVertexInputBindingDivisorDescriptionEXT *)pstruct_in.decoded_value; // BTB
+    const VkVertexInputBindingDivisorDescriptionEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28165,7 +28166,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkVertexInputBindingDivis
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineVertexInputDivisorStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineVertexInputDivisorStateCreateInfoEXT *pstruct = (const VkPipelineVertexInputDivisorStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineVertexInputDivisorStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28187,7 +28188,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineVertexInputDivi
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28214,20 +28215,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineVertexInputDivi
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pVertexBindingDivisors:         "); // HRW
     OutputString(outputFile, "const VkVertexInputBindingDivisorDescriptionEXT* = "); // TEQ
-    if (pstruct->pVertexBindingDivisors == nullptr) // WWZ
+    if (pstruct->pVertexBindingDivisors == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pVertexBindingDivisors->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkVertexInputBindingDivisorDescriptionEXT>(outputFile, indent+1, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkVertexInputBindingDivisorDescriptionEXT>(outputFile, indent+1, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress(), sizeof(VkVertexInputBindingDivisorDescriptionEXT));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT *pstruct = (const VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28249,7 +28250,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexAtt
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28281,7 +28282,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexAtt
 
 void StructureToString(FILE* outputFile, const Decoded_VkPresentFrameTokenGGP &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPresentFrameTokenGGP *pstruct = (const VkPresentFrameTokenGGP *)pstruct_in.decoded_value; // BTB
+    const VkPresentFrameTokenGGP *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28303,7 +28304,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentFrameTokenGGP &p
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28328,7 +28329,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPresentFrameTokenGGP &p
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineCreationFeedbackEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCreationFeedbackEXT *pstruct = (const VkPipelineCreationFeedbackEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCreationFeedbackEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28352,7 +28353,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCreationFeedbac
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineCreationFeedbackCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCreationFeedbackCreateInfoEXT *pstruct = (const VkPipelineCreationFeedbackCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCreationFeedbackCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28374,7 +28375,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCreationFeedbac
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28394,7 +28395,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCreationFeedbac
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPipelineCreationFeedback:      "); // HRW
     OutputString(outputFile, "VkPipelineCreationFeedbackEXT* = "); // TEQ
-    if (pstruct->pPipelineCreationFeedback == nullptr) // WWZ
+    if (pstruct->pPipelineCreationFeedback == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28417,20 +28418,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCreationFeedbac
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pPipelineStageCreationFeedbacks: "); // HRW
     OutputString(outputFile, "VkPipelineCreationFeedbackEXT* = "); // TEQ
-    if (pstruct->pPipelineStageCreationFeedbacks == nullptr) // WWZ
+    if (pstruct->pPipelineStageCreationFeedbacks == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkPipelineCreationFeedbackEXT>(outputFile, indent+1, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkPipelineCreationFeedbackEXT>(outputFile, indent+1, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress(), sizeof(VkPipelineCreationFeedbackEXT));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceComputeShaderDerivativesFeaturesNV *pstruct = (const VkPhysicalDeviceComputeShaderDerivativesFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceComputeShaderDerivativesFeaturesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28452,7 +28453,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceComputeSh
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28484,7 +28485,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceComputeSh
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShaderFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMeshShaderFeaturesNV *pstruct = (const VkPhysicalDeviceMeshShaderFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMeshShaderFeaturesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28506,7 +28507,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShade
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28538,7 +28539,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShade
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShaderPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMeshShaderPropertiesNV *pstruct = (const VkPhysicalDeviceMeshShaderPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMeshShaderPropertiesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28560,7 +28561,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShade
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28599,7 +28600,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShade
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceMeshShaderPropertiesNV, maxTaskWorkGroupSize)); // IYY
     ScalarValueToStringStruct vinfo_maxTaskWorkGroupSize = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.maxTaskWorkGroupSize, "maxTaskWorkGroupSize", 3, vinfo_maxTaskWorkGroupSize); // JPE
+    ArrayToString(outputFile, indent, "uint32_t" , &pstruct_in.maxTaskWorkGroupSize, "maxTaskWorkGroupSize", 3, vinfo_maxTaskWorkGroupSize); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t maxTaskTotalMemorySize
@@ -28632,7 +28633,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShade
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceMeshShaderPropertiesNV, maxMeshWorkGroupSize)); // IYY
     ScalarValueToStringStruct vinfo_maxMeshWorkGroupSize = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<uint32_t>>(outputFile, indent, "uint32_t", &pstruct_in.maxMeshWorkGroupSize, "maxMeshWorkGroupSize", 3, vinfo_maxMeshWorkGroupSize); // JPE
+    ArrayToString(outputFile, indent, "uint32_t" , &pstruct_in.maxMeshWorkGroupSize, "maxMeshWorkGroupSize", 3, vinfo_maxMeshWorkGroupSize); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t maxMeshTotalMemorySize
@@ -28679,7 +28680,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshShade
 
 void StructureToString(FILE* outputFile, const Decoded_VkDrawMeshTasksIndirectCommandNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDrawMeshTasksIndirectCommandNV *pstruct = (const VkDrawMeshTasksIndirectCommandNV *)pstruct_in.decoded_value; // BTB
+    const VkDrawMeshTasksIndirectCommandNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28703,7 +28704,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDrawMeshTasksIndirectCo
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV *pstruct = (const VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28725,7 +28726,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentS
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28750,7 +28751,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentS
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderImageFootprintFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderImageFootprintFeaturesNV *pstruct = (const VkPhysicalDeviceShaderImageFootprintFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderImageFootprintFeaturesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28772,7 +28773,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderIma
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28797,7 +28798,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderIma
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportExclusiveScissorStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineViewportExclusiveScissorStateCreateInfoNV *pstruct = (const VkPipelineViewportExclusiveScissorStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineViewportExclusiveScissorStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28819,7 +28820,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportExclusi
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28846,20 +28847,20 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineViewportExclusi
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pExclusiveScissors:             "); // HRW
     OutputString(outputFile, "const VkRect2D* = "); // TEQ
-    if (pstruct->pExclusiveScissors == nullptr) // WWZ
+    if (pstruct->pExclusiveScissors == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
         AddrToString(outputFile, pstruct_in.pExclusiveScissors->GetAddress()); // WUT
-        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress());  // CCP
+        ArrayOfStructsToString<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExclusiveScissorFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceExclusiveScissorFeaturesNV *pstruct = (const VkPhysicalDeviceExclusiveScissorFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceExclusiveScissorFeaturesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28881,7 +28882,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExclusive
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28906,7 +28907,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceExclusive
 
 void StructureToString(FILE* outputFile, const Decoded_VkQueueFamilyCheckpointPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkQueueFamilyCheckpointPropertiesNV *pstruct = (const VkQueueFamilyCheckpointPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkQueueFamilyCheckpointPropertiesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28928,7 +28929,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkQueueFamilyCheckpointPr
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -28953,7 +28954,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkQueueFamilyCheckpointPr
 
 void StructureToString(FILE* outputFile, const Decoded_VkCheckpointDataNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCheckpointDataNV *pstruct = (const VkCheckpointDataNV *)pstruct_in.decoded_value; // BTB
+    const VkCheckpointDataNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -28975,7 +28976,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCheckpointDataNV &pstru
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29005,7 +29006,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCheckpointDataNV &pstru
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pCheckpointMarker:              "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pCheckpointMarker == nullptr) // WWX
+    if (pstruct->pCheckpointMarker == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -29017,7 +29018,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCheckpointDataNV &pstru
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL *pstruct = (const VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29039,7 +29040,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderInt
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29064,7 +29065,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderInt
 
 void StructureToString(FILE* outputFile, const Decoded_VkPerformanceValueDataINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPerformanceValueDataINTEL *pstruct = (const VkPerformanceValueDataINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPerformanceValueDataINTEL *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29109,7 +29110,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPerformanceValueDataINT
 
 void StructureToString(FILE* outputFile, const Decoded_VkPerformanceValueINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPerformanceValueINTEL *pstruct = (const VkPerformanceValueINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPerformanceValueINTEL *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29137,7 +29138,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPerformanceValueINTEL &
 
 void StructureToString(FILE* outputFile, const Decoded_VkInitializePerformanceApiInfoINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkInitializePerformanceApiInfoINTEL *pstruct = (const VkInitializePerformanceApiInfoINTEL *)pstruct_in.decoded_value; // BTB
+    const VkInitializePerformanceApiInfoINTEL *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29159,7 +29160,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkInitializePerformanceAp
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29179,7 +29180,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkInitializePerformanceAp
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pUserData:                      "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pUserData == nullptr) // WWX
+    if (pstruct->pUserData == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -29191,7 +29192,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkInitializePerformanceAp
 
 void StructureToString(FILE* outputFile, const Decoded_VkQueryPoolCreateInfoINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkQueryPoolCreateInfoINTEL *pstruct = (const VkQueryPoolCreateInfoINTEL *)pstruct_in.decoded_value; // BTB
+    const VkQueryPoolCreateInfoINTEL *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29213,7 +29214,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkQueryPoolCreateInfoINTE
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29241,7 +29242,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkQueryPoolCreateInfoINTE
 
 void StructureToString(FILE* outputFile, const Decoded_VkPerformanceMarkerInfoINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPerformanceMarkerInfoINTEL *pstruct = (const VkPerformanceMarkerInfoINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPerformanceMarkerInfoINTEL *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29263,7 +29264,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPerformanceMarkerInfoIN
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29288,7 +29289,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPerformanceMarkerInfoIN
 
 void StructureToString(FILE* outputFile, const Decoded_VkPerformanceStreamMarkerInfoINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPerformanceStreamMarkerInfoINTEL *pstruct = (const VkPerformanceStreamMarkerInfoINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPerformanceStreamMarkerInfoINTEL *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29310,7 +29311,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPerformanceStreamMarker
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29335,7 +29336,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPerformanceStreamMarker
 
 void StructureToString(FILE* outputFile, const Decoded_VkPerformanceOverrideInfoINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPerformanceOverrideInfoINTEL *pstruct = (const VkPerformanceOverrideInfoINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPerformanceOverrideInfoINTEL *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29357,7 +29358,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPerformanceOverrideInfo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29399,7 +29400,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPerformanceOverrideInfo
 
 void StructureToString(FILE* outputFile, const Decoded_VkPerformanceConfigurationAcquireInfoINTEL &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPerformanceConfigurationAcquireInfoINTEL *pstruct = (const VkPerformanceConfigurationAcquireInfoINTEL *)pstruct_in.decoded_value; // BTB
+    const VkPerformanceConfigurationAcquireInfoINTEL *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29421,7 +29422,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPerformanceConfiguratio
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29449,7 +29450,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPerformanceConfiguratio
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePCIBusInfoPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDevicePCIBusInfoPropertiesEXT *pstruct = (const VkPhysicalDevicePCIBusInfoPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDevicePCIBusInfoPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29471,7 +29472,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePCIBusInf
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29517,7 +29518,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDevicePCIBusInf
 
 void StructureToString(FILE* outputFile, const Decoded_VkDisplayNativeHdrSurfaceCapabilitiesAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkDisplayNativeHdrSurfaceCapabilitiesAMD *pstruct = (const VkDisplayNativeHdrSurfaceCapabilitiesAMD *)pstruct_in.decoded_value; // BTB
+    const VkDisplayNativeHdrSurfaceCapabilitiesAMD *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29539,7 +29540,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayNativeHdrSurface
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29564,7 +29565,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkDisplayNativeHdrSurface
 
 void StructureToString(FILE* outputFile, const Decoded_VkSwapchainDisplayNativeHdrCreateInfoAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSwapchainDisplayNativeHdrCreateInfoAMD *pstruct = (const VkSwapchainDisplayNativeHdrCreateInfoAMD *)pstruct_in.decoded_value; // BTB
+    const VkSwapchainDisplayNativeHdrCreateInfoAMD *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29586,7 +29587,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSwapchainDisplayNativeH
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29611,7 +29612,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSwapchainDisplayNativeH
 
 void StructureToString(FILE* outputFile, const Decoded_VkImagePipeSurfaceCreateInfoFUCHSIA &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImagePipeSurfaceCreateInfoFUCHSIA *pstruct = (const VkImagePipeSurfaceCreateInfoFUCHSIA *)pstruct_in.decoded_value; // BTB
+    const VkImagePipeSurfaceCreateInfoFUCHSIA *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29633,7 +29634,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImagePipeSurfaceCreateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29665,7 +29666,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImagePipeSurfaceCreateI
 
 void StructureToString(FILE* outputFile, const Decoded_VkMetalSurfaceCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMetalSurfaceCreateInfoEXT *pstruct = (const VkMetalSurfaceCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkMetalSurfaceCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29687,7 +29688,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMetalSurfaceCreateInfoE
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29714,7 +29715,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMetalSurfaceCreateInfoE
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pLayer:                         "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pLayer == nullptr) // WWX
+    if (pstruct->pLayer == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -29726,7 +29727,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMetalSurfaceCreateInfoE
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentDensityMapFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFragmentDensityMapFeaturesEXT *pstruct = (const VkPhysicalDeviceFragmentDensityMapFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFragmentDensityMapFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29748,7 +29749,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentD
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29787,7 +29788,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentD
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentDensityMapPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFragmentDensityMapPropertiesEXT *pstruct = (const VkPhysicalDeviceFragmentDensityMapPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFragmentDensityMapPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29809,7 +29810,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentD
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29848,7 +29849,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentD
 
 void StructureToString(FILE* outputFile, const Decoded_VkRenderPassFragmentDensityMapCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkRenderPassFragmentDensityMapCreateInfoEXT *pstruct = (const VkRenderPassFragmentDensityMapCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkRenderPassFragmentDensityMapCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29870,7 +29871,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassFragmentDensi
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29895,7 +29896,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkRenderPassFragmentDensi
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceScalarBlockLayoutFeaturesEXT *pstruct = (const VkPhysicalDeviceScalarBlockLayoutFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceScalarBlockLayoutFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29917,7 +29918,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceScalarBlo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29942,7 +29943,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceScalarBlo
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupSizeControlFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSubgroupSizeControlFeaturesEXT *pstruct = (const VkPhysicalDeviceSubgroupSizeControlFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSubgroupSizeControlFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -29964,7 +29965,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupS
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -29996,7 +29997,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupS
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupSizeControlPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceSubgroupSizeControlPropertiesEXT *pstruct = (const VkPhysicalDeviceSubgroupSizeControlPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceSubgroupSizeControlPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30018,7 +30019,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupS
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30064,7 +30065,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgroupS
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT *pstruct = (const VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30086,7 +30087,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineShaderStageRequ
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30111,7 +30112,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineShaderStageRequ
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderCoreProperties2AMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderCoreProperties2AMD *pstruct = (const VkPhysicalDeviceShaderCoreProperties2AMD *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderCoreProperties2AMD *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30133,7 +30134,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderCor
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30165,7 +30166,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderCor
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCoherentMemoryFeaturesAMD &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceCoherentMemoryFeaturesAMD *pstruct = (const VkPhysicalDeviceCoherentMemoryFeaturesAMD *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceCoherentMemoryFeaturesAMD *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30187,7 +30188,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCoherentM
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30212,7 +30213,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCoherentM
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryBudgetPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMemoryBudgetPropertiesEXT *pstruct = (const VkPhysicalDeviceMemoryBudgetPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMemoryBudgetPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30234,7 +30235,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryBud
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30259,7 +30260,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryBud
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceMemoryBudgetPropertiesEXT, heapBudget)); // IYY
     ScalarValueToStringStruct vinfo_heapBudget = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<VkDeviceSize>>(outputFile, indent, "VkDeviceSize", &pstruct_in.heapBudget, "heapBudget", VK_MAX_MEMORY_HEAPS, vinfo_heapBudget); // JPE
+    ArrayToString(outputFile, indent, "VkDeviceSize" , &pstruct_in.heapBudget, "heapBudget", VK_MAX_MEMORY_HEAPS, vinfo_heapBudget); // JPE
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkDeviceSize heapUsage
@@ -30271,12 +30272,12 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryBud
     OutputString(outputFile, "] = ");
     AddrToString(outputFile, base_addr + offsetof(VkPhysicalDeviceMemoryBudgetPropertiesEXT, heapUsage)); // IYY
     ScalarValueToStringStruct vinfo_heapUsage = {false, false, false, nullptr};
-    ArrayToString<PointerDecoder<VkDeviceSize>>(outputFile, indent, "VkDeviceSize", &pstruct_in.heapUsage, "heapUsage", VK_MAX_MEMORY_HEAPS, vinfo_heapUsage); // JPE
+    ArrayToString(outputFile, indent, "VkDeviceSize" , &pstruct_in.heapUsage, "heapUsage", VK_MAX_MEMORY_HEAPS, vinfo_heapUsage); // JPE
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPriorityFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceMemoryPriorityFeaturesEXT *pstruct = (const VkPhysicalDeviceMemoryPriorityFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceMemoryPriorityFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30298,7 +30299,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPri
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30323,7 +30324,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryPri
 
 void StructureToString(FILE* outputFile, const Decoded_VkMemoryPriorityAllocateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkMemoryPriorityAllocateInfoEXT *pstruct = (const VkMemoryPriorityAllocateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkMemoryPriorityAllocateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30345,7 +30346,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryPriorityAllocateI
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30370,7 +30371,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkMemoryPriorityAllocateI
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV *pstruct = (const VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30392,7 +30393,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDedicated
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30417,7 +30418,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceDedicated
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceBufferDeviceAddressFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceBufferDeviceAddressFeaturesEXT *pstruct = (const VkPhysicalDeviceBufferDeviceAddressFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceBufferDeviceAddressFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30439,7 +30440,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceBufferDev
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30478,7 +30479,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceBufferDev
 
 void StructureToString(FILE* outputFile, const Decoded_VkBufferDeviceAddressInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferDeviceAddressInfoEXT *pstruct = (const VkBufferDeviceAddressInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkBufferDeviceAddressInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30500,7 +30501,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferDeviceAddressInfo
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30525,7 +30526,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferDeviceAddressInfo
 
 void StructureToString(FILE* outputFile, const Decoded_VkBufferDeviceAddressCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkBufferDeviceAddressCreateInfoEXT *pstruct = (const VkBufferDeviceAddressCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkBufferDeviceAddressCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30547,7 +30548,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferDeviceAddressCrea
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30572,7 +30573,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkBufferDeviceAddressCrea
 
 void StructureToString(FILE* outputFile, const Decoded_VkImageStencilUsageCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkImageStencilUsageCreateInfoEXT *pstruct = (const VkImageStencilUsageCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkImageStencilUsageCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30594,7 +30595,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageStencilUsageCreate
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30619,7 +30620,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkImageStencilUsageCreate
 
 void StructureToString(FILE* outputFile, const Decoded_VkValidationFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkValidationFeaturesEXT *pstruct = (const VkValidationFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkValidationFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30641,7 +30642,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkValidationFeaturesEXT &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30668,15 +30669,15 @@ void StructureToString(FILE* outputFile, const Decoded_VkValidationFeaturesEXT &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pEnabledValidationFeatures:     "); // HRW
     OutputString(outputFile, "const VkValidationFeatureEnableEXT* = "); // TEQ
-    if (pstruct->pEnabledValidationFeatures == nullptr) // WWZ
+    if (pstruct->pEnabledValidationFeatures == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pEnabledValidationFeatures.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pEnabledValidationFeatures.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pEnabledValidationFeatures = {false, true, false, EnumToStringVkValidationFeatureEnableEXT};
-        ArrayToString(outputFile, indent, "const VkValidationFeatureEnableEXT*", &pstruct_in.pEnabledValidationFeatures, "pEnabledValidationFeatures", pstruct->enabledValidationFeatureCount, vinfo_pEnabledValidationFeatures); // AUC
+        ArrayToString(outputFile, indent, "const VkValidationFeatureEnableEXT*", &pstruct_in.pEnabledValidationFeatures, "pEnabledValidationFeatures", pstruct->enabledValidationFeatureCount, vinfo_pEnabledValidationFeatures); // AUB
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -30691,21 +30692,21 @@ void StructureToString(FILE* outputFile, const Decoded_VkValidationFeaturesEXT &
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pDisabledValidationFeatures:    "); // HRW
     OutputString(outputFile, "const VkValidationFeatureDisableEXT* = "); // TEQ
-    if (pstruct->pDisabledValidationFeatures == nullptr) // WWZ
+    if (pstruct->pDisabledValidationFeatures == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
     else
     {
-        AddrToString(outputFile, pstruct_in.pDisabledValidationFeatures.GetAddress()); // PAZ
+        AddrToString(outputFile, pstruct_in.pDisabledValidationFeatures.GetAddress()); // PBZ
         ScalarValueToStringStruct vinfo_pDisabledValidationFeatures = {false, true, false, EnumToStringVkValidationFeatureDisableEXT};
-        ArrayToString(outputFile, indent, "const VkValidationFeatureDisableEXT*", &pstruct_in.pDisabledValidationFeatures, "pDisabledValidationFeatures", pstruct->disabledValidationFeatureCount, vinfo_pDisabledValidationFeatures); // AUC
+        ArrayToString(outputFile, indent, "const VkValidationFeatureDisableEXT*", &pstruct_in.pDisabledValidationFeatures, "pDisabledValidationFeatures", pstruct->disabledValidationFeatureCount, vinfo_pDisabledValidationFeatures); // AUB
     }
 }
 
 void StructureToString(FILE* outputFile, const Decoded_VkCooperativeMatrixPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkCooperativeMatrixPropertiesNV *pstruct = (const VkCooperativeMatrixPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkCooperativeMatrixPropertiesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30727,7 +30728,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCooperativeMatrixProper
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30816,7 +30817,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkCooperativeMatrixProper
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCooperativeMatrixFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceCooperativeMatrixFeaturesNV *pstruct = (const VkPhysicalDeviceCooperativeMatrixFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceCooperativeMatrixFeaturesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30838,7 +30839,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCooperati
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30870,7 +30871,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCooperati
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCooperativeMatrixPropertiesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceCooperativeMatrixPropertiesNV *pstruct = (const VkPhysicalDeviceCooperativeMatrixPropertiesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceCooperativeMatrixPropertiesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30892,7 +30893,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCooperati
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30917,7 +30918,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCooperati
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCoverageReductionModeFeaturesNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceCoverageReductionModeFeaturesNV *pstruct = (const VkPhysicalDeviceCoverageReductionModeFeaturesNV *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceCoverageReductionModeFeaturesNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30939,7 +30940,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCoverageR
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -30964,7 +30965,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceCoverageR
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineCoverageReductionStateCreateInfoNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineCoverageReductionStateCreateInfoNV *pstruct = (const VkPipelineCoverageReductionStateCreateInfoNV *)pstruct_in.decoded_value; // BTB
+    const VkPipelineCoverageReductionStateCreateInfoNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -30986,7 +30987,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCoverageReducti
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31021,7 +31022,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineCoverageReducti
 
 void StructureToString(FILE* outputFile, const Decoded_VkFramebufferMixedSamplesCombinationNV &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkFramebufferMixedSamplesCombinationNV *pstruct = (const VkFramebufferMixedSamplesCombinationNV *)pstruct_in.decoded_value; // BTB
+    const VkFramebufferMixedSamplesCombinationNV *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31043,7 +31044,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFramebufferMixedSamples
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31095,7 +31096,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkFramebufferMixedSamples
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT *pstruct = (const VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31117,7 +31118,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentS
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31156,7 +31157,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmentS
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceYcbcrImageArraysFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceYcbcrImageArraysFeaturesEXT *pstruct = (const VkPhysicalDeviceYcbcrImageArraysFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceYcbcrImageArraysFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31178,7 +31179,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceYcbcrImag
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31203,7 +31204,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceYcbcrImag
 
 void StructureToString(FILE* outputFile, const Decoded_VkSurfaceFullScreenExclusiveInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceFullScreenExclusiveInfoEXT *pstruct = (const VkSurfaceFullScreenExclusiveInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceFullScreenExclusiveInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31225,7 +31226,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceFullScreenExclus
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31253,7 +31254,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceFullScreenExclus
 
 void StructureToString(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesFullScreenExclusiveEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceCapabilitiesFullScreenExclusiveEXT *pstruct = (const VkSurfaceCapabilitiesFullScreenExclusiveEXT *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceCapabilitiesFullScreenExclusiveEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31275,7 +31276,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesFull
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31300,7 +31301,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesFull
 
 void StructureToString(FILE* outputFile, const Decoded_VkSurfaceFullScreenExclusiveWin32InfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkSurfaceFullScreenExclusiveWin32InfoEXT *pstruct = (const VkSurfaceFullScreenExclusiveWin32InfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkSurfaceFullScreenExclusiveWin32InfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31322,7 +31323,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceFullScreenExclus
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31342,7 +31343,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceFullScreenExclus
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "hmonitor:                       "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->hmonitor == nullptr) // WWX
+    if (pstruct->hmonitor == nullptr) // WUX
     {
         OutputString(outputFile, "NULL");
     }
@@ -31354,7 +31355,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkSurfaceFullScreenExclus
 
 void StructureToString(FILE* outputFile, const Decoded_VkHeadlessSurfaceCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkHeadlessSurfaceCreateInfoEXT *pstruct = (const VkHeadlessSurfaceCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkHeadlessSurfaceCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31376,7 +31377,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkHeadlessSurfaceCreateIn
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31401,7 +31402,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkHeadlessSurfaceCreateIn
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRasterizationFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceLineRasterizationFeaturesEXT *pstruct = (const VkPhysicalDeviceLineRasterizationFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceLineRasterizationFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31423,7 +31424,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRaste
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31483,7 +31484,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRaste
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRasterizationPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceLineRasterizationPropertiesEXT *pstruct = (const VkPhysicalDeviceLineRasterizationPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceLineRasterizationPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31505,7 +31506,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRaste
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31530,7 +31531,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRaste
 
 void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationLineStateCreateInfoEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPipelineRasterizationLineStateCreateInfoEXT *pstruct = (const VkPipelineRasterizationLineStateCreateInfoEXT *)pstruct_in.decoded_value; // BTB
+    const VkPipelineRasterizationLineStateCreateInfoEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31552,7 +31553,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationLi
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "const void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31601,7 +31602,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPipelineRasterizationLi
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceHostQueryResetFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceHostQueryResetFeaturesEXT *pstruct = (const VkPhysicalDeviceHostQueryResetFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceHostQueryResetFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31623,7 +31624,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceHostQuery
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31648,7 +31649,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceHostQuery
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceIndexTypeUint8FeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceIndexTypeUint8FeaturesEXT *pstruct = (const VkPhysicalDeviceIndexTypeUint8FeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceIndexTypeUint8FeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31670,7 +31671,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceIndexType
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31695,7 +31696,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceIndexType
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT *pstruct = (const VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31717,7 +31718,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderDem
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31742,7 +31743,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderDem
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT *pstruct = (const VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31764,7 +31765,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBuff
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
@@ -31789,7 +31790,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBuff
 
 void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT &pstruct_in, int indent, uint64_t base_addr)
 {
-    const VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT *pstruct = (const VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT *)pstruct_in.decoded_value; // BTB
+    const VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT *pstruct = pstruct_in.decoded_value; // BTG
     assert(outputFile != nullptr);
     if (pstruct == nullptr)
     {
@@ -31811,7 +31812,7 @@ void StructureToString(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBuff
     IndentSpaces(outputFile, indent);
     OutputString(outputFile, "pNext:                          "); // HRW
     OutputString(outputFile, "void* = "); // TEQ
-    if (pstruct->pNext == nullptr) // WWZ
+    if (pstruct->pNext == nullptr) // WUZ
     {
         OutputString(outputFile, "NULL");
     }
