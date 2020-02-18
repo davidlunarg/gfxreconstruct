@@ -65,10 +65,10 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
     # Method override
     def beginFile(self, genOpts):
         BaseGenerator.beginFile(self, genOpts)
-        self.wc('#include "generated/generated_vulkan_ascii_consumer.h"')
-        self.wc('#include "generated/generated_vulkan_ascii_enum_util.h"')
-        self.wc('#include "generated/generated_vulkan_ascii_struct_util.h"')
         self.wc('#include "format/platform_types.h"')
+        self.wc('#include "generated/generated_vulkan_ascii_consumer.h"')
+        self.wc('#include "generated/generated_vulkan_ascii_struct_util.h"')
+        self.wc('#include "generated/generated_vulkan_enum_output_util.h"')
         self.wc('#include "util/defines.h"')
         self.wc('#include "util/ascii_utils.h"')
         self.wc('#include "vulkan/vulkan.h"')
