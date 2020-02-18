@@ -245,6 +245,7 @@ void ArrayToStringJson(FILE*                            outputFile,
     }
     else
     {
+        uint64_t base_addr = reinterpret_cast<uint64_t>(array->GetPointer());
         std::string full_type_name_str = full_type_name;
         if (*full_type_name_str.rbegin() == '*')
         {
@@ -270,8 +271,8 @@ void ArrayToStringJson(FILE*                            outputFile,
             OutputStringJson(outputFile, "]\",\n");
             IndentSpacesJson(outputFile, indent);
             OutputStringJson(outputFile, "\"address\" : \"");
-            // This strange expression takes the address of the start of the array and adds the offset of the current item
-            AddrToStringJson(outputFile, array->GetAddress() + (uint64_t)(array->GetPointer() + j) - (uint64_t)array->GetPointer());
+            // The address of the current element is the address of the start of the array plus the offset of the current item
+            AddrToStringJson(outputFile, array->GetAddress() + reinterpret_cast<uint64_t>(array->GetPointer() + j) - base_addr);
             OutputStringJson(outputFile, "\",\n");
             IndentSpacesJson(outputFile, indent);
             OutputStringJson(outputFile, "\"value\" : ");
