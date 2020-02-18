@@ -30,9 +30,9 @@ from vulkan_struct_decoders_forward_generator import VulkanStructDecodersForward
 from vulkan_struct_decoders_header_generator import VulkanStructDecodersHeaderGenerator,VulkanStructDecodersHeaderGeneratorOptions
 from decode_pnext_struct_generator import DecodePNextStructGenerator,DecodePNextStructGeneratorOptions
 
-# Enum to ascii utility
-from vulkan_ascii_enum_generator_h import VulkanAsciiEnumGeneratorH,VulkanAsciiEnumGeneratorOptionsH
-from vulkan_ascii_enum_generator_cpp import VulkanAsciiEnumGeneratorCpp,VulkanAsciiEnumGeneratorOptionsCpp
+# Enum output utility
+from vulkan_enum_output_generator_h import VulkanEnumOutputGeneratorH,VulkanEnumOutputGeneratorOptionsH
+from vulkan_enum_output_generator_cpp import VulkanEnumOutputGeneratorCpp,VulkanEnumOutputGeneratorOptionsCpp
 
 # Structure to ascii/json utility files
 from vulkan_ascii_struct_generator import VulkanAsciiStructGenerator,VulkanAsciiStructGeneratorOptions
@@ -233,10 +233,10 @@ def makeGenOpts(args):
         protectFeature    = False)
     ]
 
-    genOpts['generated_vulkan_ascii_enum_util.h'] = [
-        VulkanAsciiEnumGeneratorH,
-        VulkanAsciiEnumGeneratorOptionsH(
-        filename          = 'generated_vulkan_ascii_enum_util.h',
+    genOpts['generated_vulkan_enum_output_util.h'] = [
+        VulkanEnumOutputGeneratorH,
+        VulkanEnumOutputGeneratorOptionsH(
+        filename          = 'generated_vulkan_enum_output_util.h',
         directory         = directory,
         blacklists        = blacklists,
         platformTypes     = platformTypes,
@@ -245,10 +245,10 @@ def makeGenOpts(args):
         protectFeature    = False)
     ]
 
-    genOpts['generated_vulkan_ascii_enum_util.cpp'] = [
-        VulkanAsciiEnumGeneratorCpp,
-        VulkanAsciiEnumGeneratorOptionsCpp(
-        filename          = 'generated_vulkan_ascii_enum_util.cpp',
+    genOpts['generated_vulkan_enum_output_util.cpp'] = [
+        VulkanEnumOutputGeneratorCpp,
+        VulkanEnumOutputGeneratorOptionsCpp(
+        filename          = 'generated_vulkan_enum_output_util.cpp',
         directory         = directory,
         blacklists        = blacklists,
         platformTypes     = platformTypes,

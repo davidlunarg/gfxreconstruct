@@ -20,10 +20,10 @@
 **
 */
 
-#include "generated/generated_vulkan_json_consumer.h"
-#include "generated/generated_vulkan_ascii_enum_util.h"
-#include "generated/generated_vulkan_json_struct_util.h"
 #include "format/platform_types.h"
+#include "generated/generated_vulkan_enum_output_util.h"
+#include "generated/generated_vulkan_json_consumer.h"
+#include "generated/generated_vulkan_json_struct_util.h"
 #include "util/defines.h"
 #include "util/json_utils.h"
 #include "vulkan/vulkan.h"
