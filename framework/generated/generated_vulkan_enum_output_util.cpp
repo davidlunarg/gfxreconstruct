@@ -30,7 +30,7 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
-void EnumToStringVkPipelineCacheHeaderVersion(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPipelineCacheHeaderVersion(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPipelineCacheHeaderVersion e = static_cast<VkPipelineCacheHeaderVersion>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -45,7 +45,7 @@ void EnumToStringVkPipelineCacheHeaderVersion(FILE* outputFile, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkResult(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkResult(FILE* outputFile, uint32_t enum_uint32)
 {
     VkResult e = static_cast<VkResult>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -153,7 +153,7 @@ void EnumToStringVkResult(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkStructureType(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkStructureType(FILE* outputFile, uint32_t enum_uint32)
 {
     VkStructureType e = static_cast<VkStructureType>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -1308,7 +1308,7 @@ void EnumToStringVkStructureType(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSystemAllocationScope(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSystemAllocationScope(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSystemAllocationScope e = static_cast<VkSystemAllocationScope>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -1335,7 +1335,7 @@ void EnumToStringVkSystemAllocationScope(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkInternalAllocationType(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkInternalAllocationType(FILE* outputFile, uint32_t enum_uint32)
 {
     VkInternalAllocationType e = static_cast<VkInternalAllocationType>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -1350,7 +1350,7 @@ void EnumToStringVkInternalAllocationType(FILE* outputFile, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkFormat(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkFormat(FILE* outputFile, uint32_t enum_uint32)
 {
     VkFormat e = static_cast<VkFormat>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2085,7 +2085,7 @@ void EnumToStringVkFormat(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkFormatFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkFormatFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkFormatFeatureFlagBits e = static_cast<VkFormatFeatureFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2172,7 +2172,7 @@ void EnumToStringVkFormatFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageType(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkImageType(FILE* outputFile, uint32_t enum_uint32)
 {
     VkImageType e = static_cast<VkImageType>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2193,7 +2193,7 @@ void EnumToStringVkImageType(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageTiling(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkImageTiling(FILE* outputFile, uint32_t enum_uint32)
 {
     VkImageTiling e = static_cast<VkImageTiling>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2214,7 +2214,7 @@ void EnumToStringVkImageTiling(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageUsageFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkImageUsageFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkImageUsageFlagBits e = static_cast<VkImageUsageFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2256,7 +2256,7 @@ void EnumToStringVkImageUsageFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkImageCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkImageCreateFlagBits e = static_cast<VkImageCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2313,7 +2313,7 @@ void EnumToStringVkImageCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSampleCountFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSampleCountFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSampleCountFlagBits e = static_cast<VkSampleCountFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2346,7 +2346,7 @@ void EnumToStringVkSampleCountFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkPhysicalDeviceType(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPhysicalDeviceType(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPhysicalDeviceType e = static_cast<VkPhysicalDeviceType>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2373,7 +2373,7 @@ void EnumToStringVkPhysicalDeviceType(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkQueueFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkQueueFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkQueueFlagBits e = static_cast<VkQueueFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2400,7 +2400,7 @@ void EnumToStringVkQueueFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkMemoryPropertyFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkMemoryPropertyFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkMemoryPropertyFlagBits e = static_cast<VkMemoryPropertyFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2436,7 +2436,7 @@ void EnumToStringVkMemoryPropertyFlagBits(FILE* outputFile, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkMemoryHeapFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkMemoryHeapFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkMemoryHeapFlagBits e = static_cast<VkMemoryHeapFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2454,7 +2454,7 @@ void EnumToStringVkMemoryHeapFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDeviceQueueCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDeviceQueueCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDeviceQueueCreateFlagBits e = static_cast<VkDeviceQueueCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2469,7 +2469,7 @@ void EnumToStringVkDeviceQueueCreateFlagBits(FILE* outputFile, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkPipelineStageFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPipelineStageFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPipelineStageFlagBits e = static_cast<VkPipelineStageFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2559,7 +2559,7 @@ void EnumToStringVkPipelineStageFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageAspectFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkImageAspectFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkImageAspectFlagBits e = static_cast<VkImageAspectFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2604,7 +2604,7 @@ void EnumToStringVkImageAspectFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSparseImageFormatFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSparseImageFormatFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSparseImageFormatFlagBits e = static_cast<VkSparseImageFormatFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2625,7 +2625,7 @@ void EnumToStringVkSparseImageFormatFlagBits(FILE* outputFile, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkSparseMemoryBindFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSparseMemoryBindFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSparseMemoryBindFlagBits e = static_cast<VkSparseMemoryBindFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2640,7 +2640,7 @@ void EnumToStringVkSparseMemoryBindFlagBits(FILE* outputFile, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkFenceCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkFenceCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkFenceCreateFlagBits e = static_cast<VkFenceCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2655,7 +2655,7 @@ void EnumToStringVkFenceCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkQueryType(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkQueryType(FILE* outputFile, uint32_t enum_uint32)
 {
     VkQueryType e = static_cast<VkQueryType>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2685,7 +2685,7 @@ void EnumToStringVkQueryType(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkQueryPipelineStatisticFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkQueryPipelineStatisticFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkQueryPipelineStatisticFlagBits e = static_cast<VkQueryPipelineStatisticFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2730,7 +2730,7 @@ void EnumToStringVkQueryPipelineStatisticFlagBits(FILE* outputFile, uint32_t enu
     }
 }
 
-void EnumToStringVkQueryResultFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkQueryResultFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkQueryResultFlagBits e = static_cast<VkQueryResultFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2754,7 +2754,7 @@ void EnumToStringVkQueryResultFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkBufferCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkBufferCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkBufferCreateFlagBits e = static_cast<VkBufferCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2781,7 +2781,7 @@ void EnumToStringVkBufferCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkBufferUsageFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkBufferUsageFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkBufferUsageFlagBits e = static_cast<VkBufferUsageFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2835,7 +2835,7 @@ void EnumToStringVkBufferUsageFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSharingMode(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSharingMode(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSharingMode e = static_cast<VkSharingMode>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2853,7 +2853,7 @@ void EnumToStringVkSharingMode(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageLayout(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkImageLayout(FILE* outputFile, uint32_t enum_uint32)
 {
     VkImageLayout e = static_cast<VkImageLayout>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2910,7 +2910,7 @@ void EnumToStringVkImageLayout(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkImageViewCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkImageViewCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkImageViewCreateFlagBits e = static_cast<VkImageViewCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2925,7 +2925,7 @@ void EnumToStringVkImageViewCreateFlagBits(FILE* outputFile, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkImageViewType(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkImageViewType(FILE* outputFile, uint32_t enum_uint32)
 {
     VkImageViewType e = static_cast<VkImageViewType>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2958,7 +2958,7 @@ void EnumToStringVkImageViewType(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkComponentSwizzle(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkComponentSwizzle(FILE* outputFile, uint32_t enum_uint32)
 {
     VkComponentSwizzle e = static_cast<VkComponentSwizzle>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -2991,14 +2991,14 @@ void EnumToStringVkComponentSwizzle(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkShaderModuleCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkShaderModuleCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkShaderModuleCreateFlagBits e = static_cast<VkShaderModuleCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
     fprintf(outputFile, "UNKNOWN");
 }
 
-void EnumToStringVkPipelineCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPipelineCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPipelineCreateFlagBits e = static_cast<VkPipelineCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3034,7 +3034,7 @@ void EnumToStringVkPipelineCreateFlagBits(FILE* outputFile, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkPipelineShaderStageCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPipelineShaderStageCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPipelineShaderStageCreateFlagBits e = static_cast<VkPipelineShaderStageCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3052,7 +3052,7 @@ void EnumToStringVkPipelineShaderStageCreateFlagBits(FILE* outputFile, uint32_t 
     }
 }
 
-void EnumToStringVkShaderStageFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkShaderStageFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkShaderStageFlagBits e = static_cast<VkShaderStageFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3112,7 +3112,7 @@ void EnumToStringVkShaderStageFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkVertexInputRate(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkVertexInputRate(FILE* outputFile, uint32_t enum_uint32)
 {
     VkVertexInputRate e = static_cast<VkVertexInputRate>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3130,7 +3130,7 @@ void EnumToStringVkVertexInputRate(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkPrimitiveTopology(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPrimitiveTopology(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPrimitiveTopology e = static_cast<VkPrimitiveTopology>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3175,7 +3175,7 @@ void EnumToStringVkPrimitiveTopology(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkPolygonMode(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPolygonMode(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPolygonMode e = static_cast<VkPolygonMode>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3199,7 +3199,7 @@ void EnumToStringVkPolygonMode(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCullModeFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkCullModeFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkCullModeFlagBits e = static_cast<VkCullModeFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3223,7 +3223,7 @@ void EnumToStringVkCullModeFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkFrontFace(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkFrontFace(FILE* outputFile, uint32_t enum_uint32)
 {
     VkFrontFace e = static_cast<VkFrontFace>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3241,7 +3241,7 @@ void EnumToStringVkFrontFace(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCompareOp(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkCompareOp(FILE* outputFile, uint32_t enum_uint32)
 {
     VkCompareOp e = static_cast<VkCompareOp>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3277,7 +3277,7 @@ void EnumToStringVkCompareOp(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkStencilOp(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkStencilOp(FILE* outputFile, uint32_t enum_uint32)
 {
     VkStencilOp e = static_cast<VkStencilOp>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3313,7 +3313,7 @@ void EnumToStringVkStencilOp(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkLogicOp(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkLogicOp(FILE* outputFile, uint32_t enum_uint32)
 {
     VkLogicOp e = static_cast<VkLogicOp>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3373,7 +3373,7 @@ void EnumToStringVkLogicOp(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkBlendFactor(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkBlendFactor(FILE* outputFile, uint32_t enum_uint32)
 {
     VkBlendFactor e = static_cast<VkBlendFactor>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3442,7 +3442,7 @@ void EnumToStringVkBlendFactor(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkBlendOp(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkBlendOp(FILE* outputFile, uint32_t enum_uint32)
 {
     VkBlendOp e = static_cast<VkBlendOp>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3607,7 +3607,7 @@ void EnumToStringVkBlendOp(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkColorComponentFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkColorComponentFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkColorComponentFlagBits e = static_cast<VkColorComponentFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3631,7 +3631,7 @@ void EnumToStringVkColorComponentFlagBits(FILE* outputFile, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkDynamicState(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDynamicState(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDynamicState e = static_cast<VkDynamicState>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3691,7 +3691,7 @@ void EnumToStringVkDynamicState(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSamplerCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSamplerCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSamplerCreateFlagBits e = static_cast<VkSamplerCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3709,7 +3709,7 @@ void EnumToStringVkSamplerCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkFilter(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkFilter(FILE* outputFile, uint32_t enum_uint32)
 {
     VkFilter e = static_cast<VkFilter>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3730,7 +3730,7 @@ void EnumToStringVkFilter(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSamplerMipmapMode(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSamplerMipmapMode(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSamplerMipmapMode e = static_cast<VkSamplerMipmapMode>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3748,7 +3748,7 @@ void EnumToStringVkSamplerMipmapMode(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSamplerAddressMode(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSamplerAddressMode(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSamplerAddressMode e = static_cast<VkSamplerAddressMode>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3775,7 +3775,7 @@ void EnumToStringVkSamplerAddressMode(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkBorderColor(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkBorderColor(FILE* outputFile, uint32_t enum_uint32)
 {
     VkBorderColor e = static_cast<VkBorderColor>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3805,7 +3805,7 @@ void EnumToStringVkBorderColor(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDescriptorSetLayoutCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDescriptorSetLayoutCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDescriptorSetLayoutCreateFlagBits e = static_cast<VkDescriptorSetLayoutCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3823,7 +3823,7 @@ void EnumToStringVkDescriptorSetLayoutCreateFlagBits(FILE* outputFile, uint32_t 
     }
 }
 
-void EnumToStringVkDescriptorType(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDescriptorType(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDescriptorType e = static_cast<VkDescriptorType>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3874,7 +3874,7 @@ void EnumToStringVkDescriptorType(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDescriptorPoolCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDescriptorPoolCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDescriptorPoolCreateFlagBits e = static_cast<VkDescriptorPoolCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3892,7 +3892,7 @@ void EnumToStringVkDescriptorPoolCreateFlagBits(FILE* outputFile, uint32_t enum_
     }
 }
 
-void EnumToStringVkFramebufferCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkFramebufferCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkFramebufferCreateFlagBits e = static_cast<VkFramebufferCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3907,14 +3907,14 @@ void EnumToStringVkFramebufferCreateFlagBits(FILE* outputFile, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkRenderPassCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkRenderPassCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkRenderPassCreateFlagBits e = static_cast<VkRenderPassCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
     fprintf(outputFile, "UNKNOWN");
 }
 
-void EnumToStringVkAttachmentDescriptionFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkAttachmentDescriptionFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkAttachmentDescriptionFlagBits e = static_cast<VkAttachmentDescriptionFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3929,7 +3929,7 @@ void EnumToStringVkAttachmentDescriptionFlagBits(FILE* outputFile, uint32_t enum
     }
 }
 
-void EnumToStringVkAttachmentLoadOp(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkAttachmentLoadOp(FILE* outputFile, uint32_t enum_uint32)
 {
     VkAttachmentLoadOp e = static_cast<VkAttachmentLoadOp>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3950,7 +3950,7 @@ void EnumToStringVkAttachmentLoadOp(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkAttachmentStoreOp(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkAttachmentStoreOp(FILE* outputFile, uint32_t enum_uint32)
 {
     VkAttachmentStoreOp e = static_cast<VkAttachmentStoreOp>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3968,7 +3968,7 @@ void EnumToStringVkAttachmentStoreOp(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSubpassDescriptionFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSubpassDescriptionFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSubpassDescriptionFlagBits e = static_cast<VkSubpassDescriptionFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -3986,7 +3986,7 @@ void EnumToStringVkSubpassDescriptionFlagBits(FILE* outputFile, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkPipelineBindPoint(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPipelineBindPoint(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPipelineBindPoint e = static_cast<VkPipelineBindPoint>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4007,7 +4007,7 @@ void EnumToStringVkPipelineBindPoint(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkAccessFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkAccessFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkAccessFlagBits e = static_cast<VkAccessFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4103,7 +4103,7 @@ void EnumToStringVkAccessFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDependencyFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDependencyFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDependencyFlagBits e = static_cast<VkDependencyFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4124,7 +4124,7 @@ void EnumToStringVkDependencyFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCommandPoolCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkCommandPoolCreateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkCommandPoolCreateFlagBits e = static_cast<VkCommandPoolCreateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4145,7 +4145,7 @@ void EnumToStringVkCommandPoolCreateFlagBits(FILE* outputFile, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkCommandPoolResetFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkCommandPoolResetFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkCommandPoolResetFlagBits e = static_cast<VkCommandPoolResetFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4160,7 +4160,7 @@ void EnumToStringVkCommandPoolResetFlagBits(FILE* outputFile, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkCommandBufferLevel(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkCommandBufferLevel(FILE* outputFile, uint32_t enum_uint32)
 {
     VkCommandBufferLevel e = static_cast<VkCommandBufferLevel>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4178,7 +4178,7 @@ void EnumToStringVkCommandBufferLevel(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCommandBufferUsageFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkCommandBufferUsageFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkCommandBufferUsageFlagBits e = static_cast<VkCommandBufferUsageFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4199,7 +4199,7 @@ void EnumToStringVkCommandBufferUsageFlagBits(FILE* outputFile, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkQueryControlFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkQueryControlFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkQueryControlFlagBits e = static_cast<VkQueryControlFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4214,7 +4214,7 @@ void EnumToStringVkQueryControlFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCommandBufferResetFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkCommandBufferResetFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkCommandBufferResetFlagBits e = static_cast<VkCommandBufferResetFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4229,7 +4229,7 @@ void EnumToStringVkCommandBufferResetFlagBits(FILE* outputFile, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkStencilFaceFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkStencilFaceFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkStencilFaceFlagBits e = static_cast<VkStencilFaceFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4250,7 +4250,7 @@ void EnumToStringVkStencilFaceFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkIndexType(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkIndexType(FILE* outputFile, uint32_t enum_uint32)
 {
     VkIndexType e = static_cast<VkIndexType>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4274,7 +4274,7 @@ void EnumToStringVkIndexType(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSubpassContents(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSubpassContents(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSubpassContents e = static_cast<VkSubpassContents>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4292,7 +4292,7 @@ void EnumToStringVkSubpassContents(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkObjectType(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkObjectType(FILE* outputFile, uint32_t enum_uint32)
 {
     VkObjectType e = static_cast<VkObjectType>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4421,7 +4421,7 @@ void EnumToStringVkObjectType(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkVendorId(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkVendorId(FILE* outputFile, uint32_t enum_uint32)
 {
     VkVendorId e = static_cast<VkVendorId>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4442,7 +4442,7 @@ void EnumToStringVkVendorId(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSubgroupFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSubgroupFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSubgroupFeatureFlagBits e = static_cast<VkSubgroupFeatureFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4481,7 +4481,7 @@ void EnumToStringVkSubgroupFeatureFlagBits(FILE* outputFile, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkPeerMemoryFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPeerMemoryFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPeerMemoryFeatureFlagBits e = static_cast<VkPeerMemoryFeatureFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4505,7 +4505,7 @@ void EnumToStringVkPeerMemoryFeatureFlagBits(FILE* outputFile, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkMemoryAllocateFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkMemoryAllocateFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkMemoryAllocateFlagBits e = static_cast<VkMemoryAllocateFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4520,7 +4520,7 @@ void EnumToStringVkMemoryAllocateFlagBits(FILE* outputFile, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkPointClippingBehavior(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPointClippingBehavior(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPointClippingBehavior e = static_cast<VkPointClippingBehavior>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4538,7 +4538,7 @@ void EnumToStringVkPointClippingBehavior(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkTessellationDomainOrigin(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkTessellationDomainOrigin(FILE* outputFile, uint32_t enum_uint32)
 {
     VkTessellationDomainOrigin e = static_cast<VkTessellationDomainOrigin>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4556,7 +4556,7 @@ void EnumToStringVkTessellationDomainOrigin(FILE* outputFile, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkSamplerYcbcrModelConversion(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSamplerYcbcrModelConversion(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSamplerYcbcrModelConversion e = static_cast<VkSamplerYcbcrModelConversion>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4583,7 +4583,7 @@ void EnumToStringVkSamplerYcbcrModelConversion(FILE* outputFile, uint32_t enum_u
     }
 }
 
-void EnumToStringVkSamplerYcbcrRange(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSamplerYcbcrRange(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSamplerYcbcrRange e = static_cast<VkSamplerYcbcrRange>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4601,7 +4601,7 @@ void EnumToStringVkSamplerYcbcrRange(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkChromaLocation(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkChromaLocation(FILE* outputFile, uint32_t enum_uint32)
 {
     VkChromaLocation e = static_cast<VkChromaLocation>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4619,7 +4619,7 @@ void EnumToStringVkChromaLocation(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDescriptorUpdateTemplateType(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDescriptorUpdateTemplateType(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDescriptorUpdateTemplateType e = static_cast<VkDescriptorUpdateTemplateType>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4637,7 +4637,7 @@ void EnumToStringVkDescriptorUpdateTemplateType(FILE* outputFile, uint32_t enum_
     }
 }
 
-void EnumToStringVkExternalMemoryHandleTypeFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkExternalMemoryHandleTypeFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkExternalMemoryHandleTypeFlagBits e = static_cast<VkExternalMemoryHandleTypeFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4682,7 +4682,7 @@ void EnumToStringVkExternalMemoryHandleTypeFlagBits(FILE* outputFile, uint32_t e
     }
 }
 
-void EnumToStringVkExternalMemoryFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkExternalMemoryFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkExternalMemoryFeatureFlagBits e = static_cast<VkExternalMemoryFeatureFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4703,7 +4703,7 @@ void EnumToStringVkExternalMemoryFeatureFlagBits(FILE* outputFile, uint32_t enum
     }
 }
 
-void EnumToStringVkExternalFenceHandleTypeFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkExternalFenceHandleTypeFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkExternalFenceHandleTypeFlagBits e = static_cast<VkExternalFenceHandleTypeFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4727,7 +4727,7 @@ void EnumToStringVkExternalFenceHandleTypeFlagBits(FILE* outputFile, uint32_t en
     }
 }
 
-void EnumToStringVkExternalFenceFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkExternalFenceFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkExternalFenceFeatureFlagBits e = static_cast<VkExternalFenceFeatureFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4745,7 +4745,7 @@ void EnumToStringVkExternalFenceFeatureFlagBits(FILE* outputFile, uint32_t enum_
     }
 }
 
-void EnumToStringVkFenceImportFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkFenceImportFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkFenceImportFlagBits e = static_cast<VkFenceImportFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4760,7 +4760,7 @@ void EnumToStringVkFenceImportFlagBits(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSemaphoreImportFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSemaphoreImportFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSemaphoreImportFlagBits e = static_cast<VkSemaphoreImportFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4775,7 +4775,7 @@ void EnumToStringVkSemaphoreImportFlagBits(FILE* outputFile, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkExternalSemaphoreHandleTypeFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkExternalSemaphoreHandleTypeFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkExternalSemaphoreHandleTypeFlagBits e = static_cast<VkExternalSemaphoreHandleTypeFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4802,7 +4802,7 @@ void EnumToStringVkExternalSemaphoreHandleTypeFlagBits(FILE* outputFile, uint32_
     }
 }
 
-void EnumToStringVkExternalSemaphoreFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkExternalSemaphoreFeatureFlagBits(FILE* outputFile, uint32_t enum_uint32)
 {
     VkExternalSemaphoreFeatureFlagBits e = static_cast<VkExternalSemaphoreFeatureFlagBits>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4820,7 +4820,7 @@ void EnumToStringVkExternalSemaphoreFeatureFlagBits(FILE* outputFile, uint32_t e
     }
 }
 
-void EnumToStringVkSurfaceTransformFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSurfaceTransformFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSurfaceTransformFlagBitsKHR e = static_cast<VkSurfaceTransformFlagBitsKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4859,7 +4859,7 @@ void EnumToStringVkSurfaceTransformFlagBitsKHR(FILE* outputFile, uint32_t enum_u
     }
 }
 
-void EnumToStringVkCompositeAlphaFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkCompositeAlphaFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkCompositeAlphaFlagBitsKHR e = static_cast<VkCompositeAlphaFlagBitsKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4883,7 +4883,7 @@ void EnumToStringVkCompositeAlphaFlagBitsKHR(FILE* outputFile, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkColorSpaceKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkColorSpaceKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkColorSpaceKHR e = static_cast<VkColorSpaceKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4943,7 +4943,7 @@ void EnumToStringVkColorSpaceKHR(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkPresentModeKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPresentModeKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPresentModeKHR e = static_cast<VkPresentModeKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4973,7 +4973,7 @@ void EnumToStringVkPresentModeKHR(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSwapchainCreateFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSwapchainCreateFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSwapchainCreateFlagBitsKHR e = static_cast<VkSwapchainCreateFlagBitsKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -4994,7 +4994,7 @@ void EnumToStringVkSwapchainCreateFlagBitsKHR(FILE* outputFile, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkDeviceGroupPresentModeFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDeviceGroupPresentModeFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDeviceGroupPresentModeFlagBitsKHR e = static_cast<VkDeviceGroupPresentModeFlagBitsKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5018,7 +5018,7 @@ void EnumToStringVkDeviceGroupPresentModeFlagBitsKHR(FILE* outputFile, uint32_t 
     }
 }
 
-void EnumToStringVkDisplayPlaneAlphaFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDisplayPlaneAlphaFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDisplayPlaneAlphaFlagBitsKHR e = static_cast<VkDisplayPlaneAlphaFlagBitsKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5042,7 +5042,7 @@ void EnumToStringVkDisplayPlaneAlphaFlagBitsKHR(FILE* outputFile, uint32_t enum_
     }
 }
 
-void EnumToStringVkDriverIdKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDriverIdKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDriverIdKHR e = static_cast<VkDriverIdKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5090,7 +5090,7 @@ void EnumToStringVkDriverIdKHR(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkShaderFloatControlsIndependenceKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkShaderFloatControlsIndependenceKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkShaderFloatControlsIndependenceKHR e = static_cast<VkShaderFloatControlsIndependenceKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5111,7 +5111,7 @@ void EnumToStringVkShaderFloatControlsIndependenceKHR(FILE* outputFile, uint32_t
     }
 }
 
-void EnumToStringVkResolveModeFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkResolveModeFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkResolveModeFlagBitsKHR e = static_cast<VkResolveModeFlagBitsKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5138,7 +5138,7 @@ void EnumToStringVkResolveModeFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkSemaphoreTypeKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSemaphoreTypeKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSemaphoreTypeKHR e = static_cast<VkSemaphoreTypeKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5156,7 +5156,7 @@ void EnumToStringVkSemaphoreTypeKHR(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSemaphoreWaitFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSemaphoreWaitFlagBitsKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSemaphoreWaitFlagBitsKHR e = static_cast<VkSemaphoreWaitFlagBitsKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5171,7 +5171,7 @@ void EnumToStringVkSemaphoreWaitFlagBitsKHR(FILE* outputFile, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkPipelineExecutableStatisticFormatKHR(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPipelineExecutableStatisticFormatKHR(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPipelineExecutableStatisticFormatKHR e = static_cast<VkPipelineExecutableStatisticFormatKHR>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5195,7 +5195,7 @@ void EnumToStringVkPipelineExecutableStatisticFormatKHR(FILE* outputFile, uint32
     }
 }
 
-void EnumToStringVkDebugReportObjectTypeEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDebugReportObjectTypeEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDebugReportObjectTypeEXT e = static_cast<VkDebugReportObjectTypeEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5318,7 +5318,7 @@ void EnumToStringVkDebugReportObjectTypeEXT(FILE* outputFile, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkDebugReportFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDebugReportFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDebugReportFlagBitsEXT e = static_cast<VkDebugReportFlagBitsEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5345,7 +5345,7 @@ void EnumToStringVkDebugReportFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkRasterizationOrderAMD(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkRasterizationOrderAMD(FILE* outputFile, uint32_t enum_uint32)
 {
     VkRasterizationOrderAMD e = static_cast<VkRasterizationOrderAMD>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5363,7 +5363,7 @@ void EnumToStringVkRasterizationOrderAMD(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkShaderInfoTypeAMD(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkShaderInfoTypeAMD(FILE* outputFile, uint32_t enum_uint32)
 {
     VkShaderInfoTypeAMD e = static_cast<VkShaderInfoTypeAMD>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5384,7 +5384,7 @@ void EnumToStringVkShaderInfoTypeAMD(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkExternalMemoryHandleTypeFlagBitsNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkExternalMemoryHandleTypeFlagBitsNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkExternalMemoryHandleTypeFlagBitsNV e = static_cast<VkExternalMemoryHandleTypeFlagBitsNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5408,7 +5408,7 @@ void EnumToStringVkExternalMemoryHandleTypeFlagBitsNV(FILE* outputFile, uint32_t
     }
 }
 
-void EnumToStringVkExternalMemoryFeatureFlagBitsNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkExternalMemoryFeatureFlagBitsNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkExternalMemoryFeatureFlagBitsNV e = static_cast<VkExternalMemoryFeatureFlagBitsNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5429,7 +5429,7 @@ void EnumToStringVkExternalMemoryFeatureFlagBitsNV(FILE* outputFile, uint32_t en
     }
 }
 
-void EnumToStringVkValidationCheckEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkValidationCheckEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkValidationCheckEXT e = static_cast<VkValidationCheckEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5447,7 +5447,7 @@ void EnumToStringVkValidationCheckEXT(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkConditionalRenderingFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkConditionalRenderingFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkConditionalRenderingFlagBitsEXT e = static_cast<VkConditionalRenderingFlagBitsEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5462,7 +5462,7 @@ void EnumToStringVkConditionalRenderingFlagBitsEXT(FILE* outputFile, uint32_t en
     }
 }
 
-void EnumToStringVkIndirectCommandsLayoutUsageFlagBitsNVX(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkIndirectCommandsLayoutUsageFlagBitsNVX(FILE* outputFile, uint32_t enum_uint32)
 {
     VkIndirectCommandsLayoutUsageFlagBitsNVX e = static_cast<VkIndirectCommandsLayoutUsageFlagBitsNVX>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5486,7 +5486,7 @@ void EnumToStringVkIndirectCommandsLayoutUsageFlagBitsNVX(FILE* outputFile, uint
     }
 }
 
-void EnumToStringVkObjectEntryUsageFlagBitsNVX(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkObjectEntryUsageFlagBitsNVX(FILE* outputFile, uint32_t enum_uint32)
 {
     VkObjectEntryUsageFlagBitsNVX e = static_cast<VkObjectEntryUsageFlagBitsNVX>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5504,7 +5504,7 @@ void EnumToStringVkObjectEntryUsageFlagBitsNVX(FILE* outputFile, uint32_t enum_u
     }
 }
 
-void EnumToStringVkIndirectCommandsTokenTypeNVX(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkIndirectCommandsTokenTypeNVX(FILE* outputFile, uint32_t enum_uint32)
 {
     VkIndirectCommandsTokenTypeNVX e = static_cast<VkIndirectCommandsTokenTypeNVX>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5540,7 +5540,7 @@ void EnumToStringVkIndirectCommandsTokenTypeNVX(FILE* outputFile, uint32_t enum_
     }
 }
 
-void EnumToStringVkObjectEntryTypeNVX(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkObjectEntryTypeNVX(FILE* outputFile, uint32_t enum_uint32)
 {
     VkObjectEntryTypeNVX e = static_cast<VkObjectEntryTypeNVX>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5567,7 +5567,7 @@ void EnumToStringVkObjectEntryTypeNVX(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkSurfaceCounterFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSurfaceCounterFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSurfaceCounterFlagBitsEXT e = static_cast<VkSurfaceCounterFlagBitsEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5582,7 +5582,7 @@ void EnumToStringVkSurfaceCounterFlagBitsEXT(FILE* outputFile, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkDisplayPowerStateEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDisplayPowerStateEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDisplayPowerStateEXT e = static_cast<VkDisplayPowerStateEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5603,7 +5603,7 @@ void EnumToStringVkDisplayPowerStateEXT(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDeviceEventTypeEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDeviceEventTypeEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDeviceEventTypeEXT e = static_cast<VkDeviceEventTypeEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5618,7 +5618,7 @@ void EnumToStringVkDeviceEventTypeEXT(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkDisplayEventTypeEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDisplayEventTypeEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDisplayEventTypeEXT e = static_cast<VkDisplayEventTypeEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5633,7 +5633,7 @@ void EnumToStringVkDisplayEventTypeEXT(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkViewportCoordinateSwizzleNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkViewportCoordinateSwizzleNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkViewportCoordinateSwizzleNV e = static_cast<VkViewportCoordinateSwizzleNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5669,7 +5669,7 @@ void EnumToStringVkViewportCoordinateSwizzleNV(FILE* outputFile, uint32_t enum_u
     }
 }
 
-void EnumToStringVkDiscardRectangleModeEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDiscardRectangleModeEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDiscardRectangleModeEXT e = static_cast<VkDiscardRectangleModeEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5687,7 +5687,7 @@ void EnumToStringVkDiscardRectangleModeEXT(FILE* outputFile, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkConservativeRasterizationModeEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkConservativeRasterizationModeEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkConservativeRasterizationModeEXT e = static_cast<VkConservativeRasterizationModeEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5708,7 +5708,7 @@ void EnumToStringVkConservativeRasterizationModeEXT(FILE* outputFile, uint32_t e
     }
 }
 
-void EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDebugUtilsMessageSeverityFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDebugUtilsMessageSeverityFlagBitsEXT e = static_cast<VkDebugUtilsMessageSeverityFlagBitsEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5732,7 +5732,7 @@ void EnumToStringVkDebugUtilsMessageSeverityFlagBitsEXT(FILE* outputFile, uint32
     }
 }
 
-void EnumToStringVkDebugUtilsMessageTypeFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDebugUtilsMessageTypeFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDebugUtilsMessageTypeFlagBitsEXT e = static_cast<VkDebugUtilsMessageTypeFlagBitsEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5753,7 +5753,7 @@ void EnumToStringVkDebugUtilsMessageTypeFlagBitsEXT(FILE* outputFile, uint32_t e
     }
 }
 
-void EnumToStringVkSamplerReductionModeEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkSamplerReductionModeEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkSamplerReductionModeEXT e = static_cast<VkSamplerReductionModeEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5774,7 +5774,7 @@ void EnumToStringVkSamplerReductionModeEXT(FILE* outputFile, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkBlendOverlapEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkBlendOverlapEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkBlendOverlapEXT e = static_cast<VkBlendOverlapEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5795,7 +5795,7 @@ void EnumToStringVkBlendOverlapEXT(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCoverageModulationModeNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkCoverageModulationModeNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkCoverageModulationModeNV e = static_cast<VkCoverageModulationModeNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5819,7 +5819,7 @@ void EnumToStringVkCoverageModulationModeNV(FILE* outputFile, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkValidationCacheHeaderVersionEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkValidationCacheHeaderVersionEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkValidationCacheHeaderVersionEXT e = static_cast<VkValidationCacheHeaderVersionEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5834,7 +5834,7 @@ void EnumToStringVkValidationCacheHeaderVersionEXT(FILE* outputFile, uint32_t en
     }
 }
 
-void EnumToStringVkDescriptorBindingFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkDescriptorBindingFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkDescriptorBindingFlagBitsEXT e = static_cast<VkDescriptorBindingFlagBitsEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5858,7 +5858,7 @@ void EnumToStringVkDescriptorBindingFlagBitsEXT(FILE* outputFile, uint32_t enum_
     }
 }
 
-void EnumToStringVkShadingRatePaletteEntryNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkShadingRatePaletteEntryNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkShadingRatePaletteEntryNV e = static_cast<VkShadingRatePaletteEntryNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5906,7 +5906,7 @@ void EnumToStringVkShadingRatePaletteEntryNV(FILE* outputFile, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkCoarseSampleOrderTypeNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkCoarseSampleOrderTypeNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkCoarseSampleOrderTypeNV e = static_cast<VkCoarseSampleOrderTypeNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5930,7 +5930,7 @@ void EnumToStringVkCoarseSampleOrderTypeNV(FILE* outputFile, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkAccelerationStructureTypeNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkAccelerationStructureTypeNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkAccelerationStructureTypeNV e = static_cast<VkAccelerationStructureTypeNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5948,7 +5948,7 @@ void EnumToStringVkAccelerationStructureTypeNV(FILE* outputFile, uint32_t enum_u
     }
 }
 
-void EnumToStringVkRayTracingShaderGroupTypeNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkRayTracingShaderGroupTypeNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkRayTracingShaderGroupTypeNV e = static_cast<VkRayTracingShaderGroupTypeNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5969,7 +5969,7 @@ void EnumToStringVkRayTracingShaderGroupTypeNV(FILE* outputFile, uint32_t enum_u
     }
 }
 
-void EnumToStringVkGeometryTypeNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkGeometryTypeNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkGeometryTypeNV e = static_cast<VkGeometryTypeNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -5987,7 +5987,7 @@ void EnumToStringVkGeometryTypeNV(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkGeometryFlagBitsNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkGeometryFlagBitsNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkGeometryFlagBitsNV e = static_cast<VkGeometryFlagBitsNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6005,7 +6005,7 @@ void EnumToStringVkGeometryFlagBitsNV(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkGeometryInstanceFlagBitsNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkGeometryInstanceFlagBitsNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkGeometryInstanceFlagBitsNV e = static_cast<VkGeometryInstanceFlagBitsNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6029,7 +6029,7 @@ void EnumToStringVkGeometryInstanceFlagBitsNV(FILE* outputFile, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkBuildAccelerationStructureFlagBitsNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkBuildAccelerationStructureFlagBitsNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkBuildAccelerationStructureFlagBitsNV e = static_cast<VkBuildAccelerationStructureFlagBitsNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6056,7 +6056,7 @@ void EnumToStringVkBuildAccelerationStructureFlagBitsNV(FILE* outputFile, uint32
     }
 }
 
-void EnumToStringVkCopyAccelerationStructureModeNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkCopyAccelerationStructureModeNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkCopyAccelerationStructureModeNV e = static_cast<VkCopyAccelerationStructureModeNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6074,7 +6074,7 @@ void EnumToStringVkCopyAccelerationStructureModeNV(FILE* outputFile, uint32_t en
     }
 }
 
-void EnumToStringVkAccelerationStructureMemoryRequirementsTypeNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkAccelerationStructureMemoryRequirementsTypeNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkAccelerationStructureMemoryRequirementsTypeNV e = static_cast<VkAccelerationStructureMemoryRequirementsTypeNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6095,7 +6095,7 @@ void EnumToStringVkAccelerationStructureMemoryRequirementsTypeNV(FILE* outputFil
     }
 }
 
-void EnumToStringVkQueueGlobalPriorityEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkQueueGlobalPriorityEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkQueueGlobalPriorityEXT e = static_cast<VkQueueGlobalPriorityEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6119,14 +6119,14 @@ void EnumToStringVkQueueGlobalPriorityEXT(FILE* outputFile, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkPipelineCompilerControlFlagBitsAMD(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPipelineCompilerControlFlagBitsAMD(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPipelineCompilerControlFlagBitsAMD e = static_cast<VkPipelineCompilerControlFlagBitsAMD>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
     fprintf(outputFile, "UNKNOWN");
 }
 
-void EnumToStringVkTimeDomainEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkTimeDomainEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkTimeDomainEXT e = static_cast<VkTimeDomainEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6150,7 +6150,7 @@ void EnumToStringVkTimeDomainEXT(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkMemoryOverallocationBehaviorAMD(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkMemoryOverallocationBehaviorAMD(FILE* outputFile, uint32_t enum_uint32)
 {
     VkMemoryOverallocationBehaviorAMD e = static_cast<VkMemoryOverallocationBehaviorAMD>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6171,7 +6171,7 @@ void EnumToStringVkMemoryOverallocationBehaviorAMD(FILE* outputFile, uint32_t en
     }
 }
 
-void EnumToStringVkPipelineCreationFeedbackFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPipelineCreationFeedbackFlagBitsEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPipelineCreationFeedbackFlagBitsEXT e = static_cast<VkPipelineCreationFeedbackFlagBitsEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6192,7 +6192,7 @@ void EnumToStringVkPipelineCreationFeedbackFlagBitsEXT(FILE* outputFile, uint32_
     }
 }
 
-void EnumToStringVkPerformanceConfigurationTypeINTEL(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPerformanceConfigurationTypeINTEL(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPerformanceConfigurationTypeINTEL e = static_cast<VkPerformanceConfigurationTypeINTEL>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6207,7 +6207,7 @@ void EnumToStringVkPerformanceConfigurationTypeINTEL(FILE* outputFile, uint32_t 
     }
 }
 
-void EnumToStringVkQueryPoolSamplingModeINTEL(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkQueryPoolSamplingModeINTEL(FILE* outputFile, uint32_t enum_uint32)
 {
     VkQueryPoolSamplingModeINTEL e = static_cast<VkQueryPoolSamplingModeINTEL>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6222,7 +6222,7 @@ void EnumToStringVkQueryPoolSamplingModeINTEL(FILE* outputFile, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkPerformanceOverrideTypeINTEL(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPerformanceOverrideTypeINTEL(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPerformanceOverrideTypeINTEL e = static_cast<VkPerformanceOverrideTypeINTEL>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6240,7 +6240,7 @@ void EnumToStringVkPerformanceOverrideTypeINTEL(FILE* outputFile, uint32_t enum_
     }
 }
 
-void EnumToStringVkPerformanceParameterTypeINTEL(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPerformanceParameterTypeINTEL(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPerformanceParameterTypeINTEL e = static_cast<VkPerformanceParameterTypeINTEL>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6258,7 +6258,7 @@ void EnumToStringVkPerformanceParameterTypeINTEL(FILE* outputFile, uint32_t enum
     }
 }
 
-void EnumToStringVkPerformanceValueTypeINTEL(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkPerformanceValueTypeINTEL(FILE* outputFile, uint32_t enum_uint32)
 {
     VkPerformanceValueTypeINTEL e = static_cast<VkPerformanceValueTypeINTEL>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6285,14 +6285,14 @@ void EnumToStringVkPerformanceValueTypeINTEL(FILE* outputFile, uint32_t enum_uin
     }
 }
 
-void EnumToStringVkShaderCorePropertiesFlagBitsAMD(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkShaderCorePropertiesFlagBitsAMD(FILE* outputFile, uint32_t enum_uint32)
 {
     VkShaderCorePropertiesFlagBitsAMD e = static_cast<VkShaderCorePropertiesFlagBitsAMD>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
     fprintf(outputFile, "UNKNOWN");
 }
 
-void EnumToStringVkValidationFeatureEnableEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkValidationFeatureEnableEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkValidationFeatureEnableEXT e = static_cast<VkValidationFeatureEnableEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6313,7 +6313,7 @@ void EnumToStringVkValidationFeatureEnableEXT(FILE* outputFile, uint32_t enum_ui
     }
 }
 
-void EnumToStringVkValidationFeatureDisableEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkValidationFeatureDisableEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkValidationFeatureDisableEXT e = static_cast<VkValidationFeatureDisableEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6346,7 +6346,7 @@ void EnumToStringVkValidationFeatureDisableEXT(FILE* outputFile, uint32_t enum_u
     }
 }
 
-void EnumToStringVkComponentTypeNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkComponentTypeNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkComponentTypeNV e = static_cast<VkComponentTypeNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6391,7 +6391,7 @@ void EnumToStringVkComponentTypeNV(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkScopeNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkScopeNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkScopeNV e = static_cast<VkScopeNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6415,7 +6415,7 @@ void EnumToStringVkScopeNV(FILE* outputFile, uint32_t enum_uint32)
     }
 }
 
-void EnumToStringVkCoverageReductionModeNV(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkCoverageReductionModeNV(FILE* outputFile, uint32_t enum_uint32)
 {
     VkCoverageReductionModeNV e = static_cast<VkCoverageReductionModeNV>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6433,7 +6433,7 @@ void EnumToStringVkCoverageReductionModeNV(FILE* outputFile, uint32_t enum_uint3
     }
 }
 
-void EnumToStringVkFullScreenExclusiveEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkFullScreenExclusiveEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkFullScreenExclusiveEXT e = static_cast<VkFullScreenExclusiveEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6457,7 +6457,7 @@ void EnumToStringVkFullScreenExclusiveEXT(FILE* outputFile, uint32_t enum_uint32
     }
 }
 
-void EnumToStringVkLineRasterizationModeEXT(FILE* outputFile, uint32_t enum_uint32)
+void OutputEnumVkLineRasterizationModeEXT(FILE* outputFile, uint32_t enum_uint32)
 {
     VkLineRasterizationModeEXT e = static_cast<VkLineRasterizationModeEXT>(enum_uint32);
     assert(outputFile != nullptr); // RYZ
@@ -6481,100 +6481,100 @@ void EnumToStringVkLineRasterizationModeEXT(FILE* outputFile, uint32_t enum_uint
     }
 }
 
-void EnumToStringVkPeerMemoryFeatureFlagBitsKHR(FILE* outputFile, VkPeerMemoryFeatureFlagBitsKHR e)
+void OutputEnumVkPeerMemoryFeatureFlagBitsKHR(FILE* outputFile, VkPeerMemoryFeatureFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkPeerMemoryFeatureFlagBits(outputFile, e);
+    OutputEnumVkPeerMemoryFeatureFlagBits(outputFile, e);
 }
 
-void EnumToStringVkMemoryAllocateFlagBitsKHR(FILE* outputFile, VkMemoryAllocateFlagBitsKHR e)
+void OutputEnumVkMemoryAllocateFlagBitsKHR(FILE* outputFile, VkMemoryAllocateFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkMemoryAllocateFlagBits(outputFile, e);
+    OutputEnumVkMemoryAllocateFlagBits(outputFile, e);
 }
 
-void EnumToStringVkExternalMemoryHandleTypeFlagBitsKHR(FILE* outputFile, VkExternalMemoryHandleTypeFlagBitsKHR e)
+void OutputEnumVkExternalMemoryHandleTypeFlagBitsKHR(FILE* outputFile, VkExternalMemoryHandleTypeFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkExternalMemoryHandleTypeFlagBits(outputFile, e);
+    OutputEnumVkExternalMemoryHandleTypeFlagBits(outputFile, e);
 }
 
-void EnumToStringVkExternalMemoryFeatureFlagBitsKHR(FILE* outputFile, VkExternalMemoryFeatureFlagBitsKHR e)
+void OutputEnumVkExternalMemoryFeatureFlagBitsKHR(FILE* outputFile, VkExternalMemoryFeatureFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkExternalMemoryFeatureFlagBits(outputFile, e);
+    OutputEnumVkExternalMemoryFeatureFlagBits(outputFile, e);
 }
 
-void EnumToStringVkExternalSemaphoreHandleTypeFlagBitsKHR(FILE* outputFile, VkExternalSemaphoreHandleTypeFlagBitsKHR e)
+void OutputEnumVkExternalSemaphoreHandleTypeFlagBitsKHR(FILE* outputFile, VkExternalSemaphoreHandleTypeFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkExternalSemaphoreHandleTypeFlagBits(outputFile, e);
+    OutputEnumVkExternalSemaphoreHandleTypeFlagBits(outputFile, e);
 }
 
-void EnumToStringVkExternalSemaphoreFeatureFlagBitsKHR(FILE* outputFile, VkExternalSemaphoreFeatureFlagBitsKHR e)
+void OutputEnumVkExternalSemaphoreFeatureFlagBitsKHR(FILE* outputFile, VkExternalSemaphoreFeatureFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkExternalSemaphoreFeatureFlagBits(outputFile, e);
+    OutputEnumVkExternalSemaphoreFeatureFlagBits(outputFile, e);
 }
 
-void EnumToStringVkSemaphoreImportFlagBitsKHR(FILE* outputFile, VkSemaphoreImportFlagBitsKHR e)
+void OutputEnumVkSemaphoreImportFlagBitsKHR(FILE* outputFile, VkSemaphoreImportFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkSemaphoreImportFlagBits(outputFile, e);
+    OutputEnumVkSemaphoreImportFlagBits(outputFile, e);
 }
 
-void EnumToStringVkDescriptorUpdateTemplateTypeKHR(FILE* outputFile, VkDescriptorUpdateTemplateTypeKHR e)
+void OutputEnumVkDescriptorUpdateTemplateTypeKHR(FILE* outputFile, VkDescriptorUpdateTemplateTypeKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkDescriptorUpdateTemplateType(outputFile, e);
+    OutputEnumVkDescriptorUpdateTemplateType(outputFile, e);
 }
 
-void EnumToStringVkExternalFenceHandleTypeFlagBitsKHR(FILE* outputFile, VkExternalFenceHandleTypeFlagBitsKHR e)
+void OutputEnumVkExternalFenceHandleTypeFlagBitsKHR(FILE* outputFile, VkExternalFenceHandleTypeFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkExternalFenceHandleTypeFlagBits(outputFile, e);
+    OutputEnumVkExternalFenceHandleTypeFlagBits(outputFile, e);
 }
 
-void EnumToStringVkExternalFenceFeatureFlagBitsKHR(FILE* outputFile, VkExternalFenceFeatureFlagBitsKHR e)
+void OutputEnumVkExternalFenceFeatureFlagBitsKHR(FILE* outputFile, VkExternalFenceFeatureFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkExternalFenceFeatureFlagBits(outputFile, e);
+    OutputEnumVkExternalFenceFeatureFlagBits(outputFile, e);
 }
 
-void EnumToStringVkFenceImportFlagBitsKHR(FILE* outputFile, VkFenceImportFlagBitsKHR e)
+void OutputEnumVkFenceImportFlagBitsKHR(FILE* outputFile, VkFenceImportFlagBitsKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkFenceImportFlagBits(outputFile, e);
+    OutputEnumVkFenceImportFlagBits(outputFile, e);
 }
 
-void EnumToStringVkPointClippingBehaviorKHR(FILE* outputFile, VkPointClippingBehaviorKHR e)
+void OutputEnumVkPointClippingBehaviorKHR(FILE* outputFile, VkPointClippingBehaviorKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkPointClippingBehavior(outputFile, e);
+    OutputEnumVkPointClippingBehavior(outputFile, e);
 }
 
-void EnumToStringVkTessellationDomainOriginKHR(FILE* outputFile, VkTessellationDomainOriginKHR e)
+void OutputEnumVkTessellationDomainOriginKHR(FILE* outputFile, VkTessellationDomainOriginKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkTessellationDomainOrigin(outputFile, e);
+    OutputEnumVkTessellationDomainOrigin(outputFile, e);
 }
 
-void EnumToStringVkSamplerYcbcrModelConversionKHR(FILE* outputFile, VkSamplerYcbcrModelConversionKHR e)
+void OutputEnumVkSamplerYcbcrModelConversionKHR(FILE* outputFile, VkSamplerYcbcrModelConversionKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkSamplerYcbcrModelConversion(outputFile, e);
+    OutputEnumVkSamplerYcbcrModelConversion(outputFile, e);
 }
 
-void EnumToStringVkSamplerYcbcrRangeKHR(FILE* outputFile, VkSamplerYcbcrRangeKHR e)
+void OutputEnumVkSamplerYcbcrRangeKHR(FILE* outputFile, VkSamplerYcbcrRangeKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkSamplerYcbcrRange(outputFile, e);
+    OutputEnumVkSamplerYcbcrRange(outputFile, e);
 }
 
-void EnumToStringVkChromaLocationKHR(FILE* outputFile, VkChromaLocationKHR e)
+void OutputEnumVkChromaLocationKHR(FILE* outputFile, VkChromaLocationKHR e)
 {
     assert(outputFile != nullptr);
-    EnumToStringVkChromaLocation(outputFile, e);
+    OutputEnumVkChromaLocation(outputFile, e);
 }
 
 GFXRECON_END_NAMESPACE(decode)

@@ -40,14 +40,14 @@ extern bool kPrintShaderCode;
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
-typedef std::function<void(FILE*, uint32_t)> EnumToStringFuncPtr;
+typedef std::function<void(FILE*, uint32_t)> OutputEnumFuncPtr;
 
-typedef struct ScalarValueToStringStruct {
+typedef struct OutputScalarValueStructInfo {
    bool is_handle_or_addr;
    bool is_enum;
    bool is_flags;
-   EnumToStringFuncPtr enum_to_string_func;
-} ScalarValueToStringStruct;
+   OutputEnumFuncPtr enum_to_string_func;
+} OutputScalarValueStructInfo;
 
 // Function to write a std::string to the output file
 void OutputStringJson(FILE* outputFile, const std::string& s)
@@ -56,25 +56,25 @@ void OutputStringJson(FILE* outputFile, const std::string& s)
     fprintf(outputFile, "%s", s.c_str());
 }
 
-void SignedDecimalToStringJson(FILE* outputFile, int64_t n)
+void OutputSignedDecimalJson(FILE* outputFile, int64_t n)
 {
     assert(outputFile != nullptr);
     fprintf(outputFile, "%" PRId64, n);
 }
 
-void UnsignedDecimalToStringJson(FILE* outputFile, uint64_t n)
+void OutputUnsignedDecimalJson(FILE* outputFile, uint64_t n)
 {
     assert(outputFile != nullptr);
     fprintf(outputFile, "%" PRIu64, n);
 }
 
-void DoubleToStringJson(FILE* outputFile, double d)
+void OutputDoubleJson(FILE* outputFile, double d)
 {
     assert(outputFile != nullptr);
     fprintf(outputFile, "%g", d);
 }
 
-void AddrToStringJson(FILE* outputFile, uint64_t a)
+void OutputAddrJson(FILE* outputFile, uint64_t a)
 {
     assert(outputFile != nullptr);
     if (kNoAddr)
@@ -87,7 +87,7 @@ void AddrToStringJson(FILE* outputFile, uint64_t a)
     }
 }
 
-void IndentSpacesJson(FILE* outputFile, int indent)
+void OutputIndentJson(FILE* outputFile, int indent)
 {
     assert(outputFile != nullptr);
     std::string out("");
@@ -95,11 +95,11 @@ void IndentSpacesJson(FILE* outputFile, int indent)
     OutputStringJson(outputFile, out);
 }
 
-void FlagsToStringJson(FILE* outputFile, VkFlags flags, EnumToStringFuncPtr enum_to_string_func)
+void OutputFlagsJson(FILE* outputFile, VkFlags flags, OutputEnumFuncPtr enum_to_string_func)
 {
     VkFlags m = 1;
     assert(outputFile != nullptr);
-    UnsignedDecimalToStringJson(outputFile, flags);
+    OutputUnsignedDecimalJson(outputFile, flags);
     if (flags != 0)
     {
         OutputStringJson(outputFile, " (");
@@ -125,7 +125,7 @@ void FlagsToStringJson(FILE* outputFile, VkFlags flags, EnumToStringFuncPtr enum
 }
 
 template <typename T>
-void ScalarValueToStringJson(FILE* outputFile, const T* value, const ScalarValueToStringStruct& vinfo)
+void OutputScalarValueJson(FILE* outputFile, const T* value, const OutputScalarValueStructInfo& vinfo)
 {
     assert(outputFile != nullptr);
     assert((vinfo.is_handle_or_addr + vinfo.is_enum  + vinfo.is_flags) <= 1);
@@ -133,11 +133,11 @@ void ScalarValueToStringJson(FILE* outputFile, const T* value, const ScalarValue
     assert(vinfo.is_flags ? vinfo.enum_to_string_func != nullptr : true);
     if (vinfo.is_handle_or_addr)
     {
-        AddrToStringJson(outputFile, *(reinterpret_cast<const uint64_t*>(value)));
+        OutputAddrJson(outputFile, *(reinterpret_cast<const uint64_t*>(value)));
     }
     else if (vinfo.is_flags)
     {
-        FlagsToStringJson(outputFile, *(reinterpret_cast<const uint32_t*>(value)), vinfo.enum_to_string_func);
+        OutputFlagsJson(outputFile, *(reinterpret_cast<const uint32_t*>(value)), vinfo.enum_to_string_func);
     }
     else if (vinfo.is_enum)
     {
@@ -145,35 +145,35 @@ void ScalarValueToStringJson(FILE* outputFile, const T* value, const ScalarValue
     }
     else if (std::is_same<T, float>::value)
     {
-        DoubleToStringJson(outputFile, *(reinterpret_cast<const float*>(value)));
+        OutputDoubleJson(outputFile, *(reinterpret_cast<const float*>(value)));
     }
     else if (std::is_same<T, double>::value)
     {
-        DoubleToStringJson(outputFile, *(reinterpret_cast<const double*>(value)));
+        OutputDoubleJson(outputFile, *(reinterpret_cast<const double*>(value)));
     }
     else if (std::is_same<T, int32_t>::value)
     {
-        SignedDecimalToStringJson(outputFile, *(reinterpret_cast<const int32_t*>(value)));
+        OutputSignedDecimalJson(outputFile, *(reinterpret_cast<const int32_t*>(value)));
     }
     else if (std::is_same<T, uint32_t>::value)
     {
-        UnsignedDecimalToStringJson(outputFile, *(reinterpret_cast<const uint32_t*>(value)));
+        OutputUnsignedDecimalJson(outputFile, *(reinterpret_cast<const uint32_t*>(value)));
     }
     else if (std::is_same<T, int64_t>::value)
     {
-        SignedDecimalToStringJson(outputFile, *(reinterpret_cast<const int64_t*>(value)));
+        OutputSignedDecimalJson(outputFile, *(reinterpret_cast<const int64_t*>(value)));
     }
     else if (std::is_same<T, unsigned int>::value)
     {
-        UnsignedDecimalToStringJson(outputFile, *(reinterpret_cast<const int*>(value)));
+        OutputUnsignedDecimalJson(outputFile, *(reinterpret_cast<const int*>(value)));
     }
     else if (std::is_same<T, unsigned char>::value)
     {
-        UnsignedDecimalToStringJson(outputFile, *(reinterpret_cast<const unsigned char*>(value)));
+        OutputUnsignedDecimalJson(outputFile, *(reinterpret_cast<const unsigned char*>(value)));
     }
     else
     {
-        UnsignedDecimalToStringJson(outputFile, *(reinterpret_cast<const uint64_t*>(value)));
+        OutputUnsignedDecimalJson(outputFile, *(reinterpret_cast<const uint64_t*>(value)));
     }
 }
 
@@ -220,13 +220,13 @@ void WideStringToQuotedStringJson(FILE* outputFile, const wchar_t* s)
 
 
 template <typename T>
-void ArrayToStringJson(FILE*                            outputFile,
-                       int                              indent,
-                       const char*                      full_type_name,
-                       const T*                         array,
-                       const char*                      array_name,
-                       const size_t                     array_length,
-                       const ScalarValueToStringStruct& vinfo)
+void OutputArrayJson(FILE*                              outputFile,
+                     int                                indent,
+                     const char*                        full_type_name,
+                     const T*                           array,
+                     const char*                        array_name,
+                     const size_t                       array_length,
+                     const OutputScalarValueStructInfo& vinfo)
 {
     assert(outputFile != nullptr);
     assert((vinfo.is_handle_or_addr + vinfo.is_enum  + vinfo.is_flags) <= 1);
@@ -253,28 +253,28 @@ void ArrayToStringJson(FILE*                            outputFile,
             full_type_name_str.pop_back();
         }
         OutputStringJson(outputFile, "\n");
-        IndentSpacesJson(outputFile, indent);
+        OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "[\n");
         for (uint64_t j = 0; j < array_length; j++)
         {
             indent++;
-            IndentSpacesJson(outputFile, indent);
+            OutputIndentJson(outputFile, indent);
             OutputStringJson(outputFile, "{\n");
             indent++;
-            IndentSpacesJson(outputFile, indent);
+            OutputIndentJson(outputFile, indent);
             OutputStringJson(outputFile, "\"type\" : \"");
             OutputStringJson(outputFile, full_type_name_str);
             OutputStringJson(outputFile, "\",\n");
-            IndentSpacesJson(outputFile, indent);
+            OutputIndentJson(outputFile, indent);
             OutputStringJson(outputFile, "\"name\" : \"[");
-            UnsignedDecimalToStringJson(outputFile, j);
+            OutputUnsignedDecimalJson(outputFile, j);
             OutputStringJson(outputFile, "]\",\n");
-            IndentSpacesJson(outputFile, indent);
+            OutputIndentJson(outputFile, indent);
             OutputStringJson(outputFile, "\"address\" : \"");
             // The address of the current element is the address of the start of the array plus the offset of the current item
-            AddrToStringJson(outputFile, array->GetAddress() + reinterpret_cast<uint64_t>(array->GetPointer() + j) - base_addr);
+            OutputAddrJson(outputFile, array->GetAddress() + reinterpret_cast<uint64_t>(array->GetPointer() + j) - base_addr);
             OutputStringJson(outputFile, "\",\n");
-            IndentSpacesJson(outputFile, indent);
+            OutputIndentJson(outputFile, indent);
             OutputStringJson(outputFile, "\"value\" : ");
             if (strstr(full_type_name, "char"))
             {
@@ -288,11 +288,11 @@ void ArrayToStringJson(FILE*                            outputFile,
             else
             {
                 OutputStringJson(outputFile, "\"");
-                ScalarValueToStringJson(outputFile, array->GetPointer() + j, vinfo);
+                OutputScalarValueJson(outputFile, array->GetPointer() + j, vinfo);
                 OutputStringJson(outputFile, "\"\n");
             }
             indent--;
-            IndentSpacesJson(outputFile, indent);
+            OutputIndentJson(outputFile, indent);
             if (j < array_length - 1)
             {
                 OutputStringJson(outputFile, "},\n");
@@ -303,19 +303,19 @@ void ArrayToStringJson(FILE*                            outputFile,
             }
             indent--;
         }
-        IndentSpacesJson(outputFile, indent);
+        OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "]\n");
     }
 }
 
 template <typename T>
-void ArrayOfScalarsToStringJson(FILE*                            outputFile,
-                                int                              indent,
-                                const char*                      full_type_name,
-                                const T*                         array,
-                                const char*                      array_name,
-                                const size_t                     array_length,
-                                const ScalarValueToStringStruct& vinfo)
+void OutputArrayOfScalarsJson(FILE*                              outputFile,
+                              int                                indent,
+                              const char*                        full_type_name,
+                              const T*                           array,
+                              const char*                        array_name,
+                              const size_t                       array_length,
+                              const OutputScalarValueStructInfo& vinfo)
 {
     assert(outputFile != nullptr);
     assert((vinfo.is_handle_or_addr + vinfo.is_enum + vinfo.is_flags) <= 1);
@@ -337,7 +337,7 @@ void ArrayOfScalarsToStringJson(FILE*                            outputFile,
     }
 
     OutputStringJson(outputFile, "\n");
-    IndentSpacesJson(outputFile, indent);
+    OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "[\n");
 
     if (*full_type_name_str.rbegin() == '*')
@@ -348,16 +348,16 @@ void ArrayOfScalarsToStringJson(FILE*                            outputFile,
     for (uint64_t j = 0; j < array_length; j++)
     {
         indent++;
-        IndentSpacesJson(outputFile, indent);
+        OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "{\n");
         indent++;
-        IndentSpacesJson(outputFile, indent);
+        OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"type\" : \"" + full_type_name_str + "\",\n");
-        IndentSpacesJson(outputFile, indent);
+        OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"name\" : \"[");
-        UnsignedDecimalToStringJson(outputFile, j);
+        OutputUnsignedDecimalJson(outputFile, j);
         OutputStringJson(outputFile, "]\",\n");
-        IndentSpacesJson(outputFile, indent);
+        OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : ");
         if (strstr(full_type_name, "char"))
         {
@@ -370,11 +370,11 @@ void ArrayOfScalarsToStringJson(FILE*                            outputFile,
         else
         {
             OutputStringJson(outputFile, "\"");
-            ScalarValueToStringJson<T>(outputFile, &array[j], vinfo);
+            OutputScalarValueJson<T>(outputFile, &array[j], vinfo);
             OutputStringJson(outputFile, "\"\n");
         }
         indent--;
-        IndentSpacesJson(outputFile, indent);
+        OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "}");
         if (j < array_length - 1)
         {
@@ -383,7 +383,7 @@ void ArrayOfScalarsToStringJson(FILE*                            outputFile,
         OutputStringJson(outputFile, "\n");
         indent--;
     }
-    IndentSpacesJson(outputFile, indent);
+    OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "]\n");
 }
 
