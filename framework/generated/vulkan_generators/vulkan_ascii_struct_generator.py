@@ -18,7 +18,7 @@
 
 import os,re,sys
 from base_generator import *
-from vulkan_ascii_value_to_string_generator import *
+from vulkan_ascii_value_generator import *
 
 class VulkanAsciiStructGeneratorOptions(BaseGeneratorOptions):
     """Options for generating a C++ class for Vulkan capture file to ASCII file generation"""
@@ -108,20 +108,20 @@ class VulkanAsciiStructGenerator(BaseGenerator):
         # Generate forward references to struct functions
         for structName in self.structDict:
             if structName != 'VkBaseInStructure' and structName != 'VkBaseOutStructure':
-                self.wc('void StructureToString(FILE* outputFile, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr);')
+                self.wc('void OutputStructureAscii(FILE* outputFile, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr);')
         self.newline()
 
-        # Generate ArrayOfStructsToString
+        # Generate OutputArrayOfStructsAscii
         self.wc('template <typename T>')
-        self.wc('void ArrayOfStructsToString(FILE*        outputFile,')
-        self.wc('                            int          indent,')
-        self.wc('                            const char*  base_type_name,')
-        self.wc('                            T*           array,')
-        self.wc('                            const char*  array_name,')
-        self.wc('                            const size_t array_length,')
-        self.wc('                            bool         is_union,')
-        self.wc('                            uint64_t     base_addr,')
-        self.wc('                            size_t       struct_size)')
+        self.wc('void OutputArrayOfStructsAscii(FILE*        outputFile,')
+        self.wc('                               int          indent,')
+        self.wc('                               const char*  base_type_name,')
+        self.wc('                               T*           array,')
+        self.wc('                               const char*  array_name,')
+        self.wc('                               const size_t array_length,')
+        self.wc('                               bool         is_union,')
+        self.wc('                               uint64_t     base_addr,')
+        self.wc('                               size_t       struct_size)')
         self.wc('{')
         self.wc('    assert(outputFile != nullptr);')
         self.wc('    if (array_length == 0 || array == nullptr)')
@@ -133,19 +133,19 @@ class VulkanAsciiStructGenerator(BaseGenerator):
         self.wc('    {')
         self.wc('        std::string name_and_index;')
         self.wc('        char tmp_string[100];')
-        self.wc('        IndentSpaces(outputFile, indent);')
+        self.wc('        OutputIndentAscii(outputFile, indent);')
         self.wc('        name_and_index += array_name;')
         self.wc('        snprintf(tmp_string, sizeof(tmp_string), "%s[%" PRIu64 "]: ", array_name, j);')
         self.wc('        fprintf(outputFile, "%-32s", tmp_string);')
         self.wc('        OutputString(outputFile, base_type_name);')
         self.wc('        OutputString(outputFile, " = ");')
-        self.wc('        AddrToString(outputFile, base_addr + j * struct_size);')
+        self.wc('        OutputAddrAscii(outputFile, base_addr + j * struct_size);')
         self.wc('        if (is_union)')
         self.wc('        {')
         self.wc('            OutputString(outputFile, " (Union)");')
         self.wc('        }')
         self.wc('        OutputString(outputFile, ":");')
-        self.wc('        StructureToString(outputFile, array[j], indent + 1, base_addr + j * sizeof(T));')
+        self.wc('        OutputStructureAscii(outputFile, array[j], indent + 1, base_addr + j * sizeof(T));')
         self.wc('        if (j < array_length - 1)')
         self.wc('        {')
         self.wc('            OutputString(outputFile, "\\n");')
@@ -154,16 +154,16 @@ class VulkanAsciiStructGenerator(BaseGenerator):
         self.wc('}')
         self.newline()
 
-        # Generate PnextStructToString function
-        # PnextStructToString will accept a pNext structure, examine the sType, and call the appropriate StructureToString function
-        self.wc('void PnextStructToString(FILE* outputFile, int indent, void* pNext_struct, uint64_t base_addr)')
+        # Generate OutputPnextStructAscii function
+        # OutputPnextStructAscii will accept a pNext structure, examine the sType, and call the appropriate OutputStructureAscii function
+        self.wc('void OutputPnextStructAscii(FILE* outputFile, int indent, void* pNext_struct, uint64_t base_addr)')
         self.wc('{')
         self.wc('    assert(outputFile != nullptr);')
         self.wc('    switch (static_cast<Decoded_VkApplicationInfo*>(pNext_struct)->decoded_value->sType)')
         self.wc('    {')
         for structName in self.pNextStructs:
             self.wc('        case ' + self.pNextStructs[structName] + ':')
-            self.wc('            StructureToString(outputFile, *(reinterpret_cast<const Decoded_' + structName + '*>(pNext_struct)) , indent, base_addr);');
+            self.wc('            OutputStructureAscii(outputFile, *(reinterpret_cast<const Decoded_' + structName + '*>(pNext_struct)) , indent, base_addr);');
             self.wc('            break;')
         self.wc('        default:')
         self.wc('            OutputString(outputFile, "Unknown pNext struct");')
@@ -175,7 +175,7 @@ class VulkanAsciiStructGenerator(BaseGenerator):
         for structName in self.structDict:
             if structName == 'VkBaseInStructure' or structName == 'VkBaseOutStructure':
                 continue
-            self.wc('void StructureToString(FILE* outputFile, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr)')
+            self.wc('void OutputStructureAscii(FILE* outputFile, const Decoded_' + structName + ' &pstruct_in, int indent, uint64_t base_addr)')
             self.wc('{')
             self.wc('    const ' + structName + ' *pstruct = pstruct_in.decoded_value; // BTG')
             self.wc('    assert(outputFile != nullptr);')
@@ -188,7 +188,7 @@ class VulkanAsciiStructGenerator(BaseGenerator):
             for member in sMembersList:
                 self.newline()
                 self.wc('    // struct member: ' + member.fullType + ' ' + member.name)
-                ValueToString.valueToString(self, member, "", structName)
+                OutputValue.outputValue(self, member, "", structName)
                 if member != sMembersList[-1]:
                     self.wc('    OutputString(outputFile, "\\n"); // GDS');
             self.wc('}')

@@ -40,14 +40,14 @@ extern bool kPrintShaderCode;
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
-typedef std::function<void(FILE*, uint32_t)> EnumToStringFuncPtr;
+typedef std::function<void(FILE*, uint32_t)> OutputEnumFuncPtr;
 
-typedef struct ScalarValueToStringStruct {
+typedef struct OutputScalarValueStructInfo {
    bool is_handle_or_addr;
    bool is_enum;
    bool is_flags;
-   EnumToStringFuncPtr enum_to_string_func;
-} ScalarValueToStringStruct;
+   OutputEnumFuncPtr enum_to_string_func;
+} OutputScalarValueStructInfo;
 
 
 // Function to write a std::string to the output file
@@ -57,25 +57,25 @@ void OutputString(FILE* outputFile, const std::string &s)
     fprintf(outputFile, "%s", s.c_str());
 }
 
-void SignedDecimalToString(FILE* outputFile, int64_t n)
+void OutputSignedDecimalAscii(FILE* outputFile, int64_t n)
 {
     assert(outputFile != nullptr);
     fprintf(outputFile, "%" PRId64, n);
 }
 
-void UnsignedDecimalToString(FILE* outputFile, uint64_t n)
+void OutputUnsignedDecimalAscii(FILE* outputFile, uint64_t n)
 {
     assert(outputFile != nullptr);
     fprintf(outputFile, "%" PRIu64, n);
 }
 
-void DoubleToString(FILE* outputFile, double d)
+void OutputDoubleAscii(FILE* outputFile, double d)
 {
     assert(outputFile != nullptr);
     fprintf(outputFile, "%g", d);
 }
 
-void AddrToString(FILE* outputFile, uint64_t a)
+void OutputAddrAscii(FILE* outputFile, uint64_t a)
 {
     assert(outputFile != nullptr);
     if (kNoAddr)
@@ -88,7 +88,7 @@ void AddrToString(FILE* outputFile, uint64_t a)
     }
 }
 
-void IndentSpaces(FILE* outputFile, int indent)
+void OutputIndentAscii(FILE* outputFile, int indent)
 {
     assert(outputFile != nullptr);
     std::string out("");
@@ -96,11 +96,11 @@ void IndentSpaces(FILE* outputFile, int indent)
     OutputString(outputFile, out);
 }
 
-void FlagsToString(FILE* outputFile, VkFlags flags, EnumToStringFuncPtr enum_to_string_func)
+void OutputFlagsAscii(FILE* outputFile, VkFlags flags, OutputEnumFuncPtr enum_to_string_func)
 {
     assert(outputFile != nullptr);
     VkFlags m = 1;
-    UnsignedDecimalToString(outputFile, flags);
+    OutputUnsignedDecimalAscii(outputFile, flags);
     if (flags != 0)
     {
         OutputString(outputFile, " (");
@@ -126,7 +126,7 @@ void FlagsToString(FILE* outputFile, VkFlags flags, EnumToStringFuncPtr enum_to_
 }
 
 template <typename T>
-void ScalarValueToString(FILE* outputFile, const T* value, const ScalarValueToStringStruct &vinfo)
+void OutputScalarValueAscii(FILE* outputFile, const T* value, const OutputScalarValueStructInfo &vinfo)
 {
     assert(outputFile != nullptr);
     assert((vinfo.is_handle_or_addr + vinfo.is_enum  + vinfo.is_flags) <= 1);
@@ -134,11 +134,11 @@ void ScalarValueToString(FILE* outputFile, const T* value, const ScalarValueToSt
     assert(vinfo.is_flags ? vinfo.enum_to_string_func != nullptr : true);
     if (vinfo.is_handle_or_addr)
     {
-        AddrToString(outputFile, *(reinterpret_cast<const uint64_t*>(value)));
+        OutputAddrAscii(outputFile, *(reinterpret_cast<const uint64_t*>(value)));
     }
     else if (vinfo.is_flags)
     {
-        FlagsToString(outputFile, *(reinterpret_cast<const uint32_t*>(value)), vinfo.enum_to_string_func);
+        OutputFlagsAscii(outputFile, *(reinterpret_cast<const uint32_t*>(value)), vinfo.enum_to_string_func);
     }
     else if (vinfo.is_enum)
     {
@@ -146,35 +146,35 @@ void ScalarValueToString(FILE* outputFile, const T* value, const ScalarValueToSt
     }
     else if (std::is_same<T, float>::value)
     {
-        DoubleToString(outputFile, *(reinterpret_cast<const float*>(value)));
+        OutputDoubleAscii(outputFile, *(reinterpret_cast<const float*>(value)));
     }
     else if (std::is_same<T, double>::value)
     {
-        DoubleToString(outputFile, *(reinterpret_cast<const double*>(value)));
+        OutputDoubleAscii(outputFile, *(reinterpret_cast<const double*>(value)));
     }
     else if (std::is_same<T, int32_t>::value)
     {
-        SignedDecimalToString(outputFile, *(reinterpret_cast<const int32_t*>(value)));
+        OutputSignedDecimalAscii(outputFile, *(reinterpret_cast<const int32_t*>(value)));
     }
     else if (std::is_same<T, uint32_t>::value)
     {
-        UnsignedDecimalToString(outputFile, *(reinterpret_cast<const uint32_t*>(value)));
+        OutputUnsignedDecimalAscii(outputFile, *(reinterpret_cast<const uint32_t*>(value)));
     }
     else if (std::is_same<T, int64_t>::value)
     {
-        SignedDecimalToString(outputFile, *(reinterpret_cast<const int64_t*>(value)));
+        OutputSignedDecimalAscii(outputFile, *(reinterpret_cast<const int64_t*>(value)));
     }
     else if (std::is_same<T, unsigned int>::value)
     {
-        UnsignedDecimalToString(outputFile, *(reinterpret_cast<const int*>(value)));
+        OutputUnsignedDecimalAscii(outputFile, *(reinterpret_cast<const int*>(value)));
     }
     else if (std::is_same<T, unsigned char>::value)
     {
-        UnsignedDecimalToString(outputFile, *(reinterpret_cast<const unsigned char*>(value)));
+        OutputUnsignedDecimalAscii(outputFile, *(reinterpret_cast<const unsigned char*>(value)));
     }
     else
     {
-        UnsignedDecimalToString(outputFile, *(reinterpret_cast<const uint64_t*>(value)));
+        OutputUnsignedDecimalAscii(outputFile, *(reinterpret_cast<const uint64_t*>(value)));
     }
 }
 
@@ -220,13 +220,13 @@ void WideStringToQuotedString(FILE* outputFile, const wchar_t* s)
 }
 
 template <typename T>
-void ArrayToString(FILE*                            outputFile,
-                   int                              indent,
-                   const char*                      full_type_name,
-                   const T*                         array,
-                   const char*                      array_name,
-                   const size_t                     array_length,
-                   const ScalarValueToStringStruct& vinfo)
+void OutputArrayAscii(FILE*                           outputFile,
+                   int                                indent,
+                   const char*                        full_type_name,
+                   const T*                           array,
+                   const char*                        array_name,
+                   const size_t                       array_length,
+                   const OutputScalarValueStructInfo& vinfo)
 {
     assert(outputFile != nullptr);
     assert((vinfo.is_handle_or_addr + vinfo.is_enum  + vinfo.is_flags) <= 1);
@@ -254,7 +254,7 @@ void ArrayToString(FILE*                            outputFile,
         for (uint64_t j = 0; j < array_length; j++)
         {
             char tmp_string[100];
-            IndentSpaces(outputFile, indent + 1);
+            OutputIndentAscii(outputFile, indent + 1);
             snprintf(tmp_string, sizeof(tmp_string), "%s[%" PRIu64 "]:", array_name, j);
             fprintf(outputFile, "%-32s", tmp_string);
             OutputString(outputFile, full_type_name_str);
@@ -269,7 +269,7 @@ void ArrayToString(FILE*                            outputFile,
             }
 			else
             {
-                ScalarValueToString(outputFile, array->GetPointer() + j, vinfo);
+                OutputScalarValueAscii(outputFile, array->GetPointer() + j, vinfo);
             }
             if (j < array_length - 1)
             {
@@ -280,13 +280,13 @@ void ArrayToString(FILE*                            outputFile,
 }
 
 template <typename T>
-void ArrayOfScalarsToString(FILE*                            outputFile,
-                            int                              indent,
-                            const char*                      full_type_name,
-                            const T*                         array,
-                            const char*                      array_name,
-                            const size_t                     array_length,
-                            const ScalarValueToStringStruct& vinfo)
+void OutputArrayOfScalarsAscii(FILE*                              outputFile,
+                               int                                indent,
+                               const char*                        full_type_name,
+                               const T*                           array,
+                               const char*                        array_name,
+                               const size_t                       array_length,
+                               const OutputScalarValueStructInfo& vinfo)
 {
     assert(outputFile != nullptr);
     assert((vinfo.is_handle_or_addr + vinfo.is_enum + vinfo.is_flags) <= 1);
@@ -312,7 +312,7 @@ void ArrayOfScalarsToString(FILE*                            outputFile,
         OutputString(outputFile, "\n");
         for (uint64_t j = 0; j < array_length; j++)
         {
-            IndentSpaces(outputFile, indent + 1);
+            OutputIndentAscii(outputFile, indent + 1);
             std::string name_and_index;
             name_and_index += array_name;
             name_and_index += "[";
@@ -332,7 +332,7 @@ void ArrayOfScalarsToString(FILE*                            outputFile,
             }
             else
             {
-                ScalarValueToString(outputFile, &array[j], vinfo);
+                OutputScalarValueAscii(outputFile, &array[j], vinfo);
             }
             if (j < array_length - 1)
             {
